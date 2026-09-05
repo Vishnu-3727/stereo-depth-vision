@@ -78,11 +78,15 @@ Hailo's compiler spatially defuses exactly these layers into up to 22 pieces
 [SOURCE: SR-003] — independent corroboration from the vendor's own toolchain.
 
 **A third line of evidence, from Hailo's compiled profiler** [SOURCE: SR-006,
-EXP-017]: refinement is **95.2 %** of the compiled model's MACs, and the eight
+EXP-018]: refinement is **90.6 %** of the compiled model's MACs — agreeing with
+our independent ONNX figure to within 0.02 percentage points — and the eight
 slowest layers by modelled throughput are all refinement convolutions, with
-`conv50` setting the bottleneck at 43.03 FPS. The first non-refinement layer
-appears ninth. Static analysis, measured profiling on two devices, and the
-vendor's own compiler model agree.
+`conv50` setting the bottleneck at 43.03 FPS. Static analysis, measured profiling
+on two devices, and the vendor's own compiler model agree.
+
+*(EXP-017 originally reported 95.2 % here from an incorrect stage mapping that
+folded the right feature-extractor branch into refinement. Withdrawn in
+`experiments/EXP-017/CORRECTION.md`; superseded by EXP-018.)*
 
 **Note the honest caveat:** MAC share *overstates* the runtime share, 90.6 %
 against 73.3 %. These are dense 3×3 convolutions, which run near peak efficiency.

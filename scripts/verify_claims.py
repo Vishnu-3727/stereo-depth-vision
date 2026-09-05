@@ -97,9 +97,9 @@ def main() -> None:
     check("EXP-001 unique params", m1["params_unique_tensors"], 423_586)
     check("EXP-001 per-occurrence params", m1["params_per_node_occurrence"], 623_138)
     check("EXP-001 gap vs published 623.1K", m1["param_gap_vs_published"], 38)
-    m17 = metrics("EXP-017")
-    check("EXP-017 Hailo's own compiler reports weights", m17["hailo_weights"], 623_138.0)
-    check("EXP-017 exact match flag", m17["weights_exact_match_with_our_per_occurrence"], True)
+    m17 = metrics("EXP-018")  # supersedes EXP-017; see EXP-017/CORRECTION.md
+    check("Hailo's own compiler reports weights", m17["hailo_weights"], 623_138.0)
+    check("exact match flag", m17["weights_exact_match_with_our_per_occurrence"], True)
     check_in_docs("docs quote 423,586", r"423,586")
     check_in_docs("docs quote 623,138", r"623,138")
 
@@ -108,7 +108,7 @@ def main() -> None:
     check("EXP-001 2 x MACs", m1["ops_2x_macs"], 112_078_627_584)
     check("EXP-001 relative gap vs published", round(m1["ops_relative_gap_vs_published"], 4),
           -0.0011, 0.0002)
-    check("EXP-017 Hailo ops/macs ratio", round(m17["hailo_ops_over_macs"], 2), 1.99, 0.02)
+    check("Hailo ops/macs ratio", round(m17["hailo_ops_over_macs"], 2), 1.99, 0.02)
     check_in_docs("docs state ops = 2 x MACs", r"2 ?[x×] ?MACs")
 
     print("\n6. Refinement is the bottleneck")
@@ -119,10 +119,29 @@ def main() -> None:
     m14 = metrics("EXP-014")
     check("EXP-014 refinement CPU time share",
           round(m14["stage_latency"]["refinement"]["share_of_total"], 3), 0.758, 0.002)
-    check("EXP-017 Hailo modelled bottleneck FPS", m17["bottleneck_fps_modelled"], 43.03)
+    check("EXP-018 Hailo modelled bottleneck FPS", m17["bottleneck_fps_modelled"], 43.03)
     slowest = m17["slowest_layers_by_modelled_fps"][0]
-    check("EXP-017 slowest layer stage", slowest["stage"], "refinement")
-    check("EXP-017 slowest layer name", slowest["layer_name"], "conv50")
+    check("EXP-018 slowest layer stage", slowest["stage"], "refinement")
+    check("EXP-018 slowest layer name", slowest["layer_name"], "conv50")
+    check("EXP-018 eight slowest layers are all refinement",
+          all(r["stage"] == "refinement"
+              for r in m17["slowest_layers_by_modelled_fps"][:8]), True)
+    # The corrected per-stage split must agree with our independent ONNX
+    # analysis. EXP-017's incorrect stage mapping put refinement at 95.2 %,
+    # disagreeing with EXP-001 by nearly five points; that discrepancy is what
+    # this check exists to catch.
+    cmp_ = m17["onnx_share_comparison"]
+    check("EXP-018 compiled refinement share",
+          round(cmp_["hailo_compiled"]["refinement"], 3), 0.906, 0.002)
+    check("EXP-018 compiled aggregation share",
+          round(cmp_["hailo_compiled"]["aggregation (3D)"], 3), 0.042, 0.002)
+    check("EXP-018 compiled feature-extraction share",
+          round(cmp_["hailo_compiled"]["feature extraction"], 3), 0.051, 0.002)
+    check("EXP-018 agrees with the ONNX analysis within 1 point",
+          cmp_["max_abs_difference"] < 0.01, True)
+    check("the withdrawn 95.2 % figure is not reproduced",
+          cmp_["hailo_compiled"]["refinement"] < 0.94, True)
+    check("EXP-017 carries its correction", (EXP / "EXP-017" / "CORRECTION.md").exists(), True)
     check_in_docs("docs quote 90.6% MAC share", r"90\.6 ?%")
     check_in_docs("docs quote 73.3% GPU time share", r"73\.3 ?%")
 
@@ -252,7 +271,8 @@ def main() -> None:
               "post-placement compiler estimate" in r, True)
 
     print("\n14. Superseded experiments are marked, not deleted")
-    for d, f in (("EXP-008", "SUPERSEDED_FIELD.txt"), ("EXP-016", "CORRECTION.md")):
+    for d, f in (("EXP-008", "SUPERSEDED_FIELD.txt"), ("EXP-016", "CORRECTION.md"),
+                 ("EXP-017", "CORRECTION.md")):
         check(d + " carries " + f, (EXP / d / f).exists(), True)
     ids = sorted(p.name for p in EXP.glob("EXP-*"))
     check("experiment ids are contiguous",

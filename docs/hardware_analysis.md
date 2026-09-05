@@ -227,22 +227,31 @@ nothing in it is a silicon measurement.
 2. **`ops_per_image / macs_per_image` = 1.9928 ≈ 2.** The published operation
    count is twice the MAC count, as inferred in EXP-001. Our independent MAC
    total of 56,039,313,792 differs from Hailo's 56,258,882,372 by **−0.39 %**.
-3. **Refinement carries 95.2 % of the compiled model's MACs** — 53.55 G of
-   56.26 G — against our 90.6 % on the ONNX. The small difference is the
-   compiled layer set; the conclusion is the same and stronger.
+3. **Refinement carries 90.6 % of the compiled model's MACs** — 50.98 G of
+   56.26 G — against our 90.6 % on the ONNX [EXP-018]. Two independent routes to
+   the same split, agreeing to within 0.02 percentage points.
 
 ### Per-stage, from Hailo's compiled graph
 
+**[SOURCE: SR-006, EXP-018]** — EXP-017's version of this table used an
+incorrect stage mapping and is withdrawn; see
+`experiments/EXP-017/CORRECTION.md`.
+
 | Stage | Compiled layers | MACs | Share | Min modelled FPS | Mean effective MAC utilisation |
 |---|---:|---:|---:|---:|---:|
-| **Refinement** | 42 | 53,549,620,740 | **95.2 %** | **43.0** | 0.267 |
-| Feature extraction | 17 | 1,441,849,024 | 2.6 % | 100.6 | 0.141 |
-| Aggregation (3D) | 5 | 1,245,310,528 | 2.2 % | 100.6 | 0.302 |
-| Regression / elementwise | 18 | 10,881,024 | 0.0 % | 110.2 | 0.032 |
-| Data movement | 27 | 0 | 0.0 % | 1714.3 | 0.010 |
+| **Refinement** | 14 | 50,981,677,824 | **90.6 %** | **43.0** | 0.491 |
+| Aggregation (3D) | 5 | 2,371,404,420 | 4.2 % | 286.0 | 0.691 |
+| Feature extraction (left) | 28 | 1,441,849,024 | 2.6 % | 100.6 | 0.086 |
+| Feature extraction (right) | 17 | 1,441,849,024 | 2.6 % | 100.6 | 0.141 |
+| Regression / elementwise | 22 | 19,381,824 | 0.0 % | 110.2 | 0.064 |
 | Normalisation | 2 | 2,720,256 | 0.0 % | 699.4 | 0.021 |
+| Data movement | 128 | 0 | 0.0 % | 178.6 | 0.266 |
 | I/O and constants | 12 | 0 | 0.0 % | 252.0 | 0.000 |
-| Other (shortcuts, mux/demux) | 119 | 8,500,800 | 0.0 % | 178.6 | 0.298 |
+| Other | 14 | 0 | 0.0 % | 1123.0 | 0.000 |
+
+The compiled shares match our ONNX analysis (90.6 / 4.2 / 5.1) to within 0.02
+percentage points, which is what makes the mapping credible rather than merely
+plausible.
 
 ### The modelled throughput bottleneck is refinement
 

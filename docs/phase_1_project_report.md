@@ -69,7 +69,7 @@ rather than fixed.
 | Understand failure modes | Ten ranked findings with evidence and confidence |
 | Study the competitive landscape | Twelve architectures, each read from its primary source |
 | Identify bottlenecks | Nine ranked by evidence, none solved |
-| Produce an evidence-backed knowledge base | Twelve documents, seventeen experiment records |
+| Produce an evidence-backed knowledge base | Twelve documents, eighteen experiment records |
 
 ---
 
@@ -91,7 +91,7 @@ This mattered repeatedly — it is why the cost-volume defect was found at all. 
 upstream README describes a concatenation-based cost volume; the ONNX uses
 subtraction; and neither description mentions that the shift does nothing.
 
-**Every measurement is an immutable record.** Seventeen experiment directories,
+**Every measurement is an immutable record.** Eighteen experiment directories,
 each stamped with the git commit, configuration, hardware and software versions.
 None was deleted, including the ones that turned out to be wrong.
 
@@ -178,8 +178,9 @@ CPU [EXP-013, EXP-014].
 **Three independent lines of evidence agree that refinement dominates**: our
 static analysis (90.6 % of MACs), our measured profiling on two devices
 (73–76 % of time), and Hailo's own compiler report, which puts refinement at
-95.2 % of the compiled model's operations and identifies refinement convolutions
-as the eight slowest layers [EXP-017].
+90.6 % of the compiled model's operations — matching our ONNX figure to within
+0.02 percentage points — and identifies refinement convolutions as the eight
+slowest layers [EXP-018].
 
 **Two cautions come out of the same data.** MAC share *overstates* refinement,
 and the ranking is device-dependent: 3D aggregation is 2.8 % of GPU time and
@@ -259,7 +260,7 @@ That component is an evaluation tool, not a deployable depth service.
 | Stereo geometry module | Calibration parsing, `Z = fB/d`, and error propagation, with invalid pixels excluded rather than clamped |
 | Experiment recorder | Allocates immutable `EXP-xxx` directories, captures environment automatically, refuses to overwrite |
 | Analysis tooling | ONNX graph inspection, per-layer cost model, profiler decoding, claim verification |
-| Test suite | 49 tests covering shapes, cost volume, regression, refinement, geometry, protocol and conclusion logic |
+| Test suite | 75 tests covering shapes, cost volume, regression, refinement, geometry, protocol, conclusion logic and profiler stage mapping |
 
 ---
 
@@ -275,6 +276,7 @@ evidence.
 | An automated verdict produced by a crude threshold rule | Annotated in place, metrics unaltered |
 | An equivalence check that diverged at the cost volume | Superseded by EXP-011 — and that divergence is what led to the central finding |
 | **A training conclusion asserted rather than measured** | See below |
+| **A wrong stage mapping in the compiler-profiler analysis**, reporting refinement as 95.2 % of compiled MACs | Caught by an external audit. Corrected in EXP-018 to 90.6 %; EXP-017 preserved and withdrawn |
 | Two wrong arXiv identifiers returning unrelated papers | Discarded rather than cited, and recorded in the source registry |
 
 The fourth deserves its own note, because it is the failure mode this whole
@@ -293,6 +295,27 @@ the class of error across all experiments. Both the guard and the new verifier
 checks were confirmed to fail against the defective version recovered from the
 earlier tag, so they are not decorative. EXP-016's original record is unaltered;
 its correction document now also explains the fix.
+
+A second correction followed, and it is the more instructive one. An external
+audit found that the compiler-profiler analysis had mapped Hailo's compiled
+convolutions to the wrong architectural stages, folding the right
+feature-extractor branch and the real 3D aggregation into refinement and
+reporting refinement as 95.2 % of compiled operations.
+
+**The withdrawn figure disagreed with our own ONNX-derived 90.6 % by nearly five
+points, and that discrepancy was visible at the time and was not questioned.**
+Both numbers supported the same qualitative conclusion — refinement dominates —
+and that agreement in direction masked a disagreement in magnitude. Two
+independent routes to the same quantity giving different answers is exactly the
+signal this project's evidence discipline exists to surface, and it was missed.
+
+The corrected analysis (EXP-018) puts refinement at 90.6 %, aggregation at 4.2 %
+and feature extraction at 5.1 %, agreeing with the ONNX analysis to within 0.02
+percentage points. The mapping now lives in a unit-tested module documented
+against the layer shapes, the analysis raises rather than records if the two
+routes diverge by more than a percentage point, and twenty-six tests pin the
+range boundaries and the defusion-name handling. EXP-017's record is unaltered
+and carries its withdrawal.
 
 ---
 
@@ -367,7 +390,8 @@ available.
 | EXP-014 | Per-stage latency, CPU |
 | EXP-015 | Precision study: fp32 / fp16 / int8 |
 | EXP-016 | Training convergence *(conclusion corrected)* |
-| EXP-017 | Hailo compiled profiler report, decoded |
+| EXP-017 | Hailo compiled profiler report, decoded *(per-stage rollup corrected)* |
+| EXP-018 | **Profiler report re-analysed with the corrected stage mapping** |
 
 ---
 
@@ -375,9 +399,9 @@ available.
 
 | Check | Result |
 |---|---|
-| Test suite | **49 passed** (48 passed, 1 intentional dataset skip from a clean clone) |
-| Claim verification | **65 checks, 0 failures** — every headline figure asserted against its experiment record |
-| Experiment records | 17, contiguous, all completed, every git reference valid, none deleted |
+| Test suite | **75 passed** (74 passed, 1 intentional dataset skip from a clean clone) |
+| Claim verification | **73 checks, 0 failures** — every headline figure asserted against its experiment record |
+| Experiment records | 18, contiguous, all completed, every git reference valid, none deleted |
 | Secrets and credentials | None |
 | Datasets, checkpoints, large binaries | None tracked; 1.16 MB across 173 files |
 | Git history | Preserved, never rewritten |

@@ -3,7 +3,7 @@
 **Microchip Stereo Depth Vision — forensics, reproduction and characterisation of
 the Hailo StereoNet reference deployment.**
 
-Seventeen experiments, twelve knowledge-base documents, one independent
+Eighteen experiments, twelve knowledge-base documents, one independent
 implementation verified against the reference to a relative 1e-7, and the
 published accuracy figure reproduced to four significant figures.
 
@@ -138,11 +138,13 @@ Total 56.04 GMAC, 44.4 ms, 22.5 FPS on the RTX 4060; 642.3 ms, 1.6 FPS on CPU.
 Refinement dominates on both devices. MAC share overstates it.
 
 **A third, independent line of evidence agrees.** Hailo's own compiled profiler
-[SR-006, EXP-017] puts refinement at **95.2 %** of the compiled model's MACs and
+[SR-006, EXP-018] puts refinement at **90.6 %** of the compiled model's MACs —
+matching our ONNX-derived figure to within 0.02 percentage points — and
 identifies refinement convolutions as the eight slowest layers, with `conv50`
 setting the modelled bottleneck at 43.03 FPS. Static analysis, our own profiling
 and the vendor's compiler model all reach the same conclusion by different
-routes.
+routes. (EXP-017 first reported 95.2 % here from an incorrect stage mapping;
+withdrawn and superseded, see `experiments/EXP-017/CORRECTION.md`.)
 
 ## 9. What consumes memory?
 
@@ -305,7 +307,7 @@ Stated as directions, **not designs**, and none implemented.
 | 6 | Architecture reconstructed | **done** — 168-node table, EXP-001 |
 | 7 | Cost volume understood | **done** — `cost_volume_analysis.md`, EXP-010 |
 | 8 | Independent implementation exists | **done** — `src/models/stereonet` |
-| 9 | Unit tests pass | **done** — 49 tests (29 core, 20 regression) |
+| 9 | Unit tests pass | **done** — 75 tests (29 core, 46 regression) |
 | 10 | ONNX equivalence tested | **done** — relative 1e-7 at every stage, EXP-011 |
 | 11 | Discrepancies documented | **done** — register in `reproduction_report.md` §6 |
 | 12 | KITTI protocol frozen | **done** — four variants, EXP-005 |
@@ -331,17 +333,17 @@ overstated conclusion.
 
 Run before tagging, all green:
 
-- `python scripts/verify_claims.py` — **65 checks, 0 failures**. Asserts that
+- `python scripts/verify_claims.py` — **73 checks, 0 failures**. Asserts that
   every headline number in `docs/` and this report matches the corresponding
   `experiments/EXP-xxx/metrics.json`, that no experiment claims a validation
   improvement its own data denies, that the training script derives rather than
   asserts its conclusion, and that the scope and evidence gaps are stated. A
   transcription error or an unsupported conclusion cannot reach a release.
-- `python -m pytest tests/ -q` — **49 passed** with the dataset present;
-  **48 passed, 1 skipped** from a fresh clone of the committed tree. The single
+- `python -m pytest tests/ -q` — **75 passed** with the dataset present;
+  **74 passed, 1 skipped** from a fresh clone of the committed tree. The single
   skip is the KITTI calibration test, which is written to skip when the dataset
   is absent; the suite needs no untracked file.
-- All 17 experiments present, contiguous, `status: completed`, every recorded
+- All 18 experiments present, contiguous, `status: completed`, every recorded
   git commit resolving into this history, no missing charter-required config
   field.
 - Secret scan over every tracked file: no keys, tokens, credentials, emails or
@@ -364,6 +366,23 @@ Things that went wrong, recorded rather than tidied away.
   numbers show noise. `experiments/EXP-016/CORRECTION.md`.
 - **Two arXiv identifiers were wrong** and returned unrelated papers. Discarded
   rather than cited, and recorded in the registry.
+- **EXP-017's per-stage rollup used a wrong stage mapping, and an external audit
+  caught it.** Hailo's compiled convolutions were mapped as conv1-17 feature
+  extraction, conv18-22 aggregation, conv23+ refinement. The layer shapes say
+  otherwise: conv18 is 368x1232, 3 to 32 channels, 5x5 — the same workload as
+  conv1, because it is the right Siamese branch. The correct ranges are conv1-17
+  left branch, conv18-34 right branch, conv35-39 aggregation, conv40+
+  refinement. The error folded the right branch and the real aggregation into
+  refinement and reported it as 95.2 % of compiled MACs. **The withdrawn figure
+  disagreed with our own ONNX analysis by nearly five points and that
+  discrepancy was not questioned at the time** — two independent routes to the
+  same quantity disagreeing is precisely the signal this project's discipline
+  exists to surface. Corrected in EXP-018: refinement 90.6 %, aggregation 4.2 %,
+  feature extraction 5.1 %, now agreeing with the ONNX analysis to within 0.02
+  percentage points. EXP-017's record is unaltered and carries a correction; the
+  qualitative conclusion that refinement dominates is unchanged. The mapping now
+  lives in a unit-tested module, the analysis fails loudly if the two routes
+  diverge by more than a point, and 26 tests pin the boundaries.
 - **The training script hard-coded its own conclusion.** `exp_train_convergence.py`
   asserted "the loss decreases", "no non-finite values" and "validation improves"
   as string literals, independent of the run — which is how EXP-016 came to
@@ -399,7 +418,7 @@ frozen after EXP-011 and not modified thereafter.
 
 ```
 python scripts/hash_reference.py            # verify artifacts
-python -m pytest tests/ -q                  # 29 tests
+python -m pytest tests/ -q                  # 75 tests
 python scripts/exp_onnx_forensics.py        # EXP-001
 python scripts/depth_error_curve.py         # EXP-003
 python scripts/exp_reproduce_hailo.py       # EXP-005, the 8.223 reproduction
@@ -413,8 +432,8 @@ python scripts/exp_profile.py --device cuda # EXP-013
 python scripts/exp_quantization.py          # EXP-015
 python scripts/exp_train_convergence.py     # EXP-016
 python scripts/extract_profiler_report.py   # decode Hailo's profiler HTML
-python scripts/exp_profiler_report.py       # EXP-017
-python scripts/verify_claims.py             # 65 claim checks against the records
+python scripts/exp_profiler_report.py       # EXP-018 (supersedes EXP-017)
+python scripts/verify_claims.py             # 73 claim checks against the records
 ```
 
 Data: KITTI 2015 (`data_scene_flow.zip`, `data_scene_flow_calib.zip`) into

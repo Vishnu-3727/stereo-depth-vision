@@ -27,7 +27,7 @@ Open questions carried out of Phase 1, and the questions Phase 1 answered.
 | Q17 | How much does a disparity error cost in metres? | 0.065 m at 5 m, 16.65 m at 80 m, per pixel of error — a factor of 256 from geometry alone. | EXP-003 |
 | Q18 | How does that show up in the real model? | Disparity error is flat with range (1.02–1.47 px); depth error grows 43×, 0.213 m to 9.158 m. | EXP-012 |
 | Q19 | What does quantisation cost? | fp16 is free (−0.014 D1 points, 28 % faster). int8 on our stack costs 2.79 D1 points, with a 45 px maximum per-pixel change. | EXP-015 |
-| Q21 | What is in Hailo's compiled profiler report? | A 53-field model summary and a 242-row per-layer table. Confirms the parameter and operation conventions, puts refinement at 95.2 % of compiled MACs, and shows 6 device contexts and uniform 8/8/8 quantisation. It is a post-placement estimate, not a measured run. | EXP-017 |
+| Q21 | What is in Hailo's compiled profiler report? | A 53-field model summary and a 242-row per-layer table. Confirms the parameter and operation conventions, puts refinement at 90.6 % of compiled MACs (matching our ONNX figure), and shows 6 device contexts and uniform 8/8/8 quantisation. It is a post-placement estimate, not a measured run. | EXP-018 (supersedes EXP-017) |
 | Q20 | Does the training pipeline work? | Yes. Loss fell 11.49 → 7.61, gradients finite and bounded, checkpoint produced. Validation did **not** improve meaningfully — 160 scenes from scratch is too little. | EXP-016 |
 
 ---
@@ -40,7 +40,7 @@ Grouped by what it would take to answer them.
 
 | # | Question | Why it matters |
 |---|---|---|
-| ~~O1~~ | ~~What is in the profiler report [SR-006]?~~ | **ANSWERED in EXP-017.** A 53-field model summary and a 242-row per-layer table. It confirms `weights = 623,138`, `ops/macs = 1.9928`, refinement at 95.2 % of compiled MACs, six device contexts, uniform 8/8/8 quantisation, and refinement convolutions as the eight slowest layers with `conv50` at 43.03 FPS. It does **not** contain measured silicon latency — `profiling_mode` is `post_placement` with model-level fps and latency `N/A`. |
+| ~~O1~~ | ~~What is in the profiler report [SR-006]?~~ | **ANSWERED in EXP-018** (EXP-017 superseded). A 53-field model summary and a 242-row per-layer table. It confirms `weights = 623,138`, `ops/macs = 1.9928`, refinement at 90.6 % of compiled MACs, six device contexts, uniform 8/8/8 quantisation, and refinement convolutions as the eight slowest layers with `conv50` at 43.03 FPS. It does **not** contain measured silicon latency — `profiling_mode` is `post_placement` with model-level fps and latency `N/A`. |
 | O2 | What does the original StereoNet paper actually specify? | [SR-010] has been read only at abstract level. The paper-versus-implementation comparison in `stereonet_architecture.md` §9 stays incomplete until the full text is read — including whether the refinement is genuinely a multi-scale cascade and whether the downsampling stack should have activations. |
 | O3 | How much does the bottom-7-row crop change the accuracy figure? | Those rows hold the nearest road surface and the largest disparities. Measurable by evaluating on the uncropped image. |
 

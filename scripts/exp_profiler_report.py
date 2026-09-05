@@ -31,6 +31,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT))
 
 from src.common.experiment import Experiment  # noqa: E402
+from src.common.profiler_stages import stage_of  # noqa: E402
 
 PROFILER_DIR = REPO_ROOT / "results" / "profiler"
 
@@ -41,32 +42,10 @@ OUR_PARAMS_PER_OCCURRENCE = 623_138
 HAILO_PUBLISHED_OPS = 112_200_000_000
 HAILO_PUBLISHED_PARAMS = 623_100
 
-# Map a compiled layer name onto the pipeline stage it belongs to. Derived from
-# the ONNX node walk: conv1-conv17 are the two feature extractor branches,
-# conv18-conv22 the 3D aggregation, conv23+ the refinement. Names carrying a
-# defusion suffix keep their base identity.
-def stage_of(name: str, layer_type: str) -> str:
-    n = name.split("/")[-1]
-    base = n.split("_sd")[0].split("_ws")[0].split("_sdc")[0]
-    if layer_type in {"const_input", "input_layer", "output_layer"}:
-        return "io/const"
-    if base.startswith("normalization"):
-        return "normalisation"
-    if base.startswith(("concat", "shape_splitter", "format_conversion", "shortcut")):
-        return "data movement"
-    if base.startswith("conv"):
-        digits = "".join(c for c in base[4:] if c.isdigit())
-        if digits:
-            i = int(digits)
-            if i <= 17:
-                return "feature extraction"
-            if i <= 22:
-                return "aggregation (3D)"
-            return "refinement"
-    if base.startswith(("ew_add", "activation", "reduce", "softmax", "resize",
-                        "bilinear", "argmax", "mul", "neg", "slice")):
-        return "regression / elementwise"
-    return "other"
+# The stage mapping lives in src/common/profiler_stages.py so it can be unit
+# tested. EXP-017 used an incorrect mapping local to this file, which folded the
+# right feature-extractor branch and the 3D aggregation into refinement; see
+# experiments/EXP-017/CORRECTION.md.
 
 
 def num(v):
@@ -258,6 +237,54 @@ def main() -> None:
                 len(rows), model.get("number_of_contexts")
             )
         )
+        # The mapping is only trustworthy if the rollup it produces agrees with
+        # the independent ONNX analysis. EXP-017's incorrect mapping disagreed
+        # with EXP-001 by nearly five points and that discrepancy was not
+        # questioned at the time; this check makes it impossible to miss again.
+        onnx_shares = {
+            "refinement": 0.9064,
+            "aggregation (3D)": 0.0423,
+            "feature extraction": 0.0512,   # both branches together
+        }
+        feature_share = (
+            stage_table.get("feature extraction (left)", {}).get("mac_share", 0.0)
+            + stage_table.get("feature extraction (right)", {}).get("mac_share", 0.0)
+        )
+        agreement = {
+            "refinement": stage_table["refinement"]["mac_share"],
+            "aggregation (3D)": stage_table["aggregation (3D)"]["mac_share"],
+            "feature extraction": feature_share,
+        }
+        deltas = {
+            k: agreement[k] - onnx_shares[k] for k in onnx_shares
+        }
+        exp.metric("onnx_share_comparison", {
+            "hailo_compiled": agreement,
+            "our_onnx_analysis": onnx_shares,
+            "difference": deltas,
+            "max_abs_difference": max(abs(v) for v in deltas.values()),
+        })
+        worst = max(abs(v) for v in deltas.values())
+        if worst > 0.01:
+            raise RuntimeError(
+                "compiled per-stage MAC shares disagree with the ONNX analysis "
+                "by {:.3f} -- the stage mapping is probably wrong: {}".format(
+                    worst, deltas
+                )
+            )
+        exp.note(
+            "The compiled per-stage MAC shares agree with our independent ONNX "
+            "analysis to within {:.3f}: refinement {:.1%} against {:.1%}, "
+            "aggregation {:.1%} against {:.1%}, feature extraction {:.1%} "
+            "against {:.1%}. Two independent routes to the same split is what "
+            "makes the mapping credible.".format(
+                worst,
+                agreement["refinement"], onnx_shares["refinement"],
+                agreement["aggregation (3D)"], onnx_shares["aggregation (3D)"],
+                feature_share, onnx_shares["feature extraction"],
+            )
+        )
+
         exp.conclude(
             "Hailo's own compile-time report corroborates both published counts "
             "and their conventions, and supplies the per-layer and per-context "

@@ -16,7 +16,23 @@
       "l2_data_usage_bytes": 0.0,
       "mean_effective_mac_util": 0.02138694627610447
     },
-    "feature extraction": {
+    "feature extraction (left)": {
+      "layers": 28,
+      "macs": 1441849024.0,
+      "mac_share": 0.025628824519941175,
+      "min_fps": 100.63,
+      "l2_data_usage_bytes": 292864.0,
+      "mean_effective_mac_util": 0.0855098471967382
+    },
+    "data movement": {
+      "layers": 128,
+      "macs": 0.0,
+      "mac_share": 0.0,
+      "min_fps": 178.57,
+      "l2_data_usage_bytes": 0.0,
+      "mean_effective_mac_util": 0.26602764326887945
+    },
+    "feature extraction (right)": {
       "layers": 17,
       "macs": 1441849024.0,
       "mac_share": 0.025628824519941175,
@@ -24,45 +40,37 @@
       "l2_data_usage_bytes": 292864.0,
       "mean_effective_mac_util": 0.1408397483240394
     },
-    "data movement": {
-      "layers": 27,
-      "macs": 0.0,
-      "mac_share": 0.0,
-      "min_fps": 1714.3,
+    "regression / elementwise": {
+      "layers": 22,
+      "macs": 19381824.0,
+      "mac_share": 0.00034451135861252583,
+      "min_fps": 110.15,
       "l2_data_usage_bytes": 0.0,
-      "mean_effective_mac_util": 0.009556775120584494
+      "mean_effective_mac_util": 0.06398377170014871
     },
     "aggregation (3D)": {
       "layers": 5,
-      "macs": 1245310528.0,
-      "mac_share": 0.022135358462431705,
-      "min_fps": 100.63,
-      "l2_data_usage_bytes": 164864.0,
-      "mean_effective_mac_util": 0.3023779665507286
+      "macs": 2371404420.0,
+      "mac_share": 0.04215164468287138,
+      "min_fps": 285.56,
+      "l2_data_usage_bytes": 522240.0,
+      "mean_effective_mac_util": 0.6909123020190059
     },
     "refinement": {
-      "layers": 42,
-      "macs": 53549620740.0,
-      "mac_share": 0.9518429531876303,
+      "layers": 14,
+      "macs": 50981677824.0,
+      "mac_share": 0.9061978424472495,
       "min_fps": 43.03,
-      "l2_data_usage_bytes": 6933504.0,
-      "mean_effective_mac_util": 0.26688469637108836
+      "l2_data_usage_bytes": 6283264.0,
+      "mean_effective_mac_util": 0.4908721320525468
     },
     "other": {
-      "layers": 119,
-      "macs": 8500800.0,
-      "mac_share": 0.00015110147307566922,
-      "min_fps": 178.57,
+      "layers": 14,
+      "macs": 0.0,
+      "mac_share": 0.0,
+      "min_fps": 1122.89,
       "l2_data_usage_bytes": 0.0,
-      "mean_effective_mac_util": 0.2982897017190431
-    },
-    "regression / elementwise": {
-      "layers": 18,
-      "macs": 10881024.0,
-      "mac_share": 0.00019340988553685662,
-      "min_fps": 110.15,
-      "l2_data_usage_bytes": 0.0,
-      "mean_effective_mac_util": 0.031503483320877004
+      "mean_effective_mac_util": 0.0
     }
   },
   "slowest_layers": [
@@ -149,7 +157,7 @@
     {
       "layer_name": "conv2",
       "layer_type": "conv",
-      "stage": "feature extraction",
+      "stage": "feature extraction (left)",
       "fps": 100.63,
       "macs": 726308352.0,
       "context": "context_0",
@@ -159,7 +167,7 @@
     {
       "layer_name": "conv19",
       "layer_type": "conv",
-      "stage": "aggregation (3D)",
+      "stage": "feature extraction (right)",
       "fps": 100.63,
       "macs": 726308352.0,
       "context": "context_0",
@@ -189,7 +197,7 @@
     {
       "layer_name": "sh_from_conv40_sdc_to_conv42_sd0-3",
       "layer_type": "shortcut",
-      "stage": "other",
+      "stage": "data movement",
       "fps": 178.57,
       "macs": 0.0,
       "context": "context_2",
@@ -199,7 +207,7 @@
     {
       "layer_name": "sh_from_conv46_to_sh_from_conv46_to_conv48_sd0-3_sh_from_conv46_to_conv48_sd4-7_sh_from_conv46_to_conv48_sd8-11_sh_from_co_1501",
       "layer_type": "shortcut",
-      "stage": "other",
+      "stage": "data movement",
       "fps": 178.57,
       "macs": 0.0,
       "context": "context_4",
