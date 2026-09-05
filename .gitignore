@@ -1,0 +1,23 @@
+# datasets — never committed
+data/
+# vendor artifacts — downloaded, hashed, but not committed (see reference/MANIFEST.md)
+reference/*
+!reference/MANIFEST.md
+!reference/.gitkeep
+# experiment outputs — large; metrics.json and env.json ARE committed
+experiments/**/*.pth
+experiments/**/*.ckpt
+experiments/**/*.onnx
+experiments/**/events.out.tfevents.*
+results/**/*.png
+results/**/*.npy
+results/**/*.npz
+logs/
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/

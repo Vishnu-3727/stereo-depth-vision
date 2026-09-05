@@ -1,0 +1,44 @@
+{
+  "label": "primary",
+  "captured_utc": "2026-09-05T01:02:22.218892+00:00",
+  "git": {
+    "commit": null,
+    "branch": null,
+    "dirty": true,
+    "dirty_files": [
+      "?? .gitignore",
+      "?? experiments/",
+      "?? reference/",
+      "?? requirements.txt",
+      "?? results/",
+      "?? scripts/",
+      "?? src/",
+      "?? tests/"
+    ]
+  },
+  "hardware": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "AMD64 Family 26 Model 36 Stepping 0, AuthenticAMD",
+    "machine": "AMD64",
+    "cpu_count": 24,
+    "cuda_available": true,
+    "cuda_version": "12.8",
+    "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_total_memory_bytes": 8585216000,
+    "gpu_capability": "8.9",
+    "nvidia_driver": "616.56"
+  },
+  "software": {
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "torchvision": "0.22.0+cu128",
+    "numpy": "2.5.1",
+    "cv2": "5.0.0",
+    "onnx": "1.22.0",
+    "onnxruntime": "1.27.0",
+    "scipy": "1.18.0",
+    "PIL": "12.3.0",
+    "skimage": "0.26.0",
+    "thop": "0.1.1"
+  }
+}
