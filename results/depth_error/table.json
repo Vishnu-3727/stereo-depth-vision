@@ -1,0 +1,182 @@
+[
+  {
+    "disparity_error_px": 0.25,
+    "depth_m": 5.0,
+    "true_disparity_px": 76.876296,
+    "linear_depth_error_m": 0.01625988848370114,
+    "linear_depth_error_pct": 0.3251977696740228,
+    "depth_if_disparity_underestimated_m": 5.0163129377935745,
+    "depth_if_disparity_overestimated_m": 4.983792816914221
+  },
+  {
+    "disparity_error_px": 0.25,
+    "depth_m": 10.0,
+    "true_disparity_px": 38.438148,
+    "linear_depth_error_m": 0.06503955393480455,
+    "linear_depth_error_pct": 0.6503955393480456,
+    "depth_if_disparity_underestimated_m": 10.065465337570181,
+    "depth_if_disparity_overestimated_m": 9.935380726934772
+  },
+  {
+    "disparity_error_px": 0.25,
+    "depth_m": 20.0,
+    "true_disparity_px": 19.219074,
+    "linear_depth_error_m": 0.2601582157392182,
+    "linear_depth_error_pct": 1.3007910786960912,
+    "depth_if_disparity_underestimated_m": 20.26358693102257,
+    "depth_if_disparity_overestimated_m": 19.743182444116243
+  },
+  {
+    "disparity_error_px": 0.25,
+    "depth_m": 50.0,
+    "true_disparity_px": 7.6876296,
+    "linear_depth_error_m": 1.625988848370114,
+    "linear_depth_error_pct": 3.251977696740228,
+    "depth_if_disparity_underestimated_m": 51.6806429833505,
+    "depth_if_disparity_overestimated_m": 48.425222562665304
+  },
+  {
+    "disparity_error_px": 0.25,
+    "depth_m": 80.0,
+    "true_disparity_px": 4.8047685,
+    "linear_depth_error_m": 4.162531451827491,
+    "linear_depth_error_pct": 5.203164314784365,
+    "depth_if_disparity_underestimated_m": 84.39100252844904,
+    "depth_if_disparity_overestimated_m": 76.04334006591994
+  },
+  {
+    "disparity_error_px": 1.0,
+    "depth_m": 5.0,
+    "true_disparity_px": 76.876296,
+    "linear_depth_error_m": 0.06503955393480455,
+    "linear_depth_error_pct": 1.3007910786960912,
+    "depth_if_disparity_underestimated_m": 5.065896732755642,
+    "depth_if_disparity_overestimated_m": 4.935795611029061
+  },
+  {
+    "disparity_error_px": 1.0,
+    "depth_m": 10.0,
+    "true_disparity_px": 38.438148,
+    "linear_depth_error_m": 0.2601582157392182,
+    "linear_depth_error_pct": 2.6015821573921825,
+    "depth_if_disparity_underestimated_m": 10.267107229770021,
+    "depth_if_disparity_overestimated_m": 9.746438397665125
+  },
+  {
+    "disparity_error_px": 1.0,
+    "depth_m": 20.0,
+    "true_disparity_px": 19.219074,
+    "linear_depth_error_m": 1.0406328629568729,
+    "linear_depth_error_pct": 5.203164314784365,
+    "depth_if_disparity_underestimated_m": 21.09775063211226,
+    "depth_if_disparity_overestimated_m": 19.010835016479984
+  },
+  {
+    "disparity_error_px": 1.0,
+    "depth_m": 50.0,
+    "true_disparity_px": 7.6876296,
+    "linear_depth_error_m": 6.503955393480456,
+    "linear_depth_error_pct": 13.007910786960911,
+    "depth_if_disparity_underestimated_m": 57.476490623822826,
+    "depth_if_disparity_overestimated_m": 44.24469017417593
+  },
+  {
+    "disparity_error_px": 1.0,
+    "depth_m": 80.0,
+    "true_disparity_px": 4.8047685,
+    "linear_depth_error_m": 16.650125807309966,
+    "linear_depth_error_pct": 20.81265725913746,
+    "depth_if_disparity_underestimated_m": 101.02624640631882,
+    "depth_if_disparity_overestimated_m": 66.21822730742836
+  },
+  {
+    "disparity_error_px": 3.0,
+    "depth_m": 5.0,
+    "true_disparity_px": 76.876296,
+    "linear_depth_error_m": 0.19511866180441367,
+    "linear_depth_error_pct": 3.9023732360882732,
+    "depth_if_disparity_underestimated_m": 5.20304212328133,
+    "depth_if_disparity_overestimated_m": 4.812209619734997
+  },
+  {
+    "disparity_error_px": 3.0,
+    "depth_m": 10.0,
+    "true_disparity_px": 38.438148,
+    "linear_depth_error_m": 0.7804746472176547,
+    "linear_depth_error_pct": 7.8047464721765465,
+    "depth_if_disparity_underestimated_m": 10.846545366874139,
+    "depth_if_disparity_overestimated_m": 9.276029421005978
+  },
+  {
+    "disparity_error_px": 3.0,
+    "depth_m": 20.0,
+    "true_disparity_px": 19.219074,
+    "linear_depth_error_m": 3.1218985888706188,
+    "linear_depth_error_pct": 15.609492944353093,
+    "depth_if_disparity_underestimated_m": 23.699348063890703,
+    "depth_if_disparity_overestimated_m": 17.299617436802272
+  },
+  {
+    "disparity_error_px": 3.0,
+    "depth_m": 50.0,
+    "true_disparity_px": 7.6876296,
+    "linear_depth_error_m": 19.511866180441366,
+    "linear_depth_error_pct": 39.02373236088273,
+    "depth_if_disparity_underestimated_m": 81.9991152884605,
+    "depth_if_disparity_overestimated_m": 35.96508247254377
+  },
+  {
+    "disparity_error_px": 3.0,
+    "depth_m": 80.0,
+    "true_disparity_px": 4.8047685,
+    "linear_depth_error_m": 49.9503774219299,
+    "linear_depth_error_pct": 62.43797177741237,
+    "depth_if_disparity_underestimated_m": 212.98104438325473,
+    "depth_if_disparity_overestimated_m": 49.249568388863814
+  },
+  {
+    "disparity_error_px": 8.223,
+    "depth_m": 5.0,
+    "true_disparity_px": 76.876296,
+    "linear_depth_error_m": 0.5348202520058979,
+    "linear_depth_error_pct": 10.696405040117957,
+    "depth_if_disparity_underestimated_m": 5.598878748661972,
+    "depth_if_disparity_overestimated_m": 4.516858517842498
+  },
+  {
+    "disparity_error_px": 8.223,
+    "depth_m": 10.0,
+    "true_disparity_px": 38.438148,
+    "linear_depth_error_m": 2.1392810080235916,
+    "linear_depth_error_pct": 21.392810080235915,
+    "depth_if_disparity_underestimated_m": 12.721482615276285,
+    "depth_if_disparity_overestimated_m": 8.237720169250872
+  },
+  {
+    "disparity_error_px": 8.223,
+    "depth_m": 20.0,
+    "true_disparity_px": 19.219074,
+    "linear_depth_error_m": 8.557124032094366,
+    "linear_depth_error_pct": 42.78562016047183,
+    "depth_if_disparity_underestimated_m": 34.95624711146906,
+    "depth_if_disparity_overestimated_m": 14.00701273526192
+  },
+  {
+    "disparity_error_px": 8.223,
+    "depth_m": 50.0,
+    "true_disparity_px": 7.6876296,
+    "linear_depth_error_m": 53.482025200589796,
+    "linear_depth_error_pct": 106.96405040117959,
+    "depth_if_disparity_underestimated_m": null,
+    "depth_if_disparity_overestimated_m": 24.158785017533184
+  },
+  {
+    "disparity_error_px": 8.223,
+    "depth_m": 80.0,
+    "true_disparity_px": 4.8047685,
+    "linear_depth_error_m": 136.91398451350986,
+    "linear_depth_error_pct": 171.14248064188732,
+    "depth_if_disparity_underestimated_m": null,
+    "depth_if_disparity_overestimated_m": 29.50478280297965
+  }
+]
