@@ -1,0 +1,400 @@
+{
+  "slice_operations": [
+    {
+      "node": "/Slice",
+      "starts": [
+        0
+      ],
+      "ends": [
+        77
+      ],
+      "axes": [
+        3
+      ],
+      "concat_axis": 3,
+      "concat_operand_order": [
+        "features",
+        "padding"
+      ],
+      "padding_shape": [
+        1,
+        32,
+        23,
+        1
+      ],
+      "padding_all_zero": true
+    },
+    {
+      "node": "/Slice_1",
+      "starts": [
+        0
+      ],
+      "ends": [
+        77
+      ],
+      "axes": [
+        3
+      ],
+      "concat_axis": 3,
+      "concat_operand_order": [
+        "features",
+        "padding"
+      ],
+      "padding_shape": [
+        1,
+        32,
+        23,
+        2
+      ],
+      "padding_all_zero": true
+    },
+    {
+      "node": "/Slice_2",
+      "starts": [
+        0
+      ],
+      "ends": [
+        77
+      ],
+      "axes": [
+        3
+      ],
+      "concat_axis": 3,
+      "concat_operand_order": [
+        "features",
+        "padding"
+      ],
+      "padding_shape": [
+        1,
+        32,
+        23,
+        3
+      ],
+      "padding_all_zero": true
+    },
+    {
+      "node": "/Slice_3",
+      "starts": [
+        0
+      ],
+      "ends": [
+        77
+      ],
+      "axes": [
+        3
+      ],
+      "concat_axis": 3,
+      "concat_operand_order": [
+        "features",
+        "padding"
+      ],
+      "padding_shape": [
+        1,
+        32,
+        23,
+        4
+      ],
+      "padding_all_zero": true
+    },
+    {
+      "node": "/Slice_4",
+      "starts": [
+        0
+      ],
+      "ends": [
+        77
+      ],
+      "axes": [
+        3
+      ],
+      "concat_axis": 3,
+      "concat_operand_order": [
+        "features",
+        "padding"
+      ],
+      "padding_shape": [
+        1,
+        32,
+        23,
+        5
+      ],
+      "padding_all_zero": true
+    },
+    {
+      "node": "/Slice_5",
+      "starts": [
+        0
+      ],
+      "ends": [
+        77
+      ],
+      "axes": [
+        3
+      ],
+      "concat_axis": 3,
+      "concat_operand_order": [
+        "features",
+        "padding"
+      ],
+      "padding_shape": [
+        1,
+        32,
+        23,
+        6
+      ],
+      "padding_all_zero": true
+    },
+    {
+      "node": "/Slice_6",
+      "starts": [
+        0
+      ],
+      "ends": [
+        77
+      ],
+      "axes": [
+        3
+      ],
+      "concat_axis": 3,
+      "concat_operand_order": [
+        "features",
+        "padding"
+      ],
+      "padding_shape": [
+        1,
+        32,
+        23,
+        7
+      ],
+      "padding_all_zero": true
+    },
+    {
+      "node": "/Slice_7",
+      "starts": [
+        0
+      ],
+      "ends": [
+        77
+      ],
+      "axes": [
+        3
+      ],
+      "concat_axis": 3,
+      "concat_operand_order": [
+        "features",
+        "padding"
+      ],
+      "padding_shape": [
+        1,
+        32,
+        23,
+        8
+      ],
+      "padding_all_zero": true
+    },
+    {
+      "node": "/Slice_8",
+      "starts": [
+        0
+      ],
+      "ends": [
+        77
+      ],
+      "axes": [
+        3
+      ],
+      "concat_axis": 3,
+      "concat_operand_order": [
+        "features",
+        "padding"
+      ],
+      "padding_shape": [
+        1,
+        32,
+        23,
+        9
+      ],
+      "padding_all_zero": true
+    },
+    {
+      "node": "/Slice_9",
+      "starts": [
+        0
+      ],
+      "ends": [
+        77
+      ],
+      "axes": [
+        3
+      ],
+      "concat_axis": 3,
+      "concat_operand_order": [
+        "features",
+        "padding"
+      ],
+      "padding_shape": [
+        1,
+        32,
+        23,
+        10
+      ],
+      "padding_all_zero": true
+    },
+    {
+      "node": "/Slice_10",
+      "starts": [
+        0
+      ],
+      "ends": [
+        77
+      ],
+      "axes": [
+        3
+      ],
+      "concat_axis": 3,
+      "concat_operand_order": [
+        "features",
+        "padding"
+      ],
+      "padding_shape": [
+        1,
+        32,
+        23,
+        11
+      ],
+      "padding_all_zero": true
+    }
+  ],
+  "per_scene": [
+    {
+      "scene": "000160_10.png",
+      "volume_shape": [
+        1,
+        32,
+        12,
+        23,
+        77
+      ],
+      "max_abs_diff_vs_slice_0": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "all_slices_identical": true,
+      "slice_0_abs_mean": 8.75832462310791
+    },
+    {
+      "scene": "000161_10.png",
+      "volume_shape": [
+        1,
+        32,
+        12,
+        23,
+        77
+      ],
+      "max_abs_diff_vs_slice_0": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "all_slices_identical": true,
+      "slice_0_abs_mean": 9.090886116027832
+    },
+    {
+      "scene": "000162_10.png",
+      "volume_shape": [
+        1,
+        32,
+        12,
+        23,
+        77
+      ],
+      "max_abs_diff_vs_slice_0": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "all_slices_identical": true,
+      "slice_0_abs_mean": 8.557634353637695
+    },
+    {
+      "scene": "000163_10.png",
+      "volume_shape": [
+        1,
+        32,
+        12,
+        23,
+        77
+      ],
+      "max_abs_diff_vs_slice_0": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "all_slices_identical": true,
+      "slice_0_abs_mean": 9.047523498535156
+    },
+    {
+      "scene": "000164_10.png",
+      "volume_shape": [
+        1,
+        32,
+        12,
+        23,
+        77
+      ],
+      "max_abs_diff_vs_slice_0": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "all_slices_identical": true,
+      "slice_0_abs_mean": 8.714524269104004
+    }
+  ]
+}

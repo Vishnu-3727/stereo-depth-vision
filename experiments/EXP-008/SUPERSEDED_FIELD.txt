@@ -1,0 +1,1 @@
+note: EXP-008 metrics retained; its 'supports' field was produced by a crude threshold rule and is superseded by the interpretation in docs/failure_analysis.md

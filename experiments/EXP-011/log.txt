@@ -1,0 +1,21 @@
+[01:40:57] metric weight_load_report = {'convolutions_loaded': 36, 'parameters_loaded': 423586, 'siamese_weights_shared': True}
+[01:40:57] metric model_parameters_unique = 423586
+[01:40:57] metric model_parameters_per_occurrence = 623138
+[01:40:57] note: Weights are mapped by execution order, not by name -- batch-norm folding renamed most tensors at export. Every shape is asserted during the load, and the two feature-extractor branches are checked to reference identical initializers before the mapping is applied.
+[01:40:59] scene 1/5 000160_10.png
+[01:41:00] scene 2/5 000161_10.png
+[01:41:02] scene 3/5 000162_10.png
+[01:41:03] scene 4/5 000163_10.png
+[01:41:05] scene 5/5 000164_10.png
+[01:41:05] left_features          max |diff| 1.411e-04   mean |diff| 4.723e-06   relative 4.620e-07
+[01:41:05] cost_volume            max |diff| 2.403e-04   mean |diff| 6.701e-06   relative 7.596e-07
+[01:41:05] aggregated_cost        max |diff| 6.676e-05   mean |diff| 3.761e-06   relative 7.228e-07
+[01:41:05] disparity_initial      max |diff| 2.766e-05   mean |diff| 1.212e-06   relative 1.548e-07
+[01:41:05] refinement_residual    max |diff| 8.392e-04   mean |diff| 9.023e-06   relative 3.636e-07
+[01:41:05] disparity_final        max |diff| 8.240e-04   mean |diff| 8.583e-06   relative 2.651e-07
+[01:41:05] metric stage_differences = {'left_features': {'max_abs_diff': 0.000141143798828125, 'mean_abs_diff': 4.722752976076145e-06, 'relative_mean_abs_diff': 4.6203695797230314e-07, 'reference_abs_mean': 10.221850677890622}, 'cost_volume': {'max_abs_diff': 0.000240325927734375, 'mean_abs_diff': 6.701275054207634e-06, 'relative_mean_abs_diff': 7.596103456551675e-07, 'reference_abs_mean': 8.833778687516087}, 'aggregated_cost': {'max_abs_diff': 6.67572021484375e-05, 'mean_abs_diff': 3.760631366551105e-06, 'relative_mean_abs_diff': 7.228131861971975e-07, 'reference_abs_mean': 5.213788600657248}, 'disparity_initial': {'max_abs_diff': 2.765655517578125e-05, 'mean_abs_diff': 1.211569987380491e-06, 'relative_mean_abs_diff': 1.5484700109086325e-07, 'reference_abs_mean': 7.854566356420006}, 'refinement_residual': {'max_abs_diff': 0.0008392333984375, 'mean_abs_diff': 9.023479987725979e-06, 'relative_mean_abs_diff': 3.635586088398375e-07, 'reference_abs_mean': 25.624535194167418}, 'disparity_final': {'max_abs_diff': 0.000823974609375, 'mean_abs_diff': 8.583115965952516e-06, 'relative_mean_abs_diff': 2.6513545755374354e-07, 'reference_abs_mean': 32.85198978043121}}
+[01:41:05] metric final_disparity_max_abs_diff_px = 0.000823974609375
+[01:41:05] metric final_disparity_relative_mean_abs_diff = 2.6513545755374354e-07
+[01:41:05] note: Final disparity differs by at most 8.240e-04 px, mean 8.583e-06 px, against a reference mean magnitude of 32.85 px -- a relative difference of 2.65e-07.
+[01:41:05] conclusion: Differences recorded per stage above. Whether they represent floating-point accumulation order or a structural disagreement is argued from the per-stage progression in docs/reproduction_report.md.
+[01:41:05] status: completed

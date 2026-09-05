@@ -1,0 +1,181 @@
+{
+  "experiment_id": "EXP-006",
+  "description": "Stage-by-stage tensor magnitudes inside the reference StereoNet ONNX",
+  "status": "completed",
+  "started_utc": "2026-09-05T01:30:12.285728+00:00",
+  "finished_utc": "2026-09-05T01:30:25.719494+00:00",
+  "duration_s": 13.433766,
+  "metrics": {
+    "stage_statistics": {
+      "left_features": {
+        "shape": [
+          1,
+          32,
+          23,
+          77
+        ],
+        "min": -57.20112609863281,
+        "max": 62.826717376708984,
+        "mean": -3.547265732337535,
+        "std": 12.4943308902139,
+        "abs_mean": 10.221850677890622,
+        "p01": -33.334157371520995,
+        "p99": 26.743399467468205
+      },
+      "right_features": {
+        "shape": [
+          1,
+          32,
+          23,
+          77
+        ],
+        "min": -61.54243087768555,
+        "max": 63.939170837402344,
+        "mean": -3.532924719883972,
+        "std": 12.43865275640024,
+        "abs_mean": 10.178210630304998,
+        "p01": -33.13987392425537,
+        "p99": 26.67625514984121
+      },
+      "cost_volume": {
+        "shape": [
+          1,
+          32,
+          12,
+          23,
+          77
+        ],
+        "min": -83.71468353271484,
+        "max": 88.21260070800781,
+        "mean": -0.014341012344136624,
+        "std": 11.80044662712424,
+        "abs_mean": 8.833778687516087,
+        "p01": -30.33596420288086,
+        "p99": 30.153522491455078
+      },
+      "aggregated_cost": {
+        "shape": [
+          1,
+          12,
+          23,
+          77
+        ],
+        "min": -20.553035736083984,
+        "max": 23.856258392333984,
+        "mean": -0.7676028740665923,
+        "std": 6.473825997191186,
+        "abs_mean": 5.213788600657248,
+        "p01": -15.00878716468811,
+        "p99": 14.639289760589602
+      },
+      "cost_upsampled": {
+        "shape": [
+          1,
+          12,
+          368,
+          1232
+        ],
+        "min": -20.506216049194336,
+        "max": 23.831439971923828,
+        "mean": -0.7765320583826014,
+        "std": 6.51560688603208,
+        "abs_mean": 5.2833940181322845,
+        "p01": -14.84940242767334,
+        "p99": 14.480754508972169
+      },
+      "cost_softmax": {
+        "shape": [
+          1,
+          12,
+          368,
+          1232
+        ],
+        "min": 5.745868511778738e-17,
+        "max": 0.9681913256645203,
+        "mean": 0.08333333344402005,
+        "std": 0.18239284244818568,
+        "abs_mean": 0.08333333344402005,
+        "p01": 1.7910601717019417e-11,
+        "p99": 0.8116633325815201
+      },
+      "disparity_initial": {
+        "shape": [
+          1,
+          1,
+          368,
+          1232
+        ],
+        "min": 0.1478596329689026,
+        "max": 10.54643726348877,
+        "mean": 7.854566356420005,
+        "std": 2.322106611612138,
+        "abs_mean": 7.854566356420005,
+        "p01": 1.0889004695415496,
+        "p99": 10.325453605651855
+      },
+      "refinement_residual": {
+        "shape": [
+          1,
+          1,
+          368,
+          1232
+        ],
+        "min": -6.58589506149292,
+        "max": 135.56687927246094,
+        "mean": 24.99742342371998,
+        "std": 28.380510487452057,
+        "abs_mean": 25.624535194167418,
+        "p01": -4.673442645072937,
+        "p99": 113.79588958740234
+      },
+      "disparity_sum": {
+        "shape": [
+          1,
+          1,
+          368,
+          1232
+        ],
+        "min": 3.269535541534424,
+        "max": 135.72520446777344,
+        "mean": 32.85198978043121,
+        "std": 26.111818461241466,
+        "abs_mean": 32.85198978043121,
+        "p01": 5.626914987564087,
+        "p99": 114.93460273742673
+      },
+      "disparity_final": {
+        "shape": [
+          1,
+          1,
+          368,
+          1232
+        ],
+        "min": 3.269535541534424,
+        "max": 135.72520446777344,
+        "mean": 32.85198978043121,
+        "std": 26.111818461241466,
+        "abs_mean": 32.85198978043121,
+        "p01": 5.626914987564087,
+        "p99": 114.93460273742673
+      }
+    },
+    "magnitude_contribution": {
+      "soft_argmin_abs_mean": 7.854566356420005,
+      "refinement_abs_mean": 25.624535194167418,
+      "final_abs_mean": 32.85198978043121,
+      "refinement_share_of_magnitude": 0.7653889742366103
+    },
+    "correlations": {
+      "initial_vs_final": -0.9749752764155588,
+      "refinement_vs_final": 0.9998345522791217
+    },
+    "final_output_negative_fraction_before_relu": 0.0
+  },
+  "observations": [
+    "The soft-argmin output spans 0.15 to 10.55 with mean magnitude 7.85. That is bounded by 11 by construction: the baked-in index grid holds the integers 0..11, so the regression emits disparity in units of low-resolution candidates, not full-resolution pixels.",
+    "The refinement residual spans -6.59 to 135.57 with mean magnitude 25.62, against a final output spanning 3.27 to 135.73. The refinement supplies 76.5% of the output magnitude.",
+    "The index grid /Tile_output_0 is 21,762,048 bytes and is constant across height and width -- it holds twelve distinct values tiled 368x1232 times. A broadcast against a 12-element vector would be numerically identical and occupy 48 bytes. The tiling is an export artifact of building the grid with repeat() at runtime, and it is 92% of the model file."
+  ],
+  "conclusion": "Recorded above. The stage magnitudes settle what the topology alone could not: which part of the network actually determines the output disparity.",
+  "error": null
+}

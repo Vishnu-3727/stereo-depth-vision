@@ -1,0 +1,15 @@
+{
+  "dataset": "kitti2015",
+  "split": "hailo_val",
+  "resolution": [
+    368,
+    1232
+  ],
+  "crop": "Hailo pad-and-crop",
+  "disparity_range": "12 candidates at 1/16, 16 px apart",
+  "batch_size": 1,
+  "precision": "fp32",
+  "seed": null,
+  "scenes": 10,
+  "model": "reference/onnx/stereonet.onnx (unmodified; cost tensor exposed)"
+}

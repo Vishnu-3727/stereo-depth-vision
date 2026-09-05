@@ -1,0 +1,33 @@
+[01:31:40] note: Tests H1 (matching carries real stereo information) against H2 (the model predicts mostly from the left image). H1 predicts accuracy collapses when the right image is corrupted; H2 predicts it barely moves.
+[01:31:44] scene 1/20 000160_10.png
+[01:31:47] scene 2/20 000161_10.png
+[01:31:50] scene 3/20 000162_10.png
+[01:31:54] scene 4/20 000163_10.png
+[01:31:57] scene 5/20 000164_10.png
+[01:32:01] scene 6/20 000165_10.png
+[01:32:04] scene 7/20 000166_10.png
+[01:32:08] scene 8/20 000167_10.png
+[01:32:11] scene 9/20 000168_10.png
+[01:32:14] scene 10/20 000169_10.png
+[01:32:18] scene 11/20 000170_10.png
+[01:32:21] scene 12/20 000171_10.png
+[01:32:25] scene 13/20 000172_10.png
+[01:32:28] scene 14/20 000173_10.png
+[01:32:32] scene 15/20 000174_10.png
+[01:32:35] scene 16/20 000175_10.png
+[01:32:38] scene 17/20 000176_10.png
+[01:32:42] scene 18/20 000177_10.png
+[01:32:45] scene 19/20 000178_10.png
+[01:32:48] scene 20/20 000179_10.png
+[01:32:49] baseline                     EPE  1.442  D1   9.33%  mean  32.27px  moved  0.000px  corr +1.0000
+[01:32:49] right_equals_left            EPE 47.963  D1  99.01%  mean  82.79px  moved 55.733px  corr -0.3104
+[01:32:50] right_from_other_scene       EPE 69.427  D1  99.29%  mean 105.51px  moved 73.666px  corr +0.0002
+[01:32:50] right_flipped_horizontally   EPE 64.470  D1  98.46%  mean 101.19px  moved 69.313px  corr +0.1208
+[01:32:50] right_black                  EPE 54.478  D1  98.98%  mean  89.06px  moved 57.461px  corr +0.3479
+[01:32:51] right_noise                  EPE 68.534  D1  99.14%  mean 107.42px  moved 75.506px  corr -0.1467
+[01:32:51] metric variants = {'baseline': {'metrics': {'valid_pixels': 1837304, 'epe': 1.4422272036544024, 'rmse': 2.8808202626149897, 'd1': 9.331498761228408, 'bad1': 41.71269425201273, 'bad2': 18.111537339493083, 'bad3': 10.050922438529497}, 'mean_disparity': 32.268531799316406, 'std_disparity': 23.21311378479004, 'mean_abs_change_vs_baseline_px': 0.0, 'correlation_with_baseline': 1.0, 'd1_penalty_vs_baseline_points': 0.0}, 'right_equals_left': {'metrics': {'valid_pixels': 1837304, 'epe': 47.9633949242095, 'rmse': 51.18445662440796, 'd1': 99.00903715443933, 'bad1': 99.71659562053966, 'bad2': 99.4310141381067, 'bad3': 99.15599160509095}, 'mean_disparity': 82.79318237304688, 'std_disparity': 16.838359832763672, 'mean_abs_change_vs_baseline_px': 55.732574462890625, 'correlation_with_baseline': -0.3103581765300553, 'd1_penalty_vs_baseline_points': 89.67753839321092}, 'right_from_other_scene': {'metrics': {'valid_pixels': 1837304, 'epe': 69.42655675586242, 'rmse': 73.29567873932764, 'd1': 99.28819618310307, 'bad1': 99.8435207238432, 'bad2': 99.67016889964862, 'bad3': 99.51303649260002}, 'mean_disparity': 105.51409912109375, 'std_disparity': 15.041396141052246, 'mean_abs_change_vs_baseline_px': 73.6660385131836, 'correlation_with_baseline': 0.00018939426746084152, 'd1_penalty_vs_baseline_points': 89.95669742187467}, 'right_flipped_horizontally': {'metrics': {'valid_pixels': 1837304, 'epe': 64.4701604599492, 'rmse': 69.47225867328848, 'd1': 98.45953636415096, 'bad1': 99.58858196574981, 'bad2': 99.15463091573305, 'bad3': 98.7274288849314}, 'mean_disparity': 101.19307708740234, 'std_disparity': 20.046241760253906, 'mean_abs_change_vs_baseline_px': 69.31288146972656, 'correlation_with_baseline': 0.12083376981577316, 'd1_penalty_vs_baseline_points': 89.12803760292256}, 'right_black': {'metrics': {'valid_pixels': 1837304, 'epe': 54.47785330629345, 'rmse': 57.898799051567416, 'd1': 98.98019054005216, 'bad1': 99.77869748283355, 'bad2': 99.53208614361043, 'bad3': 99.27154134536255}, 'mean_disparity': 89.05825805664062, 'std_disparity': 21.61151123046875, 'mean_abs_change_vs_baseline_px': 57.460784912109375, 'correlation_with_baseline': 0.34788282210427507, 'd1_penalty_vs_baseline_points': 89.64869177882376}, 'right_noise': {'metrics': {'valid_pixels': 1837304, 'epe': 68.53377502056225, 'rmse': 73.00048455881075, 'd1': 99.13732294710074, 'bad1': 99.77510526292872, 'bad2': 99.54531204416907, 'bad3': 99.3084432407484}, 'mean_disparity': 107.41572570800781, 'std_disparity': 13.17350959777832, 'mean_abs_change_vs_baseline_px': 75.50647735595703, 'correlation_with_baseline': -0.14674772361395363, 'd1_penalty_vs_baseline_points': 89.80582418587234}}
+[01:32:51] metric largest_d1_penalty_points = 89.95669742187467
+[01:32:51] note: Baseline EPE 1.442 px, D1 9.33 %. The worst corruption of the right image reaches EPE 69.427 px, D1 99.29 % -- a penalty of +89.96 D1 points.
+[01:32:51] note: With the right image replaced by the left, every true correspondence sits at disparity zero, so a stereo matcher should output near-zero disparity everywhere. The model instead outputs a mean of 82.79 px and stays correlated with its baseline output at r = -0.3104.
+[01:32:51] conclusion: Numbers recorded above. Which of H1 and H2 they support is stated in docs/failure_analysis.md against these measurements; the baseline itself is unchanged.
+[01:32:51] status: completed

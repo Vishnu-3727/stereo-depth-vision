@@ -1,0 +1,38 @@
+{
+  "left_features": {
+    "max_abs_diff": 0.000141143798828125,
+    "mean_abs_diff": 4.722752976076145e-06,
+    "relative_mean_abs_diff": 4.6203695797230314e-07,
+    "reference_abs_mean": 10.221850677890622
+  },
+  "cost_volume": {
+    "max_abs_diff": 0.000240325927734375,
+    "mean_abs_diff": 6.701275054207634e-06,
+    "relative_mean_abs_diff": 7.596103456551675e-07,
+    "reference_abs_mean": 8.833778687516087
+  },
+  "aggregated_cost": {
+    "max_abs_diff": 6.67572021484375e-05,
+    "mean_abs_diff": 3.760631366551105e-06,
+    "relative_mean_abs_diff": 7.228131861971975e-07,
+    "reference_abs_mean": 5.213788600657248
+  },
+  "disparity_initial": {
+    "max_abs_diff": 2.765655517578125e-05,
+    "mean_abs_diff": 1.211569987380491e-06,
+    "relative_mean_abs_diff": 1.5484700109086325e-07,
+    "reference_abs_mean": 7.854566356420006
+  },
+  "refinement_residual": {
+    "max_abs_diff": 0.0008392333984375,
+    "mean_abs_diff": 9.023479987725979e-06,
+    "relative_mean_abs_diff": 3.635586088398375e-07,
+    "reference_abs_mean": 25.624535194167418
+  },
+  "disparity_final": {
+    "max_abs_diff": 0.000823974609375,
+    "mean_abs_diff": 8.583115965952516e-06,
+    "relative_mean_abs_diff": 2.6513545755374354e-07,
+    "reference_abs_mean": 32.85198978043121
+  }
+}

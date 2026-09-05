@@ -1,0 +1,63 @@
+{
+  "experiment_id": "EXP-009",
+  "description": "Tensor-level equivalence between the independent implementation and the reference ONNX",
+  "status": "completed",
+  "started_utc": "2026-09-05T01:37:01.694844+00:00",
+  "finished_utc": "2026-09-05T01:37:14.567110+00:00",
+  "duration_s": 12.872266,
+  "metrics": {
+    "weight_load_report": {
+      "convolutions_loaded": 36,
+      "parameters_loaded": 423586,
+      "siamese_weights_shared": true
+    },
+    "model_parameters_unique": 423586,
+    "model_parameters_per_occurrence": 623138,
+    "stage_differences": {
+      "left_features": {
+        "max_abs_diff": 0.000141143798828125,
+        "mean_abs_diff": 4.722752976076145e-06,
+        "relative_mean_abs_diff": 4.6203695797230314e-07,
+        "reference_abs_mean": 10.221850677890622
+      },
+      "cost_volume": {
+        "max_abs_diff": 87.01011276245117,
+        "mean_abs_diff": 9.583624105346683,
+        "relative_mean_abs_diff": 1.0852907328770351,
+        "reference_abs_mean": 8.833778687516087
+      },
+      "aggregated_cost": {
+        "max_abs_diff": 23.69842290878296,
+        "mean_abs_diff": 5.686239715336358,
+        "relative_mean_abs_diff": 1.0905835282963283,
+        "reference_abs_mean": 5.213788600657248
+      },
+      "disparity_initial": {
+        "max_abs_diff": 8.611082911491394,
+        "mean_abs_diff": 4.2159050200193615,
+        "relative_mean_abs_diff": 0.5365388716527308,
+        "reference_abs_mean": 7.854566356420006
+      },
+      "refinement_residual": {
+        "max_abs_diff": 105.6872284412384,
+        "mean_abs_diff": 51.827333908242714,
+        "relative_mean_abs_diff": 2.1216762286905904,
+        "reference_abs_mean": 25.624535194167418
+      },
+      "disparity_final": {
+        "max_abs_diff": 101.97515487670898,
+        "mean_abs_diff": 47.63456003691755,
+        "relative_mean_abs_diff": 1.4888054546496121,
+        "reference_abs_mean": 32.85198978043121
+      }
+    },
+    "final_disparity_max_abs_diff_px": 101.97515487670898,
+    "final_disparity_relative_mean_abs_diff": 1.4888054546496121
+  },
+  "observations": [
+    "Weights are mapped by execution order, not by name -- batch-norm folding renamed most tensors at export. Every shape is asserted during the load, and the two feature-extractor branches are checked to reference identical initializers before the mapping is applied.",
+    "Final disparity differs by at most 1.020e+02 px, mean 4.763e+01 px, against a reference mean magnitude of 32.85 px -- a relative difference of 1.49e+00."
+  ],
+  "conclusion": "Differences recorded per stage above. Whether they represent floating-point accumulation order or a structural disagreement is argued from the per-stage progression in docs/reproduction_report.md.",
+  "error": null
+}

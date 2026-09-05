@@ -1,0 +1,419 @@
+{
+  "experiment_id": "EXP-010",
+  "description": "The reference cost volume is degenerate: all 12 disparity slices are identical, so no disparity search is performed",
+  "status": "completed",
+  "started_utc": "2026-09-05T01:39:03.806912+00:00",
+  "finished_utc": "2026-09-05T01:39:15.629295+00:00",
+  "duration_s": 11.822383,
+  "metrics": {
+    "slice_operations": [
+      {
+        "node": "/Slice",
+        "starts": [
+          0
+        ],
+        "ends": [
+          77
+        ],
+        "axes": [
+          3
+        ],
+        "concat_axis": 3,
+        "concat_operand_order": [
+          "features",
+          "padding"
+        ],
+        "padding_shape": [
+          1,
+          32,
+          23,
+          1
+        ],
+        "padding_all_zero": true
+      },
+      {
+        "node": "/Slice_1",
+        "starts": [
+          0
+        ],
+        "ends": [
+          77
+        ],
+        "axes": [
+          3
+        ],
+        "concat_axis": 3,
+        "concat_operand_order": [
+          "features",
+          "padding"
+        ],
+        "padding_shape": [
+          1,
+          32,
+          23,
+          2
+        ],
+        "padding_all_zero": true
+      },
+      {
+        "node": "/Slice_2",
+        "starts": [
+          0
+        ],
+        "ends": [
+          77
+        ],
+        "axes": [
+          3
+        ],
+        "concat_axis": 3,
+        "concat_operand_order": [
+          "features",
+          "padding"
+        ],
+        "padding_shape": [
+          1,
+          32,
+          23,
+          3
+        ],
+        "padding_all_zero": true
+      },
+      {
+        "node": "/Slice_3",
+        "starts": [
+          0
+        ],
+        "ends": [
+          77
+        ],
+        "axes": [
+          3
+        ],
+        "concat_axis": 3,
+        "concat_operand_order": [
+          "features",
+          "padding"
+        ],
+        "padding_shape": [
+          1,
+          32,
+          23,
+          4
+        ],
+        "padding_all_zero": true
+      },
+      {
+        "node": "/Slice_4",
+        "starts": [
+          0
+        ],
+        "ends": [
+          77
+        ],
+        "axes": [
+          3
+        ],
+        "concat_axis": 3,
+        "concat_operand_order": [
+          "features",
+          "padding"
+        ],
+        "padding_shape": [
+          1,
+          32,
+          23,
+          5
+        ],
+        "padding_all_zero": true
+      },
+      {
+        "node": "/Slice_5",
+        "starts": [
+          0
+        ],
+        "ends": [
+          77
+        ],
+        "axes": [
+          3
+        ],
+        "concat_axis": 3,
+        "concat_operand_order": [
+          "features",
+          "padding"
+        ],
+        "padding_shape": [
+          1,
+          32,
+          23,
+          6
+        ],
+        "padding_all_zero": true
+      },
+      {
+        "node": "/Slice_6",
+        "starts": [
+          0
+        ],
+        "ends": [
+          77
+        ],
+        "axes": [
+          3
+        ],
+        "concat_axis": 3,
+        "concat_operand_order": [
+          "features",
+          "padding"
+        ],
+        "padding_shape": [
+          1,
+          32,
+          23,
+          7
+        ],
+        "padding_all_zero": true
+      },
+      {
+        "node": "/Slice_7",
+        "starts": [
+          0
+        ],
+        "ends": [
+          77
+        ],
+        "axes": [
+          3
+        ],
+        "concat_axis": 3,
+        "concat_operand_order": [
+          "features",
+          "padding"
+        ],
+        "padding_shape": [
+          1,
+          32,
+          23,
+          8
+        ],
+        "padding_all_zero": true
+      },
+      {
+        "node": "/Slice_8",
+        "starts": [
+          0
+        ],
+        "ends": [
+          77
+        ],
+        "axes": [
+          3
+        ],
+        "concat_axis": 3,
+        "concat_operand_order": [
+          "features",
+          "padding"
+        ],
+        "padding_shape": [
+          1,
+          32,
+          23,
+          9
+        ],
+        "padding_all_zero": true
+      },
+      {
+        "node": "/Slice_9",
+        "starts": [
+          0
+        ],
+        "ends": [
+          77
+        ],
+        "axes": [
+          3
+        ],
+        "concat_axis": 3,
+        "concat_operand_order": [
+          "features",
+          "padding"
+        ],
+        "padding_shape": [
+          1,
+          32,
+          23,
+          10
+        ],
+        "padding_all_zero": true
+      },
+      {
+        "node": "/Slice_10",
+        "starts": [
+          0
+        ],
+        "ends": [
+          77
+        ],
+        "axes": [
+          3
+        ],
+        "concat_axis": 3,
+        "concat_operand_order": [
+          "features",
+          "padding"
+        ],
+        "padding_shape": [
+          1,
+          32,
+          23,
+          11
+        ],
+        "padding_all_zero": true
+      }
+    ],
+    "all_padding_blocks_zero": true,
+    "per_scene": [
+      {
+        "scene": "000160_10.png",
+        "volume_shape": [
+          1,
+          32,
+          12,
+          23,
+          77
+        ],
+        "max_abs_diff_vs_slice_0": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "all_slices_identical": true,
+        "slice_0_abs_mean": 8.75832462310791
+      },
+      {
+        "scene": "000161_10.png",
+        "volume_shape": [
+          1,
+          32,
+          12,
+          23,
+          77
+        ],
+        "max_abs_diff_vs_slice_0": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "all_slices_identical": true,
+        "slice_0_abs_mean": 9.090886116027832
+      },
+      {
+        "scene": "000162_10.png",
+        "volume_shape": [
+          1,
+          32,
+          12,
+          23,
+          77
+        ],
+        "max_abs_diff_vs_slice_0": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "all_slices_identical": true,
+        "slice_0_abs_mean": 8.557634353637695
+      },
+      {
+        "scene": "000163_10.png",
+        "volume_shape": [
+          1,
+          32,
+          12,
+          23,
+          77
+        ],
+        "max_abs_diff_vs_slice_0": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "all_slices_identical": true,
+        "slice_0_abs_mean": 9.047523498535156
+      },
+      {
+        "scene": "000164_10.png",
+        "volume_shape": [
+          1,
+          32,
+          12,
+          23,
+          77
+        ],
+        "max_abs_diff_vs_slice_0": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "all_slices_identical": true,
+        "slice_0_abs_mean": 8.714524269104004
+      }
+    ],
+    "all_slices_identical_in_every_scene": true
+  },
+  "observations": [
+    "All 11 shift operations use starts=[0], ends=[77] on axis 3, with the zero padding concatenated after the features. Slicing [0:77] from [features | padding] returns the features unchanged, so the left-shift the construction intends never occurs.",
+    "Across 5 scenes, every one of the 12 disparity slices is bit-identical to slice 0: the maximum absolute difference is exactly 0.0 in every case. The cost volume is the single tensor (left_features - right_features) replicated 12 times.",
+    "This explains the earlier anomalies without needing any further hypothesis. The soft-argmin output is anti-correlated with truth (EXP-006, EXP-008) because the cost tensor it reduces carries no disparity information -- any variation along the disparity axis comes from the 3D convolutions' boundary handling, not from matching. The refinement stage supplies 76.5 % of the output magnitude (EXP-006) because it has to: nothing upstream of it estimates disparity.",
+    "The right image is still load-bearing -- corrupting it costs 90 D1 points (EXP-007) -- because left minus right at zero shift remains a genuine stereo cue. It is a photometric difference at one fixed disparity rather than a search over candidates.",
+    "Cost: the 3D aggregation's 2.369 GMAC and the 21.76 MB index grid are spent on twelve identical copies of one tensor. This is a measurement of the frozen baseline, recorded for Phase 2. Nothing is being changed here."
+  ],
+  "conclusion": "The deployed Hailo StereoNet performs no disparity search. Its cost volume is degenerate by construction, originating in the upstream implementation [SR-011] and carried unchanged through ONNX export and Hailo compilation. The published D1 of 8.223 % is therefore achieved without stereo correspondence search.",
+  "error": null
+}
