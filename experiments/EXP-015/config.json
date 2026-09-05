@@ -1,0 +1,15 @@
+{
+  "dataset": "kitti2015",
+  "split": "hailo_val",
+  "resolution": [
+    368,
+    1232
+  ],
+  "crop": "Hailo pad-and-crop",
+  "disparity_range": "12 candidates at 1/16",
+  "batch_size": 1,
+  "precision": "fp32 / fp16 / int8 compared",
+  "seed": 0,
+  "scenes": 40,
+  "int8_calibration": "hailo_calib split, 16 scenes"
+}

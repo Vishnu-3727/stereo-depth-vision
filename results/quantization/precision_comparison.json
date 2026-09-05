@@ -1,0 +1,56 @@
+{
+  "table": {
+    "fp32_onnxruntime_cpu": {
+      "epe_px": 1.3134470770188373,
+      "d1_percent": 8.154366378221082,
+      "depth_abs_rel": 0.04887004077224526,
+      "depth_rmse_m": 2.980294445110812,
+      "depth_delta1_percent": 96.62866569001712,
+      "latency_median_ms": 549.1061999996418,
+      "epe_delta_vs_fp32_px": 0.0,
+      "d1_delta_vs_fp32_points": 0.0,
+      "max_abs_prediction_diff_vs_fp32_px": 0.0,
+      "mean_abs_prediction_diff_vs_fp32_px": 0.0
+    },
+    "fp32_torch_cuda": {
+      "epe_px": 1.3135352779165037,
+      "d1_percent": 8.154944899767198,
+      "depth_abs_rel": 0.04886304722739897,
+      "depth_rmse_m": 2.9797138897205175,
+      "depth_delta1_percent": 96.62858680071537,
+      "latency_median_ms": 90.05079999951704,
+      "epe_delta_vs_fp32_px": 8.82008976663684e-05,
+      "d1_delta_vs_fp32_points": 0.0005785215461155957,
+      "max_abs_prediction_diff_vs_fp32_px": 1.7056732177734375,
+      "mean_abs_prediction_diff_vs_fp32_px": 0.004253849540322441
+    },
+    "fp16_torch_cuda": {
+      "epe_px": 1.3098120514567961,
+      "d1_percent": 8.140560750416077,
+      "depth_abs_rel": 0.04863606568412369,
+      "depth_rmse_m": 2.9777833879634814,
+      "depth_delta1_percent": 96.63424053400695,
+      "latency_median_ms": 64.76294999993115,
+      "epe_delta_vs_fp32_px": -0.0036350255620412053,
+      "d1_delta_vs_fp32_points": -0.013805627805005827,
+      "max_abs_prediction_diff_vs_fp32_px": 1.1219100952148438,
+      "mean_abs_prediction_diff_vs_fp32_px": 0.028720703910329902
+    },
+    "int8_onnxruntime_cpu": {
+      "epe_px": 1.6551955240854936,
+      "d1_percent": 10.944943945206646,
+      "depth_abs_rel": 0.06274624135722143,
+      "depth_rmse_m": 3.310463406158589,
+      "depth_delta1_percent": 95.82830742740146,
+      "latency_median_ms": 677.3602500002198,
+      "epe_delta_vs_fp32_px": 0.3417484470666563,
+      "d1_delta_vs_fp32_points": 2.7905775669855633,
+      "max_abs_prediction_diff_vs_fp32_px": 45.12748908996582,
+      "mean_abs_prediction_diff_vs_fp32_px": 0.8075368270066273
+    }
+  },
+  "sizes": {
+    "fp32_onnx_bytes": 23690586,
+    "int8_onnx_bytes": 6105895
+  }
+}

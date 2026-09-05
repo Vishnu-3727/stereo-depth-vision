@@ -1,0 +1,7 @@
+Precision comparison, KITTI 2015 Hailo validation split, 40 scenes
+
+configuration               EPE px      D1 %     AbsRel     RMSE m  delta1 %  latency ms
+fp32_onnxruntime_cpu         1.313     8.154     0.0489      2.980      96.6       549.1
+fp32_torch_cuda              1.314     8.155     0.0489      2.980      96.6        90.1
+fp16_torch_cuda              1.310     8.141     0.0486      2.978      96.6        64.8
+int8_onnxruntime_cpu         1.655    10.945     0.0627      3.310      95.8       677.4
