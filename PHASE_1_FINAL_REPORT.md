@@ -3,7 +3,7 @@
 **Microchip Stereo Depth Vision — forensics, reproduction and characterisation of
 the Hailo StereoNet reference deployment.**
 
-Sixteen experiments, twelve knowledge-base documents, one independent
+Seventeen experiments, twelve knowledge-base documents, one independent
 implementation verified against the reference to a relative 1e-7, and the
 published accuracy figure reproduced to four significant figures.
 
@@ -137,6 +137,13 @@ Total 56.04 GMAC, 44.4 ms, 22.5 FPS on the RTX 4060; 642.3 ms, 1.6 FPS on CPU.
 
 Refinement dominates on both devices. MAC share overstates it.
 
+**A third, independent line of evidence agrees.** Hailo's own compiled profiler
+[SR-006, EXP-017] puts refinement at **95.2 %** of the compiled model's MACs and
+identifies refinement convolutions as the eight slowest layers, with `conv50`
+setting the modelled bottleneck at 43.03 FPS. Static analysis, our own profiling
+and the vendor's compiler model all reach the same conclusion by different
+routes.
+
 ## 9. What consumes memory?
 
 Peak single activation **55.34 MiB** — every tensor inside refinement — against
@@ -206,9 +213,17 @@ The operator set is otherwise conservative — no batch norm, no dynamic shapes,
 control flow — and the model compiles for Hailo-8 in full [SR-005]. The one
 awkward operator is a **5D transpose** in the cost volume [SR-001].
 
-**Everything about actual Hailo silicon behaviour is UNKNOWN.** No device was
-available. Our RTX 4060 and CPU numbers are our own and are never compared with
-Hailo's published 10.7 FPS.
+Hailo's own compiled profiler report [SR-006], decoded in EXP-017, adds three
+things that were previously UNKNOWN: the compiled model spans **6 device
+contexts** (77/70/27/28/32/8 layers), quantisation is **uniform 8/8/8** across
+all 242 compiled layers with no mixed precision, and the modelled throughput
+bottleneck is **`conv50` at 43.03 FPS** — with the eight slowest layers in the
+model all being refinement convolutions.
+
+**Measured silicon behaviour is still UNKNOWN.** The report's `profiling_mode` is
+`post_placement` and its model-level `fps` and `latency` fields are `N/A`: it is
+a compiler estimate, not a run. No device was available. Our RTX 4060 and CPU
+numbers are our own and are never compared with Hailo's published 10.7 FPS.
 
 ## 14. How does Hailo's deployment differ from the original architecture?
 
@@ -286,7 +301,7 @@ Stated as directions, **not designs**, and none implemented.
 | 2 | Sources registered | **done** — 29 entries, every cited one inspected |
 | 3 | Stereo fundamentals documented | **done** — `stereo_fundamentals.md`, EXP-003 |
 | 4 | Complete pipeline reconstructed | **done** — `reference_pipeline.md` |
-| 5 | Hailo artifacts preserved and inspected | **done** — hashed manifest; HEF and profiler report acquired, not decoded/read |
+| 5 | Hailo artifacts preserved and inspected | **done** — hashed manifest; profiler report decoded (EXP-017); HEF acquired, not decoded |
 | 6 | Architecture reconstructed | **done** — 168-node table, EXP-001 |
 | 7 | Cost volume understood | **done** — `cost_volume_analysis.md`, EXP-010 |
 | 8 | Independent implementation exists | **done** — `src/models/stereonet` |
@@ -301,16 +316,33 @@ Stated as directions, **not designs**, and none implemented.
 | 17 | Memory profiling complete | **done** — EXP-001, EXP-013 |
 | 18 | Failure analysis complete | **partial** — ten findings ranked; scene-class failures need Middlebury, **UNKNOWN** |
 | 19 | Quantisation analysis complete | **done** — EXP-015 |
-| 20 | Hardware/compiler analysis complete | **partial** — public artifacts analysed; all on-device behaviour **UNKNOWN**, no device |
+| 20 | Hardware/compiler analysis complete | **partial** — all public artifacts now analysed including the profiler report; **measured** on-device behaviour remains **UNKNOWN**, no device |
 | 21 | Competitor landscape documented | **done at abstract level** — no competitor implemented or measured |
 | 22 | Bottlenecks ranked | **done** — nine, `bottleneck_report.md` |
 | 23 | Research questions answered | **done** — 20 answered, 16 open |
 | 24 | Unresolved items marked UNKNOWN | **done** |
 
 **Three items are incomplete and are not presented otherwise:** scene-class
-failure analysis (18), on-device hardware behaviour (20), and competitor
-measurement (21). Item 15 carries a correction that withdraws an overstated
-conclusion.
+failure analysis (18), *measured* on-device hardware behaviour (20), and
+competitor measurement (21). Item 15 carries a correction that withdraws an
+overstated conclusion.
+
+### Release verification
+
+Run before tagging, all green:
+
+- `python scripts/verify_claims.py` — **53 checks, 0 failures**. Asserts that
+  every headline number in `docs/` and this report matches the corresponding
+  `experiments/EXP-xxx/metrics.json`, so a transcription error cannot reach the
+  release.
+- `python -m pytest tests/ -q` from a **fresh clone of the committed tree** —
+  28 passed, 1 skipped. The skip is the KITTI calibration test, which correctly
+  skips when the dataset is absent; the suite therefore needs no untracked file.
+- All 17 experiments present, contiguous, `status: completed`, every recorded
+  git commit resolving into this history, no missing charter-required config
+  field.
+- Secret scan over every tracked file: no keys, tokens, credentials, emails or
+  absolute home paths.
 
 ---
 
@@ -329,6 +361,21 @@ Things that went wrong, recorded rather than tidied away.
   numbers show noise. `experiments/EXP-016/CORRECTION.md`.
 - **Two arXiv identifiers were wrong** and returned unrelated papers. Discarded
   rather than cited, and recorded in the registry.
+- **`scripts/verify_claims.py` initially passed a check for the wrong reason.**
+  A bare `fB` pattern matched "surfboard" in a leftover COCO class table in the
+  Hailo app's `common.h`, and a shell heredoc had collapsed `\b` into literal
+  backspace bytes, making several regexes unmatchable and their checks vacuous.
+  Both were found and fixed before tagging; the underlying finding was
+  unaffected. The leftover class table is itself further evidence the
+  application is an adapted classification example.
+- **Two derived binaries were committed by mistake** — a 6.1 MB quantised ONNX
+  and a 1.7 MB training checkpoint, 7.8 MB of the 8.4 MB tracked total. Both are
+  regenerable from the committed code and the hashed reference inputs. They are
+  now untracked and ignored, with their sizes and SHA-256 recorded in
+  `results/derived_artifacts.json`. **The blobs remain in git history**: removing
+  them would require rewriting history, which would invalidate the commit hashes
+  every experiment records, so the traceability was judged worth more than the
+  7.8 MB.
 
 No experiment was deleted. No result was tuned toward a target. The baseline was
 frozen after EXP-011 and not modified thereafter.
@@ -352,6 +399,9 @@ python scripts/exp_depth_validation.py      # EXP-012
 python scripts/exp_profile.py --device cuda # EXP-013
 python scripts/exp_quantization.py          # EXP-015
 python scripts/exp_train_convergence.py     # EXP-016
+python scripts/extract_profiler_report.py   # decode Hailo's profiler HTML
+python scripts/exp_profiler_report.py       # EXP-017
+python scripts/verify_claims.py             # 53 claim checks against the records
 ```
 
 Data: KITTI 2015 (`data_scene_flow.zip`, `data_scene_flow_calib.zip`) into

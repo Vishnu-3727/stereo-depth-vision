@@ -1,0 +1,13 @@
+{
+  "note": "Derived binaries produced by the experiments. Not committed -- regenerable from the committed code and the hashed reference inputs. Hashes recorded so a regenerated file can be compared against the one the results were produced from.",
+  "artifacts": {
+    "results/quantization/artifacts/stereonet_int8.onnx": {
+      "bytes": 6105895,
+      "sha256": "32cf8d4efdcd998a13f85af962b2305073d429c082a04ad77aef4e4d2bb09349"
+    },
+    "results/training/convergence_run.pth": {
+      "bytes": 1723643,
+      "sha256": "19f3d6df84d1d7af12a0a656296f8456d6f59d744efe3f54b498e17d67923673"
+    }
+  }
+}

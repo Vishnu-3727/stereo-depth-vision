@@ -13,7 +13,7 @@ The baseline is frozen.
 | # | Bottleneck | Category | Severity | Confidence | Evidence |
 |---|---|---|---|---|---|
 | **B1** | The cost volume performs no disparity search | Accuracy / architectural | **Critical** | VERIFIED | EXP-010 |
-| **B2** | Full-resolution refinement dominates compute and memory | Computational + bandwidth | High | MEASUREMENT | EXP-001, EXP-013, EXP-014, SR-003 |
+| **B2** | Full-resolution refinement dominates compute and memory | Computational + bandwidth | High | MEASUREMENT | EXP-001, EXP-013, EXP-014, EXP-017, SR-003 |
 | **B3** | Depth error grows quadratically with range | Depth-range | High | MEASUREMENT | EXP-003, EXP-012 |
 | **B4** | Peak activation of 55.34 MiB forces the compiler to tile | Memory / hardware | High | MEASUREMENT + SOURCE | EXP-001, SR-003 |
 | **B5** | No confidence or validity signal exists | Occlusion / accuracy | Medium | VERIFIED | SR-001, EXP-005 |
@@ -76,6 +76,13 @@ how much of this architecture's headroom is real. **Not implemented.**
 
 Hailo's compiler spatially defuses exactly these layers into up to 22 pieces
 [SOURCE: SR-003] — independent corroboration from the vendor's own toolchain.
+
+**A third line of evidence, from Hailo's compiled profiler** [SOURCE: SR-006,
+EXP-017]: refinement is **95.2 %** of the compiled model's MACs, and the eight
+slowest layers by modelled throughput are all refinement convolutions, with
+`conv50` setting the bottleneck at 43.03 FPS. The first non-refinement layer
+appears ninth. Static analysis, measured profiling on two devices, and the
+vendor's own compiler model agree.
 
 **Note the honest caveat:** MAC share *overstates* the runtime share, 90.6 %
 against 73.3 %. These are dense 3×3 convolutions, which run near peak efficiency.

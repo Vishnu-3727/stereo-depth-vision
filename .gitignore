@@ -5,11 +5,17 @@ reference/*
 !reference/MANIFEST.md
 !reference/manifest.json
 !reference/.gitkeep
-# experiment outputs — large; metrics.json and env.json ARE committed
-experiments/**/*.pth
-experiments/**/*.ckpt
-experiments/**/*.onnx
-experiments/**/events.out.tfevents.*
+# Derived binaries are never committed: they are regenerable from the committed
+# code plus the hashed reference inputs, and they bloat the history permanently.
+# The JSON and CSV records that make results traceable ARE committed.
+*.pth
+*.ckpt
+*.onnx
+*.hef
+*.tflite
+*.pt
+*.safetensors
+events.out.tfevents.*
 results/**/*.png
 results/**/*.npy
 results/**/*.npz

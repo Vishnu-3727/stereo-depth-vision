@@ -182,6 +182,133 @@ relationship between them.**
 
 ---
 
+## 4a. Hailo's own compiled profiler report
+
+**[SOURCE: SR-006, decoded in EXP-017]** — `python
+scripts/extract_profiler_report.py` then `python scripts/exp_profiler_report.py`.
+
+The 40.9 MB report is a single-page application with a semicolon-separated
+payload embedded in it: a 53-field model summary and a **242-row per-layer
+table**. Extracted cleanly, zero malformed rows.
+
+**Read the caveat first.** `profiling_mode` is `post_placement`, and the
+model-level `fps` and `latency` fields are both `N/A`. This is the compiler's
+static post-placement estimate. **It is not a measured run on hardware**, and
+nothing in it is a silicon measurement.
+
+### Model-level summary
+
+| Field | Value |
+|---|---|
+| `weights` | **623,138** |
+| `macs_per_image` | 56,258,882,372 |
+| `ops_per_image` | 112,111,950,720 |
+| `layers` (compiled) | 242 |
+| `number_of_contexts` | **6** |
+| `number_of_devices` | 4 |
+| `hw_arch` | hailo8 |
+| `normalization` | True |
+| `optimization_level` / `compression_level` | 1 / 0 |
+| `l2_data_usage` | 10,514,432 bytes (10.03 MiB) |
+| `l2_weights` | 101,376 bytes |
+| `net_input_throughput` | 27.98 MB/s |
+| `gross_input_throughput` | 1.09 GB/s |
+| `net_output_throughput` | 4.66 MB/s |
+| `gross_output_throughput` | 786.99 MB/s |
+| `fps`, `latency` | **N/A** |
+
+### Three of our findings, confirmed by Hailo's own toolchain
+
+1. **`weights = 623,138` is exactly our per-occurrence parameter count.** We
+   derived 423,586 unique learned tensors and observed that adding the shared
+   Siamese feature extractor a second time gives 623,138, matching the published
+   "623.1K" [MEASUREMENT: EXP-001]. Hailo's compiler reports precisely that
+   number. The counting convention is now confirmed at source, not inferred.
+2. **`ops_per_image / macs_per_image` = 1.9928 ≈ 2.** The published operation
+   count is twice the MAC count, as inferred in EXP-001. Our independent MAC
+   total of 56,039,313,792 differs from Hailo's 56,258,882,372 by **−0.39 %**.
+3. **Refinement carries 95.2 % of the compiled model's MACs** — 53.55 G of
+   56.26 G — against our 90.6 % on the ONNX. The small difference is the
+   compiled layer set; the conclusion is the same and stronger.
+
+### Per-stage, from Hailo's compiled graph
+
+| Stage | Compiled layers | MACs | Share | Min modelled FPS | Mean effective MAC utilisation |
+|---|---:|---:|---:|---:|---:|
+| **Refinement** | 42 | 53,549,620,740 | **95.2 %** | **43.0** | 0.267 |
+| Feature extraction | 17 | 1,441,849,024 | 2.6 % | 100.6 | 0.141 |
+| Aggregation (3D) | 5 | 1,245,310,528 | 2.2 % | 100.6 | 0.302 |
+| Regression / elementwise | 18 | 10,881,024 | 0.0 % | 110.2 | 0.032 |
+| Data movement | 27 | 0 | 0.0 % | 1714.3 | 0.010 |
+| Normalisation | 2 | 2,720,256 | 0.0 % | 699.4 | 0.021 |
+| I/O and constants | 12 | 0 | 0.0 % | 252.0 | 0.000 |
+| Other (shortcuts, mux/demux) | 119 | 8,500,800 | 0.0 % | 178.6 | 0.298 |
+
+### The modelled throughput bottleneck is refinement
+
+The report gives a per-layer FPS, and the lowest defines the context's
+throughput. **The eight slowest layers in the entire model are all refinement
+convolutions:**
+
+| Layer | Modelled FPS | MACs | Context | Effective MAC utilisation |
+|---|---:|---:|---|---:|
+| `conv50` | **43.03** | 4,192,821,248 | context_4 | 0.828 |
+| `conv52` | 53.45 | 4,192,821,248 | context_4 | 0.635 |
+| `conv41` | 72.80 | 4,192,821,248 | context_2 | 0.749 |
+| `conv49` | 72.80 | 4,192,821,248 | context_4 | 0.443 |
+| `conv51` | 72.80 | 4,192,821,248 | context_4 | 0.443 |
+| `conv40` | 75.41 | 536,797,184 | context_2 | 0.382 |
+| `conv44` | 76.09 | 4,192,821,248 | context_2 | 0.719 |
+| `conv42` | 83.89 | 4,192,821,248 | context_2 | 0.701 |
+
+The first non-refinement layer appears in ninth place at 100.63 FPS.
+
+**This closes the B2 question from the vendor's side.** Our static MAC analysis
+said refinement dominates, our GPU and CPU profiling measured it dominating, and
+Hailo's own compiler model independently identifies refinement convolutions as
+the throughput bottleneck. Three independent lines of evidence, one conclusion.
+
+### The model does not fit in one context
+
+`number_of_contexts: 6`, with layers distributed 77 / 70 / 27 / 28 / 32 / 8
+across contexts 0 to 5. A context switch reloads network configuration on the
+device, and the report documents dedicated cost categories for it
+(`RUNTIME_CONFIG`, `RUNTIME_OVERHEAD`, `context_switch_configs = 5,544,448`).
+
+**INFERENCE, labelled:** the modelled bottleneck of 43.03 FPS is a per-layer
+throughput figure, while Hailo publishes 10.7 FPS measured at batch 1
+[SOURCE: SR-004] — roughly a factor of four lower. Six contexts and their switch
+overhead is a plausible explanation for a gap of that size, and it is consistent
+with batch 8 being *faster* (11.6 FPS) since batching amortises configuration
+loading. **This is a hypothesis, not a finding**: the report supplies no measured
+context-switch cost, and no device is available to measure one.
+
+### Quantisation is uniform int8
+
+All 242 layers report `weights_bits`, `input_activation_bits` and
+`output_activation_bits` as **8/8/8**. `total_4bit_macs_per_frame` is 0. There is
+no mixed precision and no 4-bit enhancement anywhere in the compiled model, and
+`optimization_level` is 1 with `compression_level` 0.
+
+That means Hailo's published float-to-hardware degradation of about 2.08 points
+[SR-002, SR-004] is the cost of uniform int8 — the same nominal precision as the
+int8 row in §4, though still a different quantiser on different arithmetic, so
+the two still may not be compared directly.
+
+### Defusion, confirmed and quantified
+
+182 of the 242 rows carry a `defuse_name`. The width-splitting groups
+(`ws_from_conv47_ws_to_conv47_sd*`, `ws_from_conv48_ws_to_conv48_sd*` and so on)
+appear exactly where `stereonet.alls` directs them — around `conv42`–`conv53`,
+the full-resolution refinement block — along with the `mux`/`demux` and
+`shortcut` layers that carry residual connections across the split pieces and
+across context boundaries.
+
+The report still does **not** state what defusion costs in time. That remains
+UNKNOWN.
+
+---
+
 ## 5. Our latency measurements
 
 **[MEASUREMENT: EXP-013, EXP-014]** — full detail in `compute_profile.md`.
@@ -223,7 +350,11 @@ matters, extrapolating either to a fixed-function accelerator is unjustified.
 | Hailo-8 achieves 10.7 FPS at batch 1 | SR-004 | SOURCE |
 | Which operators fall back to host on Hailo, if any | — | **UNKNOWN** |
 | What spatial defusion costs in latency | — | **UNKNOWN** |
-| Per-layer latency on Hailo silicon | — | **UNKNOWN** (the profiler report [SR-006] may contain it; not yet read) |
+| Per-layer *modelled* throughput on Hailo | SR-006, EXP-017 | **SOURCE** — refinement convolutions are the bottleneck at 43.03 FPS modelled; the eight slowest layers are all refinement |
+| Per-layer *measured* latency on Hailo silicon | — | **UNKNOWN** — the report is a post-placement estimate, fps and latency N/A |
+| The compiled model spans 6 device contexts | SR-006, EXP-017 | **SOURCE** |
+| Quantisation is uniform 8/8/8 across all 242 layers | SR-006, EXP-017 | **SOURCE** |
+| Whether context switching explains the gap between 43 FPS modelled and 10.7 FPS published | — | **HYPOTHESIS** |
 | Power, FPS/W on any device | — | **UNKNOWN** |
 | Host-device transfer overhead | — | **UNKNOWN** |
 | Why the config lists hailo15h/hailo10h while the benchmark is Hailo-8 | — | **UNKNOWN** |
@@ -232,11 +363,9 @@ matters, extrapolating either to a fixed-function accelerator is unjustified.
 
 ## 7. Not done
 
-- **`stereonet_profiler_results_compiled_runtime_data.html` [SR-006] has not been
-  read.** It is 40.9 MB of Hailo's own compiled-runtime profile and is the single
-  most likely public source of per-layer on-device behaviour. Acquired and
-  hashed; reading it is outstanding and is the highest-value remaining item in
-  this document.
+- **The profiler report [SR-006] has now been decoded** — see §4a. What it does
+  not contain is measured silicon behaviour: it is a post-placement compiler
+  estimate.
 - The HEF has not been decoded.
 - No Hailo device, therefore no on-device measurement of anything.
 - The Ryzen AI NPU (XDNA2) was not targeted. It would be a separate runtime
