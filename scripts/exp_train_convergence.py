@@ -27,6 +27,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import sys
 import time
 from pathlib import Path
@@ -38,6 +39,12 @@ from torch.utils.data import DataLoader, Dataset
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT))
 
+from src.common.conclusions import (  # noqa: E402
+    classify_series_trend,
+    classify_validation_change,
+    describe_training_outcome,
+    describe_validation,
+)
 from src.common.experiment import Experiment  # noqa: E402
 from src.datasets.kitti2015 import Kitti2015Stereo, normalize  # noqa: E402
 from src.evaluation.metrics import disparity_metrics  # noqa: E402
@@ -244,27 +251,76 @@ def main() -> None:
             json.dumps(history, indent=2), encoding="utf-8"
         )
 
-        final_val = [r for r in history if "val_epe" in r][-1]
+        # Every statement below is derived from the recorded values. An earlier
+        # version of this script asserted "the loss decreases", "no non-finite
+        # values" and "validation improves" as literal text, independent of what
+        # the run produced -- and EXP-016 duly recorded that validation improved
+        # while its validation EPE rose from 18.497 px to 19.216 px. See
+        # experiments/EXP-016/CORRECTION.md.
+        val_rows = [r for r in history if "val_epe" in r]
+        val_initial = val_rows[0]["val_epe"] if val_rows else None
+        val_final = val_rows[-1]["val_epe"] if val_rows else None
+        val_best_row = min(val_rows, key=lambda r: r["val_epe"]) if val_rows else None
+
+        finite_grads = [g for g in grad_norms if math.isfinite(g)]
+        non_finite_grads = len(grad_norms) - len(finite_grads)
+
+        exp.metric(
+            "validation_epe_series",
+            [{"epoch": r["epoch"], "val_epe": r["val_epe"], "val_d1": r["val_d1"]}
+             for r in val_rows],
+        )
+        if val_rows:
+            exp.metric("validation_epe_initial", val_initial)
+            exp.metric("validation_epe_final", val_final)
+            exp.metric("validation_epe_best", val_best_row["val_epe"])
+            exp.metric("validation_epe_best_epoch", val_best_row["epoch"])
+            exp.metric(
+                "validation_change",
+                classify_validation_change(val_initial, val_final),
+            )
+        exp.metric("loss_change", classify_series_trend(losses)
+                   if len(losses) >= 2 else None)
+        exp.metric("non_finite_gradient_count", non_finite_grads)
+
         exp.note(
-            "Loss fell from {:.4f} to {:.4f}, a factor of {:.2f}, over {} "
-            "epochs. Gradient norms had median {:.3f} and maximum {:.3f}, with "
-            "no non-finite values.".format(
-                losses[0], losses[-1], losses[0] / max(losses[-1], 1e-9),
-                args.epochs, float(np.median(grad_norms)), float(np.max(grad_norms)),
+            "Loss went from {:.4f} to {:.4f} over {} epochs. Gradient norms had "
+            "median {:.3f} and maximum {:.3f}, with {} non-finite "
+            "values.".format(
+                losses[0], losses[-1], args.epochs,
+                float(np.median(grad_norms)), float(np.max(grad_norms)),
+                non_finite_grads if non_finite_grads else "no",
             )
         )
-        exp.note(
-            "Validation after training from scratch on 160 scenes: EPE {:.3f} px, "
-            "D1 {:.2f} %. For context the reference weights score EPE 1.313 px "
-            "and D1 8.15 % on the full split (EXP-005). The gap is expected and "
-            "is a statement about the data budget, not about the "
-            "implementation.".format(final_val["val_epe"], final_val["val_d1"])
-        )
+        if val_rows:
+            exp.note(
+                describe_validation(
+                    val_initial, val_final,
+                    best=val_best_row["val_epe"],
+                    best_label="epoch {}".format(val_best_row["epoch"]),
+                )
+                + " For context the reference weights score EPE 1.313 px and "
+                "D1 8.15 % on the full split (EXP-005); the gap is a statement "
+                "about the data budget, not about the implementation, which "
+                "EXP-011 verified against the reference to a relative 1e-7."
+            )
+
         exp.conclude(
-            "Training pipeline verified end to end: the loss decreases, "
-            "gradients are finite and bounded, validation improves, and a "
-            "checkpoint is produced. Full-scale training remains deferred with "
-            "the recipe recorded in this experiment's configuration."
+            describe_training_outcome(
+                losses=losses,
+                grad_norms=grad_norms,
+                val_initial=val_initial,
+                val_final=val_final,
+                val_best=val_best_row["val_epe"] if val_rows else None,
+                val_best_label=(
+                    "epoch {}".format(val_best_row["epoch"]) if val_rows else ""
+                ),
+                checkpoint_written=ckpt.exists(),
+            )
+            + " What this run establishes is that the training pipeline runs end "
+            "to end and produces a checkpoint; full-scale training remains "
+            "deferred, with the recipe recorded in this experiment's "
+            "configuration."
         )
         print("\nrecorded as " + exp.id)
 

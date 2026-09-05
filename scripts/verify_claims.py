@@ -12,13 +12,15 @@ Run it before tagging.
 
 from __future__ import annotations
 
+import ast
 import json
 import re
-import subprocess
 import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO_ROOT))
+
 EXP = REPO_ROOT / "experiments"
 DOCS = list((REPO_ROOT / "docs").glob("*.md")) + [
     REPO_ROOT / "PHASE_1_FINAL_REPORT.md"
@@ -177,7 +179,79 @@ def main() -> None:
           m11["final_disparity_relative_mean_abs_diff"] < 1e-6, True)
     check("EXP-011 parameters match", m11["model_parameters_unique"], 423_586)
 
-    print("\n11. Superseded experiments are marked, not deleted")
+    print("\n11. No experiment claims a validation improvement its data denies")
+    # EXP-016 recorded "validation improves" while its validation EPE rose from
+    # 18.497 px to 19.216 px. This makes that class of claim detectable from the
+    # records alone, for every experiment, not only that one.
+    from src.common.conclusions import classify_validation_change
+
+    audited = 0
+    for exp_dir in sorted(EXP.glob("EXP-*")):
+        rec = json.loads((exp_dir / "metrics.json").read_text())
+        history = rec.get("metrics", {}).get("history")
+        if not isinstance(history, list):
+            continue
+        series = [r["val_epe"] for r in history
+                  if isinstance(r, dict) and "val_epe" in r]
+        if len(series) < 2:
+            continue
+        audited += 1
+        verdict = classify_validation_change(series[0], series[-1])
+        text = " ".join(
+            [rec.get("conclusion") or ""] + list(rec.get("observations") or [])
+        ).lower()
+        claims_improvement = (
+            "validation improves" in text or "validation improved" in text
+        )
+        corrected = (exp_dir / "CORRECTION.md").exists()
+        # A claim of improvement is acceptable only when the data supports it,
+        # or when the experiment carries a correction withdrawing it.
+        check(
+            "{} conclusion vs data ({:.3f} -> {:.3f}, {})".format(
+                exp_dir.name, series[0], series[-1], verdict
+            ),
+            (not claims_improvement) or verdict == "improved" or corrected,
+            True,
+        )
+        if claims_improvement and verdict != "improved":
+            check(exp_dir.name + " carries a correction withdrawing that claim",
+                  corrected, True)
+    check("at least one experiment with a validation series was audited",
+          audited >= 1, True)
+
+    print("\n12. The training script derives its conclusion from measurements")
+    train = (REPO_ROOT / "scripts" / "exp_train_convergence.py").read_text(
+        encoding="utf-8")
+    literals = [
+        n.value for n in ast.walk(ast.parse(train))
+        if isinstance(n, ast.Constant) and isinstance(n.value, str)
+        and any(p in n.value.lower() for p in
+                ("validation improves", "validation improved",
+                 "the loss decreases", "no non-finite values"))
+    ]
+    check("no hard-coded outcome claim in any string literal", literals, [])
+    check("imports the conclusions module",
+          "from src.common.conclusions import" in train, True)
+    check("calls describe_training_outcome",
+          "describe_training_outcome(" in train, True)
+
+    print("\n13. Scope and evidence gaps are stated, not glossed")
+    readme = REPO_ROOT / "README.md"
+    check("a README states the repository's scope", readme.exists(), True)
+    if readme.exists():
+        r = readme.read_text(encoding="utf-8")
+        check("declares it is not a production system",
+              "not a production stereo-depth system" in r, True)
+        check("Middlebury declared not completed",
+              "NOT COMPLETED" in r and "Middlebury" in r, True)
+        check("Hailo silicon declared UNKNOWN",
+              "Hailo silicon behaviour: UNKNOWN" in r, True)
+        check("competitor measurement declared not performed",
+              "NOT PERFORMED" in r and "Competitor" in r, True)
+        check("profiler declared a compiler estimate",
+              "post-placement compiler estimate" in r, True)
+
+    print("\n14. Superseded experiments are marked, not deleted")
     for d, f in (("EXP-008", "SUPERSEDED_FIELD.txt"), ("EXP-016", "CORRECTION.md")):
         check(d + " carries " + f, (EXP / d / f).exists(), True)
     ids = sorted(p.name for p in EXP.glob("EXP-*"))

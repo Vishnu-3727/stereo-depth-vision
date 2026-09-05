@@ -305,13 +305,13 @@ Stated as directions, **not designs**, and none implemented.
 | 6 | Architecture reconstructed | **done** — 168-node table, EXP-001 |
 | 7 | Cost volume understood | **done** — `cost_volume_analysis.md`, EXP-010 |
 | 8 | Independent implementation exists | **done** — `src/models/stereonet` |
-| 9 | Unit tests pass | **done** — 29 tests |
+| 9 | Unit tests pass | **done** — 49 tests (29 core, 20 regression) |
 | 10 | ONNX equivalence tested | **done** — relative 1e-7 at every stage, EXP-011 |
 | 11 | Discrepancies documented | **done** — register in `reproduction_report.md` §6 |
 | 12 | KITTI protocol frozen | **done** — four variants, EXP-005 |
 | 13 | Hailo figure reproduction attempted | **done** — exact: 8.2237 vs 8.223 |
 | 14 | Depth evaluation validated | **done** — EXP-012, range-binned |
-| 15 | Short training convergence demonstrated | **done with a correction** — loss fell 1.51×, gradients finite; **validation did not improve**, see `experiments/EXP-016/CORRECTION.md` |
+| 15 | Short training convergence demonstrated | **done with a correction** — loss fell 1.51×, gradients finite; **validation did not improve**, see `experiments/EXP-016/CORRECTION.md`. The script that produced the false claim has been fixed and the defect is pinned by regression tests |
 | 16 | Compute profiling complete | **done** — EXP-013, EXP-014 |
 | 17 | Memory profiling complete | **done** — EXP-001, EXP-013 |
 | 18 | Failure analysis complete | **partial** — ten findings ranked; scene-class failures need Middlebury, **UNKNOWN** |
@@ -331,13 +331,16 @@ overstated conclusion.
 
 Run before tagging, all green:
 
-- `python scripts/verify_claims.py` — **53 checks, 0 failures**. Asserts that
+- `python scripts/verify_claims.py` — **65 checks, 0 failures**. Asserts that
   every headline number in `docs/` and this report matches the corresponding
-  `experiments/EXP-xxx/metrics.json`, so a transcription error cannot reach the
-  release.
-- `python -m pytest tests/ -q` from a **fresh clone of the committed tree** —
-  28 passed, 1 skipped. The skip is the KITTI calibration test, which correctly
-  skips when the dataset is absent; the suite therefore needs no untracked file.
+  `experiments/EXP-xxx/metrics.json`, that no experiment claims a validation
+  improvement its own data denies, that the training script derives rather than
+  asserts its conclusion, and that the scope and evidence gaps are stated. A
+  transcription error or an unsupported conclusion cannot reach a release.
+- `python -m pytest tests/ -q` — **49 passed** with the dataset present;
+  **48 passed, 1 skipped** from a fresh clone of the committed tree. The single
+  skip is the KITTI calibration test, which is written to skip when the dataset
+  is absent; the suite needs no untracked file.
 - All 17 experiments present, contiguous, `status: completed`, every recorded
   git commit resolving into this history, no missing charter-required config
   field.
@@ -361,6 +364,16 @@ Things that went wrong, recorded rather than tidied away.
   numbers show noise. `experiments/EXP-016/CORRECTION.md`.
 - **Two arXiv identifiers were wrong** and returned unrelated papers. Discarded
   rather than cited, and recorded in the registry.
+- **The training script hard-coded its own conclusion.** `exp_train_convergence.py`
+  asserted "the loss decreases", "no non-finite values" and "validation improves"
+  as string literals, independent of the run — which is how EXP-016 came to
+  record an improvement its numbers denied. A corrective audit replaced all three
+  with values derived in `src/common/conclusions.py`, added 20 regression tests
+  including an AST guard against literal outcome claims, and extended
+  `verify_claims.py` to detect the class of error. Both the guard and the new
+  verifier checks were confirmed to fail against the pre-fix file recovered from
+  tag `phase-1`, so they are not vacuous. EXP-016's original record is unaltered;
+  `CORRECTION.md` now also documents the fix.
 - **`scripts/verify_claims.py` initially passed a check for the wrong reason.**
   A bare `fB` pattern matched "surfboard" in a leftover COCO class table in the
   Hailo app's `common.h`, and a shell heredoc had collapsed `\b` into literal
@@ -401,7 +414,7 @@ python scripts/exp_quantization.py          # EXP-015
 python scripts/exp_train_convergence.py     # EXP-016
 python scripts/extract_profiler_report.py   # decode Hailo's profiler HTML
 python scripts/exp_profiler_report.py       # EXP-017
-python scripts/verify_claims.py             # 53 claim checks against the records
+python scripts/verify_claims.py             # 65 claim checks against the records
 ```
 
 Data: KITTI 2015 (`data_scene_flow.zip`, `data_scene_flow_calib.zip`) into
