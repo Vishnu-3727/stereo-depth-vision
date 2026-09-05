@@ -1,0 +1,17 @@
+{
+  "dataset": null,
+  "split": null,
+  "resolution": [
+    368,
+    1232
+  ],
+  "crop": null,
+  "disparity_range": "12 candidates at 1/16",
+  "batch_size": 1,
+  "precision": "fp32",
+  "seed": 0,
+  "device": "cuda",
+  "iterations": 30,
+  "warmup": 5,
+  "implementation": "src/models/stereonet with reference weights"
+}
