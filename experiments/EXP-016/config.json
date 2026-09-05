@@ -1,0 +1,22 @@
+{
+  "dataset": "kitti2015",
+  "split": "hailo_calib (scenes 0-159) train, hailo_val (160-199) validate",
+  "resolution": [
+    256,
+    512
+  ],
+  "crop": "random 256x512",
+  "disparity_range": 176,
+  "batch_size": 2,
+  "precision": "fp32",
+  "seed": 0,
+  "epochs": 20,
+  "optimizer": "Adam betas=(0.9, 0.999)",
+  "learning_rate": 0.001,
+  "schedule": "cosine annealing to 0 over 20 epochs",
+  "loss": "masked smooth L1, beta=1.0, valid = gt > 0 and gt < max_disparity",
+  "augmentation": "random crop, independent per-image gain jitter sigma=0.1; no horizontal flip (it inverts disparity)",
+  "initialisation": "PyTorch defaults, random",
+  "device": "cuda",
+  "known_deviation": "no batch normalisation, because the model reproduces the BN-folded exported artifact rather than the training-time upstream model"
+}

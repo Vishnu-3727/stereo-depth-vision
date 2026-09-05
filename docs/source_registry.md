@@ -32,7 +32,7 @@ resolved by preference. The ordering used to decide which value describes the
 | SR-004 | `HAILO8_stereo_depth_estimation.rst` | benchmark doc | Hailo | master, sha256 `9490051ed8eb8535…` | Published Hailo-8 figures: float EPE 8.22, hardware EPE 10.3, 10.7 FPS at batch 1, 11.6 FPS at batch 8, on KITTI Stereo 2015. | primary-doc | **yes** |
 | SR-005 | `stereonet.hef` (compiled Hailo-8 binary) | model artifact | Hailo | Model Zoo v2.19.0, 24,057,165 bytes, sha256 `541ee6cb841df318…` | The compiled binary. Held for completeness; its internals are not documented publicly and no Hailo device is available to run it. | primary-artifact | acquired, **not** decoded |
 | SR-006 | `stereonet_profiler_results_compiled_runtime_data.html` | profiler report | Hailo | Model Zoo v2.19.0, 40,883,621 bytes, sha256 `cf69a03f5d359b37…` | Hailo's own compiled-runtime profile of the model. 40 MB self-contained report. | primary-artifact | acquired, **not yet read** |
-| SR-007 | `hailo-apps` `hailo_apps/cpp/depth_estimation_stereo/` | application source | Hailo | main branch snapshot, from `hailo_apps_main.zip` sha256 `b89369fdfbaf073b…` | What the shipped application does around the model: input handling, and whether any calibration or disparity-to-depth conversion exists. | primary-artifact | acquired, **not yet read** |
+| SR-007 | `hailo-apps` `hailo_apps/cpp/depth_estimation_stereo/` | application source | Hailo | main branch snapshot, from `hailo_apps_main.zip` sha256 `b89369fdfbaf073b…` | What the shipped application does around the model. Read: the entire postprocess is one line casting the output buffer to an 8-bit image. No calibration, no baseline, no disparity-to-depth conversion anywhere. | primary-artifact | **yes** |
 
 ## StereoNet: paper and implementations
 
@@ -50,6 +50,32 @@ resolved by preference. The ordering used to decide which value describes the
 | SR-022 | Scene Flow / FlyingThings3D | dataset | Mayer et al., University of Freiburg | — | Large synthetic stereo data with dense ground truth; the pre-training set named by the upstream training scripts. | primary-doc | **no** — not yet downloaded or inspected |
 | SR-023 | Middlebury 2014 stereo | dataset | Scharstein et al. | — | High-resolution indoor pairs with dense ground truth; intended for failure-mode analysis. | primary-doc | **no** — not yet downloaded or inspected |
 
+## Competitor architectures
+
+Inspected at abstract level from arXiv during the competitive landscape study.
+Full texts have **not** been read, and no competitor has been implemented or
+measured. Every figure attributed to these is the authors' claim about their own
+method under their own protocol.
+
+| ID | Title | arXiv | Inspected |
+|---|---|---|---|
+| SR-040 | HITNet: Hierarchical Iterative Tile Refinement Network for Real-time Stereo Matching | 2007.12140 | abstract |
+| SR-041 | MobileStereoNet: Towards Lightweight Deep Networks for Stereo Matching | 2108.09770 | abstract |
+| SR-042 | AANet: Adaptive Aggregation Network for Efficient Stereo Matching | 2004.09548 | abstract |
+| SR-043 | Attention Concatenation Volume for Accurate and Efficient Stereo Matching (ACVNet) | 2203.02146 | abstract |
+| SR-044 | Accurate and Efficient Stereo Matching via Attention Concatenation Volume (Fast-ACVNet) | 2209.12699 | abstract |
+| SR-045 | Correlate-and-Excite: Real-Time Stereo Matching via Guided Cost Volume Excitation (CoEx) | 2108.05773 | abstract |
+| SR-046 | Group-wise Correlation Stereo Network (GwcNet) | 1903.04025 | abstract |
+| SR-047 | Pyramid Stereo Matching Network (PSMNet) | 1803.08669 | abstract |
+| SR-048 | RAFT-Stereo: Multilevel Recurrent Field Transforms for Stereo Matching | 2109.07547 | abstract |
+| SR-049 | Iterative Geometry Encoding Volume for Stereo Matching (IGEV-Stereo) | 2303.06615 | abstract |
+| SR-050 | Hierarchical Neural Architecture Search for Deep Stereo Matching (LEAStereo) | 2010.13501 | abstract |
+
+Two identifiers were wrong on first attempt and returned unrelated papers -- a
+wireless-networks paper at 2004.02642 and a solar-physics paper at 1803.09046.
+Both were discarded rather than cited. Recorded here because a citation that was
+never verified is exactly the failure this registry exists to prevent.
+
 ## Leads not yet inspected
 
 Recorded so they are not re-discovered, and so it stays visible that they have
@@ -59,7 +85,7 @@ Recorded so they are not re-discovered, and so it stays visible that they have
 |---|---|---|---|
 | SR-030 | HailoRT documentation | Runtime behaviour, batching, host-device transfer costs. | no |
 | SR-031 | Qualcomm AI Hub — StereoNet | An independent edge deployment of the same architecture; a second data point on export and quantisation. | no |
-| SR-032 | HITNet, MobileStereoNet, AANet, ACVNet, Fast-ACVNet, CoEx, GwcNet, PSMNet, RAFT-Stereo, IGEV-Stereo, LEAStereo papers | The competitive landscape study (W9). | no |
+| SR-032 | *(superseded -- these are now SR-040 to SR-050, inspected at abstract level)* | The competitive landscape study. | superseded |
 | SR-033 | ETH3D stereo benchmark | An additional real-world benchmark. | no |
 | SR-034 | OpenStereo | A unified framework for controlled cross-architecture comparison. | no |
 

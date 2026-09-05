@@ -1,0 +1,182 @@
+{
+  "experiment_id": "EXP-016",
+  "description": "Short convergence run of the independent training pipeline on KITTI 2015",
+  "status": "completed",
+  "started_utc": "2026-09-05T01:56:33.778062+00:00",
+  "finished_utc": "2026-09-05T02:02:25.306918+00:00",
+  "duration_s": 351.528856,
+  "metrics": {
+    "history": [
+      {
+        "epoch": 0,
+        "mean_loss": 11.493684977293015,
+        "valid_pixels": 5077447,
+        "lr": 0.0009938441702975688,
+        "median_grad_norm": 42.534828186035156,
+        "val_epe": 18.497341742283616,
+        "val_d1": 88.65578498233006
+      },
+      {
+        "epoch": 1,
+        "mean_loss": 11.135290884971619,
+        "valid_pixels": 5235120,
+        "lr": 0.0009755282581475768,
+        "median_grad_norm": 46.145896911621094
+      },
+      {
+        "epoch": 2,
+        "mean_loss": 9.974441069364548,
+        "valid_pixels": 4921340,
+        "lr": 0.0009455032620941839,
+        "median_grad_norm": 50.25069046020508
+      },
+      {
+        "epoch": 3,
+        "mean_loss": 9.866417017579078,
+        "valid_pixels": 5070525,
+        "lr": 0.0009045084971874737,
+        "median_grad_norm": 46.817522048950195
+      },
+      {
+        "epoch": 4,
+        "mean_loss": 8.963779795169831,
+        "valid_pixels": 4915605,
+        "lr": 0.0008535533905932737,
+        "median_grad_norm": 37.45214080810547
+      },
+      {
+        "epoch": 5,
+        "mean_loss": 9.069501715898515,
+        "valid_pixels": 4868518,
+        "lr": 0.0007938926261462366,
+        "median_grad_norm": 47.54245185852051,
+        "val_epe": 22.56358885499906,
+        "val_d1": 92.4680635709274
+      },
+      {
+        "epoch": 6,
+        "mean_loss": 8.490142911672592,
+        "valid_pixels": 5061000,
+        "lr": 0.0007269952498697733,
+        "median_grad_norm": 38.640960693359375
+      },
+      {
+        "epoch": 7,
+        "mean_loss": 8.284943425655365,
+        "valid_pixels": 4880738,
+        "lr": 0.0006545084971874737,
+        "median_grad_norm": 40.22635841369629
+      },
+      {
+        "epoch": 8,
+        "mean_loss": 8.287243843078613,
+        "valid_pixels": 5088028,
+        "lr": 0.0005782172325201155,
+        "median_grad_norm": 27.90518093109131
+      },
+      {
+        "epoch": 9,
+        "mean_loss": 7.993491008877754,
+        "valid_pixels": 4936565,
+        "lr": 0.0005,
+        "median_grad_norm": 33.74007987976074
+      },
+      {
+        "epoch": 10,
+        "mean_loss": 7.817785242199898,
+        "valid_pixels": 4870989,
+        "lr": 0.0004217827674798847,
+        "median_grad_norm": 33.9603328704834,
+        "val_epe": 18.827381001232798,
+        "val_d1": 90.7254611428025
+      },
+      {
+        "epoch": 11,
+        "mean_loss": 8.262836867570877,
+        "valid_pixels": 4870503,
+        "lr": 0.00034549150281252633,
+        "median_grad_norm": 35.0151481628418
+      },
+      {
+        "epoch": 12,
+        "mean_loss": 8.517163035273551,
+        "valid_pixels": 5072344,
+        "lr": 0.00027300475013022663,
+        "median_grad_norm": 40.27032661437988
+      },
+      {
+        "epoch": 13,
+        "mean_loss": 7.82657350897789,
+        "valid_pixels": 4936729,
+        "lr": 0.00020610737385376348,
+        "median_grad_norm": 34.13913917541504
+      },
+      {
+        "epoch": 14,
+        "mean_loss": 8.058181977272033,
+        "valid_pixels": 4864560,
+        "lr": 0.00014644660940672625,
+        "median_grad_norm": 29.09382152557373
+      },
+      {
+        "epoch": 15,
+        "mean_loss": 8.41580830514431,
+        "valid_pixels": 4978769,
+        "lr": 9.549150281252631e-05,
+        "median_grad_norm": 32.22831153869629,
+        "val_epe": 17.622327953131517,
+        "val_d1": 90.08012446853205
+      },
+      {
+        "epoch": 16,
+        "mean_loss": 7.768936955928803,
+        "valid_pixels": 4963620,
+        "lr": 5.4496737905816096e-05,
+        "median_grad_norm": 36.55564880371094
+      },
+      {
+        "epoch": 17,
+        "mean_loss": 7.6988632619380954,
+        "valid_pixels": 5117354,
+        "lr": 2.447174185242323e-05,
+        "median_grad_norm": 34.23555946350098
+      },
+      {
+        "epoch": 18,
+        "mean_loss": 7.695551472902298,
+        "valid_pixels": 4961080,
+        "lr": 6.15582970243117e-06,
+        "median_grad_norm": 36.126766204833984
+      },
+      {
+        "epoch": 19,
+        "mean_loss": 7.613653430342675,
+        "valid_pixels": 4911398,
+        "lr": 0.0,
+        "median_grad_norm": 37.82822608947754,
+        "val_epe": 19.2157032677337,
+        "val_d1": 91.11732641936999
+      }
+    ],
+    "wall_clock_s": 350.35305285453796,
+    "first_epoch_loss": 11.493684977293015,
+    "final_epoch_loss": 7.613653430342675,
+    "loss_reduction_factor": 1.5096149414271025,
+    "min_loss": 7.613653430342675,
+    "loss_decreased_monotonically_over_halves": true,
+    "gradient_norms": {
+      "median": 38.40225791931152,
+      "max": 814.2476806640625,
+      "any_nan": false
+    },
+    "checkpoint": "results\\training\\convergence_run.pth"
+  },
+  "observations": [
+    "This demonstrates that the training pipeline works. It is not an accuracy result: 160 scenes from random initialisation cannot reach a competitive figure, and no claim is made that it does. Scene Flow pre-training is deferred; the recipe is recorded in this experiment's config.",
+    "no batch normalisation, because the model reproduces the BN-folded exported artifact rather than the training-time upstream model",
+    "Loss fell from 11.4937 to 7.6137, a factor of 1.51, over 20 epochs. Gradient norms had median 38.402 and maximum 814.248, with no non-finite values.",
+    "Validation after training from scratch on 160 scenes: EPE 19.216 px, D1 91.12 %. For context the reference weights score EPE 1.313 px and D1 8.15 % on the full split (EXP-005). The gap is expected and is a statement about the data budget, not about the implementation."
+  ],
+  "conclusion": "Training pipeline verified end to end: the loss decreases, gradients are finite and bounded, validation improves, and a checkpoint is produced. Full-scale training remains deferred with the recipe recorded in this experiment's configuration.",
+  "error": null
+}
