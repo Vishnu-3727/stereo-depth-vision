@@ -3,7 +3,13 @@
 Forensics, reproduction and characterisation of the Hailo StereoNet reference
 deployment, for the Microchip stereo depth vision project.
 
-**Start with [`PHASE_1_FINAL_REPORT.md`](PHASE_1_FINAL_REPORT.md).**
+**Start here:**
+
+| Document | For |
+|---|---|
+| [`docs/phase_1_project_report.md`](docs/phase_1_project_report.md) | What was done, what was found, what it means, what is next — read this first |
+| [`PHASE_1_FINAL_REPORT.md`](PHASE_1_FINAL_REPORT.md) | The charter deliverable: every Phase 1 question answered in order |
+| [`docs/`](docs/) | Twelve knowledge-base documents with the technical detail |
 
 ---
 
@@ -78,7 +84,7 @@ Stated here so they are not mistaken for completed work:
 
 ```
 PHASE_1_FINAL_REPORT.md   the report; read this first
-docs/                     12 knowledge-base documents
+docs/                     the project report plus 12 knowledge-base documents
 src/                      independent implementation, geometry, datasets, metrics
 scripts/                  one script per experiment, plus the verifiers
 experiments/EXP-xxx/      one immutable record per run; none deleted
