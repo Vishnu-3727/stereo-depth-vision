@@ -400,7 +400,7 @@ available.
 | Check | Result |
 |---|---|
 | Test suite | **75 passed** (74 passed, 1 intentional dataset skip from a clean clone) |
-| Claim verification | **73 checks, 0 failures** — every headline figure asserted against its experiment record |
+| Claim verification | **73 checks, 0 failures** with reference artifacts restored; 65 run and 8 named as skipped in a bare clone |
 | Experiment records | 18, contiguous, all completed, every git reference valid, none deleted |
 | Secrets and credentials | None |
 | Datasets, checkpoints, large binaries | None tracked; 1.16 MB across 173 files |

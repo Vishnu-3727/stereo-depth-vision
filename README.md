@@ -9,6 +9,7 @@ deployment, for the Microchip stereo depth vision project.
 |---|---|
 | [`docs/phase_1_project_report.md`](docs/phase_1_project_report.md) | What was done, what was found, what it means, what is next — read this first |
 | [`PHASE_1_FINAL_REPORT.md`](PHASE_1_FINAL_REPORT.md) | The charter deliverable: every Phase 1 question answered in order |
+| [`docs/phase_1_closure_audit.md`](docs/phase_1_closure_audit.md) | The release gate: what was verified, and what remains unknown |
 | [`docs/`](docs/) | Twelve knowledge-base documents with the technical detail |
 
 ---
@@ -84,7 +85,7 @@ Stated here so they are not mistaken for completed work:
 
 ```
 PHASE_1_FINAL_REPORT.md   the report; read this first
-docs/                     the project report plus 12 knowledge-base documents
+docs/                     project report, closure audit, and 12 knowledge-base documents
 src/                      independent implementation, geometry, datasets, metrics
 scripts/                  one script per experiment, plus the verifiers
 experiments/EXP-xxx/      one immutable record per run; none deleted
@@ -93,26 +94,53 @@ reference/                vendor artifacts, read-only, hashed in MANIFEST.md
 tests/                    unit and regression tests
 ```
 
+## Restoring the reference artifacts
+
+`reference/` holds vendor and upstream artifacts that are downloaded rather than
+committed. What *is* committed is `reference/manifest.json`, recording every
+artifact's URL, size and SHA-256. To restore them into a fresh clone:
+
+```
+python scripts/fetch_reference.py            # download and verify (~270 MB)
+python scripts/fetch_reference.py --verify   # check what is present, no download
+```
+
+A mismatch means the upstream artifact changed. Investigate rather than
+overwriting the recorded hash: every result was produced from the bytes the
+manifest describes.
+
 ## Verifying
 
 ```
-python -m pytest tests/ -q        # unit and regression tests
-python scripts/verify_claims.py   # every headline number against its record
+python -m compileall -q src scripts tests
+python -m pytest tests/ -q        # 75 tests
+python scripts/verify_claims.py   # 73 checks against the experiment records
 ```
 
 `verify_claims.py` asserts that the figures quoted in the documents match the
 corresponding `experiments/EXP-xxx/metrics.json`, so a transcription error or a
 conclusion the data does not support cannot reach a release.
 
+**Two counts are expected, and the difference is reported rather than hidden.**
+A bare clone runs **65 of the 73** checks; the other 8 read the Hailo
+application source and need `reference/` restored first. The script names every
+skipped check and prints the full total, so a run performing fewer checks can
+never be mistaken for a clean pass. Run `fetch_reference.py` for all 73.
+
 The KITTI calibration test skips when the dataset is absent; that skip is
-intentional and declared in the test.
+intentional and declared in the test, giving 74 passed + 1 skipped in a bare
+clone against 75 passed with the dataset present.
 
 ## Tags
 
-| Tag | Meaning |
-|---|---|
-| `phase-1` | Original archival freeze |
-| `phase-1-final` | Final corrective archival release |
+| Tag | Commit | Meaning |
+|---|---|---|
+| `phase-1` | `ba1cf84` | Original archival freeze |
+| `phase-1-final` | `2278c10` | First corrective release: training-conclusion regression |
+| `phase-1-final-r2` | `5dd30c7` | Second corrective release: profiler stage mapping |
+| `phase-1-frozen` | see below | **Closure audit passed. The definitive Phase 1 freeze.** |
+
+Earlier tags are never moved, so each release remains inspectable as it stood.
 
 History is preserved and never rewritten: experiment records reference commit
 hashes, so rewriting would break their traceability.

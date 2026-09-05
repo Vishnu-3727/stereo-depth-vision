@@ -1,5 +1,16 @@
 # Audit Report
 
+> **Status: ACTIONED.** Both findings below were confirmed against the
+> repository and fixed. The High finding (incorrect profiler stage mapping) was
+> corrected in **EXP-018**; EXP-017 is preserved unaltered and carries
+> `experiments/EXP-017/CORRECTION.md`. The Low finding (stale test count) was
+> fixed. See the closure audit in `docs/phase_1_closure_audit.md` for the
+> verification, and the integrity records in `PHASE_1_FINAL_REPORT.md` and
+> `docs/phase_1_project_report.md`.
+>
+> This document is retained unedited below as the external record of what was
+> found, and when.
+
 Date: 2026-09-05
 
 ## Scope

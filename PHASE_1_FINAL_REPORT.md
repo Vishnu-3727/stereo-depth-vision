@@ -333,7 +333,9 @@ overstated conclusion.
 
 Run before tagging, all green:
 
-- `python scripts/verify_claims.py` — **73 checks, 0 failures**. Asserts that
+- `python scripts/verify_claims.py` — **73 checks, 0 failures** with the
+  reference artifacts restored; **65 run and 8 explicitly skipped** in a bare
+  clone, which the script names rather than hiding. Asserts that
   every headline number in `docs/` and this report matches the corresponding
   `experiments/EXP-xxx/metrics.json`, that no experiment claims a validation
   improvement its own data denies, that the training script derives rather than
@@ -433,7 +435,9 @@ python scripts/exp_quantization.py          # EXP-015
 python scripts/exp_train_convergence.py     # EXP-016
 python scripts/extract_profiler_report.py   # decode Hailo's profiler HTML
 python scripts/exp_profiler_report.py       # EXP-018 (supersedes EXP-017)
+python scripts/fetch_reference.py           # restore reference/ (~270 MB)
 python scripts/verify_claims.py             # 73 claim checks against the records
+python -m compileall -q src scripts tests
 ```
 
 Data: KITTI 2015 (`data_scene_flow.zip`, `data_scene_flow_calib.zip`) into

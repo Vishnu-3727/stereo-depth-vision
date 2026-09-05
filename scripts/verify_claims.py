@@ -27,7 +27,18 @@ DOCS = list((REPO_ROOT / "docs").glob("*.md")) + [
 ]
 
 failures: list[str] = []
+skipped: list[str] = []
 checks = 0
+
+# Checks that need a gitignored artifact cannot run from a fresh clone. They are
+# counted and named in the summary rather than silently vanishing: a run that
+# quietly performs fewer checks and still prints "0 failures" is exactly the kind
+# of false assurance this script exists to prevent.
+
+
+def skip(label: str, reason: str) -> None:
+    skipped.append(label + " -- " + reason)
+    print("  [skip] {:<58} {}".format(label, reason))
 
 
 def metrics(exp_id: str) -> dict:
@@ -171,7 +182,12 @@ def main() -> None:
                   bool(re.search(pattern, blob, re.I)), False)
         check("app postprocess casts to CV_8U", "CV_8U" in src, True)
     else:
-        print("  [skip] reference app source not extracted")
+        for label in ("baseline", "focal length", "calibration", "intrinsics",
+                      "a depth assignment", "division by disparity",
+                      "OpenCV reprojection"):
+            skip("app source contains no " + label,
+                 "reference/upstream not extracted")
+        skip("app postprocess casts to CV_8U", "reference/upstream not extracted")
     check_in_docs("docs state disparity not depth",
                   r"disparity pipeline, not a depth pipeline|disparity only")
 
@@ -279,9 +295,19 @@ def main() -> None:
           ids == ["EXP-{:03d}".format(i) for i in range(1, len(ids) + 1)], True)
 
     print("\n" + "=" * 72)
-    print("{} checks, {} failures".format(checks, len(failures)))
+    total = checks + len(skipped)
+    print("{} checks run, {} failures, {} skipped ({} defined)".format(
+        checks, len(failures), len(skipped), total))
     for f in failures:
         print("  FAIL " + f)
+    if skipped:
+        print()
+        print("  {} check(s) could not run in this environment:".format(len(skipped)))
+        for s in skipped:
+            print("    - " + s)
+        print("  These need artifacts that are downloaded rather than committed.")
+        print("  Restore them with the commands in reference/MANIFEST.md, or see")
+        print("  README.md, then re-run for the full {} checks.".format(total))
     sys.exit(1 if failures else 0)
 
 
