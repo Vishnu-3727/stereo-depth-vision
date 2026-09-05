@@ -1,0 +1,1130 @@
+[
+  {
+    "name": "/Tile_output_0",
+    "shape": [
+      1,
+      12,
+      368,
+      1232
+    ],
+    "dtype": "float32",
+    "elements": 5440512,
+    "bytes": 21762048,
+    "constant_value": 0.0,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_598",
+    "shape": [
+      32,
+      32,
+      3,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 27648,
+    "bytes": 110592,
+    "constant_value": 1.2558616617752705e-05,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_601",
+    "shape": [
+      32,
+      32,
+      3,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 27648,
+    "bytes": 110592,
+    "constant_value": -0.01060695480555296,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_604",
+    "shape": [
+      32,
+      32,
+      3,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 27648,
+    "bytes": 110592,
+    "constant_value": -0.06282102316617966,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_607",
+    "shape": [
+      32,
+      32,
+      3,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 27648,
+    "bytes": 110592,
+    "constant_value": 0.01610250025987625,
+    "all_same": false
+  },
+  {
+    "name": "downsampling.1.weight",
+    "shape": [
+      32,
+      32,
+      5,
+      5
+    ],
+    "dtype": "float32",
+    "elements": 25600,
+    "bytes": 102400,
+    "constant_value": 0.00847693346440792,
+    "all_same": false
+  },
+  {
+    "name": "downsampling.2.weight",
+    "shape": [
+      32,
+      32,
+      5,
+      5
+    ],
+    "dtype": "float32",
+    "elements": 25600,
+    "bytes": 102400,
+    "constant_value": 0.04028094559907913,
+    "all_same": false
+  },
+  {
+    "name": "downsampling.3.weight",
+    "shape": [
+      32,
+      32,
+      5,
+      5
+    ],
+    "dtype": "float32",
+    "elements": 25600,
+    "bytes": 102400,
+    "constant_value": -0.03754842281341553,
+    "all_same": false
+  },
+  {
+    "name": "res.6.weight",
+    "shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 9216,
+    "bytes": 36864,
+    "constant_value": -0.06735820323228836,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_526",
+    "shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 9216,
+    "bytes": 36864,
+    "constant_value": 0.0024543164763599634,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_529",
+    "shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 9216,
+    "bytes": 36864,
+    "constant_value": 0.029426340013742447,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_532",
+    "shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 9216,
+    "bytes": 36864,
+    "constant_value": -0.0023938945960253477,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_535",
+    "shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 9216,
+    "bytes": 36864,
+    "constant_value": -0.10475330799818039,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_538",
+    "shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 9216,
+    "bytes": 36864,
+    "constant_value": 0.005718405358493328,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_541",
+    "shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 9216,
+    "bytes": 36864,
+    "constant_value": -0.10627640783786774,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_544",
+    "shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 9216,
+    "bytes": 36864,
+    "constant_value": 0.003855772316455841,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_547",
+    "shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 9216,
+    "bytes": 36864,
+    "constant_value": 0.028750894591212273,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_550",
+    "shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 9216,
+    "bytes": 36864,
+    "constant_value": 0.0025719061959534883,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_553",
+    "shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 9216,
+    "bytes": 36864,
+    "constant_value": 0.1814168244600296,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_556",
+    "shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 9216,
+    "bytes": 36864,
+    "constant_value": -0.0010003624483942986,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_559",
+    "shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 9216,
+    "bytes": 36864,
+    "constant_value": 0.05814065411686897,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_610",
+    "shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 9216,
+    "bytes": 36864,
+    "constant_value": -0.0012639284832403064,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_613",
+    "shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 9216,
+    "bytes": 36864,
+    "constant_value": 0.03499966859817505,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_616",
+    "shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 9216,
+    "bytes": 36864,
+    "constant_value": 0.01863514631986618,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_619",
+    "shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 9216,
+    "bytes": 36864,
+    "constant_value": -0.0521249957382679,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_622",
+    "shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 9216,
+    "bytes": 36864,
+    "constant_value": -0.02293161116540432,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_625",
+    "shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 9216,
+    "bytes": 36864,
+    "constant_value": -0.08538427948951721,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_628",
+    "shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 9216,
+    "bytes": 36864,
+    "constant_value": -0.004773157183080912,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_631",
+    "shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 9216,
+    "bytes": 36864,
+    "constant_value": -0.11112473905086517,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_634",
+    "shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 9216,
+    "bytes": 36864,
+    "constant_value": -0.003738175146281719,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_637",
+    "shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 9216,
+    "bytes": 36864,
+    "constant_value": 0.014718321152031422,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_640",
+    "shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 9216,
+    "bytes": 36864,
+    "constant_value": -0.004476762376725674,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_643",
+    "shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 9216,
+    "bytes": 36864,
+    "constant_value": -0.0305536650121212,
+    "all_same": false
+  },
+  {
+    "name": "/Constant_50_output_0",
+    "shape": [
+      1,
+      32,
+      23,
+      11
+    ],
+    "dtype": "float32",
+    "elements": 8096,
+    "bytes": 32384,
+    "constant_value": 0.0,
+    "all_same": true
+  },
+  {
+    "name": "/Constant_45_output_0",
+    "shape": [
+      1,
+      32,
+      23,
+      10
+    ],
+    "dtype": "float32",
+    "elements": 7360,
+    "bytes": 29440,
+    "constant_value": 0.0,
+    "all_same": true
+  },
+  {
+    "name": "/Constant_40_output_0",
+    "shape": [
+      1,
+      32,
+      23,
+      9
+    ],
+    "dtype": "float32",
+    "elements": 6624,
+    "bytes": 26496,
+    "constant_value": 0.0,
+    "all_same": true
+  },
+  {
+    "name": "/Constant_35_output_0",
+    "shape": [
+      1,
+      32,
+      23,
+      8
+    ],
+    "dtype": "float32",
+    "elements": 5888,
+    "bytes": 23552,
+    "constant_value": 0.0,
+    "all_same": true
+  },
+  {
+    "name": "/Constant_30_output_0",
+    "shape": [
+      1,
+      32,
+      23,
+      7
+    ],
+    "dtype": "float32",
+    "elements": 5152,
+    "bytes": 20608,
+    "constant_value": 0.0,
+    "all_same": true
+  },
+  {
+    "name": "/Constant_25_output_0",
+    "shape": [
+      1,
+      32,
+      23,
+      6
+    ],
+    "dtype": "float32",
+    "elements": 4416,
+    "bytes": 17664,
+    "constant_value": 0.0,
+    "all_same": true
+  },
+  {
+    "name": "/Constant_20_output_0",
+    "shape": [
+      1,
+      32,
+      23,
+      5
+    ],
+    "dtype": "float32",
+    "elements": 3680,
+    "bytes": 14720,
+    "constant_value": 0.0,
+    "all_same": true
+  },
+  {
+    "name": "/Constant_15_output_0",
+    "shape": [
+      1,
+      32,
+      23,
+      4
+    ],
+    "dtype": "float32",
+    "elements": 2944,
+    "bytes": 11776,
+    "constant_value": 0.0,
+    "all_same": true
+  },
+  {
+    "name": "downsampling.0.weight",
+    "shape": [
+      32,
+      3,
+      5,
+      5
+    ],
+    "dtype": "float32",
+    "elements": 2400,
+    "bytes": 9600,
+    "constant_value": 0.056820400059223175,
+    "all_same": false
+  },
+  {
+    "name": "/Constant_10_output_0",
+    "shape": [
+      1,
+      32,
+      23,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 2208,
+    "bytes": 8832,
+    "constant_value": 0.0,
+    "all_same": true
+  },
+  {
+    "name": "/Constant_5_output_0",
+    "shape": [
+      1,
+      32,
+      23,
+      2
+    ],
+    "dtype": "float32",
+    "elements": 1472,
+    "bytes": 5888,
+    "constant_value": 0.0,
+    "all_same": true
+  },
+  {
+    "name": "refine.0.weight",
+    "shape": [
+      32,
+      4,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 1152,
+    "bytes": 4608,
+    "constant_value": -0.05069541186094284,
+    "all_same": false
+  },
+  {
+    "name": "cost_volume_filter.4.weight",
+    "shape": [
+      1,
+      32,
+      3,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 864,
+    "bytes": 3456,
+    "constant_value": 0.008373653516173363,
+    "all_same": false
+  },
+  {
+    "name": "/Constant_output_0",
+    "shape": [
+      1,
+      32,
+      23,
+      1
+    ],
+    "dtype": "float32",
+    "elements": 736,
+    "bytes": 2944,
+    "constant_value": 0.0,
+    "all_same": true
+  },
+  {
+    "name": "refine.7.weight",
+    "shape": [
+      1,
+      32,
+      3,
+      3
+    ],
+    "dtype": "float32",
+    "elements": 288,
+    "bytes": 1152,
+    "constant_value": 0.2858150899410248,
+    "all_same": false
+  },
+  {
+    "name": "downsampling.0.bias",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": -0.011991100385785103,
+    "all_same": false
+  },
+  {
+    "name": "downsampling.1.bias",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": -0.08739665150642395,
+    "all_same": false
+  },
+  {
+    "name": "downsampling.2.bias",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": 0.06872597336769104,
+    "all_same": false
+  },
+  {
+    "name": "downsampling.3.bias",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": 0.048776086419820786,
+    "all_same": false
+  },
+  {
+    "name": "res.6.bias",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": 4.306190180870163e-42,
+    "all_same": false
+  },
+  {
+    "name": "refine.0.bias",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": 0.08195417374372482,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_527",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": -0.1684063971042633,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_530",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": 1.200585126876831,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_533",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": 0.47477585077285767,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_536",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": -0.25081562995910645,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_539",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": 0.24192368984222412,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_542",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": 2.886136531829834,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_545",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": -0.7365900278091431,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_548",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": 0.31400543451309204,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_551",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": 0.02909056842327118,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_554",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": 2.5407915115356445,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_557",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": 0.038946717977523804,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_560",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": 1.378386378288269,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_599",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": -0.019562138244509697,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_602",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": 0.1429486870765686,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_605",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": 0.10074317455291748,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_608",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": 0.4558563232421875,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_611",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": -0.6219768524169922,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_614",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": 0.12130537629127502,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_617",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": 0.12526243925094604,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_620",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": -0.15170344710350037,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_623",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": 0.917933464050293,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_626",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": -0.10799514502286911,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_629",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": 0.4282565414905548,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_632",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": 0.14222513139247894,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_635",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": 0.5107526779174805,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_638",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": -0.5228244066238403,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_641",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": -0.8504337668418884,
+    "all_same": false
+  },
+  {
+    "name": "onnx::Conv_644",
+    "shape": [
+      32
+    ],
+    "dtype": "float32",
+    "elements": 32,
+    "bytes": 128,
+    "constant_value": -0.023565813899040222,
+    "all_same": false
+  },
+  {
+    "name": "/Concat_12_output_0",
+    "shape": [
+      4
+    ],
+    "dtype": "int64",
+    "elements": 4,
+    "bytes": 32,
+    "constant_value": null,
+    "all_same": false
+  },
+  {
+    "name": "/Constant_1_output_0",
+    "shape": [
+      1
+    ],
+    "dtype": "int64",
+    "elements": 1,
+    "bytes": 8,
+    "constant_value": null,
+    "all_same": true
+  },
+  {
+    "name": "/Constant_2_output_0",
+    "shape": [
+      1
+    ],
+    "dtype": "int64",
+    "elements": 1,
+    "bytes": 8,
+    "constant_value": null,
+    "all_same": true
+  },
+  {
+    "name": "/Constant_3_output_0",
+    "shape": [
+      1
+    ],
+    "dtype": "int64",
+    "elements": 1,
+    "bytes": 8,
+    "constant_value": null,
+    "all_same": true
+  },
+  {
+    "name": "/Constant_4_output_0",
+    "shape": [
+      1
+    ],
+    "dtype": "int64",
+    "elements": 1,
+    "bytes": 8,
+    "constant_value": null,
+    "all_same": true
+  },
+  {
+    "name": "cost_volume_filter.4.bias",
+    "shape": [
+      1
+    ],
+    "dtype": "float32",
+    "elements": 1,
+    "bytes": 4,
+    "constant_value": -0.020338552072644234,
+    "all_same": true
+  },
+  {
+    "name": "refine.7.bias",
+    "shape": [
+      1
+    ],
+    "dtype": "float32",
+    "elements": 1,
+    "bytes": 4,
+    "constant_value": 0.16527080535888672,
+    "all_same": true
+  }
+]

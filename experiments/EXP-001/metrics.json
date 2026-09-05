@@ -1,0 +1,88 @@
+{
+  "experiment_id": "EXP-001",
+  "description": "Static forensics of the Hailo StereoNet ONNX: graph inventory, parameter accounting and shape-derived cost model",
+  "status": "completed",
+  "started_utc": "2026-09-05T01:08:22.620597+00:00",
+  "finished_utc": "2026-09-05T01:08:34.226003+00:00",
+  "duration_s": 11.605406,
+  "metrics": {
+    "onnx_file_bytes": 23690586,
+    "node_count": 168,
+    "operator_inventory": {
+      "Conv": 53,
+      "LeakyRelu": 40,
+      "Add": 19,
+      "Concat": 13,
+      "Sub": 12,
+      "Unsqueeze": 12,
+      "Slice": 11,
+      "Transpose": 1,
+      "Squeeze": 1,
+      "Resize": 1,
+      "Neg": 1,
+      "Softmax": 1,
+      "Mul": 1,
+      "ReduceSum": 1,
+      "Relu": 1
+    },
+    "inputs": [
+      {
+        "name": "input.1",
+        "shape": [
+          1,
+          3,
+          368,
+          1232
+        ],
+        "dtype": "FLOAT"
+      },
+      {
+        "name": "input.83",
+        "shape": [
+          1,
+          3,
+          368,
+          1232
+        ],
+        "dtype": "FLOAT"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "524",
+        "shape": [
+          1,
+          1,
+          368,
+          1232
+        ],
+        "dtype": "FLOAT"
+      }
+    ],
+    "params_unique_tensors": 423586,
+    "params_per_node_occurrence": 623138,
+    "hailo_published_parameters": 623100,
+    "macs": 56039313792,
+    "ops_2x_macs": 112078627584,
+    "elementwise_ops": 338218496,
+    "hailo_published_operations": 112200000000,
+    "peak_single_activation_bytes": 58032128,
+    "activation_traffic_bytes": 1991138336,
+    "learned_parameter_bytes_fp32": 1694344,
+    "non_learned_constant_bytes": 21956416,
+    "refinement_mac_share": 0.9063747679089353,
+    "refinement_activation_traffic_share": 0.9080551839668863,
+    "param_gap_vs_published": 38,
+    "ops_gap_vs_published": -121372416,
+    "ops_relative_gap_vs_published": -0.001081750588235294
+  },
+  "observations": [
+    "The exported graph builds its cost volume with Sub (12 Sub nodes at 1/16 resolution, 32 channels). The upstream repository README states the cost volume uses concatenation. The ONNX is the executable artifact Hailo compiled, so subtraction is what the deployed baseline actually does.",
+    "Parameter discrepancy resolved. Unique learned tensors total 423,586. Counting the shared siamese feature extractor once per node occurrence instead gives 623,138, which matches Hailo's published 623.1K to within 38 parameters (rounding). Hailo therefore counts weights per graph occurrence, not per unique tensor.",
+    "Operation count reproduced. Our shape-derived MAC total is 56.04G; doubling it gives 112.08G against Hailo's published 112.2G, a relative gap of -0.11%. Hailo's 'operations' figure is therefore 2 x MACs.",
+    "92% of the ONNX file is one initializer: /Tile_output_0, a [1, 12, 368, 1232] float32 constant of 21,762,048 bytes. It is the soft-argmin disparity index grid, materialised at full resolution and multiplied elementwise. The learned weights are only 1,694,344 bytes of the 23.7 MB file.",
+    "Static cost is dominated by the full-resolution refinement stage: 90.6% of MACs and 90.8% of activation traffic. This is a static shape-derived figure, not a latency measurement -- whether it is the runtime bottleneck is still open and is tested in W8."
+  ],
+  "conclusion": "Both published complexity figures are independently reproduced from the ONNX shapes, and the counting conventions behind them are now known. The graph is fully resolved: 168 nodes, static shapes throughout, cost volume at 1/16 resolution with 12 disparity candidates built by subtraction, and a full-resolution refinement stage that carries the overwhelming majority of the arithmetic.",
+  "error": null
+}

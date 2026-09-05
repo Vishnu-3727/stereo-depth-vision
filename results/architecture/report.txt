@@ -1,0 +1,47 @@
+Per-stage cost, derived from the ONNX shapes (batch 1, 368x1232 input).
+
+stage                              nodes     params             MACs    MAC %   peak act MiB act traffic MiB
+------------------------------------------------------------------------------------------------------------
+feature extraction (left branch)      35    199,552    1,436,295,168     2.6%           13.8           25.1
+feature extraction (right branch)     35          0    1,436,295,168     2.6%           13.8           25.1
+cost volume construction              48          0                0     0.0%            2.6           15.3
+cost volume aggregation (3D)          10    111,585    2,368,662,912     4.2%            2.6           20.9
+upsample + soft-argmin                 5          0        5,440,512     0.0%           20.8           84.7
+refinement (full resolution)          33    112,449   50,792,620,032    90.6%           55.3         1724.3
+residual add + ReLU                    2          0                0     0.0%            1.7            3.5
+------------------------------------------------------------------------------------------------------------
+TOTAL                                168    423,586   56,039,313,792                    55.3         1898.9
+
+parameter counting:
+  unique learned tensors            : 423,586
+  counted once per node occurrence  : 623,138
+  (the siamese feature extractor runs twice but shares one set of weights)
+
+operation counting:
+  MACs                              : 56,039,313,792 (56.0G)
+  2 x MACs                          : 112,078,627,584 (112.1G)
+  elementwise ops (not MACs)        : 338,218,496 (0.34G)
+
+ten most expensive nodes by MACs:
+   135 Conv Conv                       4,178,313,216 MACs  out=[1, 32, 368, 1232]
+   137 Conv Conv                       4,178,313,216 MACs  out=[1, 32, 368, 1232]
+   140 Conv Conv                       4,178,313,216 MACs  out=[1, 32, 368, 1232]
+   142 Conv Conv                       4,178,313,216 MACs  out=[1, 32, 368, 1232]
+   145 Conv Conv                       4,178,313,216 MACs  out=[1, 32, 368, 1232]
+   147 Conv Conv                       4,178,313,216 MACs  out=[1, 32, 368, 1232]
+   150 Conv Conv                       4,178,313,216 MACs  out=[1, 32, 368, 1232]
+   152 Conv Conv                       4,178,313,216 MACs  out=[1, 32, 368, 1232]
+   155 Conv Conv                       4,178,313,216 MACs  out=[1, 32, 368, 1232]
+   157 Conv Conv                       4,178,313,216 MACs  out=[1, 32, 368, 1232]
+
+ten largest single activations:
+   134 Conv Conv                         55.34 MiB  out=[1, 32, 368, 1232]
+   135 Conv Conv                         55.34 MiB  out=[1, 32, 368, 1232]
+   136 LeakyRelu LeakyRelu               55.34 MiB  out=[1, 32, 368, 1232]
+   137 Conv Conv                         55.34 MiB  out=[1, 32, 368, 1232]
+   138 Add Add                           55.34 MiB  out=[1, 32, 368, 1232]
+   139 LeakyRelu LeakyRelu               55.34 MiB  out=[1, 32, 368, 1232]
+   140 Conv Conv                         55.34 MiB  out=[1, 32, 368, 1232]
+   141 LeakyRelu LeakyRelu               55.34 MiB  out=[1, 32, 368, 1232]
+   142 Conv Conv                         55.34 MiB  out=[1, 32, 368, 1232]
+   143 Add Add                           55.34 MiB  out=[1, 32, 368, 1232]

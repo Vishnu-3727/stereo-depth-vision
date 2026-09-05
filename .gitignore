@@ -3,6 +3,7 @@ data/
 # vendor artifacts — downloaded, hashed, but not committed (see reference/MANIFEST.md)
 reference/*
 !reference/MANIFEST.md
+!reference/manifest.json
 !reference/.gitkeep
 # experiment outputs — large; metrics.json and env.json ARE committed
 experiments/**/*.pth
