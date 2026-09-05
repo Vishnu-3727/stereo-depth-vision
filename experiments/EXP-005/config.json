@@ -1,0 +1,19 @@
+{
+  "dataset": "kitti2015",
+  "split": "hailo_val (training scenes 160-199, frame _10)",
+  "resolution": [
+    368,
+    1232
+  ],
+  "crop": "pad bottom/right then crop top-left, per Hailo preprocessing",
+  "disparity_range": "0-176 px in 16 px steps (12 candidates at 1/16)",
+  "batch_size": 1,
+  "precision": "fp32",
+  "seed": null,
+  "model": "reference/onnx/stereonet.onnx",
+  "runtime": "onnxruntime 1.27.0",
+  "providers": [
+    "CPUExecutionProvider"
+  ],
+  "scenes": 40
+}

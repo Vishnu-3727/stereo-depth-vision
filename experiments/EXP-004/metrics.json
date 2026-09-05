@@ -1,0 +1,111 @@
+{
+  "experiment_id": "EXP-004",
+  "description": "Reproduce Hailo's published StereoNet KITTI figure by running the reference ONNX under several protocol variants",
+  "status": "completed",
+  "started_utc": "2026-09-05T01:23:10.834051+00:00",
+  "finished_utc": "2026-09-05T01:23:23.717799+00:00",
+  "duration_s": 12.883748,
+  "metrics": {
+    "scenes_evaluated": 3,
+    "onnxruntime_providers": [
+      "CPUExecutionProvider"
+    ],
+    "latency_mean_s": 0.7022914333333574,
+    "latency_median_s": 0.6576531999999133,
+    "note_on_latency": "onnxruntime on this host under no thermal or memory control. Indicative only; the profiling experiments in W8 are the authority, and neither is comparable to Hailo silicon.",
+    "prediction_distribution": {
+      "min": 4.043898582458496,
+      "max": 135.72520446777344,
+      "mean": 31.226125717163086,
+      "p99": 118.09224700927734,
+      "fraction_zero": 0.0
+    },
+    "variants": {
+      "hailo_exact": {
+        "description": "Hailo's evaluator reimplemented exactly: disp_occ_0 ground truth scaled by 1/255, per-image outlier rate averaged over images.",
+        "aggregate": "per_image",
+        "disparity_scale": 255.0,
+        "ground_truth": "disp_occ_0",
+        "headline_percent": 8.790821974889207,
+        "gap_vs_published": 0.5678219748892062,
+        "pooled_metrics": {
+          "valid_pixels": 273720,
+          "epe": 1.5754223215114855,
+          "rmse": 3.4903696432481515,
+          "d1": 8.893394709922548,
+          "bad1": 42.88177699839252,
+          "bad2": 18.686614058161624,
+          "bad3": 10.983486774806371
+        },
+        "per_image_outlier_rate_percent_mean": 8.790821974889207,
+        "per_image_outlier_rate_percent_std": 1.8436040185678226
+      },
+      "hailo_scale_kitti_gt": {
+        "description": "As above but with KITTI's official 1/256 ground-truth scale, to isolate the effect of Hailo's non-standard divisor.",
+        "aggregate": "per_image",
+        "disparity_scale": 256.0,
+        "ground_truth": "disp_occ_0",
+        "headline_percent": 8.687174530152253,
+        "gap_vs_published": 0.46417453015225263,
+        "pooled_metrics": {
+          "valid_pixels": 273720,
+          "epe": 1.551924396202297,
+          "rmse": 3.463725167888082,
+          "d1": 8.768449510448633,
+          "bad1": 41.139120268887915,
+          "bad2": 18.876589215256466,
+          "bad3": 11.035729943007452
+        },
+        "per_image_outlier_rate_percent_mean": 8.687174530152253,
+        "per_image_outlier_rate_percent_std": 1.8927251975261676
+      },
+      "kitti_official_d1_all": {
+        "description": "KITTI convention: 1/256 ground truth, outliers pooled over all valid pixels rather than averaged per image. D1-all.",
+        "aggregate": "pooled",
+        "disparity_scale": 256.0,
+        "ground_truth": "disp_occ_0",
+        "headline_percent": 8.768449510448633,
+        "gap_vs_published": 0.5454495104486323,
+        "pooled_metrics": {
+          "valid_pixels": 273720,
+          "epe": 1.551924396202297,
+          "rmse": 3.463725167888082,
+          "d1": 8.768449510448633,
+          "bad1": 41.139120268887915,
+          "bad2": 18.876589215256466,
+          "bad3": 11.035729943007452
+        },
+        "per_image_outlier_rate_percent_mean": 8.687174530152253,
+        "per_image_outlier_rate_percent_std": 1.8927251975261676
+      },
+      "kitti_official_d1_noc": {
+        "description": "As above on disp_noc_0, excluding occluded pixels. D1-noc.",
+        "aggregate": "pooled",
+        "disparity_scale": 256.0,
+        "ground_truth": "disp_noc_0",
+        "headline_percent": 7.605454978291181,
+        "gap_vs_published": -0.6175450217088194,
+        "pooled_metrics": {
+          "valid_pixels": 264639,
+          "epe": 1.3895694137705628,
+          "rmse": 3.05631843610647,
+          "d1": 7.605454978291181,
+          "bad1": 39.6479732768035,
+          "bad2": 17.181141101651683,
+          "bad3": 9.465725006518314
+        },
+        "per_image_outlier_rate_percent_mean": 7.708925439697271,
+        "per_image_outlier_rate_percent_std": 1.321531455014454
+      }
+    },
+    "hailo_published": 8.223
+  },
+  "observations": [
+    "Hailo's Model Zoo evaluator for this model does not compute end-point error, despite 'eval_metric: EPE' in the configuration. Its update_op computes the KITTI D1 outlier rate -- error above 3 px AND above 5 % of ground truth -- names the variable three_pixel_correct_rate, averages it per image, and reports it as a percentage because Eval.is_percentage() defaults to True and the stereo evaluator does not override it.",
+    "Under Hailo's exact protocol the model scores 8.791 %, against a published 8.223 % -- a gap of +0.568 points.",
+    "The model's actual end-point error on the same predictions is 1.552 px under the official KITTI ground-truth scale. The published 8.223 and this figure are different quantities and must never be compared with each other or with another model's EPE.",
+    "Hailo's 1/255 ground-truth divisor inflates ground-truth disparities by 256/255. Its effect on the headline number is the difference between the hailo_exact and hailo_scale_kitti_gt variants: -0.104 points."
+  ],
+  "conclusion": "The published figure is a KITTI D1 outlier rate in percent, not an end-point error in pixels. Reproduction result and residual gap recorded above; the apparent seven-fold disagreement with the StereoNet paper's KITTI numbers was a units problem, not an accuracy problem.",
+  "error": null
+}
