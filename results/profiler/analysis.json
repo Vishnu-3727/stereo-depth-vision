@@ -1,0 +1,784 @@
+{
+  "by_stage": {
+    "io/const": {
+      "layers": 12,
+      "macs": 0.0,
+      "mac_share": 0.0,
+      "min_fps": 252.01,
+      "l2_data_usage_bytes": 0.0,
+      "mean_effective_mac_util": 0.00023363518629085944
+    },
+    "normalisation": {
+      "layers": 2,
+      "macs": 2720256.0,
+      "mac_share": 4.8352471384214154e-05,
+      "min_fps": 699.43,
+      "l2_data_usage_bytes": 0.0,
+      "mean_effective_mac_util": 0.02138694627610447
+    },
+    "feature extraction (left)": {
+      "layers": 28,
+      "macs": 1441849024.0,
+      "mac_share": 0.025628824519941175,
+      "min_fps": 100.63,
+      "l2_data_usage_bytes": 292864.0,
+      "mean_effective_mac_util": 0.0855098471967382
+    },
+    "data movement": {
+      "layers": 128,
+      "macs": 0.0,
+      "mac_share": 0.0,
+      "min_fps": 178.57,
+      "l2_data_usage_bytes": 0.0,
+      "mean_effective_mac_util": 0.26602764326887945
+    },
+    "feature extraction (right)": {
+      "layers": 17,
+      "macs": 1441849024.0,
+      "mac_share": 0.025628824519941175,
+      "min_fps": 100.63,
+      "l2_data_usage_bytes": 292864.0,
+      "mean_effective_mac_util": 0.1408397483240394
+    },
+    "regression / elementwise": {
+      "layers": 22,
+      "macs": 19381824.0,
+      "mac_share": 0.00034451135861252583,
+      "min_fps": 110.15,
+      "l2_data_usage_bytes": 0.0,
+      "mean_effective_mac_util": 0.06398377170014871
+    },
+    "aggregation (3D)": {
+      "layers": 5,
+      "macs": 2371404420.0,
+      "mac_share": 0.04215164468287138,
+      "min_fps": 285.56,
+      "l2_data_usage_bytes": 522240.0,
+      "mean_effective_mac_util": 0.6909123020190059
+    },
+    "refinement": {
+      "layers": 14,
+      "macs": 50981677824.0,
+      "mac_share": 0.9061978424472495,
+      "min_fps": 43.03,
+      "l2_data_usage_bytes": 6283264.0,
+      "mean_effective_mac_util": 0.4908721320525468
+    },
+    "other": {
+      "layers": 14,
+      "macs": 0.0,
+      "mac_share": 0.0,
+      "min_fps": 1122.89,
+      "l2_data_usage_bytes": 0.0,
+      "mean_effective_mac_util": 0.0
+    }
+  },
+  "slowest_layers": [
+    {
+      "layer_name": "conv50",
+      "layer_type": "conv",
+      "stage": "refinement",
+      "fps": 43.03,
+      "macs": 4192821248.0,
+      "context": "context_4",
+      "effective_mac_util": 0.8279607832372421,
+      "defuse_name": ""
+    },
+    {
+      "layer_name": "conv52",
+      "layer_type": "conv",
+      "stage": "refinement",
+      "fps": 53.45,
+      "macs": 4192821248.0,
+      "context": "context_4",
+      "effective_mac_util": 0.6353903493791677,
+      "defuse_name": ""
+    },
+    {
+      "layer_name": "conv41",
+      "layer_type": "conv",
+      "stage": "refinement",
+      "fps": 72.8,
+      "macs": 4192821248.0,
+      "context": "context_2",
+      "effective_mac_util": 0.7492758471907429,
+      "defuse_name": ""
+    },
+    {
+      "layer_name": "conv49",
+      "layer_type": "conv",
+      "stage": "refinement",
+      "fps": 72.8,
+      "macs": 4192821248.0,
+      "context": "context_4",
+      "effective_mac_util": 0.44282405438665096,
+      "defuse_name": ""
+    },
+    {
+      "layer_name": "conv51",
+      "layer_type": "conv",
+      "stage": "refinement",
+      "fps": 72.8,
+      "macs": 4192821248.0,
+      "context": "context_4",
+      "effective_mac_util": 0.44282405438665096,
+      "defuse_name": ""
+    },
+    {
+      "layer_name": "conv40",
+      "layer_type": "conv",
+      "stage": "refinement",
+      "fps": 75.41,
+      "macs": 536797184.0,
+      "context": "context_2",
+      "effective_mac_util": 0.3816416503443333,
+      "defuse_name": ""
+    },
+    {
+      "layer_name": "conv44",
+      "layer_type": "conv",
+      "stage": "refinement",
+      "fps": 76.09,
+      "macs": 4192821248.0,
+      "context": "context_2",
+      "effective_mac_util": 0.7194461909608347,
+      "defuse_name": ""
+    },
+    {
+      "layer_name": "conv42",
+      "layer_type": "conv",
+      "stage": "refinement",
+      "fps": 83.89,
+      "macs": 4192821248.0,
+      "context": "context_2",
+      "effective_mac_util": 0.7005234431233429,
+      "defuse_name": ""
+    },
+    {
+      "layer_name": "conv2",
+      "layer_type": "conv",
+      "stage": "feature extraction (left)",
+      "fps": 100.63,
+      "macs": 726308352.0,
+      "context": "context_0",
+      "effective_mac_util": 0.7356382012367249,
+      "defuse_name": "stereonet/conv2"
+    },
+    {
+      "layer_name": "conv19",
+      "layer_type": "conv",
+      "stage": "feature extraction (right)",
+      "fps": 100.63,
+      "macs": 726308352.0,
+      "context": "context_0",
+      "effective_mac_util": 0.7356382012367249,
+      "defuse_name": "stereonet/conv19"
+    },
+    {
+      "layer_name": "conv43",
+      "layer_type": "conv",
+      "stage": "refinement",
+      "fps": 101.96,
+      "macs": 4192821248.0,
+      "context": "context_2",
+      "effective_mac_util": 0.502212683431224,
+      "defuse_name": ""
+    },
+    {
+      "layer_name": "resize1",
+      "layer_type": "resize",
+      "stage": "regression / elementwise",
+      "fps": 110.15,
+      "macs": 0.0,
+      "context": "context_2",
+      "effective_mac_util": null,
+      "defuse_name": "stereonet/resize1"
+    },
+    {
+      "layer_name": "sh_from_conv40_sdc_to_conv42_sd0-3",
+      "layer_type": "shortcut",
+      "stage": "data movement",
+      "fps": 178.57,
+      "macs": 0.0,
+      "context": "context_2",
+      "effective_mac_util": 0.3300684543670606,
+      "defuse_name": "stereonet/sh_from_conv40_sdc_to_conv42_sd0-3"
+    },
+    {
+      "layer_name": "sh_from_conv46_to_sh_from_conv46_to_conv48_sd0-3_sh_from_conv46_to_conv48_sd4-7_sh_from_conv46_to_conv48_sd8-11_sh_from_co_1501",
+      "layer_type": "shortcut",
+      "stage": "data movement",
+      "fps": 178.57,
+      "macs": 0.0,
+      "context": "context_4",
+      "effective_mac_util": 0.19507135020561875,
+      "defuse_name": "stereonet/sh_from_conv46_to_sh_from_conv46_to_conv48_sd0-3_sh_from_conv46_to_conv48_sd4-7_sh_from_conv46_to_conv48_sd8-11_sh_from_co_1501"
+    },
+    {
+      "layer_name": "mul_and_add1",
+      "layer_type": "normalization",
+      "stage": "regression / elementwise",
+      "fps": 180.56,
+      "macs": 5440512.0,
+      "context": "context_2",
+      "effective_mac_util": 0.10830371118259348,
+      "defuse_name": "stereonet/mul_and_add1"
+    }
+  ],
+  "layers_per_context": {
+    "context_0": 77,
+    "context_1": 70,
+    "context_2": 27,
+    "context_3": 28,
+    "context_4": 32,
+    "context_5": 8
+  },
+  "defuse_groups": {
+    "stereonet/const_input1": [
+      "const_input1"
+    ],
+    "stereonet/const_input10": [
+      "const_input10"
+    ],
+    "stereonet/const_input11": [
+      "const_input11"
+    ],
+    "stereonet/const_input12": [
+      "const_input12"
+    ],
+    "stereonet/const_input2": [
+      "const_input2"
+    ],
+    "stereonet/const_input3": [
+      "const_input3"
+    ],
+    "stereonet/const_input5": [
+      "const_input5"
+    ],
+    "stereonet/const_input6": [
+      "const_input6"
+    ],
+    "stereonet/const_input7": [
+      "const_input7"
+    ],
+    "stereonet/const_input8": [
+      "const_input8"
+    ],
+    "stereonet/const_input9": [
+      "const_input9"
+    ],
+    "stereonet/normalization1": [
+      "normalization1"
+    ],
+    "stereonet/conv2": [
+      "conv2"
+    ],
+    "stereonet/conv3": [
+      "conv3"
+    ],
+    "stereonet/conv4": [
+      "conv4"
+    ],
+    "stereonet/conv5": [
+      "conv5"
+    ],
+    "stereonet/conv6": [
+      "conv6"
+    ],
+    "stereonet/conv7": [
+      "conv7"
+    ],
+    "stereonet/conv8": [
+      "conv8"
+    ],
+    "stereonet/conv9": [
+      "conv9"
+    ],
+    "stereonet/conv10": [
+      "conv10"
+    ],
+    "stereonet/conv11": [
+      "conv11"
+    ],
+    "stereonet/conv12": [
+      "conv12"
+    ],
+    "stereonet/conv13": [
+      "conv13"
+    ],
+    "stereonet/conv14": [
+      "conv14"
+    ],
+    "stereonet/conv15": [
+      "conv15"
+    ],
+    "stereonet/conv16": [
+      "conv16"
+    ],
+    "stereonet/conv17": [
+      "conv17"
+    ],
+    "stereonet/concat1": [
+      "concat1"
+    ],
+    "stereonet/concat10": [
+      "concat10"
+    ],
+    "stereonet/concat11": [
+      "concat11"
+    ],
+    "stereonet/concat2": [
+      "concat2"
+    ],
+    "stereonet/concat3": [
+      "concat3"
+    ],
+    "stereonet/concat4": [
+      "concat4"
+    ],
+    "stereonet/concat5": [
+      "concat5"
+    ],
+    "stereonet/concat6": [
+      "concat6"
+    ],
+    "stereonet/concat7": [
+      "concat7"
+    ],
+    "stereonet/concat8": [
+      "concat8"
+    ],
+    "stereonet/concat9": [
+      "concat9"
+    ],
+    "stereonet/normalization2": [
+      "normalization2"
+    ],
+    "stereonet/conv19": [
+      "conv19"
+    ],
+    "stereonet/conv20": [
+      "conv20"
+    ],
+    "stereonet/conv21": [
+      "conv21"
+    ],
+    "stereonet/conv22": [
+      "conv22"
+    ],
+    "stereonet/conv23": [
+      "conv23"
+    ],
+    "stereonet/conv24": [
+      "conv24"
+    ],
+    "stereonet/conv25": [
+      "conv25"
+    ],
+    "stereonet/conv26": [
+      "conv26"
+    ],
+    "stereonet/conv27": [
+      "conv27"
+    ],
+    "stereonet/conv28": [
+      "conv28"
+    ],
+    "stereonet/conv29": [
+      "conv29"
+    ],
+    "stereonet/conv30": [
+      "conv30"
+    ],
+    "stereonet/conv31": [
+      "conv31"
+    ],
+    "stereonet/conv32": [
+      "conv32"
+    ],
+    "stereonet/conv33": [
+      "conv33"
+    ],
+    "stereonet/conv34": [
+      "conv34"
+    ],
+    "stereonet/ew_sub1": [
+      "ew_sub1"
+    ],
+    "stereonet/slice1": [
+      "slice1"
+    ],
+    "stereonet/ew_sub5": [
+      "ew_sub5"
+    ],
+    "stereonet/slice10": [
+      "slice10"
+    ],
+    "stereonet/ew_sub12": [
+      "ew_sub12"
+    ],
+    "stereonet/slice11": [
+      "slice11"
+    ],
+    "stereonet/ew_sub2": [
+      "ew_sub2"
+    ],
+    "stereonet/slice2": [
+      "slice2"
+    ],
+    "stereonet/ew_sub3": [
+      "ew_sub3"
+    ],
+    "stereonet/slice3": [
+      "slice3"
+    ],
+    "stereonet/ew_sub4": [
+      "ew_sub4"
+    ],
+    "stereonet/slice4": [
+      "slice4"
+    ],
+    "stereonet/ew_sub6": [
+      "ew_sub6"
+    ],
+    "stereonet/slice5": [
+      "slice5"
+    ],
+    "stereonet/ew_sub7": [
+      "ew_sub7"
+    ],
+    "stereonet/slice6": [
+      "slice6"
+    ],
+    "stereonet/ew_sub8": [
+      "ew_sub8"
+    ],
+    "stereonet/slice7": [
+      "slice7"
+    ],
+    "stereonet/ew_sub9": [
+      "ew_sub9"
+    ],
+    "stereonet/slice8": [
+      "slice8"
+    ],
+    "stereonet/ew_sub10": [
+      "ew_sub10"
+    ],
+    "stereonet/slice9": [
+      "slice9"
+    ],
+    "stereonet/ew_sub11": [
+      "ew_sub11"
+    ],
+    "stereonet/concat12": [
+      "concat12"
+    ],
+    "stereonet/external_pad1": [
+      "external_pad1"
+    ],
+    "stereonet/external_pad2": [
+      "external_pad2"
+    ],
+    "stereonet/external_pad3": [
+      "external_pad3"
+    ],
+    "stereonet/external_pad4": [
+      "external_pad4"
+    ],
+    "stereonet/external_pad5": [
+      "external_pad5"
+    ],
+    "stereonet/resize1": [
+      "resize1"
+    ],
+    "stereonet/mul_and_add1": [
+      "mul_and_add1"
+    ],
+    "stereonet/reduce_max_softmax1": [
+      "reduce_max_softmax1"
+    ],
+    "stereonet/ew_sub_softmax1": [
+      "ew_sub_softmax1"
+    ],
+    "stereonet/reduce_sum_softmax1": [
+      "reduce_sum_softmax1"
+    ],
+    "stereonet/ew_mult_softmax1": [
+      "ew_mult_softmax1"
+    ],
+    "stereonet/ew_mult1": [
+      "ew_mult1"
+    ],
+    "stereonet/reduce_sum1": [
+      "reduce_sum1"
+    ],
+    "stereonet/concat13": [
+      "concat13"
+    ],
+    "stereonet/sh_from_conv17_to_sh_from_conv17_to_sh_from_conv17_to_conv17_concat1_transpose_conv17_concat10_transpose_conv17_con_2": [
+      "sh_from_conv17_to_sh_from_conv17_to_sh_from_conv17_to_conv17_concat1_transpose_conv17_concat10_transpose_conv17_con_2"
+    ],
+    "stereonet/sh_from_conv17_to_sh_from_conv17_to_conv17_concat1_transpose_conv17_concat10_transpose_conv17_concat11_transpose_co_1": [
+      "sh_from_conv17_to_sh_from_conv17_to_conv17_concat1_transpose_conv17_concat10_transpose_conv17_concat11_transpose_co_1"
+    ],
+    "stereonet/sh_from_conv17_to_conv17_concat1_transpose_conv17_concat10_transpose_conv17_concat11_transpose_conv17_concat2_transpo": [
+      "sh_from_conv17_to_conv17_concat1_transpose_conv17_concat10_transpose_conv17_concat11_transpose_conv17_concat2_transpo"
+    ],
+    "stereonet/mux_conv17_concat10_transpose_conv17_concat11_transpose_conv17_concat2_transpose_to_concat2_concat10-11": [
+      "mux_conv17_concat10_transpose_conv17_concat11_transpose_conv17_concat2_transpose_to_concat2_concat10-11"
+    ],
+    "stereonet/demux_conv17_concat10_transpose_conv17_concat11_transpose_conv17_concat2_transpose_to_concat2_concat10-11": [
+      "demux_conv17_concat10_transpose_conv17_concat11_transpose_conv17_concat2_transpose_to_concat2_concat10-11"
+    ],
+    "stereonet/mux_conv17_concat3_transpose_conv17_concat5_transpose_to_concat3_concat5": [
+      "mux_conv17_concat3_transpose_conv17_concat5_transpose_to_concat3_concat5"
+    ],
+    "stereonet/demux_conv17_concat3_transpose_conv17_concat5_transpose_to_concat3_concat5": [
+      "demux_conv17_concat3_transpose_conv17_concat5_transpose_to_concat3_concat5"
+    ],
+    "stereonet/mux_conv17_concat7_transpose_concat6_to_concat6_slice6_transpose_concat7": [
+      "mux_conv17_concat7_transpose_concat6_to_concat6_slice6_transpose_concat7"
+    ],
+    "stereonet/demux_conv17_concat7_transpose_concat6_to_concat6_slice6_transpose_concat7": [
+      "demux_conv17_concat7_transpose_concat6_to_concat6_slice6_transpose_concat7"
+    ],
+    "stereonet/mux_conv17_concat9_transpose_conv17_concat8_transpose_conv17_to_concat8-9_ew_sub1": [
+      "mux_conv17_concat9_transpose_conv17_concat8_transpose_conv17_to_concat8-9_ew_sub1"
+    ],
+    "stereonet/demux_conv17_concat9_transpose_conv17_concat8_transpose_conv17_to_concat8-9_ew_sub1": [
+      "demux_conv17_concat9_transpose_conv17_concat8_transpose_conv17_to_concat8-9_ew_sub1"
+    ],
+    "stereonet/sh_from_conv34_to_sh_from_conv34_to_sh_from_conv34_to_ew_sub1_ew_sub5_ew_sub12_ew_sub3_ew_sub6_ew_sub7-9": [
+      "sh_from_conv34_to_sh_from_conv34_to_sh_from_conv34_to_ew_sub1_ew_sub5_ew_sub12_ew_sub3_ew_sub6_ew_sub7-9"
+    ],
+    "stereonet/mux_sh_from_conv34_to_sh_from_conv34_to_sh_from_conv34_to_ew_sub1_ew_sub5_ew_sub12_ew_sub3_ew_sub6_ew_sub7-9_conv34_t": [
+      "mux_sh_from_conv34_to_sh_from_conv34_to_sh_from_conv34_to_ew_sub1_ew_sub5_ew_sub12_ew_sub3_ew_sub6_ew_sub7-9_conv34_t"
+    ],
+    "stereonet/demux_sh_from_conv34_to_sh_from_conv34_to_sh_from_conv34_to_ew_sub1_ew_sub5_ew_sub12_ew_sub3_ew_sub6_ew_sub7-9_conv34": [
+      "demux_sh_from_conv34_to_sh_from_conv34_to_sh_from_conv34_to_ew_sub1_ew_sub5_ew_sub12_ew_sub3_ew_sub6_ew_sub7-9_conv34"
+    ],
+    "stereonet/demuxer-shortcut_from_context_0_to_context_1_in_40_to_sh_from_conv34_to_sh_from_conv34_to_ew_sub1_ew_sub5_ew_sub12_ew": [
+      "demuxer-shortcut_from_context_0_to_context_1_in_40_to_sh_from_conv34_to_sh_from_conv34_to_ew_sub1_ew_sub5_ew_sub12_ew"
+    ],
+    "stereonet/sh_from_conv34_to_sh_from_conv34_to_ew_sub1_ew_sub5_ew_sub12_ew_sub3_ew_sub6": [
+      "sh_from_conv34_to_sh_from_conv34_to_ew_sub1_ew_sub5_ew_sub12_ew_sub3_ew_sub6"
+    ],
+    "stereonet/sh_from_conv34_to_ew_sub1_ew_sub5_ew_sub12": [
+      "sh_from_conv34_to_ew_sub1_ew_sub5_ew_sub12"
+    ],
+    "stereonet/concat_from_ew_sub1_ew_sub5_ew_sub8_to_concat12": [
+      "concat_from_ew_sub1_ew_sub5_ew_sub8_to_concat12"
+    ],
+    "stereonet/demuxer-shortcut_from_context_0_to_context_1_in_37_to_ew_sub10-11": [
+      "demuxer-shortcut_from_context_0_to_context_1_in_37_to_ew_sub10-11"
+    ],
+    "stereonet/concat_from_concat_from_ew_sub1_ew_sub5_ew_sub8_to_concat12_ew_sub9-11_to_concat12": [
+      "concat_from_concat_from_ew_sub1_ew_sub5_ew_sub8_to_concat12_ew_sub9-11_to_concat12"
+    ],
+    "stereonet/concat_from_concat_from_concat_from_ew_sub1_ew_sub5_ew_sub8_to_concat12_ew_sub9-11_to_concat12_ew_sub2_ew_sub12_to_co": [
+      "concat_from_concat_from_concat_from_ew_sub1_ew_sub5_ew_sub8_to_concat12_ew_sub9-11_to_concat12_ew_sub2_ew_sub12_to_co"
+    ],
+    "stereonet/sh_from_conv40_sdc_to_conv42_sd0-3": [
+      "sh_from_conv40_sdc_to_conv42_sd0-3"
+    ],
+    "stereonet/sh_from_sh_from_conv40_sdc_to_conv42_sd0-3_to_conv42_sd0-1": [
+      "sh_from_sh_from_conv40_sdc_to_conv42_sd0-3_to_conv42_sd0-1"
+    ],
+    "stereonet/sh_from_sh_from_conv40_sdc_to_conv42_sd0-3_to_conv42_sd2-3": [
+      "sh_from_sh_from_conv40_sdc_to_conv42_sd0-3_to_conv42_sd2-3"
+    ],
+    "stereonet/ws_from_conv42_ws_to_conv42_sd0-2": [
+      "ws_from_conv42_ws_to_conv42_sd0-2"
+    ],
+    "stereonet/ws_from_conv43_ws_to_conv43_sd0-1": [
+      "ws_from_conv43_ws_to_conv43_sd0-1"
+    ],
+    "stereonet/ws_from_conv44_ws_to_conv44_sd0-1": [
+      "ws_from_conv44_ws_to_conv44_sd0-1"
+    ],
+    "stereonet/ws_from_conv45_ws_to_conv45_sd3-5": [
+      "ws_from_conv45_ws_to_conv45_sd3-5"
+    ],
+    "stereonet/ws_from_conv45_ws_to_conv45_sd0-2": [
+      "ws_from_conv45_ws_to_conv45_sd0-2"
+    ],
+    "stereonet/ws_from_conv46_ws_to_ws_from_conv46_ws_to_conv46_sd0-2_ws_from_conv46_ws_to_conv46_sd3-5_ws_from_conv46_ws_to_conv46_sd6-8": [
+      "ws_from_conv46_ws_to_ws_from_conv46_ws_to_conv46_sd0-2_ws_from_conv46_ws_to_conv46_sd3-5_ws_from_conv46_ws_to_conv46_sd6-8"
+    ],
+    "stereonet/ws_from_conv46_ws_to_conv46_sd0-2": [
+      "ws_from_conv46_ws_to_conv46_sd0-2"
+    ],
+    "stereonet/ws_from_conv46_ws_to_conv46_sd3-5": [
+      "ws_from_conv46_ws_to_conv46_sd3-5"
+    ],
+    "stereonet/ws_from_conv46_ws_to_conv46_sd6-8": [
+      "ws_from_conv46_ws_to_conv46_sd6-8"
+    ],
+    "stereonet/sh_from_conv44_to_conv46_sd0-3": [
+      "sh_from_conv44_to_conv46_sd0-3"
+    ],
+    "stereonet/sh_from_conv44_to_conv46_sd4-7": [
+      "sh_from_conv44_to_conv46_sd4-7"
+    ],
+    "stereonet/ws_from_conv47_ws_to_conv47_sd20-21": [
+      "ws_from_conv47_ws_to_conv47_sd20-21"
+    ],
+    "stereonet/ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_1141": [
+      "ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_1141"
+    ],
+    "stereonet/ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_1139": [
+      "ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_1139"
+    ],
+    "stereonet/ws_from_conv47_ws_to_conv47_sd16-17": [
+      "ws_from_conv47_ws_to_conv47_sd16-17"
+    ],
+    "stereonet/ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_1137": [
+      "ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_1137"
+    ],
+    "stereonet/ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_1134": [
+      "ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_1134"
+    ],
+    "stereonet/ws_from_conv47_ws_to_conv47_sd12-13": [
+      "ws_from_conv47_ws_to_conv47_sd12-13"
+    ],
+    "stereonet/ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_1132": [
+      "ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_1132"
+    ],
+    "stereonet/ws_from_conv47_ws_to_conv47_sd10-11": [
+      "ws_from_conv47_ws_to_conv47_sd10-11"
+    ],
+    "stereonet/ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_conv47_sd0-1_ws_f_1130": [
+      "ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_conv47_sd0-1_ws_f_1130"
+    ],
+    "stereonet/ws_from_conv47_ws_to_conv47_sd8-9": [
+      "ws_from_conv47_ws_to_conv47_sd8-9"
+    ],
+    "stereonet/ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_conv47_sd0-1_ws_from_conv47_ws_to_conv_1129": [
+      "ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_conv47_sd0-1_ws_from_conv47_ws_to_conv_1129"
+    ],
+    "stereonet/ws_from_conv47_ws_to_conv47_sd6-7": [
+      "ws_from_conv47_ws_to_conv47_sd6-7"
+    ],
+    "stereonet/ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_conv47_sd0-1_ws_from_conv47_ws_to_conv47_sd2-3_ws_from_conv_1126": [
+      "ws_from_conv47_ws_to_ws_from_conv47_ws_to_ws_from_conv47_ws_to_conv47_sd0-1_ws_from_conv47_ws_to_conv47_sd2-3_ws_from_conv_1126"
+    ],
+    "stereonet/ws_from_conv47_ws_to_conv47_sd4-5": [
+      "ws_from_conv47_ws_to_conv47_sd4-5"
+    ],
+    "stereonet/ws_from_conv47_ws_to_ws_from_conv47_ws_to_conv47_sd0-1_ws_from_conv47_ws_to_conv47_sd2-3": [
+      "ws_from_conv47_ws_to_ws_from_conv47_ws_to_conv47_sd0-1_ws_from_conv47_ws_to_conv47_sd2-3"
+    ],
+    "stereonet/ws_from_conv47_ws_to_conv47_sd0-1": [
+      "ws_from_conv47_ws_to_conv47_sd0-1"
+    ],
+    "stereonet/ws_from_conv47_ws_to_conv47_sd2-3": [
+      "ws_from_conv47_ws_to_conv47_sd2-3"
+    ],
+    "stereonet/ws_from_conv47_ws_to_conv47_sd14-15": [
+      "ws_from_conv47_ws_to_conv47_sd14-15"
+    ],
+    "stereonet/ws_from_conv47_ws_to_conv47_sd18-19": [
+      "ws_from_conv47_ws_to_conv47_sd18-19"
+    ],
+    "stereonet/ws_from_conv48_ws_to_conv48_sd20-21": [
+      "ws_from_conv48_ws_to_conv48_sd20-21"
+    ],
+    "stereonet/ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_1552": [
+      "ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_1552"
+    ],
+    "stereonet/ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_1551": [
+      "ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_1551"
+    ],
+    "stereonet/ws_from_conv48_ws_to_conv48_sd16-17": [
+      "ws_from_conv48_ws_to_conv48_sd16-17"
+    ],
+    "stereonet/ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_1550": [
+      "ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_1550"
+    ],
+    "stereonet/ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_1549": [
+      "ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_1549"
+    ],
+    "stereonet/ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_1548": [
+      "ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_1548"
+    ],
+    "stereonet/ws_from_conv48_ws_to_conv48_sd10-11": [
+      "ws_from_conv48_ws_to_conv48_sd10-11"
+    ],
+    "stereonet/ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_conv48_sd0-1_ws_f_1547": [
+      "ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_conv48_sd0-1_ws_f_1547"
+    ],
+    "stereonet/ws_from_conv48_ws_to_conv48_sd8-9": [
+      "ws_from_conv48_ws_to_conv48_sd8-9"
+    ],
+    "stereonet/ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_conv48_sd0-1_ws_from_conv48_ws_to_conv_1546": [
+      "ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_conv48_sd0-1_ws_from_conv48_ws_to_conv_1546"
+    ],
+    "stereonet/ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_conv48_sd0-1_ws_from_conv48_ws_to_conv48_sd2-3_ws_from_conv_1545": [
+      "ws_from_conv48_ws_to_ws_from_conv48_ws_to_ws_from_conv48_ws_to_conv48_sd0-1_ws_from_conv48_ws_to_conv48_sd2-3_ws_from_conv_1545"
+    ],
+    "stereonet/ws_from_conv48_ws_to_conv48_sd4-5": [
+      "ws_from_conv48_ws_to_conv48_sd4-5"
+    ],
+    "stereonet/ws_from_conv48_ws_to_ws_from_conv48_ws_to_conv48_sd0-1_ws_from_conv48_ws_to_conv48_sd2-3": [
+      "ws_from_conv48_ws_to_ws_from_conv48_ws_to_conv48_sd0-1_ws_from_conv48_ws_to_conv48_sd2-3"
+    ],
+    "stereonet/ws_from_conv48_ws_to_conv48_sd0-1": [
+      "ws_from_conv48_ws_to_conv48_sd0-1"
+    ],
+    "stereonet/ws_from_conv48_ws_to_conv48_sd2-3": [
+      "ws_from_conv48_ws_to_conv48_sd2-3"
+    ],
+    "stereonet/ws_from_conv48_ws_to_conv48_sd6-7": [
+      "ws_from_conv48_ws_to_conv48_sd6-7"
+    ],
+    "stereonet/ws_from_conv48_ws_to_conv48_sd12-13": [
+      "ws_from_conv48_ws_to_conv48_sd12-13"
+    ],
+    "stereonet/ws_from_conv48_ws_to_conv48_sd14-15": [
+      "ws_from_conv48_ws_to_conv48_sd14-15"
+    ],
+    "stereonet/ws_from_conv48_ws_to_conv48_sd18-19": [
+      "ws_from_conv48_ws_to_conv48_sd18-19"
+    ],
+    "stereonet/sh_from_conv46_to_conv48_sd16-19": [
+      "sh_from_conv46_to_conv48_sd16-19"
+    ],
+    "stereonet/sh_from_conv46_to_conv48_sd20-21": [
+      "sh_from_conv46_to_conv48_sd20-21"
+    ],
+    "stereonet/sh_from_conv46_to_sh_from_conv46_to_conv48_sd0-3_sh_from_conv46_to_conv48_sd4-7_sh_from_conv46_to_conv48_sd8-11_sh_from_co_1501": [
+      "sh_from_conv46_to_sh_from_conv46_to_conv48_sd0-3_sh_from_conv46_to_conv48_sd4-7_sh_from_conv46_to_conv48_sd8-11_sh_from_co_1501"
+    ],
+    "stereonet/sh_from_conv46_to_conv48_sd8-11": [
+      "sh_from_conv46_to_conv48_sd8-11"
+    ],
+    "stereonet/sh_from_conv46_to_conv48_sd0-3": [
+      "sh_from_conv46_to_conv48_sd0-3"
+    ],
+    "stereonet/sh_from_conv46_to_conv48_sd4-7": [
+      "sh_from_conv46_to_conv48_sd4-7"
+    ],
+    "stereonet/sh_from_conv46_to_conv48_sd12-15": [
+      "sh_from_conv46_to_conv48_sd12-15"
+    ],
+    "stereonet/ws_from_conv53_ws_to_ws_from_conv53_ws_to_conv53_sd0-2_ws_from_conv53_ws_to_conv53_sd3-5_ws_from_conv53_ws_to_conv53_sd6-8": [
+      "ws_from_conv53_ws_to_ws_from_conv53_ws_to_conv53_sd0-2_ws_from_conv53_ws_to_conv53_sd3-5_ws_from_conv53_ws_to_conv53_sd6-8"
+    ],
+    "stereonet/ws_from_conv53_ws_to_conv53_sd3-5": [
+      "ws_from_conv53_ws_to_conv53_sd3-5"
+    ],
+    "stereonet/ws_from_conv53_ws_to_conv53_sd0-2": [
+      "ws_from_conv53_ws_to_conv53_sd0-2"
+    ],
+    "stereonet/ws_from_conv53_ws_to_conv53_sd6-8": [
+      "ws_from_conv53_ws_to_conv53_sd6-8"
+    ],
+    "stereonet/sh_from_reduce_sum1_to_conv53_sd0-3": [
+      "sh_from_reduce_sum1_to_conv53_sd0-3"
+    ],
+    "stereonet/sh_from_reduce_sum1_to_conv53_sd4-7": [
+      "sh_from_reduce_sum1_to_conv53_sd4-7"
+    ]
+  }
+}

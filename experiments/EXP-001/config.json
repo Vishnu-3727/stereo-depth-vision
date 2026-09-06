@@ -1,0 +1,16 @@
+{
+  "artifact": "reference/onnx/stereonet.onnx",
+  "artifact_sha256_prefix": "b1a01d855bb22663",
+  "analysis": "static graph forensics (no inference executed)",
+  "dataset": null,
+  "split": null,
+  "resolution": [
+    368,
+    1232
+  ],
+  "crop": null,
+  "disparity_range": null,
+  "batch_size": 1,
+  "precision": "fp32",
+  "seed": null
+}

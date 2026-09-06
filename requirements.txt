@@ -1,0 +1,18 @@
+# Phase 1 environment. Versions pinned at W0; see experiments/_env_baseline.json for the
+# exact resolved versions recorded on the primary machine.
+torch==2.7.0
+torchvision==0.22.0
+numpy
+opencv-python
+onnx
+onnxruntime
+matplotlib
+scipy
+pandas
+PyYAML
+pytest
+thop
+tensorboard
+tqdm
+Pillow
+scikit-image

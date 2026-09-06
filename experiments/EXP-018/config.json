@@ -1,0 +1,16 @@
+{
+  "dataset": null,
+  "split": null,
+  "resolution": [
+    368,
+    1232
+  ],
+  "crop": null,
+  "disparity_range": null,
+  "batch_size": 1,
+  "precision": "int8 (Hailo compiled)",
+  "seed": null,
+  "artifact": "reference/stereonet_profiler_results_compiled_runtime_data.html",
+  "profiling_mode": "post_placement",
+  "hw_arch": "hailo8"
+}

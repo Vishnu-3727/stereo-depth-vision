@@ -1,0 +1,30 @@
+# datasets — never committed
+data/
+# vendor artifacts — downloaded, hashed, but not committed (see reference/MANIFEST.md)
+reference/*
+!reference/MANIFEST.md
+!reference/manifest.json
+!reference/.gitkeep
+# Derived binaries are never committed: they are regenerable from the committed
+# code plus the hashed reference inputs, and they bloat the history permanently.
+# The JSON and CSV records that make results traceable ARE committed.
+*.pth
+*.ckpt
+*.onnx
+*.hef
+*.tflite
+*.pt
+*.safetensors
+events.out.tfevents.*
+results/**/*.png
+results/**/*.npy
+results/**/*.npz
+logs/
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/

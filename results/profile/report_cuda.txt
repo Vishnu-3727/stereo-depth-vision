@@ -1,0 +1,13 @@
+Per-stage latency, cuda at 368x1232, batch 1, fp32, median of 30 runs
+
+stage                   median ms     share    MAC share     time/MAC    std ms
+feature_extraction          8.166     18.4%         5.1%         3.59     3.954
+cost_volume                 1.608      3.6%         0.0%          n/a     0.707
+aggregation                 1.260      2.8%         4.2%         0.67     0.474
+regression                  0.633      1.4%         0.0%       142.45     0.058
+refinement                 32.565     73.3%        90.6%         0.81     0.069
+combine                     0.360      0.8%                       n/a     0.104
+------------------------------------------------------------------------------
+TOTAL                      44.412                                        4.968
+
+22.5 FPS at batch 1 on cuda

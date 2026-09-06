@@ -1,0 +1,6553 @@
+[
+  {
+    "i": 0,
+    "name": "/downsampling/downsampling.0/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        3,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": [
+      32,
+      3,
+      5,
+      5
+    ],
+    "output_shape": [
+      1,
+      32,
+      184,
+      616
+    ],
+    "kernel": [
+      5,
+      5
+    ],
+    "stride": [
+      2,
+      2
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "params_unique": 2432,
+    "params_occurrence": 2432,
+    "macs": 272025600,
+    "elementwise_ops": 0,
+    "activation_elements": 3627008,
+    "activation_bytes_fp32": 14508032,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 1,
+    "name": "/downsampling/downsampling.1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        184,
+        616
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      5,
+      5
+    ],
+    "output_shape": [
+      1,
+      32,
+      92,
+      308
+    ],
+    "kernel": [
+      5,
+      5
+    ],
+    "stride": [
+      2,
+      2
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "params_unique": 25632,
+    "params_occurrence": 25632,
+    "macs": 725401600,
+    "elementwise_ops": 0,
+    "activation_elements": 906752,
+    "activation_bytes_fp32": 3627008,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 2,
+    "name": "/downsampling/downsampling.2/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        92,
+        308
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      5,
+      5
+    ],
+    "output_shape": [
+      1,
+      32,
+      46,
+      154
+    ],
+    "kernel": [
+      5,
+      5
+    ],
+    "stride": [
+      2,
+      2
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "params_unique": 25632,
+    "params_occurrence": 25632,
+    "macs": 181350400,
+    "elementwise_ops": 0,
+    "activation_elements": 226688,
+    "activation_bytes_fp32": 906752,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 3,
+    "name": "/downsampling/downsampling.3/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        46,
+        154
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      5,
+      5
+    ],
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": [
+      5,
+      5
+    ],
+    "stride": [
+      2,
+      2
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "params_unique": 25632,
+    "params_occurrence": 25632,
+    "macs": 45337600,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 4,
+    "name": "/res/res.0/conv1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 9248,
+    "params_occurrence": 9248,
+    "macs": 16321536,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 5,
+    "name": "/res/res.0/relu1/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 6,
+    "name": "/res/res.0/conv2/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 9248,
+    "params_occurrence": 9248,
+    "macs": 16321536,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 7,
+    "name": "/res/res.0/Add",
+    "op": "Add",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 8,
+    "name": "/res/res.0/relu2/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 9,
+    "name": "/res/res.1/conv1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 9248,
+    "params_occurrence": 9248,
+    "macs": 16321536,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 10,
+    "name": "/res/res.1/relu1/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 11,
+    "name": "/res/res.1/conv2/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 9248,
+    "params_occurrence": 9248,
+    "macs": 16321536,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 12,
+    "name": "/res/res.1/Add",
+    "op": "Add",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 13,
+    "name": "/res/res.1/relu2/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 14,
+    "name": "/res/res.2/conv1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 9248,
+    "params_occurrence": 9248,
+    "macs": 16321536,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 15,
+    "name": "/res/res.2/relu1/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 16,
+    "name": "/res/res.2/conv2/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 9248,
+    "params_occurrence": 9248,
+    "macs": 16321536,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 17,
+    "name": "/res/res.2/Add",
+    "op": "Add",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 18,
+    "name": "/res/res.2/relu2/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 19,
+    "name": "/res/res.3/conv1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 9248,
+    "params_occurrence": 9248,
+    "macs": 16321536,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 20,
+    "name": "/res/res.3/relu1/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 21,
+    "name": "/res/res.3/conv2/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 9248,
+    "params_occurrence": 9248,
+    "macs": 16321536,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 22,
+    "name": "/res/res.3/Add",
+    "op": "Add",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 23,
+    "name": "/res/res.3/relu2/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 24,
+    "name": "/res/res.4/conv1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 9248,
+    "params_occurrence": 9248,
+    "macs": 16321536,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 25,
+    "name": "/res/res.4/relu1/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 26,
+    "name": "/res/res.4/conv2/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 9248,
+    "params_occurrence": 9248,
+    "macs": 16321536,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 27,
+    "name": "/res/res.4/Add",
+    "op": "Add",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 28,
+    "name": "/res/res.4/relu2/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 29,
+    "name": "/res/res.5/conv1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 9248,
+    "params_occurrence": 9248,
+    "macs": 16321536,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 30,
+    "name": "/res/res.5/relu1/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 31,
+    "name": "/res/res.5/conv2/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 9248,
+    "params_occurrence": 9248,
+    "macs": 16321536,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 32,
+    "name": "/res/res.5/Add",
+    "op": "Add",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 33,
+    "name": "/res/res.5/relu2/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 34,
+    "name": "/res/res.6/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 9248,
+    "params_occurrence": 9248,
+    "macs": 16321536,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (left branch)"
+  },
+  {
+    "i": 35,
+    "name": "/downsampling/downsampling.0_1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        3,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": [
+      32,
+      3,
+      5,
+      5
+    ],
+    "output_shape": [
+      1,
+      32,
+      184,
+      616
+    ],
+    "kernel": [
+      5,
+      5
+    ],
+    "stride": [
+      2,
+      2
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "params_unique": 0,
+    "params_occurrence": 2432,
+    "macs": 272025600,
+    "elementwise_ops": 0,
+    "activation_elements": 3627008,
+    "activation_bytes_fp32": 14508032,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 36,
+    "name": "/downsampling/downsampling.1_1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        184,
+        616
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      5,
+      5
+    ],
+    "output_shape": [
+      1,
+      32,
+      92,
+      308
+    ],
+    "kernel": [
+      5,
+      5
+    ],
+    "stride": [
+      2,
+      2
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "params_unique": 0,
+    "params_occurrence": 25632,
+    "macs": 725401600,
+    "elementwise_ops": 0,
+    "activation_elements": 906752,
+    "activation_bytes_fp32": 3627008,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 37,
+    "name": "/downsampling/downsampling.2_1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        92,
+        308
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      5,
+      5
+    ],
+    "output_shape": [
+      1,
+      32,
+      46,
+      154
+    ],
+    "kernel": [
+      5,
+      5
+    ],
+    "stride": [
+      2,
+      2
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "params_unique": 0,
+    "params_occurrence": 25632,
+    "macs": 181350400,
+    "elementwise_ops": 0,
+    "activation_elements": 226688,
+    "activation_bytes_fp32": 906752,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 38,
+    "name": "/downsampling/downsampling.3_1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        46,
+        154
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      5,
+      5
+    ],
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": [
+      5,
+      5
+    ],
+    "stride": [
+      2,
+      2
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "params_unique": 0,
+    "params_occurrence": 25632,
+    "macs": 45337600,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 39,
+    "name": "/res/res.0/conv1_1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 0,
+    "params_occurrence": 9248,
+    "macs": 16321536,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 40,
+    "name": "/res/res.0/relu1_1/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 41,
+    "name": "/res/res.0/conv2_1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 0,
+    "params_occurrence": 9248,
+    "macs": 16321536,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 42,
+    "name": "/res/res.0_1/Add",
+    "op": "Add",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 43,
+    "name": "/res/res.0/relu2_1/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 44,
+    "name": "/res/res.1/conv1_1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 0,
+    "params_occurrence": 9248,
+    "macs": 16321536,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 45,
+    "name": "/res/res.1/relu1_1/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 46,
+    "name": "/res/res.1/conv2_1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 0,
+    "params_occurrence": 9248,
+    "macs": 16321536,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 47,
+    "name": "/res/res.1_1/Add",
+    "op": "Add",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 48,
+    "name": "/res/res.1/relu2_1/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 49,
+    "name": "/res/res.2/conv1_1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 0,
+    "params_occurrence": 9248,
+    "macs": 16321536,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 50,
+    "name": "/res/res.2/relu1_1/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 51,
+    "name": "/res/res.2/conv2_1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 0,
+    "params_occurrence": 9248,
+    "macs": 16321536,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 52,
+    "name": "/res/res.2_1/Add",
+    "op": "Add",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 53,
+    "name": "/res/res.2/relu2_1/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 54,
+    "name": "/res/res.3/conv1_1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 0,
+    "params_occurrence": 9248,
+    "macs": 16321536,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 55,
+    "name": "/res/res.3/relu1_1/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 56,
+    "name": "/res/res.3/conv2_1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 0,
+    "params_occurrence": 9248,
+    "macs": 16321536,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 57,
+    "name": "/res/res.3_1/Add",
+    "op": "Add",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 58,
+    "name": "/res/res.3/relu2_1/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 59,
+    "name": "/res/res.4/conv1_1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 0,
+    "params_occurrence": 9248,
+    "macs": 16321536,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 60,
+    "name": "/res/res.4/relu1_1/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 61,
+    "name": "/res/res.4/conv2_1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 0,
+    "params_occurrence": 9248,
+    "macs": 16321536,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 62,
+    "name": "/res/res.4_1/Add",
+    "op": "Add",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 63,
+    "name": "/res/res.4/relu2_1/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 64,
+    "name": "/res/res.5/conv1_1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 0,
+    "params_occurrence": 9248,
+    "macs": 16321536,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 65,
+    "name": "/res/res.5/relu1_1/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 66,
+    "name": "/res/res.5/conv2_1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 0,
+    "params_occurrence": 9248,
+    "macs": 16321536,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 67,
+    "name": "/res/res.5_1/Add",
+    "op": "Add",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 68,
+    "name": "/res/res.5/relu2_1/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 69,
+    "name": "/res/res.6_1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 0,
+    "params_occurrence": 9248,
+    "macs": 16321536,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "feature extraction (right branch)"
+  },
+  {
+    "i": 70,
+    "name": "/Sub",
+    "op": "Sub",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 71,
+    "name": "/Concat",
+    "op": "Concat",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      78
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 57408,
+    "activation_bytes_fp32": 229632,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 72,
+    "name": "/Slice",
+    "op": "Slice",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        78
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 73,
+    "name": "/Sub_1",
+    "op": "Sub",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 74,
+    "name": "/Concat_1",
+    "op": "Concat",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      79
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 58144,
+    "activation_bytes_fp32": 232576,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 75,
+    "name": "/Slice_1",
+    "op": "Slice",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        79
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 76,
+    "name": "/Sub_2",
+    "op": "Sub",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 77,
+    "name": "/Concat_2",
+    "op": "Concat",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      80
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 58880,
+    "activation_bytes_fp32": 235520,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 78,
+    "name": "/Slice_2",
+    "op": "Slice",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        80
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 79,
+    "name": "/Sub_3",
+    "op": "Sub",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 80,
+    "name": "/Concat_3",
+    "op": "Concat",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      81
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 59616,
+    "activation_bytes_fp32": 238464,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 81,
+    "name": "/Slice_3",
+    "op": "Slice",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        81
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 82,
+    "name": "/Sub_4",
+    "op": "Sub",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 83,
+    "name": "/Concat_4",
+    "op": "Concat",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      82
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 60352,
+    "activation_bytes_fp32": 241408,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 84,
+    "name": "/Slice_4",
+    "op": "Slice",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        82
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 85,
+    "name": "/Sub_5",
+    "op": "Sub",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 86,
+    "name": "/Concat_5",
+    "op": "Concat",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      83
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 61088,
+    "activation_bytes_fp32": 244352,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 87,
+    "name": "/Slice_5",
+    "op": "Slice",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        83
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 88,
+    "name": "/Sub_6",
+    "op": "Sub",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 89,
+    "name": "/Concat_6",
+    "op": "Concat",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      84
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 61824,
+    "activation_bytes_fp32": 247296,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 90,
+    "name": "/Slice_6",
+    "op": "Slice",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        84
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 91,
+    "name": "/Sub_7",
+    "op": "Sub",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 92,
+    "name": "/Concat_7",
+    "op": "Concat",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      85
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 62560,
+    "activation_bytes_fp32": 250240,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 93,
+    "name": "/Slice_7",
+    "op": "Slice",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        85
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 94,
+    "name": "/Sub_8",
+    "op": "Sub",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 95,
+    "name": "/Concat_8",
+    "op": "Concat",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      86
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 63296,
+    "activation_bytes_fp32": 253184,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 96,
+    "name": "/Slice_8",
+    "op": "Slice",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        86
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 97,
+    "name": "/Sub_9",
+    "op": "Sub",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 98,
+    "name": "/Concat_9",
+    "op": "Concat",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      87
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 64032,
+    "activation_bytes_fp32": 256128,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 99,
+    "name": "/Slice_9",
+    "op": "Slice",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        87
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 100,
+    "name": "/Sub_10",
+    "op": "Sub",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 101,
+    "name": "/Concat_10",
+    "op": "Concat",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      88
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 64768,
+    "activation_bytes_fp32": 259072,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 102,
+    "name": "/Slice_10",
+    "op": "Slice",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        88
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 103,
+    "name": "/Sub_11",
+    "op": "Sub",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 56672,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 104,
+    "name": "/Unsqueeze",
+    "op": "Unsqueeze",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 105,
+    "name": "/Unsqueeze_1",
+    "op": "Unsqueeze",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 106,
+    "name": "/Unsqueeze_2",
+    "op": "Unsqueeze",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 107,
+    "name": "/Unsqueeze_3",
+    "op": "Unsqueeze",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 108,
+    "name": "/Unsqueeze_4",
+    "op": "Unsqueeze",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 109,
+    "name": "/Unsqueeze_5",
+    "op": "Unsqueeze",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 110,
+    "name": "/Unsqueeze_6",
+    "op": "Unsqueeze",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 111,
+    "name": "/Unsqueeze_7",
+    "op": "Unsqueeze",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 112,
+    "name": "/Unsqueeze_8",
+    "op": "Unsqueeze",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 113,
+    "name": "/Unsqueeze_9",
+    "op": "Unsqueeze",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 114,
+    "name": "/Unsqueeze_10",
+    "op": "Unsqueeze",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 115,
+    "name": "/Unsqueeze_11",
+    "op": "Unsqueeze",
+    "input_shapes": [
+      [
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      1,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 56672,
+    "activation_bytes_fp32": 226688,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 116,
+    "name": "/Concat_11",
+    "op": "Concat",
+    "input_shapes": [
+      [
+        1,
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        1,
+        32,
+        23,
+        77
+      ],
+      [
+        1,
+        1,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      12,
+      32,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 680064,
+    "activation_bytes_fp32": 2720256,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 117,
+    "name": "/Transpose",
+    "op": "Transpose",
+    "input_shapes": [
+      [
+        1,
+        12,
+        32,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      12,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 680064,
+    "activation_bytes_fp32": 2720256,
+    "stage": "cost volume construction"
+  },
+  {
+    "i": 118,
+    "name": "/cost_volume_filter/cost_volume_filter.0/conv3d_1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        12,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      12,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 27680,
+    "params_occurrence": 27680,
+    "macs": 587575296,
+    "elementwise_ops": 0,
+    "activation_elements": 680064,
+    "activation_bytes_fp32": 2720256,
+    "stage": "cost volume aggregation (3D)"
+  },
+  {
+    "i": 119,
+    "name": "/cost_volume_filter/cost_volume_filter.0/relu/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        12,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      12,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 680064,
+    "activation_elements": 680064,
+    "activation_bytes_fp32": 2720256,
+    "stage": "cost volume aggregation (3D)"
+  },
+  {
+    "i": 120,
+    "name": "/cost_volume_filter/cost_volume_filter.1/conv3d_1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        12,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      12,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 27680,
+    "params_occurrence": 27680,
+    "macs": 587575296,
+    "elementwise_ops": 0,
+    "activation_elements": 680064,
+    "activation_bytes_fp32": 2720256,
+    "stage": "cost volume aggregation (3D)"
+  },
+  {
+    "i": 121,
+    "name": "/cost_volume_filter/cost_volume_filter.1/relu/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        12,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      12,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 680064,
+    "activation_elements": 680064,
+    "activation_bytes_fp32": 2720256,
+    "stage": "cost volume aggregation (3D)"
+  },
+  {
+    "i": 122,
+    "name": "/cost_volume_filter/cost_volume_filter.2/conv3d_1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        12,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      12,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 27680,
+    "params_occurrence": 27680,
+    "macs": 587575296,
+    "elementwise_ops": 0,
+    "activation_elements": 680064,
+    "activation_bytes_fp32": 2720256,
+    "stage": "cost volume aggregation (3D)"
+  },
+  {
+    "i": 123,
+    "name": "/cost_volume_filter/cost_volume_filter.2/relu/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        12,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      12,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 680064,
+    "activation_elements": 680064,
+    "activation_bytes_fp32": 2720256,
+    "stage": "cost volume aggregation (3D)"
+  },
+  {
+    "i": 124,
+    "name": "/cost_volume_filter/cost_volume_filter.3/conv3d_1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        12,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      12,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 27680,
+    "params_occurrence": 27680,
+    "macs": 587575296,
+    "elementwise_ops": 0,
+    "activation_elements": 680064,
+    "activation_bytes_fp32": 2720256,
+    "stage": "cost volume aggregation (3D)"
+  },
+  {
+    "i": 125,
+    "name": "/cost_volume_filter/cost_volume_filter.3/relu/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        12,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      12,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 680064,
+    "activation_elements": 680064,
+    "activation_bytes_fp32": 2720256,
+    "stage": "cost volume aggregation (3D)"
+  },
+  {
+    "i": 126,
+    "name": "/cost_volume_filter/cost_volume_filter.4/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        12,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": [
+      1,
+      32,
+      3,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      1,
+      12,
+      23,
+      77
+    ],
+    "kernel": [
+      3,
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 865,
+    "params_occurrence": 865,
+    "macs": 18361728,
+    "elementwise_ops": 0,
+    "activation_elements": 21252,
+    "activation_bytes_fp32": 85008,
+    "stage": "cost volume aggregation (3D)"
+  },
+  {
+    "i": 127,
+    "name": "/Squeeze",
+    "op": "Squeeze",
+    "input_shapes": [
+      [
+        1,
+        1,
+        12,
+        23,
+        77
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      12,
+      23,
+      77
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 21252,
+    "activation_bytes_fp32": 85008,
+    "stage": "cost volume aggregation (3D)"
+  },
+  {
+    "i": 128,
+    "name": "/Resize",
+    "op": "Resize",
+    "input_shapes": [
+      [
+        1,
+        12,
+        23,
+        77
+      ],
+      null,
+      null
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      12,
+      368,
+      1232
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 38083584,
+    "activation_elements": 5440512,
+    "activation_bytes_fp32": 21762048,
+    "stage": "upsample + soft-argmin"
+  },
+  {
+    "i": 129,
+    "name": "/Neg",
+    "op": "Neg",
+    "input_shapes": [
+      [
+        1,
+        12,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      12,
+      368,
+      1232
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 5440512,
+    "activation_elements": 5440512,
+    "activation_bytes_fp32": 21762048,
+    "stage": "upsample + soft-argmin"
+  },
+  {
+    "i": 130,
+    "name": "/Softmax",
+    "op": "Softmax",
+    "input_shapes": [
+      [
+        1,
+        12,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      12,
+      368,
+      1232
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 16321536,
+    "activation_elements": 5440512,
+    "activation_bytes_fp32": 21762048,
+    "stage": "upsample + soft-argmin"
+  },
+  {
+    "i": 131,
+    "name": "/Mul",
+    "op": "Mul",
+    "input_shapes": [
+      [
+        1,
+        12,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      12,
+      368,
+      1232
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 5440512,
+    "elementwise_ops": 5440512,
+    "activation_elements": 5440512,
+    "activation_bytes_fp32": 21762048,
+    "stage": "upsample + soft-argmin"
+  },
+  {
+    "i": 132,
+    "name": "/ReduceSum",
+    "op": "ReduceSum",
+    "input_shapes": [
+      [
+        1,
+        12,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      1,
+      368,
+      1232
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 5440512,
+    "activation_elements": 453376,
+    "activation_bytes_fp32": 1813504,
+    "stage": "upsample + soft-argmin"
+  },
+  {
+    "i": 133,
+    "name": "/Concat_15",
+    "op": "Concat",
+    "input_shapes": [
+      [
+        1,
+        1,
+        368,
+        1232
+      ],
+      [
+        1,
+        3,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      4,
+      368,
+      1232
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 0,
+    "activation_elements": 1813504,
+    "activation_bytes_fp32": 7254016,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 134,
+    "name": "/refine/refine.0/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        4,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": [
+      32,
+      4,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 1184,
+    "params_occurrence": 1184,
+    "macs": 522289152,
+    "elementwise_ops": 0,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 135,
+    "name": "/refine/refine.1/conv1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 9248,
+    "params_occurrence": 9248,
+    "macs": 4178313216,
+    "elementwise_ops": 0,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 136,
+    "name": "/refine/refine.1/relu1/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 14508032,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 137,
+    "name": "/refine/refine.1/conv2/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 9248,
+    "params_occurrence": 9248,
+    "macs": 4178313216,
+    "elementwise_ops": 0,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 138,
+    "name": "/refine/refine.1/Add",
+    "op": "Add",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ],
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 14508032,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 139,
+    "name": "/refine/refine.1/relu2/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 14508032,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 140,
+    "name": "/refine/refine.2/conv1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      2,
+      2
+    ],
+    "pads": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "params_unique": 9248,
+    "params_occurrence": 9248,
+    "macs": 4178313216,
+    "elementwise_ops": 0,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 141,
+    "name": "/refine/refine.2/relu1/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 14508032,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 142,
+    "name": "/refine/refine.2/conv2/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      2,
+      2
+    ],
+    "pads": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "params_unique": 9248,
+    "params_occurrence": 9248,
+    "macs": 4178313216,
+    "elementwise_ops": 0,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 143,
+    "name": "/refine/refine.2/Add",
+    "op": "Add",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ],
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 14508032,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 144,
+    "name": "/refine/refine.2/relu2/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 14508032,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 145,
+    "name": "/refine/refine.3/conv1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      4,
+      4
+    ],
+    "pads": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "params_unique": 9248,
+    "params_occurrence": 9248,
+    "macs": 4178313216,
+    "elementwise_ops": 0,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 146,
+    "name": "/refine/refine.3/relu1/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 14508032,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 147,
+    "name": "/refine/refine.3/conv2/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      4,
+      4
+    ],
+    "pads": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "params_unique": 9248,
+    "params_occurrence": 9248,
+    "macs": 4178313216,
+    "elementwise_ops": 0,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 148,
+    "name": "/refine/refine.3/Add",
+    "op": "Add",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ],
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 14508032,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 149,
+    "name": "/refine/refine.3/relu2/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 14508032,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 150,
+    "name": "/refine/refine.4/conv1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      8,
+      8
+    ],
+    "pads": [
+      8,
+      8,
+      8,
+      8
+    ],
+    "params_unique": 9248,
+    "params_occurrence": 9248,
+    "macs": 4178313216,
+    "elementwise_ops": 0,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 151,
+    "name": "/refine/refine.4/relu1/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 14508032,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 152,
+    "name": "/refine/refine.4/conv2/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      8,
+      8
+    ],
+    "pads": [
+      8,
+      8,
+      8,
+      8
+    ],
+    "params_unique": 9248,
+    "params_occurrence": 9248,
+    "macs": 4178313216,
+    "elementwise_ops": 0,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 153,
+    "name": "/refine/refine.4/Add",
+    "op": "Add",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ],
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 14508032,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 154,
+    "name": "/refine/refine.4/relu2/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 14508032,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 155,
+    "name": "/refine/refine.5/conv1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 9248,
+    "params_occurrence": 9248,
+    "macs": 4178313216,
+    "elementwise_ops": 0,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 156,
+    "name": "/refine/refine.5/relu1/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 14508032,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 157,
+    "name": "/refine/refine.5/conv2/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 9248,
+    "params_occurrence": 9248,
+    "macs": 4178313216,
+    "elementwise_ops": 0,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 158,
+    "name": "/refine/refine.5/Add",
+    "op": "Add",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ],
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 14508032,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 159,
+    "name": "/refine/refine.5/relu2/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 14508032,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 160,
+    "name": "/refine/refine.6/conv1/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 9248,
+    "params_occurrence": 9248,
+    "macs": 4178313216,
+    "elementwise_ops": 0,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 161,
+    "name": "/refine/refine.6/relu1/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 14508032,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 162,
+    "name": "/refine/refine.6/conv2/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": [
+      32,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 9248,
+    "params_occurrence": 9248,
+    "macs": 4178313216,
+    "elementwise_ops": 0,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 163,
+    "name": "/refine/refine.6/Add",
+    "op": "Add",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ],
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 14508032,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 164,
+    "name": "/refine/refine.6/relu2/LeakyRelu",
+    "op": "LeakyRelu",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      32,
+      368,
+      1232
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 14508032,
+    "activation_elements": 14508032,
+    "activation_bytes_fp32": 58032128,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 165,
+    "name": "/refine/refine.7/Conv",
+    "op": "Conv",
+    "input_shapes": [
+      [
+        1,
+        32,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": [
+      1,
+      32,
+      3,
+      3
+    ],
+    "output_shape": [
+      1,
+      1,
+      368,
+      1232
+    ],
+    "kernel": [
+      3,
+      3
+    ],
+    "stride": [
+      1,
+      1
+    ],
+    "dilation": [
+      1,
+      1
+    ],
+    "pads": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "params_unique": 289,
+    "params_occurrence": 289,
+    "macs": 130572288,
+    "elementwise_ops": 0,
+    "activation_elements": 453376,
+    "activation_bytes_fp32": 1813504,
+    "stage": "refinement (full resolution)"
+  },
+  {
+    "i": 166,
+    "name": "/Add",
+    "op": "Add",
+    "input_shapes": [
+      [
+        1,
+        1,
+        368,
+        1232
+      ],
+      [
+        1,
+        1,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      1,
+      368,
+      1232
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 453376,
+    "activation_elements": 453376,
+    "activation_bytes_fp32": 1813504,
+    "stage": "residual add + ReLU"
+  },
+  {
+    "i": 167,
+    "name": "/Relu",
+    "op": "Relu",
+    "input_shapes": [
+      [
+        1,
+        1,
+        368,
+        1232
+      ]
+    ],
+    "weight_shape": null,
+    "output_shape": [
+      1,
+      1,
+      368,
+      1232
+    ],
+    "kernel": null,
+    "stride": null,
+    "dilation": null,
+    "pads": null,
+    "params_unique": 0,
+    "params_occurrence": 0,
+    "macs": 0,
+    "elementwise_ops": 453376,
+    "activation_elements": 453376,
+    "activation_bytes_fp32": 1813504,
+    "stage": "residual add + ReLU"
+  }
+]

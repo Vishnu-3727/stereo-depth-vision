@@ -1,0 +1,13 @@
+Per-stage latency, cpu at 368x1232, batch 1, fp32, median of 8 runs
+
+stage                   median ms     share    MAC share     time/MAC    std ms
+feature_extraction         27.943      4.4%         5.1%         0.85     1.416
+cost_volume                 1.317      0.2%         0.0%          n/a     0.142
+aggregation               110.251     17.2%         4.2%         4.06     1.750
+regression                 14.495      2.3%         0.0%       225.69     0.285
+refinement                486.997     75.8%        90.6%         0.84     1.751
+combine                     0.233      0.0%                       n/a     0.023
+------------------------------------------------------------------------------
+TOTAL                     642.264                                        4.072
+
+1.6 FPS at batch 1 on cpu

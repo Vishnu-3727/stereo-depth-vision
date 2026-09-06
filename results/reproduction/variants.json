@@ -1,0 +1,78 @@
+{
+  "hailo_exact": {
+    "description": "Hailo's evaluator reimplemented exactly: disp_occ_0 ground truth scaled by 1/255, per-image outlier rate averaged over images.",
+    "aggregate": "per_image",
+    "disparity_scale": 255.0,
+    "ground_truth": "disp_occ_0",
+    "headline_percent": 8.223686464356268,
+    "gap_vs_published": 0.0006864643562671802,
+    "pooled_metrics": {
+      "valid_pixels": 3802797,
+      "epe": 1.3423015743423556,
+      "rmse": 2.598813394386154,
+      "d1": 8.211140379042057,
+      "bad1": 40.779484153374476,
+      "bad2": 16.36953011165203,
+      "bad3": 8.68150469246715
+    },
+    "per_image_outlier_rate_percent_mean": 8.223686464356268,
+    "per_image_outlier_rate_percent_std": 3.1311642830774833
+  },
+  "hailo_scale_kitti_gt": {
+    "description": "As above but with KITTI's official 1/256 ground-truth scale, to isolate the effect of Hailo's non-standard divisor.",
+    "aggregate": "per_image",
+    "disparity_scale": 256.0,
+    "ground_truth": "disp_occ_0",
+    "headline_percent": 8.168465183586012,
+    "gap_vs_published": -0.05453481641398916,
+    "pooled_metrics": {
+      "valid_pixels": 3802797,
+      "epe": 1.3134470770188373,
+      "rmse": 2.5829573145561677,
+      "d1": 8.154366378221082,
+      "bad1": 38.89637022433751,
+      "bad2": 16.079375259841637,
+      "bad3": 8.639640769675584
+    },
+    "per_image_outlier_rate_percent_mean": 8.168465183586012,
+    "per_image_outlier_rate_percent_std": 3.1231816852556773
+  },
+  "kitti_official_d1_all": {
+    "description": "KITTI convention: 1/256 ground truth, outliers pooled over all valid pixels rather than averaged per image. D1-all.",
+    "aggregate": "pooled",
+    "disparity_scale": 256.0,
+    "ground_truth": "disp_occ_0",
+    "headline_percent": 8.154366378221082,
+    "gap_vs_published": -0.0686336217789183,
+    "pooled_metrics": {
+      "valid_pixels": 3802797,
+      "epe": 1.3134470770188373,
+      "rmse": 2.5829573145561677,
+      "d1": 8.154366378221082,
+      "bad1": 38.89637022433751,
+      "bad2": 16.079375259841637,
+      "bad3": 8.639640769675584
+    },
+    "per_image_outlier_rate_percent_mean": 8.168465183586012,
+    "per_image_outlier_rate_percent_std": 3.1231816852556773
+  },
+  "kitti_official_d1_noc": {
+    "description": "As above on disp_noc_0, excluding occluded pixels. D1-noc.",
+    "aggregate": "pooled",
+    "disparity_scale": 256.0,
+    "ground_truth": "disp_noc_0",
+    "headline_percent": 7.530065440974133,
+    "gap_vs_published": -0.6929345590258675,
+    "pooled_metrics": {
+      "valid_pixels": 3721216,
+      "epe": 1.260685792122596,
+      "rmse": 2.469136039367785,
+      "d1": 7.530065440974133,
+      "bad1": 38.148658932993946,
+      "bad2": 15.251600552077601,
+      "bad3": 7.923055259356082
+    },
+    "per_image_outlier_rate_percent_mean": 7.592521043055601,
+    "per_image_outlier_rate_percent_std": 2.963363153773385
+  }
+}

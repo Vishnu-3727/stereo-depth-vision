@@ -1,0 +1,16 @@
+{
+  "dataset": "kitti2015",
+  "split": "training (calibration only)",
+  "resolution": [
+    375,
+    1242
+  ],
+  "crop": null,
+  "disparity_range": null,
+  "batch_size": null,
+  "precision": "fp64 (numpy)",
+  "seed": null,
+  "calibration_files": 200,
+  "focal_px_median": 721.5377,
+  "baseline_m_median": 0.5327254279298227
+}

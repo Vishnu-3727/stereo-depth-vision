@@ -1,0 +1,101 @@
+{
+  "experiment_id": "EXP-014",
+  "description": "Per-stage latency and memory of StereoNet on local hardware",
+  "status": "completed",
+  "started_utc": "2026-09-05T01:45:18.602664+00:00",
+  "finished_utc": "2026-09-05T01:45:30.960771+00:00",
+  "duration_s": 12.358107,
+  "metrics": {
+    "stage_latency": {
+      "feature_extraction": {
+        "median_ms": 27.943450000293524,
+        "mean_ms": 28.38340000005246,
+        "std_ms": 1.4163199108966606,
+        "min_ms": 26.769699999931618,
+        "share_of_total": 0.043507711701070866
+      },
+      "cost_volume": {
+        "median_ms": 1.316949999818462,
+        "mean_ms": 1.3391624997893814,
+        "std_ms": 0.1421608415368533,
+        "min_ms": 1.1348999996698694,
+        "share_of_total": 0.0020504798411157214
+      },
+      "aggregation": {
+        "median_ms": 110.25114999983998,
+        "mean_ms": 109.7182875001863,
+        "std_ms": 1.7502304244056002,
+        "min_ms": 105.59480000028998,
+        "share_of_total": 0.17166009382714628
+      },
+      "regression": {
+        "median_ms": 14.495450000140409,
+        "mean_ms": 14.403862499989373,
+        "std_ms": 0.28534349009087884,
+        "min_ms": 13.94479999999021,
+        "share_of_total": 0.022569291178318063
+      },
+      "refinement": {
+        "median_ms": 486.99735000036526,
+        "mean_ms": 487.377912500051,
+        "std_ms": 1.750659335452921,
+        "min_ms": 484.9204000001919,
+        "share_of_total": 0.7582506921220834
+      },
+      "combine": {
+        "median_ms": 0.23334999968938064,
+        "mean_ms": 0.231362500016985,
+        "std_ms": 0.02344279944714578,
+        "min_ms": 0.19729999985429458,
+        "share_of_total": 0.0003633239457484278
+      },
+      "total": {
+        "median_ms": 642.264300000079,
+        "mean_ms": 641.4539875000855,
+        "std_ms": 4.072348174735377,
+        "min_ms": 634.5295999999507,
+        "share_of_total": 1.0
+      }
+    },
+    "total_median_ms": 642.264300000079,
+    "fps_batch1": 1.5569914130364666,
+    "mac_share_vs_time_share": {
+      "feature_extraction": {
+        "static_mac_share": 0.0512,
+        "measured_time_share": 0.043507711701070866,
+        "ratio_measured_to_static": 0.8497599941615404
+      },
+      "cost_volume": {
+        "static_mac_share": 0.0,
+        "measured_time_share": 0.0020504798411157214,
+        "ratio_measured_to_static": null
+      },
+      "aggregation": {
+        "static_mac_share": 0.0423,
+        "measured_time_share": 0.17166009382714628,
+        "ratio_measured_to_static": 4.05815824650464
+      },
+      "regression": {
+        "static_mac_share": 0.0001,
+        "measured_time_share": 0.022569291178318063,
+        "ratio_measured_to_static": 225.69291178318062
+      },
+      "refinement": {
+        "static_mac_share": 0.9064,
+        "measured_time_share": 0.7582506921220834,
+        "ratio_measured_to_static": 0.8365519551214513
+      }
+    },
+    "zero_mac_stages_time_ms": {
+      "cost_volume": 1.316949999818462,
+      "cost_volume_share": 0.0020504798411157214
+    }
+  },
+  "observations": [
+    "Our measurement on our hardware. Not a Hailo number, not a proxy for one, and never to be compared against Hailo's published latency or FPS.",
+    "Refinement takes 486.997 ms of a 642.264 ms total, 75.8% of the time against 90.6% of the MACs.",
+    "The cost volume performs zero MACs yet takes 1.317 ms, 0.2% of the total. A MAC count cannot see this stage at all, which is a concrete case against using FLOPs as a latency proxy."
+  ],
+  "conclusion": "Per-stage latency measured and set against static MAC share. Interpretation is in docs/compute_profile.md; the model is unchanged.",
+  "error": null
+}

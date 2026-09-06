@@ -1,0 +1,234 @@
+ONNX inspection: C:\Users\vishn\stereo_depth_vision\reference\onnx\stereonet.onnx
+file size            : 23,690,586 bytes
+producer             : pytorch 2.0.0
+ir_version / opset   : 7 / [14]
+nodes                : 168
+
+inputs:
+  input.1                  FLOAT      [1, 3, 368, 1232]
+  input.83                 FLOAT      [1, 3, 368, 1232]
+outputs:
+  524                      FLOAT      [1, 1, 368, 1232]
+
+operator inventory:
+  Conv                        53
+  LeakyRelu                   40
+  Add                         19
+  Concat                      13
+  Sub                         12
+  Unsqueeze                   12
+  Slice                       11
+  Transpose                    1
+  Squeeze                      1
+  Resize                       1
+  Neg                          1
+  Softmax                      1
+  Mul                          1
+  ReduceSum                    1
+  Relu                         1
+
+parameter accounting:
+  learned parameters      :      423,586 elements       1,694,344 bytes
+  non-learned constants   :    5,489,096 elements      21,956,416 bytes
+  all initializers        :    5,912,682 elements      23,650,760 bytes
+
+largest 25 initializers (bytes):
+  name                                                    bytes      dtype shape
+  /Tile_output_0                                     21,762,048    float32 [1, 12, 368, 1232]
+  onnx::Conv_598                                        110,592    float32 [32, 32, 3, 3, 3]
+  onnx::Conv_601                                        110,592    float32 [32, 32, 3, 3, 3]
+  onnx::Conv_604                                        110,592    float32 [32, 32, 3, 3, 3]
+  onnx::Conv_607                                        110,592    float32 [32, 32, 3, 3, 3]
+  downsampling.1.weight                                 102,400    float32 [32, 32, 5, 5]
+  downsampling.2.weight                                 102,400    float32 [32, 32, 5, 5]
+  downsampling.3.weight                                 102,400    float32 [32, 32, 5, 5]
+  res.6.weight                                           36,864    float32 [32, 32, 3, 3]
+  onnx::Conv_526                                         36,864    float32 [32, 32, 3, 3]
+  onnx::Conv_529                                         36,864    float32 [32, 32, 3, 3]
+  onnx::Conv_532                                         36,864    float32 [32, 32, 3, 3]
+  onnx::Conv_535                                         36,864    float32 [32, 32, 3, 3]
+  onnx::Conv_538                                         36,864    float32 [32, 32, 3, 3]
+  onnx::Conv_541                                         36,864    float32 [32, 32, 3, 3]
+  onnx::Conv_544                                         36,864    float32 [32, 32, 3, 3]
+  onnx::Conv_547                                         36,864    float32 [32, 32, 3, 3]
+  onnx::Conv_550                                         36,864    float32 [32, 32, 3, 3]
+  onnx::Conv_553                                         36,864    float32 [32, 32, 3, 3]
+  onnx::Conv_556                                         36,864    float32 [32, 32, 3, 3]
+  onnx::Conv_559                                         36,864    float32 [32, 32, 3, 3]
+  onnx::Conv_610                                         36,864    float32 [32, 32, 3, 3]
+  onnx::Conv_613                                         36,864    float32 [32, 32, 3, 3]
+  onnx::Conv_616                                         36,864    float32 [32, 32, 3, 3]
+  onnx::Conv_619                                         36,864    float32 [32, 32, 3, 3]
+
+node walk (index | op | name | inputs -> outputs):
+     0 Conv                   /downsampling/downsampling.0/Conv  [1, 3, 368, 1232], [32, 3, 5, 5]*, [32]*  ->  [1, 32, 184, 616]  {"dilations":[1,1],"group":1,"kernel_shape":[5,5],"pads":[2,2,2,2],"strides":[2,2]}
+     1 Conv                   /downsampling/downsampling.1/Conv  [1, 32, 184, 616], [32, 32, 5, 5]*, [32]*  ->  [1, 32, 92, 308]  {"dilations":[1,1],"group":1,"kernel_shape":[5,5],"pads":[2,2,2,2],"strides":[2,2]}
+     2 Conv                   /downsampling/downsampling.2/Conv  [1, 32, 92, 308], [32, 32, 5, 5]*, [32]*  ->  [1, 32, 46, 154]  {"dilations":[1,1],"group":1,"kernel_shape":[5,5],"pads":[2,2,2,2],"strides":[2,2]}
+     3 Conv                   /downsampling/downsampling.3/Conv  [1, 32, 46, 154], [32, 32, 5, 5]*, [32]*  ->  [1, 32, 23, 77]  {"dilations":[1,1],"group":1,"kernel_shape":[5,5],"pads":[2,2,2,2],"strides":[2,2]}
+     4 Conv                   /res/res.0/conv1/Conv              [1, 32, 23, 77], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 23, 77]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+     5 LeakyRelu              /res/res.0/relu1/LeakyRelu         [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+     6 Conv                   /res/res.0/conv2/Conv              [1, 32, 23, 77], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 23, 77]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+     7 Add                    /res/res.0/Add                     [1, 32, 23, 77], [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+     8 LeakyRelu              /res/res.0/relu2/LeakyRelu         [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+     9 Conv                   /res/res.1/conv1/Conv              [1, 32, 23, 77], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 23, 77]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+    10 LeakyRelu              /res/res.1/relu1/LeakyRelu         [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    11 Conv                   /res/res.1/conv2/Conv              [1, 32, 23, 77], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 23, 77]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+    12 Add                    /res/res.1/Add                     [1, 32, 23, 77], [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    13 LeakyRelu              /res/res.1/relu2/LeakyRelu         [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    14 Conv                   /res/res.2/conv1/Conv              [1, 32, 23, 77], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 23, 77]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+    15 LeakyRelu              /res/res.2/relu1/LeakyRelu         [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    16 Conv                   /res/res.2/conv2/Conv              [1, 32, 23, 77], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 23, 77]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+    17 Add                    /res/res.2/Add                     [1, 32, 23, 77], [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    18 LeakyRelu              /res/res.2/relu2/LeakyRelu         [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    19 Conv                   /res/res.3/conv1/Conv              [1, 32, 23, 77], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 23, 77]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+    20 LeakyRelu              /res/res.3/relu1/LeakyRelu         [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    21 Conv                   /res/res.3/conv2/Conv              [1, 32, 23, 77], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 23, 77]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+    22 Add                    /res/res.3/Add                     [1, 32, 23, 77], [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    23 LeakyRelu              /res/res.3/relu2/LeakyRelu         [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    24 Conv                   /res/res.4/conv1/Conv              [1, 32, 23, 77], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 23, 77]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+    25 LeakyRelu              /res/res.4/relu1/LeakyRelu         [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    26 Conv                   /res/res.4/conv2/Conv              [1, 32, 23, 77], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 23, 77]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+    27 Add                    /res/res.4/Add                     [1, 32, 23, 77], [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    28 LeakyRelu              /res/res.4/relu2/LeakyRelu         [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    29 Conv                   /res/res.5/conv1/Conv              [1, 32, 23, 77], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 23, 77]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+    30 LeakyRelu              /res/res.5/relu1/LeakyRelu         [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    31 Conv                   /res/res.5/conv2/Conv              [1, 32, 23, 77], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 23, 77]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+    32 Add                    /res/res.5/Add                     [1, 32, 23, 77], [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    33 LeakyRelu              /res/res.5/relu2/LeakyRelu         [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    34 Conv                   /res/res.6/Conv                    [1, 32, 23, 77], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 23, 77]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+    35 Conv                   /downsampling/downsampling.0_1/Con [1, 3, 368, 1232], [32, 3, 5, 5]*, [32]*  ->  [1, 32, 184, 616]  {"dilations":[1,1],"group":1,"kernel_shape":[5,5],"pads":[2,2,2,2],"strides":[2,2]}
+    36 Conv                   /downsampling/downsampling.1_1/Con [1, 32, 184, 616], [32, 32, 5, 5]*, [32]*  ->  [1, 32, 92, 308]  {"dilations":[1,1],"group":1,"kernel_shape":[5,5],"pads":[2,2,2,2],"strides":[2,2]}
+    37 Conv                   /downsampling/downsampling.2_1/Con [1, 32, 92, 308], [32, 32, 5, 5]*, [32]*  ->  [1, 32, 46, 154]  {"dilations":[1,1],"group":1,"kernel_shape":[5,5],"pads":[2,2,2,2],"strides":[2,2]}
+    38 Conv                   /downsampling/downsampling.3_1/Con [1, 32, 46, 154], [32, 32, 5, 5]*, [32]*  ->  [1, 32, 23, 77]  {"dilations":[1,1],"group":1,"kernel_shape":[5,5],"pads":[2,2,2,2],"strides":[2,2]}
+    39 Conv                   /res/res.0/conv1_1/Conv            [1, 32, 23, 77], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 23, 77]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+    40 LeakyRelu              /res/res.0/relu1_1/LeakyRelu       [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    41 Conv                   /res/res.0/conv2_1/Conv            [1, 32, 23, 77], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 23, 77]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+    42 Add                    /res/res.0_1/Add                   [1, 32, 23, 77], [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    43 LeakyRelu              /res/res.0/relu2_1/LeakyRelu       [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    44 Conv                   /res/res.1/conv1_1/Conv            [1, 32, 23, 77], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 23, 77]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+    45 LeakyRelu              /res/res.1/relu1_1/LeakyRelu       [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    46 Conv                   /res/res.1/conv2_1/Conv            [1, 32, 23, 77], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 23, 77]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+    47 Add                    /res/res.1_1/Add                   [1, 32, 23, 77], [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    48 LeakyRelu              /res/res.1/relu2_1/LeakyRelu       [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    49 Conv                   /res/res.2/conv1_1/Conv            [1, 32, 23, 77], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 23, 77]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+    50 LeakyRelu              /res/res.2/relu1_1/LeakyRelu       [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    51 Conv                   /res/res.2/conv2_1/Conv            [1, 32, 23, 77], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 23, 77]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+    52 Add                    /res/res.2_1/Add                   [1, 32, 23, 77], [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    53 LeakyRelu              /res/res.2/relu2_1/LeakyRelu       [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    54 Conv                   /res/res.3/conv1_1/Conv            [1, 32, 23, 77], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 23, 77]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+    55 LeakyRelu              /res/res.3/relu1_1/LeakyRelu       [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    56 Conv                   /res/res.3/conv2_1/Conv            [1, 32, 23, 77], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 23, 77]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+    57 Add                    /res/res.3_1/Add                   [1, 32, 23, 77], [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    58 LeakyRelu              /res/res.3/relu2_1/LeakyRelu       [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    59 Conv                   /res/res.4/conv1_1/Conv            [1, 32, 23, 77], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 23, 77]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+    60 LeakyRelu              /res/res.4/relu1_1/LeakyRelu       [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    61 Conv                   /res/res.4/conv2_1/Conv            [1, 32, 23, 77], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 23, 77]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+    62 Add                    /res/res.4_1/Add                   [1, 32, 23, 77], [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    63 LeakyRelu              /res/res.4/relu2_1/LeakyRelu       [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    64 Conv                   /res/res.5/conv1_1/Conv            [1, 32, 23, 77], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 23, 77]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+    65 LeakyRelu              /res/res.5/relu1_1/LeakyRelu       [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    66 Conv                   /res/res.5/conv2_1/Conv            [1, 32, 23, 77], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 23, 77]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+    67 Add                    /res/res.5_1/Add                   [1, 32, 23, 77], [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    68 LeakyRelu              /res/res.5/relu2_1/LeakyRelu       [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    69 Conv                   /res/res.6_1/Conv                  [1, 32, 23, 77], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 23, 77]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+    70 Sub                    /Sub                               [1, 32, 23, 77], [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    71 Concat                 /Concat                            [1, 32, 23, 77], [1, 32, 23, 1]*  ->  [1, 32, 23, 78]
+    72 Slice                  /Slice                             [1, 32, 23, 78], [1]*, [1]*, [1]*, [1]*  ->  [1, 32, 23, 77]
+    73 Sub                    /Sub_1                             [1, 32, 23, 77], [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    74 Concat                 /Concat_1                          [1, 32, 23, 77], [1, 32, 23, 2]*  ->  [1, 32, 23, 79]
+    75 Slice                  /Slice_1                           [1, 32, 23, 79], [1]*, [1]*, [1]*, [1]*  ->  [1, 32, 23, 77]
+    76 Sub                    /Sub_2                             [1, 32, 23, 77], [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    77 Concat                 /Concat_2                          [1, 32, 23, 77], [1, 32, 23, 3]*  ->  [1, 32, 23, 80]
+    78 Slice                  /Slice_2                           [1, 32, 23, 80], [1]*, [1]*, [1]*, [1]*  ->  [1, 32, 23, 77]
+    79 Sub                    /Sub_3                             [1, 32, 23, 77], [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    80 Concat                 /Concat_3                          [1, 32, 23, 77], [1, 32, 23, 4]*  ->  [1, 32, 23, 81]
+    81 Slice                  /Slice_3                           [1, 32, 23, 81], [1]*, [1]*, [1]*, [1]*  ->  [1, 32, 23, 77]
+    82 Sub                    /Sub_4                             [1, 32, 23, 77], [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    83 Concat                 /Concat_4                          [1, 32, 23, 77], [1, 32, 23, 5]*  ->  [1, 32, 23, 82]
+    84 Slice                  /Slice_4                           [1, 32, 23, 82], [1]*, [1]*, [1]*, [1]*  ->  [1, 32, 23, 77]
+    85 Sub                    /Sub_5                             [1, 32, 23, 77], [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    86 Concat                 /Concat_5                          [1, 32, 23, 77], [1, 32, 23, 6]*  ->  [1, 32, 23, 83]
+    87 Slice                  /Slice_5                           [1, 32, 23, 83], [1]*, [1]*, [1]*, [1]*  ->  [1, 32, 23, 77]
+    88 Sub                    /Sub_6                             [1, 32, 23, 77], [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    89 Concat                 /Concat_6                          [1, 32, 23, 77], [1, 32, 23, 7]*  ->  [1, 32, 23, 84]
+    90 Slice                  /Slice_6                           [1, 32, 23, 84], [1]*, [1]*, [1]*, [1]*  ->  [1, 32, 23, 77]
+    91 Sub                    /Sub_7                             [1, 32, 23, 77], [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    92 Concat                 /Concat_7                          [1, 32, 23, 77], [1, 32, 23, 8]*  ->  [1, 32, 23, 85]
+    93 Slice                  /Slice_7                           [1, 32, 23, 85], [1]*, [1]*, [1]*, [1]*  ->  [1, 32, 23, 77]
+    94 Sub                    /Sub_8                             [1, 32, 23, 77], [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    95 Concat                 /Concat_8                          [1, 32, 23, 77], [1, 32, 23, 9]*  ->  [1, 32, 23, 86]
+    96 Slice                  /Slice_8                           [1, 32, 23, 86], [1]*, [1]*, [1]*, [1]*  ->  [1, 32, 23, 77]
+    97 Sub                    /Sub_9                             [1, 32, 23, 77], [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+    98 Concat                 /Concat_9                          [1, 32, 23, 77], [1, 32, 23, 10]*  ->  [1, 32, 23, 87]
+    99 Slice                  /Slice_9                           [1, 32, 23, 87], [1]*, [1]*, [1]*, [1]*  ->  [1, 32, 23, 77]
+   100 Sub                    /Sub_10                            [1, 32, 23, 77], [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+   101 Concat                 /Concat_10                         [1, 32, 23, 77], [1, 32, 23, 11]*  ->  [1, 32, 23, 88]
+   102 Slice                  /Slice_10                          [1, 32, 23, 88], [1]*, [1]*, [1]*, [1]*  ->  [1, 32, 23, 77]
+   103 Sub                    /Sub_11                            [1, 32, 23, 77], [1, 32, 23, 77]  ->  [1, 32, 23, 77]
+   104 Unsqueeze              /Unsqueeze                         [1, 32, 23, 77], [1]*  ->  [1, 1, 32, 23, 77]
+   105 Unsqueeze              /Unsqueeze_1                       [1, 32, 23, 77], [1]*  ->  [1, 1, 32, 23, 77]
+   106 Unsqueeze              /Unsqueeze_2                       [1, 32, 23, 77], [1]*  ->  [1, 1, 32, 23, 77]
+   107 Unsqueeze              /Unsqueeze_3                       [1, 32, 23, 77], [1]*  ->  [1, 1, 32, 23, 77]
+   108 Unsqueeze              /Unsqueeze_4                       [1, 32, 23, 77], [1]*  ->  [1, 1, 32, 23, 77]
+   109 Unsqueeze              /Unsqueeze_5                       [1, 32, 23, 77], [1]*  ->  [1, 1, 32, 23, 77]
+   110 Unsqueeze              /Unsqueeze_6                       [1, 32, 23, 77], [1]*  ->  [1, 1, 32, 23, 77]
+   111 Unsqueeze              /Unsqueeze_7                       [1, 32, 23, 77], [1]*  ->  [1, 1, 32, 23, 77]
+   112 Unsqueeze              /Unsqueeze_8                       [1, 32, 23, 77], [1]*  ->  [1, 1, 32, 23, 77]
+   113 Unsqueeze              /Unsqueeze_9                       [1, 32, 23, 77], [1]*  ->  [1, 1, 32, 23, 77]
+   114 Unsqueeze              /Unsqueeze_10                      [1, 32, 23, 77], [1]*  ->  [1, 1, 32, 23, 77]
+   115 Unsqueeze              /Unsqueeze_11                      [1, 32, 23, 77], [1]*  ->  [1, 1, 32, 23, 77]
+   116 Concat                 /Concat_11                         [1, 1, 32, 23, 77], [1, 1, 32, 23, 77], [1, 1, 32, 23, 77], [1, 1, 32, 23, 77], [1, 1, 32, 23, 77], [1, 1, 32, 23, 77], [1, 1, 32, 23, 77], [1, 1, 32, 23, 77], [1, 1, 32, 23, 77], [1, 1, 32, 23, 77], [1, 1, 32, 23, 77], [1, 1, 32, 23, 77]  ->  [1, 12, 32, 23, 77]
+   117 Transpose              /Transpose                         [1, 12, 32, 23, 77]  ->  [1, 32, 12, 23, 77]
+   118 Conv                   /cost_volume_filter/cost_volume_fi [1, 32, 12, 23, 77], [32, 32, 3, 3, 3]*, [32]*  ->  [1, 32, 12, 23, 77]  {"dilations":[1,1,1],"group":1,"kernel_shape":[3,3,3],"pads":[1,1,1,1,1,1],"strides":[1,1,1]}
+   119 LeakyRelu              /cost_volume_filter/cost_volume_fi [1, 32, 12, 23, 77]  ->  [1, 32, 12, 23, 77]
+   120 Conv                   /cost_volume_filter/cost_volume_fi [1, 32, 12, 23, 77], [32, 32, 3, 3, 3]*, [32]*  ->  [1, 32, 12, 23, 77]  {"dilations":[1,1,1],"group":1,"kernel_shape":[3,3,3],"pads":[1,1,1,1,1,1],"strides":[1,1,1]}
+   121 LeakyRelu              /cost_volume_filter/cost_volume_fi [1, 32, 12, 23, 77]  ->  [1, 32, 12, 23, 77]
+   122 Conv                   /cost_volume_filter/cost_volume_fi [1, 32, 12, 23, 77], [32, 32, 3, 3, 3]*, [32]*  ->  [1, 32, 12, 23, 77]  {"dilations":[1,1,1],"group":1,"kernel_shape":[3,3,3],"pads":[1,1,1,1,1,1],"strides":[1,1,1]}
+   123 LeakyRelu              /cost_volume_filter/cost_volume_fi [1, 32, 12, 23, 77]  ->  [1, 32, 12, 23, 77]
+   124 Conv                   /cost_volume_filter/cost_volume_fi [1, 32, 12, 23, 77], [32, 32, 3, 3, 3]*, [32]*  ->  [1, 32, 12, 23, 77]  {"dilations":[1,1,1],"group":1,"kernel_shape":[3,3,3],"pads":[1,1,1,1,1,1],"strides":[1,1,1]}
+   125 LeakyRelu              /cost_volume_filter/cost_volume_fi [1, 32, 12, 23, 77]  ->  [1, 32, 12, 23, 77]
+   126 Conv                   /cost_volume_filter/cost_volume_fi [1, 32, 12, 23, 77], [1, 32, 3, 3, 3]*, [1]*  ->  [1, 1, 12, 23, 77]  {"dilations":[1,1,1],"group":1,"kernel_shape":[3,3,3],"pads":[1,1,1,1,1,1],"strides":[1,1,1]}
+   127 Squeeze                /Squeeze                           [1, 1, 12, 23, 77], [1]*  ->  [1, 12, 23, 77]
+   128 Resize                 /Resize                            [1, 12, 23, 77], None, None, [4]*  ->  [1, 12, 368, 1232]  {"mode":"linear"}
+   129 Neg                    /Neg                               [1, 12, 368, 1232]  ->  [1, 12, 368, 1232]
+   130 Softmax                /Softmax                           [1, 12, 368, 1232]  ->  [1, 12, 368, 1232]
+   131 Mul                    /Mul                               [1, 12, 368, 1232], [1, 12, 368, 1232]*  ->  [1, 12, 368, 1232]
+   132 ReduceSum              /ReduceSum                         [1, 12, 368, 1232], [1]*  ->  [1, 1, 368, 1232]
+   133 Concat                 /Concat_15                         [1, 1, 368, 1232], [1, 3, 368, 1232]  ->  [1, 4, 368, 1232]
+   134 Conv                   /refine/refine.0/Conv              [1, 4, 368, 1232], [32, 4, 3, 3]*, [32]*  ->  [1, 32, 368, 1232]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+   135 Conv                   /refine/refine.1/conv1/Conv        [1, 32, 368, 1232], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 368, 1232]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+   136 LeakyRelu              /refine/refine.1/relu1/LeakyRelu   [1, 32, 368, 1232]  ->  [1, 32, 368, 1232]
+   137 Conv                   /refine/refine.1/conv2/Conv        [1, 32, 368, 1232], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 368, 1232]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+   138 Add                    /refine/refine.1/Add               [1, 32, 368, 1232], [1, 32, 368, 1232]  ->  [1, 32, 368, 1232]
+   139 LeakyRelu              /refine/refine.1/relu2/LeakyRelu   [1, 32, 368, 1232]  ->  [1, 32, 368, 1232]
+   140 Conv                   /refine/refine.2/conv1/Conv        [1, 32, 368, 1232], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 368, 1232]  {"dilations":[2,2],"group":1,"kernel_shape":[3,3],"pads":[2,2,2,2],"strides":[1,1]}
+   141 LeakyRelu              /refine/refine.2/relu1/LeakyRelu   [1, 32, 368, 1232]  ->  [1, 32, 368, 1232]
+   142 Conv                   /refine/refine.2/conv2/Conv        [1, 32, 368, 1232], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 368, 1232]  {"dilations":[2,2],"group":1,"kernel_shape":[3,3],"pads":[2,2,2,2],"strides":[1,1]}
+   143 Add                    /refine/refine.2/Add               [1, 32, 368, 1232], [1, 32, 368, 1232]  ->  [1, 32, 368, 1232]
+   144 LeakyRelu              /refine/refine.2/relu2/LeakyRelu   [1, 32, 368, 1232]  ->  [1, 32, 368, 1232]
+   145 Conv                   /refine/refine.3/conv1/Conv        [1, 32, 368, 1232], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 368, 1232]  {"dilations":[4,4],"group":1,"kernel_shape":[3,3],"pads":[4,4,4,4],"strides":[1,1]}
+   146 LeakyRelu              /refine/refine.3/relu1/LeakyRelu   [1, 32, 368, 1232]  ->  [1, 32, 368, 1232]
+   147 Conv                   /refine/refine.3/conv2/Conv        [1, 32, 368, 1232], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 368, 1232]  {"dilations":[4,4],"group":1,"kernel_shape":[3,3],"pads":[4,4,4,4],"strides":[1,1]}
+   148 Add                    /refine/refine.3/Add               [1, 32, 368, 1232], [1, 32, 368, 1232]  ->  [1, 32, 368, 1232]
+   149 LeakyRelu              /refine/refine.3/relu2/LeakyRelu   [1, 32, 368, 1232]  ->  [1, 32, 368, 1232]
+   150 Conv                   /refine/refine.4/conv1/Conv        [1, 32, 368, 1232], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 368, 1232]  {"dilations":[8,8],"group":1,"kernel_shape":[3,3],"pads":[8,8,8,8],"strides":[1,1]}
+   151 LeakyRelu              /refine/refine.4/relu1/LeakyRelu   [1, 32, 368, 1232]  ->  [1, 32, 368, 1232]
+   152 Conv                   /refine/refine.4/conv2/Conv        [1, 32, 368, 1232], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 368, 1232]  {"dilations":[8,8],"group":1,"kernel_shape":[3,3],"pads":[8,8,8,8],"strides":[1,1]}
+   153 Add                    /refine/refine.4/Add               [1, 32, 368, 1232], [1, 32, 368, 1232]  ->  [1, 32, 368, 1232]
+   154 LeakyRelu              /refine/refine.4/relu2/LeakyRelu   [1, 32, 368, 1232]  ->  [1, 32, 368, 1232]
+   155 Conv                   /refine/refine.5/conv1/Conv        [1, 32, 368, 1232], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 368, 1232]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+   156 LeakyRelu              /refine/refine.5/relu1/LeakyRelu   [1, 32, 368, 1232]  ->  [1, 32, 368, 1232]
+   157 Conv                   /refine/refine.5/conv2/Conv        [1, 32, 368, 1232], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 368, 1232]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+   158 Add                    /refine/refine.5/Add               [1, 32, 368, 1232], [1, 32, 368, 1232]  ->  [1, 32, 368, 1232]
+   159 LeakyRelu              /refine/refine.5/relu2/LeakyRelu   [1, 32, 368, 1232]  ->  [1, 32, 368, 1232]
+   160 Conv                   /refine/refine.6/conv1/Conv        [1, 32, 368, 1232], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 368, 1232]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+   161 LeakyRelu              /refine/refine.6/relu1/LeakyRelu   [1, 32, 368, 1232]  ->  [1, 32, 368, 1232]
+   162 Conv                   /refine/refine.6/conv2/Conv        [1, 32, 368, 1232], [32, 32, 3, 3]*, [32]*  ->  [1, 32, 368, 1232]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+   163 Add                    /refine/refine.6/Add               [1, 32, 368, 1232], [1, 32, 368, 1232]  ->  [1, 32, 368, 1232]
+   164 LeakyRelu              /refine/refine.6/relu2/LeakyRelu   [1, 32, 368, 1232]  ->  [1, 32, 368, 1232]
+   165 Conv                   /refine/refine.7/Conv              [1, 32, 368, 1232], [1, 32, 3, 3]*, [1]*  ->  [1, 1, 368, 1232]  {"dilations":[1,1],"group":1,"kernel_shape":[3,3],"pads":[1,1,1,1],"strides":[1,1]}
+   166 Add                    /Add                               [1, 1, 368, 1232], [1, 1, 368, 1232]  ->  [1, 1, 368, 1232]
+   167 Relu                   /Relu                              [1, 1, 368, 1232]  ->  [1, 1, 368, 1232]
+
+(* marks an input that is an initializer, i.e. stored data rather than
+ a computed activation.)

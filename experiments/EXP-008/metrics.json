@@ -1,0 +1,56 @@
+{
+  "experiment_id": "EXP-008",
+  "description": "Sign convention of the aggregated cost tensor: is it a cost or a score?",
+  "status": "completed",
+  "started_utc": "2026-09-05T01:33:53.275041+00:00",
+  "finished_utc": "2026-09-05T01:34:12.189043+00:00",
+  "duration_s": 18.914002,
+  "metrics": {
+    "ground_truth_candidate_units": {
+      "mean": 2.5118532180786133,
+      "std": 1.3417034149169922,
+      "min": 0.2939453125,
+      "max": 9.564697265625,
+      "fraction_beyond_11_candidates": 0.0
+    },
+    "series": {
+      "soft_argmin_as_cost (what the graph computes)": {
+        "pearson_r_with_ground_truth": -0.975601398710111,
+        "mean": 7.216525533460259,
+        "std": 1.905763665526577,
+        "mean_abs_error_candidates": 5.130881152399919
+      },
+      "soft_argmin_as_score (sign flipped)": {
+        "pearson_r_with_ground_truth": 0.6807799311452589,
+        "mean": 1.097723674333872,
+        "std": 2.337498079938133,
+        "mean_abs_error_candidates": 1.9779621181557778
+      },
+      "hard_argmin": {
+        "pearson_r_with_ground_truth": -0.9310209787296179,
+        "mean": 7.292032574136892,
+        "std": 2.1037761068231084,
+        "mean_abs_error_candidates": 5.3132706201897415
+      },
+      "hard_argmax": {
+        "pearson_r_with_ground_truth": 0.5705092215223813,
+        "mean": 0.8548508236477317,
+        "std": 2.622738516784136,
+        "mean_abs_error_candidates": 2.369885817946153
+      },
+      "final_output (candidate units)": {
+        "pearson_r_with_ground_truth": 0.9888886311529954,
+        "mean": 2.50125594501796,
+        "std": 1.3331496138508951,
+        "mean_abs_error_candidates": 0.09514212699354094
+      }
+    },
+    "supports": "C3 (neither)"
+  },
+  "observations": [
+    "Against ground truth in candidate units: the graph's own soft-argmin gives r = -0.9756, and the same reduction with the sign flipped gives r = +0.6808.",
+    "Hard argmin r = -0.9310, hard argmax r = +0.5705. These do not depend on the softmax temperature, so they separate the sign question from any saturation effect."
+  ],
+  "conclusion": "Correlations recorded above; the interpretation is written up against these numbers in docs/failure_analysis.md. The baseline is unchanged -- this experiment only reads internal tensors.",
+  "error": null
+}

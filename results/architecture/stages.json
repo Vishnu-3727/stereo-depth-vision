@@ -1,0 +1,83 @@
+{
+  "stages": [
+    {
+      "stage": "feature extraction (left branch)",
+      "nodes": 35,
+      "params_unique": 199552,
+      "params_occurrence": 199552,
+      "macs": 1436295168,
+      "elementwise_ops": 1020096,
+      "peak_activation_bytes": 14508032,
+      "activation_traffic_bytes": 26295808
+    },
+    {
+      "stage": "feature extraction (right branch)",
+      "nodes": 35,
+      "params_unique": 0,
+      "params_occurrence": 199552,
+      "macs": 1436295168,
+      "elementwise_ops": 1020096,
+      "peak_activation_bytes": 14508032,
+      "activation_traffic_bytes": 26295808
+    },
+    {
+      "stage": "cost volume construction",
+      "nodes": 48,
+      "params_unique": 0,
+      "params_occurrence": 0,
+      "macs": 0,
+      "elementwise_ops": 680064,
+      "peak_activation_bytes": 2720256,
+      "activation_traffic_bytes": 16062464
+    },
+    {
+      "stage": "cost volume aggregation (3D)",
+      "nodes": 10,
+      "params_unique": 111585,
+      "params_occurrence": 111585,
+      "macs": 2368662912,
+      "elementwise_ops": 2720256,
+      "peak_activation_bytes": 2720256,
+      "activation_traffic_bytes": 21932064
+    },
+    {
+      "stage": "upsample + soft-argmin",
+      "nodes": 5,
+      "params_unique": 0,
+      "params_occurrence": 0,
+      "macs": 5440512,
+      "elementwise_ops": 70726656,
+      "peak_activation_bytes": 21762048,
+      "activation_traffic_bytes": 88861696
+    },
+    {
+      "stage": "refinement (full resolution)",
+      "nodes": 33,
+      "params_unique": 112449,
+      "params_occurrence": 112449,
+      "macs": 50792620032,
+      "elementwise_ops": 261144576,
+      "peak_activation_bytes": 58032128,
+      "activation_traffic_bytes": 1808063488
+    },
+    {
+      "stage": "residual add + ReLU",
+      "nodes": 2,
+      "params_unique": 0,
+      "params_occurrence": 0,
+      "macs": 0,
+      "elementwise_ops": 906752,
+      "peak_activation_bytes": 1813504,
+      "activation_traffic_bytes": 3627008
+    }
+  ],
+  "totals": {
+    "params_unique": 423586,
+    "params_occurrence": 623138,
+    "macs": 56039313792,
+    "elementwise_ops": 338218496,
+    "activation_traffic_bytes": 1991138336,
+    "peak_single_activation_bytes": 58032128,
+    "ops_2x_macs": 112078627584
+  }
+}

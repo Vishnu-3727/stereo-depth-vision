@@ -1,0 +1,98 @@
+{
+  "baseline": {
+    "metrics": {
+      "valid_pixels": 1837304,
+      "epe": 1.4422272036544024,
+      "rmse": 2.8808202626149897,
+      "d1": 9.331498761228408,
+      "bad1": 41.71269425201273,
+      "bad2": 18.111537339493083,
+      "bad3": 10.050922438529497
+    },
+    "mean_disparity": 32.268531799316406,
+    "std_disparity": 23.21311378479004,
+    "mean_abs_change_vs_baseline_px": 0.0,
+    "correlation_with_baseline": 1.0,
+    "d1_penalty_vs_baseline_points": 0.0
+  },
+  "right_equals_left": {
+    "metrics": {
+      "valid_pixels": 1837304,
+      "epe": 47.9633949242095,
+      "rmse": 51.18445662440796,
+      "d1": 99.00903715443933,
+      "bad1": 99.71659562053966,
+      "bad2": 99.4310141381067,
+      "bad3": 99.15599160509095
+    },
+    "mean_disparity": 82.79318237304688,
+    "std_disparity": 16.838359832763672,
+    "mean_abs_change_vs_baseline_px": 55.732574462890625,
+    "correlation_with_baseline": -0.3103581765300553,
+    "d1_penalty_vs_baseline_points": 89.67753839321092
+  },
+  "right_from_other_scene": {
+    "metrics": {
+      "valid_pixels": 1837304,
+      "epe": 69.42655675586242,
+      "rmse": 73.29567873932764,
+      "d1": 99.28819618310307,
+      "bad1": 99.8435207238432,
+      "bad2": 99.67016889964862,
+      "bad3": 99.51303649260002
+    },
+    "mean_disparity": 105.51409912109375,
+    "std_disparity": 15.041396141052246,
+    "mean_abs_change_vs_baseline_px": 73.6660385131836,
+    "correlation_with_baseline": 0.00018939426746084152,
+    "d1_penalty_vs_baseline_points": 89.95669742187467
+  },
+  "right_flipped_horizontally": {
+    "metrics": {
+      "valid_pixels": 1837304,
+      "epe": 64.4701604599492,
+      "rmse": 69.47225867328848,
+      "d1": 98.45953636415096,
+      "bad1": 99.58858196574981,
+      "bad2": 99.15463091573305,
+      "bad3": 98.7274288849314
+    },
+    "mean_disparity": 101.19307708740234,
+    "std_disparity": 20.046241760253906,
+    "mean_abs_change_vs_baseline_px": 69.31288146972656,
+    "correlation_with_baseline": 0.12083376981577316,
+    "d1_penalty_vs_baseline_points": 89.12803760292256
+  },
+  "right_black": {
+    "metrics": {
+      "valid_pixels": 1837304,
+      "epe": 54.47785330629345,
+      "rmse": 57.898799051567416,
+      "d1": 98.98019054005216,
+      "bad1": 99.77869748283355,
+      "bad2": 99.53208614361043,
+      "bad3": 99.27154134536255
+    },
+    "mean_disparity": 89.05825805664062,
+    "std_disparity": 21.61151123046875,
+    "mean_abs_change_vs_baseline_px": 57.460784912109375,
+    "correlation_with_baseline": 0.34788282210427507,
+    "d1_penalty_vs_baseline_points": 89.64869177882376
+  },
+  "right_noise": {
+    "metrics": {
+      "valid_pixels": 1837304,
+      "epe": 68.53377502056225,
+      "rmse": 73.00048455881075,
+      "d1": 99.13732294710074,
+      "bad1": 99.77510526292872,
+      "bad2": 99.54531204416907,
+      "bad3": 99.3084432407484
+    },
+    "mean_disparity": 107.41572570800781,
+    "std_disparity": 13.17350959777832,
+    "mean_abs_change_vs_baseline_px": 75.50647735595703,
+    "correlation_with_baseline": -0.14674772361395363,
+    "d1_penalty_vs_baseline_points": 89.80582418587234
+  }
+}

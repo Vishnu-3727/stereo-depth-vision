@@ -1,0 +1,65 @@
+{
+  "generated_utc": "2026-09-05 01:04 UTC",
+  "artifacts": [
+    {
+      "path": "hailo_model_zoo/HAILO8_stereo_depth_estimation.rst",
+      "bytes": 1783,
+      "sha256": "9490051ed8eb8535d4d6e959e186c98c0c7946e85df74e03bae61932fbc36b34",
+      "origin": "https://raw.githubusercontent.com/hailo-ai/hailo_model_zoo/master/docs/public_models/HAILO8/HAILO8_stereo_depth_estimation.rst"
+    },
+    {
+      "path": "hailo_model_zoo/stereonet.alls",
+      "bytes": 17094,
+      "sha256": "9928fc4b01c07e6062b47abe62a142df8721f77f6716bf6f0a87c8918da2e650",
+      "origin": "https://raw.githubusercontent.com/hailo-ai/hailo_model_zoo/master/hailo_model_zoo/cfg/alls/generic/stereonet.alls"
+    },
+    {
+      "path": "hailo_model_zoo/stereonet.yaml",
+      "bytes": 1230,
+      "sha256": "9655b95f3884d1c2bca58af1c2642aebe99bac34fb4fe5835a627d47a41c0050",
+      "origin": "https://raw.githubusercontent.com/hailo-ai/hailo_model_zoo/master/hailo_model_zoo/cfg/networks/stereonet.yaml"
+    },
+    {
+      "path": "onnx/stereonet.onnx",
+      "bytes": 23690586,
+      "sha256": "b1a01d855bb22663f06dfd29eae11194e6fde952a319673e036f157c3e10095c",
+      "origin": "derived (extracted from an archive above)"
+    },
+    {
+      "path": "stereonet.hef",
+      "bytes": 24057165,
+      "sha256": "541ee6cb841df318f63ad93e76d6048a9338977e53c2c81ce884cabae698d525",
+      "origin": "https://hailo-model-zoo.s3.eu-west-2.amazonaws.com/ModelZoo/Compiled/v2.19.0/hailo8/stereonet.hef"
+    },
+    {
+      "path": "stereonet.zip",
+      "bytes": 1617369,
+      "sha256": "591f11d1deaa71d6bda0eade4dc498d3a954fd13f1e4148aed8edb333196bd1f",
+      "origin": "https://hailo-model-zoo.s3.eu-west-2.amazonaws.com/DisparityEstimation/stereonet/pretrained/2023-05-31/stereonet.zip"
+    },
+    {
+      "path": "stereonet_profiler_results_compiled_runtime_data.html",
+      "bytes": 40883621,
+      "sha256": "cf69a03f5d359b3716cef784be140fa57e430ec2da61516bd5798b0b50ec7f07",
+      "origin": "https://hailo-model-zoo.s3.eu-west-2.amazonaws.com/ModelZoo/Compiled/v2.19.0/hailo8/stereonet_profiler_results_compiled_runtime_data.html"
+    },
+    {
+      "path": "upstream/hailo_apps_main.zip",
+      "bytes": 240596068,
+      "sha256": "b89369fdfbaf073b710005ca50dfba63338ddcc3692ae0c1c20e4781b52dbf55",
+      "origin": "https://codeload.github.com/hailo-ai/hailo-apps/zip/refs/heads/main"
+    },
+    {
+      "path": "upstream/hailo_model_zoo_master.zip",
+      "bytes": 2508564,
+      "sha256": "dd7ee631b8c7d9a6c67c3e615bc71c401d78c7b7c3373c3e41f4fcb738ac0fce",
+      "origin": "https://codeload.github.com/hailo-ai/hailo_model_zoo/zip/refs/heads/master"
+    },
+    {
+      "path": "upstream/nivosco_StereoNet.zip",
+      "bytes": 869310,
+      "sha256": "db1f11d80bc68db087ea1a26d2644751f5cfb1be17c4e22bfec60e43cba987fa",
+      "origin": "https://codeload.github.com/nivosco/StereoNet/zip/refs/heads/master"
+    }
+  ]
+}

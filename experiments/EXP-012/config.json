@@ -1,0 +1,16 @@
+{
+  "dataset": "kitti2015",
+  "split": "hailo_val",
+  "resolution": [
+    368,
+    1232
+  ],
+  "crop": "Hailo pad-and-crop",
+  "disparity_range": "0-176 px nominal; no search performed (EXP-010)",
+  "batch_size": 1,
+  "precision": "fp32",
+  "seed": null,
+  "scenes": 40,
+  "ground_truth": "disp_occ_0, KITTI official 1/256 scale",
+  "calibration": "per scene, from calib_cam_to_cam"
+}
