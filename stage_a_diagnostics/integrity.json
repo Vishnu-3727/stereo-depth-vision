@@ -1,0 +1,275 @@
+{
+  "gate": "PASS",
+  "failed_checks": [],
+  "checks": [
+    {
+      "check": "seed0_sha256_matches_p2a_record",
+      "measured": "0868ffd137a9985306bf5563685fd2362799bdd630d313e1181c980a7fbb6033",
+      "expected": "0868ffd137a9985306bf5563685fd2362799bdd630d313e1181c980a7fbb6033",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "check": "seed0_sha256_matches_p2a_eval_best",
+      "measured": "0868ffd137a9985306bf5563685fd2362799bdd630d313e1181c980a7fbb6033",
+      "expected": "0868ffd137a9985306bf5563685fd2362799bdd630d313e1181c980a7fbb6033",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "check": "seed1_sha256_matches_p2a_record",
+      "measured": "41b94aaaf14047c92a18817b80ccf959b92ba6fdcb6d79ae32872b5fa83c0652",
+      "expected": "41b94aaaf14047c92a18817b80ccf959b92ba6fdcb6d79ae32872b5fa83c0652",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "check": "seed1_sha256_matches_p2a_eval_best",
+      "measured": "41b94aaaf14047c92a18817b80ccf959b92ba6fdcb6d79ae32872b5fa83c0652",
+      "expected": "41b94aaaf14047c92a18817b80ccf959b92ba6fdcb6d79ae32872b5fa83c0652",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "check": "seed2_sha256_matches_p2a_record",
+      "measured": "6ce4d9bd69efc0ba02a2d5836d5a710d2830a9e548246dd38f8d1330512bee64",
+      "expected": "6ce4d9bd69efc0ba02a2d5836d5a710d2830a9e548246dd38f8d1330512bee64",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "check": "seed2_sha256_matches_p2a_eval_best",
+      "measured": "6ce4d9bd69efc0ba02a2d5836d5a710d2830a9e548246dd38f8d1330512bee64",
+      "expected": "6ce4d9bd69efc0ba02a2d5836d5a710d2830a9e548246dd38f8d1330512bee64",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "check": "param_count",
+      "measured": 397954,
+      "expected": 397954,
+      "pass": true,
+      "note": ""
+    },
+    {
+      "check": "config_downsample_levels",
+      "measured": 3,
+      "expected": 3,
+      "pass": true,
+      "note": ""
+    },
+    {
+      "check": "config_num_disparities",
+      "measured": 24,
+      "expected": 24,
+      "pass": true,
+      "note": ""
+    },
+    {
+      "check": "config_cost_volume_shift",
+      "measured": "right",
+      "expected": "right",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "check": "config_regression_normalize",
+      "measured": true,
+      "expected": true,
+      "pass": true,
+      "note": ""
+    },
+    {
+      "check": "no_batchnorm_modules",
+      "measured": [],
+      "expected": [],
+      "pass": true,
+      "note": ""
+    },
+    {
+      "check": "cost_hypotheses",
+      "measured": 24,
+      "expected": 24,
+      "pass": true,
+      "note": ""
+    },
+    {
+      "check": "disparity_spacing_px",
+      "measured": 8,
+      "expected": 8,
+      "pass": true,
+      "note": ""
+    },
+    {
+      "check": "max_disparity_px",
+      "measured": 184,
+      "expected": 184,
+      "pass": true,
+      "note": ""
+    },
+    {
+      "check": "refinement_module_present",
+      "measured": true,
+      "expected": true,
+      "pass": true,
+      "note": ""
+    },
+    {
+      "check": "seed0_strict_load_zero_missing_unexpected",
+      "measured": {
+        "missing": [],
+        "unexpected": [],
+        "matched": 70
+      },
+      "expected": {
+        "missing": [],
+        "unexpected": [],
+        "matched": 70
+      },
+      "pass": true,
+      "note": ""
+    },
+    {
+      "check": "seed0_n_keys",
+      "measured": 70,
+      "expected": 70,
+      "pass": true,
+      "note": ""
+    },
+    {
+      "check": "seed1_strict_load_zero_missing_unexpected",
+      "measured": {
+        "missing": [],
+        "unexpected": [],
+        "matched": 70
+      },
+      "expected": {
+        "missing": [],
+        "unexpected": [],
+        "matched": 70
+      },
+      "pass": true,
+      "note": ""
+    },
+    {
+      "check": "seed1_n_keys",
+      "measured": 70,
+      "expected": 70,
+      "pass": true,
+      "note": ""
+    },
+    {
+      "check": "seed2_strict_load_zero_missing_unexpected",
+      "measured": {
+        "missing": [],
+        "unexpected": [],
+        "matched": 70
+      },
+      "expected": {
+        "missing": [],
+        "unexpected": [],
+        "matched": 70
+      },
+      "pass": true,
+      "note": ""
+    },
+    {
+      "check": "seed2_n_keys",
+      "measured": 70,
+      "expected": 70,
+      "pass": true,
+      "note": ""
+    },
+    {
+      "check": "eval_device",
+      "measured": "cuda",
+      "expected": "cuda(preferred)/cpu",
+      "pass": true,
+      "note": "informational; recorded"
+    },
+    {
+      "check": "eval_split_scenes",
+      "measured": 40,
+      "expected": 40,
+      "pass": true,
+      "note": "split=hailo_val"
+    },
+    {
+      "check": "disparity_scale",
+      "measured": 256.0,
+      "expected": 256.0,
+      "pass": true,
+      "note": "dataset constructed with scale 256.0"
+    },
+    {
+      "check": "occluded_gt",
+      "measured": "disp_occ_0",
+      "expected": "disp_occ_0",
+      "pass": true,
+      "note": "occluded=True"
+    },
+    {
+      "check": "refinement_residual_mean_abs_px",
+      "measured": 21.19754409790039,
+      "expected": ">0",
+      "pass": true,
+      "note": "refinement contributes; enabled"
+    },
+    {
+      "check": "seed0_valid_pixels",
+      "measured": 3802797,
+      "expected": 3802797,
+      "pass": true,
+      "note": ""
+    },
+    {
+      "check": "seed0_contract_match",
+      "measured": true,
+      "expected": true,
+      "pass": true,
+      "note": ""
+    },
+    {
+      "check": "seed1_valid_pixels",
+      "measured": 3802797,
+      "expected": 3802797,
+      "pass": true,
+      "note": ""
+    },
+    {
+      "check": "seed1_contract_match",
+      "measured": true,
+      "expected": true,
+      "pass": true,
+      "note": ""
+    },
+    {
+      "check": "seed2_valid_pixels",
+      "measured": 3802797,
+      "expected": 3802797,
+      "pass": true,
+      "note": ""
+    },
+    {
+      "check": "seed2_contract_match",
+      "measured": true,
+      "expected": true,
+      "pass": true,
+      "note": ""
+    },
+    {
+      "check": "seed0_epe_reproduces",
+      "measured": 1.4149795736625577,
+      "expected": 1.4149796,
+      "pass": true,
+      "note": "diff=0.00e+00 tol=1e-3"
+    },
+    {
+      "check": "mean3_epe_reproduces",
+      "measured": 1.4409825930575104,
+      "expected": 1.4409826,
+      "pass": true,
+      "note": "diff=-2.00e-11 tol=1e-3"
+    }
+  ]
+}

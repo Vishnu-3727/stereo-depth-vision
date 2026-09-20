@@ -1,0 +1,4509 @@
+{
+  "task": "D4 AGGREGATION DIAGNOSTIC (frozen model, no retraining)",
+  "honesty_constraint": "The pre-aggregation scalar is a DIAGNOSTIC PROXY (mean over channels of the frozen signed-difference volume, i.e. the D3 A_L1 reduction) and the post-aggregation scalar is the model's ACTUAL cost (the trained 3D aggregation output that the readout consumes). They are NOT the same kind of object. Only RANKS and ORDERINGS are compared, never raw magnitudes. A POST-OVER-PRE improvement establishes that aggregation RESOLVES ambiguity as measured; near-zero deltas mean it PRESERVES it. No long-range-aggregation claim from the literature is used as evidence, no conclusive-claim language is used, and no mechanism verdict is declared here (step 8 does verdicts).",
+  "conventions": {
+    "geometry": "P2A shift=right, 24 candidates, stride 8; identical D3 conventions: nearest-centre GT sampling, gt_cand=GT_px/8, gt_idx=clip(round(gt_cand),0,23), left-edge x<k exclusion from EVERY statistic, cells with x<gt_idx dropped, ok-mask (valid non-neighbourhood AND valid negative) identical for PRE/POST",
+    "pre_object": "DIAGNOSTIC PROXY: mean_c |cost_volume| (D3 A_L1 reduction), recomputed from the frozen volume; rank-1 cross-checked against D3 A_L1 per seed",
+    "post_object": "model's ACTUAL cost: stages['aggregated_cost']; readout applies softmax(-cost)",
+    "comparison_rule": "RANKS and ORDERINGS only, never raw magnitudes",
+    "margin": "best valid non-neighbourhood cost minus GT cost; positive = GT candidate preferred",
+    "overlap": "fraction of pooled valid negatives scoring better (lower) than the median positive",
+    "entropy": "softmax(-cost) over VALID candidates only; PRE value is a PROXY entropy, POST is the model's own",
+    "texture": "full-res left grayscale gradient magnitude, mean over each stride-8 cell; per-seed median split",
+    "edge": "gt_idx differs by >=2 from any in-bounds 4-neighbour with sampled GT>0",
+    "regimes": "low = gt_cand<8 (GT<64px); high = gt_cand>=8",
+    "occlusion": "full-res occluded-only mask (valid disp_occ_0 AND invalid disp_noc_0, the reference_strata.py definition) lifted to feature resolution by footprint-max: a surviving cell is occluded if ANY pixel in its stride-8 footprint is occluded-only. Centre-sampling the sparse binary mask yields zero occluded cells, so max-pooling the dense mask is used and stated; HIGH_OCC / HIGH_NONOCC groups test the occlusion confound on the D3 negative high-disparity margin directly",
+    "spatial": "POST dense argmax (valid-masked argmin) vs its existing in-bounds 4-neighbours",
+    "low_n": "any regime with fewer than 1000 cells is flagged low-n",
+    "method_mean": "headline = arithmetic mean across 3 seeds"
+  },
+  "prior_work": {
+    "prevs_post_aggregation.py": "phase1/runs/arm_v_diag/prevs_post_aggregation.py compares a raw L2-norm cost against the aggregated cost, but on the ARM-V checkpoints (not P2A), at upsampled full resolution with nearest interpolation, standardised softmax, no left-edge exclusion and no D1-bin / occlusion / texture regimes. It frames the same question but answers no part of this brief's measurements; none of its numbers are reused. D3's conventions are used instead so PRE here is exactly comparable to the D3 A_L1 representation."
+  },
+  "counts_per_seed": {
+    "0": {
+      "n_gt_cells": 59431,
+      "n_dropped_leftedge": 1313,
+      "n_pairs_removed": 79326,
+      "n_nonneg_undef": 36,
+      "n_neg_undef": 70,
+      "n_fullres_valid_occ": 3802797,
+      "n_fullres_occ_only": 81581,
+      "images": 40
+    },
+    "1": {
+      "n_gt_cells": 59431,
+      "n_dropped_leftedge": 1313,
+      "n_pairs_removed": 79326,
+      "n_nonneg_undef": 36,
+      "n_neg_undef": 70,
+      "n_fullres_valid_occ": 3802797,
+      "n_fullres_occ_only": 81581,
+      "images": 40
+    },
+    "2": {
+      "n_gt_cells": 59431,
+      "n_dropped_leftedge": 1313,
+      "n_pairs_removed": 79326,
+      "n_nonneg_undef": 36,
+      "n_neg_undef": 70,
+      "n_fullres_valid_occ": 3802797,
+      "n_fullres_occ_only": 81581,
+      "images": 40
+    }
+  },
+  "d3_crosscheck": "PRE rank-1 reproduces D3 A_L1 rank-1 per seed to <1e-9 (gate passed before this JSON was written)",
+  "seeds": {
+    "0": {
+      "n_defined_cells": 58048,
+      "texture_median_threshold": 5.055687302347875,
+      "n_edge_cells": 676,
+      "n_occluded_cells": 134,
+      "groups": {
+        "POOLED": {
+          "pre": {
+            "n_cells": 58048,
+            "rank1_frac": 0.6565084068357222,
+            "rankle3_frac": 0.847212651598677,
+            "margin_mean": 218272.2150288406,
+            "margin_frac_positive": 0.7497932745314223,
+            "overlap_frac_neg_better_than_median_pos": 0.03096867770818468,
+            "gap_mean": 1.8507375069797078,
+            "entropy_mean": 6.274536004340333e-06
+          },
+          "post": {
+            "n_cells": 58048,
+            "rank1_frac": 0.18059192392502757,
+            "rankle3_frac": 0.9068701764057332,
+            "margin_mean": 256991398.77285177,
+            "margin_frac_positive": 0.5986597298787211,
+            "overlap_frac_neg_better_than_median_pos": 0.0060438319532185635,
+            "gap_mean": 2.4478893503389916,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.47591648291069466,
+            "rankle3_frac": 0.05965752480705622,
+            "margin_mean": 256773126.5578229,
+            "margin_frac_positive": -0.15113354465270123,
+            "overlap_frac_neg_better_than_median_pos": -0.02492484575496612,
+            "gap_mean": 0.5971518433592837,
+            "entropy_mean": -6.274536004340333e-06
+          }
+        },
+        "GT>=96": {
+          "pre": {
+            "n_cells": 393,
+            "rank1_frac": 0.3791348600508906,
+            "rankle3_frac": 0.6106870229007634,
+            "margin_mean": -80892.79226304071,
+            "margin_frac_positive": 0.4402035623409669,
+            "overlap_frac_neg_better_than_median_pos": 0.16604921937020375,
+            "gap_mean": 1.2112726122405801,
+            "entropy_mean": 2.934914570305425e-39,
+            "low_n": true
+          },
+          "post": {
+            "n_cells": 393,
+            "rank1_frac": 0.1475826972010178,
+            "rankle3_frac": 0.6361323155216285,
+            "margin_mean": -127025664.2956425,
+            "margin_frac_positive": 0.45038167938931295,
+            "overlap_frac_neg_better_than_median_pos": 0.03347446414395343,
+            "gap_mean": 1.7621629168064088,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.2315521628498728,
+            "rankle3_frac": 0.025445292620865145,
+            "margin_mean": -126944771.50337945,
+            "margin_frac_positive": 0.010178117048346036,
+            "overlap_frac_neg_better_than_median_pos": -0.13257475522625034,
+            "gap_mean": 0.5508903045658287,
+            "entropy_mean": -2.934914570305425e-39
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "OCC": {
+          "pre": {
+            "n_cells": 134,
+            "rank1_frac": 0.417910447761194,
+            "rankle3_frac": 0.8059701492537313,
+            "margin_mean": 100881.65006996269,
+            "margin_frac_positive": 0.5970149253731343,
+            "overlap_frac_neg_better_than_median_pos": 0.22434782608695653,
+            "gap_mean": 1.0285094296857413,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "post": {
+            "n_cells": 134,
+            "rank1_frac": 0.208955223880597,
+            "rankle3_frac": 0.917910447761194,
+            "margin_mean": 142547456.00198227,
+            "margin_frac_positive": 0.6716417910447762,
+            "overlap_frac_neg_better_than_median_pos": 0.07304347826086957,
+            "gap_mean": 1.3574045025233112,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.208955223880597,
+            "rankle3_frac": 0.11194029850746268,
+            "margin_mean": 142446574.35191232,
+            "margin_frac_positive": 0.0746268656716419,
+            "overlap_frac_neg_better_than_median_pos": -0.15130434782608695,
+            "gap_mean": 0.3288950728375699,
+            "entropy_mean": 0.0
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "NONOCC": {
+          "pre": {
+            "n_cells": 57914,
+            "rank1_frac": 0.6570604689712332,
+            "rankle3_frac": 0.8473080774942156,
+            "margin_mean": 218543.83045351325,
+            "margin_frac_positive": 0.7501467693476535,
+            "overlap_frac_neg_better_than_median_pos": 0.03082176365630002,
+            "gap_mean": 1.8526399582411888,
+            "entropy_mean": 6.289053872637837e-06
+          },
+          "post": {
+            "n_cells": 57914,
+            "rank1_frac": 0.1805262976137031,
+            "rankle3_frac": 0.9068446316952723,
+            "margin_mean": 257256196.37500837,
+            "margin_frac_positive": 0.5984908657664814,
+            "overlap_frac_neg_better_than_median_pos": 0.006023554067947058,
+            "gap_mean": 2.4504124875701847,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.47653417135753007,
+            "rankle3_frac": 0.059536554201056746,
+            "margin_mean": 257037652.54455486,
+            "margin_frac_positive": -0.1516559035811721,
+            "overlap_frac_neg_better_than_median_pos": -0.02479820958835296,
+            "gap_mean": 0.5977725293289959,
+            "entropy_mean": -6.289053872637837e-06
+          }
+        },
+        "TEXLO": {
+          "pre": {
+            "n_cells": 29024,
+            "rank1_frac": 0.6287899669239251,
+            "rankle3_frac": 0.836066703417861,
+            "margin_mean": 155669.37856298612,
+            "margin_frac_positive": 0.7313602535832414,
+            "overlap_frac_neg_better_than_median_pos": 0.031972567300767155,
+            "gap_mean": 1.7707607719972507,
+            "entropy_mean": 1.213957456593252e-05
+          },
+          "post": {
+            "n_cells": 29024,
+            "rank1_frac": 0.1724090407938258,
+            "rankle3_frac": 0.9069390848952591,
+            "margin_mean": 203887792.44129404,
+            "margin_frac_positive": 0.5971954244762955,
+            "overlap_frac_neg_better_than_median_pos": 0.005928343897693518,
+            "gap_mean": 2.435795813846595,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.4563809261300993,
+            "rankle3_frac": 0.07087238147739805,
+            "margin_mean": 203732123.06273106,
+            "margin_frac_positive": -0.13416482910694594,
+            "overlap_frac_neg_better_than_median_pos": -0.026044223403073635,
+            "gap_mean": 0.6650350418493445,
+            "entropy_mean": -1.213957456593252e-05
+          }
+        },
+        "TEXHI": {
+          "pre": {
+            "n_cells": 29024,
+            "rank1_frac": 0.6842268467475193,
+            "rankle3_frac": 0.8583585997794928,
+            "margin_mean": 280875.05149469513,
+            "margin_frac_positive": 0.7682262954796031,
+            "overlap_frac_neg_better_than_median_pos": 0.014439232486465479,
+            "gap_mean": 1.930714241962165,
+            "entropy_mean": 4.094974427481477e-07
+          },
+          "post": {
+            "n_cells": 29024,
+            "rank1_frac": 0.18877480705622932,
+            "rankle3_frac": 0.9068012679162073,
+            "margin_mean": 310095005.1044096,
+            "margin_frac_positive": 0.6001240352811467,
+            "overlap_frac_neg_better_than_median_pos": 0.005482497763075839,
+            "gap_mean": 2.459982886831389,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.49545203969129004,
+            "rankle3_frac": 0.048442668136714495,
+            "margin_mean": 309814130.05291486,
+            "margin_frac_positive": -0.16810226019845642,
+            "overlap_frac_neg_better_than_median_pos": -0.00895673472338964,
+            "gap_mean": 0.5292686448692239,
+            "entropy_mean": -4.094974427481477e-07
+          }
+        },
+        "EDGE": {
+          "pre": {
+            "n_cells": 676,
+            "rank1_frac": 0.2869822485207101,
+            "rankle3_frac": 0.5059171597633136,
+            "margin_mean": -286775.2010331916,
+            "margin_frac_positive": 0.34763313609467456,
+            "overlap_frac_neg_better_than_median_pos": 0.18592085235920852,
+            "gap_mean": 1.0953198379738556,
+            "entropy_mean": 1.2441846523203574e-120,
+            "low_n": true
+          },
+          "post": {
+            "n_cells": 676,
+            "rank1_frac": 0.26627218934911245,
+            "rankle3_frac": 0.6730769230769231,
+            "margin_mean": 174634.98357757027,
+            "margin_frac_positive": 0.4881656804733728,
+            "overlap_frac_neg_better_than_median_pos": 0.023820395738203957,
+            "gap_mean": 2.1112729383487525,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.020710059171597628,
+            "rankle3_frac": 0.1671597633136095,
+            "margin_mean": 461410.1846107618,
+            "margin_frac_positive": 0.14053254437869822,
+            "overlap_frac_neg_better_than_median_pos": -0.16210045662100456,
+            "gap_mean": 1.015953100374897,
+            "entropy_mean": -1.2441846523203574e-120
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "NONEDGE": {
+          "pre": {
+            "n_cells": 57372,
+            "rank1_frac": 0.6608624416091473,
+            "rankle3_frac": 0.8512340514536708,
+            "margin_mean": 224223.06306024853,
+            "margin_frac_positive": 0.7545318273722373,
+            "overlap_frac_neg_better_than_median_pos": 0.030636262896759456,
+            "gap_mean": 1.8596384054013764,
+            "entropy_mean": 6.348467300772984e-06
+          },
+          "post": {
+            "n_cells": 57372,
+            "rank1_frac": 0.17958237467754304,
+            "rankle3_frac": 0.909624904134421,
+            "margin_mean": 260017406.79630485,
+            "margin_frac_positive": 0.5999616537683887,
+            "overlap_frac_neg_better_than_median_pos": 0.005944050531713895,
+            "gap_mean": 2.4518556177604762,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.4812800669316043,
+            "rankle3_frac": 0.05839085268075017,
+            "margin_mean": 259793183.7332446,
+            "margin_frac_positive": -0.15457017360384862,
+            "overlap_frac_neg_better_than_median_pos": -0.02469221236504556,
+            "gap_mean": 0.5922172123590999,
+            "entropy_mean": -6.348467300772984e-06
+          }
+        },
+        "LOW": {
+          "pre": {
+            "n_cells": 55815,
+            "rank1_frac": 0.6620442533369166,
+            "rankle3_frac": 0.8523694347397653,
+            "margin_mean": 223946.92224280967,
+            "margin_frac_positive": 0.7559437427214907,
+            "overlap_frac_neg_better_than_median_pos": 0.02978803625558094,
+            "gap_mean": 1.8644187953050442,
+            "entropy_mean": 6.525562411178853e-06
+          },
+          "post": {
+            "n_cells": 55815,
+            "rank1_frac": 0.18165367732688345,
+            "rankle3_frac": 0.912335393711368,
+            "margin_mean": 266920516.7056995,
+            "margin_frac_positive": 0.6018632983964884,
+            "overlap_frac_neg_better_than_median_pos": 0.0057031984948259645,
+            "gap_mean": 2.464742065621862,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.4803905760100332,
+            "rankle3_frac": 0.05996595897160262,
+            "margin_mean": 266696569.78345668,
+            "margin_frac_positive": -0.15408044432500223,
+            "overlap_frac_neg_better_than_median_pos": -0.024084837760754974,
+            "gap_mean": 0.6003232703168178,
+            "entropy_mean": -6.525562411178853e-06
+          }
+        },
+        "HIGH": {
+          "pre": {
+            "n_cells": 2233,
+            "rank1_frac": 0.5181370353784147,
+            "rankle3_frac": 0.7183161665920287,
+            "margin_mean": 76429.947609368,
+            "margin_frac_positive": 0.5960591133004927,
+            "overlap_frac_neg_better_than_median_pos": 0.08142538305288763,
+            "gap_mean": 1.5087665674908413,
+            "entropy_mean": 5.1653444967757815e-40
+          },
+          "post": {
+            "n_cells": 2233,
+            "rank1_frac": 0.1540528437080161,
+            "rankle3_frac": 0.7702642185400806,
+            "margin_mean": 8807915.825294588,
+            "margin_frac_positive": 0.5185848634124496,
+            "overlap_frac_neg_better_than_median_pos": 0.02136569952604258,
+            "gap_mean": 2.0266469394507776,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.3640841916703986,
+            "rankle3_frac": 0.051948051948051965,
+            "margin_mean": 8731485.877685219,
+            "margin_frac_positive": -0.07747424988804308,
+            "overlap_frac_neg_better_than_median_pos": -0.06005968352684505,
+            "gap_mean": 0.5178803719599363,
+            "entropy_mean": -5.1653444967757815e-40
+          }
+        },
+        "HIGH_OCC": {
+          "pre": {
+            "n_cells": 23,
+            "rank1_frac": 0.30434782608695654,
+            "rankle3_frac": 0.6086956521739131,
+            "margin_mean": -227535.05298913043,
+            "margin_frac_positive": 0.43478260869565216,
+            "overlap_frac_neg_better_than_median_pos": 0.2222222222222222,
+            "gap_mean": 0.776698675911558,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "post": {
+            "n_cells": 23,
+            "rank1_frac": 0.13043478260869565,
+            "rankle3_frac": 0.6956521739130435,
+            "margin_mean": -36793087.11888587,
+            "margin_frac_positive": 0.4782608695652174,
+            "overlap_frac_neg_better_than_median_pos": 0.08080808080808081,
+            "gap_mean": 1.0029860511583093,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.1739130434782609,
+            "rankle3_frac": 0.08695652173913038,
+            "margin_mean": -36565552.065896735,
+            "margin_frac_positive": 0.043478260869565244,
+            "overlap_frac_neg_better_than_median_pos": -0.14141414141414138,
+            "gap_mean": 0.22628737524675135,
+            "entropy_mean": 0.0
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "HIGH_NONOCC": {
+          "pre": {
+            "n_cells": 2210,
+            "rank1_frac": 0.5203619909502263,
+            "rankle3_frac": 0.7194570135746606,
+            "margin_mean": 79593.38426718043,
+            "margin_frac_positive": 0.597737556561086,
+            "overlap_frac_neg_better_than_median_pos": 0.08019355326495123,
+            "gap_mean": 1.5163853736023,
+            "entropy_mean": 5.219101475701502e-40
+          },
+          "post": {
+            "n_cells": 2210,
+            "rank1_frac": 0.15429864253393666,
+            "rankle3_frac": 0.7710407239819005,
+            "margin_mean": 9282496.398921805,
+            "margin_frac_positive": 0.5190045248868779,
+            "overlap_frac_neg_better_than_median_pos": 0.02116988835404118,
+            "gap_mean": 2.0373004238085723,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.3660633484162896,
+            "rankle3_frac": 0.05158371040723986,
+            "margin_mean": 9202903.014654623,
+            "margin_frac_positive": -0.07873303167420809,
+            "overlap_frac_neg_better_than_median_pos": -0.059023664910910045,
+            "gap_mean": 0.5209150502062723,
+            "entropy_mean": -5.219101475701502e-40
+          }
+        },
+        "GT96_OCC": {
+          "pre": {
+            "n_cells": 2,
+            "rank1_frac": 0.5,
+            "rankle3_frac": 1.0,
+            "margin_mean": 48266.21875,
+            "margin_frac_positive": 0.5,
+            "overlap_frac_neg_better_than_median_pos": 0.03571428571428571,
+            "gap_mean": 1.0690519548052837,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "post": {
+            "n_cells": 2,
+            "rank1_frac": 0.0,
+            "rankle3_frac": 0.0,
+            "margin_mean": -850285132.0,
+            "margin_frac_positive": 0.0,
+            "overlap_frac_neg_better_than_median_pos": 0.14285714285714285,
+            "gap_mean": 0.16336867834506621,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.5,
+            "rankle3_frac": -1.0,
+            "margin_mean": -850333398.21875,
+            "margin_frac_positive": -0.5,
+            "overlap_frac_neg_better_than_median_pos": 0.10714285714285714,
+            "gap_mean": -0.9056832764602175,
+            "entropy_mean": 0.0
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "GT96_NONOCC": {
+          "pre": {
+            "n_cells": 391,
+            "rank1_frac": 0.37851662404092073,
+            "rankle3_frac": 0.6086956521739131,
+            "margin_mean": -81553.45216592071,
+            "margin_frac_positive": 0.4398976982097187,
+            "overlap_frac_neg_better_than_median_pos": 0.16640106241699867,
+            "gap_mean": 1.2120000836341114,
+            "entropy_mean": 2.9499269210486754e-39,
+            "low_n": true
+          },
+          "post": {
+            "n_cells": 391,
+            "rank1_frac": 0.1483375959079284,
+            "rankle3_frac": 0.639386189258312,
+            "margin_mean": -123326127.37643862,
+            "margin_frac_positive": 0.45268542199488493,
+            "overlap_frac_neg_better_than_median_pos": 0.033067729083665336,
+            "gap_mean": 1.7703408924507125,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.23017902813299235,
+            "rankle3_frac": 0.03069053708439895,
+            "margin_mean": -123244573.9242727,
+            "margin_frac_positive": 0.012787723785166238,
+            "overlap_frac_neg_better_than_median_pos": -0.13333333333333333,
+            "gap_mean": 0.5583408088166011,
+            "entropy_mean": -2.9499269210486754e-39
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "BIN [0,16)": {
+          "pre": {
+            "n_cells": 8040,
+            "rank1_frac": 0.6706467661691542,
+            "rankle3_frac": 0.849502487562189,
+            "margin_mean": 244529.25516946518,
+            "margin_frac_positive": 0.7569651741293533,
+            "overlap_frac_neg_better_than_median_pos": 0.014827283749967753,
+            "gap_mean": 1.9028353764247055,
+            "entropy_mean": 2.3327083217978298e-09
+          },
+          "post": {
+            "n_cells": 8040,
+            "rank1_frac": 0.5677860696517413,
+            "rankle3_frac": 0.9951492537313433,
+            "margin_mean": 975392767.9657202,
+            "margin_frac_positive": 0.7649253731343284,
+            "overlap_frac_neg_better_than_median_pos": 1.9348347651110595e-05,
+            "gap_mean": 3.385966328697052,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.10286069651741292,
+            "rankle3_frac": 0.14564676616915428,
+            "margin_mean": 975148238.7105507,
+            "margin_frac_positive": 0.007960199004975133,
+            "overlap_frac_neg_better_than_median_pos": -0.014807935402316643,
+            "gap_mean": 1.4831309522723466,
+            "entropy_mean": -2.3327083217978298e-09
+          }
+        },
+        "BIN [16,32)": {
+          "pre": {
+            "n_cells": 18053,
+            "rank1_frac": 0.6835429014568216,
+            "rankle3_frac": 0.8637345593530161,
+            "margin_mean": 245744.8381801101,
+            "margin_frac_positive": 0.7712845510441478,
+            "overlap_frac_neg_better_than_median_pos": 0.019502623508379238,
+            "gap_mean": 1.910901727830045,
+            "entropy_mean": 8.161633956938073e-26
+          },
+          "post": {
+            "n_cells": 18053,
+            "rank1_frac": 0.05328754223674736,
+            "rankle3_frac": 0.8774718883288096,
+            "margin_mean": -13595200.160609126,
+            "margin_frac_positive": 0.5057885116047194,
+            "overlap_frac_neg_better_than_median_pos": 0.008116161102309559,
+            "gap_mean": 2.118929578557748,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.6302553592200743,
+            "rankle3_frac": 0.013737328975793495,
+            "margin_mean": -13840944.998789236,
+            "margin_frac_positive": -0.26549603943942846,
+            "overlap_frac_neg_better_than_median_pos": -0.01138646240606968,
+            "gap_mean": 0.2080278507277029,
+            "entropy_mean": -8.161633956938073e-26
+          }
+        },
+        "BIN [32,48)": {
+          "pre": {
+            "n_cells": 17160,
+            "rank1_frac": 0.6608974358974359,
+            "rankle3_frac": 0.8604312354312355,
+            "margin_mean": 218716.6346791514,
+            "margin_frac_positive": 0.7659673659673659,
+            "overlap_frac_neg_better_than_median_pos": 0.025287161343478894,
+            "gap_mean": 1.8638394112740608,
+            "entropy_mean": 3.87985860614078e-12
+          },
+          "post": {
+            "n_cells": 17160,
+            "rank1_frac": 0.12313519813519813,
+            "rankle3_frac": 0.8958041958041958,
+            "margin_mean": 175460848.14238423,
+            "margin_frac_positive": 0.5707459207459208,
+            "overlap_frac_neg_better_than_median_pos": 0.006624703145446615,
+            "gap_mean": 2.3161762978720417,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.5377622377622377,
+            "rankle3_frac": 0.03537296037296034,
+            "margin_mean": 175242131.5077051,
+            "margin_frac_positive": -0.19522144522144513,
+            "overlap_frac_neg_better_than_median_pos": -0.018662458198032278,
+            "gap_mean": 0.4523368865979809,
+            "entropy_mean": -3.87985860614078e-12
+          }
+        },
+        "BIN [48,64)": {
+          "pre": {
+            "n_cells": 12562,
+            "rank1_frac": 0.6272090431459959,
+            "rankle3_frac": 0.8268587804489731,
+            "margin_mean": 186592.3609823401,
+            "margin_frac_positive": 0.7195510269065435,
+            "overlap_frac_neg_better_than_median_pos": 0.04780888003004304,
+            "gap_mean": 1.773821480935974,
+            "entropy_mean": 2.899263209892268e-05
+          },
+          "post": {
+            "n_cells": 12562,
+            "rank1_frac": 0.19893329087724884,
+            "rankle3_frac": 0.9320171947142175,
+            "margin_mean": 341548860.04301786,
+            "margin_frac_positive": 0.6780767393727114,
+            "overlap_frac_neg_better_than_median_pos": 0.006441921599214259,
+            "gap_mean": 2.5750508005709816,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.42827575226874703,
+            "rankle3_frac": 0.10515841426524442,
+            "margin_mean": 341362267.6820355,
+            "margin_frac_positive": -0.04147428753383209,
+            "overlap_frac_neg_better_than_median_pos": -0.041366958430828785,
+            "gap_mean": 0.8012293196350075,
+            "entropy_mean": -2.899263209892268e-05
+          }
+        },
+        "BIN [64,80)": {
+          "pre": {
+            "n_cells": 1463,
+            "rank1_frac": 0.5762132604237867,
+            "rankle3_frac": 0.760082023239918,
+            "margin_mean": 134075.56570670282,
+            "margin_frac_positive": 0.6520847573479153,
+            "overlap_frac_neg_better_than_median_pos": 0.05873346158376193,
+            "gap_mean": 1.5986119305463742,
+            "entropy_mean": 6.430687130555686e-108
+          },
+          "post": {
+            "n_cells": 1463,
+            "rank1_frac": 0.1394395078605605,
+            "rankle3_frac": 0.8051948051948052,
+            "margin_mean": 39599247.248766445,
+            "margin_frac_positive": 0.5413533834586466,
+            "overlap_frac_neg_better_than_median_pos": 0.019433865965215343,
+            "gap_mean": 2.0762147274072573,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.43677375256322626,
+            "rankle3_frac": 0.045112781954887216,
+            "margin_mean": 39465171.683059745,
+            "margin_frac_positive": -0.11073137388926868,
+            "overlap_frac_neg_better_than_median_pos": -0.03929959561854658,
+            "gap_mean": 0.47760279686088314,
+            "entropy_mean": -6.430687130555686e-108
+          }
+        },
+        "BIN [80,96)": {
+          "pre": {
+            "n_cells": 377,
+            "rank1_frac": 0.4376657824933687,
+            "rankle3_frac": 0.6684350132625995,
+            "margin_mean": 16727.81894479443,
+            "margin_frac_positive": 0.5411140583554377,
+            "overlap_frac_neg_better_than_median_pos": 0.087178738317757,
+            "gap_mean": 1.4702290562524012,
+            "entropy_mean": 9.56131791827906e-280,
+            "low_n": true
+          },
+          "post": {
+            "n_cells": 377,
+            "rank1_frac": 0.21750663129973474,
+            "rankle3_frac": 0.7745358090185677,
+            "margin_mean": 30916348.491047744,
+            "margin_frac_positive": 0.5013262599469496,
+            "overlap_frac_neg_better_than_median_pos": 0.015332943925233645,
+            "gap_mean": 2.1100011758404515,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.22015915119363394,
+            "rankle3_frac": 0.1061007957559682,
+            "margin_mean": 30899620.67210295,
+            "margin_frac_positive": -0.03978779840848812,
+            "overlap_frac_neg_better_than_median_pos": -0.07184579439252337,
+            "gap_mean": 0.6397721195880504,
+            "entropy_mean": -9.56131791827906e-280
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "BIN [96,112)": {
+          "pre": {
+            "n_cells": 286,
+            "rank1_frac": 0.3776223776223776,
+            "rankle3_frac": 0.6083916083916084,
+            "margin_mean": -76163.74874344406,
+            "margin_frac_positive": 0.43006993006993005,
+            "overlap_frac_neg_better_than_median_pos": 0.15398230088495576,
+            "gap_mean": 1.2362888040653055,
+            "entropy_mean": 4.032942049405706e-39,
+            "low_n": true
+          },
+          "post": {
+            "n_cells": 286,
+            "rank1_frac": 0.16783216783216784,
+            "rankle3_frac": 0.6783216783216783,
+            "margin_mean": 8539513.825393356,
+            "margin_frac_positive": 0.5244755244755245,
+            "overlap_frac_neg_better_than_median_pos": 0.02654867256637168,
+            "gap_mean": 1.9711411634525369,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.20979020979020976,
+            "rankle3_frac": 0.0699300699300699,
+            "margin_mean": 8615677.574136801,
+            "margin_frac_positive": 0.09440559440559443,
+            "overlap_frac_neg_better_than_median_pos": -0.12743362831858407,
+            "gap_mean": 0.7348523593872314,
+            "entropy_mean": -4.032942049405706e-39
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "BIN [112,128)": {
+          "pre": {
+            "n_cells": 107,
+            "rank1_frac": 0.38317757009345793,
+            "rankle3_frac": 0.616822429906542,
+            "margin_mean": -93533.0394275701,
+            "margin_frac_positive": 0.4672897196261682,
+            "overlap_frac_neg_better_than_median_pos": 0.07914046121593292,
+            "gap_mean": 1.1444069032511281,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "post": {
+            "n_cells": 107,
+            "rank1_frac": 0.09345794392523364,
+            "rankle3_frac": 0.5233644859813084,
+            "margin_mean": -489377448.80607474,
+            "margin_frac_positive": 0.2523364485981308,
+            "overlap_frac_neg_better_than_median_pos": 0.05450733752620545,
+            "gap_mean": 1.203585547266291,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.2897196261682243,
+            "rankle3_frac": -0.09345794392523366,
+            "margin_mean": -489283915.76664716,
+            "margin_frac_positive": -0.2149532710280374,
+            "overlap_frac_neg_better_than_median_pos": -0.02463312368972747,
+            "gap_mean": 0.05917864401516293,
+            "entropy_mean": 0.0
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "BIN [128,144)": {
+          "pre": {
+            "n_cells": 0,
+            "status": "EMPTY"
+          },
+          "post": {
+            "n_cells": 0,
+            "status": "EMPTY"
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": null,
+            "rankle3_frac": null,
+            "margin_mean": null,
+            "margin_frac_positive": null,
+            "overlap_frac_neg_better_than_median_pos": null,
+            "gap_mean": null,
+            "entropy_mean": null
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "BIN [144,160)": {
+          "pre": {
+            "n_cells": 0,
+            "status": "EMPTY"
+          },
+          "post": {
+            "n_cells": 0,
+            "status": "EMPTY"
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": null,
+            "rankle3_frac": null,
+            "margin_mean": null,
+            "margin_frac_positive": null,
+            "overlap_frac_neg_better_than_median_pos": null,
+            "gap_mean": null,
+            "entropy_mean": null
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "BIN [160,184)": {
+          "pre": {
+            "n_cells": 0,
+            "status": "EMPTY"
+          },
+          "post": {
+            "n_cells": 0,
+            "status": "EMPTY"
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": null,
+            "rankle3_frac": null,
+            "margin_mean": null,
+            "margin_frac_positive": null,
+            "overlap_frac_neg_better_than_median_pos": null,
+            "gap_mean": null,
+            "entropy_mean": null
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "BIN [184,inf)": {
+          "pre": {
+            "n_cells": 0,
+            "status": "EMPTY"
+          },
+          "post": {
+            "n_cells": 0,
+            "status": "EMPTY"
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": null,
+            "rankle3_frac": null,
+            "margin_mean": null,
+            "margin_frac_positive": null,
+            "overlap_frac_neg_better_than_median_pos": null,
+            "gap_mean": null,
+            "entropy_mean": null
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        }
+      },
+      "post_spatial_consistency": {
+        "POOLED": {
+          "n_cells": 58048,
+          "n_neighbour_pairs": 230527,
+          "agree_frac_mean_over_existing_neighbours": 0.8681022179614536,
+          "mean_abs_diff_candidates": 0.15677122419499667,
+          "per_direction": {
+            "up": {
+              "n_pairs": 58048,
+              "agree_frac": 0.7974262679162073
+            },
+            "down": {
+              "n_pairs": 56586,
+              "agree_frac": 0.7916092319655038
+            },
+            "left": {
+              "n_pairs": 58048,
+              "agree_frac": 0.940600882028666
+            },
+            "right": {
+              "n_pairs": 57845,
+              "agree_frac": 0.9411012187743106
+            }
+          },
+          "full4_n_cells": 56396,
+          "full4_all_agree_frac": 0.5714944322292361
+        },
+        "OCC": {
+          "n_cells": 134,
+          "n_neighbour_pairs": 535,
+          "agree_frac_mean_over_existing_neighbours": 0.8,
+          "mean_abs_diff_candidates": 0.22803738317757008,
+          "per_direction": {
+            "up": {
+              "n_pairs": 134,
+              "agree_frac": 0.8059701492537313
+            },
+            "down": {
+              "n_pairs": 133,
+              "agree_frac": 0.7518796992481203
+            },
+            "left": {
+              "n_pairs": 134,
+              "agree_frac": 0.7611940298507462
+            },
+            "right": {
+              "n_pairs": 134,
+              "agree_frac": 0.8805970149253731
+            }
+          },
+          "full4_n_cells": 133,
+          "full4_all_agree_frac": 0.45112781954887216,
+          "low_n": true
+        },
+        "NONOCC": {
+          "n_cells": 57914,
+          "n_neighbour_pairs": 229992,
+          "agree_frac_mean_over_existing_neighbours": 0.868260635152527,
+          "mean_abs_diff_candidates": 0.15660544714598768,
+          "per_direction": {
+            "up": {
+              "n_pairs": 57914,
+              "agree_frac": 0.7974064992920538
+            },
+            "down": {
+              "n_pairs": 56453,
+              "agree_frac": 0.7917028324446885
+            },
+            "left": {
+              "n_pairs": 57914,
+              "agree_frac": 0.9410159892254032
+            },
+            "right": {
+              "n_pairs": 57711,
+              "agree_frac": 0.9412417043544559
+            }
+          },
+          "full4_n_cells": 56263,
+          "full4_all_agree_frac": 0.5717789666388212
+        },
+        "TEXLO": {
+          "n_cells": 29024,
+          "n_neighbour_pairs": 115018,
+          "agree_frac_mean_over_existing_neighbours": 0.8609348102036203,
+          "mean_abs_diff_candidates": 0.1586099567024292,
+          "per_direction": {
+            "up": {
+              "n_pairs": 29024,
+              "agree_frac": 0.7825592613009923
+            },
+            "down": {
+              "n_pairs": 28110,
+              "agree_frac": 0.7789398790466027
+            },
+            "left": {
+              "n_pairs": 29024,
+              "agree_frac": 0.9394638919514884
+            },
+            "right": {
+              "n_pairs": 28860,
+              "agree_frac": 0.9406444906444906
+            }
+          },
+          "full4_n_cells": 27954,
+          "full4_all_agree_frac": 0.5428203477141017
+        },
+        "TEXHI": {
+          "n_cells": 29024,
+          "n_neighbour_pairs": 115509,
+          "agree_frac_mean_over_existing_neighbours": 0.8752391588534226,
+          "mean_abs_diff_candidates": 0.1549403076816525,
+          "per_direction": {
+            "up": {
+              "n_pairs": 29024,
+              "agree_frac": 0.8122932745314223
+            },
+            "down": {
+              "n_pairs": 28476,
+              "agree_frac": 0.8041157465936227
+            },
+            "left": {
+              "n_pairs": 29024,
+              "agree_frac": 0.9417378721058435
+            },
+            "right": {
+              "n_pairs": 28985,
+              "agree_frac": 0.9415559772296015
+            }
+          },
+          "full4_n_cells": 28442,
+          "full4_all_agree_frac": 0.599676534702201
+        },
+        "EDGE": {
+          "n_cells": 676,
+          "n_neighbour_pairs": 2700,
+          "agree_frac_mean_over_existing_neighbours": 0.6985185185185185,
+          "mean_abs_diff_candidates": 0.6,
+          "per_direction": {
+            "up": {
+              "n_pairs": 676,
+              "agree_frac": 0.6375739644970414
+            },
+            "down": {
+              "n_pairs": 675,
+              "agree_frac": 0.6148148148148148
+            },
+            "left": {
+              "n_pairs": 676,
+              "agree_frac": 0.7618343195266272
+            },
+            "right": {
+              "n_pairs": 673,
+              "agree_frac": 0.7800891530460624
+            }
+          },
+          "full4_n_cells": 672,
+          "full4_all_agree_frac": 0.28422619047619047,
+          "low_n": true
+        },
+        "NONEDGE": {
+          "n_cells": 57372,
+          "n_neighbour_pairs": 227827,
+          "agree_frac_mean_over_existing_neighbours": 0.8701119709253073,
+          "mean_abs_diff_candidates": 0.1515184767389291,
+          "per_direction": {
+            "up": {
+              "n_pairs": 57372,
+              "agree_frac": 0.7993097678309977
+            },
+            "down": {
+              "n_pairs": 55911,
+              "agree_frac": 0.7937436282663519
+            },
+            "left": {
+              "n_pairs": 57372,
+              "agree_frac": 0.9427072439517534
+            },
+            "right": {
+              "n_pairs": 57172,
+              "agree_frac": 0.9429965717484083
+            }
+          },
+          "full4_n_cells": 55724,
+          "full4_all_agree_frac": 0.5749587251453593
+        },
+        "LOW": {
+          "n_cells": 55815,
+          "n_neighbour_pairs": 221815,
+          "agree_frac_mean_over_existing_neighbours": 0.8696436219371999,
+          "mean_abs_diff_candidates": 0.15150463223857719,
+          "per_direction": {
+            "up": {
+              "n_pairs": 55815,
+              "agree_frac": 0.7969721401057064
+            },
+            "down": {
+              "n_pairs": 54532,
+              "agree_frac": 0.7902149196801878
+            },
+            "left": {
+              "n_pairs": 55815,
+              "agree_frac": 0.9448177013347666
+            },
+            "right": {
+              "n_pairs": 55653,
+              "agree_frac": 0.9449625357123606
+            }
+          },
+          "full4_n_cells": 54375,
+          "full4_all_agree_frac": 0.5720091954022989
+        },
+        "HIGH": {
+          "n_cells": 2233,
+          "n_neighbour_pairs": 8712,
+          "agree_frac_mean_over_existing_neighbours": 0.8288567493112947,
+          "mean_abs_diff_candidates": 0.2908631772268136,
+          "per_direction": {
+            "up": {
+              "n_pairs": 2233,
+              "agree_frac": 0.8087774294670846
+            },
+            "down": {
+              "n_pairs": 2054,
+              "agree_frac": 0.8286270691333982
+            },
+            "left": {
+              "n_pairs": 2233,
+              "agree_frac": 0.8351992834751455
+            },
+            "right": {
+              "n_pairs": 2192,
+              "agree_frac": 0.843065693430657
+            }
+          },
+          "full4_n_cells": 2021,
+          "full4_all_agree_frac": 0.5576447303315191
+        },
+        "HIGH_OCC": {
+          "n_cells": 23,
+          "n_neighbour_pairs": 92,
+          "agree_frac_mean_over_existing_neighbours": 0.7934782608695652,
+          "mean_abs_diff_candidates": 0.33695652173913043,
+          "per_direction": {
+            "up": {
+              "n_pairs": 23,
+              "agree_frac": 0.6956521739130435
+            },
+            "down": {
+              "n_pairs": 23,
+              "agree_frac": 0.8695652173913043
+            },
+            "left": {
+              "n_pairs": 23,
+              "agree_frac": 0.8260869565217391
+            },
+            "right": {
+              "n_pairs": 23,
+              "agree_frac": 0.782608695652174
+            }
+          },
+          "full4_n_cells": 23,
+          "full4_all_agree_frac": 0.43478260869565216,
+          "low_n": true
+        },
+        "HIGH_NONOCC": {
+          "n_cells": 2210,
+          "n_neighbour_pairs": 8620,
+          "agree_frac_mean_over_existing_neighbours": 0.8292343387470997,
+          "mean_abs_diff_candidates": 0.29037122969837587,
+          "per_direction": {
+            "up": {
+              "n_pairs": 2210,
+              "agree_frac": 0.8099547511312217
+            },
+            "down": {
+              "n_pairs": 2031,
+              "agree_frac": 0.828163466272772
+            },
+            "left": {
+              "n_pairs": 2210,
+              "agree_frac": 0.8352941176470589
+            },
+            "right": {
+              "n_pairs": 2169,
+              "agree_frac": 0.8437067773167358
+            }
+          },
+          "full4_n_cells": 1998,
+          "full4_all_agree_frac": 0.5590590590590591
+        },
+        "GT96_OCC": {
+          "n_cells": 2,
+          "n_neighbour_pairs": 8,
+          "agree_frac_mean_over_existing_neighbours": 0.75,
+          "mean_abs_diff_candidates": 0.25,
+          "per_direction": {
+            "up": {
+              "n_pairs": 2,
+              "agree_frac": 1.0
+            },
+            "down": {
+              "n_pairs": 2,
+              "agree_frac": 1.0
+            },
+            "left": {
+              "n_pairs": 2,
+              "agree_frac": 1.0
+            },
+            "right": {
+              "n_pairs": 2,
+              "agree_frac": 0.0
+            }
+          },
+          "full4_n_cells": 2,
+          "full4_all_agree_frac": 0.0,
+          "low_n": true
+        },
+        "GT96_NONOCC": {
+          "n_cells": 391,
+          "n_neighbour_pairs": 1534,
+          "agree_frac_mean_over_existing_neighbours": 0.7737940026075619,
+          "mean_abs_diff_candidates": 0.5019556714471969,
+          "per_direction": {
+            "up": {
+              "n_pairs": 391,
+              "agree_frac": 0.7391304347826086
+            },
+            "down": {
+              "n_pairs": 372,
+              "agree_frac": 0.7903225806451613
+            },
+            "left": {
+              "n_pairs": 391,
+              "agree_frac": 0.7928388746803069
+            },
+            "right": {
+              "n_pairs": 380,
+              "agree_frac": 0.7736842105263158
+            }
+          },
+          "full4_n_cells": 361,
+          "full4_all_agree_frac": 0.4709141274238227,
+          "low_n": true
+        }
+      }
+    },
+    "1": {
+      "n_defined_cells": 58048,
+      "texture_median_threshold": 5.055687302347875,
+      "n_edge_cells": 676,
+      "n_occluded_cells": 134,
+      "groups": {
+        "POOLED": {
+          "pre": {
+            "n_cells": 58048,
+            "rank1_frac": 0.6507545479603087,
+            "rankle3_frac": 0.8375310088202866,
+            "margin_mean": 3767364.8047776734,
+            "margin_frac_positive": 0.7283627342888643,
+            "overlap_frac_neg_better_than_median_pos": 0.040114956077168855,
+            "gap_mean": 1.7320718534736306,
+            "entropy_mean": 4.98500569951466e-12
+          },
+          "post": {
+            "n_cells": 58048,
+            "rank1_frac": 0.15649117971334067,
+            "rankle3_frac": 0.8645431367144433,
+            "margin_mean": 1213778284.2034676,
+            "margin_frac_positive": 0.5036176957001103,
+            "overlap_frac_neg_better_than_median_pos": 0.011088006723166942,
+            "gap_mean": 2.232440372484309,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.49426336824696804,
+            "rankle3_frac": 0.027012127894156635,
+            "margin_mean": 1210010919.39869,
+            "margin_frac_positive": -0.22474503858875405,
+            "overlap_frac_neg_better_than_median_pos": -0.029026949354001914,
+            "gap_mean": 0.5003685190106786,
+            "entropy_mean": -4.98500569951466e-12
+          }
+        },
+        "GT>=96": {
+          "pre": {
+            "n_cells": 393,
+            "rank1_frac": 0.356234096692112,
+            "rankle3_frac": 0.6005089058524173,
+            "margin_mean": -2040031.9926844784,
+            "margin_frac_positive": 0.44274809160305345,
+            "overlap_frac_neg_better_than_median_pos": 0.2073299814765811,
+            "gap_mean": 1.177252050257971,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "post": {
+            "n_cells": 393,
+            "rank1_frac": 0.0737913486005089,
+            "rankle3_frac": 0.5699745547073791,
+            "margin_mean": -5108477781.520356,
+            "margin_frac_positive": 0.3384223918575064,
+            "overlap_frac_neg_better_than_median_pos": 0.04670547763958719,
+            "gap_mean": 1.3952009464891537,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.2824427480916031,
+            "rankle3_frac": -0.03053435114503822,
+            "margin_mean": -5106437749.527672,
+            "margin_frac_positive": -0.10432569974554706,
+            "overlap_frac_neg_better_than_median_pos": -0.16062450383699392,
+            "gap_mean": 0.21794889623118263,
+            "entropy_mean": 0.0
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "OCC": {
+          "pre": {
+            "n_cells": 134,
+            "rank1_frac": 0.40298507462686567,
+            "rankle3_frac": 0.7910447761194029,
+            "margin_mean": 1178218.1287313432,
+            "margin_frac_positive": 0.5447761194029851,
+            "overlap_frac_neg_better_than_median_pos": 0.22608695652173913,
+            "gap_mean": 0.9314289726707479,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "post": {
+            "n_cells": 134,
+            "rank1_frac": 0.1417910447761194,
+            "rankle3_frac": 0.8582089552238806,
+            "margin_mean": -733329621.738806,
+            "margin_frac_positive": 0.5671641791044776,
+            "overlap_frac_neg_better_than_median_pos": 0.11826086956521739,
+            "gap_mean": 1.072749735153384,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.26119402985074625,
+            "rankle3_frac": 0.0671641791044777,
+            "margin_mean": -734507839.8675374,
+            "margin_frac_positive": 0.02238805970149249,
+            "overlap_frac_neg_better_than_median_pos": -0.10782608695652174,
+            "gap_mean": 0.14132076248263603,
+            "entropy_mean": 0.0
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "NONOCC": {
+          "pre": {
+            "n_cells": 57914,
+            "rank1_frac": 0.6513278309217115,
+            "rankle3_frac": 0.8376385675311669,
+            "margin_mean": 3773355.509177131,
+            "margin_frac_positive": 0.728787512518562,
+            "overlap_frac_neg_better_than_median_pos": 0.03991065946708966,
+            "gap_mean": 1.7339243614341857,
+            "entropy_mean": 4.996539884059588e-12
+          },
+          "post": {
+            "n_cells": 57914,
+            "rank1_frac": 0.15652519252685015,
+            "rankle3_frac": 0.8645577925890113,
+            "margin_mean": 1218283454.9634957,
+            "margin_frac_positive": 0.5034706633974514,
+            "overlap_frac_neg_better_than_median_pos": 0.011037931015856954,
+            "gap_mean": 2.2351236363825437,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.4948026383948614,
+            "rankle3_frac": 0.026919225057844387,
+            "margin_mean": 1214510099.4543185,
+            "margin_frac_positive": -0.2253168491211106,
+            "overlap_frac_neg_better_than_median_pos": -0.028872728451232704,
+            "gap_mean": 0.501199274948358,
+            "entropy_mean": -4.996539884059588e-12
+          }
+        },
+        "TEXLO": {
+          "pre": {
+            "n_cells": 29024,
+            "rank1_frac": 0.6290311466372657,
+            "rankle3_frac": 0.8321389195148843,
+            "margin_mean": 2791141.413342729,
+            "margin_frac_positive": 0.7169239250275634,
+            "overlap_frac_neg_better_than_median_pos": 0.04067069653113948,
+            "gap_mean": 1.6577568209956806,
+            "entropy_mean": 9.97001139902932e-12
+          },
+          "post": {
+            "n_cells": 29024,
+            "rank1_frac": 0.1447422822491731,
+            "rankle3_frac": 0.8633889195148843,
+            "margin_mean": 496194257.68505913,
+            "margin_frac_positive": 0.5049958654906285,
+            "overlap_frac_neg_better_than_median_pos": 0.011448207164176966,
+            "gap_mean": 2.226201463683282,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.4842888643880926,
+            "rankle3_frac": 0.03125,
+            "margin_mean": 493403116.2717164,
+            "margin_frac_positive": -0.21192805953693494,
+            "overlap_frac_neg_better_than_median_pos": -0.029222489366962513,
+            "gap_mean": 0.5684446426876015,
+            "entropy_mean": -9.97001139902932e-12
+          }
+        },
+        "TEXHI": {
+          "pre": {
+            "n_cells": 29024,
+            "rank1_frac": 0.6724779492833517,
+            "rankle3_frac": 0.8429230981256891,
+            "margin_mean": 4743588.196212617,
+            "margin_frac_positive": 0.7398015435501654,
+            "overlap_frac_neg_better_than_median_pos": 0.022976600417559178,
+            "gap_mean": 1.8063868859515804,
+            "entropy_mean": 3.4687986734390576e-185
+          },
+          "post": {
+            "n_cells": 29024,
+            "rank1_frac": 0.16824007717750827,
+            "rankle3_frac": 0.8656973539140022,
+            "margin_mean": 1931362310.7218761,
+            "margin_frac_positive": 0.5022395259095921,
+            "overlap_frac_neg_better_than_median_pos": 0.010551051580307837,
+            "gap_mean": 2.2386792812853367,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.5042378721058434,
+            "rankle3_frac": 0.022774255788313047,
+            "margin_mean": 1926618722.5256636,
+            "margin_frac_positive": -0.23756201764057328,
+            "overlap_frac_neg_better_than_median_pos": -0.012425548837251341,
+            "gap_mean": 0.4322923953337563,
+            "entropy_mean": -3.4687986734390576e-185
+          }
+        },
+        "EDGE": {
+          "pre": {
+            "n_cells": 676,
+            "rank1_frac": 0.2943786982248521,
+            "rankle3_frac": 0.507396449704142,
+            "margin_mean": -5870210.2977071,
+            "margin_frac_positive": 0.34615384615384615,
+            "overlap_frac_neg_better_than_median_pos": 0.1567732115677321,
+            "gap_mean": 1.036514396738807,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "post": {
+            "n_cells": 676,
+            "rank1_frac": 0.23372781065088757,
+            "rankle3_frac": 0.6079881656804734,
+            "margin_mean": -1723960201.3550296,
+            "margin_frac_positive": 0.3994082840236686,
+            "overlap_frac_neg_better_than_median_pos": 0.029604261796042617,
+            "gap_mean": 1.906073064222504,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.0606508875739645,
+            "rankle3_frac": 0.10059171597633143,
+            "margin_mean": -1718089991.0573225,
+            "margin_frac_positive": 0.05325443786982248,
+            "overlap_frac_neg_better_than_median_pos": -0.1271689497716895,
+            "gap_mean": 0.869558667483697,
+            "entropy_mean": 0.0
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "NONEDGE": {
+          "pre": {
+            "n_cells": 57372,
+            "rank1_frac": 0.6549536359199609,
+            "rankle3_frac": 0.8414209021822492,
+            "margin_mean": 3880921.9540714,
+            "margin_frac_positive": 0.7328662065118874,
+            "overlap_frac_neg_better_than_median_pos": 0.03961971916910769,
+            "gap_mean": 1.7402674339092568,
+            "entropy_mean": 5.043742781242191e-12
+          },
+          "post": {
+            "n_cells": 57372,
+            "rank1_frac": 0.15558111970996305,
+            "rankle3_frac": 0.867566060099003,
+            "margin_mean": 1248392925.774923,
+            "margin_frac_positive": 0.5048455692672383,
+            "overlap_frac_neg_better_than_median_pos": 0.011023992001755535,
+            "gap_mean": 2.2362858772668686,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.4993725162099979,
+            "rankle3_frac": 0.02614515791675376,
+            "margin_mean": 1244512003.8208518,
+            "margin_frac_positive": -0.22802063724464905,
+            "overlap_frac_neg_better_than_median_pos": -0.028595727167352154,
+            "gap_mean": 0.4960184433576118,
+            "entropy_mean": -5.043742781242191e-12
+          }
+        },
+        "LOW": {
+          "pre": {
+            "n_cells": 55815,
+            "rank1_frac": 0.6565797724625997,
+            "rankle3_frac": 0.8419600465824599,
+            "margin_mean": 3891767.8261687607,
+            "margin_frac_positive": 0.7343366478545194,
+            "overlap_frac_neg_better_than_median_pos": 0.038934059042243424,
+            "gap_mean": 1.743335571784136,
+            "entropy_mean": 5.1844416526995785e-12
+          },
+          "post": {
+            "n_cells": 55815,
+            "rank1_frac": 0.15807578607901102,
+            "rankle3_frac": 0.8695511959150766,
+            "margin_mean": 1404713600.7110882,
+            "margin_frac_positive": 0.5067634148526382,
+            "overlap_frac_neg_better_than_median_pos": 0.010729777956965163,
+            "gap_mean": 2.2491878661693794,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.49850398638358867,
+            "rankle3_frac": 0.027591149332616638,
+            "margin_mean": 1400821832.8849194,
+            "margin_frac_positive": -0.22757323300188115,
+            "overlap_frac_neg_better_than_median_pos": -0.02820428108527826,
+            "gap_mean": 0.5058522943852435,
+            "entropy_mean": -5.1844416526995785e-12
+          }
+        },
+        "HIGH": {
+          "pre": {
+            "n_cells": 2233,
+            "rank1_frac": 0.5051500223914017,
+            "rankle3_frac": 0.7268248992386923,
+            "margin_mean": 657846.3816054635,
+            "margin_frac_positive": 0.5790416480071653,
+            "overlap_frac_neg_better_than_median_pos": 0.09185746169471123,
+            "gap_mean": 1.4505293377992623,
+            "entropy_mean": 8.674982886305529e-204
+          },
+          "post": {
+            "n_cells": 2233,
+            "rank1_frac": 0.11688311688311688,
+            "rankle3_frac": 0.7393640841916704,
+            "margin_mean": -3558749566.6128526,
+            "margin_frac_positive": 0.42498880429914915,
+            "overlap_frac_neg_better_than_median_pos": 0.028136519798380017,
+            "gap_mean": 1.813828030329281,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.38826690550828485,
+            "rankle3_frac": 0.012539184952978122,
+            "margin_mean": -3559407412.994458,
+            "margin_frac_positive": -0.15405284370801614,
+            "overlap_frac_neg_better_than_median_pos": -0.06372094189633122,
+            "gap_mean": 0.3632986925300188,
+            "entropy_mean": -8.674982886305529e-204
+          }
+        },
+        "HIGH_OCC": {
+          "pre": {
+            "n_cells": 23,
+            "rank1_frac": 0.2608695652173913,
+            "rankle3_frac": 0.6956521739130435,
+            "margin_mean": -6430683.347826087,
+            "margin_frac_positive": 0.391304347826087,
+            "overlap_frac_neg_better_than_median_pos": 0.19696969696969696,
+            "gap_mean": 0.8789770251528427,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "post": {
+            "n_cells": 23,
+            "rank1_frac": 0.0,
+            "rankle3_frac": 0.6086956521739131,
+            "margin_mean": -4151780736.7391305,
+            "margin_frac_positive": 0.43478260869565216,
+            "overlap_frac_neg_better_than_median_pos": 0.09595959595959595,
+            "gap_mean": 0.9582570651453169,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.2608695652173913,
+            "rankle3_frac": -0.08695652173913038,
+            "margin_mean": -4145350053.3913045,
+            "margin_frac_positive": 0.04347826086956519,
+            "overlap_frac_neg_better_than_median_pos": -0.10101010101010101,
+            "gap_mean": 0.07928003999247424,
+            "entropy_mean": 0.0
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "HIGH_NONOCC": {
+          "pre": {
+            "n_cells": 2210,
+            "rank1_frac": 0.5076923076923077,
+            "rankle3_frac": 0.7271493212669683,
+            "margin_mean": 731618.4104638009,
+            "margin_frac_positive": 0.5809954751131222,
+            "overlap_frac_neg_better_than_median_pos": 0.0892663625595403,
+            "gap_mean": 1.4564776197860803,
+            "entropy_mean": 8.765265513629072e-204
+          },
+          "post": {
+            "n_cells": 2210,
+            "rank1_frac": 0.11809954751131221,
+            "rankle3_frac": 0.7407239819004525,
+            "margin_mean": -3552577749.0052037,
+            "margin_frac_positive": 0.4248868778280543,
+            "overlap_frac_neg_better_than_median_pos": 0.027823281836739835,
+            "gap_mean": 1.8227321625461277,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.3895927601809954,
+            "rankle3_frac": 0.013574660633484226,
+            "margin_mean": -3553309367.4156675,
+            "margin_frac_positive": -0.15610859728506793,
+            "overlap_frac_neg_better_than_median_pos": -0.06144308072280047,
+            "gap_mean": 0.36625454276004743,
+            "entropy_mean": -8.765265513629072e-204
+          }
+        },
+        "GT96_OCC": {
+          "pre": {
+            "n_cells": 2,
+            "rank1_frac": 0.5,
+            "rankle3_frac": 1.0,
+            "margin_mean": 1253283.0,
+            "margin_frac_positive": 1.0,
+            "overlap_frac_neg_better_than_median_pos": 0.03571428571428571,
+            "gap_mean": 1.4147661792190784,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "post": {
+            "n_cells": 2,
+            "rank1_frac": 0.0,
+            "rankle3_frac": 0.0,
+            "margin_mean": -26478609728.0,
+            "margin_frac_positive": 0.0,
+            "overlap_frac_neg_better_than_median_pos": 0.14285714285714285,
+            "gap_mean": -0.0987267711150008,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.5,
+            "rankle3_frac": -1.0,
+            "margin_mean": -26479863011.0,
+            "margin_frac_positive": -1.0,
+            "overlap_frac_neg_better_than_median_pos": 0.10714285714285714,
+            "gap_mean": -1.5134929503340793,
+            "entropy_mean": 0.0
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "GT96_NONOCC": {
+          "pre": {
+            "n_cells": 391,
+            "rank1_frac": 0.3554987212276215,
+            "rankle3_frac": 0.59846547314578,
+            "margin_mean": -2056877.5936700767,
+            "margin_frac_positive": 0.4398976982097187,
+            "overlap_frac_neg_better_than_median_pos": 0.20770252324037183,
+            "gap_mean": 1.1760371442274797,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "post": {
+            "n_cells": 391,
+            "rank1_frac": 0.0741687979539642,
+            "rankle3_frac": 0.5728900255754475,
+            "margin_mean": -4999167643.686701,
+            "margin_frac_positive": 0.340153452685422,
+            "overlap_frac_neg_better_than_median_pos": 0.045683930942895086,
+            "gap_mean": 1.4028425204922441,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.2813299232736573,
+            "rankle3_frac": -0.025575447570332477,
+            "margin_mean": -4997110766.093031,
+            "margin_frac_positive": -0.09974424552429667,
+            "overlap_frac_neg_better_than_median_pos": -0.16201859229747675,
+            "gap_mean": 0.22680537626476438,
+            "entropy_mean": 0.0
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "BIN [0,16)": {
+          "pre": {
+            "n_cells": 8040,
+            "rank1_frac": 0.6536069651741293,
+            "rankle3_frac": 0.8355721393034826,
+            "margin_mean": 4158383.1958100125,
+            "margin_frac_positive": 0.7315920398009951,
+            "overlap_frac_neg_better_than_median_pos": 0.018380930268555064,
+            "gap_mean": 1.7803733804233668,
+            "entropy_mean": 0.0
+          },
+          "post": {
+            "n_cells": 8040,
+            "rank1_frac": 0.5680348258706468,
+            "rankle3_frac": 0.9864427860696517,
+            "margin_mean": 28726105856.292313,
+            "margin_frac_positive": 0.6395522388059701,
+            "overlap_frac_neg_better_than_median_pos": 0.0,
+            "gap_mean": 3.193148173048441,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.08557213930348251,
+            "rankle3_frac": 0.15087064676616913,
+            "margin_mean": 28721947473.096504,
+            "margin_frac_positive": -0.09203980099502496,
+            "overlap_frac_neg_better_than_median_pos": -0.018380930268555064,
+            "gap_mean": 1.412774792625074,
+            "entropy_mean": 0.0
+          }
+        },
+        "BIN [16,32)": {
+          "pre": {
+            "n_cells": 18053,
+            "rank1_frac": 0.6637677948263446,
+            "rankle3_frac": 0.8428516036115881,
+            "margin_mean": 4216821.891309616,
+            "margin_frac_positive": 0.7395446740153991,
+            "overlap_frac_neg_better_than_median_pos": 0.024700222380488655,
+            "gap_mean": 1.7814945163297429,
+            "entropy_mean": 4.966374630046033e-183
+          },
+          "post": {
+            "n_cells": 18053,
+            "rank1_frac": 0.032903118595247326,
+            "rankle3_frac": 0.8059602282169168,
+            "margin_mean": -10352080117.476542,
+            "margin_frac_positive": 0.39987813659779536,
+            "overlap_frac_neg_better_than_median_pos": 0.01707242627287394,
+            "gap_mean": 1.8540373840323972,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.6308646762310973,
+            "rankle3_frac": -0.036891375394671244,
+            "margin_mean": -10356296939.367851,
+            "margin_frac_positive": -0.3396665374176038,
+            "overlap_frac_neg_better_than_median_pos": -0.007627796107614715,
+            "gap_mean": 0.07254286770265428,
+            "entropy_mean": -4.966374630046033e-183
+          }
+        },
+        "BIN [32,48)": {
+          "pre": {
+            "n_cells": 17160,
+            "rank1_frac": 0.6648018648018648,
+            "rankle3_frac": 0.852972027972028,
+            "margin_mean": 3840988.4545518286,
+            "margin_frac_positive": 0.7454545454545455,
+            "overlap_frac_neg_better_than_median_pos": 0.03721889691271264,
+            "gap_mean": 1.7313658817258437,
+            "entropy_mean": 1.6863030935048194e-11
+          },
+          "post": {
+            "n_cells": 17160,
+            "rank1_frac": 0.08822843822843823,
+            "rankle3_frac": 0.8575757575757575,
+            "margin_mean": -820404104.9990002,
+            "margin_frac_positive": 0.48583916083916084,
+            "overlap_frac_neg_better_than_median_pos": 0.010920006785246935,
+            "gap_mean": 2.110008738781444,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.5765734265734266,
+            "rankle3_frac": 0.004603729603729567,
+            "margin_mean": -824245093.453552,
+            "margin_frac_positive": -0.25961538461538464,
+            "overlap_frac_neg_better_than_median_pos": -0.02629889012746571,
+            "gap_mean": 0.3786428570556004,
+            "entropy_mean": -1.6863030935048194e-11
+          }
+        },
+        "BIN [48,64)": {
+          "pre": {
+            "n_cells": 12562,
+            "rank1_frac": 0.6369208724725363,
+            "rankle3_frac": 0.8297245661518866,
+            "margin_mean": 3323353.9913528897,
+            "margin_frac_positive": 0.7134214297086451,
+            "overlap_frac_neg_better_than_median_pos": 0.05550947304998782,
+            "gap_mean": 1.681142646617685,
+            "entropy_mean": 8.567619773719643e-68
+          },
+          "post": {
+            "n_cells": 12562,
+            "rank1_frac": 0.17099188027384174,
+            "rankle3_frac": 0.9024836809425251,
+            "margin_mean": 3853720374.278464,
+            "margin_frac_positive": 0.6039643368890304,
+            "overlap_frac_neg_better_than_median_pos": 0.011658186110045023,
+            "gap_mean": 2.403026794101895,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.46592899219869455,
+            "rankle3_frac": 0.07275911479063846,
+            "margin_mean": 3850397020.287111,
+            "margin_frac_positive": -0.10945709281961469,
+            "overlap_frac_neg_better_than_median_pos": -0.0438512869399428,
+            "gap_mean": 0.7218841474842099,
+            "entropy_mean": -8.567619773719643e-68
+          }
+        },
+        "BIN [64,80)": {
+          "pre": {
+            "n_cells": 1463,
+            "rank1_frac": 0.5598086124401914,
+            "rankle3_frac": 0.7689678742310321,
+            "margin_mean": 1898373.5295625427,
+            "margin_frac_positive": 0.6302118933697881,
+            "overlap_frac_neg_better_than_median_pos": 0.061206862706607516,
+            "gap_mean": 1.541477130568536,
+            "entropy_mean": 1.3240763352782124e-203
+          },
+          "post": {
+            "n_cells": 1463,
+            "rank1_frac": 0.11825017088174983,
+            "rankle3_frac": 0.7853725222146275,
+            "margin_mean": -3613099170.479836,
+            "margin_frac_positive": 0.4395078605604921,
+            "overlap_frac_neg_better_than_median_pos": 0.02544069726355463,
+            "gap_mean": 1.90510687972681,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.4415584415584416,
+            "rankle3_frac": 0.016404647983595422,
+            "margin_mean": -3614997544.0093985,
+            "margin_frac_positive": -0.190704032809296,
+            "overlap_frac_neg_better_than_median_pos": -0.03576616544305289,
+            "gap_mean": 0.36362974915827406,
+            "entropy_mean": -1.3240763352782124e-203
+          }
+        },
+        "BIN [80,96)": {
+          "pre": {
+            "n_cells": 377,
+            "rank1_frac": 0.4482758620689655,
+            "rankle3_frac": 0.6949602122015915,
+            "margin_mean": -1343811.4867374005,
+            "margin_frac_positive": 0.5225464190981433,
+            "overlap_frac_neg_better_than_median_pos": 0.10119742990654206,
+            "gap_mean": 1.3824692666647271,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "post": {
+            "n_cells": 377,
+            "rank1_frac": 0.15649867374005305,
+            "rankle3_frac": 0.7374005305039788,
+            "margin_mean": -1732339330.7612731,
+            "margin_frac_positive": 0.4588859416445623,
+            "overlap_frac_neg_better_than_median_pos": 0.02511682242990654,
+            "gap_mean": 1.8960017366438309,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.2917771883289125,
+            "rankle3_frac": 0.04244031830238726,
+            "margin_mean": -1730995519.2745357,
+            "margin_frac_positive": -0.06366047745358094,
+            "overlap_frac_neg_better_than_median_pos": -0.07608060747663552,
+            "gap_mean": 0.5135324699791037,
+            "entropy_mean": 0.0
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "BIN [96,112)": {
+          "pre": {
+            "n_cells": 286,
+            "rank1_frac": 0.3881118881118881,
+            "rankle3_frac": 0.5979020979020979,
+            "margin_mean": -1622092.3588286713,
+            "margin_frac_positive": 0.4405594405594406,
+            "overlap_frac_neg_better_than_median_pos": 0.20353982300884957,
+            "gap_mean": 1.201118001306467,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "post": {
+            "n_cells": 286,
+            "rank1_frac": 0.07342657342657342,
+            "rankle3_frac": 0.6433566433566433,
+            "margin_mean": -1444632001.6276224,
+            "margin_frac_positive": 0.3706293706293706,
+            "overlap_frac_neg_better_than_median_pos": 0.03752212389380531,
+            "gap_mean": 1.556848381080958,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.3146853146853147,
+            "rankle3_frac": 0.045454545454545414,
+            "margin_mean": -1443009909.2687936,
+            "margin_frac_positive": -0.06993006993006995,
+            "overlap_frac_neg_better_than_median_pos": -0.16601769911504427,
+            "gap_mean": 0.35573037977449085,
+            "entropy_mean": 0.0
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "BIN [112,128)": {
+          "pre": {
+            "n_cells": 107,
+            "rank1_frac": 0.27102803738317754,
+            "rankle3_frac": 0.6074766355140186,
+            "margin_mean": -3157141.668224299,
+            "margin_frac_positive": 0.4485981308411215,
+            "overlap_frac_neg_better_than_median_pos": 0.0859538784067086,
+            "gap_mean": 1.1134608166143278,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "post": {
+            "n_cells": 107,
+            "rank1_frac": 0.07476635514018691,
+            "rankle3_frac": 0.37383177570093457,
+            "margin_mean": -14901560894.13084,
+            "margin_frac_positive": 0.2523364485981308,
+            "overlap_frac_neg_better_than_median_pos": 0.08123689727463312,
+            "gap_mean": 0.963133971785826,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.19626168224299062,
+            "rankle3_frac": -0.23364485981308408,
+            "margin_mean": -14898403752.462616,
+            "margin_frac_positive": -0.19626168224299068,
+            "overlap_frac_neg_better_than_median_pos": -0.004716981132075471,
+            "gap_mean": -0.15032684482850178,
+            "entropy_mean": 0.0
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "BIN [128,144)": {
+          "pre": {
+            "n_cells": 0,
+            "status": "EMPTY"
+          },
+          "post": {
+            "n_cells": 0,
+            "status": "EMPTY"
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": null,
+            "rankle3_frac": null,
+            "margin_mean": null,
+            "margin_frac_positive": null,
+            "overlap_frac_neg_better_than_median_pos": null,
+            "gap_mean": null,
+            "entropy_mean": null
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "BIN [144,160)": {
+          "pre": {
+            "n_cells": 0,
+            "status": "EMPTY"
+          },
+          "post": {
+            "n_cells": 0,
+            "status": "EMPTY"
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": null,
+            "rankle3_frac": null,
+            "margin_mean": null,
+            "margin_frac_positive": null,
+            "overlap_frac_neg_better_than_median_pos": null,
+            "gap_mean": null,
+            "entropy_mean": null
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "BIN [160,184)": {
+          "pre": {
+            "n_cells": 0,
+            "status": "EMPTY"
+          },
+          "post": {
+            "n_cells": 0,
+            "status": "EMPTY"
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": null,
+            "rankle3_frac": null,
+            "margin_mean": null,
+            "margin_frac_positive": null,
+            "overlap_frac_neg_better_than_median_pos": null,
+            "gap_mean": null,
+            "entropy_mean": null
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "BIN [184,inf)": {
+          "pre": {
+            "n_cells": 0,
+            "status": "EMPTY"
+          },
+          "post": {
+            "n_cells": 0,
+            "status": "EMPTY"
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": null,
+            "rankle3_frac": null,
+            "margin_mean": null,
+            "margin_frac_positive": null,
+            "overlap_frac_neg_better_than_median_pos": null,
+            "gap_mean": null,
+            "entropy_mean": null
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        }
+      },
+      "post_spatial_consistency": {
+        "POOLED": {
+          "n_cells": 58048,
+          "n_neighbour_pairs": 230527,
+          "agree_frac_mean_over_existing_neighbours": 0.8651828202336386,
+          "mean_abs_diff_candidates": 0.16413695575789386,
+          "per_direction": {
+            "up": {
+              "n_pairs": 58048,
+              "agree_frac": 0.7939463891951488
+            },
+            "down": {
+              "n_pairs": 56586,
+              "agree_frac": 0.7885342664263245
+            },
+            "left": {
+              "n_pairs": 58048,
+              "agree_frac": 0.9390332138919515
+            },
+            "right": {
+              "n_pairs": 57845,
+              "agree_frac": 0.9375399775261475
+            }
+          },
+          "full4_n_cells": 56396,
+          "full4_all_agree_frac": 0.5715121639832612
+        },
+        "OCC": {
+          "n_cells": 134,
+          "n_neighbour_pairs": 535,
+          "agree_frac_mean_over_existing_neighbours": 0.8280373831775701,
+          "mean_abs_diff_candidates": 0.205607476635514,
+          "per_direction": {
+            "up": {
+              "n_pairs": 134,
+              "agree_frac": 0.7686567164179104
+            },
+            "down": {
+              "n_pairs": 133,
+              "agree_frac": 0.8195488721804511
+            },
+            "left": {
+              "n_pairs": 134,
+              "agree_frac": 0.8283582089552238
+            },
+            "right": {
+              "n_pairs": 134,
+              "agree_frac": 0.8955223880597015
+            }
+          },
+          "full4_n_cells": 133,
+          "full4_all_agree_frac": 0.5639097744360902,
+          "low_n": true
+        },
+        "NONOCC": {
+          "n_cells": 57914,
+          "n_neighbour_pairs": 229992,
+          "agree_frac_mean_over_existing_neighbours": 0.8652692267557133,
+          "mean_abs_diff_candidates": 0.1640404883648127,
+          "per_direction": {
+            "up": {
+              "n_pairs": 57914,
+              "agree_frac": 0.7940049038229098
+            },
+            "down": {
+              "n_pairs": 56453,
+              "agree_frac": 0.7884611978105681
+            },
+            "left": {
+              "n_pairs": 57914,
+              "agree_frac": 0.939289291017716
+            },
+            "right": {
+              "n_pairs": 57711,
+              "agree_frac": 0.9376375387707716
+            }
+          },
+          "full4_n_cells": 56263,
+          "full4_all_agree_frac": 0.5715301352576293
+        },
+        "TEXLO": {
+          "n_cells": 29024,
+          "n_neighbour_pairs": 115018,
+          "agree_frac_mean_over_existing_neighbours": 0.8554487123754543,
+          "mean_abs_diff_candidates": 0.1711297362152011,
+          "per_direction": {
+            "up": {
+              "n_pairs": 29024,
+              "agree_frac": 0.7779768467475193
+            },
+            "down": {
+              "n_pairs": 28110,
+              "agree_frac": 0.7681607968694415
+            },
+            "left": {
+              "n_pairs": 29024,
+              "agree_frac": 0.9387058985667034
+            },
+            "right": {
+              "n_pairs": 28860,
+              "agree_frac": 0.9346500346500346
+            }
+          },
+          "full4_n_cells": 27954,
+          "full4_all_agree_frac": 0.5366673821277813
+        },
+        "TEXHI": {
+          "n_cells": 29024,
+          "n_neighbour_pairs": 115509,
+          "agree_frac_mean_over_existing_neighbours": 0.8748755508228796,
+          "mean_abs_diff_candidates": 0.15717389986927427,
+          "per_direction": {
+            "up": {
+              "n_pairs": 29024,
+              "agree_frac": 0.8099159316427784
+            },
+            "down": {
+              "n_pairs": 28476,
+              "agree_frac": 0.8086458772299481
+            },
+            "left": {
+              "n_pairs": 29024,
+              "agree_frac": 0.9393605292171996
+            },
+            "right": {
+              "n_pairs": 28985,
+              "agree_frac": 0.9404174573055029
+            }
+          },
+          "full4_n_cells": 28442,
+          "full4_all_agree_frac": 0.6057590886716827
+        },
+        "EDGE": {
+          "n_cells": 676,
+          "n_neighbour_pairs": 2700,
+          "agree_frac_mean_over_existing_neighbours": 0.7140740740740741,
+          "mean_abs_diff_candidates": 0.6118518518518519,
+          "per_direction": {
+            "up": {
+              "n_pairs": 676,
+              "agree_frac": 0.658284023668639
+            },
+            "down": {
+              "n_pairs": 675,
+              "agree_frac": 0.6459259259259259
+            },
+            "left": {
+              "n_pairs": 676,
+              "agree_frac": 0.757396449704142
+            },
+            "right": {
+              "n_pairs": 673,
+              "agree_frac": 0.7949479940564635
+            }
+          },
+          "full4_n_cells": 672,
+          "full4_all_agree_frac": 0.3229166666666667,
+          "low_n": true
+        },
+        "NONEDGE": {
+          "n_cells": 57372,
+          "n_neighbour_pairs": 227827,
+          "agree_frac_mean_over_existing_neighbours": 0.8669736247240231,
+          "mean_abs_diff_candidates": 0.15883104285269087,
+          "per_direction": {
+            "up": {
+              "n_pairs": 57372,
+              "agree_frac": 0.7955448650909851
+            },
+            "down": {
+              "n_pairs": 55911,
+              "agree_frac": 0.7902559424800129
+            },
+            "left": {
+              "n_pairs": 57372,
+              "agree_frac": 0.9411733946873039
+            },
+            "right": {
+              "n_pairs": 57172,
+              "agree_frac": 0.9392184985657315
+            }
+          },
+          "full4_n_cells": 55724,
+          "full4_all_agree_frac": 0.5745100854210036
+        },
+        "LOW": {
+          "n_cells": 55815,
+          "n_neighbour_pairs": 221815,
+          "agree_frac_mean_over_existing_neighbours": 0.866668169420463,
+          "mean_abs_diff_candidates": 0.15698667808759553,
+          "per_direction": {
+            "up": {
+              "n_pairs": 55815,
+              "agree_frac": 0.7938009495655289
+            },
+            "down": {
+              "n_pairs": 54532,
+              "agree_frac": 0.7876842954595467
+            },
+            "left": {
+              "n_pairs": 55815,
+              "agree_frac": 0.9425423273313626
+            },
+            "right": {
+              "n_pairs": 55653,
+              "agree_frac": 0.9410454063572494
+            }
+          },
+          "full4_n_cells": 54375,
+          "full4_all_agree_frac": 0.5715678160919541
+        },
+        "HIGH": {
+          "n_cells": 2233,
+          "n_neighbour_pairs": 8712,
+          "agree_frac_mean_over_existing_neighbours": 0.8273645546372819,
+          "mean_abs_diff_candidates": 0.34618916437098257,
+          "per_direction": {
+            "up": {
+              "n_pairs": 2233,
+              "agree_frac": 0.7975817286162113
+            },
+            "down": {
+              "n_pairs": 2054,
+              "agree_frac": 0.8111002921129503
+            },
+            "left": {
+              "n_pairs": 2233,
+              "agree_frac": 0.851321092700403
+            },
+            "right": {
+              "n_pairs": 2192,
+              "agree_frac": 0.8485401459854015
+            }
+          },
+          "full4_n_cells": 2021,
+          "full4_all_agree_frac": 0.570014844136566
+        },
+        "HIGH_OCC": {
+          "n_cells": 23,
+          "n_neighbour_pairs": 92,
+          "agree_frac_mean_over_existing_neighbours": 0.9130434782608695,
+          "mean_abs_diff_candidates": 0.16304347826086957,
+          "per_direction": {
+            "up": {
+              "n_pairs": 23,
+              "agree_frac": 0.8260869565217391
+            },
+            "down": {
+              "n_pairs": 23,
+              "agree_frac": 0.9130434782608695
+            },
+            "left": {
+              "n_pairs": 23,
+              "agree_frac": 0.9565217391304348
+            },
+            "right": {
+              "n_pairs": 23,
+              "agree_frac": 0.9565217391304348
+            }
+          },
+          "full4_n_cells": 23,
+          "full4_all_agree_frac": 0.7391304347826086,
+          "low_n": true
+        },
+        "HIGH_NONOCC": {
+          "n_cells": 2210,
+          "n_neighbour_pairs": 8620,
+          "agree_frac_mean_over_existing_neighbours": 0.8264501160092808,
+          "mean_abs_diff_candidates": 0.34814385150812066,
+          "per_direction": {
+            "up": {
+              "n_pairs": 2210,
+              "agree_frac": 0.7972850678733032
+            },
+            "down": {
+              "n_pairs": 2031,
+              "agree_frac": 0.809945839487937
+            },
+            "left": {
+              "n_pairs": 2210,
+              "agree_frac": 0.8502262443438914
+            },
+            "right": {
+              "n_pairs": 2169,
+              "agree_frac": 0.8473951129552789
+            }
+          },
+          "full4_n_cells": 1998,
+          "full4_all_agree_frac": 0.5680680680680681
+        },
+        "GT96_OCC": {
+          "n_cells": 2,
+          "n_neighbour_pairs": 8,
+          "agree_frac_mean_over_existing_neighbours": 1.0,
+          "mean_abs_diff_candidates": 0.0,
+          "per_direction": {
+            "up": {
+              "n_pairs": 2,
+              "agree_frac": 1.0
+            },
+            "down": {
+              "n_pairs": 2,
+              "agree_frac": 1.0
+            },
+            "left": {
+              "n_pairs": 2,
+              "agree_frac": 1.0
+            },
+            "right": {
+              "n_pairs": 2,
+              "agree_frac": 1.0
+            }
+          },
+          "full4_n_cells": 2,
+          "full4_all_agree_frac": 1.0,
+          "low_n": true
+        },
+        "GT96_NONOCC": {
+          "n_cells": 391,
+          "n_neighbour_pairs": 1534,
+          "agree_frac_mean_over_existing_neighbours": 0.7822685788787483,
+          "mean_abs_diff_candidates": 0.5860495436766623,
+          "per_direction": {
+            "up": {
+              "n_pairs": 391,
+              "agree_frac": 0.7723785166240409
+            },
+            "down": {
+              "n_pairs": 372,
+              "agree_frac": 0.7661290322580645
+            },
+            "left": {
+              "n_pairs": 391,
+              "agree_frac": 0.7928388746803069
+            },
+            "right": {
+              "n_pairs": 380,
+              "agree_frac": 0.7973684210526316
+            }
+          },
+          "full4_n_cells": 361,
+          "full4_all_agree_frac": 0.5263157894736842,
+          "low_n": true
+        }
+      }
+    },
+    "2": {
+      "n_defined_cells": 58048,
+      "texture_median_threshold": 5.055687302347875,
+      "n_edge_cells": 676,
+      "n_occluded_cells": 134,
+      "groups": {
+        "POOLED": {
+          "pre": {
+            "n_cells": 58048,
+            "rank1_frac": 0.6334585170893055,
+            "rankle3_frac": 0.838771361631753,
+            "margin_mean": 18722254.91724521,
+            "margin_frac_positive": 0.7178541896361632,
+            "overlap_frac_neg_better_than_median_pos": 0.03529842601232161,
+            "gap_mean": 1.7441887891196763,
+            "entropy_mean": 0.0
+          },
+          "post": {
+            "n_cells": 58048,
+            "rank1_frac": 0.1345438257993385,
+            "rankle3_frac": 0.8228190463065049,
+            "margin_mean": -4743902527.5505705,
+            "margin_frac_positive": 0.4719714718853363,
+            "overlap_frac_neg_better_than_median_pos": 0.013269976722654068,
+            "gap_mean": 2.1600962185636896,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.49891469128996696,
+            "rankle3_frac": -0.0159523153252481,
+            "margin_mean": -4762624782.467815,
+            "margin_frac_positive": -0.24588271775082693,
+            "overlap_frac_neg_better_than_median_pos": -0.022028449289667542,
+            "gap_mean": 0.41590742944401327,
+            "entropy_mean": 0.0
+          }
+        },
+        "GT>=96": {
+          "pre": {
+            "n_cells": 393,
+            "rank1_frac": 0.35877862595419846,
+            "rankle3_frac": 0.5954198473282443,
+            "margin_mean": -13476415.374045802,
+            "margin_frac_positive": 0.44783715012722647,
+            "overlap_frac_neg_better_than_median_pos": 0.16102143424186294,
+            "gap_mean": 1.1447338168939163,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "post": {
+            "n_cells": 393,
+            "rank1_frac": 0.08396946564885496,
+            "rankle3_frac": 0.5928753180661578,
+            "margin_mean": -35119807288.32061,
+            "margin_frac_positive": 0.3994910941475827,
+            "overlap_frac_neg_better_than_median_pos": 0.04538237629002381,
+            "gap_mean": 1.553094490587353,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.2748091603053435,
+            "rankle3_frac": -0.0025445292620864812,
+            "margin_mean": -35106330872.94656,
+            "margin_frac_positive": -0.048346055979643754,
+            "overlap_frac_neg_better_than_median_pos": -0.11563905795183912,
+            "gap_mean": 0.40836067369343665,
+            "entropy_mean": 0.0
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "OCC": {
+          "pre": {
+            "n_cells": 134,
+            "rank1_frac": 0.373134328358209,
+            "rankle3_frac": 0.7388059701492538,
+            "margin_mean": 8985076.373134328,
+            "margin_frac_positive": 0.5597014925373134,
+            "overlap_frac_neg_better_than_median_pos": 0.22956521739130434,
+            "gap_mean": 0.9405414170785659,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "post": {
+            "n_cells": 134,
+            "rank1_frac": 0.08955223880597014,
+            "rankle3_frac": 0.8582089552238806,
+            "margin_mean": -2035843387.2238805,
+            "margin_frac_positive": 0.6194029850746269,
+            "overlap_frac_neg_better_than_median_pos": 0.11304347826086956,
+            "gap_mean": 1.109724995787396,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.28358208955223885,
+            "rankle3_frac": 0.11940298507462688,
+            "margin_mean": -2044828463.597015,
+            "margin_frac_positive": 0.059701492537313494,
+            "overlap_frac_neg_better_than_median_pos": -0.11652173913043477,
+            "gap_mean": 0.16918357870883016,
+            "entropy_mean": 0.0
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "NONOCC": {
+          "pre": {
+            "n_cells": 57914,
+            "rank1_frac": 0.6340608488448389,
+            "rankle3_frac": 0.8390026591152399,
+            "margin_mean": 18744784.563356873,
+            "margin_frac_positive": 0.718220119487516,
+            "overlap_frac_neg_better_than_median_pos": 0.03514475074855555,
+            "gap_mean": 1.7460482487987439,
+            "entropy_mean": 0.0
+          },
+          "post": {
+            "n_cells": 57914,
+            "rank1_frac": 0.13464792623545258,
+            "rankle3_frac": 0.8227371619988258,
+            "margin_mean": -4750168368.708214,
+            "margin_frac_positive": 0.4716303484476983,
+            "overlap_frac_neg_better_than_median_pos": 0.01322103049497392,
+            "gap_mean": 2.162526541868107,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.49941292260938636,
+            "rankle3_frac": -0.016265497116414007,
+            "margin_mean": -4768913153.27157,
+            "margin_frac_positive": -0.24658977103981766,
+            "overlap_frac_neg_better_than_median_pos": -0.021923720253581636,
+            "gap_mean": 0.4164782930693631,
+            "entropy_mean": 0.0
+          }
+        },
+        "TEXLO": {
+          "pre": {
+            "n_cells": 29024,
+            "rank1_frac": 0.610494762954796,
+            "rankle3_frac": 0.8310019294377067,
+            "margin_mean": 13839690.862975469,
+            "margin_frac_positive": 0.702728776185226,
+            "overlap_frac_neg_better_than_median_pos": 0.040726235564330325,
+            "gap_mean": 1.6848301098990983,
+            "entropy_mean": 0.0
+          },
+          "post": {
+            "n_cells": 29024,
+            "rank1_frac": 0.12000413450937156,
+            "rankle3_frac": 0.8200110253583242,
+            "margin_mean": -9520912559.82866,
+            "margin_frac_positive": 0.4711273428886439,
+            "overlap_frac_neg_better_than_median_pos": 0.013734265433580691,
+            "gap_mean": 2.141190957753209,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.49049062844542446,
+            "rankle3_frac": -0.010990904079382524,
+            "margin_mean": -9534752250.691635,
+            "margin_frac_positive": -0.23160143329658212,
+            "overlap_frac_neg_better_than_median_pos": -0.026991970130749634,
+            "gap_mean": 0.4563608478541108,
+            "entropy_mean": 0.0
+          }
+        },
+        "TEXHI": {
+          "pre": {
+            "n_cells": 29024,
+            "rank1_frac": 0.6564222712238148,
+            "rankle3_frac": 0.8465407938257994,
+            "margin_mean": 23604818.97151495,
+            "margin_frac_positive": 0.7329796030871003,
+            "overlap_frac_neg_better_than_median_pos": 0.017586291044169085,
+            "gap_mean": 1.8035474683402546,
+            "entropy_mean": 0.0
+          },
+          "post": {
+            "n_cells": 29024,
+            "rank1_frac": 0.1490835170893054,
+            "rankle3_frac": 0.8256270672546858,
+            "margin_mean": 33107504.727518607,
+            "margin_frac_positive": 0.4728156008820287,
+            "overlap_frac_neg_better_than_median_pos": 0.012510506765000949,
+            "gap_mean": 2.17900147937417,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.5073387541345094,
+            "rankle3_frac": -0.020913726571113567,
+            "margin_mean": 9502685.756003655,
+            "margin_frac_positive": -0.26016400220507163,
+            "overlap_frac_neg_better_than_median_pos": -0.005075784279168136,
+            "gap_mean": 0.3754540110339155,
+            "entropy_mean": 0.0
+          }
+        },
+        "EDGE": {
+          "pre": {
+            "n_cells": 676,
+            "rank1_frac": 0.2440828402366864,
+            "rankle3_frac": 0.4171597633136095,
+            "margin_mean": -42536872.32544379,
+            "margin_frac_positive": 0.28550295857988167,
+            "overlap_frac_neg_better_than_median_pos": 0.2114916286149163,
+            "gap_mean": 0.874682859605784,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "post": {
+            "n_cells": 676,
+            "rank1_frac": 0.25443786982248523,
+            "rankle3_frac": 0.5931952662721893,
+            "margin_mean": -8490648144.739645,
+            "margin_frac_positive": 0.4363905325443787,
+            "overlap_frac_neg_better_than_median_pos": 0.03143074581430746,
+            "gap_mean": 1.9178990579901152,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": 0.010355029585798842,
+            "rankle3_frac": 0.17603550295857984,
+            "margin_mean": -8448111272.414201,
+            "margin_frac_positive": 0.15088757396449703,
+            "overlap_frac_neg_better_than_median_pos": -0.18006088280060883,
+            "gap_mean": 1.0432161983843313,
+            "entropy_mean": 0.0
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "NONEDGE": {
+          "pre": {
+            "n_cells": 57372,
+            "rank1_frac": 0.6380464338004601,
+            "rankle3_frac": 0.8437391061842013,
+            "margin_mean": 19444055.970303457,
+            "margin_frac_positive": 0.7229484766087987,
+            "overlap_frac_neg_better_than_median_pos": 0.03491583359208043,
+            "gap_mean": 1.7544339611260802,
+            "entropy_mean": 0.0
+          },
+          "post": {
+            "n_cells": 57372,
+            "rank1_frac": 0.13313114411211044,
+            "rankle3_frac": 0.8255246461688629,
+            "margin_mean": -4699755556.254122,
+            "margin_frac_positive": 0.47239071323990794,
+            "overlap_frac_neg_better_than_median_pos": 0.013204751962456327,
+            "gap_mean": 2.16294996744028,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.5049152896883496,
+            "rankle3_frac": -0.01821446001533844,
+            "margin_mean": -4719199612.224425,
+            "margin_frac_positive": -0.25055776336889074,
+            "overlap_frac_neg_better_than_median_pos": -0.0217110816296241,
+            "gap_mean": 0.40851600631419993,
+            "entropy_mean": 0.0
+          }
+        },
+        "LOW": {
+          "pre": {
+            "n_cells": 55815,
+            "rank1_frac": 0.6392009316491982,
+            "rankle3_frac": 0.8440562572785094,
+            "margin_mean": 19340396.41776852,
+            "margin_frac_positive": 0.7237301800591239,
+            "overlap_frac_neg_better_than_median_pos": 0.03402320476638444,
+            "gap_mean": 1.7559240079902836,
+            "entropy_mean": 0.0
+          },
+          "post": {
+            "n_cells": 55815,
+            "rank1_frac": 0.13550120935232465,
+            "rankle3_frac": 0.8270357430798172,
+            "margin_mean": -3798504862.8504434,
+            "margin_frac_positive": 0.4736898683149691,
+            "overlap_frac_neg_better_than_median_pos": 0.012852961818154669,
+            "gap_mean": 2.172706479548557,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.5036997222968735,
+            "rankle3_frac": -0.017020514198692216,
+            "margin_mean": -3817845259.268212,
+            "margin_frac_positive": -0.2500403117441548,
+            "overlap_frac_neg_better_than_median_pos": -0.021170242948229775,
+            "gap_mean": 0.4167824715582735,
+            "entropy_mean": 0.0
+          }
+        },
+        "HIGH": {
+          "pre": {
+            "n_cells": 2233,
+            "rank1_frac": 0.48992386923421405,
+            "rankle3_frac": 0.7066726377071205,
+            "margin_mean": 3271485.615091805,
+            "margin_frac_positive": 0.5709807433945365,
+            "overlap_frac_neg_better_than_median_pos": 0.0887228226797402,
+            "gap_mean": 1.450860870954457,
+            "entropy_mean": 0.0
+          },
+          "post": {
+            "n_cells": 2233,
+            "rank1_frac": 0.11061352440662786,
+            "rankle3_frac": 0.7174205105239588,
+            "margin_mean": -28374610389.278103,
+            "margin_frac_positive": 0.42901925660546353,
+            "overlap_frac_neg_better_than_median_pos": 0.03327732778293252,
+            "gap_mean": 1.8448961662258634,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.3793103448275862,
+            "rankle3_frac": 0.01074787281683831,
+            "margin_mean": -28377881874.893196,
+            "margin_frac_positive": -0.141961486789073,
+            "overlap_frac_neg_better_than_median_pos": -0.05544549489680768,
+            "gap_mean": 0.39403529527140635,
+            "entropy_mean": 0.0
+          }
+        },
+        "HIGH_OCC": {
+          "pre": {
+            "n_cells": 23,
+            "rank1_frac": 0.391304347826087,
+            "rankle3_frac": 0.5652173913043478,
+            "margin_mean": -14330019.130434783,
+            "margin_frac_positive": 0.391304347826087,
+            "overlap_frac_neg_better_than_median_pos": 0.25252525252525254,
+            "gap_mean": 0.9604295754418928,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "post": {
+            "n_cells": 23,
+            "rank1_frac": 0.0,
+            "rankle3_frac": 0.6521739130434783,
+            "margin_mean": -32694743262.608696,
+            "margin_frac_positive": 0.43478260869565216,
+            "overlap_frac_neg_better_than_median_pos": 0.13131313131313133,
+            "gap_mean": 0.9718984235785847,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.391304347826087,
+            "rankle3_frac": 0.08695652173913049,
+            "margin_mean": -32680413243.47826,
+            "margin_frac_positive": 0.04347826086956519,
+            "overlap_frac_neg_better_than_median_pos": -0.12121212121212122,
+            "gap_mean": 0.011468848136691911,
+            "entropy_mean": 0.0
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "HIGH_NONOCC": {
+          "pre": {
+            "n_cells": 2210,
+            "rank1_frac": 0.49095022624434387,
+            "rankle3_frac": 0.7081447963800905,
+            "margin_mean": 3454668.696153846,
+            "margin_frac_positive": 0.5728506787330316,
+            "overlap_frac_neg_better_than_median_pos": 0.0877542276771088,
+            "gap_mean": 1.4559649070616014,
+            "entropy_mean": 0.0
+          },
+          "post": {
+            "n_cells": 2210,
+            "rank1_frac": 0.11176470588235295,
+            "rankle3_frac": 0.7180995475113122,
+            "margin_mean": -28329649730.415386,
+            "margin_frac_positive": 0.4289592760180995,
+            "overlap_frac_neg_better_than_median_pos": 0.03286373144484488,
+            "gap_mean": 1.8539816630950434,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.37918552036199094,
+            "rankle3_frac": 0.009954751131221684,
+            "margin_mean": -28333104399.11154,
+            "margin_frac_positive": -0.14389140271493212,
+            "overlap_frac_neg_better_than_median_pos": -0.05489049623226392,
+            "gap_mean": 0.398016756033442,
+            "entropy_mean": 0.0
+          }
+        },
+        "GT96_OCC": {
+          "pre": {
+            "n_cells": 2,
+            "rank1_frac": 0.0,
+            "rankle3_frac": 0.5,
+            "margin_mean": -24850694.0,
+            "margin_frac_positive": 0.0,
+            "overlap_frac_neg_better_than_median_pos": 0.14285714285714285,
+            "gap_mean": 0.9958392630605343,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "post": {
+            "n_cells": 2,
+            "rank1_frac": 0.0,
+            "rankle3_frac": 0.0,
+            "margin_mean": -158556400640.0,
+            "margin_frac_positive": 0.0,
+            "overlap_frac_neg_better_than_median_pos": 0.14285714285714285,
+            "gap_mean": 0.07735375897594969,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": 0.0,
+            "rankle3_frac": -0.5,
+            "margin_mean": -158531549946.0,
+            "margin_frac_positive": 0.0,
+            "overlap_frac_neg_better_than_median_pos": 0.0,
+            "gap_mean": -0.9184855040845846,
+            "entropy_mean": 0.0
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "GT96_NONOCC": {
+          "pre": {
+            "n_cells": 391,
+            "rank1_frac": 0.36061381074168797,
+            "rankle3_frac": 0.5959079283887468,
+            "margin_mean": -13418234.920716112,
+            "margin_frac_positive": 0.45012787723785164,
+            "overlap_frac_neg_better_than_median_pos": 0.1609561752988048,
+            "gap_mean": 1.145495425864931,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "post": {
+            "n_cells": 391,
+            "rank1_frac": 0.08439897698209718,
+            "rankle3_frac": 0.5959079283887468,
+            "margin_mean": -34488418064.01534,
+            "margin_frac_positive": 0.40153452685422,
+            "overlap_frac_neg_better_than_median_pos": 0.04555112881806109,
+            "gap_mean": 1.5606430365290993,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.27621483375959077,
+            "rankle3_frac": 0.0,
+            "margin_mean": -34474999829.09463,
+            "margin_frac_positive": -0.04859335038363166,
+            "overlap_frac_neg_better_than_median_pos": -0.1154050464807437,
+            "gap_mean": 0.4151476106641683,
+            "entropy_mean": 0.0
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "BIN [0,16)": {
+          "pre": {
+            "n_cells": 8040,
+            "rank1_frac": 0.6521144278606965,
+            "rankle3_frac": 0.8437810945273632,
+            "margin_mean": 20825311.818967663,
+            "margin_frac_positive": 0.7308457711442786,
+            "overlap_frac_neg_better_than_median_pos": 0.015891442870778837,
+            "gap_mean": 1.7899442824535223,
+            "entropy_mean": 0.0
+          },
+          "post": {
+            "n_cells": 8040,
+            "rank1_frac": 0.5662935323383085,
+            "rankle3_frac": 0.9859452736318408,
+            "margin_mean": 186051160185.66653,
+            "margin_frac_positive": 0.6322139303482587,
+            "overlap_frac_neg_better_than_median_pos": 0.0,
+            "gap_mean": 3.2108716002459814,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.08582089552238803,
+            "rankle3_frac": 0.14216417910447765,
+            "margin_mean": 186030334873.84756,
+            "margin_frac_positive": -0.09863184079601994,
+            "overlap_frac_neg_better_than_median_pos": -0.015891442870778837,
+            "gap_mean": 1.420927317792459,
+            "entropy_mean": 0.0
+          }
+        },
+        "BIN [16,32)": {
+          "pre": {
+            "n_cells": 18053,
+            "rank1_frac": 0.6598349304824683,
+            "rankle3_frac": 0.8545948041876696,
+            "margin_mean": 21591370.716058273,
+            "margin_frac_positive": 0.7399878136597795,
+            "overlap_frac_neg_better_than_median_pos": 0.021848519643609832,
+            "gap_mean": 1.791680259445849,
+            "entropy_mean": 0.0
+          },
+          "post": {
+            "n_cells": 18053,
+            "rank1_frac": 0.02204619730792666,
+            "rankle3_frac": 0.7535589652689304,
+            "margin_mean": -69520844061.00058,
+            "margin_frac_positive": 0.38436824904448014,
+            "overlap_frac_neg_better_than_median_pos": 0.020017150913504166,
+            "gap_mean": 1.774363365081109,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.6377887331745417,
+            "rankle3_frac": -0.10103583891873924,
+            "margin_mean": -69542435431.71664,
+            "margin_frac_positive": -0.35561956461529937,
+            "overlap_frac_neg_better_than_median_pos": -0.0018313687301056668,
+            "gap_mean": -0.017316894364739932,
+            "entropy_mean": 0.0
+          }
+        },
+        "BIN [32,48)": {
+          "pre": {
+            "n_cells": 17160,
+            "rank1_frac": 0.6385780885780886,
+            "rankle3_frac": 0.848951048951049,
+            "margin_mean": 19186975.267511655,
+            "margin_frac_positive": 0.7273892773892774,
+            "overlap_frac_neg_better_than_median_pos": 0.025650656714971163,
+            "gap_mean": 1.746923585892177,
+            "entropy_mean": 0.0
+          },
+          "post": {
+            "n_cells": 17160,
+            "rank1_frac": 0.05367132867132867,
+            "rankle3_frac": 0.7962703962703963,
+            "margin_mean": -29593179880.61148,
+            "margin_frac_positive": 0.42674825174825176,
+            "overlap_frac_neg_better_than_median_pos": 0.015027504483109582,
+            "gap_mean": 2.0063026347410164,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.58490675990676,
+            "rankle3_frac": -0.052680652680652695,
+            "margin_mean": -29612366855.878994,
+            "margin_frac_positive": -0.3006410256410256,
+            "overlap_frac_neg_better_than_median_pos": -0.01062315223186158,
+            "gap_mean": 0.25937904884883944,
+            "entropy_mean": 0.0
+          }
+        },
+        "BIN [48,64)": {
+          "pre": {
+            "n_cells": 12562,
+            "rank1_frac": 0.6021334182455023,
+            "rankle3_frac": 0.8224008915777742,
+            "margin_mean": 15364687.781065913,
+            "margin_frac_positive": 0.6908135647189938,
+            "overlap_frac_neg_better_than_median_pos": 0.05764302427791465,
+            "gap_mean": 1.6950592276202583,
+            "entropy_mean": 0.0
+          },
+          "post": {
+            "n_cells": 12562,
+            "rank1_frac": 0.13461232287852254,
+            "rankle3_frac": 0.8729501671708326,
+            "margin_mean": 4379389251.057157,
+            "margin_frac_positive": 0.5647189937907976,
+            "overlap_frac_neg_better_than_median_pos": 0.013597778135433045,
+            "gap_mean": 2.3080297283919693,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.4675210953669797,
+            "rankle3_frac": 0.05054927559305844,
+            "margin_mean": 4364024563.276091,
+            "margin_frac_positive": -0.1260945709281962,
+            "overlap_frac_neg_better_than_median_pos": -0.044045246142481606,
+            "gap_mean": 0.612970500771711,
+            "entropy_mean": 0.0
+          }
+        },
+        "BIN [64,80)": {
+          "pre": {
+            "n_cells": 1463,
+            "rank1_frac": 0.5488721804511278,
+            "rankle3_frac": 0.7484620642515379,
+            "margin_mean": 10028497.104921395,
+            "margin_frac_positive": 0.6206425153793574,
+            "overlap_frac_neg_better_than_median_pos": 0.06815594205174512,
+            "gap_mean": 1.5390790956215428,
+            "entropy_mean": 0.0
+          },
+          "post": {
+            "n_cells": 1463,
+            "rank1_frac": 0.10116199589883801,
+            "rankle3_frac": 0.7566643882433356,
+            "margin_mean": -29859836337.845524,
+            "margin_frac_positive": 0.42173615857826385,
+            "overlap_frac_neg_better_than_median_pos": 0.029641553138863807,
+            "gap_mean": 1.8924725742192092,
+            "entropy_mean": 0.0
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.44771018455228984,
+            "rankle3_frac": 0.008202323991797655,
+            "margin_mean": -29869864834.950447,
+            "margin_frac_positive": -0.1989063568010936,
+            "overlap_frac_neg_better_than_median_pos": -0.03851438891288131,
+            "gap_mean": 0.35339347859766645,
+            "entropy_mean": 0.0
+          }
+        },
+        "BIN [80,96)": {
+          "pre": {
+            "n_cells": 377,
+            "rank1_frac": 0.3978779840848806,
+            "rankle3_frac": 0.6604774535809018,
+            "margin_mean": -5491333.2732095495,
+            "margin_frac_positive": 0.506631299734748,
+            "overlap_frac_neg_better_than_median_pos": 0.09754672897196262,
+            "gap_mean": 1.427637182778982,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "post": {
+            "n_cells": 377,
+            "rank1_frac": 0.17506631299734748,
+            "rankle3_frac": 0.6949602122015915,
+            "margin_mean": -15579523004.456234,
+            "margin_frac_positive": 0.4880636604774536,
+            "overlap_frac_neg_better_than_median_pos": 0.026723130841121497,
+            "gap_mean": 1.9644552474769779,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.22281167108753314,
+            "rankle3_frac": 0.034482758620689724,
+            "margin_mean": -15574031671.183025,
+            "margin_frac_positive": -0.018567639257294377,
+            "overlap_frac_neg_better_than_median_pos": -0.07082359813084113,
+            "gap_mean": 0.5368180646979959,
+            "entropy_mean": 0.0
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "BIN [96,112)": {
+          "pre": {
+            "n_cells": 286,
+            "rank1_frac": 0.3776223776223776,
+            "rankle3_frac": 0.5734265734265734,
+            "margin_mean": -14600301.034965035,
+            "margin_frac_positive": 0.43006993006993005,
+            "overlap_frac_neg_better_than_median_pos": 0.16053097345132744,
+            "gap_mean": 1.125574407389139,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "post": {
+            "n_cells": 286,
+            "rank1_frac": 0.06643356643356643,
+            "rankle3_frac": 0.6608391608391608,
+            "margin_mean": -9954416321.475525,
+            "margin_frac_positive": 0.4405594405594406,
+            "overlap_frac_neg_better_than_median_pos": 0.036991150442477874,
+            "gap_mean": 1.7406851815381237,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.31118881118881114,
+            "rankle3_frac": 0.0874125874125874,
+            "margin_mean": -9939816020.44056,
+            "margin_frac_positive": 0.010489510489510523,
+            "overlap_frac_neg_better_than_median_pos": -0.12353982300884957,
+            "gap_mean": 0.6151107741489847,
+            "entropy_mean": 0.0
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "BIN [112,128)": {
+          "pre": {
+            "n_cells": 107,
+            "rank1_frac": 0.308411214953271,
+            "rankle3_frac": 0.6542056074766355,
+            "margin_mean": -10472384.542056074,
+            "margin_frac_positive": 0.4953271028037383,
+            "overlap_frac_neg_better_than_median_pos": 0.08385744234800839,
+            "gap_mean": 1.1959449488412655,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "post": {
+            "n_cells": 107,
+            "rank1_frac": 0.1308411214953271,
+            "rankle3_frac": 0.411214953271028,
+            "margin_mean": -102384310246.4299,
+            "margin_frac_positive": 0.2897196261682243,
+            "overlap_frac_neg_better_than_median_pos": 0.07285115303983228,
+            "gap_mean": 1.0516838587002475,
+            "entropy_mean": 0.0,
+            "low_n": true
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": -0.17757009345794392,
+            "rankle3_frac": -0.24299065420560745,
+            "margin_mean": -102373837861.88785,
+            "margin_frac_positive": -0.20560747663551404,
+            "overlap_frac_neg_better_than_median_pos": -0.011006289308176112,
+            "gap_mean": -0.14426109014101796,
+            "entropy_mean": 0.0
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "BIN [128,144)": {
+          "pre": {
+            "n_cells": 0,
+            "status": "EMPTY"
+          },
+          "post": {
+            "n_cells": 0,
+            "status": "EMPTY"
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": null,
+            "rankle3_frac": null,
+            "margin_mean": null,
+            "margin_frac_positive": null,
+            "overlap_frac_neg_better_than_median_pos": null,
+            "gap_mean": null,
+            "entropy_mean": null
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "BIN [144,160)": {
+          "pre": {
+            "n_cells": 0,
+            "status": "EMPTY"
+          },
+          "post": {
+            "n_cells": 0,
+            "status": "EMPTY"
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": null,
+            "rankle3_frac": null,
+            "margin_mean": null,
+            "margin_frac_positive": null,
+            "overlap_frac_neg_better_than_median_pos": null,
+            "gap_mean": null,
+            "entropy_mean": null
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "BIN [160,184)": {
+          "pre": {
+            "n_cells": 0,
+            "status": "EMPTY"
+          },
+          "post": {
+            "n_cells": 0,
+            "status": "EMPTY"
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": null,
+            "rankle3_frac": null,
+            "margin_mean": null,
+            "margin_frac_positive": null,
+            "overlap_frac_neg_better_than_median_pos": null,
+            "gap_mean": null,
+            "entropy_mean": null
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        },
+        "BIN [184,inf)": {
+          "pre": {
+            "n_cells": 0,
+            "status": "EMPTY"
+          },
+          "post": {
+            "n_cells": 0,
+            "status": "EMPTY"
+          },
+          "delta_post_minus_pre": {
+            "rank1_frac": null,
+            "rankle3_frac": null,
+            "margin_mean": null,
+            "margin_frac_positive": null,
+            "overlap_frac_neg_better_than_median_pos": null,
+            "gap_mean": null,
+            "entropy_mean": null
+          },
+          "low_n_warning": "fewer than 1000 cells: do not present alongside well-populated regimes without comment"
+        }
+      },
+      "post_spatial_consistency": {
+        "POOLED": {
+          "n_cells": 58048,
+          "n_neighbour_pairs": 230527,
+          "agree_frac_mean_over_existing_neighbours": 0.8677291597079735,
+          "mean_abs_diff_candidates": 0.16129563999010962,
+          "per_direction": {
+            "up": {
+              "n_pairs": 58048,
+              "agree_frac": 0.7972884509371555
+            },
+            "down": {
+              "n_pairs": 56586,
+              "agree_frac": 0.7920333651433217
+            },
+            "left": {
+              "n_pairs": 58048,
+              "agree_frac": 0.939808434399118
+            },
+            "right": {
+              "n_pairs": 57845,
+              "agree_frac": 0.9401331143573343
+            }
+          },
+          "full4_n_cells": 56396,
+          "full4_all_agree_frac": 0.5768316901907937
+        },
+        "OCC": {
+          "n_cells": 134,
+          "n_neighbour_pairs": 535,
+          "agree_frac_mean_over_existing_neighbours": 0.8355140186915888,
+          "mean_abs_diff_candidates": 0.20373831775700935,
+          "per_direction": {
+            "up": {
+              "n_pairs": 134,
+              "agree_frac": 0.8507462686567164
+            },
+            "down": {
+              "n_pairs": 133,
+              "agree_frac": 0.7142857142857143
+            },
+            "left": {
+              "n_pairs": 134,
+              "agree_frac": 0.8656716417910447
+            },
+            "right": {
+              "n_pairs": 134,
+              "agree_frac": 0.9104477611940298
+            }
+          },
+          "full4_n_cells": 133,
+          "full4_all_agree_frac": 0.5488721804511278,
+          "low_n": true
+        },
+        "NONOCC": {
+          "n_cells": 57914,
+          "n_neighbour_pairs": 229992,
+          "agree_frac_mean_over_existing_neighbours": 0.8678040975338273,
+          "mean_abs_diff_candidates": 0.1611969111969112,
+          "per_direction": {
+            "up": {
+              "n_pairs": 57914,
+              "agree_frac": 0.7971647615429776
+            },
+            "down": {
+              "n_pairs": 56453,
+              "agree_frac": 0.7922165341080191
+            },
+            "left": {
+              "n_pairs": 57914,
+              "agree_frac": 0.9399799703007908
+            },
+            "right": {
+              "n_pairs": 57711,
+              "agree_frac": 0.9402020412053161
+            }
+          },
+          "full4_n_cells": 56263,
+          "full4_all_agree_frac": 0.5768977836233404
+        },
+        "TEXLO": {
+          "n_cells": 29024,
+          "n_neighbour_pairs": 115018,
+          "agree_frac_mean_over_existing_neighbours": 0.8585004086316924,
+          "mean_abs_diff_candidates": 0.16580013563094473,
+          "per_direction": {
+            "up": {
+              "n_pairs": 29024,
+              "agree_frac": 0.7848332414553473
+            },
+            "down": {
+              "n_pairs": 28110,
+              "agree_frac": 0.7704731412308787
+            },
+            "left": {
+              "n_pairs": 29024,
+              "agree_frac": 0.9383958103638368
+            },
+            "right": {
+              "n_pairs": 28860,
+              "agree_frac": 0.9379764379764379
+            }
+          },
+          "full4_n_cells": 27954,
+          "full4_all_agree_frac": 0.5442512699434786
+        },
+        "TEXHI": {
+          "n_cells": 29024,
+          "n_neighbour_pairs": 115509,
+          "agree_frac_mean_over_existing_neighbours": 0.8769186816611693,
+          "mean_abs_diff_candidates": 0.1568102918387312,
+          "per_direction": {
+            "up": {
+              "n_pairs": 29024,
+              "agree_frac": 0.8097436604189636
+            },
+            "down": {
+              "n_pairs": 28476,
+              "agree_frac": 0.8133164770332912
+            },
+            "left": {
+              "n_pairs": 29024,
+              "agree_frac": 0.9412210584343991
+            },
+            "right": {
+              "n_pairs": 28985,
+              "agree_frac": 0.9422804899085734
+            }
+          },
+          "full4_n_cells": 28442,
+          "full4_all_agree_frac": 0.6088531045636735
+        },
+        "EDGE": {
+          "n_cells": 676,
+          "n_neighbour_pairs": 2700,
+          "agree_frac_mean_over_existing_neighbours": 0.7214814814814815,
+          "mean_abs_diff_candidates": 0.572962962962963,
+          "per_direction": {
+            "up": {
+              "n_pairs": 676,
+              "agree_frac": 0.6804733727810651
+            },
+            "down": {
+              "n_pairs": 675,
+              "agree_frac": 0.6355555555555555
+            },
+            "left": {
+              "n_pairs": 676,
+              "agree_frac": 0.7736686390532544
+            },
+            "right": {
+              "n_pairs": 673,
+              "agree_frac": 0.7964338781575037
+            }
+          },
+          "full4_n_cells": 672,
+          "full4_all_agree_frac": 0.3586309523809524,
+          "low_n": true
+        },
+        "NONEDGE": {
+          "n_cells": 57372,
+          "n_neighbour_pairs": 227827,
+          "agree_frac_mean_over_existing_neighbours": 0.8694623552081184,
+          "mean_abs_diff_candidates": 0.15641693039016447,
+          "per_direction": {
+            "up": {
+              "n_pairs": 57372,
+              "agree_frac": 0.7986648539357177
+            },
+            "down": {
+              "n_pairs": 55911,
+              "agree_frac": 0.7939224839477026
+            },
+            "left": {
+              "n_pairs": 57372,
+              "agree_frac": 0.9417660182667503
+            },
+            "right": {
+              "n_pairs": 57172,
+              "agree_frac": 0.9418246694185965
+            }
+          },
+          "full4_n_cells": 55724,
+          "full4_all_agree_frac": 0.579463067977891
+        },
+        "LOW": {
+          "n_cells": 55815,
+          "n_neighbour_pairs": 221815,
+          "agree_frac_mean_over_existing_neighbours": 0.8688907422852377,
+          "mean_abs_diff_candidates": 0.1559452697067376,
+          "per_direction": {
+            "up": {
+              "n_pairs": 55815,
+              "agree_frac": 0.7962913195377587
+            },
+            "down": {
+              "n_pairs": 54532,
+              "agree_frac": 0.7907650553803272
+            },
+            "left": {
+              "n_pairs": 55815,
+              "agree_frac": 0.9434560601988713
+            },
+            "right": {
+              "n_pairs": 55653,
+              "agree_frac": 0.9434711516000934
+            }
+          },
+          "full4_n_cells": 54375,
+          "full4_all_agree_frac": 0.5764965517241379
+        },
+        "HIGH": {
+          "n_cells": 2233,
+          "n_neighbour_pairs": 8712,
+          "agree_frac_mean_over_existing_neighbours": 0.8381542699724518,
+          "mean_abs_diff_candidates": 0.2975206611570248,
+          "per_direction": {
+            "up": {
+              "n_pairs": 2233,
+              "agree_frac": 0.8222122704881325
+            },
+            "down": {
+              "n_pairs": 2054,
+              "agree_frac": 0.8257059396299903
+            },
+            "left": {
+              "n_pairs": 2233,
+              "agree_frac": 0.8486341244961935
+            },
+            "right": {
+              "n_pairs": 2192,
+              "agree_frac": 0.8553832116788321
+            }
+          },
+          "full4_n_cells": 2021,
+          "full4_all_agree_frac": 0.5858485898070263
+        },
+        "HIGH_OCC": {
+          "n_cells": 23,
+          "n_neighbour_pairs": 92,
+          "agree_frac_mean_over_existing_neighbours": 0.9021739130434783,
+          "mean_abs_diff_candidates": 0.18478260869565216,
+          "per_direction": {
+            "up": {
+              "n_pairs": 23,
+              "agree_frac": 0.782608695652174
+            },
+            "down": {
+              "n_pairs": 23,
+              "agree_frac": 0.8695652173913043
+            },
+            "left": {
+              "n_pairs": 23,
+              "agree_frac": 1.0
+            },
+            "right": {
+              "n_pairs": 23,
+              "agree_frac": 0.9565217391304348
+            }
+          },
+          "full4_n_cells": 23,
+          "full4_all_agree_frac": 0.6956521739130435,
+          "low_n": true
+        },
+        "HIGH_NONOCC": {
+          "n_cells": 2210,
+          "n_neighbour_pairs": 8620,
+          "agree_frac_mean_over_existing_neighbours": 0.8374709976798144,
+          "mean_abs_diff_candidates": 0.29872389791183296,
+          "per_direction": {
+            "up": {
+              "n_pairs": 2210,
+              "agree_frac": 0.8226244343891402
+            },
+            "down": {
+              "n_pairs": 2031,
+              "agree_frac": 0.8252092565238799
+            },
+            "left": {
+              "n_pairs": 2210,
+              "agree_frac": 0.8470588235294118
+            },
+            "right": {
+              "n_pairs": 2169,
+              "agree_frac": 0.8543107422775472
+            }
+          },
+          "full4_n_cells": 1998,
+          "full4_all_agree_frac": 0.5845845845845846
+        },
+        "GT96_OCC": {
+          "n_cells": 2,
+          "n_neighbour_pairs": 8,
+          "agree_frac_mean_over_existing_neighbours": 1.0,
+          "mean_abs_diff_candidates": 0.0,
+          "per_direction": {
+            "up": {
+              "n_pairs": 2,
+              "agree_frac": 1.0
+            },
+            "down": {
+              "n_pairs": 2,
+              "agree_frac": 1.0
+            },
+            "left": {
+              "n_pairs": 2,
+              "agree_frac": 1.0
+            },
+            "right": {
+              "n_pairs": 2,
+              "agree_frac": 1.0
+            }
+          },
+          "full4_n_cells": 2,
+          "full4_all_agree_frac": 1.0,
+          "low_n": true
+        },
+        "GT96_NONOCC": {
+          "n_cells": 391,
+          "n_neighbour_pairs": 1534,
+          "agree_frac_mean_over_existing_neighbours": 0.7900912646675359,
+          "mean_abs_diff_candidates": 0.5749674054758801,
+          "per_direction": {
+            "up": {
+              "n_pairs": 391,
+              "agree_frac": 0.7723785166240409
+            },
+            "down": {
+              "n_pairs": 372,
+              "agree_frac": 0.7903225806451613
+            },
+            "left": {
+              "n_pairs": 391,
+              "agree_frac": 0.7877237851662404
+            },
+            "right": {
+              "n_pairs": 380,
+              "agree_frac": 0.8105263157894737
+            }
+          },
+          "full4_n_cells": 361,
+          "full4_all_agree_frac": 0.5235457063711911,
+          "low_n": true
+        }
+      }
+    }
+  },
+  "method_mean": {
+    "POOLED": {
+      "pre": {
+        "rank1_frac": 0.6469071572951121,
+        "rankle3_frac": 0.8411716740169055,
+        "margin_mean": 7569297.312350575,
+        "margin_frac_positive": 0.7320033994854832,
+        "overlap_frac_neg_better_than_median_pos": 0.03546068659922505,
+        "gap_mean": 1.7756660498576717,
+        "entropy_mean": 2.091513663115344e-06
+      },
+      "post": {
+        "rank1_frac": 0.15720897647923557,
+        "rankle3_frac": 0.8647441198088938,
+        "margin_mean": -1091044281.5247505,
+        "margin_frac_positive": 0.5247496324880558,
+        "overlap_frac_neg_better_than_median_pos": 0.010133938466346524,
+        "gap_mean": 2.28014198046233,
+        "entropy_mean": 0.0
+      },
+      "delta_post_minus_pre": {
+        "rank1_frac": -0.4896981808158765,
+        "rankle3_frac": 0.02357244579198825,
+        "margin_mean": -1098613578.8371007,
+        "margin_frac_positive": -0.2072537669974274,
+        "overlap_frac_neg_better_than_median_pos": -0.025326748132878524,
+        "gap_mean": 0.5044759306046586,
+        "entropy_mean": -2.091513663115344e-06
+      },
+      "n_cells_per_seed": [
+        58048,
+        58048,
+        58048
+      ]
+    },
+    "GT>=96": {
+      "pre": {
+        "rank1_frac": 0.36471586089906705,
+        "rankle3_frac": 0.6022052586938083,
+        "margin_mean": -5199113.3863311075,
+        "margin_frac_positive": 0.4435962680237489,
+        "overlap_frac_neg_better_than_median_pos": 0.17813354502954928,
+        "gap_mean": 1.177752826464156,
+        "entropy_mean": 9.78304856768475e-40
+      },
+      "post": {
+        "rank1_frac": 0.10178117048346054,
+        "rankle3_frac": 0.5996607294317218,
+        "margin_mean": -13451770244.712204,
+        "margin_frac_positive": 0.39609838846480067,
+        "overlap_frac_neg_better_than_median_pos": 0.04185410602452148,
+        "gap_mean": 1.5701527846276384,
+        "entropy_mean": 0.0
+      },
+      "delta_post_minus_pre": {
+        "rank1_frac": -0.26293469041560646,
+        "rankle3_frac": -0.002544529262086518,
+        "margin_mean": -13446571131.325872,
+        "margin_frac_positive": -0.04749787955894826,
+        "overlap_frac_neg_better_than_median_pos": -0.1362794390050278,
+        "gap_mean": 0.39239995816348266,
+        "entropy_mean": -9.78304856768475e-40
+      },
+      "n_cells_per_seed": [
+        393,
+        393,
+        393
+      ]
+    },
+    "OCC": {
+      "pre": {
+        "rank1_frac": 0.3980099502487562,
+        "rankle3_frac": 0.7786069651741293,
+        "margin_mean": 3421392.0506452112,
+        "margin_frac_positive": 0.5671641791044776,
+        "overlap_frac_neg_better_than_median_pos": 0.22666666666666666,
+        "gap_mean": 0.9668266064783517,
+        "entropy_mean": 0.0
+      },
+      "post": {
+        "rank1_frac": 0.14676616915422885,
+        "rankle3_frac": 0.8781094527363185,
+        "margin_mean": -875541850.9869014,
+        "margin_frac_positive": 0.6194029850746269,
+        "overlap_frac_neg_better_than_median_pos": 0.10144927536231885,
+        "gap_mean": 1.1799597444880303,
+        "entropy_mean": 0.0
+      },
+      "delta_post_minus_pre": {
+        "rank1_frac": -0.2512437810945274,
+        "rankle3_frac": 0.09950248756218909,
+        "margin_mean": -878963243.0375466,
+        "margin_frac_positive": 0.052238805970149294,
+        "overlap_frac_neg_better_than_median_pos": -0.1252173913043478,
+        "gap_mean": 0.2131331380096787,
+        "entropy_mean": 0.0
+      },
+      "n_cells_per_seed": [
+        134,
+        134,
+        134
+      ]
+    },
+    "NONOCC": {
+      "pre": {
+        "rank1_frac": 0.6474830495792612,
+        "rankle3_frac": 0.8413164347135408,
+        "margin_mean": 7578894.634329173,
+        "margin_frac_positive": 0.7323848004512438,
+        "overlap_frac_neg_better_than_median_pos": 0.03529239129064841,
+        "gap_mean": 1.7775375228247061,
+        "entropy_mean": 2.096352956392574e-06
+      },
+      "post": {
+        "rank1_frac": 0.15723313879200193,
+        "rankle3_frac": 0.8647131954277031,
+        "margin_mean": -1091542905.7899034,
+        "margin_frac_positive": 0.5245306258705437,
+        "overlap_frac_neg_better_than_median_pos": 0.010094171859592644,
+        "gap_mean": 2.2826875552736117,
+        "entropy_mean": 0.0
+      },
+      "delta_post_minus_pre": {
+        "rank1_frac": -0.49024991078725927,
+        "rankle3_frac": 0.023396760714162374,
+        "margin_mean": -1099121800.4242322,
+        "margin_frac_positive": -0.2078541745807001,
+        "overlap_frac_neg_better_than_median_pos": -0.02519821943105577,
+        "gap_mean": 0.5051500324489057,
+        "entropy_mean": -2.096352956392574e-06
+      },
+      "n_cells_per_seed": [
+        57914,
+        57914,
+        57914
+      ]
+    },
+    "TEXLO": {
+      "pre": {
+        "rank1_frac": 0.6227719588386623,
+        "rankle3_frac": 0.833069184123484,
+        "margin_mean": 5595500.551627061,
+        "margin_frac_positive": 0.7170043182653436,
+        "overlap_frac_neg_better_than_median_pos": 0.03778983313207899,
+        "gap_mean": 1.7044492342973434,
+        "entropy_mean": 4.046528178647973e-06
+      },
+      "post": {
+        "rank1_frac": 0.14571848585079014,
+        "rankle3_frac": 0.863446343256156,
+        "margin_mean": -2940276836.5674357,
+        "margin_frac_positive": 0.5244395442851894,
+        "overlap_frac_neg_better_than_median_pos": 0.010370272165150391,
+        "gap_mean": 2.267729411761029,
+        "entropy_mean": 0.0
+      },
+      "delta_post_minus_pre": {
+        "rank1_frac": -0.47705347298787215,
+        "rankle3_frac": 0.030377159132671843,
+        "margin_mean": -2945872337.1190624,
+        "margin_frac_positive": -0.19256477398015434,
+        "overlap_frac_neg_better_than_median_pos": -0.027419560966928592,
+        "gap_mean": 0.5632801774636856,
+        "entropy_mean": -4.046528178647973e-06
+      },
+      "n_cells_per_seed": [
+        29024,
+        29024,
+        29024
+      ]
+    },
+    "TEXHI": {
+      "pre": {
+        "rank1_frac": 0.671042355751562,
+        "rankle3_frac": 0.8492741639103271,
+        "margin_mean": 9543094.073074088,
+        "margin_frac_positive": 0.747002480705623,
+        "overlap_frac_neg_better_than_median_pos": 0.018334041316064583,
+        "gap_mean": 1.846882865418,
+        "entropy_mean": 1.364991475827159e-07
+      },
+      "post": {
+        "rank1_frac": 0.168699467107681,
+        "rankle3_frac": 0.8660418963616318,
+        "margin_mean": 758188273.5179348,
+        "margin_frac_positive": 0.5250597206909225,
+        "overlap_frac_neg_better_than_median_pos": 0.009514685369461541,
+        "gap_mean": 2.292554549163632,
+        "entropy_mean": 0.0
+      },
+      "delta_post_minus_pre": {
+        "rank1_frac": -0.5023428886438809,
+        "rankle3_frac": 0.016767732451304657,
+        "margin_mean": 748645179.4448608,
+        "margin_frac_positive": -0.22194276001470045,
+        "overlap_frac_neg_better_than_median_pos": -0.008819355946603038,
+        "gap_mean": 0.4456716837456319,
+        "entropy_mean": -1.364991475827159e-07
+      },
+      "n_cells_per_seed": [
+        29024,
+        29024,
+        29024
+      ]
+    },
+    "EDGE": {
+      "pre": {
+        "rank1_frac": 0.27514792899408286,
+        "rankle3_frac": 0.4768244575936884,
+        "margin_mean": -16231285.941394694,
+        "margin_frac_positive": 0.3264299802761341,
+        "overlap_frac_neg_better_than_median_pos": 0.18472856418061898,
+        "gap_mean": 1.0021723647728156,
+        "entropy_mean": 4.147282174401191e-121
+      },
+      "post": {
+        "rank1_frac": 0.2514792899408284,
+        "rankle3_frac": 0.6247534516765286,
+        "margin_mean": -3404811237.0370326,
+        "margin_frac_positive": 0.44132149901380674,
+        "overlap_frac_neg_better_than_median_pos": 0.028285134449518013,
+        "gap_mean": 1.978415020187124,
+        "entropy_mean": 0.0
+      },
+      "delta_post_minus_pre": {
+        "rank1_frac": -0.02366863905325443,
+        "rankle3_frac": 0.14792899408284024,
+        "margin_mean": -3388579951.095638,
+        "margin_frac_positive": 0.11489151873767257,
+        "overlap_frac_neg_better_than_median_pos": -0.15644342973110095,
+        "gap_mean": 0.9762426554143083,
+        "entropy_mean": -4.147282174401191e-121
+      },
+      "n_cells_per_seed": [
+        676,
+        676,
+        676
+      ]
+    },
+    "NONEDGE": {
+      "pre": {
+        "rank1_frac": 0.6512875037765228,
+        "rankle3_frac": 0.8454646866067071,
+        "margin_mean": 7849733.662478369,
+        "margin_frac_positive": 0.7367821701643078,
+        "overlap_frac_neg_better_than_median_pos": 0.03505727188598252,
+        "gap_mean": 1.7847799334789045,
+        "entropy_mean": 2.116157448171922e-06
+      },
+      "post": {
+        "rank1_frac": 0.1560982128332055,
+        "rankle3_frac": 0.8675718701340956,
+        "margin_mean": -1063781741.2276312,
+        "margin_frac_positive": 0.5257326454251783,
+        "overlap_frac_neg_better_than_median_pos": 0.010057598165308585,
+        "gap_mean": 2.2836971541558753,
+        "entropy_mean": 0.0
+      },
+      "delta_post_minus_pre": {
+        "rank1_frac": -0.4951892909433173,
+        "rankle3_frac": 0.022107183527388496,
+        "margin_mean": -1071631474.8901097,
+        "margin_frac_positive": -0.21104952473912944,
+        "overlap_frac_neg_better_than_median_pos": -0.024999673720673937,
+        "gap_mean": 0.49891722067697053,
+        "entropy_mean": -2.116157448171922e-06
+      },
+      "n_cells_per_seed": [
+        57372,
+        57372,
+        57372
+      ]
+    },
+    "LOW": {
+      "pre": {
+        "rank1_frac": 0.6526083191495715,
+        "rankle3_frac": 0.8461285795335782,
+        "margin_mean": 7818703.722060029,
+        "margin_frac_positive": 0.7380035235450446,
+        "overlap_frac_neg_better_than_median_pos": 0.03424843335473627,
+        "gap_mean": 1.7878927916931546,
+        "entropy_mean": 2.1751891985401685e-06
+      },
+      "post": {
+        "rank1_frac": 0.15841022425273973,
+        "rankle3_frac": 0.8696407775687539,
+        "margin_mean": -708956915.1445519,
+        "margin_frac_positive": 0.5274388605213652,
+        "overlap_frac_neg_better_than_median_pos": 0.009761979423315265,
+        "gap_mean": 2.2955454704465996,
+        "entropy_mean": 0.0
+      },
+      "delta_post_minus_pre": {
+        "rank1_frac": -0.4941980948968318,
+        "rankle3_frac": 0.02351219803517568,
+        "margin_mean": -716775618.866612,
+        "margin_frac_positive": -0.2105646630236794,
+        "overlap_frac_neg_better_than_median_pos": -0.024486453931421005,
+        "gap_mean": 0.5076526787534449,
+        "entropy_mean": -2.1751891985401685e-06
+      },
+      "n_cells_per_seed": [
+        55815,
+        55815,
+        55815
+      ]
+    },
+    "HIGH": {
+      "pre": {
+        "rank1_frac": 0.5044036423346768,
+        "rankle3_frac": 0.7172712345126139,
+        "margin_mean": 1335253.9814355455,
+        "margin_frac_positive": 0.5820271682340649,
+        "overlap_frac_neg_better_than_median_pos": 0.08733522247577968,
+        "gap_mean": 1.470052258748187,
+        "entropy_mean": 1.7217814989252604e-40
+      },
+      "post": {
+        "rank1_frac": 0.12718316166592028,
+        "rankle3_frac": 0.7423496044185699,
+        "margin_mean": -10641517346.688555,
+        "margin_frac_positive": 0.4575309747723541,
+        "overlap_frac_neg_better_than_median_pos": 0.027593182369118372,
+        "gap_mean": 1.895123712001974,
+        "entropy_mean": 0.0
+      },
+      "delta_post_minus_pre": {
+        "rank1_frac": -0.3772204806687565,
+        "rankle3_frac": 0.025078369905956133,
+        "margin_mean": -10642852600.669989,
+        "margin_frac_positive": -0.12449619346171074,
+        "overlap_frac_neg_better_than_median_pos": -0.05974204010666132,
+        "gap_mean": 0.42507145325378715,
+        "entropy_mean": -1.7217814989252604e-40
+      },
+      "n_cells_per_seed": [
+        2233,
+        2233,
+        2233
+      ]
+    },
+    "HIGH_OCC": {
+      "pre": {
+        "rank1_frac": 0.31884057971014496,
+        "rankle3_frac": 0.6231884057971014,
+        "margin_mean": -6996079.177083333,
+        "margin_frac_positive": 0.4057971014492754,
+        "overlap_frac_neg_better_than_median_pos": 0.2239057239057239,
+        "gap_mean": 0.8720350921687645,
+        "entropy_mean": 0.0
+      },
+      "post": {
+        "rank1_frac": 0.043478260869565216,
+        "rankle3_frac": 0.6521739130434783,
+        "margin_mean": -12294439028.822237,
+        "margin_frac_positive": 0.4492753623188406,
+        "overlap_frac_neg_better_than_median_pos": 0.10269360269360268,
+        "gap_mean": 0.9777138466274037,
+        "entropy_mean": 0.0
+      },
+      "delta_post_minus_pre": {
+        "rank1_frac": -0.27536231884057977,
+        "rankle3_frac": 0.02898550724637683,
+        "margin_mean": -12287442949.645155,
+        "margin_frac_positive": 0.04347826086956521,
+        "overlap_frac_neg_better_than_median_pos": -0.1212121212121212,
+        "gap_mean": 0.10567875445863917,
+        "entropy_mean": 0.0
+      },
+      "n_cells_per_seed": [
+        23,
+        23,
+        23
+      ]
+    },
+    "HIGH_NONOCC": {
+      "pre": {
+        "rank1_frac": 0.5063348416289593,
+        "rankle3_frac": 0.7182503770739065,
+        "margin_mean": 1421960.1636282757,
+        "margin_frac_positive": 0.5838612368024133,
+        "overlap_frac_neg_better_than_median_pos": 0.08573804783386678,
+        "gap_mean": 1.4762759668166607,
+        "entropy_mean": 1.7397004919005008e-40
+      },
+      "post": {
+        "rank1_frac": 0.12805429864253395,
+        "rankle3_frac": 0.7432880844645551,
+        "margin_mean": -10624314994.340555,
+        "margin_frac_positive": 0.45761689291101054,
+        "overlap_frac_neg_better_than_median_pos": 0.027285633878541965,
+        "gap_mean": 1.9046714164832477,
+        "entropy_mean": 0.0
+      },
+      "delta_post_minus_pre": {
+        "rank1_frac": -0.3782805429864253,
+        "rankle3_frac": 0.02503770739064859,
+        "margin_mean": -10625736954.504185,
+        "margin_frac_positive": -0.1262443438914027,
+        "overlap_frac_neg_better_than_median_pos": -0.05845241395532481,
+        "gap_mean": 0.4283954496665872,
+        "entropy_mean": -1.7397004919005008e-40
+      },
+      "n_cells_per_seed": [
+        2210,
+        2210,
+        2210
+      ]
+    },
+    "GT96_OCC": {
+      "pre": {
+        "rank1_frac": 0.3333333333333333,
+        "rankle3_frac": 0.8333333333333334,
+        "margin_mean": -7849714.927083333,
+        "margin_frac_positive": 0.5,
+        "overlap_frac_neg_better_than_median_pos": 0.07142857142857142,
+        "gap_mean": 1.159885799028299,
+        "entropy_mean": 0.0
+      },
+      "post": {
+        "rank1_frac": 0.0,
+        "rankle3_frac": 0.0,
+        "margin_mean": -61961765166.666664,
+        "margin_frac_positive": 0.0,
+        "overlap_frac_neg_better_than_median_pos": 0.14285714285714285,
+        "gap_mean": 0.04733188873533837,
+        "entropy_mean": 0.0
+      },
+      "delta_post_minus_pre": {
+        "rank1_frac": -0.3333333333333333,
+        "rankle3_frac": -0.8333333333333334,
+        "margin_mean": -61953915451.739586,
+        "margin_frac_positive": -0.5,
+        "overlap_frac_neg_better_than_median_pos": 0.07142857142857142,
+        "gap_mean": -1.1125539102929605,
+        "entropy_mean": 0.0
+      },
+      "n_cells_per_seed": [
+        2,
+        2,
+        2
+      ]
+    },
+    "GT96_NONOCC": {
+      "pre": {
+        "rank1_frac": 0.36487638533674344,
+        "rankle3_frac": 0.6010230179028132,
+        "margin_mean": -5185555.3221840365,
+        "margin_frac_positive": 0.443307757885763,
+        "overlap_frac_neg_better_than_median_pos": 0.17835325365205845,
+        "gap_mean": 1.1778442179088406,
+        "entropy_mean": 9.833089736828917e-40
+      },
+      "post": {
+        "rank1_frac": 0.10230179028132992,
+        "rankle3_frac": 0.6027280477408355,
+        "margin_mean": -13203637278.359495,
+        "margin_frac_positive": 0.3981244671781757,
+        "overlap_frac_neg_better_than_median_pos": 0.04143426294820717,
+        "gap_mean": 1.5779421498240185,
+        "entropy_mean": 0.0
+      },
+      "delta_post_minus_pre": {
+        "rank1_frac": -0.2625745950554135,
+        "rankle3_frac": 0.0017050298380221578,
+        "margin_mean": -13198451723.03731,
+        "margin_frac_positive": -0.045183290707587365,
+        "overlap_frac_neg_better_than_median_pos": -0.13691899070385127,
+        "gap_mean": 0.4000979319151779,
+        "entropy_mean": -9.833089736828917e-40
+      },
+      "n_cells_per_seed": [
+        391,
+        391,
+        391
+      ]
+    },
+    "BIN [0,16)": {
+      "pre": {
+        "rank1_frac": 0.6587893864013267,
+        "rankle3_frac": 0.8429519071310115,
+        "margin_mean": 8409408.089982381,
+        "margin_frac_positive": 0.7398009950248756,
+        "overlap_frac_neg_better_than_median_pos": 0.016366552296433884,
+        "gap_mean": 1.824384346433865,
+        "entropy_mean": 7.775694405992766e-10
+      },
+      "post": {
+        "rank1_frac": 0.5673714759535655,
+        "rankle3_frac": 0.9891791044776119,
+        "margin_mean": 71917552936.64153,
+        "margin_frac_positive": 0.6788971807628523,
+        "overlap_frac_neg_better_than_median_pos": 6.449449217036865e-06,
+        "gap_mean": 3.2633287006638247,
+        "entropy_mean": 0.0
+      },
+      "delta_post_minus_pre": {
+        "rank1_frac": -0.09141791044776115,
+        "rankle3_frac": 0.14622719734660036,
+        "margin_mean": 71909143528.55154,
+        "margin_frac_positive": -0.06090381426202326,
+        "overlap_frac_neg_better_than_median_pos": -0.016360102847216847,
+        "gap_mean": 1.43894435422996,
+        "entropy_mean": -7.775694405992766e-10
+      },
+      "n_cells_per_seed": [
+        8040,
+        8040,
+        8040
+      ]
+    },
+    "BIN [16,32)": {
+      "pre": {
+        "rank1_frac": 0.6690485422552115,
+        "rankle3_frac": 0.8537269890507581,
+        "margin_mean": 8684645.815182665,
+        "margin_frac_positive": 0.7502723462397755,
+        "overlap_frac_neg_better_than_median_pos": 0.022017121844159243,
+        "gap_mean": 1.8280255012018791,
+        "entropy_mean": 2.720544652312691e-26
+      },
+      "post": {
+        "rank1_frac": 0.03607895271330711,
+        "rankle3_frac": 0.8123303606048856,
+        "margin_mean": -26628839792.879242,
+        "margin_frac_positive": 0.4300116324156649,
+        "overlap_frac_neg_better_than_median_pos": 0.015068579429562556,
+        "gap_mean": 1.9157767758904178,
+        "entropy_mean": 0.0
+      },
+      "delta_post_minus_pre": {
+        "rank1_frac": -0.6329695895419044,
+        "rankle3_frac": -0.04139662844587233,
+        "margin_mean": -26637524438.694427,
+        "margin_frac_positive": -0.32026071382411053,
+        "overlap_frac_neg_better_than_median_pos": -0.006948542414596686,
+        "gap_mean": 0.08775127468853909,
+        "entropy_mean": -2.720544652312691e-26
+      },
+      "n_cells_per_seed": [
+        18053,
+        18053,
+        18053
+      ]
+    },
+    "BIN [32,48)": {
+      "pre": {
+        "rank1_frac": 0.6547591297591299,
+        "rankle3_frac": 0.8541181041181041,
+        "margin_mean": 7748893.452247545,
+        "margin_frac_positive": 0.7462703962703964,
+        "overlap_frac_neg_better_than_median_pos": 0.029385571657054233,
+        "gap_mean": 1.7807096262973605,
+        "entropy_mean": 6.914296513729658e-12
+      },
+      "post": {
+        "rank1_frac": 0.08834498834498834,
+        "rankle3_frac": 0.8498834498834499,
+        "margin_mean": -10079374379.156033,
+        "margin_frac_positive": 0.49444444444444446,
+        "overlap_frac_neg_better_than_median_pos": 0.010857404804601045,
+        "gap_mean": 2.144162557131501,
+        "entropy_mean": 0.0
+      },
+      "delta_post_minus_pre": {
+        "rank1_frac": -0.5664141414141414,
+        "rankle3_frac": -0.004234654234654263,
+        "margin_mean": -10087123272.60828,
+        "margin_frac_positive": -0.2518259518259518,
+        "overlap_frac_neg_better_than_median_pos": -0.01852816685245319,
+        "gap_mean": 0.36345293083414026,
+        "entropy_mean": -6.914296513729658e-12
+      },
+      "n_cells_per_seed": [
+        17160,
+        17160,
+        17160
+      ]
+    },
+    "BIN [48,64)": {
+      "pre": {
+        "rank1_frac": 0.6220877779546782,
+        "rankle3_frac": 0.8263280793928779,
+        "margin_mean": 6291544.711133715,
+        "margin_frac_positive": 0.7079286737780608,
+        "overlap_frac_neg_better_than_median_pos": 0.05365379245264851,
+        "gap_mean": 1.7166744517246393,
+        "entropy_mean": 9.664210699640894e-06
+      },
+      "post": {
+        "rank1_frac": 0.1681791646765377,
+        "rankle3_frac": 0.9024836809425251,
+        "margin_mean": 2858219495.1262126,
+        "margin_frac_positive": 0.6155866900175132,
+        "overlap_frac_neg_better_than_median_pos": 0.010565961948230776,
+        "gap_mean": 2.4287024410216156,
+        "entropy_mean": 0.0
+      },
+      "delta_post_minus_pre": {
+        "rank1_frac": -0.45390861327814047,
+        "rankle3_frac": 0.07615560154964711,
+        "margin_mean": 2851927950.415079,
+        "margin_frac_positive": -0.09234198376054766,
+        "overlap_frac_neg_better_than_median_pos": -0.04308783050441772,
+        "gap_mean": 0.7120279892969762,
+        "entropy_mean": -9.664210699640894e-06
+      },
+      "n_cells_per_seed": [
+        12562,
+        12562,
+        12562
+      ]
+    },
+    "BIN [64,80)": {
+      "pre": {
+        "rank1_frac": 0.5616313511050354,
+        "rankle3_frac": 0.7591706539074959,
+        "margin_mean": 4020315.400063547,
+        "margin_frac_positive": 0.6343130553656869,
+        "overlap_frac_neg_better_than_median_pos": 0.06269875544737152,
+        "gap_mean": 1.559722718912151,
+        "entropy_mean": 2.1435623768518955e-108
+      },
+      "post": {
+        "rank1_frac": 0.11961722488038277,
+        "rankle3_frac": 0.7824105718842561,
+        "margin_mean": -11144445420.358864,
+        "margin_frac_positive": 0.4675324675324675,
+        "overlap_frac_neg_better_than_median_pos": 0.024838705455877925,
+        "gap_mean": 1.9579313937844256,
+        "entropy_mean": 0.0
+      },
+      "delta_post_minus_pre": {
+        "rank1_frac": -0.4420141262246526,
+        "rankle3_frac": 0.0232399179767601,
+        "margin_mean": -11148465735.758928,
+        "margin_frac_positive": -0.16678058783321945,
+        "overlap_frac_neg_better_than_median_pos": -0.037860049991493595,
+        "gap_mean": 0.39820867487227457,
+        "entropy_mean": -2.1435623768518955e-108
+      },
+      "n_cells_per_seed": [
+        1463,
+        1463,
+        1463
+      ]
+    },
+    "BIN [80,96)": {
+      "pre": {
+        "rank1_frac": 0.4279398762157383,
+        "rankle3_frac": 0.6746242263483643,
+        "margin_mean": -2272805.6470007184,
+        "margin_frac_positive": 0.5234305923961097,
+        "overlap_frac_neg_better_than_median_pos": 0.0953076323987539,
+        "gap_mean": 1.4267785018987034,
+        "entropy_mean": 3.1871059727596867e-280
+      },
+      "post": {
+        "rank1_frac": 0.1830238726790451,
+        "rankle3_frac": 0.735632183908046,
+        "margin_mean": -5760315328.90882,
+        "margin_frac_positive": 0.4827586206896552,
+        "overlap_frac_neg_better_than_median_pos": 0.022390965732087226,
+        "gap_mean": 1.9901527199870868,
+        "entropy_mean": 0.0
+      },
+      "delta_post_minus_pre": {
+        "rank1_frac": -0.2449160035366932,
+        "rankle3_frac": 0.061007957559681726,
+        "margin_mean": -5758042523.261819,
+        "margin_frac_positive": -0.04067197170645448,
+        "overlap_frac_neg_better_than_median_pos": -0.07291666666666667,
+        "gap_mean": 0.5633742180883833,
+        "entropy_mean": -3.1871059727596867e-280
+      },
+      "n_cells_per_seed": [
+        377,
+        377,
+        377
+      ]
+    },
+    "BIN [96,112)": {
+      "pre": {
+        "rank1_frac": 0.3811188811188811,
+        "rankle3_frac": 0.5932400932400932,
+        "margin_mean": -5432852.380845717,
+        "margin_frac_positive": 0.43356643356643354,
+        "overlap_frac_neg_better_than_median_pos": 0.1726843657817109,
+        "gap_mean": 1.1876604042536372,
+        "entropy_mean": 1.3443140164685688e-39
+      },
+      "post": {
+        "rank1_frac": 0.10256410256410257,
+        "rankle3_frac": 0.6608391608391608,
+        "margin_mean": -3796836269.759251,
+        "margin_frac_positive": 0.4452214452214452,
+        "overlap_frac_neg_better_than_median_pos": 0.03368731563421829,
+        "gap_mean": 1.7562249086905393,
+        "entropy_mean": 0.0
+      },
+      "delta_post_minus_pre": {
+        "rank1_frac": -0.27855477855477856,
+        "rankle3_frac": 0.06759906759906757,
+        "margin_mean": -3791403417.378405,
+        "margin_frac_positive": 0.011655011655011668,
+        "overlap_frac_neg_better_than_median_pos": -0.13899705014749264,
+        "gap_mean": 0.5685645044369023,
+        "entropy_mean": -1.3443140164685688e-39
+      },
+      "n_cells_per_seed": [
+        286,
+        286,
+        286
+      ]
+    },
+    "BIN [112,128)": {
+      "pre": {
+        "rank1_frac": 0.32087227414330216,
+        "rankle3_frac": 0.6261682242990654,
+        "margin_mean": -4574353.083235981,
+        "margin_frac_positive": 0.470404984423676,
+        "overlap_frac_neg_better_than_median_pos": 0.08298392732354998,
+        "gap_mean": 1.1512708895689072,
+        "entropy_mean": 0.0
+      },
+      "post": {
+        "rank1_frac": 0.09968847352024922,
+        "rankle3_frac": 0.43613707165109034,
+        "margin_mean": -39258416196.455605,
+        "margin_frac_positive": 0.26479750778816197,
+        "overlap_frac_neg_better_than_median_pos": 0.06953179594689028,
+        "gap_mean": 1.072801125917455,
+        "entropy_mean": 0.0
+      },
+      "delta_post_minus_pre": {
+        "rank1_frac": -0.22118380062305296,
+        "rankle3_frac": -0.19003115264797507,
+        "margin_mean": -39253841843.37237,
+        "margin_frac_positive": -0.20560747663551404,
+        "overlap_frac_neg_better_than_median_pos": -0.013452131376659683,
+        "gap_mean": -0.07846976365145227,
+        "entropy_mean": 0.0
+      },
+      "n_cells_per_seed": [
+        107,
+        107,
+        107
+      ]
+    },
+    "BIN [128,144)": {
+      "pre": {
+        "rank1_frac": null,
+        "rankle3_frac": null,
+        "margin_mean": null,
+        "margin_frac_positive": null,
+        "overlap_frac_neg_better_than_median_pos": null,
+        "gap_mean": null,
+        "entropy_mean": null
+      },
+      "post": {
+        "rank1_frac": null,
+        "rankle3_frac": null,
+        "margin_mean": null,
+        "margin_frac_positive": null,
+        "overlap_frac_neg_better_than_median_pos": null,
+        "gap_mean": null,
+        "entropy_mean": null
+      },
+      "delta_post_minus_pre": {
+        "rank1_frac": null,
+        "rankle3_frac": null,
+        "margin_mean": null,
+        "margin_frac_positive": null,
+        "overlap_frac_neg_better_than_median_pos": null,
+        "gap_mean": null,
+        "entropy_mean": null
+      },
+      "n_cells_per_seed": [
+        0,
+        0,
+        0
+      ]
+    },
+    "BIN [144,160)": {
+      "pre": {
+        "rank1_frac": null,
+        "rankle3_frac": null,
+        "margin_mean": null,
+        "margin_frac_positive": null,
+        "overlap_frac_neg_better_than_median_pos": null,
+        "gap_mean": null,
+        "entropy_mean": null
+      },
+      "post": {
+        "rank1_frac": null,
+        "rankle3_frac": null,
+        "margin_mean": null,
+        "margin_frac_positive": null,
+        "overlap_frac_neg_better_than_median_pos": null,
+        "gap_mean": null,
+        "entropy_mean": null
+      },
+      "delta_post_minus_pre": {
+        "rank1_frac": null,
+        "rankle3_frac": null,
+        "margin_mean": null,
+        "margin_frac_positive": null,
+        "overlap_frac_neg_better_than_median_pos": null,
+        "gap_mean": null,
+        "entropy_mean": null
+      },
+      "n_cells_per_seed": [
+        0,
+        0,
+        0
+      ]
+    },
+    "BIN [160,184)": {
+      "pre": {
+        "rank1_frac": null,
+        "rankle3_frac": null,
+        "margin_mean": null,
+        "margin_frac_positive": null,
+        "overlap_frac_neg_better_than_median_pos": null,
+        "gap_mean": null,
+        "entropy_mean": null
+      },
+      "post": {
+        "rank1_frac": null,
+        "rankle3_frac": null,
+        "margin_mean": null,
+        "margin_frac_positive": null,
+        "overlap_frac_neg_better_than_median_pos": null,
+        "gap_mean": null,
+        "entropy_mean": null
+      },
+      "delta_post_minus_pre": {
+        "rank1_frac": null,
+        "rankle3_frac": null,
+        "margin_mean": null,
+        "margin_frac_positive": null,
+        "overlap_frac_neg_better_than_median_pos": null,
+        "gap_mean": null,
+        "entropy_mean": null
+      },
+      "n_cells_per_seed": [
+        0,
+        0,
+        0
+      ]
+    },
+    "BIN [184,inf)": {
+      "pre": {
+        "rank1_frac": null,
+        "rankle3_frac": null,
+        "margin_mean": null,
+        "margin_frac_positive": null,
+        "overlap_frac_neg_better_than_median_pos": null,
+        "gap_mean": null,
+        "entropy_mean": null
+      },
+      "post": {
+        "rank1_frac": null,
+        "rankle3_frac": null,
+        "margin_mean": null,
+        "margin_frac_positive": null,
+        "overlap_frac_neg_better_than_median_pos": null,
+        "gap_mean": null,
+        "entropy_mean": null
+      },
+      "delta_post_minus_pre": {
+        "rank1_frac": null,
+        "rankle3_frac": null,
+        "margin_mean": null,
+        "margin_frac_positive": null,
+        "overlap_frac_neg_better_than_median_pos": null,
+        "gap_mean": null,
+        "entropy_mean": null
+      },
+      "n_cells_per_seed": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "method_mean_post_spatial_consistency": {
+    "POOLED": {
+      "agree_frac_mean_over_existing_neighbours": 0.8670047326343552,
+      "mean_abs_diff_candidates": 0.16073460664766673,
+      "full4_all_agree_frac": 0.5732794288010971,
+      "n_cells_per_seed": [
+        58048,
+        58048,
+        58048
+      ]
+    },
+    "OCC": {
+      "agree_frac_mean_over_existing_neighbours": 0.8211838006230531,
+      "mean_abs_diff_candidates": 0.21246105919003114,
+      "full4_all_agree_frac": 0.5213032581453635,
+      "n_cells_per_seed": [
+        134,
+        134,
+        134
+      ],
+      "low_n": true
+    },
+    "NONOCC": {
+      "agree_frac_mean_over_existing_neighbours": 0.8671113198140225,
+      "mean_abs_diff_candidates": 0.16061428223590385,
+      "full4_all_agree_frac": 0.5734022951732637,
+      "n_cells_per_seed": [
+        57914,
+        57914,
+        57914
+      ]
+    },
+    "TEXLO": {
+      "agree_frac_mean_over_existing_neighbours": 0.8582946437369223,
+      "mean_abs_diff_candidates": 0.165179942849525,
+      "full4_all_agree_frac": 0.5412463332617872,
+      "n_cells_per_seed": [
+        29024,
+        29024,
+        29024
+      ]
+    },
+    "TEXHI": {
+      "agree_frac_mean_over_existing_neighbours": 0.8756777971124904,
+      "mean_abs_diff_candidates": 0.15630816646321932,
+      "full4_all_agree_frac": 0.6047629093125191,
+      "n_cells_per_seed": [
+        29024,
+        29024,
+        29024
+      ]
+    },
+    "EDGE": {
+      "agree_frac_mean_over_existing_neighbours": 0.711358024691358,
+      "mean_abs_diff_candidates": 0.5949382716049384,
+      "full4_all_agree_frac": 0.3219246031746032,
+      "n_cells_per_seed": [
+        676,
+        676,
+        676
+      ],
+      "low_n": true
+    },
+    "NONEDGE": {
+      "agree_frac_mean_over_existing_neighbours": 0.8688493169524829,
+      "mean_abs_diff_candidates": 0.1555888166605948,
+      "full4_all_agree_frac": 0.576310626181418,
+      "n_cells_per_seed": [
+        57372,
+        57372,
+        57372
+      ]
+    },
+    "LOW": {
+      "agree_frac_mean_over_existing_neighbours": 0.8684008445476336,
+      "mean_abs_diff_candidates": 0.15481219334430343,
+      "full4_all_agree_frac": 0.5733578544061303,
+      "n_cells_per_seed": [
+        55815,
+        55815,
+        55815
+      ]
+    },
+    "HIGH": {
+      "agree_frac_mean_over_existing_neighbours": 0.8314585246403428,
+      "mean_abs_diff_candidates": 0.311524334251607,
+      "full4_all_agree_frac": 0.5711693880917038,
+      "n_cells_per_seed": [
+        2233,
+        2233,
+        2233
+      ]
+    },
+    "HIGH_OCC": {
+      "agree_frac_mean_over_existing_neighbours": 0.8695652173913043,
+      "mean_abs_diff_candidates": 0.22826086956521738,
+      "full4_all_agree_frac": 0.6231884057971014,
+      "n_cells_per_seed": [
+        23,
+        23,
+        23
+      ],
+      "low_n": true
+    },
+    "HIGH_NONOCC": {
+      "agree_frac_mean_over_existing_neighbours": 0.8310518174787317,
+      "mean_abs_diff_candidates": 0.3124129930394432,
+      "full4_all_agree_frac": 0.5705705705705707,
+      "n_cells_per_seed": [
+        2210,
+        2210,
+        2210
+      ]
+    },
+    "GT96_OCC": {
+      "agree_frac_mean_over_existing_neighbours": 0.9166666666666666,
+      "mean_abs_diff_candidates": 0.08333333333333333,
+      "full4_all_agree_frac": 0.6666666666666666,
+      "n_cells_per_seed": [
+        2,
+        2,
+        2
+      ],
+      "low_n": true
+    },
+    "GT96_NONOCC": {
+      "agree_frac_mean_over_existing_neighbours": 0.782051282051282,
+      "mean_abs_diff_candidates": 0.5543242068665797,
+      "full4_all_agree_frac": 0.5069252077562326,
+      "n_cells_per_seed": [
+        391,
+        391,
+        391
+      ],
+      "low_n": true
+    }
+  },
+  "interpretation": "Factual statement only, no verdict and no conclusive-claim language; step 8 does mechanism verdicts. POST rank-1 materially above PRE with more positive margins and lower overlap = aggregation RESOLVING ambiguity as measured; deltas near zero = aggregation PRESERVING it. No literature claim about long-range aggregation is admitted as evidence; only these deltas count.",
+  "unmeasurable": "NOT MEASURABLE WITH CURRENT ARTIFACTS: nothing in this brief was unmeasurable; every listed quantity was measured."
+}

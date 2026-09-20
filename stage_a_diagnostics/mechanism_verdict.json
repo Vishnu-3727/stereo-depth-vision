@@ -1,0 +1,167 @@
+{
+ "architecture_gate": "NO ARCHITECTURE JUSTIFIED",
+ "baselines": {
+  "p2a_method_mean_epe_px": 1.4409825930575104,
+  "p2a_method_mean_source": "baseline.json:method_mean.epe",
+  "reference_epe_px": 1.3134470770188373,
+  "reference_source": "disparity_bins.json:totals.reference_epe",
+  "residual_gap_px": 0.12753551603867308,
+  "residual_gap_source": "disparity_bins.json:totals.total_gap_px"
+ },
+ "gate_rationale": [
+  "~31% of the gap sits below 64 px where every diagnostic looks healthy (disparity_bins.json:gap_attribution)",
+  "Largest single identified effect (supervision coverage ~2x under at GT>=96) is a DATA fix, not an architecture change (high_disparity.json:supervision_coverage)",
+  "Both architecture-shaped candidates (readout D2b, aggregation D4) carry an explicit NOT IDENTIFIABLE limit from readout/residual co-adaptation",
+  "D7 refutes the long-range-context argument on this model's own numbers (autocorr length 32h/16v vs 389 px RF; spatial_context.json)",
+  "Most extreme regime (GT>=128) is 99.17% occluded, correspondence-invalid, worth ~3% of the gap (high_disparity.json:occlusion; disparity_bins.json:gap_attribution)"
+ ],
+ "mechanisms": [
+  {
+   "counter_evidence": [
+    "Pooled ordering B_L2 0.6528 > A_L1 0.6469 > C 0.6286 >> D 0.2501; no representation dominates (matching_diagnostic.json:method_mean)",
+    "C leads only in low-n [112,128) (n=107) and GT>=96 rank-1/overlap/gap; not a general win (matching_diagnostic.json:method_mean)",
+    "D3 representation D was group-averaged, rescaling full-channel dot by 1/G: ranks identical G4/G8/G16 by construction, so group-wise correlation as GwcNet uses it (G preserved into aggregation) was NOT tested; KNOWN GAP, not refutation (matching_diagnostic.json:method_mean.D_G4/D_G8/D_G16; stage_a_diagnostics/README.md D3)",
+    "Scalar reductions are diagnostic proxies, not the model scoring function (full 32-ch volume into trained 3D aggregation) (matching_diagnostic.json:honesty_constraint)",
+    "Trained-aggregation outcome for any representation is NOT MEASURABLE WITH CURRENT ARTIFACTS (matching_diagnostic.json:unmeasurable)",
+    "ARM-W (group-wise cost) separately REFUTED in Phase 1 at ~1.776 (stage_a_diagnostics/README.md D3)"
+   ],
+   "evidence": [
+    "GT>=96 PRE margin-frac>0 0.4436 method-mean: GT-candidate margin negative in majority, all four representations incl. D_G8 0.2188 (matching_diagnostic.json:method_mean)",
+    "GT>=96 PRE rank-1 0.3647 (A_L1) (matching_diagnostic.json:method_mean.A_L1.gt_ge_96)",
+    "Persists with occlusion removed: GT96_NONOCC PRE margin-frac 0.4433 POST 0.3981 (aggregation_diagnostic.json:method_mean.GT96_NONOCC)"
+   ],
+   "id": 1,
+   "label": "PLAUSIBLE",
+   "name": "Matching representation"
+  },
+  {
+   "counter_evidence": [
+    "Pooled, NO oracle improves: continuous 1.8132 vs baseline 1.4410 (+0.3722); loses in every bin below 64 px which holds ~99% of valid pixels (cost_readout_corrected.json:method_mean_epe, seeds.0.per_bin)",
+    "Original D2 readout numbers CONFOUNDED and SUPERSEDED: sparse-vs-dense substitution alone moves EPE -2.2676 px (C1-C2) (cost_readout_corrected.json:method_mean_sparse_damage_C1_minus_C2_px; supersedes; cost_distribution.json:readout_comparison_status)",
+    "IDENTIFIABILITY LIMIT: Protocol A holds the residual fixed, so it CANNOT separate 'readout is fine' from 'readout and refinement are co-adapted and would need joint retraining' (stage_a_diagnostics/README.md D2b)"
+   ],
+   "evidence": [
+    "GT>=96 continuous oracle 10.3996 vs baseline 12.4149 (-2.0153); top-4 oracle -0.8252; gains from [64,80) upward per bin (cost_readout_corrected.json:method_mean_gt_ge_96_epe; seeds.0.per_bin)",
+    "Frozen cost distribution contains disparity information the readout does not use, but only far out (cost_readout_corrected.json:interpretation)"
+   ],
+   "id": 2,
+   "label": "PLAUSIBLE",
+   "name": "Cost-volume ambiguity / readout"
+  },
+  {
+   "counter_evidence": [
+    "POST overlap LOWER than PRE in every group (pooled 0.0355->0.0101) and gap HIGHER (1.7757->2.2801); rank<=3 flat-to-up pooled (+0.0236) (aggregation_diagnostic.json:method_mean.POOLED)",
+    "POST argmax spatially coherent pooled (0.8670 neighbour agreement) (stage_a_diagnostics/README.md D4)",
+    "IDENTIFIABILITY LIMIT: disparity_initial is co-adapted with the residual and is not a disparity estimate; scoring POST rank-1 tests a property the model was never trained to have. Loss vs repurposing is NOT IDENTIFIABLE. Must NOT be reported as aggregation being the bottleneck (stage_a_diagnostics/README.md D4)"
+   ],
+   "evidence": [
+    "POST rank-1 0.1572 vs PRE 0.6469 (delta -0.4897), same sign all seeds, every populated bin and regime (aggregation_diagnostic.json:method_mean.POOLED)",
+    "POST margin-frac>0 0.5247 vs PRE 0.7320 (delta -0.2073) pooled (aggregation_diagnostic.json:method_mean.POOLED)"
+   ],
+   "id": 3,
+   "label": "NOT IDENTIFIABLE",
+   "name": "Cost aggregation / context"
+  },
+  {
+   "counter_evidence": [
+    "Systematic improvement: frac improved 0.9507 method-mean; pooled EPE falls 7.3534 vs coarse-scaled baseline (refinement_diagnostic.json:method_mean_pooled)",
+    "Final relu does no work: clamp frac 1.8e-07 (refinement_diagnostic.json:method_mean_pooled.relu_clamp_frac)",
+    "Global rescale headroom ~0.008 px (alpha* 1.018, EPE 1.4330 vs 1.4410) (refinement_diagnostic.json:method_mean_pooled)",
+    "Mass-weighted per-bin oracle gain 0.0481/0.0263/0.0289 px is a GT-FITTED ORACLE CEILING, not achievable (stage_a_diagnostics/README.md D5)"
+   ],
+   "evidence": [
+    "Per-bin alpha* rises with disparity: 0.974 -> 1.319 -> 1.631 -> 4.003 (seed 0: [0,16)/[96,112)/[112,128)/[128,144)) (refinement_diagnostic.json:seeds.0.per_bin.oracle_scale)",
+    "At [64,80) refinement HARMS more than helps: frac_improved 0.473/0.552/0.495 seeds 0/1/2 (refinement_diagnostic.json:seeds.per_bin)"
+   ],
+   "id": 4,
+   "label": "REFUTED",
+   "name": "Refinement",
+   "scope": "REFUTED AS THE MECHANISM EXPLAINING THE RESIDUAL GAP. Refinement is not healthy in every regime: it mis-scales with disparity and harms more pixels than it helps at [64,80), but neither observation can account for the 0.1275355 px gap: the global rescale headroom is 0.008 px, and the per-bin figure 0.0481/0.0263/0.0289 px is a GT-FITTED ORACLE CEILING obtained by fitting alpha per bin against ground truth, not an achievable improvement."
+  },
+  {
+   "id": "5a",
+   "name": "Residual high-disparity behaviour, GT 64-128 px",
+   "label": "SUPPORTED",
+   "scope": "SUPPORTED AS THE LOCUS WHERE RESIDUAL ERROR CONCENTRATES; NOT AN INDEPENDENT ARCHITECTURE MECHANISM. Causes are attributed to mechanisms 1 (PLAUSIBLE), 2 (PLAUSIBLE with NOT IDENTIFIABLE co-adaptation limit) and 6 (SUPPORTED DATA fix); attribution is not refutation.",
+   "evidence": [
+    "GT 64-128 band holds ~66% of the 0.1275355 px gap: 0.08369 px (0.0153210+0.0125415+0.0262096+0.0296224) (disparity_bins.json:gap_attribution)",
+    "GT>=96 slope 0.570 with signed bias -11.72 px vs reference slope 0.727 with bias -2.83 (high_disparity.json:regimes.ge96)",
+    "GT>=96 matching margin negative in majority in all four representations (A 0.4436 / B 0.4580 / C 0.4427 / D_G8 0.2188) (matching_diagnostic.json:method_mean); occlusion refuted as the explanation (GT96_NONOCC PRE margin-frac 0.4433 -> POST 0.3981) (aggregation_diagnostic.json:method_mean.GT96_NONOCC)",
+    "GT>=96 readout oracles gain up to -2.02 px (continuous 10.3996 vs baseline 12.4149) (cost_readout_corrected.json:method_mean_gt_ge_96_epe)",
+    "Effective training mass at GT>=96 0.444% vs eval 0.898%, ~2x under-covered (high_disparity.json:supervision_coverage)"
+   ],
+   "counter_evidence": [
+    "Causes attributed to mechanisms 1 (matching, PLAUSIBLE), 2 (readout, PLAUSIBLE with NOT IDENTIFIABLE co-adaptation limit) and 6 (supervision, SUPPORTED DATA fix) rather than an independent architecture mechanism; attribution is not refutation"
+   ]
+  },
+  {
+   "id": "5b",
+   "name": "Residual high-disparity behaviour, GT>=128 px",
+   "label": "REFUTED",
+   "scope": "REFUTED AS AN ARCHITECTURE-FIXABLE CAUSE: GT>=128 ONLY.",
+   "evidence": [
+    "GT>=128 is 99.17% occluded (1071/1080 px): correspondence-invalid, cannot be fixed by architecture (high_disparity.json:occlusion.ge128)",
+    "GT>=128 contributes 0.0040 px (~3%) of the gap (disparity_bins.json:gap_attribution [128,144)+[144,160))"
+   ],
+   "counter_evidence": [
+    "Matching at GT>=128 is NOT MEASURABLE WITH CURRENT ARTIFACTS (empty at feature resolution) (high_disparity.json:matching; stage_a_diagnostics/README.md D6)"
+   ]
+  },
+  {
+   "counter_evidence": [
+    "DATA property, not architecture property: weighs toward a data/augmentation fix, never an architecture candidate (high_disparity.json:supervision_coverage)",
+    "GT>=64 effective 6.01% vs eval 4.61% is covered; GT>=128 effective 0.0438% vs eval 0.0284% over-covered but eval-low-n (stage_a_diagnostics/README.md D6)",
+    "Supervision alone does not explain the ~31% sub-64px gap where coverage is adequate"
+   ],
+   "evidence": [
+    "Effective training mass at GT>=96 after P2A augmentation 0.444% vs eval 0.898%: still ~2x under-covered (was 3.9x raw: 0.228% vs 0.898%) (high_disparity.json:supervision_coverage; stage_a_diagnostics/README.md D6)",
+    "At GT>=96 reference slope 0.727 near-zero bias (-2.83) vs P2A slope 0.570 bias -11.72: better calibrated there (high_disparity.json:regimes.ge96)"
+   ],
+   "id": 6,
+   "label": "SUPPORTED",
+   "name": "Training / supervision distribution"
+  },
+  {
+   "counter_evidence": [],
+   "evidence": [
+    "Gap SPLIT with no dominant bin: ~31% below 64 px (95.4% of pixels), ~66% in 64-128 px (4.6%), ~3% at >=128 px; attribution SUMS to 0.1275355 (diff -2.2e-16): CLOSES (disparity_bins.json:totals, gap_attribution)",
+    "RANGE refuted twice independently: 0.000000 of valid pixels with gt_cand outside [0,23]; max gt_cand 19.13 < 23 (high_disparity.json:range; cost_distribution.json distribution stats)",
+    "Readout and aggregation both carry explicit NOT IDENTIFIABLE co-adaptation limits (stage_a_diagnostics/README.md D2b, D4)",
+    "D7: error structure (autocorr 32h/16v) sits well inside the 389 px end-to-end RF; long-range context has WEAK measured support (spatial_context.json:autocorr_length, receptive_field)",
+    "GT>=128 correspondence-invalid at 99.17% occluded (high_disparity.json:occlusion.ge128)"
+   ],
+   "id": 7,
+   "label": "SUPPORTED",
+   "name": "No single architectural bottleneck"
+  }
+ ],
+ "question": "Why does frozen P2A reach 1.4409826 px mean EPE while the frozen reference reaches 1.3134471 px? Residual gap 0.1275355 px.",
+ "resolving_diagnostics_for_unknowns": [
+  {
+   "unknown": "U1 readout-refinement co-adaptation: cannot separate 'readout is fine' from 'readout and refinement are co-adapted' with frozen weights (stage_a_diagnostics/README.md D2b).",
+   "would_resolve": "Controlled retraining: P2A recipe, freeze cost volume, retrain ONLY the refinement from dense alternative inits (soft-argmin vs sharpened-softmax vs top-k-detached); or retrain full model with an auxiliary GT-candidate loss. If a jointly-retrained alternative readout beats the method mean, co-adaptation is confirmed and readout becomes actionable."
+  },
+  {
+   "unknown": "U2 true group-wise correlation (G preserved as channels into aggregation) was never tested: D3 rep D was group-averaged and G-invariant by construction (matching_diagnostic.json).",
+   "would_resolve": "Retrain P2A variant replacing the 32-ch signed-difference volume with group-wise correlation (G=8, G preserved into aggregation), identical recipe/seeds. Screening: 40 epochs x 2 seeds vs method mean 1.4409826, threshold >=0.03 px, GT<64 must not regress."
+  },
+  {
+   "unknown": "U3 the ~31% sub-64px gap where every diagnostic looks healthy (oracles lose in every bin below 64: cost_readout_corrected.json) has no isolated cause.",
+   "would_resolve": "Fine-grained below-64 attribution from existing raw dumps only (reference-vs-P2A signed-error/slope per narrow bin, texture/confidence deciles restricted to GT<64); if still diffuse, a capacity-matched retrain or low-disparity loss-reweighting experiment."
+  },
+  {
+   "unknown": "U4 edge-proximity is NOT MEASURABLE: >=3 px discontinuity set empty (max adjacent valid-valid GT diff 2.0 px) (spatial_context.json:seeds.0.edge_proximity).",
+   "would_resolve": "Denser GT source, or a relaxed-threshold sensitivity diagnostic reporting threshold-dependence rather than a single number."
+  },
+  {
+   "unknown": "U5 causal test of the supervision hypothesis (mechanism 6, DATA fix).",
+   "would_resolve": "Retrain with GT>=96 oversampled to eval-matched effective mass (~0.9%) under the identical recipe; success = GT>=96 EPE/slope moves toward reference (5.757/0.727) with no GT<64 regression. This is a data intervention, not architecture."
+  }
+ ],
+ "synthesis_only": true,
+ "top_unknowns": [
+  "U1 readout-refinement co-adaptation (joint-retraining test)",
+  "U2 true group-wise correlation effect (retrain with G preserved)",
+  "U3 sub-64px ~31% gap with no isolated cause (fine-grained attribution from raw dumps)"
+ ]
+}
