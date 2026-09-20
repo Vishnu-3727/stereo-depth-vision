@@ -1,0 +1,8 @@
+integrity guard: {"param_count": 397954, "param_count_ok": true, "all_ok": true}
+init: {"source": "random", "note": "PyTorch defaults, random (P2A recipe)"}
+/kaggle/working/repo/stage_b_armp/seed2/scripts/finetune_pilot.py:303: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  epoch_loss += float(loss)
+epoch   0 loss  12.1920 lr 5.00e-04 val EPE 17.154 D1 88.67%
+epoch   1 loss  11.4081 lr 0.00e+00 val EPE 18.692 D1 87.26%
+P2A seed 2 done: wall 52.8s best10 EPE 17.1537 @epoch 0

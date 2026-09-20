@@ -1,0 +1,32 @@
+Dataset B v7 push — 2026-09-19 (seed-1 Kaggle replica tree)
+CMD: python -m kaggle datasets version -p <workdir>/datasetB_v7 -m "v7: add stage_b_armp/seed1 replica script tree (run_arm seeds 1/1) + tree-selecting bootstrap (default seed2)" --dir-mode zip
+SOURCE: full output of the push command (progress bars collapsed):
+
+Starting upload for file BUNDLE_MARKER.json
+Upload successful: BUNDLE_MARKER.json (214B)
+Starting upload for file checkpoints.zip
+Upload successful: checkpoints.zip (1MB)
+Starting upload for file configs.zip
+Upload successful: configs.zip (915B)
+Starting upload for file dataset_manifest.json
+Upload successful: dataset_manifest.json (94KB)
+Starting upload for file kaggle_bootstrap.py
+Upload successful: kaggle_bootstrap.py (13KB)   [v7 extended: 12.7k vs v6 10.5k]
+Starting upload for file kaggle_smoke.py
+Upload successful: kaggle_smoke.py (17KB)
+Starting upload for file phase1.zip
+Upload successful: phase1.zip (1MB)
+Starting upload for file reproducibility.json
+Upload successful: reproducibility.json (598B)
+Starting upload for file requirements.txt
+Upload successful: requirements.txt (406B)
+Starting upload for file scripts.zip
+Upload successful: scripts.zip (16KB)            [seed-2 tree, unchanged]
+Starting upload for file src.zip
+Upload successful: src.zip (22KB)
+Starting upload for file stage_b_armp.zip
+Upload successful: stage_b_armp.zip (16KB)       [NEW in v7: seed-1 replica tree]
+Dataset version is being created. Please check progress at https://www.kaggle.com/datasets/vishnu3727/armp-tier2-seed2-bundle
+NOTE: the "NativeCommandError / RemoteException" banner after the first file is the
+known PowerShell-vs-tqdm rendering artefact seen in all prior datasetB_*.log pushes;
+all files report "Upload successful".

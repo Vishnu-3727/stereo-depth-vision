@@ -1,0 +1,27 @@
+{
+  "arm": "control",
+  "seed": 2,
+  "init": "random",
+  "init_sha256": "random",
+  "utc_start": "2026-09-19T05:47:02Z",
+  "gpu": "Tesla T4",
+  "torch": "2.10.0+cu128",
+  "cuda": "12.8",
+  "epochs": 200,
+  "timeout_s": 39600.0,
+  "bundle_marker": {
+    "bundle": "armp-tier2-seed2",
+    "seed": 2,
+    "checkpoint_sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+    "seed1_source": "stage_b_armp/20260919T012646Z_tier2_seed1/scripts"
+  },
+  "utc_end": "2026-09-19T07:05:01Z",
+  "wall_s": 4679.246982574463,
+  "run_arm_returncode": 0,
+  "best_epoch": 180,
+  "best_10scene_epe": 2.047308491653386,
+  "best_sha256": "0e993773030a95a5a06098356d035ac3c3d1391dcbf08e108a270bfc775b8bb2",
+  "final_sha256": "20363e1f62c02a08478f0ac6fce07071b7d10355a0acfc1bb820747e63bdf7e1",
+  "guard_all_ok": true,
+  "guard_param_count": 397954
+}

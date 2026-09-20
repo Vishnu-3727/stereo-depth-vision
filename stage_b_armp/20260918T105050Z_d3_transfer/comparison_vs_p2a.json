@@ -1,0 +1,494 @@
+{
+  "task": "ARM-P D3 transfer vs P2A comparison (diagnostic only)",
+  "asymmetry_limitation": "P2A values are a 3-seed METHOD MEAN; ARM-P is a SINGLE checkpoint (seed0 slot). Direct delta is descriptive, not a significance test.",
+  "p2a_sources": [
+    "stage_a_diagnostics/matching_diagnostic.json",
+    "stage_a_diagnostics/raw/d3_bins.csv"
+  ],
+  "armp_source": "stage_b_armp/20260918T105050Z_d3_transfer/armp_d3_matching.json",
+  "armp_checkpoint": {
+    "source": "stage_b_armp\\20260918T062146Z_stage1_pretrain\\checkpoints\\armp_stage1_best.pth",
+    "copy": "stage_b_armp\\20260918T105050Z_d3_transfer\\ckpt\\p2a_best.pth",
+    "sha256_source": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+    "sha256_copy": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+    "sha256_expected": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+    "sha_match": true
+  },
+  "global": {
+    "A_L1": {
+      "armp_n_defined_cells": 58048,
+      "armp_rank1": 0.4804816703417861,
+      "armp_margin_fracpos": 0.5665656008820287,
+      "p2a_methodmean_rank1": 0.6469071572951121,
+      "p2a_methodmean_margin_fracpos": 0.7320033994854832,
+      "delta_rank1_armp_minus_p2a": -0.16642548695332593,
+      "delta_marginfrac_armp_minus_p2a": -0.16543779860345453
+    },
+    "B_L2": {
+      "armp_n_defined_cells": 58048,
+      "armp_rank1": 0.48771706174200663,
+      "armp_margin_fracpos": 0.5761094266813671,
+      "p2a_methodmean_rank1": 0.6528160602719589,
+      "p2a_methodmean_margin_fracpos": 0.7385726754869534,
+      "delta_rank1_armp_minus_p2a": -0.1650989985299523,
+      "delta_marginfrac_armp_minus_p2a": -0.16246324880558627
+    },
+    "C_L1norm": {
+      "armp_n_defined_cells": 58048,
+      "armp_rank1": 0.4804644432194046,
+      "armp_margin_fracpos": 0.5616214167585446,
+      "p2a_methodmean_rank1": 0.6286406651966189,
+      "p2a_methodmean_margin_fracpos": 0.7034925119441381,
+      "delta_rank1_armp_minus_p2a": -0.14817622197721425,
+      "delta_marginfrac_armp_minus_p2a": -0.1418710951855935
+    },
+    "D_G8": {
+      "armp_n_defined_cells": 58048,
+      "armp_rank1": 0.18410625689084895,
+      "armp_margin_fracpos": 0.24436673098125689,
+      "p2a_methodmean_rank1": 0.2500746508636531,
+      "p2a_methodmean_margin_fracpos": 0.32020626607864755,
+      "delta_rank1_armp_minus_p2a": -0.06596839397280416,
+      "delta_marginfrac_armp_minus_p2a": -0.07583953509739066
+    }
+  },
+  "gt_ge_96": {
+    "A_L1": {
+      "armp_n_cells": 393,
+      "armp_rank1": 0.26208651399491095,
+      "armp_margin_fracpos": 0.35368956743002544,
+      "armp_margin_mean": -49716437591.28753,
+      "armp_overlap": 0.24622916115374438,
+      "armp_gap_mean": 0.933464119316019,
+      "armp_rankle3": 0.48346055979643765,
+      "p2a_methodmean_rank1": 0.36471586089906705,
+      "p2a_methodmean_margin_fracpos": 0.4435962680237489,
+      "p2a_methodmean_margin_mean": -5199113.351622137,
+      "p2a_methodmean_overlap": 0.17813354502954928,
+      "p2a_methodmean_gap": 1.1777528300030482,
+      "p2a_perseed_rank1": [
+        0.3791348600508906,
+        0.356234096692112,
+        0.35877862595419846
+      ],
+      "p2a_perseed_margin_fracpos": [
+        0.4402035623409669,
+        0.44274809160305345,
+        0.44783715012722647
+      ],
+      "p2a_perseed_n_cells": [
+        393,
+        393,
+        393
+      ],
+      "delta_rank1_armp_minus_p2a": -0.1026293469041561,
+      "delta_marginfrac_armp_minus_p2a": -0.08990670059372347
+    },
+    "B_L2": {
+      "armp_n_cells": 393,
+      "armp_rank1": 0.2595419847328244,
+      "armp_margin_fracpos": 0.35368956743002544,
+      "armp_margin_mean": -56391157650.56489,
+      "armp_overlap": 0.23590897062715005,
+      "armp_gap_mean": 0.9568720556661972,
+      "armp_rankle3": 0.49872773536895676,
+      "p2a_methodmean_rank1": 0.36810856658184904,
+      "p2a_methodmean_margin_fracpos": 0.45801526717557256,
+      "p2a_methodmean_margin_mean": -5854851.55055264,
+      "p2a_methodmean_overlap": 0.17817764840786807,
+      "p2a_methodmean_gap": 1.1955535368339603,
+      "p2a_perseed_rank1": [
+        0.3842239185750636,
+        0.3638676844783715,
+        0.356234096692112
+      ],
+      "p2a_perseed_margin_fracpos": [
+        0.4580152671755725,
+        0.46055979643765904,
+        0.455470737913486
+      ],
+      "p2a_perseed_n_cells": [
+        393,
+        393,
+        393
+      ],
+      "delta_rank1_armp_minus_p2a": -0.10856658184902462,
+      "delta_marginfrac_armp_minus_p2a": -0.10432569974554712
+    },
+    "C_L1norm": {
+      "armp_n_cells": 393,
+      "armp_rank1": 0.26208651399491095,
+      "armp_margin_fracpos": 0.3333333333333333,
+      "armp_margin_mean": -0.02348800956653123,
+      "armp_overlap": 0.1672400105848108,
+      "armp_gap_mean": 1.1502659127841497,
+      "armp_rankle3": 0.48854961832061067,
+      "p2a_methodmean_rank1": 0.3782866836301951,
+      "p2a_methodmean_margin_fracpos": 0.44274809160305345,
+      "p2a_methodmean_margin_mean": -0.014872993527421057,
+      "p2a_methodmean_overlap": 0.09901208432565933,
+      "p2a_methodmean_gap": 1.3830502084067369,
+      "p2a_perseed_rank1": [
+        0.3969465648854962,
+        0.361323155216285,
+        0.37659033078880405
+      ],
+      "p2a_perseed_margin_fracpos": [
+        0.4529262086513995,
+        0.42748091603053434,
+        0.44783715012722647
+      ],
+      "p2a_perseed_n_cells": [
+        393,
+        393,
+        393
+      ],
+      "delta_rank1_armp_minus_p2a": -0.11620016963528412,
+      "delta_marginfrac_armp_minus_p2a": -0.10941475826972014
+    },
+    "D_G8": {
+      "armp_n_cells": 393,
+      "armp_rank1": 0.13994910941475827,
+      "armp_margin_fracpos": 0.19083969465648856,
+      "armp_margin_mean": -2.2732562276654002e+23,
+      "armp_overlap": 0.2494046043926965,
+      "armp_gap_mean": 0.8803252057679475,
+      "armp_rankle3": 0.361323155216285,
+      "p2a_methodmean_rank1": 0.17302798982188294,
+      "p2a_methodmean_margin_fracpos": 0.2188295165394402,
+      "p2a_methodmean_margin_mean": -1.1861188761251416e+16,
+      "p2a_methodmean_overlap": 0.2359530740054688,
+      "p2a_methodmean_gap": 0.9471607949122595,
+      "p2a_perseed_rank1": [
+        0.21628498727735368,
+        0.15521628498727735,
+        0.1475826972010178
+      ],
+      "p2a_perseed_margin_fracpos": [
+        0.2595419847328244,
+        0.19083969465648856,
+        0.20610687022900764
+      ],
+      "p2a_perseed_n_cells": [
+        393,
+        393,
+        393
+      ],
+      "delta_rank1_armp_minus_p2a": -0.03307888040712467,
+      "delta_marginfrac_armp_minus_p2a": -0.027989821882951627
+    }
+  },
+  "per_bin_A_L1": {
+    "[64,80)": {
+      "armp_n_cells": 1463,
+      "armp_rank1": 0.4613807245386193,
+      "armp_margin_fracpos": 0.5228981544771019,
+      "armp_overlap": 0.12461230418907777,
+      "low_n_armp": false,
+      "p2a_perseed_rank1": [
+        0.5762132604237867,
+        0.5598086124401914,
+        0.5488721804511278
+      ],
+      "p2a_perseed_margin_fracpos": [
+        0.6520847573479153,
+        0.6302118933697881,
+        0.6206425153793574
+      ],
+      "p2a_perseed_overlap": [
+        0.05873346158376193,
+        0.061206862706607516,
+        0.06815594205174512
+      ],
+      "p2a_perseed_n_cells": [
+        1463,
+        1463,
+        1463
+      ],
+      "p2a_methodmean_rank1": 0.5616313511050354,
+      "p2a_methodmean_margin_fracpos": 0.6343130553656869,
+      "delta_rank1": -0.10025062656641609,
+      "delta_marginfrac": -0.11141490088858508,
+      "csv_rank1_check": {
+        "0": "0.576213",
+        "1": "0.559809",
+        "2": "0.548872"
+      }
+    },
+    "[80,96)": {
+      "armp_n_cells": 377,
+      "armp_rank1": 0.363395225464191,
+      "armp_margin_fracpos": 0.4588859416445623,
+      "armp_overlap": 0.17231308411214954,
+      "low_n_armp": true,
+      "p2a_perseed_rank1": [
+        0.4376657824933687,
+        0.4482758620689655,
+        0.3978779840848806
+      ],
+      "p2a_perseed_margin_fracpos": [
+        0.5411140583554377,
+        0.5225464190981433,
+        0.506631299734748
+      ],
+      "p2a_perseed_overlap": [
+        0.087178738317757,
+        0.10119742990654206,
+        0.09754672897196262
+      ],
+      "p2a_perseed_n_cells": [
+        377,
+        377,
+        377
+      ],
+      "p2a_methodmean_rank1": 0.42793987621573826,
+      "p2a_methodmean_margin_fracpos": 0.5234305923961097,
+      "delta_rank1": -0.06454465075154725,
+      "delta_marginfrac": -0.06454465075154736,
+      "csv_rank1_check": {
+        "0": "0.437666",
+        "1": "0.448276",
+        "2": "0.397878"
+      }
+    },
+    "[96,112)": {
+      "armp_n_cells": 286,
+      "armp_rank1": 0.24125874125874125,
+      "armp_margin_fracpos": 0.3041958041958042,
+      "armp_overlap": 0.235929203539823,
+      "low_n_armp": true,
+      "p2a_perseed_rank1": [
+        0.3776223776223776,
+        0.3881118881118881,
+        0.3776223776223776
+      ],
+      "p2a_perseed_margin_fracpos": [
+        0.43006993006993005,
+        0.4405594405594406,
+        0.43006993006993005
+      ],
+      "p2a_perseed_overlap": [
+        0.15398230088495576,
+        0.20353982300884957,
+        0.16053097345132744
+      ],
+      "p2a_perseed_n_cells": [
+        286,
+        286,
+        286
+      ],
+      "p2a_methodmean_rank1": 0.3811188811188811,
+      "p2a_methodmean_margin_fracpos": 0.43356643356643354,
+      "delta_rank1": -0.13986013986013984,
+      "delta_marginfrac": -0.12937062937062932,
+      "csv_rank1_check": {
+        "0": "0.377622",
+        "1": "0.388112",
+        "2": "0.377622"
+      }
+    },
+    "[112,128)": {
+      "armp_n_cells": 107,
+      "armp_rank1": 0.3177570093457944,
+      "armp_margin_fracpos": 0.48598130841121495,
+      "armp_overlap": 0.18448637316561844,
+      "low_n_armp": true,
+      "p2a_perseed_rank1": [
+        0.38317757009345793,
+        0.27102803738317754,
+        0.308411214953271
+      ],
+      "p2a_perseed_margin_fracpos": [
+        0.4672897196261682,
+        0.4485981308411215,
+        0.4953271028037383
+      ],
+      "p2a_perseed_overlap": [
+        0.07914046121593292,
+        0.0859538784067086,
+        0.08385744234800839
+      ],
+      "p2a_perseed_n_cells": [
+        107,
+        107,
+        107
+      ],
+      "p2a_methodmean_rank1": 0.32087227414330216,
+      "p2a_methodmean_margin_fracpos": 0.470404984423676,
+      "delta_rank1": -0.0031152647975077885,
+      "delta_marginfrac": 0.015576323987538943,
+      "csv_rank1_check": {
+        "0": "0.383178",
+        "1": "0.271028",
+        "2": "0.308411"
+      }
+    }
+  },
+  "all_reps": {
+    "A_L1": {
+      "per_bin_armp": [
+        {
+          "bin": "[64,80)",
+          "n_cells": 1463,
+          "rank1": 0.4613807245386193,
+          "margin_fracpos": 0.5228981544771019,
+          "overlap": 0.12461230418907777,
+          "low_n": false
+        },
+        {
+          "bin": "[80,96)",
+          "n_cells": 377,
+          "rank1": 0.363395225464191,
+          "margin_fracpos": 0.4588859416445623,
+          "overlap": 0.17231308411214954,
+          "low_n": true
+        },
+        {
+          "bin": "[96,112)",
+          "n_cells": 286,
+          "rank1": 0.24125874125874125,
+          "margin_fracpos": 0.3041958041958042,
+          "overlap": 0.235929203539823,
+          "low_n": true
+        },
+        {
+          "bin": "[112,128)",
+          "n_cells": 107,
+          "rank1": 0.3177570093457944,
+          "margin_fracpos": 0.48598130841121495,
+          "overlap": 0.18448637316561844,
+          "low_n": true
+        }
+      ]
+    },
+    "B_L2": {
+      "per_bin_armp": [
+        {
+          "bin": "[64,80)",
+          "n_cells": 1463,
+          "rank1": 0.46274777853725224,
+          "margin_fracpos": 0.5269993164730007,
+          "overlap": 0.12103961367830081,
+          "low_n": false
+        },
+        {
+          "bin": "[80,96)",
+          "n_cells": 377,
+          "rank1": 0.3740053050397878,
+          "margin_fracpos": 0.47214854111405835,
+          "overlap": 0.16895443925233644,
+          "low_n": true
+        },
+        {
+          "bin": "[96,112)",
+          "n_cells": 286,
+          "rank1": 0.24475524475524477,
+          "margin_fracpos": 0.32167832167832167,
+          "overlap": 0.23539823008849559,
+          "low_n": true
+        },
+        {
+          "bin": "[112,128)",
+          "n_cells": 107,
+          "rank1": 0.29906542056074764,
+          "margin_fracpos": 0.4392523364485981,
+          "overlap": 0.1750524109014675,
+          "low_n": true
+        }
+      ]
+    },
+    "C_L1norm": {
+      "per_bin_armp": [
+        {
+          "bin": "[64,80)",
+          "n_cells": 1463,
+          "rank1": 0.4579630895420369,
+          "margin_fracpos": 0.5242652084757348,
+          "overlap": 0.1243767421773782,
+          "low_n": false
+        },
+        {
+          "bin": "[80,96)",
+          "n_cells": 377,
+          "rank1": 0.3819628647214854,
+          "margin_fracpos": 0.46153846153846156,
+          "overlap": 0.09418808411214953,
+          "low_n": true
+        },
+        {
+          "bin": "[96,112)",
+          "n_cells": 286,
+          "rank1": 0.23426573426573427,
+          "margin_fracpos": 0.2937062937062937,
+          "overlap": 0.19274336283185842,
+          "low_n": true
+        },
+        {
+          "bin": "[112,128)",
+          "n_cells": 107,
+          "rank1": 0.3364485981308411,
+          "margin_fracpos": 0.4392523364485981,
+          "overlap": 0.0859538784067086,
+          "low_n": true
+        }
+      ]
+    },
+    "D_G8": {
+      "per_bin_armp": [
+        {
+          "bin": "[64,80)",
+          "n_cells": 1463,
+          "rank1": 0.17566643882433355,
+          "margin_fracpos": 0.22488038277511962,
+          "overlap": 0.2705822307722508,
+          "low_n": false
+        },
+        {
+          "bin": "[80,96)",
+          "n_cells": 377,
+          "rank1": 0.14588859416445624,
+          "margin_fracpos": 0.1989389920424403,
+          "overlap": 0.21144859813084113,
+          "low_n": true
+        },
+        {
+          "bin": "[96,112)",
+          "n_cells": 286,
+          "rank1": 0.11888111888111888,
+          "margin_fracpos": 0.15034965034965034,
+          "overlap": 0.3123893805309734,
+          "low_n": true
+        },
+        {
+          "bin": "[112,128)",
+          "n_cells": 107,
+          "rank1": 0.19626168224299065,
+          "margin_fracpos": 0.29906542056074764,
+          "overlap": 0.12368972746331237,
+          "low_n": true
+        }
+      ]
+    }
+  },
+  "global_counts": {
+    "armp_n_feature_cells_total": 283360,
+    "armp_n_gt_cells": 59431,
+    "armp_n_dropped_leftedge": 1313,
+    "armp_n_pairs_removed_leftedge": 79326,
+    "p2a_n_gt_cells_per_seed": {
+      "0": 59431,
+      "1": 59431,
+      "2": 59431
+    },
+    "p2a_n_pairs_removed_per_seed": {
+      "0": 79326,
+      "1": 79326,
+      "2": 79326
+    }
+  },
+  "representation_D_note": "D was group-AVERAGED and is therefore G-invariant; known Stage-A limitation, PRESERVED, not fixed.",
+  "observed_vs_mechanism": {
+    "observed_effect": "to be written in README/report from the numbers above",
+    "mechanism_evidence": "to be written in README/report; D3 alone neither validates nor falsifies ARM-P"
+  }
+}

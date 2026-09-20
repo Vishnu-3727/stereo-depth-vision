@@ -1,0 +1,59 @@
+{
+  "compared": [
+    "phase2/scripts/train_p2a_scale_coverage.py",
+    "stage_b_armp/20260918T142128Z_tier2_pilot/scripts/finetune_pilot.py"
+  ],
+  "conclusion": "The ONLY deltas are the two new flags (--init, --arm) and their direct consequences. No hyperparameter, dataset, augmentation, loss, optimizer, scheduler, seed, device, gradient, or checkpoint-policy line differs.",
+  "defaults_reproduce_p2a": "--arm p2a_scale_coverage (P2A arm name) + --init random (P2A random init): recipe code paths byte-identical; only additions are a no-op init branch, one print, and two provenance keys in exp_config.",
+  "deltas": [
+    {
+      "block": "module docstring",
+      "kind": "comment-only",
+      "description": "Docstring rewritten to describe the pilot mirror and the two flags."
+    },
+    {
+      "block": "imports",
+      "kind": "additive import",
+      "description": "Added 'import argparse'."
+    },
+    {
+      "block": "DELTA-1: CLI flags",
+      "kind": "the --init/--arm flags",
+      "description": "argparse with --init (default 'random') and --arm (default 'p2a_scale_coverage'); ARM = _ARGS.arm, INIT = _ARGS.init. OUT_DIR formula unchanged (P2A_OUT_DIR env or phase2/runs/<arm> default); the real pilot redirects via P2A_OUT_DIR per arm."
+    },
+    {
+      "block": "DELTA-2: apply_init()",
+      "kind": "the --init mechanism",
+      "description": "New function: 'random' is a no-op (P2A PyTorch-default init); otherwise strict-loads checkpoint ['model'] state dict (missing/unexpected keys abort). Called in main() AFTER integrity_guard, so architecture identity is established on the random-init model exactly as in P2A before weights are replaced."
+    },
+    {
+      "block": "exp_config initialisation/init_record",
+      "kind": "direct consequence of --init",
+      "description": "'initialisation' string parameterized by INIT plus added 'init_record' provenance dict. No training-relevant value changes."
+    },
+    {
+      "block": "REPO_ROOT parents index (line 39)",
+      "kind": "authorised path-resolution correction (NOT a recipe change)",
+      "description": "Original train_p2a_scale_coverage.py lives at phase2/scripts/ where parents[2] IS the repo root; this mirror lives one level deeper at stage_b_armp/<ts>_tier2_pilot/scripts/ where parents[2] resolves to stage_b_armp/. parents[3] restores IDENTICAL semantics to the original. Explicit exception granted by manager 2026-09-18. Changes no hyperparameter, no data, no model behaviour; affects both arms identically.",
+      "old": "REPO_ROOT = Path(__file__).resolve().parents[2]",
+      "new": "REPO_ROOT = Path(__file__).resolve().parents[3]"
+    }
+  ],
+  "method": "difflib SequenceMatcher on file lines; 6 non-equal blocks, all classified above; recipe bodies (ScaledCroppedKitti, validate, sha256_file, integrity_guard, DataLoader, optimizer, scheduler, training loop, checkpoint saves, record) byte-identical.",
+  "non_deltas_explicit": [
+    "No AMP added",
+    "No gradient accumulation added",
+    "No workers added (num_workers=0)",
+    "No hyperparameter changed (LR 1e-3, betas 0.9/0.999, CosineAnnealingLR T_max=EPOCHS, EPOCHS=200, BATCH=2, beta=1.0, jitter 0.1, scale range 0.7-1.7)",
+    "Checkpoint filenames (p2a_best.pth/p2a_final.pth) and selection rule unchanged; per-arm separation comes from OUT_DIR, not renames",
+    "phase2/scripts/train_p2a_scale_coverage.py and every other existing repo file unmodified"
+  ],
+  "sequence_matcher_ratio": 0.87791,
+  "authorised_correction": {
+    "block": "REPO_ROOT parents index (line 39)",
+    "kind": "authorised path-resolution correction (NOT a recipe change)",
+    "description": "Original train_p2a_scale_coverage.py lives at phase2/scripts/ where parents[2] IS the repo root; this mirror lives one level deeper at stage_b_armp/<ts>_tier2_pilot/scripts/ where parents[2] resolves to stage_b_armp/. parents[3] restores IDENTICAL semantics to the original. Explicit exception granted by manager 2026-09-18. Changes no hyperparameter, no data, no model behaviour; affects both arms identically.",
+    "old": "REPO_ROOT = Path(__file__).resolve().parents[2]",
+    "new": "REPO_ROOT = Path(__file__).resolve().parents[3]"
+  }
+}

@@ -1,0 +1,29 @@
+[{"stream_name":"stdout","time":11.851476554,"data":"preflight OK\n"}
+,{"stream_name":"stdout","time":75.400564139,"data":"integrity guard: {\"param_count\": 397954, \"param_count_ok\": true, \"all_ok\": true}\n"}
+,{"stream_name":"stdout","time":75.400603939,"data":"init: {\"source\": \"random\", \"note\": \"PyTorch defaults, random (P2A recipe)\"}\n"}
+,{"stream_name":"stdout","time":75.400616753,"data":"/kaggle/working/repo/stage_b_armp/seed2/scripts/finetune_pilot.py:303: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.\n"}
+,{"stream_name":"stdout","time":75.400621161,"data":"Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)\n"}
+,{"stream_name":"stdout","time":75.400625143,"data":"  epoch_loss += float(loss)\n"}
+,{"stream_name":"stdout","time":75.400629022,"data":"epoch   0 loss  12.1920 lr 5.00e-04 val EPE 17.154 D1 88.67%\n"}
+,{"stream_name":"stdout","time":75.400632256,"data":"epoch   1 loss  11.4081 lr 0.00e+00 val EPE 18.692 D1 87.26%\n"}
+,{"stream_name":"stdout","time":75.400635512,"data":"P2A seed 2 done: wall 52.8s best10 EPE 17.1537 @epoch 0\n"}
+,{"stream_name":"stdout","time":75.400638651,"data":"\n"}
+,{"stream_name":"stdout","time":75.401037477,"data":"init_random OK\n"}
+,{"stream_name":"stdout","time":129.583534625,"data":"integrity guard: {\"param_count\": 397954, \"param_count_ok\": true, \"all_ok\": true}\n"}
+,{"stream_name":"stdout","time":129.583580045,"data":"init: {\"source\": \"/kaggle/working/repo/checkpoints/armp_stage1_best.pth\", \"strict\": true, \"sha256\": \"3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7\", \"n_keys\": 70, \"param_count\": 397954}\n"}
+,{"stream_name":"stdout","time":129.583587238,"data":"/kaggle/working/repo/stage_b_armp/seed2/scripts/finetune_pilot.py:303: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.\n"}
+,{"stream_name":"stdout","time":129.583591107,"data":"Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)\n"}
+,{"stream_name":"stdout","time":129.583607165,"data":"  epoch_loss += float(loss)\n"}
+,{"stream_name":"stdout","time":129.583612874,"data":"epoch   0 loss   2.4122 lr 5.00e-04 val EPE 3.617 D1 31.21%\n"}
+,{"stream_name":"stdout","time":129.58361816,"data":"epoch   1 loss   1.7034 lr 0.00e+00 val EPE 2.669 D1 18.46%\n"}
+,{"stream_name":"stdout","time":129.583623353,"data":"P2A seed 2 done: wall 49.9s best10 EPE 2.6695 @epoch 1\n"}
+,{"stream_name":"stdout","time":129.58362829,"data":"\n"}
+,{"stream_name":"stdout","time":129.583827016,"data":"init_armp OK\n"}
+,{"stream_name":"stdout","time":129.584242711,"data":"wrote /kaggle/working/entrycheck_result.json status= PASS\n"}
+,{"stream_name":"stderr","time":132.184335849,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":132.184386766,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":132.471024606,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":132.471058745,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":133.136902993,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":134.461472675,"data":"[NbConvertApp] Writing 315940 bytes to __results__.html\n"}
+]

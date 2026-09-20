@@ -1,0 +1,1 @@
+{"method":"constructed StereoNet(StereoNetConfig(downsample_levels=3, num_disparities=24, cost_volume_shift='right', regression_normalize=True)); summed p.numel() (construction only, no optimizer/backward/save)","param_count":397954,"feature_stride":8,"max_disparity_px":184,"state_dict_keys":70,"batchnorm_modules":[]}

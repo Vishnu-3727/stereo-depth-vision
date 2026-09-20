@@ -1,0 +1,32 @@
+Recursive file listing of reference/upstream/extracted/StereoNet-master/ (2026-09-18, read-only).
+22 files. Zero .tar / .pth / checkpoint artifacts. No checkpoint file exists.
+
+reference/upstream/extracted/StereoNet-master/.gitignore
+reference/upstream/extracted/StereoNet-master/environment.yaml
+reference/upstream/extracted/StereoNet-master/export.py
+reference/upstream/extracted/StereoNet-master/README.md
+reference/upstream/extracted/StereoNet-master/stereo-net-structure.png
+reference/upstream/extracted/StereoNet-master/dataloader/KITTILoader.py
+reference/upstream/extracted/StereoNet-master/dataloader/KITTIloader2015.py
+reference/upstream/extracted/StereoNet-master/dataloader/listflowfile.py
+reference/upstream/extracted/StereoNet-master/dataloader/preprocess.py
+reference/upstream/extracted/StereoNet-master/dataloader/readpfm.py
+reference/upstream/extracted/StereoNet-master/dataloader/SceneFlowLoader.py
+reference/upstream/extracted/StereoNet-master/dataloader/__init__.py
+reference/upstream/extracted/StereoNet-master/finetune-kitti15/finetune-kitti15.py
+reference/upstream/extracted/StereoNet-master/log/log.txt
+reference/upstream/extracted/StereoNet-master/models/stereonet.py
+reference/upstream/extracted/StereoNet-master/models/__init__.py
+reference/upstream/extracted/StereoNet-master/pretrain-sceneflow/sceneflow-pretrain.py
+reference/upstream/extracted/StereoNet-master/pretrain-sceneflow/__init__.py
+reference/upstream/extracted/StereoNet-master/utils/cost_volume.py
+reference/upstream/extracted/StereoNet-master/utils/__init__.py
+
+Key line evidence (all read, independently verified):
+- log/log.txt:4 -> "Number of model parameters: 424610"
+- utils/cost_volume.py:5 (D=192), :19 (range(D // 2**k), k=4 -> 12 candidates),
+  :29-37 (pad LEFT features RIGHT, slice [:W] -> degenerate no-op)
+- models/stereonet.py:21-26 (FOUR stride-2 convs -> stride 16)
+- finetune-kitti15/finetune-kitti15.py:32 (default --loadmodel
+  .../checkpoints/checkpoint_sceneflow.tar, undistributed)
+- pretrain-sceneflow/sceneflow-pretrain.py:155-160 (writes that path every epoch)

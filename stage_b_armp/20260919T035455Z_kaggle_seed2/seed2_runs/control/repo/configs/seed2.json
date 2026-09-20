@@ -1,0 +1,34 @@
+{
+  "experiment": "ARM-P TIER-2 replication, seed 2 (of P2A recipe)",
+  "seed": 2,
+  "status": "NOT RUN — Phase 8 requires the manager's and the user's explicit authorization",
+  "recipe": "P2A mirror (finetune_pilot.py, byte-identical to seed 1)",
+  "arms": {
+    "control": {"init": "random", "note": "PyTorch defaults, random (P2A recipe)"},
+    "armp": {"init": "checkpoints/armp_stage1_best.pth",
+             "init_sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+             "init_strict": true}
+  },
+  "frozen_hyperparameters": {
+    "epochs": 200,
+    "batch_size": 2,
+    "lr": 0.001,
+    "optimizer": "Adam betas=(0.9, 0.999)",
+    "scheduler": "cosine annealing to 0 over 200 epochs",
+    "loss": "masked smooth L1, beta=1.0, valid = gt > 0 and gt < max_disparity",
+    "max_disparity_px": 184,
+    "crop": [256, 512],
+    "scale_augmentation": "logUniform(0.7, 1.7), realised horizontal factor sx",
+    "precision": "fp32",
+    "num_workers": 0,
+    "architecture": {"downsample_levels": 3, "num_disparities": 24,
+                     "cost_volume_shift": "right", "regression_normalize": true,
+                     "params": 397954, "state_keys": 70}
+  },
+  "data": {
+    "train": "hailo_calib (scenes 000000_10.png .. 000159_10.png, 160 scenes)",
+    "eval": "hailo_val (scenes 000160_10.png .. 000199_10.png, 40 scenes)",
+    "gt": "disp_occ_0, scale 256.0, valid = disparity > 0",
+    "frozen_population": 3802797
+  }
+}

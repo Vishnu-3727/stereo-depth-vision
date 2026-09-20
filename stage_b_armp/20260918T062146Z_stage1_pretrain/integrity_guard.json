@@ -1,0 +1,28 @@
+{
+  "param_count": 397954,
+  "param_count_expected": 397954,
+  "param_count_ok": true,
+  "n_keys": 70,
+  "n_keys_expected": 70,
+  "n_keys_ok": true,
+  "batchnorm_modules": [],
+  "no_batchnorm": true,
+  "config_matches_p2a": true,
+  "config": {
+    "downsample_levels": 3,
+    "num_disparities": 24,
+    "cost_volume_shift": "right",
+    "regression_normalize": true
+  },
+  "max_disparity_px": 184,
+  "feature_stride": 8,
+  "refinement_dilations": [
+    1,
+    2,
+    4,
+    8,
+    1,
+    1
+  ],
+  "all_ok": true
+}

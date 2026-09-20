@@ -1,0 +1,22 @@
+{
+  "id": "vishnu3727/arm-p-tier-2-seed-1-replica-armp-ckpt-init",
+  "id_no": 134964020,
+  "title": "ARM-P Tier-2 seed-1 replica armp ckpt-init",
+  "code_file": "arm-p-tier-2-seed-1-replica-armp-ckpt-init.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [
+    "vishnu3727/armp-tier2-seed2-bundle",
+    "vishnu3727/kitti2015-tier2-seed2-subset"
+  ],
+  "kernel_sources": [],
+  "competition_sources": [],
+  "model_sources": [],
+  "docker_image": "",
+  "machine_shape": "NvidiaTeslaT4"
+}

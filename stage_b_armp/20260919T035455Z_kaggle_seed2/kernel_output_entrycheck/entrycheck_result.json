@@ -1,0 +1,68 @@
+{
+  "status": "PASS",
+  "runs": {
+    "init_random": {
+      "init": "random",
+      "returncode": 0,
+      "wall_s": 63.54876160621643,
+      "outdir": "/kaggle/working/entrycheck/init_random",
+      "guard_all_ok": true,
+      "guard_param_count": 397954,
+      "epochs_logged": 2,
+      "epochs_run": 2,
+      "best_present": true,
+      "final_present": true,
+      "best_sha256": "a01c48a6f5ec1e95a3fca001e807e6d9f497b5a51f475a5e0cc0eb93eb553649",
+      "final_sha256": "bb191a2445e0d2148025def2b3958e3e7d29c4a1e507e9673bf0624e80c0e888",
+      "ok": true
+    },
+    "init_armp": {
+      "init": "/kaggle/working/repo/checkpoints/armp_stage1_best.pth",
+      "returncode": 0,
+      "wall_s": 54.18213868141174,
+      "outdir": "/kaggle/working/entrycheck/init_armp",
+      "guard_all_ok": true,
+      "guard_param_count": 397954,
+      "epochs_logged": 2,
+      "epochs_run": 2,
+      "best_present": true,
+      "final_present": true,
+      "best_sha256": "ea669bdaf77879ca0320122037af7c9d8adb87046b4622b2279f97a98bf22341",
+      "final_sha256": "4fb4cc2870c554982d3366043103d8f953f5bd54e72126081a9c03b5256a5991",
+      "ok": true
+    }
+  },
+  "experiment": "ARM-P Tier-2 seed-2 entrypoint gate (FIX 3)",
+  "seed": 2,
+  "utc": "2026-09-19T05:10:14Z",
+  "bootstrap_candidates": [
+    "/kaggle/input/datasets/vishnu3727/armp-tier2-seed2-bundle/kaggle_bootstrap.py",
+    "/kaggle/src/kaggle_bootstrap.py"
+  ],
+  "bootstrap_loaded_from": "/kaggle/input/datasets/vishnu3727/armp-tier2-seed2-bundle/kaggle_bootstrap.py",
+  "repo": "/kaggle/working/repo",
+  "scripts": "/kaggle/working/repo/stage_b_armp/seed2/scripts",
+  "bundle_marker": {
+    "bundle": "armp-tier2-seed2",
+    "seed": 2,
+    "checkpoint_sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+    "seed1_source": "stage_b_armp/20260919T012646Z_tier2_seed1/scripts"
+  },
+  "preflight": {
+    "ckpt_sha_match": true,
+    "strict_missing": [],
+    "strict_unexpected": [],
+    "params": 397954,
+    "n_keys": 70,
+    "arm_v_best_present": true,
+    "arm_v_best_sha_match": true,
+    "data": {
+      "calib": 160,
+      "val": 40,
+      "overlap": 0,
+      "valid_pixels": 3802797,
+      "expected": 3802797
+    }
+  },
+  "total_wall_s": 128.4606785774231
+}

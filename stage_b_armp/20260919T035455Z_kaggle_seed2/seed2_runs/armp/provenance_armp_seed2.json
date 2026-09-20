@@ -1,0 +1,27 @@
+{
+  "arm": "armp",
+  "seed": 2,
+  "init": "/kaggle/working/repo/checkpoints/armp_stage1_best.pth",
+  "init_sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+  "utc_start": "2026-09-19T05:47:15Z",
+  "gpu": "Tesla T4",
+  "torch": "2.10.0+cu128",
+  "cuda": "12.8",
+  "epochs": 200,
+  "timeout_s": 39600.0,
+  "bundle_marker": {
+    "bundle": "armp-tier2-seed2",
+    "seed": 2,
+    "checkpoint_sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+    "seed1_source": "stage_b_armp/20260919T012646Z_tier2_seed1/scripts"
+  },
+  "utc_end": "2026-09-19T07:04:23Z",
+  "wall_s": 4628.007346153259,
+  "run_arm_returncode": 0,
+  "best_epoch": 145,
+  "best_10scene_epe": 1.5419281402011356,
+  "best_sha256": "47a2d3e288ad91a6ce448934b0aed08a415bd8ce11904df602e181f1348f8b6d",
+  "final_sha256": "97d2fb064bb4572545a3b7da9aebcf66815fcbd3006431255fe0d5045e4ef9a5",
+  "guard_all_ok": true,
+  "guard_param_count": 397954
+}

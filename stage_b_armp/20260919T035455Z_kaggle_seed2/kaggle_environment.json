@@ -1,0 +1,186 @@
+{
+  "phases": {
+    "P3_dependency_audit": {
+      "python": "3.12.13",
+      "python_full": "3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]",
+      "platform": "Linux-6.12.90+-x86_64-with-glibc2.35",
+      "torch": "2.10.0+cu128",
+      "torchvision": "0.25.0+cu128",
+      "torch_cuda_version": "12.8",
+      "cudnn_version": 91002,
+      "numpy": "2.0.2",
+      "opencv": "4.13.0",
+      "pillow": "11.3.0",
+      "pip_dist_versions": {
+        "torch": "2.10.0+cu128",
+        "torchvision": "0.25.0+cu128",
+        "numpy": "2.0.2",
+        "opencv-python": "4.13.0.92",
+        "opencv-python-headless": "4.13.0.92",
+        "Pillow": "11.3.0"
+      },
+      "closure_import_test": {
+        "src.datasets.kitti2015": "OK",
+        "src.evaluation.metrics": "OK",
+        "src.losses.disparity": "OK",
+        "src.models.stereonet": "OK",
+        "src.models.stereonet.aggregation": "OK",
+        "src.models.stereonet.blocks": "OK",
+        "src.models.stereonet.cost_volume": "OK",
+        "src.models.stereonet.excitation": "OK",
+        "src.models.stereonet.feature_extractor": "OK",
+        "src.models.stereonet.refinement": "OK",
+        "src.models.stereonet.regression": "OK",
+        "phase1.harness.determinism": "OK",
+        "phase1.harness.frozen_eval": "OK"
+      },
+      "cuda_is_available": true,
+      "cuda_device_count": 2,
+      "gpu_name": "Tesla T4",
+      "cuda_capability": [
+        7,
+        5
+      ]
+    },
+    "P4_data_access": {
+      "hailo_val_scenes": 40,
+      "hailo_val_first": "000160_10.png",
+      "hailo_val_last": "000199_10.png",
+      "hailo_calib_scenes": 160,
+      "hailo_calib_first": "000000_10.png",
+      "hailo_calib_last": "000159_10.png",
+      "overlap": 0,
+      "image_dims": [
+        368,
+        1232,
+        3
+      ],
+      "disparity_dims": [
+        368,
+        1232
+      ],
+      "disparity_scale": 256.0,
+      "gt_source": "disp_occ_0",
+      "valid_semantics": "disparity > 0",
+      "valid_pixels_counted": 3802797,
+      "valid_pixels_expected": 3802797
+    },
+    "P5_checkpoint": {
+      "checkpoint": "/kaggle/working/repo/checkpoints/armp_stage1_best.pth",
+      "sha256_on_kaggle": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+      "sha256_expected": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+      "sha256_match": true,
+      "strict_missing": [],
+      "strict_unexpected": [],
+      "params": 397954,
+      "params_expected": 397954,
+      "n_keys": 70,
+      "n_keys_expected": 70,
+      "downsample_levels": 3,
+      "num_disparities": 24,
+      "cost_volume_shift": "right",
+      "regression_normalize": true
+    },
+    "P6_one_batch": {
+      "sample": "000000_10.png",
+      "left_shape": [
+        1,
+        3,
+        368,
+        1232
+      ],
+      "right_shape": [
+        1,
+        3,
+        368,
+        1232
+      ],
+      "disp_shape": [
+        1,
+        1,
+        368,
+        1232
+      ],
+      "pred_shape": [
+        1,
+        1,
+        368,
+        1232
+      ],
+      "device": "cuda",
+      "loss": 5.133922576904297,
+      "valid_pixels_in_batch": 87610,
+      "backward_grads_present": true,
+      "optimizer": "Adam lr=1e-3 betas=(0.9, 0.999)",
+      "optimizer_steps": 1,
+      "epochs": 0,
+      "checkpoint_written": "/kaggle/working/smoke_ckpt.pth",
+      "reload_strict_missing": [],
+      "reload_strict_unexpected": [],
+      "params": 397954,
+      "wall_s": 3.1108901500701904
+    }
+  },
+  "status": "PASS",
+  "experiment": "ARM-P Tier-2 seed-2 Kaggle portability smoke (phases 3-7; NO training)",
+  "seed": 2,
+  "utc": "2026-09-19T04:29:49Z",
+  "dataset_identifiers": {
+    "bundle_mount": "/kaggle/input/datasets/vishnu3727/armp-tier2-seed2-bundle",
+    "data_mount": "/kaggle/input/datasets/vishnu3727/kitti2015-tier2-seed2-subset"
+  },
+  "source_hashes": {
+    "scripts/finetune_pilot.py": "af6130043c989d83b16da28938e5ce8e7f8c2fbdb15b25d9571eee94720d6d72",
+    "scripts/run_pilot.py": "d7400226ef17b305f69881ff2f9b2c805c4d776a2af2a16a770c73420e72cefd",
+    "scripts/run_arm.py": "a1d240391ad335550b1c6f2887b8795102521b58d0883b7aa39785c72fc01960",
+    "scripts/eval_tier2.py": "326e9058f4bbdf342234d92eb5d8a9cd96885587eb1d88a44131b41ff58554f6",
+    "src/datasets/kitti2015.py": "9f3369d85c07b35680b928767d7b521fc9110d14a594adf7165fcf36a1bec25e",
+    "src/evaluation/metrics.py": "04d826913bb15301838a257dddac5ddd355786eccad8fe329ff1f2ae4157c9ec",
+    "src/losses/disparity.py": "aa4da7e6c788cb665cf594d2fa37e0e4f10cc5ca22cadf83f136c0ad18fab7eb",
+    "phase1/harness/determinism.py": "aa69c0b3303bbc2035378d0091b8d66ae376f8afab6804dd2794a6ca7bd4a415",
+    "phase1/harness/frozen_eval.py": "1a123c1219425d7d20cce73afb2e315f05180922eb1daf1f865a16b89a83c7f1",
+    "src/models/stereonet/__init__.py": "cd46319a865c1613b6db320a22b9e58e245e4f13b39c82895421eb7aa7546469",
+    "src/models/stereonet/aggregation.py": "a734782a80256cc6732036fd154706833adb23c64cb03b9c2287b3b7ad7c6702",
+    "src/models/stereonet/blocks.py": "fcdc9ab0c0f7d337144bd2432cd43d0dce6abd419b4058630d0b5b4ace0eac8a",
+    "src/models/stereonet/cost_volume.py": "aecf80145834ac504c73ced551ad9571cc951a84aa29379e35e25189e46c65f6",
+    "src/models/stereonet/excitation.py": "fb7103ed4bc719331258441d495444f71c76acdafac59e4141e78beb0f2104fb",
+    "src/models/stereonet/feature_extractor.py": "0c49f78ed074907afc37dc09f6eb017be0f268df17ab279c91f45976bd2d3d05",
+    "src/models/stereonet/refinement.py": "185e53c92b615d7e8c2084e3e2bd693c05ab94f98ebd8e95a7af89a0473d7401",
+    "src/models/stereonet/regression.py": "09ba98e0eca8740b91f9d498c4ae6f103ddb9a976adac35714142bca2c8f9a32",
+    "src/models/stereonet/stereonet.py": "92f9275786f323d6eca9e19b55f7aa7cdada20885ff38e7876ba6cb234f28c56"
+  },
+  "tensor_shapes": {
+    "left": [
+      1,
+      3,
+      368,
+      1232
+    ],
+    "pred": [
+      1,
+      1,
+      368,
+      1232
+    ]
+  },
+  "kaggle_input_listing": [
+    "./: datasets | ",
+    "datasets/: vishnu3727 | ",
+    "datasets/vishnu3727/: armp-tier2-seed2-bundle,kitti2015-tier2-seed2-subset | "
+  ],
+  "bootstrap_candidates": [
+    "/kaggle/input/datasets/vishnu3727/armp-tier2-seed2-bundle/kaggle_bootstrap.py",
+    "/kaggle/src/kaggle_bootstrap.py"
+  ],
+  "bootstrap_loaded_from": "/kaggle/input/datasets/vishnu3727/armp-tier2-seed2-bundle/kaggle_bootstrap.py",
+  "repo": "/kaggle/working/repo",
+  "bundle_marker": {
+    "bundle": "armp-tier2-seed2",
+    "seed": 2,
+    "checkpoint_sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+    "seed1_source": "stage_b_armp/20260919T012646Z_tier2_seed1/scripts"
+  },
+  "checkpoint_sha256_on_kaggle": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+  "smoke_test_result": "PASS",
+  "total_wall_s": 25.049201011657715
+}

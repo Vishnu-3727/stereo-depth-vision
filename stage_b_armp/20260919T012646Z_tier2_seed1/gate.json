@@ -1,0 +1,238 @@
+{
+  "new_dir": "stage_b_armp/20260919T012646Z_tier2_seed1",
+  "seed": 1,
+  "items": {
+    "1_seed_verified": {
+      "verdict": "PASS",
+      "evidence": {
+        "source_line_value": "1",
+        "resolved_via_child_process_echo": {
+          "control": "1",
+          "armp": "1"
+        },
+        "method": "replicated run_arm.py env construction, spawned child printing P2A_SEED"
+      }
+    },
+    "2_resolved_configs": {
+      "verdict": "PASS",
+      "evidence": {
+        "control": {
+          "architecture": "StereoNet",
+          "arch_config": {
+            "downsample_levels": 3,
+            "num_disparities": 24,
+            "cost_volume_shift": "right",
+            "regression_normalize": true
+          },
+          "param_count": 397954,
+          "state_dict_keys": 70,
+          "dataset_root": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015",
+          "train_split": "hailo_calib (scenes 0-159)",
+          "val_split": "hailo_val (scenes 160-199)",
+          "preprocessing": "pad_and_crop 368x1232 source frame; ImageNet normalize; gain jitter sigma=0.1",
+          "crop_resize": [
+            256,
+            512
+          ],
+          "augmentation": "scale-augmented random crop s~logUniform(0.7,1.7); bilinear images; NEAREST disparity; d[d>0]*=sx; no hflip",
+          "loss": "masked smooth L1 beta=1.0 valid=gt>0 and gt<max_disparity",
+          "optimizer": "Adam betas=(0.9, 0.999)",
+          "lr": 0.001,
+          "scheduler": "cosine annealing to 0 over 200 epochs",
+          "epochs": 200,
+          "batch_size": 2,
+          "grad_accumulation": "none (step every batch)",
+          "amp": "none (fp32)",
+          "device_recipe": "cuda if available else cpu",
+          "data_ordering": "shuffle=True num_workers=0 generator=make_generator(SEED) worker_init_fn",
+          "generator_seed": 1,
+          "seed_env": 1,
+          "checkpoint_selection": "best val EPE (10-scene monitor) -> p2a_best.pth; final -> p2a_final.pth",
+          "eval_contract": "40 hailo_val scenes, 3802797 valid px, gt disp_occ_0 scale 256, crop 368x1232 top-left",
+          "arm": "control",
+          "init": "random",
+          "out_dir": "C:\\Users\\vishn\\stereo_depth_vision\\stage_b_armp\\20260919T012646Z_tier2_seed1\\control",
+          "initialisation": "PyTorch defaults, random (P2A recipe)"
+        },
+        "armp": {
+          "architecture": "StereoNet",
+          "arch_config": {
+            "downsample_levels": 3,
+            "num_disparities": 24,
+            "cost_volume_shift": "right",
+            "regression_normalize": true
+          },
+          "param_count": 397954,
+          "state_dict_keys": 70,
+          "dataset_root": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015",
+          "train_split": "hailo_calib (scenes 0-159)",
+          "val_split": "hailo_val (scenes 160-199)",
+          "preprocessing": "pad_and_crop 368x1232 source frame; ImageNet normalize; gain jitter sigma=0.1",
+          "crop_resize": [
+            256,
+            512
+          ],
+          "augmentation": "scale-augmented random crop s~logUniform(0.7,1.7); bilinear images; NEAREST disparity; d[d>0]*=sx; no hflip",
+          "loss": "masked smooth L1 beta=1.0 valid=gt>0 and gt<max_disparity",
+          "optimizer": "Adam betas=(0.9, 0.999)",
+          "lr": 0.001,
+          "scheduler": "cosine annealing to 0 over 200 epochs",
+          "epochs": 200,
+          "batch_size": 2,
+          "grad_accumulation": "none (step every batch)",
+          "amp": "none (fp32)",
+          "device_recipe": "cuda if available else cpu",
+          "data_ordering": "shuffle=True num_workers=0 generator=make_generator(SEED) worker_init_fn",
+          "generator_seed": 1,
+          "seed_env": 1,
+          "checkpoint_selection": "best val EPE (10-scene monitor) -> p2a_best.pth; final -> p2a_final.pth",
+          "eval_contract": "40 hailo_val scenes, 3802797 valid px, gt disp_occ_0 scale 256, crop 368x1232 top-left",
+          "arm": "armp",
+          "init": "C:\\Users\\vishn\\stereo_depth_vision\\stage_b_armp\\20260918T062146Z_stage1_pretrain\\checkpoints\\armp_stage1_best.pth",
+          "out_dir": "C:\\Users\\vishn\\stereo_depth_vision\\stage_b_armp\\20260919T012646Z_tier2_seed1\\armp",
+          "initialisation": "strict load of C:\\Users\\vishn\\stereo_depth_vision\\stage_b_armp\\20260918T062146Z_stage1_pretrain\\checkpoints\\armp_stage1_best.pth"
+        }
+      }
+    },
+    "3_config_diff": {
+      "verdict": "PASS",
+      "evidence": {
+        "differing_keys": [
+          "arm",
+          "init",
+          "initialisation",
+          "out_dir"
+        ],
+        "note": "arm/out_dir = --arm identity and its OUT_DIR consequence; init/initialisation = --init source and its provenance-string consequence. No architecture/dataset/augmentation/loss/optimizer/LR/scheduler/epoch/batch/seed/ordering/checkpoint-rule field differs."
+      }
+    },
+    "4_only_init_differs": {
+      "verdict": "PASS",
+      "evidence": {
+        "restatement": "The only training-relevant difference between the two resolved configs is the weight-initialization source (random vs strict-loaded Stage-1 checkpoint); arm/out_dir/initialisation differences are the identity/provenance consequences of the --arm/--init flags."
+      }
+    },
+    "5_armp_strict_load": {
+      "verdict": "PASS",
+      "evidence": {
+        "path": "stage_b_armp/20260918T062146Z_stage1_pretrain/checkpoints/armp_stage1_best.pth",
+        "sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+        "sha256_match": true,
+        "params": 397954,
+        "n_keys": 70,
+        "blob_keys": [
+          "config",
+          "model"
+        ],
+        "config": {
+          "downsample_levels": 3,
+          "num_disparities": 24,
+          "cost_volume_shift": "right",
+          "regression_normalize": true
+        },
+        "missing": [],
+        "unexpected": [],
+        "strict_load_report": {
+          "matched": 70,
+          "missing": [],
+          "unexpected": [],
+          "strict_ok": true,
+          "expected_keys": 72,
+          "keys_ok": false,
+          "params": 397954,
+          "params_ok": false
+        },
+        "strict_load_report_note": "keys_ok/params_ok=false compare against phase1 frozen_eval constants (72 keys / 423586 params, a different architecture), not the P2A contract; strict_ok=true, matched=70, missing/unexpected empty; eval_tier2.py guards on its own EXPECTED_PARAMS=397954."
+      }
+    },
+    "6_random_control": {
+      "verdict": "PASS",
+      "evidence": {
+        "seed": 1,
+        "method": "seed_all(1) then StereoNet(StereoNetConfig(**ARM_V_CONFIG))",
+        "params": 397954,
+        "n_keys": 70
+      }
+    },
+    "7_one_batch_smoke": {
+      "verdict": "PASS",
+      "evidence": {
+        "device": "cuda",
+        "per_arm": {
+          "control": {
+            "loss": 14.631852149963379,
+            "loss_finite": true,
+            "output_shape": [
+              2,
+              1,
+              256,
+              512
+            ],
+            "valid_pixels": 59332,
+            "n_params": 70,
+            "n_grads_present": 70,
+            "all_grads_finite": true,
+            "init_source": "random"
+          },
+          "armp": {
+            "loss": 2.728853225708008,
+            "loss_finite": true,
+            "output_shape": [
+              2,
+              1,
+              256,
+              512
+            ],
+            "valid_pixels": 59332,
+            "n_params": 70,
+            "n_grads_present": 70,
+            "all_grads_finite": true,
+            "init_source": "C:\\Users\\vishn\\stereo_depth_vision\\stage_b_armp\\20260918T062146Z_stage1_pretrain\\checkpoints\\armp_stage1_best.pth"
+          }
+        },
+        "method": "single batch through COPIED ScaledCroppedKitti/forward/masked_smooth_l1 + loss.backward(); no optimizer.step(), no torch.save(); __pycache__ deleted afterwards",
+        "note": "armp loss 2.73 < control loss 14.63 is an observation of pretrained vs random init, not a result."
+      }
+    },
+    "8_no_optimizer_inherited": {
+      "verdict": "PASS",
+      "evidence": {
+        "order_guard_lt_init_lt_opt_lt_sched": true,
+        "offsets": {
+          "guard": 9691,
+          "init": 10384,
+          "opt": 10483,
+          "sched": 10563
+        },
+        "apply_init_loads_only_model_state_dict_strict": true,
+        "apply_init_reads_blob_model_key": true,
+        "torch_save_calls": [
+          "torch.save({\"model\": model.state_dict(), \"config\": exp_config},",
+          "torch.save({\"model\": model.state_dict(), \"config\": exp_config}, final_ckpt)"
+        ],
+        "stage1_blob_keys": [
+          "config",
+          "model"
+        ],
+        "no_optimizer_or_scheduler_key_in_stage1": true
+      }
+    },
+    "9_no_overwrite": {
+      "verdict": "PASS",
+      "evidence": {
+        "new_control_exists": false,
+        "new_armp_exists": false,
+        "out_dir_control": "C:\\Users\\vishn\\stereo_depth_vision\\stage_b_armp\\20260919T012646Z_tier2_seed1\\control",
+        "out_dir_armp": "C:\\Users\\vishn\\stereo_depth_vision\\stage_b_armp\\20260919T012646Z_tier2_seed1\\armp",
+        "writes": "run_arm writes only P2A_OUT_DIR (under new dir); run_pilot writes only PILOT-relative (resolves to new dir via script path); eval writes PILOT/tier2_eval.json (new dir); finetune DEFAULT_DIR phase2 fallback is overridden by P2A_OUT_DIR; phase1 arm_v_best.pth and stage1 ckpt are read-only inputs."
+      }
+    },
+    "10_resolved_config_saved": {
+      "verdict": "PASS",
+      "evidence": {
+        "file": "stage_b_armp/20260919T012646Z_tier2_seed1/resolved_config.json"
+      }
+    }
+  },
+  "overall": "GATE PASS (10/10)"
+}

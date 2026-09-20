@@ -1,0 +1,3 @@
+poll 0: vishnu3727/arm-p-tier-2-seed-2-smoke-p3-p7-no-training has status "KernelWorkerStatus.RUNNING"
+poll 1: vishnu3727/arm-p-tier-2-seed-2-smoke-p3-p7-no-training has status "KernelWorkerStatus.RUNNING"
+poll 2: vishnu3727/arm-p-tier-2-seed-2-smoke-p3-p7-no-training has status "KernelWorkerStatus.COMPLETE"

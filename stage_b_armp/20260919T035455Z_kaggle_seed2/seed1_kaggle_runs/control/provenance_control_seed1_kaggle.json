@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "seed": 1,
+  "tree": "seed1",
+  "init": "random",
+  "init_sha256": "random",
+  "replica_of": "local seed 1 (environment-confound check, NOT a new seed)",
+  "utc_start": "2026-09-19T09:55:28Z",
+  "gpu": "Tesla T4",
+  "torch": "2.10.0+cu128",
+  "cuda": "12.8",
+  "epochs": 200,
+  "timeout_s": 39600.0,
+  "bundle_marker": {
+    "bundle": "armp-tier2-seed2",
+    "seed": 2,
+    "checkpoint_sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+    "seed1_source": "stage_b_armp/20260919T012646Z_tier2_seed1/scripts"
+  },
+  "utc_end": "2026-09-19T11:11:10Z",
+  "wall_s": 4542.444452524185,
+  "run_arm_returncode": 0,
+  "best_epoch": 170,
+  "best_10scene_epe": 1.9308901635654818,
+  "best_sha256": "e23ee0824462afe7640167a9741022b9872f2e823b284cbaed46b7ba9f81778a",
+  "final_sha256": "9a28c9a2b0c8f177e91695bd2586e9aff3a82d7eb9964bcf2a8048965775fc81",
+  "guard_all_ok": true,
+  "guard_param_count": 397954
+}

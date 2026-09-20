@@ -1,0 +1,18 @@
+{
+  "arm": "armp",
+  "status": "COMPLETE",
+  "seed": 0,
+  "init": "C:\\Users\\vishn\\stereo_depth_vision\\stage_b_armp\\20260918T062146Z_stage1_pretrain\\checkpoints\\armp_stage1_best.pth",
+  "init_sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+  "epochs_completed": 200,
+  "training_duration_s": 3839.4806356430054,
+  "train_monitor_best_epe_10scene": 1.6339813370491854,
+  "train_monitor_best_epoch": 185,
+  "final_lr": 0.0,
+  "param_count": 397954,
+  "best_sha256": "58968771d987acb0f6ad03743d8b8d952b28dc6b43cb72bc5dd723d6a3419818",
+  "final_sha256": "03e2bee86824ecbdb59ae5ef19f149c794bf31af6cc8ce2d3291dd599af24bc0",
+  "train_pid": 22112,
+  "runner_pid": 17488,
+  "note": "train_monitor numbers are the 10-scene in-training monitor, NOT the frozen contract; frozen EPE/D1 land in pilot_results.json after eval. Fresh process => fresh optimizer/scheduler (train_pid recorded)."
+}

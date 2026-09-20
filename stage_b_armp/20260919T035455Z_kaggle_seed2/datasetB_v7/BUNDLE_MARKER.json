@@ -1,0 +1,6 @@
+{
+  "bundle": "armp-tier2-seed2",
+  "seed": 2,
+  "checkpoint_sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+  "seed1_source": "stage_b_armp/20260919T012646Z_tier2_seed1/scripts"
+}

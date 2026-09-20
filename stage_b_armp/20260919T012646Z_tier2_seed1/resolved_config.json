@@ -1,0 +1,101 @@
+{
+  "new_dir": "stage_b_armp/20260919T012646Z_tier2_seed1",
+  "seed": 1,
+  "control": {
+    "architecture": "StereoNet",
+    "arch_config": {
+      "downsample_levels": 3,
+      "num_disparities": 24,
+      "cost_volume_shift": "right",
+      "regression_normalize": true
+    },
+    "param_count": 397954,
+    "state_dict_keys": 70,
+    "dataset_root": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015",
+    "train_split": "hailo_calib (scenes 0-159)",
+    "val_split": "hailo_val (scenes 160-199)",
+    "preprocessing": "pad_and_crop 368x1232 source frame; ImageNet normalize; gain jitter sigma=0.1",
+    "crop_resize": [
+      256,
+      512
+    ],
+    "augmentation": "scale-augmented random crop s~logUniform(0.7,1.7); bilinear images; NEAREST disparity; d[d>0]*=sx; no hflip",
+    "loss": "masked smooth L1 beta=1.0 valid=gt>0 and gt<max_disparity",
+    "optimizer": "Adam betas=(0.9, 0.999)",
+    "lr": 0.001,
+    "scheduler": "cosine annealing to 0 over 200 epochs",
+    "epochs": 200,
+    "batch_size": 2,
+    "grad_accumulation": "none (step every batch)",
+    "amp": "none (fp32)",
+    "device_recipe": "cuda if available else cpu",
+    "data_ordering": "shuffle=True num_workers=0 generator=make_generator(SEED) worker_init_fn",
+    "generator_seed": 1,
+    "seed_env": 1,
+    "checkpoint_selection": "best val EPE (10-scene monitor) -> p2a_best.pth; final -> p2a_final.pth",
+    "eval_contract": "40 hailo_val scenes, 3802797 valid px, gt disp_occ_0 scale 256, crop 368x1232 top-left",
+    "arm": "control",
+    "init": "random",
+    "out_dir": "C:\\Users\\vishn\\stereo_depth_vision\\stage_b_armp\\20260919T012646Z_tier2_seed1\\control",
+    "initialisation": "PyTorch defaults, random (P2A recipe)"
+  },
+  "armp": {
+    "architecture": "StereoNet",
+    "arch_config": {
+      "downsample_levels": 3,
+      "num_disparities": 24,
+      "cost_volume_shift": "right",
+      "regression_normalize": true
+    },
+    "param_count": 397954,
+    "state_dict_keys": 70,
+    "dataset_root": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015",
+    "train_split": "hailo_calib (scenes 0-159)",
+    "val_split": "hailo_val (scenes 160-199)",
+    "preprocessing": "pad_and_crop 368x1232 source frame; ImageNet normalize; gain jitter sigma=0.1",
+    "crop_resize": [
+      256,
+      512
+    ],
+    "augmentation": "scale-augmented random crop s~logUniform(0.7,1.7); bilinear images; NEAREST disparity; d[d>0]*=sx; no hflip",
+    "loss": "masked smooth L1 beta=1.0 valid=gt>0 and gt<max_disparity",
+    "optimizer": "Adam betas=(0.9, 0.999)",
+    "lr": 0.001,
+    "scheduler": "cosine annealing to 0 over 200 epochs",
+    "epochs": 200,
+    "batch_size": 2,
+    "grad_accumulation": "none (step every batch)",
+    "amp": "none (fp32)",
+    "device_recipe": "cuda if available else cpu",
+    "data_ordering": "shuffle=True num_workers=0 generator=make_generator(SEED) worker_init_fn",
+    "generator_seed": 1,
+    "seed_env": 1,
+    "checkpoint_selection": "best val EPE (10-scene monitor) -> p2a_best.pth; final -> p2a_final.pth",
+    "eval_contract": "40 hailo_val scenes, 3802797 valid px, gt disp_occ_0 scale 256, crop 368x1232 top-left",
+    "arm": "armp",
+    "init": "C:\\Users\\vishn\\stereo_depth_vision\\stage_b_armp\\20260918T062146Z_stage1_pretrain\\checkpoints\\armp_stage1_best.pth",
+    "out_dir": "C:\\Users\\vishn\\stereo_depth_vision\\stage_b_armp\\20260919T012646Z_tier2_seed1\\armp",
+    "initialisation": "strict load of C:\\Users\\vishn\\stereo_depth_vision\\stage_b_armp\\20260918T062146Z_stage1_pretrain\\checkpoints\\armp_stage1_best.pth"
+  },
+  "init_record": {
+    "control": {
+      "source": "random",
+      "note": "PyTorch defaults, random (P2A recipe)"
+    },
+    "armp": {
+      "source": "stage_b_armp/20260918T062146Z_stage1_pretrain/checkpoints/armp_stage1_best.pth",
+      "strict": true,
+      "sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+      "n_keys": 70,
+      "param_count": 397954
+    }
+  },
+  "harness_provenance": {
+    "source_pilot": "stage_b_armp/20260918T142128Z_tier2_pilot",
+    "edits": [
+      "(a) scripts/run_arm.py line 83: P2A_SEED 0->1",
+      "(b) launch_tier2.ps1: $PILOT -> new dir",
+      "(c) scripts/eval_tier2.py line 134: checkpoint provenance LABEL -> new dir (real load path line 124 PILOT-relative, resolves automatically)"
+    ]
+  }
+}

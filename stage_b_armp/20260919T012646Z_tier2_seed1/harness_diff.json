@@ -1,0 +1,86 @@
+{
+  "source_pilot": "stage_b_armp/20260918T142128Z_tier2_pilot",
+  "new_dir": "stage_b_armp/20260919T012646Z_tier2_seed1",
+  "method": "difflib SequenceMatcher on file lines",
+  "files": {
+    "scripts/run_pilot.py": {
+      "ratio": 1.0,
+      "non_equal_blocks": []
+    },
+    "scripts/run_arm.py": {
+      "ratio": 0.99541,
+      "non_equal_blocks": [
+        {
+          "op": "replace",
+          "pilot_lines": [
+            83,
+            83
+          ],
+          "new_lines": [
+            83,
+            83
+          ],
+          "pilot_text": [
+            "    env[\"P2A_SEED\"] = \"0\""
+          ],
+          "new_text": [
+            "    env[\"P2A_SEED\"] = \"1\""
+          ],
+          "class": "(a)"
+        }
+      ]
+    },
+    "scripts/finetune_pilot.py": {
+      "ratio": 1.0,
+      "non_equal_blocks": []
+    },
+    "scripts/eval_tier2.py": {
+      "ratio": 0.99355,
+      "non_equal_blocks": [
+        {
+          "op": "replace",
+          "pilot_lines": [
+            134,
+            134
+          ],
+          "new_lines": [
+            134,
+            134
+          ],
+          "pilot_text": [
+            "        rec = {\"checkpoint\": \"stage_b_armp/20260918T142128Z_tier2_pilot/%s/p2a_%s.pth\" % (arm, tag),"
+          ],
+          "new_text": [
+            "        rec = {\"checkpoint\": \"stage_b_armp/20260919T012646Z_tier2_seed1/%s/p2a_%s.pth\" % (arm, tag),"
+          ],
+          "class": "(c)"
+        }
+      ]
+    },
+    "launch_tier2.ps1": {
+      "ratio": 0.88889,
+      "non_equal_blocks": [
+        {
+          "op": "replace",
+          "pilot_lines": [
+            6,
+            6
+          ],
+          "new_lines": [
+            6,
+            6
+          ],
+          "pilot_text": [
+            "$PILOT = \"C:\\Users\\vishn\\stereo_depth_vision\\stage_b_armp\\20260918T142128Z_tier2_pilot\""
+          ],
+          "new_text": [
+            "$PILOT = \"C:\\Users\\vishn\\stereo_depth_vision\\stage_b_armp\\20260919T012646Z_tier2_seed1\""
+          ],
+          "class": "(b)"
+        }
+      ]
+    }
+  },
+  "unexpected_blocks": [],
+  "verdict": "CLEAN: 3 non-equal blocks, all classified (a)/(b)/(c); zero UNEXPECTED"
+}

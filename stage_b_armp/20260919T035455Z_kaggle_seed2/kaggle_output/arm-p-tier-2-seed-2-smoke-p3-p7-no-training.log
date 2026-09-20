@@ -1,0 +1,15 @@
+[{"stream_name":"stdout","time":20.945973022,"data":"P3 OK\n"}
+,{"stream_name":"stdout","time":23.284581408,"data":"P4 OK\n"}
+,{"stream_name":"stdout","time":23.358224633,"data":"P5 OK\n"}
+,{"stream_name":"stderr","time":26.469481246,"data":"/kaggle/src/script.py:269: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.\n"}
+,{"stream_name":"stderr","time":26.469535786,"data":"Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)\n"}
+,{"stream_name":"stderr","time":26.46953942,"data":"  \"loss\": float(loss), \"valid_pixels_in_batch\": int(n),\n"}
+,{"stream_name":"stdout","time":26.472041179,"data":"P6 OK\n"}
+,{"stream_name":"stdout","time":26.473647238,"data":"wrote /kaggle/working/kaggle_environment.json status= PASS\n"}
+,{"stream_name":"stderr","time":33.5291486,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":33.529184361,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":33.922304069,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":33.922336251,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":34.637885674,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":36.331028044,"data":"[NbConvertApp] Writing 351384 bytes to __results__.html\n"}
+]

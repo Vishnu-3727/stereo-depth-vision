@@ -1,0 +1,9 @@
+# Dependency spec — ARM-P Tier-2 seed-2 Kaggle smoke (phases 3-7, no training).
+# Deliberately UNPINNED: the Kaggle GPU image supplies its own
+# torch/CUDA/cuDNN builds; pinning torch would break the kernel.
+# The smoke kernel (kaggle_smoke.py P3) records the exact resolved versions
+# into kaggle_environment.json. Local reference: torch==2.7.0 (repo requirements.txt).
+torch
+numpy
+opencv-python
+Pillow

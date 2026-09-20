@@ -1,0 +1,1 @@
+{"code_file": "kaggle_train_control.py", "dataset_sources": ["vishnu3727/kitti2015-tier2-seed2-subset", "vishnu3727/armp-tier2-seed2-bundle"], "enable_gpu": true, "enable_internet": false, "id": "vishnu3727/arm-p-tier-2-seed-2-train-control", "is_private": true, "kernel_sources": [], "kernel_type": "script", "language": "python", "title": "ARM-P Tier-2 seed-2 train control"}

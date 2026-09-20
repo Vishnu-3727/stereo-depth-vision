@@ -1,0 +1,41 @@
+{
+  "model": "P2A seed 0 (phase2/runs/p2a_scale_coverage/p2a_best.pth)",
+  "sha256": "0868ffd137a9985306bf5563685fd2362799bdd630d313e1181c980a7fbb6033",
+  "arch": {
+    "config": {
+      "downsample_levels": 3,
+      "num_disparities": 24,
+      "cost_volume_shift": "right",
+      "regression_normalize": true
+    },
+    "params": 397954,
+    "strict_load_ok": true,
+    "n_keys": 70
+  },
+  "path": "EXACT imported validate() from train_armp_stage1.py (not copied, not altered)",
+  "dataset": "FT3D pretrain-val holdout, rng seed 0, n_holdout=723",
+  "limit": 10,
+  "mask": "gt>0 AND gt<184",
+  "scene_ids": [
+    "A/0000/0007",
+    "A/0005/0006",
+    "A/0012/0014",
+    "A/0014/0006",
+    "A/0017/0006",
+    "A/0022/0012",
+    "A/0023/0008",
+    "A/0026/0015",
+    "A/0027/0006",
+    "A/0029/0015"
+  ],
+  "slice_identical_to_original": true,
+  "metrics": {
+    "epe": 9.069224160944032,
+    "d1": 39.4329475308642,
+    "rmse": 19.99813333778549,
+    "bad1": 64.72528935185186,
+    "bad2": 48.39911265432099,
+    "bad3": 41.23331404320988,
+    "valid_pixels": 5184000
+  }
+}

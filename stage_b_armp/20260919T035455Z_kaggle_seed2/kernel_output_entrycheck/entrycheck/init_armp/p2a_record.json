@@ -1,0 +1,120 @@
+{
+  "arm": "entrycheck",
+  "experiment": "EXP-P2A-SCALE-COVERAGE-001",
+  "config": {
+    "experiment": "EXP-P2A-SCALE-COVERAGE-001",
+    "arm": "P2A: ARM-V recipe + training-time geometric scale augmentation s ~ logUniform(0.7, 1.7); disparity scaled by the REALISED horizontal factor sx = 512/round(512/s); bilinear images, NEAREST disparity; everything else ARM-V",
+    "intervention": {
+      "scale_distribution": "logUniform(0.7, 1.7), one draw per sample",
+      "window": "w = round(512/s), h = round(256/s), uniform top-left",
+      "image_resize": "cv2.INTER_LINEAR -> 256x512",
+      "disparity_resize": "cv2.INTER_NEAREST -> 256x512 (sparse GT; 0 = no GT)",
+      "disparity_scaling": "d[d>0] *= sx with sx = 512/w (realised, not sampled s)",
+      "op_order": "crop -> resize -> ImageNet normalise -> gain jitter (ARM-V order)",
+      "source_frame": "the dataset's pad_and_crop 368x1232 frame, the same source ARM-V crops from (NOT the raw 375x1242)"
+    },
+    "dataset": "kitti2015",
+    "split": "hailo_calib (scenes 0-159) train, hailo_val (160-199) eval; overlap 0",
+    "split_enforcement": "train_base split='hailo_calib' only; no hailo_val sample enters optimizer loop",
+    "resolution": [
+      256,
+      512
+    ],
+    "crop": "random scale-augmented 256x512",
+    "disparity_range": 184,
+    "batch_size": 2,
+    "precision": "fp32",
+    "seed": 2,
+    "epochs": 2,
+    "optimizer": "Adam betas=(0.9, 0.999)",
+    "learning_rate": 0.001,
+    "schedule": "cosine annealing to 0 over 200 epochs",
+    "loss": "masked smooth L1, beta=1.0, valid = gt > 0 and gt < max_disparity",
+    "augmentation": "scale-augmented random crop (the intervention), independent per-image gain jitter sigma=0.1; no horizontal flip",
+    "initialisation": "strict load of /kaggle/working/repo/checkpoints/armp_stage1_best.pth",
+    "init_record": {
+      "source": "/kaggle/working/repo/checkpoints/armp_stage1_best.pth",
+      "strict": true,
+      "sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+      "n_keys": 70,
+      "param_count": 397954
+    },
+    "device": "cuda",
+    "known_deviation": "no batch normalisation (BN-folded exported artifact), carried into all arms"
+  },
+  "epochs_run": 2,
+  "wall_clock_s": 49.93917274475098,
+  "git_head": "",
+  "integrity_guard": {
+    "param_count": 397954,
+    "param_count_expected": 397954,
+    "param_count_ok": true,
+    "state_dict_keys_match_arm_v": true,
+    "state_dict_shapes_match_arm_v": true,
+    "n_keys": 70,
+    "batchnorm_modules": [],
+    "no_batchnorm": true,
+    "config_matches_arm_v": true,
+    "config": {
+      "downsample_levels": 3,
+      "num_disparities": 24,
+      "cost_volume_shift": "right",
+      "regression_normalize": true
+    },
+    "max_disparity_px": 184,
+    "feature_stride": 8,
+    "eval_contract": {
+      "scenes": 40,
+      "valid_pixels": 3802797,
+      "gt_source": "disp_occ_0",
+      "gt_scale": 256.0,
+      "crop": "368x1232 top-left",
+      "split": "hailo_val",
+      "unchanged": true
+    },
+    "all_ok": true
+  },
+  "best_val_epe_10scene": 2.669465310132361,
+  "best_epoch": 1,
+  "final_sha256": "4fb4cc2870c554982d3366043103d8f953f5bd54e72126081a9c03b5256a5991",
+  "best_sha256": "ea669bdaf77879ca0320122037af7c9d8adb87046b4622b2279f97a98bf22341",
+  "scale_draw_sample": {
+    "n": 320,
+    "s_min": 0.7014338751733836,
+    "s_max": 1.6963245487550493,
+    "s_mean": 1.1308646898725196,
+    "sx_min": 0.7013698630136986,
+    "sx_max": 1.695364238410596,
+    "h_min": 151,
+    "h_max": 365,
+    "w_min": 302,
+    "w_max": 730
+  },
+  "software": {
+    "python": "3.12.13",
+    "torch": "2.10.0+cu128",
+    "numpy": "2.0.2",
+    "opencv": "4.13.0",
+    "platform": "Linux-6.12.90+-x86_64-with-glibc2.35",
+    "cuda": "12.8",
+    "gpu": "Tesla T4"
+  },
+  "history": [
+    {
+      "epoch": 0,
+      "mean_loss": 2.412216606736183,
+      "valid_pixels": 5001892,
+      "lr": 0.0005,
+      "val_epe": 3.6166812057025552,
+      "val_d1": 31.211580387180515
+    },
+    {
+      "epoch": 1,
+      "mean_loss": 1.703420602530241,
+      "valid_pixels": 4682438,
+      "lr": 0.0,
+      "val_epe": 2.669465310132361,
+      "val_d1": 18.4576389015738
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+﻿Starting upload for file BUNDLE_MARKER.json
+C:\Users\vishn\.pyenv\pyenv-win\versions\3.12.9\python.exe : 
+At line:1 char:1
++ C:\Users\vishn\.pyenv\pyenv-win\versions\3.12.9\python.exe -m kaggle  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  0%|          | 0.00/214 [00:00<?, ?B/s]
+100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 214/214 [00:00<00:00, 506B/s]
+100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 214/214 [00:01<00:00, 167B/s]
+Upload successful: BUNDLE_MARKER.json (214B)
+Starting upload for file checkpoints.zip
+
+  0%|          | 0.00/1.42M [00:00<?, ?B/s]
+  1%|          | 16.0k/1.42M [00:00<00:53, 27.5kB/s]
+ 29%|ΓûêΓûêΓûè       | 416k/1.42M [00:01<00:02, 405kB/s]  
+ 32%|ΓûêΓûêΓûêΓûÅ      | 464k/1.42M [00:01<00:02, 372kB/s]
+ 35%|ΓûêΓûêΓûêΓûî      | 512k/1.42M [00:01<00:02, 326kB/s]
+ 60%|ΓûêΓûêΓûêΓûêΓûêΓûê    | 880k/1.42M [00:01<00:00, 619kB/s]
+ 88%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûè | 1.25M/1.42M [00:02<00:00, 1.07MB/s]
+100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 1.42M/1.42M [00:03<00:00, 479kB/s] 
+Upload successful: checkpoints.zip (1MB)
+Starting upload for file configs.zip
+
+  0%|          | 0.00/915 [00:00<?, ?B/s]
+100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 915/915 [00:00<00:00, 1.64kB/s]
+100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 915/915 [00:01<00:00, 640B/s]  
+Upload successful: configs.zip (915B)
+Starting upload for file datasetB_v6.log
+
+  0%|          | 0.00/1.62k [00:00<?, ?B/s]
+1.70kB [00:00, 2.95kB/s]                   
+1.70kB [00:01, 1.33kB/s]
+Upload unsuccessful: datasetB_v6.log
+Starting upload for file dataset_manifest.json
+
+  0%|          | 0.00/94.2k [00:00<?, ?B/s]
+ 17%|ΓûêΓûï        | 16.0k/94.2k [00:00<00:02, 32.7kB/s]
+100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 94.2k/94.2k [00:01<00:00, 54.3kB/s]
+Upload successful: dataset_manifest.json (94KB)
+Starting upload for file kaggle_bootstrap.py
+
+  0%|          | 0.00/10.3k [00:00<?, ?B/s]
+100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 10.3k/10.3k [00:00<00:00, 20.1kB/s]
+100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 10.3k/10.3k [00:01<00:00, 7.39kB/s]
+Upload successful: kaggle_bootstrap.py (10KB)
+Starting upload for file kaggle_smoke.py
+
+  0%|          | 0.00/16.8k [00:00<?, ?B/s]
+ 95%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûî| 16.0k/16.8k [00:00<00:00, 31.5kB/s]
+100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 16.8k/16.8k [00:01<00:00, 12.0kB/s]
+Upload successful: kaggle_smoke.py (17KB)
+Starting upload for file phase1.zip
+
+  0%|          | 0.00/1.42M [00:00<?, ?B/s]
+  1%|          | 16.0k/1.42M [00:00<00:51, 28.8kB/s]
+ 29%|ΓûêΓûêΓûè       | 416k/1.42M [00:01<00:02, 413kB/s]  
+ 32%|ΓûêΓûêΓûêΓûÅ      | 464k/1.42M [00:01<00:02, 379kB/s]
+ 35%|ΓûêΓûêΓûêΓûî      | 512k/1.42M [00:01<00:02, 332kB/s]
+ 49%|ΓûêΓûêΓûêΓûêΓûë     | 720k/1.42M [00:01<00:01, 452kB/s]
+ 58%|ΓûêΓûêΓûêΓûêΓûêΓûè    | 848k/1.42M [00:02<00:01, 564kB/s]
+100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 1.42M/1.42M [00:03<00:00, 463kB/s]
+Upload successful: phase1.zip (1MB)
+Starting upload for file reproducibility.json
+
+  0%|          | 0.00/598 [00:00<?, ?B/s]
+100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 598/598 [00:00<00:00, 1.46kB/s]
+100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 598/598 [00:01<00:00, 482B/s]  
+Upload successful: reproducibility.json (598B)
+Starting upload for file requirements.txt
+
+  0%|          | 0.00/406 [00:00<?, ?B/s]
+100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 406/406 [00:00<00:00, 1.00kB/s]
+100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 406/406 [00:01<00:00, 314B/s]  
+Upload successful: requirements.txt (406B)
+Starting upload for file scripts.zip
+
+  0%|          | 0.00/16.2k [00:00<?, ?B/s]
+ 99%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûè| 16.0k/16.2k [00:00<00:00, 37.4kB/s]
+100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 16.2k/16.2k [00:01<00:00, 12.5kB/s]
+Upload successful: scripts.zip (16KB)
+Starting upload for file src.zip
+
+  0%|          | 0.00/22.3k [00:00<?, ?B/s]
+ 72%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÅ  | 16.0k/22.3k [00:00<00:00, 40.1kB/s]
+100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 22.3k/22.3k [00:01<00:00, 17.8kB/s]
+Upload successful: src.zip (22KB)
+Dataset version is being created. Please check progress at https://www.kaggle.com/datasets/vishnu3727/armp-tier2-seed2-bundle

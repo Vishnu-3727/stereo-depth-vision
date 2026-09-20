@@ -1,0 +1,103 @@
+{
+  "experiment": "domain-symmetry control (frozen inference only, no training)",
+  "table_2x2": {
+    "columns": [
+      "KITTI hailo_val EPE",
+      "FT3D pretrain-val EPE"
+    ],
+    "rows": {
+      "P2A seed 0": {
+        "kitti_hailo_val_epe": 1.4149796,
+        "ft3d_pretrain_val_epe": 9.069224160944032,
+        "ft3d_pretrain_val_d1": 39.4329475308642
+      },
+      "ARM-P stage1 best": {
+        "kitti_hailo_val_epe_zero_shot": 4.817265031513723,
+        "kitti_hailo_val_d1_zero_shot": 35.97633531319184,
+        "ft3d_pretrain_val_epe": 3.0486
+      }
+    },
+    "known_cells": {
+      "p2a_kitti": 1.4149796,
+      "source": "phase2/runs/p2a_scale_coverage/p2a_eval_best.json seed 0",
+      "armp_ft3d": 3.0486,
+      "armp_source": "stage_b_armp/20260918T062146Z_stage1_pretrain/pretrain_log.jsonl epoch 5 best-by-pretrain-val, first 10 pretrain-val triplets, mask gt>0 AND gt<184"
+    },
+    "measured_cells": {
+      "cell1_p2a_on_ft3d_epe": 9.069224160944032,
+      "cell2_armp_on_kitti_zero_shot_epe": 4.817265031513723
+    }
+  },
+  "transfer_penalty": {
+    "p2a_kitti_to_ft3d": {
+      "from_in_domain_kitti": 1.4149796,
+      "to_out_of_domain_ft3d": 9.069224160944032,
+      "difference": 7.654244560944032,
+      "ratio": 6.409438101400212
+    },
+    "armp_ft3d_to_kitti": {
+      "from_in_domain_ft3d": 3.0486,
+      "to_out_of_domain_kitti": 4.817265031513723,
+      "difference": 1.7686650315137231,
+      "ratio": 1.5801564755998567
+    }
+  },
+  "p2a_also_degrades_substantially": true,
+  "penalties_comparable_character": "P2A x6.409 (+7.6542) vs ARM-P x1.580 (+1.7687): comparable degradation character",
+  "domain_note": "Directional, asymmetric control: the two penalties are NOT paired measurements from the same domain; domains, image statistics and GT densities differ.",
+  "classification": "DOMAIN CONFOUND PLAUSIBLE",
+  "classification_why": "P2A also degrades substantially out of domain (KITTI 1.4150 -> FT3D 9.0692, +7.6542, x6.409); the earlier ARM-P D3 negative cannot discriminate between a weak frozen representation and a pure domain shift.",
+  "not_claimed": "ARM-P is neither validated nor falsified; nothing is claimed about EPE after fine-tuning (not tested). The earlier ARM-P D3 result keeps its status: OBSERVED DEGRADATION / MECHANISM NOT SUPPORTED / CAUSAL CONFIDENCE LOW / DOMAIN-CONFOUNDED / REASSESS.",
+  "integrity": {
+    "d3_matching_py_md5_before": "ab29a921c121f5e404014989532172a6",
+    "d3_matching_py_md5_after": "ab29a921c121f5e404014989532172a6",
+    "d3_matching_py_unchanged": true,
+    "d3_matching_py_expected": "ab29a921c121f5e404014989532172a6",
+    "p2a_checkpoint_sha256": "0868ffd137a9985306bf5563685fd2362799bdd630d313e1181c980a7fbb6033",
+    "armp_checkpoint_sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+    "p2a_arch": {
+      "config": {
+        "downsample_levels": 3,
+        "num_disparities": 24,
+        "cost_volume_shift": "right",
+        "regression_normalize": true
+      },
+      "params": 397954,
+      "strict_load_ok": true,
+      "n_keys": 70
+    },
+    "armp_arch": {
+      "config": {
+        "downsample_levels": 3,
+        "num_disparities": 24,
+        "cost_volume_shift": "right",
+        "regression_normalize": true
+      },
+      "params": 397954,
+      "strict_load_ok": true,
+      "n_keys": 70
+    },
+    "ft3d_slice_identical_to_original": true,
+    "ft3d_slice_ids": [
+      "A/0000/0007",
+      "A/0005/0006",
+      "A/0012/0014",
+      "A/0014/0006",
+      "A/0017/0006",
+      "A/0022/0012",
+      "A/0023/0008",
+      "A/0026/0015",
+      "A/0027/0006",
+      "A/0029/0015"
+    ]
+  },
+  "runtime": {
+    "wall_clock_s": 11.14875602722168,
+    "device": "cuda",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "torch": "2.7.0+cu128",
+    "numpy": "2.5.1",
+    "python": "3.12.9",
+    "git_head": "58e8a19908ddbd35451652c61aef478f56b51ebd"
+  }
+}

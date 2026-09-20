@@ -1,0 +1,18 @@
+{
+  "arm": "control",
+  "status": "COMPLETE",
+  "seed": 1,
+  "init": "random",
+  "init_sha256": "random",
+  "epochs_completed": 200,
+  "training_duration_s": 4532.153188705444,
+  "train_monitor_best_epe_10scene": 1.9308901635654818,
+  "train_monitor_best_epoch": 170,
+  "final_lr": 0.0,
+  "param_count": 397954,
+  "best_sha256": "e23ee0824462afe7640167a9741022b9872f2e823b284cbaed46b7ba9f81778a",
+  "final_sha256": "9a28c9a2b0c8f177e91695bd2586e9aff3a82d7eb9964bcf2a8048965775fc81",
+  "train_pid": 23,
+  "runner_pid": 22,
+  "note": "train_monitor numbers are the 10-scene in-training monitor, NOT the frozen contract; frozen EPE/D1 land in pilot_results.json after eval. Fresh process => fresh optimizer/scheduler (train_pid recorded)."
+}

@@ -1,0 +1,24 @@
+{
+  "utc": "2026-09-19T03:57:09Z",
+  "workdir": "stage_b_armp/20260919T035455Z_kaggle_seed2",
+  "seed": 2,
+  "git_head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+  "seed1_source_dir": "stage_b_armp/20260919T012646Z_tier2_seed1",
+  "checkpoint_sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+  "local_env": {
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "numpy": "2.5.1",
+    "opencv": "5.0.0"
+  },
+  "phases_in_scope": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "phase8": "NOT AUTHORIZED \u2014 no training launched"
+}

@@ -1,0 +1,8 @@
+integrity guard: {"param_count": 397954, "param_count_ok": true, "all_ok": true}
+init: {"source": "/kaggle/working/repo/checkpoints/armp_stage1_best.pth", "strict": true, "sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7", "n_keys": 70, "param_count": 397954}
+/kaggle/working/repo/stage_b_armp/seed2/scripts/finetune_pilot.py:303: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  epoch_loss += float(loss)
+epoch   0 loss   2.4122 lr 5.00e-04 val EPE 3.617 D1 31.21%
+epoch   1 loss   1.7034 lr 0.00e+00 val EPE 2.669 D1 18.46%
+P2A seed 2 done: wall 49.9s best10 EPE 2.6695 @epoch 1
