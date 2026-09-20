@@ -149,6 +149,28 @@ ever overwritten; a regression is recorded as a regression.
 
 *Everything below is the original Phase-1 README, preserved unchanged as historical material.*
 
+> **What in it is now out of date** (the text itself is not edited; each item is corrected at
+> the top of this file and in `RESULTS_INDEX.md`):
+>
+> - **"Phase 2 — Not started"** at the very bottom. Phase 2 ran and closed, as did Stage A,
+>   Stage B and Stage C. Full note there.
+> - **The Layout tree** lists only the Phase-1 directories. The repository also holds
+>   `phase0/`, `phase1/`, `phase2/`, `stage_a_diagnostics/`, `stage_b_armp/`,
+>   `stage_c_deploy/` and `RESULTS_INDEX.md`.
+> - **"Production metric-depth inference — absent"** in *What this repository is not*. Metric
+>   depth, point cloud, occupancy and depth discontinuities now exist under `stage_c_deploy/`
+>   and are validated (C2 135/135, C2.1 251/251, C2.1.1 19/19). They remain **deterministic
+>   host-side evaluation code, not a deployable depth service**, so the spirit of that row
+>   still holds — but the capability is no longer absent.
+> - **"Start here"** in the next table points at the Phase-1 reading order. The current entry
+>   point is the top of this file, then `RESULTS_INDEX.md`.
+> - **Test and check counts** in *Verifying*: 75 tests at the `phase-1-frozen` tag, **101**
+>   collected today; the 73 `verify_claims.py` checks cover Phase-1 records only and do not
+>   cover Phase 2, Stage A, Stage B or Stage C.
+>
+> Everything else below — the evidence categories, the known evidence gaps, the reference
+> restoration procedure and the tag table — still stands as written.
+
 # Stereo Depth Vision — Phase 1
 
 Forensics, reproduction and characterisation of the Hailo StereoNet reference
