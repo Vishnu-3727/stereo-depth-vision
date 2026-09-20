@@ -34,6 +34,11 @@ What is needed to unblock: the 14 company-supplied fields listed in
 
 ## Where to look
 
+**See it run:** `python stage_c_deploy/demo/pipeline_demo.py --cloud3d` — one stereo
+pair through the whole graph (disparity, metric depth, object edges, point cloud),
+click any panel to measure a point in metres. See
+[`stage_c_deploy/demo/README.md`](stage_c_deploy/demo/README.md).
+
 **Start here:** [`RESULTS_INDEX.md`](RESULTS_INDEX.md) — the current index of every phase,
 stage, run and audit, with status, source and purpose for each, plus a reader-hazard list.
 

@@ -102,6 +102,7 @@ toolchain has therefore not been executed.*
 | C2.1.1 discontinuity | **PASS — 19/19** | `stage_c_deploy/C2_1_1_DISCONTINUITY_VALIDATION.md`, `…/out/c2_1_1_discontinuity_validation.json` | Gradient-magnitude discontinuity gate; module sha256 `2e81e9f2…1b5743`. Evidence only — no ground-truth accuracy claim. |
 | Target / toolchain resolution | **TARGET UNKNOWN / RESOLUTION BLOCKED** | `stage_c_deploy/C1_TARGET_TOOLCHAIN_RESOLUTION.md`, `stage_c_deploy/target_resolution/evidence_summary.json` | Exhaustive search: **zero** authoritative company device requirements in the repo. |
 | Deployment blocker report | **BLOCKED** | `stage_c_deploy/STAGE_C_DEPLOYMENT_BLOCKER_REPORT.md` | What is blocked and why. |
+| Pipeline demo | **RUNNABLE** (device-independent) | `stage_c_deploy/demo/pipeline_demo.py`, `stage_c_deploy/demo/README.md` | One command runs the frozen candidate end to end on a KITTI pair and draws disparity, metric depth, discontinuities and the point cloud; composes only validated modules, asserts the checkpoint hash, and prints the C1 FAIL and the Hailo blocker on every run. |
 | Stage C readiness final | **NOT DEPLOYABLE on any Hailo target at this time** | `stage_c_deploy/STAGE_C_DEPLOYMENT_READINESS_FINAL.md` | The Stage-C deliverable; risk register R1–R10; the 14 company fields required to unblock. |
 
 ## 8. Audits
