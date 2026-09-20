@@ -1,0 +1,152 @@
+{
+  "protocol": [
+    "trained EXP-H1-*-v2 weights, 40 single-sample 256x512 crops from hailo_calib (identical crops for both arms), masked smooth L1 as in the H1 recipe, backward only -- no optimizer step, nothing saved."
+  ],
+  "git_revision": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+  "models": {
+    "BASE": {
+      "median_total_norm": 54.8791389465332,
+      "max_total_norm": 269.8667907714844,
+      "min_total_norm": 18.213218688964844,
+      "any_non_finite": false,
+      "worst_batch": {
+        "batch": 16,
+        "scene": "000008_10.png",
+        "crop_yx": [
+          10,
+          622
+        ],
+        "total_norm": 269.8667907714844,
+        "loss": 6.612008571624756,
+        "top_parameters": [
+          [
+            225.5970001220703,
+            "refinement.input_conv.weight"
+          ],
+          [
+            86.04270935058594,
+            "refinement.blocks.0.conv1.weight"
+          ],
+          [
+            81.2649154663086,
+            "refinement.blocks.1.conv1.weight"
+          ],
+          [
+            58.180110931396484,
+            "refinement.blocks.2.conv1.weight"
+          ],
+          [
+            45.63184356689453,
+            "refinement.blocks.0.conv2.weight"
+          ]
+        ]
+      },
+      "top_parameters_by_max_norm": [
+        [
+          225.5970001220703,
+          "refinement.input_conv.weight"
+        ],
+        [
+          86.04270935058594,
+          "refinement.blocks.0.conv1.weight"
+        ],
+        [
+          81.2649154663086,
+          "refinement.blocks.1.conv1.weight"
+        ],
+        [
+          64.38862609863281,
+          "refinement.blocks.2.conv1.weight"
+        ],
+        [
+          53.19192123413086,
+          "refinement.output_conv.weight"
+        ],
+        [
+          45.63184356689453,
+          "refinement.blocks.0.conv2.weight"
+        ],
+        [
+          40.5916748046875,
+          "refinement.blocks.3.conv1.weight"
+        ],
+        [
+          35.70970916748047,
+          "refinement.blocks.2.conv2.weight"
+        ]
+      ]
+    },
+    "WORKING": {
+      "median_total_norm": 59.36043167114258,
+      "max_total_norm": 2770391007232.0,
+      "min_total_norm": 18.184276580810547,
+      "any_non_finite": false,
+      "worst_batch": {
+        "batch": 11,
+        "scene": "000005_10.png",
+        "crop_yx": [
+          75,
+          1
+        ],
+        "total_norm": 2770391007232.0,
+        "loss": 7.523707389831543,
+        "top_parameters": [
+          [
+            702167744.0,
+            "aggregation.to_cost.weight"
+          ],
+          [
+            284838048.0,
+            "aggregation.filter.6.weight"
+          ],
+          [
+            213823088.0,
+            "feature_extractor.residual.2.conv2.weight"
+          ],
+          [
+            204165056.0,
+            "aggregation.filter.4.weight"
+          ],
+          [
+            197812736.0,
+            "feature_extractor.residual.3.conv2.weight"
+          ]
+        ]
+      },
+      "top_parameters_by_max_norm": [
+        [
+          702167744.0,
+          "aggregation.to_cost.weight"
+        ],
+        [
+          284838048.0,
+          "aggregation.filter.6.weight"
+        ],
+        [
+          213823088.0,
+          "feature_extractor.residual.2.conv2.weight"
+        ],
+        [
+          204165056.0,
+          "aggregation.filter.4.weight"
+        ],
+        [
+          197812736.0,
+          "feature_extractor.residual.3.conv2.weight"
+        ],
+        [
+          179227072.0,
+          "feature_extractor.residual.4.conv2.weight"
+        ],
+        [
+          175850160.0,
+          "feature_extractor.residual.4.conv1.weight"
+        ],
+        [
+          173595904.0,
+          "feature_extractor.residual.2.conv1.weight"
+        ]
+      ]
+    }
+  }
+}

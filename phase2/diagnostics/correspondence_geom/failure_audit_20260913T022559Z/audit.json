@@ -1,0 +1,230 @@
+{
+  "audit_id": "FAILURE-AUDIT-GEOM-002",
+  "record": "phase2/diagnostics/correspondence_geom/failure_audit_20260913T022559Z",
+  "subject": "phase2/diagnostics/correspondence_geom/20260913T013006Z",
+  "subject_verdict": "G-STOP -- STATISTIC-ARCHITECTURALLY-AVAILABLE",
+  "date_utc": "2026-09-13",
+  "kind": "audit only; designs nothing, preregisters nothing, launches nothing",
+
+  "constraints_honoured": {
+    "trained_aggregation_loaded": false,
+    "checkpoints_opened": 0,
+    "data_sources": ["the recorded random-weight gate (gate.json, gate_raw.json)",
+                     "the frozen cost-volume operator applied to random tensors"],
+    "geom002_verdict_revisited": false,
+    "post_hoc_contamination_declared": true
+  },
+
+  "failure_mechanism": {
+    "root_cause": "tau is a COORDINATE CHANGE, not an experimental factor",
+    "identity": "with Rf[w] = Lf[w+tau], every cell is a function of (u,d) alone, u = w+tau, d = k-tau: V_AA = Af[u+d]-Af[u], V_BB = Bf[u+d]-Bf[u], V_AB = Af[u+d]-Bf[u], V_BA = Bf[u+d]-Af[u]",
+    "symmetry_group": "G = translations of the candidate axis, (k,w) -> (k-s, w+s)",
+    "measured_reparameterisation_residual": 0.0,
+    "measured_reparameterisation_checks": 60,
+    "residual_terms_that_break_exact_covariance": [
+      "the standardisation window k in [0,12) is fixed, so in d coordinates it moves with tau",
+      "u = w+tau translates which image content the mask averages"
+    ],
+    "profile_covariance": {
+      "model_A_shift_covariant_R2_mean": 0.8672,
+      "model_A_R2_median": 0.8902,
+      "model_B_tau_constant_R2_mean": 0.2891,
+      "units_where_A_beats_B": "574 of 576",
+      "R2_of_A_for_h6_units": 0.9339,
+      "note": "the units that scored h=6 are the ones MOST completely explained by the symmetry"
+    },
+    "channels": {
+      "F1": "candidate-axis translation covariance -- makes tracking free; only the offset c varies. THE CHANNEL THAT FIRED",
+      "F2": "argmin is a hard scale-free operator that reports the symmetry and nothing else",
+      "F3": "the gate rule is a maximum over a large null and saturates independently of F1/F2"
+    },
+    "exact_identity": "h == 6  iff  (offset constant AND c == 0);  31 == 31, no exceptions",
+    "offset_provenance": {
+      "seeds_with_any_offset_constant_unit": 27,
+      "seeds_whose_c_is_identical_across_all_their_units": 8,
+      "seeds_whose_c_varies_across_extractor_or_pair": 19,
+      "conclusion": "c is JOINTLY weight- and content-determined, not a pure weight property"
+    },
+    "random_lag_preference": {
+      "mean_aligned_profile_argmin_lag": 1,
+      "per_unit_argmin_of_aligned_profile": {"-1": 85, "0": 79, "1": 149, "2": 81, "3": 73, "4": 43, "5": 66},
+      "conclusion": "random weights are biased AWAY from zero lag toward d=+1; tracking is free but zero-offset is not"
+    }
+  },
+
+  "replacement_statistic_requirements": {
+    "necessary_condition": "T must NOT be invariant under the action of G on the candidate axis",
+    "R-A": "must depend on the absolute candidate index, not only profile shape",
+    "R-B": "must not be a function of (k_hat - tau) alone",
+    "R-C": "its null must be sharpness-matched, not merely weight-randomised",
+    "R-D": "it must be broken by a transformation OUTSIDE G; candidate-axis PERMUTATION is the minimal such transformation",
+    "screening_test": "translate the whole profile along k by a constant and recompute; if the value does not change, the statistic is dead"
+  },
+
+  "identifiability": {
+    "hypotheses": {
+      "H-a": "trained geometric correspondence",
+      "H-b": "generic right-image dependence",
+      "H-c": "candidate-axis architectural effects",
+      "H-d": "nonlinear aggregation artifacts"
+    },
+    "central_finding": "H-a is NOT IDENTIFIABLE from a globally translated self-pair, by any statistic whatsoever. Under H-a the response peaks at d=0; under H-c/H-d it peaks at d=c. Nothing observable separates 'peaks at 0 because it matched' from 'peaks at 0 because its fixed lag response is centred'.",
+    "scope": "this is a property of the INTERVENTION, not the statistic, the mask or the gate",
+    "H-b": "separable, and already established",
+    "H-c_vs_H-d": "not separable from each other on this architecture; the distinction may not be meaningful",
+    "retires": "the entire globally-translated-self-pair experiment class, which explains the earlier geometric attempts and TR-001 landing on ceilings",
+    "observations_that_would_separate": {
+      "O1": "candidate-axis permutation control -- outside G, reuses the settled geometry unchanged, one extra forward pass per unit",
+      "O2": "unmatchable regions -- breaks Rf[w]=Lf[w+tau] locally; needs a new construction and domain derivation",
+      "O3": "non-global disparity field on real pairs with ground truth -- large, re-enters the natural-scene regime"
+    },
+    "ceiling_even_for_O1": "the trained aggregation's reported disparity depends on the candidate axis' geometric ordering, in a way a permutation-matched control with identical weights does not. Stronger than TR-001's C', weaker than correspondence."
+  },
+
+  "statistic_enumeration": [
+    {"id": "S1", "statistic": "h = count of argmin Ibar_tau == tau", "G_invariant": true, "null": "saturates, rate 0.0538", "verdict": "REJECT"},
+    {"id": "S2", "statistic": "slope of k_hat vs tau", "G_invariant": true, "null": "forced to 1.0 for any operator", "verdict": "REJECT -- already retired by TR-001"},
+    {"id": "S3", "statistic": "Ibar_tau(tau)", "G_invariant": false, "null": "n/a", "verdict": "REJECT -- equals Phi(0), constant in tau, tests nothing"},
+    {"id": "S4", "statistic": "interaction amplitude", "G_invariant": true, "null": "calibratable", "verdict": "REJECT -- measures aggregation gain"},
+    {"id": "S5", "statistic": "margin I_second - I_min", "G_invariant": true, "null": "calibratable", "verdict": "REJECT -- measures sharpness"},
+    {"id": "S6", "statistic": "RATE of c==0 across contexts", "G_invariant": true, "null": "strong: 0.0538 per unit, 1.4e-23 at 18/18", "verdict": "REJECT as primary; admissible only as a labelled secondary descriptive"},
+    {"id": "S7", "statistic": "|m - tau| on the disparity output", "G_invariant": false, "null": "DEGENERATE FOR THE WRONG REASON -- random weights fail for flatness, not blindness", "verdict": "CANDIDATE, needs a matched null"},
+    {"id": "S8", "statistic": "|m - tau| original vs candidate-axis-permuted, same weights", "G_invariant": false, "null": "the control IS the null and is sharpness-matched by construction", "verdict": "RECOMMENDED"},
+    {"id": "S9", "statistic": "per-pixel k_hat(x) vs a varying field tau(x)", "G_invariant": "partly -- still admits k_hat = tau + c", "null": "needs its own", "verdict": "DEFER -- requires O2/O3"}
+  ],
+
+  "measured_nulls": {
+    "argmin_c_equals_zero_per_unit": 0.05382,
+    "argmin_c_equals_zero_95CI": [0.0354, 0.0722],
+    "offset_constant_per_unit": 0.2656,
+    "c_zero_given_constant": 0.2026,
+    "disparity_output_slope_vs_tau_AA_mean": 0.008,
+    "disparity_output_units_within_0p5_of_slope_1": "0 of 576",
+    "disparity_output_units_within_1p0_candidate_of_tau": "0 of 576",
+    "why_the_disparity_null_is_not_a_control": "for random weights the standardised profile is flat, the softmax is near-uniform and m collapses to the window centre ~5.5 regardless of tau. The null fails for FLATNESS, not for GEOMETRIC BLINDNESS, so a merely sharper trained model would beat it while inheriting tracking for free."
+  },
+
+  "pairing_audit": {
+    "what_the_2x2_delivers": "exact removal of every additive per-image main effect at the raw cost volume, pointwise and content-independent, valid inside the halo and the zero fill",
+    "measured_real_features": 1.809e-07,
+    "what_it_does_not_deliver": "the factor it crosses with is degenerate: it contrasts matched vs crossed pairing AT A FIXED LAG COORDINATE d, and every operator has some lag at which pairing matters",
+    "verdict": "the pairing is sound; the factor is degenerate",
+    "cancellation_by_level": {
+      "raw_cost_volume": "EXACTLY ZERO -- DERIVED and MEASURED 1.809e-07",
+      "aggregation_affine_part": "EXACTLY ZERO including receptive field and padding -- DERIVED; synthetic control <= 2.3e-06",
+      "aggregation_nonlinear": "NO -- measured 0.71 to 0.86 relative",
+      "readout_z_score": "NO -- and NO AFFINE CLAIM SURVIVES HERE; the z-score divides by a tau- and cell-dependent s.d.",
+      "statistic_median": "NO -- the median is not linear"
+    },
+    "explicit_warning_retained": "the cancellation identity licenses exactly one thing: per-image additive main effects are removed AT THE RAW COST VOLUME. It licenses nothing about the statistic, which must be calibrated empirically. GEOM-001 died from conflating these."
+  },
+
+  "power_audit": {
+    "gate_rule_defect": "max(h_rand) over N units is a statistic of N, not of the null. P(gate passes) = (1-p)^N.",
+    "derivation_needs_no_data": true,
+    "N": 576,
+    "p_required_for_50pct_pass": 0.00120,
+    "interpretation": "the null must produce a perfect unit less than once in 831 draws",
+    "unfalsifiable_condition": "if H* == 6 then min(h_trained) > 6 is impossible since h <= 6; the design cannot return a positive",
+    "even_on_G_PASS": "with H* = 5, min(h_trained) > 5 requires ALL 18 trained units to score a perfect 6",
+    "budget_paradox": "running more random seeds makes the experiment HARDER to pass",
+    "measured_P_gate_passes": 1.449e-14,
+    "conclusion": "GEOM-002 was decided before it ran; the 241 s measured the null and decided nothing",
+    "requirements_for_a_successor_gate": {
+      "P-1": "null population and budget fixed before the threshold; threshold expressed as a RATE or QUANTILE, never a maximum",
+      "P-2": "trained and null arms at the same budget per unit and over the same contexts",
+      "P-3": "null matched on every nuisance property the statistic is sensitive to -- for m-based statistics that is SHARPNESS",
+      "P-4": "minimum interpretable effect preregistered as a number with its justification",
+      "P-5": "G-STOP declared on the null's RATE exceeding a preregistered ceiling, not on its maximum touching the scale top"
+    },
+    "minimum_interpretable_effect_proposed": {
+      "statistic": "Delta = median |m-tau|_permuted - median |m-tau|_original, paired by (checkpoint, pair, tau)",
+      "threshold": "Delta >= 1.0 candidate (= 16 px)",
+      "second_clause": "AND median |m-tau|_original <= 1.0 candidate",
+      "rationale": "candidate quantisation is 16 px; a smaller effect is indistinguishable from readout smoothing. The second clause stops 'the control is worse' being reported as 'the model is right'."
+    },
+    "general_lesson": "a weight-randomised null is a FLOOR, not a CONTROL. It answers 'is the effect present', never 'is the effect due to the named mechanism'. Every statistic needs both."
+  },
+
+  "hard_stop_audit": {
+    "gap": "all eleven existing stops verify WIRING; none verifies that the statistic is CAPABLE of answering the question",
+    "new_stops": {
+      "HS-SYM": {
+        "when": "PRE-FREEZE",
+        "condition": "compute the symmetry group of the intervention and verify the primary statistic is NOT invariant under it; assert numerically on random tensors with no model",
+        "cost": "under one second, no checkpoint",
+        "would_have_caught_GEOM-002": true,
+        "note": "architectural availability is DERIVABLE; it should never be discovered empirically"
+      },
+      "HS-NULL-RATE": {"when": "pre-trained", "condition": "the null RATE is below a preregistered ceiling, not its maximum"},
+      "HS-NULL-MATCH": {"when": "pre-trained", "condition": "a nuisance-matched control exists and has been measured, not only a weight-randomised floor"},
+      "HS-DEGENERATE": {"when": "pre-trained", "condition": "a 0/N null is verified not to be an artifact of an unrelated property"},
+      "HS-CEILING": {"when": "pre-trained", "condition": "the strongest supportable claim is written down before results exist and checked to be worth the compute"}
+    },
+    "retained_unchanged": "HS1..HS11, all of which held in GEOM-002",
+    "what_geom002_got_right": "the gate ran FIRST, in its own process, and was terminal. The 31/576 was found before any trained number existed to be tempted by. That ordering is why this failure can be stated cleanly instead of withdrawn."
+  },
+
+  "successor_feasibility": {
+    "decision": "JUSTIFIED, but NOT another instance of this experiment class",
+    "why_not_a_repaired_h": "the distinction is NOT IDENTIFIABLE from a globally translated self-pair by any statistic; repairing h would produce a fourth geometric record with a fifth ceiling",
+    "recommended": "O1 + S8 -- candidate-axis permutation control on the disparity output",
+    "why_this_one": [
+      "permutation leaves the symmetry group G (R-D)",
+      "reuses the settled geometry, mask and harness unchanged",
+      "has a nuisance-matched null: same weights, same sharpness, same marginals (P-3)",
+      "was identified independently as the airtight intervention before this audit existed"
+    ],
+    "conditions": {
+      "C-1": "the primary statistic passes HS-SYM at design time, asserted numerically before the preregistration is frozen",
+      "C-2": "the null is the permutation control at equal budget, plus the random-weight floor reported separately as a floor",
+      "C-3": "the minimum interpretable effect is preregistered as a number before execution",
+      "C-4": "the gate is a rate/quantile rule, never a maximum",
+      "C-5": "the claim ceiling is written into the preregistration and checked to be worth the compute before running",
+      "C-6": "every resolution of an under-specified point is declared, as GEOM-002 did in Part B"
+    },
+    "if_conditions_cannot_be_met": "stop at CORRESPONDENCE NOT DEMONSTRATED and record the synthetic-translation class as exhausted for the reason in the identifiability audit -- itself a real result and more useful than an eleventh ceiling",
+    "remaining_defects_declared_now": [
+      "the same three checkpoints for the eleventh time; three seeds of one recipe; independence is gone",
+      "the designer has read the null and the mechanism; S8 was selected with that knowledge. Mitigation (derive the requirement rather than shop the null) is real but partial",
+      "the ceiling is low even for a clean S8 result",
+      "base rate: ten experiments, ten ceilings or halts, each defect found only after freezing; the last two were both derivable in advance and were not derived"
+    ],
+    "chain_if_authorised": [
+      "1. SYSTEM PROMPT -- question, permutation control, statistic, ceiling; require HS-SYM and P-1..P-5",
+      "2. INDEPENDENT AUDIT -- adversarial: compute the symmetry group of the NEW intervention and prove the new statistic is not invariant under it. The step GEOM-001 and GEOM-002 both skipped",
+      "3. PREREGISTRATION -- Part A verbatim + Part B declared resolutions; HS-SYM, HS-NULL-RATE, HS-NULL-MATCH, HS-DEGENERATE, HS-CEILING + HS1..HS11",
+      "4. EXECUTION -- permutation control first, trained arm in a separate process behind the gate"
+    ],
+    "authorised_here": false,
+    "preregistration_written": false,
+    "experiment_launched": false
+  },
+
+  "established_measured": [
+    "tau is an exact coordinate change on the four-cell family: max residual 0.0 over 60 checks",
+    "the profile is dominantly shift-covariant: R^2 0.867 vs 0.289; 574/576 units",
+    "h == 6 iff offset constant and zero; 31 == 31 exactly",
+    "c is jointly weight- and content-determined: varies across (extractor,pair) for 19 of 27 seeds",
+    "random weights are biased away from zero lag, toward d = +1",
+    "the disparity output does NOT track tau under random weights: slope +0.008, 0/576 within 1.0 candidate",
+    "P(GEOM-002 gate passes) = 1.4e-14; it was decided before it ran"
+  ],
+  "established_derived": [
+    "any statistic invariant under candidate-axis translation is dead on this intervention",
+    "the max-based gate is unsatisfiable for any null with non-trivial mass at the ceiling, and gets stricter as the budget grows",
+    "H-a is not identifiable from a globally translated self-pair by any statistic",
+    "candidate-axis permutation is the minimal transformation outside the symmetry group"
+  ],
+  "not_established": {
+    "level_D_geometric_correspondence": "NOT-DEMONSTRATED (UNCHANGED)",
+    "evidence_for_correspondence": "NONE",
+    "evidence_against_correspondence": "NONE",
+    "trained_aggregation_measured": "NEVER, in GEOM-002 or in this audit"
+  },
+  "unknown": [
+    "whether the trained aggregation's disparity output tracks tau at all -- not measurable without loading trained weights, which this audit does not do",
+    "whether the permutation control behaves as predicted -- a prediction, not a result",
+    "whether any of this transfers to natural stereo pairs"
+  ]
+}

@@ -1,0 +1,12 @@
+EXP-BLOCKCOUNT-FULL-001-ARM-C-SEED1  prefix reproduced exactly: True
+    epoch  1  val_epe 16.0318649410 OK  val_d1 89.0608664445 OK
+    epoch  2  val_epe 18.9456526409 OK  val_d1 87.0030096371 OK
+    epoch 10  val_epe 18.3653008661 OK  val_d1 88.2830455679 OK
+    epoch 20  val_epe 12.0788229745 OK  val_d1 78.7355871049 OK
+EXP-BLOCKCOUNT-FULL-001-ARM-C-SEED2  prefix reproduced exactly: True
+    epoch  1  val_epe 21.4539741035 OK  val_d1 89.7765819935 OK
+    epoch  2  val_epe 17.8466404167 OK  val_d1 89.1205004529 OK
+    epoch 10  val_epe 16.3429208816 OK  val_d1 87.3555487027 OK
+    epoch 20  val_epe 15.5063115733 OK  val_d1 85.6416350678 OK
+
+ALL PREFIXES REPRODUCED EXACTLY.

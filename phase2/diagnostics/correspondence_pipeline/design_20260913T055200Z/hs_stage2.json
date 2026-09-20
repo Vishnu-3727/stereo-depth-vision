@@ -1,0 +1,66 @@
+{
+ "stage": 2,
+ "extractor_seeds": [
+  11,
+  12,
+  13
+ ],
+ "HS-FRAME2": {
+  "synthetic": [
+   {
+    "tau": 1,
+    "argmin_k": 1,
+    "profile_min": 0.0,
+    "profile_second": 1.1184929609298706
+   },
+   {
+    "tau": 3,
+    "argmin_k": 3,
+    "profile_min": 0.0,
+    "profile_second": 1.1205615997314453
+   },
+   {
+    "tau": 5,
+    "argmin_k": 5,
+    "profile_min": 0.0,
+    "profile_second": 1.1207817792892456
+   }
+  ],
+  "PASS": true
+ },
+ "HS-Z": {
+  "delta": 3,
+  "zone_cells": [
+   0,
+   16
+  ],
+  "comp_cells": [
+   56,
+   71
+  ],
+  "per_seed": [
+   {
+    "zone_interior_vs_all_shifted": 0.0,
+    "comp_interior_vs_unshifted": 0.0,
+    "max_diff_anywhere": 0.3791444003582001
+   },
+   {
+    "zone_interior_vs_all_shifted": 0.0,
+    "comp_interior_vs_unshifted": 0.0,
+    "max_diff_anywhere": 0.28003638982772827
+   },
+   {
+    "zone_interior_vs_all_shifted": 0.0,
+    "comp_interior_vs_unshifted": 0.0,
+    "max_diff_anywhere": 0.3206954598426819
+   }
+  ],
+  "PASS": true
+ },
+ "HS-SYM": {
+  "min_over_shift_zone": 0.37914443016052246,
+  "min_over_shift_comp": 0.0,
+  "PASS": true
+ },
+ "VERDICT": "PASS"
+}

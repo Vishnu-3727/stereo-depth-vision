@@ -1,0 +1,26 @@
+freeze verified: 5 frozen artifacts, 63 historical records
+extractor H2_seed0 loaded (sha 581d62e699b1...), trained aggregation DISCARDED (its hash d8d12446c584... is recorded but never used)
+gate H2_seed0 pair 0 (000161_10.png/000162_10.png) done  32 seeds  h=[0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 4, 0, 0, 3, 0, 6, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, 1, 0, 1]  (16.1s)
+gate H2_seed0 pair 1 (000163_10.png/000164_10.png) done  32 seeds  h=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 6, 0, 1, 4, 0, 4, 1, 0, 0, 0, 6, 0, 0, 0, 0, 0, 1, 1, 0, 2]  (29.6s)
+gate H2_seed0 pair 2 (000170_10.png/000171_10.png) done  32 seeds  h=[0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 5, 3, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 1, 0, 4]  (42.9s)
+gate H2_seed0 pair 3 (000172_10.png/000173_10.png) done  32 seeds  h=[0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 5, 0, 0, 1, 0, 0, 1, 0, 0, 0, 2, 4, 0, 0, 0, 0, 1, 2, 0, 0, 1]  (56.8s)
+gate H2_seed0 pair 4 (000174_10.png/000175_10.png) done  32 seeds  h=[0, 0, 0, 4, 1, 0, 0, 0, 0, 0, 0, 6, 5, 0, 1, 0, 0, 5, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 3]  (69.9s)
+gate H2_seed0 pair 5 (000176_10.png/000177_10.png) done  32 seeds  h=[0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 6, 1, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 1, 0, 1]  (83.1s)
+extractor H2_seed1 loaded (sha 58117f2613bb...), trained aggregation DISCARDED (its hash 75f3c7c64ddf... is recorded but never used)
+gate H2_seed1 pair 0 (000161_10.png/000162_10.png) done  32 seeds  h=[1, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 6, 1, 0, 5, 0]  (95.6s)
+gate H2_seed1 pair 1 (000163_10.png/000164_10.png) done  32 seeds  h=[1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 5, 0, 0, 5, 4, 0, 0, 6, 0, 0, 2, 2, 6, 1, 0, 6, 2]  (107.9s)
+gate H2_seed1 pair 2 (000170_10.png/000171_10.png) done  32 seeds  h=[1, 0, 0, 1, 0, 0, 3, 0, 0, 0, 0, 0, 1, 0, 0, 3, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 6, 1, 0, 6, 1]  (120.5s)
+gate H2_seed1 pair 3 (000172_10.png/000173_10.png) done  32 seeds  h=[0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 6, 0, 0, 0, 2, 6, 1, 0, 6, 1]  (133.2s)
+gate H2_seed1 pair 4 (000174_10.png/000175_10.png) done  32 seeds  h=[0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, 0, 0, 2, 0, 0, 2, 0, 0, 0, 6, 0, 0, 0, 3, 6, 3, 0, 5, 0]  (145.6s)
+gate H2_seed1 pair 5 (000176_10.png/000177_10.png) done  32 seeds  h=[3, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 4, 0, 6, 0, 0, 0, 0, 6, 2, 0, 6, 0]  (158.4s)
+extractor H2_seed2 loaded (sha 245a3f5bcb80...), trained aggregation DISCARDED (its hash 1e3bb32e902e... is recorded but never used)
+gate H2_seed2 pair 0 (000161_10.png/000162_10.png) done  32 seeds  h=[2, 0, 0, 1, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 6, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1]  (171.3s)
+gate H2_seed2 pair 1 (000163_10.png/000164_10.png) done  32 seeds  h=[0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 2, 0, 0, 3, 0, 6, 0, 0, 1, 0, 0, 0, 0, 0, 0, 6, 0, 0, 1, 1]  (184.6s)
+gate H2_seed2 pair 2 (000170_10.png/000171_10.png) done  32 seeds  h=[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 1, 0, 3, 0, 0, 5, 0, 1, 0, 0, 0, 0, 6, 0, 0, 5, 1]  (198.5s)
+gate H2_seed2 pair 3 (000172_10.png/000173_10.png) done  32 seeds  h=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 6, 0, 0, 0, 0, 6, 0, 1, 0, 0, 0, 0, 6, 0, 0, 5, 2]  (213.7s)
+gate H2_seed2 pair 4 (000174_10.png/000175_10.png) done  32 seeds  h=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 1, 6, 0, 0, 5, 1]  (227.7s)
+gate H2_seed2 pair 5 (000176_10.png/000177_10.png) done  32 seeds  h=[0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 3, 0, 0, 6, 0, 5, 0, 0, 5, 0, 1, 0, 0, 0, 0, 5, 1, 0, 1, 4]  (241.4s)
+GATE h histogram {0: 414, 1: 67, 2: 19, 3: 13, 4: 10, 5: 22, 6: 31}
+GATE max(h_rand)=6  ->  G-STOP   H*=None
+stage 1 wall_clock_s=241.73  readouts=13824
+TERMINAL: STATISTIC-ARCHITECTURALLY-AVAILABLE. Trained weights are NOT loaded. Stage 2 is not run.

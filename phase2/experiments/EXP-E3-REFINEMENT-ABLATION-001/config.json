@@ -1,0 +1,123 @@
+{
+  "experiment": "EXP-E3-REFINEMENT-ABLATION-001",
+  "hypothesis": "With the matching path working, a substantial part of H2's six-block refinement stack can be removed at inference for little accuracy cost -- the largest available efficiency win, since refinement is 90.6 % of MACs and carries 58-71 % of the residual error.",
+  "preregistration": "phase2/docs/EXP_E3_REFINEMENT_ABLATION_001_PREREGISTRATION.md",
+  "measurement_only": true,
+  "training": "none -- trained H2 checkpoints, block removal at inference only",
+  "models": [
+    "H2",
+    "SEED1",
+    "SEED2"
+  ],
+  "variants": {
+    "full": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "drop block 0 (dilation 1)": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "drop block 1 (dilation 2)": [
+      0,
+      2,
+      3,
+      4,
+      5
+    ],
+    "drop block 2 (dilation 4)": [
+      0,
+      1,
+      3,
+      4,
+      5
+    ],
+    "drop block 3 (dilation 8)": [
+      0,
+      1,
+      2,
+      4,
+      5
+    ],
+    "drop block 4 (dilation 1)": [
+      0,
+      1,
+      2,
+      3,
+      5
+    ],
+    "drop block 5 (dilation 1)": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "keep first 0": [],
+    "keep first 1": [
+      0
+    ],
+    "keep first 2": [
+      0,
+      1
+    ],
+    "keep first 3": [
+      0,
+      1,
+      2
+    ],
+    "keep first 4": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "keep first 5": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "drop ladder (blocks 1,2,3)": [
+      0,
+      4,
+      5
+    ]
+  },
+  "acceptance_bands": {
+    "negligible": {
+      "d1": 1.0,
+      "epe": 0.1
+    },
+    "tolerable": {
+      "d1": 3.0,
+      "epe": 0.3
+    }
+  },
+  "verdict_thresholds": {
+    "oversized_min_mac_saving": 0.25,
+    "right_sized_max_mac_saving": 0.1
+  },
+  "stereo_constraint": "C2: right-image dependence >= 20.0 D1 points",
+  "dataset": "kitti2015",
+  "split": "hailo_val, all 40 scenes, pooled over gt > 0",
+  "resolution": "368x1232 full frames",
+  "crop": null,
+  "disparity_range": 12,
+  "batch_size": 1,
+  "precision": "fp32",
+  "seed": [
+    0,
+    1,
+    2
+  ],
+  "known_limitation": "inference-time ablation of weights trained as a six-block stack: a LOWER bound on how small a retrained refinement stage could be. MACs are not latency; no latency is measured here."
+}

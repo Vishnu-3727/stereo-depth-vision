@@ -1,0 +1,6 @@
+[00:56:17] note: EXP-E1-ERROR-PARTITION-001's DOWNSTREAM-LIMITED verdict is not an artifact of its affine oracle: a targeted fixed-point search for the matching output that would make the refinement stage correct also fails to remove the error.
+[00:56:17] note: a clamped fixed point searches inputs to THESE refinement weights; it says nothing about a refinement stage retrained against a perfect matching input.
+[00:56:17] run 001 affine oracle, H2: 0.53% of substituted pixels outside [0, 11] (range 0.00 .. 15.58)
+[00:56:17] run 001 affine oracle, SEED1: 0.00% of substituted pixels outside [0, 11] (range 0.00 .. 10.79)
+[00:56:17] run 001 affine oracle, SEED2: 0.00% of substituted pixels outside [0, 11] (range 0.00 .. 12.78)
+[00:57:15] status: failed

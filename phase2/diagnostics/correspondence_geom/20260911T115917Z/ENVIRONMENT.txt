@@ -1,0 +1,77 @@
+EXP-CORRESPONDENCE-GEOM-002 -- ENVIRONMENT
+============================================
+
+Inference only. No training, no fine-tuning, no weight or architecture change.
+Synthetic fronto-parallel self-pair: both images are crops of the SAME source
+image (scene.left). The scene's own right image is never used.
+No fill, no padding, no interpolation. Refinement never invoked.
+Primary endpoint: disparity_initial only.
+
+python                     3.12.9
+torch                      2.7.0+cu128
+numpy                      2.5.1
+cuda                       12.8
+gpu                        NVIDIA GeForce RTX 4060 Laptop GPU
+CUBLAS_WORKSPACE_CONFIG    :4096:8
+
+deterministic controls
+  torch.use_deterministic_algorithms       True
+  torch.backends.cudnn.deterministic       True
+  torch.backends.cudnn.benchmark           False
+  torch.no_grad / eval / fp32              True
+
+frozen artefacts (written BEFORE the preregistration, hashed over FILE BYTES)
+  construction_spec.json  sha256 a9e8f250bfef49607951fae0b304d5713091553ad2da885b911f4de711bdea10
+  mask_spec.json          sha256 b274ce037a1fbd6973f8470baf1c38f25a50267c1b740548df4f224598b4b5d7
+
+construction               left  crop rows[0,272) cols[0,1136)   FIXED
+                           right crop horizontal rows[0,272) cols[t,1136+t)
+                           right crop vertical   rows[t,272+t) cols[0,1136)
+                           a_R = a_L + t  =>  imposed disparity EXACTLY t px
+t levels                   [0, 16, 32, 48, 64, 80, 96] px  (candidates [0, 1, 2, 3, 4, 5, 6])
+crop                       1136 x 272 = 71x16 x 17x16, identical every condition
+mask                       retain (y,x) iff 64 <= y < 208 AND 64 <= x < 1072 ; 145152 px; no ground truth consulted
+scenes                     [1, 2, 3, 4] ['000161_10.png', '000162_10.png', '000163_10.png', '000164_10.png']  (held out; disjoint from GEOM-001 focus)
+split                      hailo_val
+
+checkpoints (read-only; sha256 verified at load)
+  NEG_shift_none   d40d805bbe4cca310683f8617c7518d660e30055c43431081bcbb6a7c388f9b1
+      phase2/factorial/shift_none_standardized/20260909T071500Z/checkpoints/EXP-FACTORIAL-SHIFT-NONE-STANDARDISED-001-ARM-A_checkpoint.pth
+      shift=none seed=None
+  POS_6b_seed0     581d62e699b159945580f9627b451d953ce07b5dc763d608a9f4a8b5ecba692a
+      phase2/diagnostics/determinism/20260909T041500Z_baseline/checkpoints/STAGEB-DETERMINISTIC-BASELINE-ARM-A-RUNA_checkpoint.pth
+      shift=left seed=0
+  POS_6b_seed1     58117f2613bba4b2c817328c7d6757f21b340ec5e64a828e633193ae091d4adf
+      phase2/factorial/block_count_full/20260910T005550Z/checkpoints/EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED1_checkpoint.pth
+      shift=left seed=1
+  POS_6b_seed2     245a3f5bcb801c7d9c3550b02cb8775cb86486beae606f04097900340754fa69
+      phase2/factorial/block_count_full/20260910T005550Z/checkpoints/EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED2_checkpoint.pth
+      shift=left seed=2
+
+harness
+  freeze_geom2.py      sha256 abbfd480a884a4feb133786022380fba0ea2b7d1fe630f8dc074d67ac406c29d
+  run_geom2.py         sha256 2f7c354ab82754b63a99ee6496cf7815285d3064ec888b7026c6f56f56b8d877
+
+statistic (frozen in PREREGISTRATION.md section 7 before execution)
+  m_axis(t)  = np.median(disparity_initial[mask])
+  Slope_axis = sum_t (m(t)-m(0))*(t/16) / sum_t (t/16)^2,  t in {16..96}
+  anchor Slope_h = 1 candidate per candidate (descriptive only, never a threshold)
+  rule  C1 Slope_h>0; C2 m_h(t) strictly increasing; C3 |Slope_h|>|Slope_v|;
+        C4 Slope_h > Slope_h(NEG, same scene);  PASS iff all four at 12/12
+  p-value   NOT used
+
+compute   4 models x 4 scenes x 13 conditions = 208 forward passes
+wall clock  13.7 s
+
+protocol deviations        ONE: the t=0 wiring-check HARD STOP was not enforced
+                           by the harness (RESULTS.md section 7.2).
+                           Additionally the preregistration's derivation of the
+                           t=0 anchor was wrong (section 7.1).
+
+provenance
+  HEAD                    58e8a19908ddbd35451652c61aef478f56b51ebd
+  phase-1-frozen^{commit} b4207e518166f5089731b4d037a4a79234f70986
+  phase 1 diff vs frozen  EMPTY
+  phase 2 committed       False (phase2/ untracked; no cryptographic versioning claimed)
+
+VERDICT  SYNTHETIC-CORRESPONDENCE-NOT-DEMONSTRATED   (3/12 units pass)

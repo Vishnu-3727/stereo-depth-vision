@@ -1,0 +1,44 @@
+{
+  "experiment": "EXP-CORRESPONDENCE-GEOM-001",
+  "mechanism": "crop-based translation: NO fill, NO padding, NO interpolation",
+  "rationale": "a zero-filled shift creates an edge discontinuity whose position differs between +Delta and -Delta, which would contribute to the ODD part and contaminate the primary statistic. Cropping removes the vacated region instead of filling it, so every condition sees only real image content and every condition has identical output size.",
+  "original_size": {
+    "width": 1232,
+    "height": 368
+  },
+  "crop_margin_px": 48,
+  "crop_size": {
+    "width": 1136,
+    "height": 272
+  },
+  "crop_size_in_feature_samples": {
+    "width": 71,
+    "height": 17
+  },
+  "left_crop": "cols [M, W-M), rows [M, H-M)  -- FIXED for every condition",
+  "right_crop_horizontal": "cols [M-dx, W-M-dx), rows [M, H-M)",
+  "right_crop_vertical": "cols [M, W-M), rows [M-dy, H-M-dy)",
+  "deltas_px": [
+    -48,
+    -32,
+    -16,
+    0,
+    16,
+    32,
+    48
+  ],
+  "axes": [
+    "horizontal",
+    "vertical"
+  ],
+  "n_distinct_conditions": 13,
+  "delta_zero_shared": true,
+  "all_deltas_multiple_of_stride": true,
+  "max_abs_delta_equals_crop_margin": true,
+  "disparity_algebra": "d_crop = (x_L - M) - (x_R - M + dx) = d_orig - dx   [exact, integer]",
+  "predicted_candidate_response": "Delta(disparity_initial) = -dx / 16 candidates",
+  "anchor_slope_candidates_per_pixel": -0.0625,
+  "why_not_64": "at |dx| = 64 px (4 candidates) the predicted output range 3.84-4.00 = -0.16 falls below the candidate floor 0, so the soft-argmin would rail. 48 px keeps the predicted range within 0.84 .. 8.83 for every unit, using the identity medians already published in ARCH-001. Rejected on geometry, not on expected results.",
+  "why_multiples_of_16": "the feature extractor is fully convolutional with total stride 2**4 = 16 (4 x Conv2d(5, stride=2, padding=2), then ResBlocks and Conv2d(3, stride=1); no pooling, no normalisation, no global op), so a 16n px image translation produces EXACTLY an n-sample feature translation in the interior. Non-multiples would introduce an interpolation confound outside the hypothesis.",
+  "interpolation": "none -- all crops are integer-aligned"
+}

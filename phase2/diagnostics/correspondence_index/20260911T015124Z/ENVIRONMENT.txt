@@ -1,0 +1,85 @@
+EXP-CORRESPONDENCE-INDEX-002 -- ENVIRONMENT
+============================================
+
+Inference only. No training, no optimizer, no weight/architecture change.
+No image, feature or preprocessing modification. Refinement never invoked.
+Primary endpoint: disparity_initial only.
+
+python                     3.12.9
+torch                      2.7.0+cu128
+numpy                      2.5.1
+cuda                       12.8
+gpu                        NVIDIA GeForce RTX 4060 Laptop GPU
+device used                cuda
+CUBLAS_WORKSPACE_CONFIG    :4096:8
+
+deterministic controls
+  torch.use_deterministic_algorithms       True
+  torch.backends.cudnn.deterministic       True
+  torch.backends.cudnn.benchmark           False
+  CUBLAS_WORKSPACE_CONFIG                  :4096:8
+  torch.no_grad / model.eval / fp32        True
+
+frozen permutation null (generated BEFORE the preregistration was finalised,
+and before any arm of this experiment ran)
+  seed                     numpy.random.default_rng(20260911)
+  numpy                    2.5.1
+  random permutations      1536
+  null triples (M)         512   (disjoint: triple i = perms 3i, 3i+1, 3i+2)
+  duplicates               0
+  screening / rejection    none applied
+  permutations.json        sha256 f064d09f6b7d506caf5edc5644c2c104dc74d6fd00abe33f0d2eb9ffb6e243d7
+
+ordered permutation arms   V'(k) = V(pi(k)),  pi_m(k) = (k - m) mod 12
+  identity   [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+  m_plus_1   [11, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  m_plus_2   [10, 11, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  m_minus_1  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0]
+
+scenes    FOCUS_SCENES [27, 0, 31, 6], split hailo_val
+mask      GT valid and GT/16 in [2,8]; ground-truth-derived, model-independent;
+          no border mask; unchanged from EXP-CORRESPONDENCE-INDEX-001
+volume    (1, 32, 12, 23, 77) = (B, C, D, H, W), candidate axis dim=2, N=12
+
+checkpoints (loaded read-only; sha256 verified at load against the
+preregistration, HARD STOP on mismatch)
+  NEG_shift_none   d40d805bbe4cca310683f8617c7518d660e30055c43431081bcbb6a7c388f9b1
+      phase2/factorial/shift_none_standardized/20260909T071500Z/checkpoints/EXP-FACTORIAL-SHIFT-NONE-STANDARDISED-001-ARM-A_checkpoint.pth
+      shift=none  seed=None  regression=StandardisedDisparityRegression
+  POS_6b_seed0     581d62e699b159945580f9627b451d953ce07b5dc763d608a9f4a8b5ecba692a
+      phase2/diagnostics/determinism/20260909T041500Z_baseline/checkpoints/STAGEB-DETERMINISTIC-BASELINE-ARM-A-RUNA_checkpoint.pth
+      shift=left  seed=0  regression=StandardisedDisparityRegression
+  POS_6b_seed1     58117f2613bba4b2c817328c7d6757f21b340ec5e64a828e633193ae091d4adf
+      phase2/factorial/block_count_full/20260910T005550Z/checkpoints/EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED1_checkpoint.pth
+      shift=left  seed=1  regression=StandardisedDisparityRegression
+  POS_6b_seed2     245a3f5bcb801c7d9c3550b02cb8775cb86486beae606f04097900340754fa69
+      phase2/factorial/block_count_full/20260910T005550Z/checkpoints/EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED2_checkpoint.pth
+      shift=left  seed=2  regression=StandardisedDisparityRegression
+
+harness
+  freeze_permutations.py     sha256 71281fcc1f328dfabc816fa569d2168e248fcc530e1bae0564354f14b8b31dcc
+  run_index_null.py          sha256 69e634f86e718c74df2dbf5c979589914d9f98f802eac4c98ed35acf5a4f19cb
+  summarize_null.py          sha256 1731d20402d16e793463a11327930f0f80ea4a358782bd42aa04ca13fb60bf8e
+
+statistics (frozen in PREREGISTRATION.md section 6 before execution)
+  d(x)      np.median(disparity_initial[mask])   -- identical to INDEX-001
+  S_order   (d(+2) - d(identity)) + (d(+1) - d(-1))            [primary]
+  S_abs     |d(+2)-d(id)| + |d(+1)-d(id)| + |d(-1)-d(id)|      [secondary]
+  null      S_random[i] = (d(pi_a)-d(id)) + (d(pi_b)-d(pi_c)), triple i
+  test      two-sided p = min(1, 2*min((1+ge)/(M+1), (1+le)/(M+1)))
+            pass iff p <= 0.01 AND S_order outside [p01, p99] of the null
+  ordering  d(+2) > d(+1) > d(identity) > d(-1)
+  level     all 12 positive (checkpoint, scene) units must pass both
+
+compute   16 cost-volume builds; 4 ordered + 1536 random arms per unit;
+          24,640 aggregation/readout arms total
+wall clock  264.1 s
+
+provenance
+  HEAD                    58e8a19908ddbd35451652c61aef478f56b51ebd
+  phase-1-frozen^{commit} b4207e518166f5089731b4d037a4a79234f70986
+  phase 1 diff vs frozen  EMPTY
+  phase 2 committed       False  (phase2/ is untracked; no cryptographic
+                          versioning is claimed for this record)
+
+VERDICT  CANDIDATE-COORDINATE-SENSITIVITY-NOT-DEMONSTRATED

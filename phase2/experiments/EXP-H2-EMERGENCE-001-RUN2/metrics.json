@@ -1,0 +1,4872 @@
+{
+  "experiment_id": "EXP-H2-EMERGENCE-001-RUN2",
+  "description": "H2 stereo-dependence emergence over training",
+  "status": "completed",
+  "started_utc": "2026-09-08T00:21:32.743847+00:00",
+  "finished_utc": "2026-09-08T00:22:19.785005+00:00",
+  "duration_s": 47.041158,
+  "metrics": {
+    "emergence_seed1": {
+      "emerged": true,
+      "first_epoch_meeting_criterion": 20,
+      "interval": [
+        10,
+        20
+      ],
+      "monotone_after": true
+    },
+    "emergence_seed2": {
+      "emerged": true,
+      "first_epoch_meeting_criterion": 50,
+      "interval": [
+        20,
+        50
+      ],
+      "monotone_after": true
+    },
+    "cross_check_vs_recorded_ablation": [
+      {
+        "seed": 1,
+        "epoch": 10,
+        "recorded_right_worst_pt": -1.2575351945946949,
+        "remeasured_right_worst_pt": -1.2575351945946949,
+        "difference_pt": 0.0
+      },
+      {
+        "seed": 1,
+        "epoch": 100,
+        "recorded_right_worst_pt": 73.43023139736859,
+        "remeasured_right_worst_pt": 73.43023139736859,
+        "difference_pt": 0.0
+      },
+      {
+        "seed": 1,
+        "epoch": 200,
+        "recorded_right_worst_pt": 76.7821226292864,
+        "remeasured_right_worst_pt": 76.7821226292864,
+        "difference_pt": 0.0
+      },
+      {
+        "seed": 2,
+        "epoch": 10,
+        "recorded_right_worst_pt": -2.4111230723336803,
+        "remeasured_right_worst_pt": -2.4111230723336803,
+        "difference_pt": 0.0
+      },
+      {
+        "seed": 2,
+        "epoch": 100,
+        "recorded_right_worst_pt": 65.06037261651096,
+        "remeasured_right_worst_pt": 65.06037261651096,
+        "difference_pt": 0.0
+      },
+      {
+        "seed": 2,
+        "epoch": 200,
+        "recorded_right_worst_pt": 74.88025642426561,
+        "remeasured_right_worst_pt": 74.88025642426561,
+        "difference_pt": 0.0
+      }
+    ],
+    "rows": [
+      {
+        "seed": 1,
+        "epoch": 10,
+        "snapshot": "phase2\\results\\training\\EXP-H2-SEED-REPLICATION-001-SEED1-RUN2_epoch10.pth",
+        "snapshot_sha256": "a5fb92aedc2ad408ed67e1127d2a39a627f67e6fd6317b2b7c402c774620125b",
+        "probe_scene_d1": 80.90809030253045,
+        "probe_scene_epe": 9.80968973355552,
+        "right_dependence_worst_pt": -1.2575351945946949,
+        "right_dependence_mean_pt": 3.9575141533948988,
+        "map_dependence_worst_pt": 2.0915339149319294,
+        "map_dependence_mean_pt": 4.318766142315782,
+        "softmax_entropy": 2.0607648316854723,
+        "matching_gradient_fraction": 1.0,
+        "matching_grad_median": 16.68952063448362,
+        "total_grad_max": 95.03116398567715,
+        "grad_spikes_above_1e4": 0,
+        "ablation": [
+          {
+            "scene": "000187_10.png",
+            "baseline": {
+              "epe": 8.16855941532054,
+              "d1": 76.34142229024266
+            },
+            "softmax_entropy": 2.050042215654514,
+            "right_black": {
+              "epe": 11.691389032406615,
+              "d1": 86.77449060323472,
+              "d1_penalty": 10.433068312992063,
+              "mean_abs_change_px": 6.3143468660721584
+            },
+            "right_noise": {
+              "epe": 11.651094640056282,
+              "d1": 86.37112359113371,
+              "d1_penalty": 10.029701300891048,
+              "mean_abs_change_px": 6.580770615751754
+            },
+            "right_equals_left": {
+              "epe": 9.590686967850004,
+              "d1": 79.75512639265379,
+              "d1_penalty": 3.413704102411131,
+              "mean_abs_change_px": 2.5661088345921534
+            },
+            "initial_constant_mean": {
+              "epe": 13.77289834137988,
+              "d1": 80.26355040790651,
+              "d1_penalty": 3.9221281176638456,
+              "mean_abs_change_px": 7.149936729101838
+            },
+            "initial_shuffled": {
+              "epe": 14.035691923189793,
+              "d1": 83.07155549214667,
+              "d1_penalty": 6.73013320190401,
+              "mean_abs_change_px": 7.438024489404681
+            }
+          },
+          {
+            "scene": "000160_10.png",
+            "baseline": {
+              "epe": 10.812401673087729,
+              "d1": 82.43755864795256
+            },
+            "softmax_entropy": 2.056116785119016,
+            "right_black": {
+              "epe": 12.645546097381956,
+              "d1": 86.29884001836804,
+              "d1_penalty": 3.861281370415483,
+              "mean_abs_change_px": 6.857847006496658
+            },
+            "right_noise": {
+              "epe": 12.370434582715388,
+              "d1": 84.49897178908698,
+              "d1_penalty": 2.061413141134423,
+              "mean_abs_change_px": 8.023137602104239
+            },
+            "right_equals_left": {
+              "epe": 14.240603959060348,
+              "d1": 87.14237227224629,
+              "d1_penalty": 4.704813624293735,
+              "mean_abs_change_px": 3.8747567752500305
+            },
+            "initial_constant_mean": {
+              "epe": 15.209504799855496,
+              "d1": 87.66346556990837,
+              "d1_penalty": 5.225906921955811,
+              "mean_abs_change_px": 6.454993157248937
+            },
+            "initial_shuffled": {
+              "epe": 15.265707693075795,
+              "d1": 87.31806656417834,
+              "d1_penalty": 4.880507916225781,
+              "mean_abs_change_px": 6.681447344398802
+            }
+          },
+          {
+            "scene": "000191_10.png",
+            "baseline": {
+              "epe": 10.20581612625397,
+              "d1": 82.74206882935799
+            },
+            "softmax_entropy": 2.0694636705789686,
+            "right_black": {
+              "epe": 12.396739328233089,
+              "d1": 88.96484495502277,
+              "d1_penalty": 6.22277612566478,
+              "mean_abs_change_px": 7.524196909457647
+            },
+            "right_noise": {
+              "epe": 12.239307319271699,
+              "d1": 87.85676386026826,
+              "d1_penalty": 5.114695030910269,
+              "mean_abs_change_px": 8.791314411059627
+            },
+            "right_equals_left": {
+              "epe": 11.859046251113867,
+              "d1": 83.72058587628484,
+              "d1_penalty": 0.9785170469268536,
+              "mean_abs_change_px": 2.0791127768569724
+            },
+            "initial_constant_mean": {
+              "epe": 14.349963628051768,
+              "d1": 85.12111153613603,
+              "d1_penalty": 2.379042706778037,
+              "mean_abs_change_px": 6.96964082993222
+            },
+            "initial_shuffled": {
+              "epe": 14.453094904950634,
+              "d1": 84.83360274428992,
+              "d1_penalty": 2.0915339149319294,
+              "mean_abs_change_px": 7.2354020212457755
+            }
+          },
+          {
+            "scene": "000166_10.png",
+            "baseline": {
+              "epe": 10.051981719559839,
+              "d1": 82.1113114425686
+            },
+            "softmax_entropy": 2.0674366553893893,
+            "right_black": {
+              "epe": 11.240344960179481,
+              "d1": 82.60485530605183,
+              "d1_penalty": 0.4935438634832252,
+              "mean_abs_change_px": 5.01926108727727
+            },
+            "right_noise": {
+              "epe": 10.741597389801013,
+              "d1": 80.85377624797391,
+              "d1_penalty": -1.2575351945946949,
+              "mean_abs_change_px": 5.452582220129357
+            },
+            "right_equals_left": {
+              "epe": 13.708663929526756,
+              "d1": 83.54550255877908,
+              "d1_penalty": 1.4341911162104708,
+              "mean_abs_change_px": 4.88567193431379
+            },
+            "initial_constant_mean": {
+              "epe": 13.734730602589469,
+              "d1": 86.28275874628932,
+              "d1_penalty": 4.171447303720711,
+              "mean_abs_change_px": 6.33024192716451
+            },
+            "initial_shuffled": {
+              "epe": 13.821377434122901,
+              "d1": 87.26074049791474,
+              "d1_penalty": 5.149429055346133,
+              "mean_abs_change_px": 6.590684612223774
+            }
+          }
+        ],
+        "gradient": {
+          "batches": 12,
+          "matching_present": 12,
+          "matching_present_fraction": 1.0,
+          "matching_norm": {
+            "median": 16.68952063448362,
+            "min": 13.823416417483164,
+            "max": 46.01696190763591
+          },
+          "total_norm": {
+            "median": 53.146599210054944,
+            "max": 95.03116398567715
+          },
+          "spikes_above_1e4": 0,
+          "mean_softmax_entropy": 2.0541055424895673,
+          "exact_ties_total": 1,
+          "any_non_finite": false,
+          "crops": [
+            {
+              "scene": "000000_10.png",
+              "crop_yx": [
+                96,
+                459
+              ],
+              "loss": 7.459086894989014,
+              "feature_extractor": 1.7039851778756971,
+              "aggregation": 16.137000534095232,
+              "refinement": 45.48573403995657,
+              "matching_path": 16.226717219567544,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 2.0745493311036833,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000001_10.png",
+              "crop_yx": [
+                57,
+                194
+              ],
+              "loss": 3.531811475753784,
+              "feature_extractor": 4.916910587880418,
+              "aggregation": 29.27130657977424,
+              "refinement": 52.060923614725084,
+              "matching_path": 29.681398191735262,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 2.0008901511711015,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000002_10.png",
+              "crop_yx": [
+                34,
+                29
+              ],
+              "loss": 6.9952311515808105,
+              "feature_extractor": 5.3386611298187265,
+              "aggregation": 45.70623021591014,
+              "refinement": 80.58311559234615,
+              "matching_path": 46.01696190763591,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 2.108687830888421,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000003_10.png",
+              "crop_yx": [
+                8,
+                11
+              ],
+              "loss": 8.846673965454102,
+              "feature_extractor": 16.93130983200276,
+              "aggregation": 41.00548337722913,
+              "refinement": 84.0404855343255,
+              "matching_path": 44.36348633310381,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 2.0731218862086376,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000004_10.png",
+              "crop_yx": [
+                19,
+                586
+              ],
+              "loss": 8.490205764770508,
+              "feature_extractor": 2.805571748329255,
+              "aggregation": 14.345469010312286,
+              "refinement": 40.966231328351164,
+              "matching_path": 14.617240299073332,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 2.0583788794946836,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000005_10.png",
+              "crop_yx": [
+                73,
+                658
+              ],
+              "loss": 17.109262466430664,
+              "feature_extractor": 1.7465815653941186,
+              "aggregation": 15.538392844912721,
+              "refinement": 56.85135722363364,
+              "matching_path": 15.636246332397345,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 2.099165974627084,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000006_10.png",
+              "crop_yx": [
+                56,
+                437
+              ],
+              "loss": 8.364818572998047,
+              "feature_extractor": 2.8829927773164816,
+              "aggregation": 16.61540094642944,
+              "refinement": 16.892036987903715,
+              "matching_path": 16.86366496241749,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 2.038020523175357,
+              "exact_ties": 1
+            },
+            {
+              "scene": "000007_10.png",
+              "crop_yx": [
+                109,
+                525
+              ],
+              "loss": 10.205242156982422,
+              "feature_extractor": 3.597199483732615,
+              "aggregation": 20.648756749443752,
+              "refinement": 59.83312771731182,
+              "matching_path": 20.959747122125904,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 2.0201341900562175,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000008_10.png",
+              "crop_yx": [
+                71,
+                391
+              ],
+              "loss": 3.992283821105957,
+              "feature_extractor": 2.124788276496634,
+              "aggregation": 14.116452985810236,
+              "refinement": 11.205098880627164,
+              "matching_path": 14.275467422138172,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 2.036357068215441,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000009_10.png",
+              "crop_yx": [
+                63,
+                674
+              ],
+              "loss": 4.459680557250977,
+              "feature_extractor": 4.314365772625473,
+              "aggregation": 15.941891435050696,
+              "refinement": 13.66905851225125,
+              "matching_path": 16.51537630654975,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 2.0666995711161222,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000010_10.png",
+              "crop_yx": [
+                31,
+                588
+              ],
+              "loss": 2.6228854656219482,
+              "feature_extractor": 2.169023594267174,
+              "aggregation": 13.652185835925886,
+              "refinement": 33.368011764157245,
+              "matching_path": 13.823416417483164,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 2.0712589653910554,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000011_10.png",
+              "crop_yx": [
+                75,
+                1
+              ],
+              "loss": 7.256772518157959,
+              "feature_extractor": 5.949349745736792,
+              "aggregation": 25.80869654816506,
+              "refinement": 51.5992828233953,
+              "matching_path": 26.485535295937773,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 2.0020021384270024,
+              "exact_ties": 0
+            }
+          ]
+        }
+      },
+      {
+        "seed": 1,
+        "epoch": 20,
+        "snapshot": "phase2\\results\\training\\EXP-H2-SEED-REPLICATION-001-SEED1-RUN2_epoch20.pth",
+        "snapshot_sha256": "d7a237e6bda15ed34367952e3dd20f0e79b69f3a5b067d1df37b3455dfa22810",
+        "probe_scene_d1": 49.08346963018547,
+        "probe_scene_epe": 3.7081544471872268,
+        "right_dependence_worst_pt": 32.34571844989718,
+        "right_dependence_mean_pt": 41.507104818837625,
+        "map_dependence_worst_pt": 26.776565803296975,
+        "map_dependence_mean_pt": 35.58739924210872,
+        "softmax_entropy": 1.6821943535460593,
+        "matching_gradient_fraction": 1.0,
+        "matching_grad_median": 16.526735472465948,
+        "total_grad_max": 73.9420203124927,
+        "grad_spikes_above_1e4": 0,
+        "ablation": [
+          {
+            "scene": "000187_10.png",
+            "baseline": {
+              "epe": 3.791904721943034,
+              "d1": 52.905928587177854
+            },
+            "softmax_entropy": 1.609158220843268,
+            "right_black": {
+              "epe": 17.539825837838908,
+              "d1": 87.93400863802026,
+              "d1_penalty": 35.028080050842405,
+              "mean_abs_change_px": 22.267469452125063
+            },
+            "right_noise": {
+              "epe": 18.067853079533474,
+              "d1": 88.53322265599668,
+              "d1_penalty": 35.62729406881883,
+              "mean_abs_change_px": 21.831404885929235
+            },
+            "right_equals_left": {
+              "epe": 18.468140894914484,
+              "d1": 88.56435065693053,
+              "d1_penalty": 35.658422069752675,
+              "mean_abs_change_px": 10.121148002217721
+            },
+            "initial_constant_mean": {
+              "epe": 13.15337545585605,
+              "d1": 79.68249439047483,
+              "d1_penalty": 26.776565803296975,
+              "mean_abs_change_px": 11.683822242931196
+            },
+            "initial_shuffled": {
+              "epe": 13.58348779381114,
+              "d1": 83.282966498489,
+              "d1_penalty": 30.37703791131115,
+              "mean_abs_change_px": 11.86716459103282
+            }
+          },
+          {
+            "scene": "000160_10.png",
+            "baseline": {
+              "epe": 4.357895653044149,
+              "d1": 58.17078283786212
+            },
+            "softmax_entropy": 1.6293859119081486,
+            "right_black": {
+              "epe": 18.201071228591548,
+              "d1": 92.05282807914229,
+              "d1_penalty": 33.88204524128017,
+              "mean_abs_change_px": 23.028251810712433
+            },
+            "right_noise": {
+              "epe": 19.522654831900933,
+              "d1": 93.33759258889532,
+              "d1_penalty": 35.1668097510332,
+              "mean_abs_change_px": 25.39002428007565
+            },
+            "right_equals_left": {
+              "epe": 20.234741198351823,
+              "d1": 90.5165012877593,
+              "d1_penalty": 32.34571844989718,
+              "mean_abs_change_px": 11.086474706862123
+            },
+            "initial_constant_mean": {
+              "epe": 14.062459401771898,
+              "d1": 89.51923652844052,
+              "d1_penalty": 31.348453690578395,
+              "mean_abs_change_px": 12.031921210094554
+            },
+            "initial_shuffled": {
+              "epe": 14.287749916294253,
+              "d1": 87.30508914488789,
+              "d1_penalty": 29.134306307025767,
+              "mean_abs_change_px": 12.168322299928407
+            }
+          },
+          {
+            "scene": "000191_10.png",
+            "baseline": {
+              "epe": 3.249516161235884,
+              "d1": 40.91015658740638
+            },
+            "softmax_entropy": 1.6544706791110453,
+            "right_black": {
+              "epe": 16.503913124443063,
+              "d1": 88.50828592934441,
+              "d1_penalty": 47.598129341938034,
+              "mean_abs_change_px": 22.10261393277335
+            },
+            "right_noise": {
+              "epe": 16.735069998645606,
+              "d1": 89.04628521365728,
+              "d1_penalty": 48.13612862625091,
+              "mean_abs_change_px": 21.93494024913798
+            },
+            "right_equals_left": {
+              "epe": 20.072204964483443,
+              "d1": 91.06008069989264,
+              "d1_penalty": 50.14992411248626,
+              "mean_abs_change_px": 12.01560427316421
+            },
+            "initial_constant_mean": {
+              "epe": 13.277059365262625,
+              "d1": 86.2563393837687,
+              "d1_penalty": 45.34618279636233,
+              "mean_abs_change_px": 12.286080915661753
+            },
+            "initial_shuffled": {
+              "epe": 13.53015723063529,
+              "d1": 85.94538566898237,
+              "d1_penalty": 45.03522908157599,
+              "mean_abs_change_px": 12.49930490423909
+            }
+          },
+          {
+            "scene": "000166_10.png",
+            "baseline": {
+              "epe": 3.433301252525838,
+              "d1": 44.34701050829554
+            },
+            "softmax_entropy": 1.8357626023217755,
+            "right_black": {
+              "epe": 14.589008861586835,
+              "d1": 91.7973374128103,
+              "d1_penalty": 47.45032690451475,
+              "mean_abs_change_px": 16.771392852799963
+            },
+            "right_noise": {
+              "epe": 14.84070105642033,
+              "d1": 92.5294578302282,
+              "d1_penalty": 48.182447321932656,
+              "mean_abs_change_px": 17.465540077469985
+            },
+            "right_equals_left": {
+              "epe": 22.330783001971746,
+              "d1": 93.2069423956,
+              "d1_penalty": 48.859931887304455,
+              "mean_abs_change_px": 16.51417233947326
+            },
+            "initial_constant_mean": {
+              "epe": 11.56417405747953,
+              "d1": 82.4427689449817,
+              "d1_penalty": 38.095758436686154,
+              "mean_abs_change_px": 11.093400686184173
+            },
+            "initial_shuffled": {
+              "epe": 11.778447129447693,
+              "d1": 82.9326704183285,
+              "d1_penalty": 38.58565991003296,
+              "mean_abs_change_px": 11.358784218850419
+            }
+          }
+        ],
+        "gradient": {
+          "batches": 12,
+          "matching_present": 12,
+          "matching_present_fraction": 1.0,
+          "matching_norm": {
+            "median": 16.526735472465948,
+            "min": 10.34713718602241,
+            "max": 28.513992486103543
+          },
+          "total_norm": {
+            "median": 34.83974569807936,
+            "max": 73.9420203124927
+          },
+          "spikes_above_1e4": 0,
+          "mean_softmax_entropy": 1.699162491733703,
+          "exact_ties_total": 0,
+          "any_non_finite": false,
+          "crops": [
+            {
+              "scene": "000000_10.png",
+              "crop_yx": [
+                96,
+                459
+              ],
+              "loss": 2.1725399494171143,
+              "feature_extractor": 3.174038290274667,
+              "aggregation": 16.724213155205092,
+              "refinement": 59.88796056064876,
+              "matching_path": 17.022744336001313,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.7933170719205296,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000001_10.png",
+              "crop_yx": [
+                57,
+                194
+              ],
+              "loss": 1.7754507064819336,
+              "feature_extractor": 3.67482341566965,
+              "aggregation": 15.60384146529056,
+              "refinement": 33.88991570724733,
+              "matching_path": 16.030726608930582,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.4691997121340479,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000002_10.png",
+              "crop_yx": [
+                34,
+                29
+              ],
+              "loss": 5.0162458419799805,
+              "feature_extractor": 3.7130683262101503,
+              "aggregation": 14.041902274148478,
+              "refinement": 20.03874730333706,
+              "matching_path": 14.524527388932189,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.603441588446059,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000003_10.png",
+              "crop_yx": [
+                8,
+                11
+              ],
+              "loss": 3.6912593841552734,
+              "feature_extractor": 3.156157690194552,
+              "aggregation": 10.411747885972817,
+              "refinement": 13.250080824905584,
+              "matching_path": 10.879605939850654,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.4861747403645933,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000004_10.png",
+              "crop_yx": [
+                19,
+                586
+              ],
+              "loss": 5.703946113586426,
+              "feature_extractor": 4.117615137010984,
+              "aggregation": 13.698547979813062,
+              "refinement": 28.836598013334978,
+              "matching_path": 14.304019406159323,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.7625420391481388,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000005_10.png",
+              "crop_yx": [
+                73,
+                658
+              ],
+              "loss": 10.094244956970215,
+              "feature_extractor": 3.3224750073289444,
+              "aggregation": 9.799204445874281,
+              "refinement": 20.169959320625058,
+              "matching_path": 10.34713718602241,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.9564212875593647,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000006_10.png",
+              "crop_yx": [
+                56,
+                437
+              ],
+              "loss": 4.9117560386657715,
+              "feature_extractor": 4.4543818130356385,
+              "aggregation": 21.924572529110087,
+              "refinement": 37.70579648628753,
+              "matching_path": 22.372491991740915,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.75326654537025,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000007_10.png",
+              "crop_yx": [
+                109,
+                525
+              ],
+              "loss": 3.4780991077423096,
+              "feature_extractor": 4.825904341244586,
+              "aggregation": 22.141937390719193,
+              "refinement": 69.9963370626542,
+              "matching_path": 22.661746272636893,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.788742934032105,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000008_10.png",
+              "crop_yx": [
+                71,
+                391
+              ],
+              "loss": 2.036202907562256,
+              "feature_extractor": 3.3374275108656564,
+              "aggregation": 12.551871066969928,
+              "refinement": 26.716382615753894,
+              "matching_path": 12.987990209117026,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.5644279639993233,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000009_10.png",
+              "crop_yx": [
+                63,
+                674
+              ],
+              "loss": 5.830181121826172,
+              "feature_extractor": 5.753576943291741,
+              "aggregation": 27.927479654547973,
+              "refinement": 68.22297707074586,
+              "matching_path": 28.513992486103543,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.890956769854202,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000010_10.png",
+              "crop_yx": [
+                31,
+                588
+              ],
+              "loss": 3.5747408866882324,
+              "feature_extractor": 4.403708527905829,
+              "aggregation": 24.74405426099807,
+              "refinement": 52.729942088065584,
+              "matching_path": 25.132864342727974,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.589331861062995,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000011_10.png",
+              "crop_yx": [
+                75,
+                1
+              ],
+              "loss": 6.004758834838867,
+              "feature_extractor": 7.09539761989034,
+              "aggregation": 16.985429712779265,
+              "refinement": 11.012789199547976,
+              "matching_path": 18.407864892814434,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.7321273869128269,
+              "exact_ties": 0
+            }
+          ]
+        }
+      },
+      {
+        "seed": 1,
+        "epoch": 50,
+        "snapshot": "phase2\\results\\training\\EXP-H2-SEED-REPLICATION-001-SEED1-RUN2_epoch50.pth",
+        "snapshot_sha256": "24176ef3aeae63a98a42780e310599c47538715f6a5c502f6d228b4737ecc540",
+        "probe_scene_d1": 22.40654033180112,
+        "probe_scene_epe": 2.257579187844525,
+        "right_dependence_worst_pt": 58.67708390245679,
+        "right_dependence_mean_pt": 71.33431096261846,
+        "map_dependence_worst_pt": 48.6896501484274,
+        "map_dependence_mean_pt": 61.79636452903584,
+        "softmax_entropy": 1.7031241102015886,
+        "matching_gradient_fraction": 1.0,
+        "matching_grad_median": 7.525466817815688,
+        "total_grad_max": 52.84146377947898,
+        "grad_spikes_above_1e4": 0,
+        "ablation": [
+          {
+            "scene": "000187_10.png",
+            "baseline": {
+              "epe": 1.8184308508806453,
+              "d1": 16.282538488476156
+            },
+            "softmax_entropy": 1.6935181745681922,
+            "right_black": {
+              "epe": 31.677495311023062,
+              "d1": 91.2478437374353,
+              "d1_penalty": 74.96530524895914,
+              "mean_abs_change_px": 29.080886353006065
+            },
+            "right_noise": {
+              "epe": 35.522670510934596,
+              "d1": 95.45142086354262,
+              "d1_penalty": 79.16888237506646,
+              "mean_abs_change_px": 33.67506665539865
+            },
+            "right_equals_left": {
+              "epe": 20.677332088434934,
+              "d1": 92.27377076821313,
+              "d1_penalty": 75.99123227973698,
+              "mean_abs_change_px": 14.152662542948887
+            },
+            "initial_constant_mean": {
+              "epe": 12.753203770636313,
+              "d1": 84.70707254121218,
+              "d1_penalty": 68.42453405273602,
+              "mean_abs_change_px": 12.658502300617505
+            },
+            "initial_shuffled": {
+              "epe": 12.950954338908698,
+              "d1": 84.94053254821597,
+              "d1_penalty": 68.65799405973982,
+              "mean_abs_change_px": 12.820826543547646
+            }
+          },
+          {
+            "scene": "000160_10.png",
+            "baseline": {
+              "epe": 2.1458010259014397,
+              "d1": 20.395511809451556
+            },
+            "softmax_entropy": 1.7032294876443494,
+            "right_black": {
+              "epe": 34.72484937130109,
+              "d1": 95.17339828698064,
+              "d1_penalty": 74.77788647752908,
+              "mean_abs_change_px": 32.772299576654845
+            },
+            "right_noise": {
+              "epe": 39.38227624491628,
+              "d1": 95.64757322259268,
+              "d1_penalty": 75.25206141314112,
+              "mean_abs_change_px": 37.57107593331282
+            },
+            "right_equals_left": {
+              "epe": 21.779057197063185,
+              "d1": 90.66524247808813,
+              "d1_penalty": 70.26973066863658,
+              "mean_abs_change_px": 14.824541681423522
+            },
+            "initial_constant_mean": {
+              "epe": 13.517095242566812,
+              "d1": 85.40140156128336,
+              "d1_penalty": 65.0058897518318,
+              "mean_abs_change_px": 13.460717033334014
+            },
+            "initial_shuffled": {
+              "epe": 13.645323517808688,
+              "d1": 85.65595863198035,
+              "d1_penalty": 65.26044682252879,
+              "mean_abs_change_px": 13.543477523557627
+            }
+          },
+          {
+            "scene": "000191_10.png",
+            "baseline": {
+              "epe": 2.3113184119257606,
+              "d1": 21.109068249404622
+            },
+            "softmax_entropy": 1.6256768671143016,
+            "right_black": {
+              "epe": 32.34497318361259,
+              "d1": 95.77127626756827,
+              "d1_penalty": 74.66220801816365,
+              "mean_abs_change_px": 31.6397512899575
+            },
+            "right_noise": {
+              "epe": 38.557777607614966,
+              "d1": 96.91143988845153,
+              "d1_penalty": 75.8023716390469,
+              "mean_abs_change_px": 37.45391027879954
+            },
+            "right_equals_left": {
+              "epe": 22.059270253428995,
+              "d1": 92.65556940314163,
+              "d1_penalty": 71.54650115373701,
+              "mean_abs_change_px": 14.430954991874009
+            },
+            "initial_constant_mean": {
+              "epe": 13.125420838291047,
+              "d1": 85.21735911452228,
+              "d1_penalty": 64.10829086511765,
+              "mean_abs_change_px": 14.25241656358002
+            },
+            "initial_shuffled": {
+              "epe": 13.260675281117445,
+              "d1": 85.83309682753175,
+              "d1_penalty": 64.72402857812713,
+              "mean_abs_change_px": 14.393877913566955
+            }
+          },
+          {
+            "scene": "000166_10.png",
+            "baseline": {
+              "epe": 2.754766462670254,
+              "d1": 31.839042779872152
+            },
+            "softmax_entropy": 1.7900719114795114,
+            "right_black": {
+              "epe": 26.376619149544858,
+              "d1": 90.51612668232895,
+              "d1_penalty": 58.67708390245679,
+              "mean_abs_change_px": 24.197073203369023
+            },
+            "right_noise": {
+              "epe": 32.43988287292351,
+              "d1": 95.11191243694113,
+              "d1_penalty": 63.27286965706897,
+              "mean_abs_change_px": 31.19185404209678
+            },
+            "right_equals_left": {
+              "epe": 23.471221563631925,
+              "d1": 93.46464149775082,
+              "d1_penalty": 61.62559871787867,
+              "mean_abs_change_px": 20.309188610935642
+            },
+            "initial_constant_mean": {
+              "epe": 10.801267698897556,
+              "d1": 80.52869292829955,
+              "d1_penalty": 48.6896501484274,
+              "mean_abs_change_px": 12.00399866864876
+            },
+            "initial_shuffled": {
+              "epe": 10.99347869457459,
+              "d1": 81.33912473365022,
+              "d1_penalty": 49.50008195377807,
+              "mean_abs_change_px": 12.193078475949086
+            }
+          }
+        ],
+        "gradient": {
+          "batches": 12,
+          "matching_present": 12,
+          "matching_present_fraction": 1.0,
+          "matching_norm": {
+            "median": 7.525466817815688,
+            "min": 4.495507877291891,
+            "max": 12.45047019516761
+          },
+          "total_norm": {
+            "median": 18.62579238741723,
+            "max": 52.84146377947898
+          },
+          "spikes_above_1e4": 0,
+          "mean_softmax_entropy": 1.6634054735253974,
+          "exact_ties_total": 0,
+          "any_non_finite": false,
+          "crops": [
+            {
+              "scene": "000000_10.png",
+              "crop_yx": [
+                96,
+                459
+              ],
+              "loss": 1.4825677871704102,
+              "feature_extractor": 1.720525414963339,
+              "aggregation": 4.484799949610954,
+              "refinement": 6.685517354846129,
+              "matching_path": 4.803502710685733,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.7174515308866185,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000001_10.png",
+              "crop_yx": [
+                57,
+                194
+              ],
+              "loss": 1.0020607709884644,
+              "feature_extractor": 2.188641252826192,
+              "aggregation": 7.0565578861223335,
+              "refinement": 16.47572115072391,
+              "matching_path": 7.388177023716195,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.4322136155663001,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000002_10.png",
+              "crop_yx": [
+                34,
+                29
+              ],
+              "loss": 3.115262269973755,
+              "feature_extractor": 2.7520665279531453,
+              "aggregation": 7.031605052721272,
+              "refinement": 17.647570699743785,
+              "matching_path": 7.550982703710518,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.5859412249113074,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000003_10.png",
+              "crop_yx": [
+                8,
+                11
+              ],
+              "loss": 2.3418304920196533,
+              "feature_extractor": 2.079511735550521,
+              "aggregation": 5.6655788261582805,
+              "refinement": 14.311758593033952,
+              "matching_path": 6.035159690820565,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6285894021718739,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000004_10.png",
+              "crop_yx": [
+                19,
+                586
+              ],
+              "loss": 3.8721067905426025,
+              "feature_extractor": 4.553731661066485,
+              "aggregation": 10.243789616333945,
+              "refinement": 28.95631937157497,
+              "matching_path": 11.210338877335978,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.7546347148771968,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000005_10.png",
+              "crop_yx": [
+                73,
+                658
+              ],
+              "loss": 6.122752666473389,
+              "feature_extractor": 3.6201243314105693,
+              "aggregation": 11.708372649179852,
+              "refinement": 31.85797248766145,
+              "matching_path": 12.255255618180048,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.8824844070467242,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000006_10.png",
+              "crop_yx": [
+                56,
+                437
+              ],
+              "loss": 3.2469213008880615,
+              "feature_extractor": 3.502160508620856,
+              "aggregation": 11.947764638316805,
+              "refinement": 51.35373488147899,
+              "matching_path": 12.45047019516761,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6744315203741644,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000007_10.png",
+              "crop_yx": [
+                109,
+                525
+              ],
+              "loss": 1.7824831008911133,
+              "feature_extractor": 2.577217118366965,
+              "aggregation": 5.687975890885639,
+              "refinement": 15.56295098047455,
+              "matching_path": 6.244607098168787,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.7386621766545909,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000008_10.png",
+              "crop_yx": [
+                71,
+                391
+              ],
+              "loss": 1.4110469818115234,
+              "feature_extractor": 1.7940698014506968,
+              "aggregation": 4.122002501493188,
+              "refinement": 15.710865221855148,
+              "matching_path": 4.495507877291891,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.588872745885429,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000009_10.png",
+              "crop_yx": [
+                63,
+                674
+              ],
+              "loss": 2.2566285133361816,
+              "feature_extractor": 4.3232326475468215,
+              "aggregation": 6.128533548607354,
+              "refinement": 13.698121348829272,
+              "matching_path": 7.499950931920858,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.7038780413113055,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000010_10.png",
+              "crop_yx": [
+                31,
+                588
+              ],
+              "loss": 1.9035395383834839,
+              "feature_extractor": 2.9616185203598264,
+              "aggregation": 11.115850602046052,
+              "refinement": 33.19546496762058,
+              "matching_path": 11.503621989058312,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.5538658135830685,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000011_10.png",
+              "crop_yx": [
+                75,
+                1
+              ],
+              "loss": 3.1436212062835693,
+              "feature_extractor": 4.060318628424944,
+              "aggregation": 10.637170060540784,
+              "refinement": 18.39903144981853,
+              "matching_path": 11.385761909560548,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6998404890361867,
+              "exact_ties": 0
+            }
+          ]
+        }
+      },
+      {
+        "seed": 1,
+        "epoch": 100,
+        "snapshot": "phase2\\results\\training\\EXP-H2-SEED-REPLICATION-001-SEED1-RUN2_epoch100.pth",
+        "snapshot_sha256": "c5bb13902bd6cf8d00244cbd3c23646ac8c2434ebd6d80e5d52f8c1a0e2ad936",
+        "probe_scene_d1": 15.32225621310655,
+        "probe_scene_epe": 1.7791640971220652,
+        "right_dependence_worst_pt": 73.43023139736859,
+        "right_dependence_mean_pt": 80.91878838318797,
+        "map_dependence_worst_pt": 62.16194066546468,
+        "map_dependence_mean_pt": 69.02233668542885,
+        "softmax_entropy": 1.6690222507676424,
+        "matching_gradient_fraction": 1.0,
+        "matching_grad_median": 6.356442262550917,
+        "total_grad_max": 36.66119622371304,
+        "grad_spikes_above_1e4": 0,
+        "ablation": [
+          {
+            "scene": "000187_10.png",
+            "baseline": {
+              "epe": 1.6599006342613591,
+              "d1": 12.451200373536011
+            },
+            "softmax_entropy": 1.6704811656575216,
+            "right_black": {
+              "epe": 38.60980747149328,
+              "d1": 98.9247869677436,
+              "d1_penalty": 86.47358659420759,
+              "mean_abs_change_px": 38.84313774245114
+            },
+            "right_noise": {
+              "epe": 38.90246096786776,
+              "d1": 98.65890195976705,
+              "d1_penalty": 86.20770158623104,
+              "mean_abs_change_px": 38.29600079652613
+            },
+            "right_equals_left": {
+              "epe": 20.27444203950909,
+              "d1": 90.90673272720198,
+              "d1_penalty": 78.45553235366597,
+              "mean_abs_change_px": 15.675363792739661
+            },
+            "initial_constant_mean": {
+              "epe": 12.748490241221377,
+              "d1": 86.50471459514144,
+              "d1_penalty": 74.05351422160543,
+              "mean_abs_change_px": 13.617245559710515
+            },
+            "initial_shuffled": {
+              "epe": 12.885844545533466,
+              "d1": 85.62145756864372,
+              "d1_penalty": 73.17025719510771,
+              "mean_abs_change_px": 13.764191133521797
+            }
+          },
+          {
+            "scene": "000160_10.png",
+            "baseline": {
+              "epe": 1.6445500706922802,
+              "d1": 13.717132189989417
+            },
+            "softmax_entropy": 1.6874935186165256,
+            "right_black": {
+              "epe": 39.519736116739345,
+              "d1": 98.48264020604148,
+              "d1_penalty": 84.76550801605207,
+              "mean_abs_change_px": 40.47530535312726
+            },
+            "right_noise": {
+              "epe": 40.11108325025503,
+              "d1": 98.73120769860442,
+              "d1_penalty": 85.01407550861501,
+              "mean_abs_change_px": 40.613917177138646
+            },
+            "right_equals_left": {
+              "epe": 19.28458377610336,
+              "d1": 87.147363587358,
+              "d1_penalty": 73.43023139736859,
+              "mean_abs_change_px": 15.457665236148287
+            },
+            "initial_constant_mean": {
+              "epe": 13.37551520612237,
+              "d1": 84.74354622956056,
+              "d1_penalty": 71.02641403957115,
+              "mean_abs_change_px": 14.019422435383657
+            },
+            "initial_shuffled": {
+              "epe": 13.451613575656252,
+              "d1": 85.18976980054704,
+              "d1_penalty": 71.47263761055763,
+              "mean_abs_change_px": 14.035901002508584
+            }
+          },
+          {
+            "scene": "000191_10.png",
+            "baseline": {
+              "epe": 1.8510603439131097,
+              "d1": 16.21031329820708
+            },
+            "softmax_entropy": 1.6047211537960602,
+            "right_black": {
+              "epe": 38.927740972735,
+              "d1": 99.81367455979073,
+              "d1_penalty": 83.60336126158364,
+              "mean_abs_change_px": 41.971053605422775
+            },
+            "right_noise": {
+              "epe": 37.72841136346478,
+              "d1": 99.81244061647809,
+              "d1_penalty": 83.602127318271,
+              "mean_abs_change_px": 41.38610953282232
+            },
+            "right_equals_left": {
+              "epe": 20.964538700240126,
+              "d1": 90.9416221418788,
+              "d1_penalty": 74.73130884367171,
+              "mean_abs_change_px": 15.886048638328115
+            },
+            "initial_constant_mean": {
+              "epe": 13.363821275821936,
+              "d1": 85.15196011895213,
+              "d1_penalty": 68.94164682074505,
+              "mean_abs_change_px": 14.439204247105174
+            },
+            "initial_shuffled": {
+              "epe": 13.372012432973584,
+              "d1": 85.38517540504189,
+              "d1_penalty": 69.17486210683481,
+              "mean_abs_change_px": 14.480740929987936
+            }
+          },
+          {
+            "scene": "000166_10.png",
+            "baseline": {
+              "epe": 1.9611453396215117,
+              "d1": 18.910378990693694
+            },
+            "softmax_entropy": 1.7133931650004623,
+            "right_black": {
+              "epe": 36.61042664681481,
+              "d1": 98.96191881112387,
+              "d1_penalty": 80.05153982043018,
+              "mean_abs_change_px": 33.91079859743194
+            },
+            "right_noise": {
+              "epe": 37.93176281727249,
+              "d1": 98.42921925367426,
+              "d1_penalty": 79.51884026298058,
+              "mean_abs_change_px": 34.90105689416851
+            },
+            "right_equals_left": {
+              "epe": 23.18023316543532,
+              "d1": 94.08202662587189,
+              "d1_penalty": 75.1716476351782,
+              "mean_abs_change_px": 19.885772734458172
+            },
+            "initial_constant_mean": {
+              "epe": 11.009885508108939,
+              "d1": 81.08779981423811,
+              "d1_penalty": 62.177420823544416,
+              "mean_abs_change_px": 12.316777318753386
+            },
+            "initial_shuffled": {
+              "epe": 11.050184323797286,
+              "d1": 81.07231965615837,
+              "d1_penalty": 62.16194066546468,
+              "mean_abs_change_px": 12.388631333208384
+            }
+          }
+        ],
+        "gradient": {
+          "batches": 12,
+          "matching_present": 12,
+          "matching_present_fraction": 1.0,
+          "matching_norm": {
+            "median": 6.356442262550917,
+            "min": 3.6957659722397462,
+            "max": 12.525153564041057
+          },
+          "total_norm": {
+            "median": 24.71121633947216,
+            "max": 36.66119622371304
+          },
+          "spikes_above_1e4": 0,
+          "mean_softmax_entropy": 1.6329265056251134,
+          "exact_ties_total": 1,
+          "any_non_finite": false,
+          "crops": [
+            {
+              "scene": "000000_10.png",
+              "crop_yx": [
+                96,
+                459
+              ],
+              "loss": 0.9042444229125977,
+              "feature_extractor": 1.4083862910374525,
+              "aggregation": 5.929529609382886,
+              "refinement": 23.83407725594816,
+              "matching_path": 6.094495330487225,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6924405700311818,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000001_10.png",
+              "crop_yx": [
+                57,
+                194
+              ],
+              "loss": 0.6423100233078003,
+              "feature_extractor": 1.505606825543432,
+              "aggregation": 7.314886024770467,
+              "refinement": 23.472289070558084,
+              "matching_path": 7.468226661564662,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.4322456288859917,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000002_10.png",
+              "crop_yx": [
+                34,
+                29
+              ],
+              "loss": 2.2679715156555176,
+              "feature_extractor": 1.8090855010984153,
+              "aggregation": 3.8542274239078047,
+              "refinement": 7.689405748679141,
+              "matching_path": 4.257682396032787,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.5897761734414257,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000003_10.png",
+              "crop_yx": [
+                8,
+                11
+              ],
+              "loss": 1.8283145427703857,
+              "feature_extractor": 1.732366198378655,
+              "aggregation": 5.637569297360345,
+              "refinement": 15.41165287956127,
+              "matching_path": 5.897735177830972,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6566560217105926,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000004_10.png",
+              "crop_yx": [
+                19,
+                586
+              ],
+              "loss": 3.036067485809326,
+              "feature_extractor": 1.9536505524158787,
+              "aggregation": 6.323474128233351,
+              "refinement": 23.89090242667792,
+              "matching_path": 6.6183891946146085,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6805709471137233,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000005_10.png",
+              "crop_yx": [
+                73,
+                658
+              ],
+              "loss": 4.467013359069824,
+              "feature_extractor": 4.54318565768013,
+              "aggregation": 11.672143585591293,
+              "refinement": 34.455243965915855,
+              "matching_path": 12.525153564041057,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.8196497772022482,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000006_10.png",
+              "crop_yx": [
+                56,
+                437
+              ],
+              "loss": 1.5229532718658447,
+              "feature_extractor": 1.211774549122891,
+              "aggregation": 5.1380468443259595,
+              "refinement": 24.50382372196018,
+              "matching_path": 5.279007760213082,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.628814245880053,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000007_10.png",
+              "crop_yx": [
+                109,
+                525
+              ],
+              "loss": 0.9993445873260498,
+              "feature_extractor": 1.5368494853618297,
+              "aggregation": 6.8155941053257765,
+              "refinement": 26.44195795068422,
+              "matching_path": 6.986718067104783,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.710679047729874,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000008_10.png",
+              "crop_yx": [
+                71,
+                391
+              ],
+              "loss": 0.6892796754837036,
+              "feature_extractor": 1.5274915248438639,
+              "aggregation": 6.906165012726226,
+              "refinement": 26.56383166294306,
+              "matching_path": 7.073071860335767,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.5569468572501912,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000009_10.png",
+              "crop_yx": [
+                63,
+                674
+              ],
+              "loss": 1.4342989921569824,
+              "feature_extractor": 2.5422943107720273,
+              "aggregation": 4.960369164037397,
+              "refinement": 11.938067180214263,
+              "matching_path": 5.573914477825873,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6586840567500394,
+              "exact_ties": 1
+            },
+            {
+              "scene": "000010_10.png",
+              "crop_yx": [
+                31,
+                588
+              ],
+              "loss": 0.8657627701759338,
+              "feature_extractor": 1.2293395328718544,
+              "aggregation": 3.485313534602534,
+              "refinement": 10.056959769513035,
+              "matching_path": 3.6957659722397462,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.5507003083841637,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000011_10.png",
+              "crop_yx": [
+                75,
+                1
+              ],
+              "loss": 1.6924747228622437,
+              "feature_extractor": 3.057539430404649,
+              "aggregation": 9.017893933094834,
+              "refinement": 26.308777539882254,
+              "matching_path": 9.522129927543931,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6179544331218723,
+              "exact_ties": 0
+            }
+          ]
+        }
+      },
+      {
+        "seed": 1,
+        "epoch": 150,
+        "snapshot": "phase2\\results\\training\\EXP-H2-SEED-REPLICATION-001-SEED1-RUN2_epoch150.pth",
+        "snapshot_sha256": "50daa8961b7e4735aa1e058d24591af4404985a6aea78a8d0b02ec65ba93eb6c",
+        "probe_scene_d1": 11.293799821705711,
+        "probe_scene_epe": 1.4667481404350065,
+        "right_dependence_worst_pt": 78.0819173541678,
+        "right_dependence_mean_pt": 84.66559003157595,
+        "map_dependence_worst_pt": 66.71401773843996,
+        "map_dependence_mean_pt": 73.24287621020059,
+        "softmax_entropy": 1.6687908350219656,
+        "matching_gradient_fraction": 1.0,
+        "matching_grad_median": 4.4081536371460714,
+        "total_grad_max": 32.862295970679824,
+        "grad_spikes_above_1e4": 0,
+        "ablation": [
+          {
+            "scene": "000187_10.png",
+            "baseline": {
+              "epe": 1.302915062434763,
+              "d1": 7.823504234705127
+            },
+            "softmax_entropy": 1.6742646151741347,
+            "right_black": {
+              "epe": 36.83758730624965,
+              "d1": 98.12324094369723,
+              "d1_penalty": 90.2997367089921,
+              "mean_abs_change_px": 37.35797143124258
+            },
+            "right_noise": {
+              "epe": 36.6972168625948,
+              "d1": 98.97018196910547,
+              "d1_penalty": 91.14667773440034,
+              "mean_abs_change_px": 36.00650284821951
+            },
+            "right_equals_left": {
+              "epe": 19.71892626813314,
+              "d1": 91.59673674790211,
+              "d1_penalty": 83.77323251319699,
+              "mean_abs_change_px": 16.85596393861922
+            },
+            "initial_constant_mean": {
+              "epe": 12.79148705300248,
+              "d1": 86.72520460175613,
+              "d1_penalty": 78.901700367051,
+              "mean_abs_change_px": 13.618761144494316
+            },
+            "initial_shuffled": {
+              "epe": 12.962149602850657,
+              "d1": 85.77709757331293,
+              "d1_penalty": 77.9535933386078,
+              "mean_abs_change_px": 13.725905803386132
+            }
+          },
+          {
+            "scene": "000160_10.png",
+            "baseline": {
+              "epe": 1.3719812910286469,
+              "d1": 10.426857268353066
+            },
+            "softmax_entropy": 1.677213907631585,
+            "right_black": {
+              "epe": 37.77662261256341,
+              "d1": 97.43546229560565,
+              "d1_penalty": 87.00860502725259,
+              "mean_abs_change_px": 38.8778145901274
+            },
+            "right_noise": {
+              "epe": 38.949751006228134,
+              "d1": 97.59019306406852,
+              "d1_penalty": 87.16333579571545,
+              "mean_abs_change_px": 37.84869563003202
+            },
+            "right_equals_left": {
+              "epe": 17.40193048832428,
+              "d1": 88.78052189190808,
+              "d1_penalty": 78.35366462355502,
+              "mean_abs_change_px": 16.368928762778054
+            },
+            "initial_constant_mean": {
+              "epe": 13.3366317662009,
+              "d1": 85.23968295166411,
+              "d1_penalty": 74.81282568331105,
+              "mean_abs_change_px": 13.938582835469726
+            },
+            "initial_shuffled": {
+              "epe": 13.436968659270265,
+              "d1": 85.55114101463454,
+              "d1_penalty": 75.12428374628148,
+              "mean_abs_change_px": 13.887125140538766
+            }
+          },
+          {
+            "scene": "000191_10.png",
+            "baseline": {
+              "epe": 1.5166831846758848,
+              "d1": 12.872496637504474
+            },
+            "softmax_entropy": 1.6086757167948051,
+            "right_black": {
+              "epe": 39.53221498882118,
+              "d1": 99.3386063844227,
+              "d1_penalty": 86.46610974691824,
+              "mean_abs_change_px": 41.37120806692428
+            },
+            "right_noise": {
+              "epe": 39.15953819902455,
+              "d1": 99.27197344553991,
+              "d1_penalty": 86.39947680803544,
+              "mean_abs_change_px": 40.01168429615625
+            },
+            "right_equals_left": {
+              "epe": 19.08770047516115,
+              "d1": 91.19087869103294,
+              "d1_penalty": 78.31838205352847,
+              "mean_abs_change_px": 18.0801267950164
+            },
+            "initial_constant_mean": {
+              "epe": 13.289096601014576,
+              "d1": 85.46291383373847,
+              "d1_penalty": 72.590417196234,
+              "mean_abs_change_px": 14.352284273846818
+            },
+            "initial_shuffled": {
+              "epe": 13.401552185419348,
+              "d1": 85.72327587270641,
+              "d1_penalty": 72.85077923520194,
+              "mean_abs_change_px": 14.360786138243347
+            }
+          },
+          {
+            "scene": "000166_10.png",
+            "baseline": {
+              "epe": 1.675413023600731,
+              "d1": 14.052341146260176
+            },
+            "softmax_entropy": 1.7150091004873371,
+            "right_black": {
+              "epe": 36.19627028682739,
+              "d1": 98.27168588027465,
+              "d1_penalty": 84.21934473401447,
+              "mean_abs_change_px": 32.068525022459504
+            },
+            "right_noise": {
+              "epe": 38.42064341084308,
+              "d1": 98.80893842539474,
+              "d1_penalty": 84.75659727913457,
+              "mean_abs_change_px": 33.08573196017152
+            },
+            "right_equals_left": {
+              "epe": 21.882983231666508,
+              "d1": 92.13425850042798,
+              "d1_penalty": 78.0819173541678,
+              "mean_abs_change_px": 19.666305271598375
+            },
+            "initial_constant_mean": {
+              "epe": 10.970786919814648,
+              "d1": 81.04773352273762,
+              "d1_penalty": 66.99539237647744,
+              "mean_abs_change_px": 11.999007923722074
+            },
+            "initial_shuffled": {
+              "epe": 11.078746026048902,
+              "d1": 80.76635888470014,
+              "d1_penalty": 66.71401773843996,
+              "mean_abs_change_px": 12.121426666201735
+            }
+          }
+        ],
+        "gradient": {
+          "batches": 12,
+          "matching_present": 12,
+          "matching_present_fraction": 1.0,
+          "matching_norm": {
+            "median": 4.4081536371460714,
+            "min": 2.3379932495368494,
+            "max": 8.449576956705746
+          },
+          "total_norm": {
+            "median": 17.8940357827732,
+            "max": 32.862295970679824
+          },
+          "spikes_above_1e4": 0,
+          "mean_softmax_entropy": 1.6502529439874098,
+          "exact_ties_total": 0,
+          "any_non_finite": false,
+          "crops": [
+            {
+              "scene": "000000_10.png",
+              "crop_yx": [
+                96,
+                459
+              ],
+              "loss": 0.9555798768997192,
+              "feature_extractor": 1.5755813972113206,
+              "aggregation": 4.229135980600413,
+              "refinement": 19.472137640008764,
+              "matching_path": 4.5130973711684295,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6889420222713252,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000001_10.png",
+              "crop_yx": [
+                57,
+                194
+              ],
+              "loss": 0.5066317915916443,
+              "feature_extractor": 1.3309411542221339,
+              "aggregation": 2.9783178420282397,
+              "refinement": 17.359671155864557,
+              "matching_path": 3.262174355264583,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.4583213367517625,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000002_10.png",
+              "crop_yx": [
+                34,
+                29
+              ],
+              "loss": 1.9955207109451294,
+              "feature_extractor": 2.1403522248204863,
+              "aggregation": 3.733163246370025,
+              "refinement": 18.03794034270046,
+              "matching_path": 4.3032099031237125,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6159341884244336,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000003_10.png",
+              "crop_yx": [
+                8,
+                11
+              ],
+              "loss": 1.6817920207977295,
+              "feature_extractor": 3.2159317078339438,
+              "aggregation": 7.8136504911495095,
+              "refinement": 18.97399202083439,
+              "matching_path": 8.449576956705746,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.701838254446774,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000004_10.png",
+              "crop_yx": [
+                19,
+                586
+              ],
+              "loss": 2.121365785598755,
+              "feature_extractor": 2.240357997630573,
+              "aggregation": 7.110700377609637,
+              "refinement": 32.005456294933126,
+              "matching_path": 7.455284288186809,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.7036591144573894,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000005_10.png",
+              "crop_yx": [
+                73,
+                658
+              ],
+              "loss": 2.6068053245544434,
+              "feature_extractor": 2.637067140787684,
+              "aggregation": 6.375822046445572,
+              "refinement": 16.75989598844271,
+              "matching_path": 6.8996543299620114,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.8046107778797436,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000006_10.png",
+              "crop_yx": [
+                56,
+                437
+              ],
+              "loss": 1.168515920639038,
+              "feature_extractor": 1.257821674145136,
+              "aggregation": 2.6013095678761866,
+              "refinement": 12.157281566400593,
+              "matching_path": 2.8894509568209434,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.646360537818632,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000007_10.png",
+              "crop_yx": [
+                109,
+                525
+              ],
+              "loss": 0.8279502987861633,
+              "feature_extractor": 1.1550657654019119,
+              "aggregation": 3.4147820360311365,
+              "refinement": 15.401250968808911,
+              "matching_path": 3.6048458047473346,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.688348928155838,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000008_10.png",
+              "crop_yx": [
+                71,
+                391
+              ],
+              "loss": 0.5707013607025146,
+              "feature_extractor": 0.7971722039081215,
+              "aggregation": 3.259034155298043,
+              "refinement": 11.990191803548772,
+              "matching_path": 3.3551135819943503,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.5769591009994617,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000009_10.png",
+              "crop_yx": [
+                63,
+                674
+              ],
+              "loss": 1.0253647565841675,
+              "feature_extractor": 1.701248616606395,
+              "aggregation": 5.0616623515130215,
+              "refinement": 13.143262821487914,
+              "matching_path": 5.339913165607611,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6637948832410157,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000010_10.png",
+              "crop_yx": [
+                31,
+                588
+              ],
+              "loss": 0.7513502240180969,
+              "feature_extractor": 1.1521994704407428,
+              "aggregation": 2.0343669322902267,
+              "refinement": 10.196134078952143,
+              "matching_path": 2.3379932495368494,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.5882875314482796,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000011_10.png",
+              "crop_yx": [
+                75,
+                1
+              ],
+              "loss": 1.5013761520385742,
+              "feature_extractor": 1.9970151428061886,
+              "aggregation": 5.568076575164136,
+              "refinement": 20.378770156074186,
+              "matching_path": 5.915365265770897,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6659786519542608,
+              "exact_ties": 0
+            }
+          ]
+        }
+      },
+      {
+        "seed": 1,
+        "epoch": 200,
+        "snapshot": "phase2\\results\\training\\EXP-H2-SEED-REPLICATION-001-SEED1-RUN2_epoch200.pth",
+        "snapshot_sha256": "76ffda7549033689266f6d7f1f4e6ab2f2a88966303f434de853cb6bf14d4ee7",
+        "probe_scene_d1": 11.492798690974034,
+        "probe_scene_epe": 1.4899541927249706,
+        "right_dependence_worst_pt": 76.7821226292864,
+        "right_dependence_mean_pt": 84.49635522337401,
+        "map_dependence_worst_pt": 67.77941685333917,
+        "map_dependence_mean_pt": 73.0051393235861,
+        "softmax_entropy": 1.6697495143833243,
+        "matching_gradient_fraction": 1.0,
+        "matching_grad_median": 4.677918284920849,
+        "total_grad_max": 29.951282800365693,
+        "grad_spikes_above_1e4": 0,
+        "ablation": [
+          {
+            "scene": "000187_10.png",
+            "baseline": {
+              "epe": 1.380531075384176,
+              "d1": 8.981725269451758
+            },
+            "softmax_entropy": 1.6773071327980318,
+            "right_black": {
+              "epe": 40.70820960839777,
+              "d1": 97.91831493754944,
+              "d1_penalty": 88.93658966809768,
+              "mean_abs_change_px": 38.813623170178005
+            },
+            "right_noise": {
+              "epe": 40.053307398502206,
+              "d1": 99.67315599019469,
+              "d1_penalty": 90.69143072074293,
+              "mean_abs_change_px": 37.48488027170376
+            },
+            "right_equals_left": {
+              "epe": 19.27531201317376,
+              "d1": 91.6213797486414,
+              "d1_penalty": 82.63965447918964,
+              "mean_abs_change_px": 16.733457981690844
+            },
+            "initial_constant_mean": {
+              "epe": 12.706966617596251,
+              "d1": 86.95217960856539,
+              "d1_penalty": 77.97045433911363,
+              "mean_abs_change_px": 13.872774940611977
+            },
+            "initial_shuffled": {
+              "epe": 12.931347998098845,
+              "d1": 86.34129259023878,
+              "d1_penalty": 77.35956732078702,
+              "mean_abs_change_px": 13.980347862818453
+            }
+          },
+          {
+            "scene": "000160_10.png",
+            "baseline": {
+              "epe": 1.371479147928151,
+              "d1": 10.467786052269052
+            },
+            "softmax_entropy": 1.6758174396084995,
+            "right_black": {
+              "epe": 40.615274496876474,
+              "d1": 97.93060075468685,
+              "d1_penalty": 87.4628147024178,
+              "mean_abs_change_px": 39.64097431725189
+            },
+            "right_noise": {
+              "epe": 41.03974183806666,
+              "d1": 97.26875237087468,
+              "d1_penalty": 86.80096631860563,
+              "mean_abs_change_px": 38.18626501429184
+            },
+            "right_equals_left": {
+              "epe": 16.860155423912254,
+              "d1": 88.72461916265698,
+              "d1_penalty": 78.25683311038793,
+              "mean_abs_change_px": 15.850167772210483
+            },
+            "initial_constant_mean": {
+              "epe": 13.338288706447168,
+              "d1": 84.2953261325294,
+              "d1_penalty": 73.82754008026035,
+              "mean_abs_change_px": 14.139485903973005
+            },
+            "initial_shuffled": {
+              "epe": 13.460407684060064,
+              "d1": 85.15882364685447,
+              "d1_penalty": 74.69103759458542,
+              "mean_abs_change_px": 14.018603957214518
+            }
+          },
+          {
+            "scene": "000191_10.png",
+            "baseline": {
+              "epe": 1.5578349066475528,
+              "d1": 13.53018842314384
+            },
+            "softmax_entropy": 1.6151484389942965,
+            "right_black": {
+              "epe": 44.39380373746307,
+              "d1": 99.32133117804568,
+              "d1_penalty": 85.79114275490184,
+              "mean_abs_change_px": 43.277120240928234
+            },
+            "right_noise": {
+              "epe": 43.44999018971196,
+              "d1": 99.51752816475611,
+              "d1_penalty": 85.98733974161227,
+              "mean_abs_change_px": 42.06021939654151
+            },
+            "right_equals_left": {
+              "epe": 18.510568969372493,
+              "d1": 90.31231105243025,
+              "d1_penalty": 76.7821226292864,
+              "mean_abs_change_px": 17.76032584468518
+            },
+            "initial_constant_mean": {
+              "epe": 13.35802671087675,
+              "d1": 85.80101430140299,
+              "d1_penalty": 72.27082587825915,
+              "mean_abs_change_px": 14.530523724339162
+            },
+            "initial_shuffled": {
+              "epe": 13.487668967600337,
+              "d1": 85.80471613134092,
+              "d1_penalty": 72.27452770819708,
+              "mean_abs_change_px": 14.476178579380024
+            }
+          },
+          {
+            "scene": "000166_10.png",
+            "baseline": {
+              "epe": 1.649971640940002,
+              "d1": 12.991495019031488
+            },
+            "softmax_entropy": 1.7107250461324697,
+            "right_black": {
+              "epe": 38.640622179549325,
+              "d1": 97.52226410970879,
+              "d1_penalty": 84.5307690906773,
+              "mean_abs_change_px": 32.280269173123806
+            },
+            "right_noise": {
+              "epe": 40.135506530058926,
+              "d1": 98.81986559580398,
+              "d1_penalty": 85.82837057677249,
+              "mean_abs_change_px": 33.438895871069754
+            },
+            "right_equals_left": {
+              "epe": 21.725501215098177,
+              "d1": 93.23972390682766,
+              "d1_penalty": 80.24822888779617,
+              "mean_abs_change_px": 19.5307106392141
+            },
+            "initial_constant_mean": {
+              "epe": 10.897385431205715,
+              "d1": 80.85923983317853,
+              "d1_penalty": 67.86774481414704,
+              "mean_abs_change_px": 12.097799402761012
+            },
+            "initial_shuffled": {
+              "epe": 11.047149419927834,
+              "d1": 80.77091187237066,
+              "d1_penalty": 67.77941685333917,
+              "mean_abs_change_px": 12.241731641465984
+            }
+          }
+        ],
+        "gradient": {
+          "batches": 12,
+          "matching_present": 12,
+          "matching_present_fraction": 1.0,
+          "matching_norm": {
+            "median": 4.677918284920849,
+            "min": 2.5850955011317276,
+            "max": 9.85184670469075
+          },
+          "total_norm": {
+            "median": 19.89590053016422,
+            "max": 29.951282800365693
+          },
+          "spikes_above_1e4": 0,
+          "mean_softmax_entropy": 1.6531809451838064,
+          "exact_ties_total": 0,
+          "any_non_finite": false,
+          "crops": [
+            {
+              "scene": "000000_10.png",
+              "crop_yx": [
+                96,
+                459
+              ],
+              "loss": 0.815873920917511,
+              "feature_extractor": 1.283794540996498,
+              "aggregation": 3.1749278389294515,
+              "refinement": 16.923787537242372,
+              "matching_path": 3.4246598671841335,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.685581120478698,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000001_10.png",
+              "crop_yx": [
+                57,
+                194
+              ],
+              "loss": 0.43362051248550415,
+              "feature_extractor": 1.3043592463683946,
+              "aggregation": 4.529053409003745,
+              "refinement": 20.09888585364332,
+              "matching_path": 4.713138850616982,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.4714913757588972,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000002_10.png",
+              "crop_yx": [
+                34,
+                29
+              ],
+              "loss": 1.7172058820724487,
+              "feature_extractor": 2.1902217697480117,
+              "aggregation": 4.093601191056141,
+              "refinement": 24.230181704081172,
+              "matching_path": 4.642697719224715,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6289781605523679,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000003_10.png",
+              "crop_yx": [
+                8,
+                11
+              ],
+              "loss": 1.7124621868133545,
+              "feature_extractor": 3.7333852958902436,
+              "aggregation": 9.11705641778949,
+              "refinement": 16.424188513504493,
+              "matching_path": 9.85184670469075,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.7045285104204857,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000004_10.png",
+              "crop_yx": [
+                19,
+                586
+              ],
+              "loss": 1.9035636186599731,
+              "feature_extractor": 2.2863049508686415,
+              "aggregation": 5.558916639809197,
+              "refinement": 28.307037471736507,
+              "matching_path": 6.010719136402401,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.7011486801425617,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000005_10.png",
+              "crop_yx": [
+                73,
+                658
+              ],
+              "loss": 2.4429879188537598,
+              "feature_extractor": 2.8061060082468448,
+              "aggregation": 7.686978953553664,
+              "refinement": 28.811724436860523,
+              "matching_path": 8.183145871967335,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.7979657362089017,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000006_10.png",
+              "crop_yx": [
+                56,
+                437
+              ],
+              "loss": 1.1499732732772827,
+              "feature_extractor": 1.2644214109527658,
+              "aggregation": 2.4785807192952998,
+              "refinement": 15.68813813847728,
+              "matching_path": 2.7824672300924207,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6463509398174383,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000007_10.png",
+              "crop_yx": [
+                109,
+                525
+              ],
+              "loss": 0.6307126879692078,
+              "feature_extractor": 0.8951891136457478,
+              "aggregation": 2.93273098969941,
+              "refinement": 15.016832443464246,
+              "matching_path": 3.0663128684354994,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6914544069548763,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000008_10.png",
+              "crop_yx": [
+                71,
+                391
+              ],
+              "loss": 0.5132028460502625,
+              "feature_extractor": 0.931547310369395,
+              "aggregation": 4.978856050707848,
+              "refinement": 20.008242909087205,
+              "matching_path": 5.065253001097438,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.582977647180546,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000009_10.png",
+              "crop_yx": [
+                63,
+                674
+              ],
+              "loss": 0.9645233154296875,
+              "feature_extractor": 1.9339281570742204,
+              "aggregation": 6.475690458527374,
+              "refinement": 20.721958309262146,
+              "matching_path": 6.758301934020628,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6645909477928136,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000010_10.png",
+              "crop_yx": [
+                31,
+                588
+              ],
+              "loss": 0.6471101641654968,
+              "feature_extractor": 1.1784121581409452,
+              "aggregation": 2.3008832077089654,
+              "refinement": 7.705770110415165,
+              "matching_path": 2.5850955011317276,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6020505279017372,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000011_10.png",
+              "crop_yx": [
+                75,
+                1
+              ],
+              "loss": 1.2679016590118408,
+              "feature_extractor": 1.5144091887173876,
+              "aggregation": 4.033927623248181,
+              "refinement": 12.127101180758451,
+              "matching_path": 4.3088289894675995,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6610532889963514,
+              "exact_ties": 0
+            }
+          ]
+        }
+      },
+      {
+        "seed": 2,
+        "epoch": 10,
+        "snapshot": "phase2\\results\\training\\EXP-H2-SEED-REPLICATION-001-SEED2-RUN2_epoch10.pth",
+        "snapshot_sha256": "baddd4488a5c91b7ed052aa87a32d063a37a96fef75d77c15c133afef45326e2",
+        "probe_scene_d1": 85.39094899429874,
+        "probe_scene_epe": 10.482699646614076,
+        "right_dependence_worst_pt": -2.4111230723336803,
+        "right_dependence_mean_pt": 1.249640772911852,
+        "map_dependence_worst_pt": -6.386428191592842,
+        "map_dependence_mean_pt": 0.4391127691217154,
+        "softmax_entropy": 2.006102873700009,
+        "matching_gradient_fraction": 1.0,
+        "matching_grad_median": 15.857451846857991,
+        "total_grad_max": 110.44112304469157,
+        "grad_spikes_above_1e4": 0,
+        "ablation": [
+          {
+            "scene": "000187_10.png",
+            "baseline": {
+              "epe": 9.689398325902307,
+              "d1": 87.19212461576373
+            },
+            "softmax_entropy": 2.0139772881992455,
+            "right_black": {
+              "epe": 11.490001690730816,
+              "d1": 84.91070154732104,
+              "d1_penalty": -2.2814230684426917,
+              "mean_abs_change_px": 4.222024753427881
+            },
+            "right_noise": {
+              "epe": 11.993887828037455,
+              "d1": 84.78100154343005,
+              "d1_penalty": -2.4111230723336803,
+              "mean_abs_change_px": 4.3446810147575174
+            },
+            "right_equals_left": {
+              "epe": 9.952752479753801,
+              "d1": 87.83413963502419,
+              "d1_penalty": 0.6420150192604552,
+              "mean_abs_change_px": 0.9724526826990637
+            },
+            "initial_constant_mean": {
+              "epe": 13.036743368648345,
+              "d1": 80.80569642417089,
+              "d1_penalty": -6.386428191592842,
+              "mean_abs_change_px": 7.735545552877856
+            },
+            "initial_shuffled": {
+              "epe": 13.3563164989688,
+              "d1": 83.98334651950039,
+              "d1_penalty": -3.2087780962633445,
+              "mean_abs_change_px": 8.032344390842738
+            }
+          },
+          {
+            "scene": "000160_10.png",
+            "baseline": {
+              "epe": 10.061863950497116,
+              "d1": 76.97606165272425
+            },
+            "softmax_entropy": 2.0741917336829214,
+            "right_black": {
+              "epe": 13.718861367366564,
+              "d1": 89.52722263261924,
+              "d1_penalty": 12.551160979894988,
+              "mean_abs_change_px": 4.433190633652743
+            },
+            "right_noise": {
+              "epe": 14.096239176704163,
+              "d1": 88.7665462095953,
+              "d1_penalty": 11.79048455687105,
+              "mean_abs_change_px": 5.204004834357171
+            },
+            "right_equals_left": {
+              "epe": 10.672933632613423,
+              "d1": 77.67883882045241,
+              "d1_penalty": 0.7027771677281578,
+              "mean_abs_change_px": 0.9989017877382774
+            },
+            "initial_constant_mean": {
+              "epe": 14.662960598815172,
+              "d1": 89.84866332581308,
+              "d1_penalty": 12.872601673088823,
+              "mean_abs_change_px": 6.906390703892738
+            },
+            "initial_shuffled": {
+              "epe": 14.740217311109017,
+              "d1": 87.98790105216922,
+              "d1_penalty": 11.011839399444966,
+              "mean_abs_change_px": 7.230012507089016
+            }
+          },
+          {
+            "scene": "000191_10.png",
+            "baseline": {
+              "epe": 10.090579663428466,
+              "d1": 86.5771646450562
+            },
+            "softmax_entropy": 1.9554673492912682,
+            "right_black": {
+              "epe": 11.646028895870066,
+              "d1": 85.98363791167434,
+              "d1_penalty": -0.5935267333818643,
+              "mean_abs_change_px": 4.4674135166531155
+            },
+            "right_noise": {
+              "epe": 11.541356952352707,
+              "d1": 84.50660776643922,
+              "d1_penalty": -2.0705568786169835,
+              "mean_abs_change_px": 5.503026687975011
+            },
+            "right_equals_left": {
+              "epe": 9.838475181014358,
+              "d1": 85.73808319245813,
+              "d1_penalty": -0.8390814525980659,
+              "mean_abs_change_px": 0.5069835393651184
+            },
+            "initial_constant_mean": {
+              "epe": 13.052292691815621,
+              "d1": 85.99721128811343,
+              "d1_penalty": -0.5799533569427666,
+              "mean_abs_change_px": 8.58407798548503
+            },
+            "initial_shuffled": {
+              "epe": 13.264474803427818,
+              "d1": 85.90836736960304,
+              "d1_penalty": -0.6687972754531586,
+              "mean_abs_change_px": 8.935253835663426
+            }
+          },
+          {
+            "scene": "000166_10.png",
+            "baseline": {
+              "epe": 12.088956646628418,
+              "d1": 90.81844506365077
+            },
+            "softmax_entropy": 1.9807751236266014,
+            "right_black": {
+              "epe": 11.507624800649989,
+              "d1": 88.63574277440857,
+              "d1_penalty": -2.1827022892422008,
+              "mean_abs_change_px": 4.352828149925149
+            },
+            "right_noise": {
+              "epe": 15.214642335127207,
+              "d1": 90.60627583820504,
+              "d1_penalty": -0.21216922544573436,
+              "mean_abs_change_px": 6.586464845413949
+            },
+            "right_equals_left": {
+              "epe": 12.928925019746556,
+              "d1": 90.71827933489956,
+              "d1_penalty": -0.10016572875120744,
+              "mean_abs_change_px": 1.7316336108057142
+            },
+            "initial_constant_mean": {
+              "epe": 12.978387879883295,
+              "d1": 85.67630078857746,
+              "d1_penalty": -5.142144275073306,
+              "mean_abs_change_px": 7.712424086135476
+            },
+            "initial_shuffled": {
+              "epe": 13.155671919472704,
+              "d1": 86.43300733941612,
+              "d1_penalty": -4.385437724234649,
+              "mean_abs_change_px": 8.118788984374373
+            }
+          }
+        ],
+        "gradient": {
+          "batches": 12,
+          "matching_present": 12,
+          "matching_present_fraction": 1.0,
+          "matching_norm": {
+            "median": 15.857451846857991,
+            "min": 4.653515176733224,
+            "max": 52.893872395151895
+          },
+          "total_norm": {
+            "median": 38.11751494901604,
+            "max": 110.44112304469157
+          },
+          "spikes_above_1e4": 0,
+          "mean_softmax_entropy": 2.0311877772690066,
+          "exact_ties_total": 0,
+          "any_non_finite": false,
+          "crops": [
+            {
+              "scene": "000000_10.png",
+              "crop_yx": [
+                96,
+                459
+              ],
+              "loss": 6.549776554107666,
+              "feature_extractor": 4.578289082781172,
+              "aggregation": 12.953396440349481,
+              "refinement": 45.38888921099455,
+              "matching_path": 13.738675710066524,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.9054411977949957,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000001_10.png",
+              "crop_yx": [
+                57,
+                194
+              ],
+              "loss": 2.2147562503814697,
+              "feature_extractor": 2.629892017964367,
+              "aggregation": 17.14381659135137,
+              "refinement": 20.171738491098857,
+              "matching_path": 17.344358718155227,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 2.1245696169678263,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000002_10.png",
+              "crop_yx": [
+                34,
+                29
+              ],
+              "loss": 9.721200942993164,
+              "feature_extractor": 3.321970976539379,
+              "aggregation": 13.981311516651235,
+              "refinement": 75.95623680097582,
+              "matching_path": 14.370544975560755,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.9309091654217836,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000003_10.png",
+              "crop_yx": [
+                8,
+                11
+              ],
+              "loss": 14.182496070861816,
+              "feature_extractor": 22.873065317659158,
+              "aggregation": 47.69260550576692,
+              "refinement": 96.95091501588878,
+              "matching_path": 52.893872395151895,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 2.0517336302172673,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000004_10.png",
+              "crop_yx": [
+                19,
+                586
+              ],
+              "loss": 9.353306770324707,
+              "feature_extractor": 4.230348710054194,
+              "aggregation": 16.903685865318536,
+              "refinement": 11.336353533405699,
+              "matching_path": 17.424994864906758,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 2.0203191276739743,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000005_10.png",
+              "crop_yx": [
+                73,
+                658
+              ],
+              "loss": 18.1669921875,
+              "feature_extractor": 2.8654585987455206,
+              "aggregation": 26.23036634523243,
+              "refinement": 39.69757094966504,
+              "matching_path": 26.386416421830127,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 2.0538481374169493,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000006_10.png",
+              "crop_yx": [
+                56,
+                437
+              ],
+              "loss": 9.658143043518066,
+              "feature_extractor": 3.127182032385161,
+              "aggregation": 8.596062672851216,
+              "refinement": 27.32187529455525,
+              "matching_path": 9.147216021241578,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.9461955846055126,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000007_10.png",
+              "crop_yx": [
+                109,
+                525
+              ],
+              "loss": 8.81103801727295,
+              "feature_extractor": 4.667042004726451,
+              "aggregation": 30.664360125606713,
+              "refinement": 54.33042289767422,
+              "matching_path": 31.017483182662968,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 2.0664562007199807,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000008_10.png",
+              "crop_yx": [
+                71,
+                391
+              ],
+              "loss": 3.2756993770599365,
+              "feature_extractor": 1.3970169670147363,
+              "aggregation": 9.345449153386982,
+              "refinement": 22.855833890011212,
+              "matching_path": 9.44928972381885,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.998602494338947,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000009_10.png",
+              "crop_yx": [
+                63,
+                674
+              ],
+              "loss": 3.894592523574829,
+              "feature_extractor": 1.5187317265686544,
+              "aggregation": 4.398710884202353,
+              "refinement": 5.402360580920507,
+              "matching_path": 4.653515176733224,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 2.054838832725994,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000010_10.png",
+              "crop_yx": [
+                31,
+                588
+              ],
+              "loss": 3.4125866889953613,
+              "feature_extractor": 2.4216427894128634,
+              "aggregation": 8.949110643011483,
+              "refinement": 13.95234634948521,
+              "matching_path": 9.270972715976287,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 2.145282991888694,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000011_10.png",
+              "crop_yx": [
+                75,
+                1
+              ],
+              "loss": 8.688050270080566,
+              "feature_extractor": 5.109465294267376,
+              "aggregation": 28.832291027955375,
+              "refinement": 45.39916699186799,
+              "matching_path": 29.281523893302392,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 2.076056347456153,
+              "exact_ties": 0
+            }
+          ]
+        }
+      },
+      {
+        "seed": 2,
+        "epoch": 20,
+        "snapshot": "phase2\\results\\training\\EXP-H2-SEED-REPLICATION-001-SEED2-RUN2_epoch20.pth",
+        "snapshot_sha256": "205961392c829827a83201f901ac7973388e4b0142885696c3a85de7d16d388a",
+        "probe_scene_d1": 78.77979732756995,
+        "probe_scene_epe": 8.330876564400501,
+        "right_dependence_worst_pt": -0.9096869365677804,
+        "right_dependence_mean_pt": 4.651208219350294,
+        "map_dependence_worst_pt": 0.5235935821085747,
+        "map_dependence_mean_pt": 6.997531850441984,
+        "softmax_entropy": 1.9488345920828942,
+        "matching_gradient_fraction": 1.0,
+        "matching_grad_median": 17.853544754742924,
+        "total_grad_max": 80.82405761892673,
+        "grad_spikes_above_1e4": 0,
+        "ablation": [
+          {
+            "scene": "000187_10.png",
+            "baseline": {
+              "epe": 6.8964481249240395,
+              "d1": 79.910766397323
+            },
+            "softmax_entropy": 1.9246934648059897,
+            "right_black": {
+              "epe": 11.172832809449034,
+              "d1": 89.35033268050998,
+              "d1_penalty": 9.439566283186977,
+              "mean_abs_change_px": 9.451475848989137
+            },
+            "right_noise": {
+              "epe": 11.107339278821145,
+              "d1": 89.18042567541276,
+              "d1_penalty": 9.269659278089762,
+              "mean_abs_change_px": 8.202678345667564
+            },
+            "right_equals_left": {
+              "epe": 7.2628607016880915,
+              "d1": 79.13775437413263,
+              "d1_penalty": -0.7730120231903754,
+              "mean_abs_change_px": 2.7153768486094587
+            },
+            "initial_constant_mean": {
+              "epe": 12.875831976488678,
+              "d1": 84.18308452549253,
+              "d1_penalty": 4.27231812816953,
+              "mean_abs_change_px": 9.634003453516206
+            },
+            "initial_shuffled": {
+              "epe": 13.158582543821502,
+              "d1": 85.29980155899405,
+              "d1_penalty": 5.389035161671046,
+              "mean_abs_change_px": 9.958884060827732
+            }
+          },
+          {
+            "scene": "000160_10.png",
+            "baseline": {
+              "epe": 7.864734278471221,
+              "d1": 73.62389442370277
+            },
+            "softmax_entropy": 1.9514925742317712,
+            "right_black": {
+              "epe": 11.313079293219221,
+              "d1": 81.27158743785813,
+              "d1_penalty": 7.647693014155365,
+              "mean_abs_change_px": 9.952311503488986
+            },
+            "right_noise": {
+              "epe": 11.27218142737621,
+              "d1": 81.09190009383673,
+              "d1_penalty": 7.468005670133962,
+              "mean_abs_change_px": 9.908092583391346
+            },
+            "right_equals_left": {
+              "epe": 10.05973452831706,
+              "d1": 76.46495098528561,
+              "d1_penalty": 2.841056561582846,
+              "mean_abs_change_px": 3.5420576815537053
+            },
+            "initial_constant_mean": {
+              "epe": 14.002136505173487,
+              "d1": 89.51524347635115,
+              "d1_penalty": 15.89134905264838,
+              "mean_abs_change_px": 8.7109847819156
+            },
+            "initial_shuffled": {
+              "epe": 14.13206182424032,
+              "d1": 87.23421247030167,
+              "d1_penalty": 13.610318046598906,
+              "mean_abs_change_px": 9.000569162067848
+            }
+          },
+          {
+            "scene": "000191_10.png",
+            "baseline": {
+              "epe": 8.396518038711344,
+              "d1": 78.27396009427326
+            },
+            "softmax_entropy": 1.8601392506452459,
+            "right_black": {
+              "epe": 11.690237758181437,
+              "d1": 88.65512518354906,
+              "d1_penalty": 10.381165089275797,
+              "mean_abs_change_px": 10.808435687838402
+            },
+            "right_noise": {
+              "epe": 11.680795928776773,
+              "d1": 88.54283634209844,
+              "d1_penalty": 10.268876247825176,
+              "mean_abs_change_px": 10.646172902683025
+            },
+            "right_equals_left": {
+              "epe": 9.884869225349586,
+              "d1": 77.78038276921558,
+              "d1_penalty": -0.4935773250576858,
+              "mean_abs_change_px": 2.372040576622824
+            },
+            "initial_constant_mean": {
+              "epe": 13.081261561548567,
+              "d1": 85.84050048740761,
+              "d1_penalty": 7.566540393134346,
+              "mean_abs_change_px": 10.312176933504729
+            },
+            "initial_shuffled": {
+              "epe": 13.354668034989537,
+              "d1": 85.62332646438222,
+              "d1_penalty": 7.349366370108953,
+              "mean_abs_change_px": 10.64650141257311
+            }
+          },
+          {
+            "scene": "000166_10.png",
+            "baseline": {
+              "epe": 10.1658058154954,
+              "d1": 83.31056839498079
+            },
+            "softmax_entropy": 2.0590130786485696,
+            "right_black": {
+              "epe": 10.32557052945845,
+              "d1": 82.40088145841301,
+              "d1_penalty": -0.9096869365677804,
+              "mean_abs_change_px": 6.90261073320271
+            },
+            "right_noise": {
+              "epe": 10.361653866236674,
+              "d1": 83.93159591323827,
+              "d1_penalty": 0.6210275182574776,
+              "mean_abs_change_px": 5.254235257766404
+            },
+            "right_equals_left": {
+              "epe": 12.591092810073016,
+              "d1": 83.3642936494928,
+              "d1_penalty": 0.05372525451200261,
+              "mean_abs_change_px": 5.293244604500908
+            },
+            "initial_constant_mean": {
+              "epe": 11.801956439435521,
+              "d1": 84.68830246407693,
+              "d1_penalty": 1.3777340690961353,
+              "mean_abs_change_px": 7.495720085966123
+            },
+            "initial_shuffled": {
+              "epe": 11.962191712092306,
+              "d1": 83.83416197708937,
+              "d1_penalty": 0.5235935821085747,
+              "mean_abs_change_px": 7.785918520563684
+            }
+          }
+        ],
+        "gradient": {
+          "batches": 12,
+          "matching_present": 12,
+          "matching_present_fraction": 1.0,
+          "matching_norm": {
+            "median": 17.853544754742924,
+            "min": 6.249248619802015,
+            "max": 33.22417656699211
+          },
+          "total_norm": {
+            "median": 58.93337074064343,
+            "max": 80.82405761892673
+          },
+          "spikes_above_1e4": 0,
+          "mean_softmax_entropy": 1.9161552851840655,
+          "exact_ties_total": 0,
+          "any_non_finite": false,
+          "crops": [
+            {
+              "scene": "000000_10.png",
+              "crop_yx": [
+                96,
+                459
+              ],
+              "loss": 6.465102195739746,
+              "feature_extractor": 5.251962831765153,
+              "aggregation": 15.560812781278468,
+              "refinement": 47.96170705665661,
+              "matching_path": 16.42321551950902,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.8568610957478149,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000001_10.png",
+              "crop_yx": [
+                57,
+                194
+              ],
+              "loss": 3.599087715148926,
+              "feature_extractor": 5.959533492272401,
+              "aggregation": 32.68531580249992,
+              "refinement": 73.67959270675239,
+              "matching_path": 33.22417656699211,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.7816428472027948,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000002_10.png",
+              "crop_yx": [
+                34,
+                29
+              ],
+              "loss": 10.260848045349121,
+              "feature_extractor": 2.797127965141635,
+              "aggregation": 19.079933731748845,
+              "refinement": 69.29858885038796,
+              "matching_path": 19.283873989976826,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.9655352833552764,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000003_10.png",
+              "crop_yx": [
+                8,
+                11
+              ],
+              "loss": 7.849412441253662,
+              "feature_extractor": 12.471278197992369,
+              "aggregation": 23.885542395078353,
+              "refinement": 63.22104729914838,
+              "matching_path": 26.94535053397534,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 2.1012459914222332,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000004_10.png",
+              "crop_yx": [
+                19,
+                586
+              ],
+              "loss": 9.943559646606445,
+              "feature_extractor": 3.5153969682193793,
+              "aggregation": 13.565139100376054,
+              "refinement": 59.22014583494213,
+              "matching_path": 14.013244258797364,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.92557926723672,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000005_10.png",
+              "crop_yx": [
+                73,
+                658
+              ],
+              "loss": 15.761849403381348,
+              "feature_extractor": 3.921094101773503,
+              "aggregation": 10.679833862594228,
+              "refinement": 36.41171936655894,
+              "matching_path": 11.376898975009723,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 2.1033057910189497,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000006_10.png",
+              "crop_yx": [
+                56,
+                437
+              ],
+              "loss": 10.49681568145752,
+              "feature_extractor": 2.8424030122022566,
+              "aggregation": 13.584762276867712,
+              "refinement": 48.22748317547977,
+              "matching_path": 13.87894163842418,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.8865054573009459,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000007_10.png",
+              "crop_yx": [
+                109,
+                525
+              ],
+              "loss": 6.817560195922852,
+              "feature_extractor": 2.6762096375324487,
+              "aggregation": 12.50666784513716,
+              "refinement": 42.355034827140166,
+              "matching_path": 12.789794314710825,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.9987545866650003,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000008_10.png",
+              "crop_yx": [
+                71,
+                391
+              ],
+              "loss": 2.9991960525512695,
+              "feature_extractor": 2.763112829153957,
+              "aggregation": 22.79230947134156,
+              "refinement": 55.827746650688816,
+              "matching_path": 22.959184731693796,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.7842658597285839,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000009_10.png",
+              "crop_yx": [
+                63,
+                674
+              ],
+              "loss": 5.01329231262207,
+              "feature_extractor": 4.9451678111201405,
+              "aggregation": 20.817542663458372,
+              "refinement": 57.00224156968801,
+              "matching_path": 21.396840122435094,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.8811612193633882,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000010_10.png",
+              "crop_yx": [
+                31,
+                588
+              ],
+              "loss": 3.3887109756469727,
+              "feature_extractor": 4.880456495638687,
+              "aggregation": 21.63725858873681,
+              "refinement": 53.05213304463892,
+              "matching_path": 22.180843420431213,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.8501120954363077,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000011_10.png",
+              "crop_yx": [
+                75,
+                1
+              ],
+              "loss": 3.9509670734405518,
+              "feature_extractor": 2.6564937001723337,
+              "aggregation": 5.656513902841757,
+              "refinement": 5.097274709233445,
+              "matching_path": 6.249248619802015,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.8588939277307683,
+              "exact_ties": 0
+            }
+          ]
+        }
+      },
+      {
+        "seed": 2,
+        "epoch": 50,
+        "snapshot": "phase2\\results\\training\\EXP-H2-SEED-REPLICATION-001-SEED2-RUN2_epoch50.pth",
+        "snapshot_sha256": "a2ef23cae539197bc48c17b0b491c0cb7af9643befaaab6f38a4506a7d64b5c4",
+        "probe_scene_d1": 49.53619266195112,
+        "probe_scene_epe": 3.688096430996546,
+        "right_dependence_worst_pt": 30.501375002276497,
+        "right_dependence_mean_pt": 40.81872792253537,
+        "map_dependence_worst_pt": 23.996976816186795,
+        "map_dependence_mean_pt": 34.971977759981584,
+        "softmax_entropy": 1.70567225087398,
+        "matching_gradient_fraction": 1.0,
+        "matching_grad_median": 21.633872137586195,
+        "total_grad_max": 76.30817785045508,
+        "grad_spikes_above_1e4": 0,
+        "ablation": [
+          {
+            "scene": "000187_10.png",
+            "baseline": {
+              "epe": 3.2287564085927003,
+              "d1": 44.63495933904878
+            },
+            "softmax_entropy": 1.6633500636601943,
+            "right_black": {
+              "epe": 18.77853365120471,
+              "d1": 90.57988871739666,
+              "d1_penalty": 45.94492937834788,
+              "mean_abs_change_px": 23.8053470747335
+            },
+            "right_noise": {
+              "epe": 14.004870667670763,
+              "d1": 82.8406894852207,
+              "d1_penalty": 38.205730146171916,
+              "mean_abs_change_px": 15.05176475630176
+            },
+            "right_equals_left": {
+              "epe": 20.372713719098815,
+              "d1": 90.40998171229944,
+              "d1_penalty": 45.775022373250664,
+              "mean_abs_change_px": 14.447904321575407
+            },
+            "initial_constant_mean": {
+              "epe": 12.598730815675147,
+              "d1": 85.77061257311837,
+              "d1_penalty": 41.13565323406959,
+              "mean_abs_change_px": 13.905387441295328
+            },
+            "initial_shuffled": {
+              "epe": 12.970024691337917,
+              "d1": 85.34779056043371,
+              "d1_penalty": 40.71283122138493,
+              "mean_abs_change_px": 14.1386871389421
+            }
+          },
+          {
+            "scene": "000160_10.png",
+            "baseline": {
+              "epe": 3.4446301159380885,
+              "d1": 44.0094236029309
+            },
+            "softmax_entropy": 1.6609918264259356,
+            "right_black": {
+              "epe": 20.16948455065536,
+              "d1": 93.55122087567632,
+              "d1_penalty": 49.54179727274542,
+              "mean_abs_change_px": 24.083525479061795
+            },
+            "right_noise": {
+              "epe": 17.549392058668595,
+              "d1": 90.73512088965201,
+              "d1_penalty": 46.72569728672111,
+              "mean_abs_change_px": 19.244608700653
+            },
+            "right_equals_left": {
+              "epe": 22.1531064677615,
+              "d1": 92.45612634016811,
+              "d1_penalty": 48.44670273723721,
+              "mean_abs_change_px": 15.252804534466657
+            },
+            "initial_constant_mean": {
+              "epe": 13.05595972048324,
+              "d1": 85.35148841016631,
+              "d1_penalty": 41.34206480723541,
+              "mean_abs_change_px": 15.274897665727751
+            },
+            "initial_shuffled": {
+              "epe": 13.366055433912043,
+              "d1": 86.17006408848603,
+              "d1_penalty": 42.16064048555513,
+              "mean_abs_change_px": 15.320541947802402
+            }
+          },
+          {
+            "scene": "000191_10.png",
+            "baseline": {
+              "epe": 3.805245990812954,
+              "d1": 53.334731802421
+            },
+            "softmax_entropy": 1.6508367758701183,
+            "right_black": {
+              "epe": 18.185686607357074,
+              "d1": 91.69926333584235,
+              "d1_penalty": 38.36453153342135,
+              "mean_abs_change_px": 24.03133721478948
+            },
+            "right_noise": {
+              "epe": 15.501484138518048,
+              "d1": 88.36268061845239,
+              "d1_penalty": 35.02794881603139,
+              "mean_abs_change_px": 16.977851089817918
+            },
+            "right_equals_left": {
+              "epe": 21.823123803698117,
+              "d1": 93.44159129329599,
+              "d1_penalty": 40.10685949087499,
+              "mean_abs_change_px": 15.436714331977562
+            },
+            "initial_constant_mean": {
+              "epe": 12.488476741078726,
+              "d1": 85.59000999494083,
+              "d1_penalty": 32.25527819251983,
+              "mean_abs_change_px": 15.108423301943787
+            },
+            "initial_shuffled": {
+              "epe": 12.825158576568992,
+              "d1": 86.19340827482385,
+              "d1_penalty": 32.858676472402855,
+              "mean_abs_change_px": 15.278321719324014
+            }
+          },
+          {
+            "scene": "000166_10.png",
+            "baseline": {
+              "epe": 4.2737532086424395,
+              "d1": 56.16565590340381
+            },
+            "softmax_entropy": 1.8475103375396715,
+            "right_black": {
+              "epe": 15.4281751399643,
+              "d1": 89.35784661895136,
+              "d1_penalty": 33.19219071554755,
+              "mean_abs_change_px": 18.221204044646516
+            },
+            "right_noise": {
+              "epe": 12.970832805271938,
+              "d1": 86.6670309056803,
+              "d1_penalty": 30.501375002276497,
+              "mean_abs_change_px": 12.917564668586948
+            },
+            "right_equals_left": {
+              "epe": 24.13898652667468,
+              "d1": 94.15760622120234,
+              "d1_penalty": 37.99195031779853,
+              "mean_abs_change_px": 20.805024399499413
+            },
+            "initial_constant_mean": {
+              "epe": 10.570482774173259,
+              "d1": 80.1626327195906,
+              "d1_penalty": 23.996976816186795,
+              "mean_abs_change_px": 12.189138136493838
+            },
+            "initial_shuffled": {
+              "epe": 10.89664651217368,
+              "d1": 81.47935675390191,
+              "d1_penalty": 25.3137008504981,
+              "mean_abs_change_px": 12.501396853804907
+            }
+          }
+        ],
+        "gradient": {
+          "batches": 12,
+          "matching_present": 12,
+          "matching_present_fraction": 1.0,
+          "matching_norm": {
+            "median": 21.633872137586195,
+            "min": 12.98421087666461,
+            "max": 29.127461718576537
+          },
+          "total_norm": {
+            "median": 49.36035535225311,
+            "max": 76.30817785045508
+          },
+          "spikes_above_1e4": 0,
+          "mean_softmax_entropy": 1.6285377429302812,
+          "exact_ties_total": 0,
+          "any_non_finite": false,
+          "crops": [
+            {
+              "scene": "000000_10.png",
+              "crop_yx": [
+                96,
+                459
+              ],
+              "loss": 3.8703083992004395,
+              "feature_extractor": 5.506785332865807,
+              "aggregation": 28.60217371922763,
+              "refinement": 70.50490840610011,
+              "matching_path": 29.127461718576537,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.8049969902354344,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000001_10.png",
+              "crop_yx": [
+                57,
+                194
+              ],
+              "loss": 2.766387939453125,
+              "feature_extractor": 4.558979893031395,
+              "aggregation": 27.22682464075897,
+              "refinement": 60.828529083498715,
+              "matching_path": 27.60587397065531,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.4393038297995573,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000002_10.png",
+              "crop_yx": [
+                34,
+                29
+              ],
+              "loss": 3.7991600036621094,
+              "feature_extractor": 3.491668070937198,
+              "aggregation": 14.110490128382464,
+              "refinement": 26.868434875684155,
+              "matching_path": 14.536081919856578,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.4681696770834813,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000003_10.png",
+              "crop_yx": [
+                8,
+                11
+              ],
+              "loss": 3.434354305267334,
+              "feature_extractor": 2.2674071312506205,
+              "aggregation": 12.78470167781984,
+              "refinement": 27.17286700500817,
+              "matching_path": 12.98421087666461,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.405844136309486,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000004_10.png",
+              "crop_yx": [
+                19,
+                586
+              ],
+              "loss": 7.247246742248535,
+              "feature_extractor": 6.121619182954155,
+              "aggregation": 20.15639133733063,
+              "refinement": 20.02793960563835,
+              "matching_path": 21.065477283098275,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6438637666609566,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000005_10.png",
+              "crop_yx": [
+                73,
+                658
+              ],
+              "loss": 10.400821685791016,
+              "feature_extractor": 9.29185666048733,
+              "aggregation": 26.055589052416114,
+              "refinement": 27.329110837022462,
+              "matching_path": 27.662832846030597,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.9677728607121616,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000006_10.png",
+              "crop_yx": [
+                56,
+                437
+              ],
+              "loss": 5.283117771148682,
+              "feature_extractor": 3.5606085079817977,
+              "aggregation": 28.10539731349415,
+              "refinement": 70.85440505543892,
+              "matching_path": 28.330042200753542,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.7088283905059303,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000007_10.png",
+              "crop_yx": [
+                109,
+                525
+              ],
+              "loss": 2.9871041774749756,
+              "feature_extractor": 3.0501610291946757,
+              "aggregation": 17.4182592254834,
+              "refinement": 51.6642753830921,
+              "matching_path": 17.68330389803205,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.7932828843794497,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000008_10.png",
+              "crop_yx": [
+                71,
+                391
+              ],
+              "loss": 1.9340709447860718,
+              "feature_extractor": 4.050520647133371,
+              "aggregation": 23.512212815820245,
+              "refinement": 52.25085010888891,
+              "matching_path": 23.85855965915117,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.5515149231259369,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000009_10.png",
+              "crop_yx": [
+                63,
+                674
+              ],
+              "loss": 4.360884666442871,
+              "feature_extractor": 5.504890469116135,
+              "aggregation": 21.50899440955756,
+              "refinement": 55.85527986734541,
+              "matching_path": 22.20226699207412,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.7244591892779262,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000010_10.png",
+              "crop_yx": [
+                31,
+                588
+              ],
+              "loss": 3.305217981338501,
+              "feature_extractor": 4.136626621191628,
+              "aggregation": 19.282103966374823,
+              "refinement": 39.46049627927027,
+              "matching_path": 19.720831959459492,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.4438740089086712,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000011_10.png",
+              "crop_yx": [
+                75,
+                1
+              ],
+              "loss": 4.397711277008057,
+              "feature_extractor": 3.408262023499436,
+              "aggregation": 14.162359031008414,
+              "refinement": 28.581470679793938,
+              "matching_path": 14.566697063645348,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.590542258164383,
+              "exact_ties": 0
+            }
+          ]
+        }
+      },
+      {
+        "seed": 2,
+        "epoch": 100,
+        "snapshot": "phase2\\results\\training\\EXP-H2-SEED-REPLICATION-001-SEED2-RUN2_epoch100.pth",
+        "snapshot_sha256": "98b9c2774cf13196056095b270f89ae53d830a3d5554f307744947abcc4ebf3b",
+        "probe_scene_d1": 18.364474601453356,
+        "probe_scene_epe": 1.9767098666773766,
+        "right_dependence_worst_pt": 65.06037261651096,
+        "right_dependence_mean_pt": 76.64064819067791,
+        "map_dependence_worst_pt": 51.77111220382815,
+        "map_dependence_mean_pt": 66.09947680351907,
+        "softmax_entropy": 1.7605875364152963,
+        "matching_gradient_fraction": 1.0,
+        "matching_grad_median": 8.48231743834832,
+        "total_grad_max": 43.786706872429576,
+        "grad_spikes_above_1e4": 0,
+        "ablation": [
+          {
+            "scene": "000187_10.png",
+            "baseline": {
+              "epe": 1.7556413064845515,
+              "d1": 13.268310398049312
+            },
+            "softmax_entropy": 1.7475415108394226,
+            "right_black": {
+              "epe": 29.88400329940336,
+              "d1": 96.69005590070168,
+              "d1_penalty": 83.42174550265237,
+              "mean_abs_change_px": 29.415084508383348
+            },
+            "right_noise": {
+              "epe": 30.083282635324224,
+              "d1": 95.84181787525453,
+              "d1_penalty": 82.57350747720523,
+              "mean_abs_change_px": 29.00141929335869
+            },
+            "right_equals_left": {
+              "epe": 20.812912785140004,
+              "d1": 91.86262175587865,
+              "d1_penalty": 78.59431135782934,
+              "mean_abs_change_px": 14.380963295297976
+            },
+            "initial_constant_mean": {
+              "epe": 12.718372816285033,
+              "d1": 86.13506958405209,
+              "d1_penalty": 72.86675918600278,
+              "mean_abs_change_px": 12.594036411639157
+            },
+            "initial_shuffled": {
+              "epe": 12.92210688620504,
+              "d1": 84.90032554700977,
+              "d1_penalty": 71.63201514896046,
+              "mean_abs_change_px": 12.816982935548232
+            }
+          },
+          {
+            "scene": "000160_10.png",
+            "baseline": {
+              "epe": 1.805583925477771,
+              "d1": 15.975203146525047
+            },
+            "softmax_entropy": 1.746853065855777,
+            "right_black": {
+              "epe": 28.286100350844396,
+              "d1": 96.0798211112664,
+              "d1_penalty": 80.10461796474135,
+              "mean_abs_change_px": 27.90413320089629
+            },
+            "right_noise": {
+              "epe": 28.267555189310716,
+              "d1": 97.14396949308204,
+              "d1_penalty": 81.16876634655699,
+              "mean_abs_change_px": 28.033087562111785
+            },
+            "right_equals_left": {
+              "epe": 21.632876036692515,
+              "d1": 90.41867151156987,
+              "d1_penalty": 74.44346836504482,
+              "mean_abs_change_px": 14.226170284424308
+            },
+            "initial_constant_mean": {
+              "epe": 13.46873510764259,
+              "d1": 85.42935292590892,
+              "d1_penalty": 69.45414977938387,
+              "mean_abs_change_px": 13.359660746555466
+            },
+            "initial_shuffled": {
+              "epe": 13.641771890556976,
+              "d1": 85.41737376964082,
+              "d1_penalty": 69.44217062311577,
+              "mean_abs_change_px": 13.558618821838438
+            }
+          },
+          {
+            "scene": "000191_10.png",
+            "baseline": {
+              "epe": 1.8625529430541585,
+              "d1": 15.086190940388198
+            },
+            "softmax_entropy": 1.6862276982722062,
+            "right_black": {
+              "epe": 27.84463099009681,
+              "d1": 96.67328882911119,
+              "d1_penalty": 81.587097888723,
+              "mean_abs_change_px": 30.383670949215677
+            },
+            "right_noise": {
+              "epe": 28.85053984024843,
+              "d1": 96.83616934638023,
+              "d1_penalty": 81.74997840599204,
+              "mean_abs_change_px": 30.951490520014264
+            },
+            "right_equals_left": {
+              "epe": 22.618989630975573,
+              "d1": 93.96971903110772,
+              "d1_penalty": 78.88352809071952,
+              "mean_abs_change_px": 14.17899738757738
+            },
+            "initial_constant_mean": {
+              "epe": 13.344270225226753,
+              "d1": 85.49129452992929,
+              "d1_penalty": 70.4051035895411,
+              "mean_abs_change_px": 13.969422908591339
+            },
+            "initial_shuffled": {
+              "epe": 13.460851977969162,
+              "d1": 85.88122061672486,
+              "d1_penalty": 70.79502967633667,
+              "mean_abs_change_px": 14.163956394991224
+            }
+          },
+          {
+            "scene": "000166_10.png",
+            "baseline": {
+              "epe": 2.483061291693026,
+              "d1": 29.128193920850865
+            },
+            "softmax_entropy": 1.8617278706937797,
+            "right_black": {
+              "epe": 27.561943296069742,
+              "d1": 95.11646542461163,
+              "d1_penalty": 65.98827150376077,
+              "mean_abs_change_px": 25.50516333138304
+            },
+            "right_noise": {
+              "epe": 27.573897529532857,
+              "d1": 95.2403066892495,
+              "d1_penalty": 66.11211276839863,
+              "mean_abs_change_px": 26.135747877723695
+            },
+            "right_equals_left": {
+              "epe": 23.672866779692058,
+              "d1": 94.18856653736182,
+              "d1_penalty": 65.06037261651096,
+              "mean_abs_change_px": 19.717216003137178
+            },
+            "initial_constant_mean": {
+              "epe": 11.025359139140845,
+              "d1": 80.89930612467901,
+              "d1_penalty": 51.77111220382815,
+              "mean_abs_change_px": 11.824411409271262
+            },
+            "initial_shuffled": {
+              "epe": 11.162544607770956,
+              "d1": 81.55766814183467,
+              "d1_penalty": 52.429474220983806,
+              "mean_abs_change_px": 12.007266729727244
+            }
+          }
+        ],
+        "gradient": {
+          "batches": 12,
+          "matching_present": 12,
+          "matching_present_fraction": 1.0,
+          "matching_norm": {
+            "median": 8.48231743834832,
+            "min": 3.153676971957773,
+            "max": 13.901002357688885
+          },
+          "total_norm": {
+            "median": 18.691176175750194,
+            "max": 43.786706872429576
+          },
+          "spikes_above_1e4": 0,
+          "mean_softmax_entropy": 1.6931868287458338,
+          "exact_ties_total": 0,
+          "any_non_finite": false,
+          "crops": [
+            {
+              "scene": "000000_10.png",
+              "crop_yx": [
+                96,
+                459
+              ],
+              "loss": 1.0377720594406128,
+              "feature_extractor": 1.3792027874639992,
+              "aggregation": 7.8092093202012425,
+              "refinement": 13.790417503662301,
+              "matching_path": 7.930066237785559,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.8235756955728697,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000001_10.png",
+              "crop_yx": [
+                57,
+                194
+              ],
+              "loss": 0.6401766538619995,
+              "feature_extractor": 0.8512451710133546,
+              "aggregation": 3.0366198481672337,
+              "refinement": 3.1174833250757503,
+              "matching_path": 3.153676971957773,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.468148844197796,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000002_10.png",
+              "crop_yx": [
+                34,
+                29
+              ],
+              "loss": 2.5894763469696045,
+              "feature_extractor": 1.8409875942507687,
+              "aggregation": 6.627137965223128,
+              "refinement": 8.666490772952267,
+              "matching_path": 6.878095152895676,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6053903067885944,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000003_10.png",
+              "crop_yx": [
+                8,
+                11
+              ],
+              "loss": 3.015395402908325,
+              "feature_extractor": 2.6594289155742934,
+              "aggregation": 12.549588433396064,
+              "refinement": 16.617963612300713,
+              "matching_path": 12.82827860644681,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6265157493037556,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000004_10.png",
+              "crop_yx": [
+                19,
+                586
+              ],
+              "loss": 3.5791397094726562,
+              "feature_extractor": 3.1932448455074156,
+              "aggregation": 7.855847155822688,
+              "refinement": 14.121287655480195,
+              "matching_path": 8.480044055251547,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.7242134530847455,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000005_10.png",
+              "crop_yx": [
+                73,
+                658
+              ],
+              "loss": 5.6515913009643555,
+              "feature_extractor": 6.124580179671027,
+              "aggregation": 12.479077857408083,
+              "refinement": 15.145997625615161,
+              "matching_path": 13.901002357688885,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.9555100598290602,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000006_10.png",
+              "crop_yx": [
+                56,
+                437
+              ],
+              "loss": 2.051887035369873,
+              "feature_extractor": 2.4871747067117336,
+              "aggregation": 11.931262083152651,
+              "refinement": 42.05632706042562,
+              "matching_path": 12.18774191220764,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.7517350638622724,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000007_10.png",
+              "crop_yx": [
+                109,
+                525
+              ],
+              "loss": 1.2613179683685303,
+              "feature_extractor": 1.5759125276054442,
+              "aggregation": 5.602061684771821,
+              "refinement": 22.297291609216735,
+              "matching_path": 5.819501302916968,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.8121057630282396,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000008_10.png",
+              "crop_yx": [
+                71,
+                391
+              ],
+              "loss": 0.9427664875984192,
+              "feature_extractor": 1.4655279244816914,
+              "aggregation": 9.42874720783971,
+              "refinement": 14.543642617532765,
+              "matching_path": 9.541962377141337,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6221950258433484,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000009_10.png",
+              "crop_yx": [
+                63,
+                674
+              ],
+              "loss": 1.8848294019699097,
+              "feature_extractor": 3.1851416737298184,
+              "aggregation": 8.471916302173598,
+              "refinement": 17.82128212745251,
+              "matching_path": 9.05088356530815,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.715066906508754,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000010_10.png",
+              "crop_yx": [
+                31,
+                588
+              ],
+              "loss": 1.3756747245788574,
+              "feature_extractor": 2.350082605514989,
+              "aggregation": 8.152631057186765,
+              "refinement": 18.483735346387427,
+              "matching_path": 8.484590821445092,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.5504835762971618,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000011_10.png",
+              "crop_yx": [
+                75,
+                1
+              ],
+              "loss": 2.3686516284942627,
+              "feature_extractor": 2.6850099628159647,
+              "aggregation": 4.967847099361388,
+              "refinement": 10.865096042480346,
+              "matching_path": 5.64701543322261,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6633015006334095,
+              "exact_ties": 0
+            }
+          ]
+        }
+      },
+      {
+        "seed": 2,
+        "epoch": 150,
+        "snapshot": "phase2\\results\\training\\EXP-H2-SEED-REPLICATION-001-SEED2-RUN2_epoch150.pth",
+        "snapshot_sha256": "e65c1cabcaa32fd533ba7be64d73341dae8e087f342f731e2ac421f9de36bd13",
+        "probe_scene_d1": 14.079758411459942,
+        "probe_scene_epe": 1.6855713450864342,
+        "right_dependence_worst_pt": 75.34830355679397,
+        "right_dependence_mean_pt": 82.19376613169106,
+        "map_dependence_worst_pt": 60.83246826567593,
+        "map_dependence_mean_pt": 70.40989454021825,
+        "softmax_entropy": 1.7772738476295804,
+        "matching_gradient_fraction": 1.0,
+        "matching_grad_median": 7.266338758454324,
+        "total_grad_max": 35.2045040528986,
+        "grad_spikes_above_1e4": 0,
+        "ablation": [
+          {
+            "scene": "000187_10.png",
+            "baseline": {
+              "epe": 1.5344440554928076,
+              "d1": 11.39284834178545
+            },
+            "softmax_entropy": 1.7626555774089627,
+            "right_black": {
+              "epe": 32.321553358256935,
+              "d1": 97.61092592832777,
+              "d1_penalty": 86.21807758654232,
+              "mean_abs_change_px": 31.405981743121377
+            },
+            "right_noise": {
+              "epe": 33.52297131607448,
+              "d1": 97.15438191463146,
+              "d1_penalty": 85.761533572846,
+              "mean_abs_change_px": 31.304587356789845
+            },
+            "right_equals_left": {
+              "epe": 21.90372036885981,
+              "d1": 93.2685697980571,
+              "d1_penalty": 81.87572145627165,
+              "mean_abs_change_px": 15.212541866689953
+            },
+            "initial_constant_mean": {
+              "epe": 12.771833422125207,
+              "d1": 86.48785359463561,
+              "d1_penalty": 75.09500525285016,
+              "mean_abs_change_px": 13.141236116977137
+            },
+            "initial_shuffled": {
+              "epe": 12.927200149929176,
+              "d1": 85.51121256533638,
+              "d1_penalty": 74.11836422355093,
+              "mean_abs_change_px": 13.264468030998813
+            }
+          },
+          {
+            "scene": "000160_10.png",
+            "baseline": {
+              "epe": 1.5769673534696966,
+              "d1": 13.249945095533771
+            },
+            "softmax_entropy": 1.7719847918783698,
+            "right_black": {
+              "epe": 32.29549727840775,
+              "d1": 97.44444666280671,
+              "d1_penalty": 84.19450156727294,
+              "mean_abs_change_px": 33.472643163354405
+            },
+            "right_noise": {
+              "epe": 33.84140375550771,
+              "d1": 98.43572184399146,
+              "d1_penalty": 85.18577674845768,
+              "mean_abs_change_px": 33.09959271178123
+            },
+            "right_equals_left": {
+              "epe": 21.670454262197225,
+              "d1": 92.24649110547647,
+              "d1_penalty": 78.99654600994269,
+              "mean_abs_change_px": 14.716670983590875
+            },
+            "initial_constant_mean": {
+              "epe": 13.37087422809848,
+              "d1": 85.24866731886517,
+              "d1_penalty": 71.9987222233314,
+              "mean_abs_change_px": 13.736240579949651
+            },
+            "initial_shuffled": {
+              "epe": 13.49195678844296,
+              "d1": 85.54115838441112,
+              "d1_penalty": 72.29121328887734,
+              "mean_abs_change_px": 13.778731994339823
+            }
+          },
+          {
+            "scene": "000191_10.png",
+            "baseline": {
+              "epe": 1.6196887587599562,
+              "d1": 11.732333016621215
+            },
+            "softmax_entropy": 1.7043337035297252,
+            "right_black": {
+              "epe": 31.863574020966226,
+              "d1": 98.10466307177849,
+              "d1_penalty": 86.37233005515728,
+              "mean_abs_change_px": 34.30175938148825
+            },
+            "right_noise": {
+              "epe": 34.351348706508304,
+              "d1": 98.88081341543169,
+              "d1_penalty": 87.14848039881048,
+              "mean_abs_change_px": 35.06791912679067
+            },
+            "right_equals_left": {
+              "epe": 23.25046355607157,
+              "d1": 94.50401648548265,
+              "d1_penalty": 82.77168346886144,
+              "mean_abs_change_px": 15.213835888971348
+            },
+            "initial_constant_mean": {
+              "epe": 13.293211749407249,
+              "d1": 85.56779901531324,
+              "d1_penalty": 73.83546599869203,
+              "mean_abs_change_px": 14.59557153676168
+            },
+            "initial_shuffled": {
+              "epe": 13.3437936978912,
+              "d1": 85.97500030848583,
+              "d1_penalty": 74.24266729186462,
+              "mean_abs_change_px": 14.685604852546408
+            }
+          },
+          {
+            "scene": "000166_10.png",
+            "baseline": {
+              "epe": 2.0111852126232765,
+              "d1": 19.943907191899324
+            },
+            "softmax_entropy": 1.870121317701264,
+            "right_black": {
+              "epe": 29.289480531488568,
+              "d1": 95.73202935766449,
+              "d1_penalty": 75.78812216576516,
+              "mean_abs_change_px": 27.263456180310985
+            },
+            "right_noise": {
+              "epe": 30.949231183162645,
+              "d1": 96.60802418547051,
+              "d1_penalty": 76.66411699357118,
+              "mean_abs_change_px": 28.342969899879318
+            },
+            "right_equals_left": {
+              "epe": 25.24970321572861,
+              "d1": 95.2922107486933,
+              "d1_penalty": 75.34830355679397,
+              "mean_abs_change_px": 20.86682171912055
+            },
+            "initial_constant_mean": {
+              "epe": 10.895496131400796,
+              "d1": 80.80915696880294,
+              "d1_penalty": 60.86524977690361,
+              "mean_abs_change_px": 12.330334363873355
+            },
+            "initial_shuffled": {
+              "epe": 10.989727158671412,
+              "d1": 80.77637545757526,
+              "d1_penalty": 60.83246826567593,
+              "mean_abs_change_px": 12.42815061318065
+            }
+          }
+        ],
+        "gradient": {
+          "batches": 12,
+          "matching_present": 12,
+          "matching_present_fraction": 1.0,
+          "matching_norm": {
+            "median": 7.266338758454324,
+            "min": 2.2643429999164835,
+            "max": 13.219900379853442
+          },
+          "total_norm": {
+            "median": 22.66369255475072,
+            "max": 35.2045040528986
+          },
+          "spikes_above_1e4": 0,
+          "mean_softmax_entropy": 1.7290703751872416,
+          "exact_ties_total": 0,
+          "any_non_finite": false,
+          "crops": [
+            {
+              "scene": "000000_10.png",
+              "crop_yx": [
+                96,
+                459
+              ],
+              "loss": 0.7500471472740173,
+              "feature_extractor": 1.4540349182722798,
+              "aggregation": 6.821061934268188,
+              "refinement": 22.117061083993256,
+              "matching_path": 6.974317418549113,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.832561449874226,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000001_10.png",
+              "crop_yx": [
+                57,
+                194
+              ],
+              "loss": 0.501234769821167,
+              "feature_extractor": 1.6783513975851299,
+              "aggregation": 11.506360949467197,
+              "refinement": 27.337674406308075,
+              "matching_path": 11.628121332063904,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.525763191252921,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000002_10.png",
+              "crop_yx": [
+                34,
+                29
+              ],
+              "loss": 2.1298630237579346,
+              "feature_extractor": 1.9307355720529502,
+              "aggregation": 13.078150718051024,
+              "refinement": 32.49461492044448,
+              "matching_path": 13.219900379853442,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6642674043698968,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000003_10.png",
+              "crop_yx": [
+                8,
+                11
+              ],
+              "loss": 2.276764392852783,
+              "feature_extractor": 1.707046621328676,
+              "aggregation": 7.21721811756651,
+              "refinement": 9.022918213620741,
+              "matching_path": 7.416349878742232,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6791230706435993,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000004_10.png",
+              "crop_yx": [
+                19,
+                586
+              ],
+              "loss": 2.4124977588653564,
+              "feature_extractor": 2.9093536207052635,
+              "aggregation": 11.332343650373216,
+              "refinement": 33.203475036659775,
+              "matching_path": 11.699844063083276,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.7414413420409287,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000005_10.png",
+              "crop_yx": [
+                73,
+                658
+              ],
+              "loss": 4.286596298217773,
+              "feature_extractor": 3.3638011060686224,
+              "aggregation": 11.397092437747045,
+              "refinement": 18.808088664580037,
+              "matching_path": 11.883134010678301,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.9755031463516008,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000006_10.png",
+              "crop_yx": [
+                56,
+                437
+              ],
+              "loss": 1.4406437873840332,
+              "feature_extractor": 1.4463807006295382,
+              "aggregation": 9.181723636395217,
+              "refinement": 27.661492055572968,
+              "matching_path": 9.294948416548216,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.7777536639460956,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000007_10.png",
+              "crop_yx": [
+                109,
+                525
+              ],
+              "loss": 0.9657735228538513,
+              "feature_extractor": 2.1868204751261286,
+              "aggregation": 6.364775363133303,
+              "refinement": 22.076835429902438,
+              "matching_path": 6.729973938551288,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.8220850186139295,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000008_10.png",
+              "crop_yx": [
+                71,
+                391
+              ],
+              "loss": 0.6469882726669312,
+              "feature_extractor": 0.7384790600848813,
+              "aggregation": 2.1405368249780077,
+              "refinement": 3.7548348946687407,
+              "matching_path": 2.2643429999164835,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6447893750174685,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000009_10.png",
+              "crop_yx": [
+                63,
+                674
+              ],
+              "loss": 1.1727888584136963,
+              "feature_extractor": 2.0754001823760446,
+              "aggregation": 6.806969453194621,
+              "refinement": 16.77382655418172,
+              "matching_path": 7.116327638166416,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.7495607785956402,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000010_10.png",
+              "crop_yx": [
+                31,
+                588
+              ],
+              "loss": 0.8831934928894043,
+              "feature_extractor": 1.3112218597900838,
+              "aggregation": 5.55025843000339,
+              "refinement": 9.682228686159762,
+              "matching_path": 5.703040540397294,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6035685751794366,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000011_10.png",
+              "crop_yx": [
+                75,
+                1
+              ],
+              "loss": 1.6216505765914917,
+              "feature_extractor": 2.37710622883898,
+              "aggregation": 5.249417599122305,
+              "refinement": 11.584386285134807,
+              "matching_path": 5.762553180072186,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.732427486361158,
+              "exact_ties": 0
+            }
+          ]
+        }
+      },
+      {
+        "seed": 2,
+        "epoch": 200,
+        "snapshot": "phase2\\results\\training\\EXP-H2-SEED-REPLICATION-001-SEED2-RUN2_epoch200.pth",
+        "snapshot_sha256": "b49f78d3465d3f177c40321650acf158735f3a28d77dd68a63e02e8ab1ef80b6",
+        "probe_scene_d1": 13.80909559328425,
+        "probe_scene_epe": 1.6498504938502112,
+        "right_dependence_worst_pt": 74.88025642426561,
+        "right_dependence_mean_pt": 83.49592791104698,
+        "map_dependence_worst_pt": 59.957384035404026,
+        "map_dependence_mean_pt": 70.55645218440695,
+        "softmax_entropy": 1.793849676579375,
+        "matching_gradient_fraction": 1.0,
+        "matching_grad_median": 9.437809869663813,
+        "total_grad_max": 45.21008886432096,
+        "grad_spikes_above_1e4": 0,
+        "ablation": [
+          {
+            "scene": "000187_10.png",
+            "baseline": {
+              "epe": 1.4911148202129998,
+              "d1": 11.0750833322525
+            },
+            "softmax_entropy": 1.7805028452503946,
+            "right_black": {
+              "epe": 34.78337078997678,
+              "d1": 98.42803595284107,
+              "d1_penalty": 87.35295262058857,
+              "mean_abs_change_px": 32.71399057727362
+            },
+            "right_noise": {
+              "epe": 35.13641467470258,
+              "d1": 97.79380293381409,
+              "d1_penalty": 86.71871960156159,
+              "mean_abs_change_px": 32.53268480043015
+            },
+            "right_equals_left": {
+              "epe": 22.519879299070357,
+              "d1": 95.49681586490448,
+              "d1_penalty": 84.42173253265197,
+              "mean_abs_change_px": 15.63636332508471
+            },
+            "initial_constant_mean": {
+              "epe": 12.693405826352045,
+              "d1": 85.93533157805994,
+              "d1_penalty": 74.86024824580744,
+              "mean_abs_change_px": 13.1488544505404
+            },
+            "initial_shuffled": {
+              "epe": 12.86767237753032,
+              "d1": 85.42561056276831,
+              "d1_penalty": 74.35052723051581,
+              "mean_abs_change_px": 13.316373156426229
+            }
+          },
+          {
+            "scene": "000160_10.png",
+            "baseline": {
+              "epe": 1.4551865099137444,
+              "d1": 11.75155229899974
+            },
+            "softmax_entropy": 1.7919889617716689,
+            "right_black": {
+              "epe": 34.85175079739305,
+              "d1": 98.58945434943199,
+              "d1_penalty": 86.83790205043225,
+              "mean_abs_change_px": 35.70067687903939
+            },
+            "right_noise": {
+              "epe": 35.5664017853221,
+              "d1": 98.30494938806477,
+              "d1_penalty": 86.55339708906503,
+              "mean_abs_change_px": 34.905816312273515
+            },
+            "right_equals_left": {
+              "epe": 22.022823147125703,
+              "d1": 94.02140275919899,
+              "d1_penalty": 82.26985046019925,
+              "mean_abs_change_px": 15.07478548303501
+            },
+            "initial_constant_mean": {
+              "epe": 13.29674673441259,
+              "d1": 85.1498392796534,
+              "d1_penalty": 73.39828698065367,
+              "mean_abs_change_px": 13.869854397969746
+            },
+            "initial_shuffled": {
+              "epe": 13.413318633652397,
+              "d1": 85.38343282688122,
+              "d1_penalty": 73.63188052788148,
+              "mean_abs_change_px": 13.949636401762142
+            }
+          },
+          {
+            "scene": "000191_10.png",
+            "baseline": {
+              "epe": 1.6479859754452915,
+              "d1": 11.761947656124677
+            },
+            "softmax_entropy": 1.7216658370455629,
+            "right_black": {
+              "epe": 34.32834853626551,
+              "d1": 99.59650053676535,
+              "d1_penalty": 87.83455288064067,
+              "mean_abs_change_px": 35.8977750306949
+            },
+            "right_noise": {
+              "epe": 36.95059998406911,
+              "d1": 99.67670685208722,
+              "d1_penalty": 87.91475919596255,
+              "mean_abs_change_px": 37.308612479158334
+            },
+            "right_equals_left": {
+              "epe": 23.993747369838935,
+              "d1": 95.43317579990375,
+              "d1_penalty": 83.67122814377908,
+              "mean_abs_change_px": 15.597684064607085
+            },
+            "initial_constant_mean": {
+              "epe": 13.329229082951601,
+              "d1": 85.69366123320295,
+              "d1_penalty": 73.93171357707827,
+              "mean_abs_change_px": 15.025290056122314
+            },
+            "initial_shuffled": {
+              "epe": 13.30239990309124,
+              "d1": 86.03052775755482,
+              "d1_penalty": 74.26858010143015,
+              "mean_abs_change_px": 15.144188136986143
+            }
+          },
+          {
+            "scene": "000166_10.png",
+            "baseline": {
+              "epe": 2.0051146698288096,
+              "d1": 20.647799085760077
+            },
+            "softmax_entropy": 1.8812410622498743,
+            "right_black": {
+              "epe": 32.016399153024565,
+              "d1": 97.79726456500755,
+              "d1_penalty": 77.14946547924748,
+              "mean_abs_change_px": 28.771150789712674
+            },
+            "right_noise": {
+              "epe": 32.75264153471585,
+              "d1": 96.9941175399297,
+              "d1_penalty": 76.34631845416962,
+              "mean_abs_change_px": 29.40385898189879
+            },
+            "right_equals_left": {
+              "epe": 25.77276443816375,
+              "d1": 95.52805551002568,
+              "d1_penalty": 74.88025642426561,
+              "mean_abs_change_px": 21.66596365704205
+            },
+            "initial_constant_mean": {
+              "epe": 10.830803458727855,
+              "d1": 80.7007958622448,
+              "d1_penalty": 60.052996776484726,
+              "mean_abs_change_px": 12.26654335324306
+            },
+            "initial_shuffled": {
+              "epe": 10.908545669742269,
+              "d1": 80.6051831211641,
+              "d1_penalty": 59.957384035404026,
+              "mean_abs_change_px": 12.374625774403851
+            }
+          }
+        ],
+        "gradient": {
+          "batches": 12,
+          "matching_present": 12,
+          "matching_present_fraction": 1.0,
+          "matching_norm": {
+            "median": 9.437809869663813,
+            "min": 1.9198692458852715,
+            "max": 13.530682296988926
+          },
+          "total_norm": {
+            "median": 24.51949258940821,
+            "max": 45.21008886432096
+          },
+          "spikes_above_1e4": 0,
+          "mean_softmax_entropy": 1.750774602285695,
+          "exact_ties_total": 0,
+          "any_non_finite": false,
+          "crops": [
+            {
+              "scene": "000000_10.png",
+              "crop_yx": [
+                96,
+                459
+              ],
+              "loss": 0.7307799458503723,
+              "feature_extractor": 1.805900779942,
+              "aggregation": 10.323260064095491,
+              "refinement": 36.03942666675655,
+              "matching_path": 10.480027479827712,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.8407610094284557,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000001_10.png",
+              "crop_yx": [
+                57,
+                194
+              ],
+              "loss": 0.44989052414894104,
+              "feature_extractor": 1.6463193253729274,
+              "aggregation": 10.840794901903767,
+              "refinement": 24.000775622838493,
+              "matching_path": 10.965090123945131,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.5505828158690798,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000002_10.png",
+              "crop_yx": [
+                34,
+                29
+              ],
+              "loss": 1.9716906547546387,
+              "feature_extractor": 1.5606079792604215,
+              "aggregation": 9.427877804999333,
+              "refinement": 24.478998746629312,
+              "matching_path": 9.55616958676071,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.688526637423235,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000003_10.png",
+              "crop_yx": [
+                8,
+                11
+              ],
+              "loss": 2.2751004695892334,
+              "feature_extractor": 1.8393926579549036,
+              "aggregation": 9.136125316349437,
+              "refinement": 13.586173357786217,
+              "matching_path": 9.319450152566915,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.7084047646521636,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000004_10.png",
+              "crop_yx": [
+                19,
+                586
+              ],
+              "loss": 1.9880902767181396,
+              "feature_extractor": 3.255272591410442,
+              "aggregation": 12.22368330337061,
+              "refinement": 32.29925133557923,
+              "matching_path": 12.649712769288064,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.7510732171499486,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000005_10.png",
+              "crop_yx": [
+                73,
+                658
+              ],
+              "loss": 3.7955081462860107,
+              "feature_extractor": 3.23500305634163,
+              "aggregation": 13.138269240943034,
+              "refinement": 24.760186269801423,
+              "matching_path": 13.530682296988926,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.9775081307693143,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000006_10.png",
+              "crop_yx": [
+                56,
+                437
+              ],
+              "loss": 1.5524013042449951,
+              "feature_extractor": 1.8431313840485082,
+              "aggregation": 13.125442700335027,
+              "refinement": 43.22357870122689,
+              "matching_path": 13.25422119095055,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.7993181252864732,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000007_10.png",
+              "crop_yx": [
+                109,
+                525
+              ],
+              "loss": 0.7975508570671082,
+              "feature_extractor": 1.6832167065930004,
+              "aggregation": 3.0676611810605428,
+              "refinement": 7.9349816340337735,
+              "matching_path": 3.499108972744283,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.845950267747746,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000008_10.png",
+              "crop_yx": [
+                71,
+                391
+              ],
+              "loss": 0.5840320587158203,
+              "feature_extractor": 0.6461653122445017,
+              "aggregation": 1.807862912542886,
+              "refinement": 4.039651245834377,
+              "matching_path": 1.9198692458852715,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6797090918330464,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000009_10.png",
+              "crop_yx": [
+                63,
+                674
+              ],
+              "loss": 0.9700103402137756,
+              "feature_extractor": 2.0263616809297162,
+              "aggregation": 8.094734352018769,
+              "refinement": 21.17602988401825,
+              "matching_path": 8.344511123588548,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.7734850224889924,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000010_10.png",
+              "crop_yx": [
+                31,
+                588
+              ],
+              "loss": 0.7654290199279785,
+              "feature_extractor": 1.285311838757091,
+              "aggregation": 3.4984020003265113,
+              "refinement": 6.146081568973447,
+              "matching_path": 3.727042135358503,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.6345022712809425,
+              "exact_ties": 0
+            },
+            {
+              "scene": "000011_10.png",
+              "crop_yx": [
+                75,
+                1
+              ],
+              "loss": 1.5845727920532227,
+              "feature_extractor": 2.4720571570769225,
+              "aggregation": 5.451406208839385,
+              "refinement": 14.850232400234336,
+              "matching_path": 5.985724370669589,
+              "matching_present": true,
+              "matching_exactly_zero": false,
+              "tensors_with_exactly_zero_gradient": 0,
+              "softmax_entropy": 1.759473873498941,
+              "exact_ties": 0
+            }
+          ]
+        }
+      }
+    ],
+    "validation_from_record": {
+      "1:10": {
+        "val_epe": 16.373909511155173,
+        "val_d1": 85.85642494657115
+      },
+      "1:20": {
+        "val_epe": 8.55228642781413,
+        "val_d1": 64.13503288466353
+      },
+      "1:50": {
+        "val_epe": 5.448525890003817,
+        "val_d1": 39.596766654811496
+      },
+      "1:100": {
+        "val_epe": 4.096845725211442,
+        "val_d1": 30.393143915665693
+      },
+      "1:150": {
+        "val_epe": 3.766398524579456,
+        "val_d1": 27.085766597863703
+      },
+      "1:200": {
+        "val_epe": 3.632293116839531,
+        "val_d1": 25.391516068410414
+      },
+      "2:10": {
+        "val_epe": 16.382532579941202,
+        "val_d1": 87.091010092653
+      },
+      "2:20": {
+        "val_epe": 14.029345745482015,
+        "val_d1": 83.76332497740891
+      },
+      "2:50": {
+        "val_epe": 7.418812111023274,
+        "val_d1": 57.51866651910383
+      },
+      "2:100": {
+        "val_epe": 5.269663801307769,
+        "val_d1": 37.67246853634505
+      },
+      "2:150": {
+        "val_epe": 4.745675521384638,
+        "val_d1": 31.751832268337992
+      },
+      "2:200": {
+        "val_epe": 4.2714070005435225,
+        "val_d1": 29.608553773220997
+      }
+    },
+    "wall_clock_s": 42.32891297340393
+  },
+  "observations": [
+    "Stereo dependence in the H2 recipe is late-emerging: it is absent early in training and appears at some point before epoch 200. This experiment locates that point on the saved snapshot grid.",
+    "two seeds, four probe scenes, and a six-point epoch grid; the emergence point is an interval between two saved epochs, not a measured epoch, and the harness is not bit-reproducible (fp32 cuDNN).",
+    "fresh np.random.default_rng(0) per checkpoint, where training advanced a single generator across epochs; epochs 10/100/200 are cross-checked against the recorded ablation"
+  ],
+  "conclusion": "Stereo dependence (>= 20 D1 points of right-image cost, worst case) first appears at: seed 1 in (10, 20], seed 2 in (20, 50]. Measured on saved snapshots only; no training.",
+  "error": null
+}

@@ -1,0 +1,15 @@
+EXP-BLOCKCOUNT-FULL-001-ARM-C-SEED1 (4 blocks, seed 1):
+    epoch  10  right   -7.462  map   -3.525  entropy 2.0670  std  8.117  init r(GT) +0.4360
+    epoch  20  right   +5.353  map   +7.199  entropy 1.9227  std 12.162  init r(GT) +0.6389
+    epoch  50  right  +58.785  map  +50.838  entropy 1.7831  std 17.092  init r(GT) +0.8014
+    epoch 100  right  +70.724  map  +59.138  entropy 1.8220  std 17.716  init r(GT) +0.8627
+    epoch 150  right  +71.781  map  +60.975  entropy 1.8381  std 17.805  init r(GT) +0.8802
+    epoch 200  right  +77.031  map  +63.333  entropy 1.8412  std 17.910  init r(GT) +0.8904
+EXP-BLOCKCOUNT-FULL-001-ARM-C-SEED2 (4 blocks, seed 2):
+    epoch  10  right   -3.864  map   -7.034  entropy 2.0645  std  9.438  init r(GT) +0.4904
+    epoch  20  right   -3.195  map   -1.564  entropy 2.1143  std  9.323  init r(GT) +0.5371
+    epoch  50  right  +47.223  map  +37.399  entropy 1.7873  std 16.693  init r(GT) +0.8315
+    epoch 100  right  +70.461  map  +56.984  entropy 1.7776  std 17.376  init r(GT) +0.8846
+    epoch 150  right  +77.128  map  +62.371  entropy 1.7709  std 17.542  init r(GT) +0.8996
+    epoch 200  right  +75.460  map  +60.934  entropy 1.7749  std 17.977  init r(GT) +0.9018
+wrote C:\Users\vishn\stereo_depth_vision\phase2\factorial\block_count_full\20260910T081501Z\probes.json

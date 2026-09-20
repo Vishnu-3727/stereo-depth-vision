@@ -1,0 +1,60 @@
+{
+  "experiment": "EXP-CORRESPONDENCE-GEOM-001",
+  "definition_original_coords": "retain pixel (y,x) iff GT[y,x] > 0 AND 112 <= y < 256 AND 112 <= x < 1120",
+  "edge_exclusion_px": 112,
+  "edge_exclusion_decomposition": {
+    "crop_margin_M": 48,
+    "inner_border_B": 64
+  },
+  "crop_frame_mapping": "mask_crop[y, x] = mask_original[y + M, x + M]",
+  "single_fixed_mask": true,
+  "delta_dependent": false,
+  "model_dependent": false,
+  "derived_from": "ground truth and image geometry only",
+  "why_a_border_exists": "with crop-based translation no fill is ever produced, so the border is NOT needed to exclude fill. It is retained to reduce the residual influence of differing real content entering the feature receptive field near the crop edge. The feature receptive field is ~477 px, which no affordable border can fully exclude (the image is only 368 px tall); the shift=none control measures whatever residual survives.",
+  "why_single_mask_is_valid": "the crop window size is identical for every Delta and every axis, so one fixed pixel set is well defined for all conditions. A Delta-dependent mask would change the sample between conditions and bias the paired difference.",
+  "band_restriction_applied": false,
+  "band_note": "GT/16 in [2,8] is NOT applied to the primary. The provenance audit measured that band to be effectively [2,4] (99.4 percent of its pixels), and the statistic is a difference of medians over a fixed pixel set, so the band narrows the sample without changing the structure. It is kept as a preregistered descriptive secondary only.",
+  "per_scene": {
+    "000187_10.png": {
+      "scene_index": 27,
+      "retained_pixels": 34245,
+      "gt_over_16_mean": 1.1323249316734194,
+      "gt_over_16_median": 1.045166015625,
+      "gt_over_16_min": 0.304931640625,
+      "gt_over_16_max": 2.596923828125
+    },
+    "000160_10.png": {
+      "scene_index": 0,
+      "retained_pixels": 46199,
+      "gt_over_16_mean": 1.2037832480224815,
+      "gt_over_16_median": 1.164794921875,
+      "gt_over_16_min": 0.2939453125,
+      "gt_over_16_max": 3.1669921875
+    },
+    "000191_10.png": {
+      "scene_index": 31,
+      "retained_pixels": 33250,
+      "gt_over_16_mean": 1.1608964550046992,
+      "gt_over_16_median": 1.105224609375,
+      "gt_over_16_min": 0.29736328125,
+      "gt_over_16_max": 3.3916015625
+    },
+    "000166_10.png": {
+      "scene_index": 6,
+      "retained_pixels": 50747,
+      "gt_over_16_mean": 1.4960581201998393,
+      "gt_over_16_median": 1.552490234375,
+      "gt_over_16_min": 0.294677734375,
+      "gt_over_16_max": 2.843994140625
+    }
+  },
+  "pooled_retained_pixels": 164441,
+  "scenes": [
+    27,
+    0,
+    31,
+    6
+  ],
+  "split": "hailo_val"
+}

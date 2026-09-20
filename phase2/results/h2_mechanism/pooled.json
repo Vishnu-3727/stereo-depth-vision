@@ -1,0 +1,36 @@
+{
+  "protocol": "inference-only interventions on the matching -> refinement boundary, pooled over every gt > 0 pixel of hailo_val scenes [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39]",
+  "git_revision": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+  "results": {
+    "WORKING as trained": {
+      "epe": 11.173144681288262,
+      "d1": 77.93458341320876,
+      "pixels": 3802797
+    },
+    "H2 as trained": {
+      "epe": 2.4004242992562075,
+      "d1": 16.71777378597911,
+      "pixels": 3802797
+    },
+    "H2 initial:=own mean": {
+      "epe": 14.97725470089004,
+      "d1": 88.2234313322536,
+      "pixels": 3802797
+    },
+    "H2 initial:=constant 11": {
+      "epe": 57.91235212632697,
+      "d1": 99.62006912280619,
+      "pixels": 3802797
+    },
+    "H2 initial:=shuffled": {
+      "epe": 15.150991775014255,
+      "d1": 88.067125329067,
+      "pixels": 3802797
+    },
+    "WORKING initial:=H2's map": {
+      "epe": 11.076121159112521,
+      "d1": 77.74230388842739,
+      "pixels": 3802797
+    }
+  }
+}

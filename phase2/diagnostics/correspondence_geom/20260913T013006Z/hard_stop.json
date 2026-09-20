@@ -1,0 +1,18 @@
+{
+  "stages": {
+    "0": {
+      "fired": false,
+      "hard_stop": null
+    },
+    "1": {
+      "fired": false,
+      "hard_stop": null
+    },
+    "report": {
+      "fired": false,
+      "hard_stop": null
+    }
+  },
+  "any_fired": false,
+  "policy": "any hard stop RAISES and the process exits; no post-hoc restart is permitted without a new preregistration"
+}

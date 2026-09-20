@@ -1,0 +1,82 @@
+=== TRAIN EXP-BLOCKCOUNT-FULL-001-ARM-B-SEED2 (5 blocks, seed 2) 2026-09-10T05:30:40Z ===
+train exit=0
+
+recorded as EXP-BLOCKCOUNT-FULL-001-ARM-B-SEED2
+EXP-BLOCKCOUNT-FULL-001-ARM-B-SEED2 [06:50:22] status: completed
+EXP-BLOCKCOUNT-FULL-001-ARM-B-SEED2 done in 4777.6s; final weight sha 793f2c77e3074810
+=== EVAL40 2026-09-10T06:50:24Z ===
+eval40 exit=0
+EXP-BLOCKCOUNT-FULL-001-ARM-B-SEED2 40-scene @200ep  EPE 2.6372994  D1 20.6593989  RMSE 6.4438723
+=== PROBES 2026-09-10T06:50:38Z ===
+probes exit=0
+EXP-BLOCKCOUNT-FULL-001-ARM-B-SEED2 (5 blocks, seed 2):
+    epoch  10  right   -2.651  map   -4.088  entropy 1.9728  std  8.776  init r(GT) +0.5183
+    epoch  20  right   -0.026  map   +3.568  entropy 1.8646  std 10.912  init r(GT) +0.7085
+    epoch  50  right  +42.048  map  +32.965  entropy 1.7930  std 16.954  init r(GT) +0.8058
+    epoch 100  right  +61.287  map  +52.094  entropy 1.8204  std 16.995  init r(GT) +0.8821
+    epoch 150  right  +74.089  map  +60.943  entropy 1.8365  std 17.793  init r(GT) +0.8858
+    epoch 200  right  +73.592  map  +60.096  entropy 1.8441  std 18.053  init r(GT) +0.8844
+wrote C:\Users\vishn\stereo_depth_vision\phase2\factorial\block_count_full\20260910T052736Z\probes.json
+=== COMPARE 2026-09-10T06:51:14Z ===
+compare exit=0
+}
+
+all nine 5b-vs-6b pairings, 5b worse on EPE: True
+all nine 5b-vs-6b pairings, 5b worse on D1:  False
+
+paired per-scene:
+{
+  "5b_seed2_vs_6b_seed2": {
+    "scenes": 40,
+    "epe_5b_worse_in": 32,
+    "epe_mean_delta": 0.2334313630952331,
+    "epe_median_delta": 0.13160143315330286,
+    "epe_max_delta": 1.1360774354016172,
+    "epe_min_delta": -0.32664518971892686,
+    "d1_5b_worse_in": 35,
+    "d1_mean_delta": 3.0527315201644196
+  },
+  "5b_seed2_vs_6b_seed1": {
+    "scenes": 40,
+    "epe_5b_worse_in": 31,
+    "epe_mean_delta": 0.22322105788138985,
+    "epe_median_delta": 0.09992127169540699,
+    "epe_max_delta": 2.0875324887900355,
+    "epe_min_delta": -0.4836719017947888,
+    "d1_5b_worse_in": 30,
+    "d1_mean_delta": 2.1989373748149244
+  },
+  "5b_seed2_vs_6b_seed0": {
+    "scenes": 40,
+    "epe_5b_worse_in": 37,
+    "epe_mean_delta": 0.3286298175501147,
+    "epe_median_delta": 0.20355963719575698,
+    "epe_max_delta": 1.7392503119925058,
+    "epe_min_delta": -0.9365189561937708,
+    "d1_5b_worse_in": 38,
+    "d1_mean_delta": 4.829419513819595
+  },
+  "5b_seed1_vs_6b_seed1": {
+    "scenes": 40,
+    "epe_5b_worse_in": 22,
+    "epe_mean_delta": 0.07114406311616213,
+    "epe_median_delta": 0.016546679574158007,
+    "epe_max_delta": 2.151444139410563,
+    "epe_min_delta": -0.6065774875957084,
+    "d1_5b_worse_in": 20,
+    "d1_mean_delta": -0.07202611756287505
+  },
+  "5b_seed0_vs_6b_seed0": {
+    "scenes": 40,
+    "epe_5b_worse_in": 35,
+    "epe_mean_delta": 0.34654437442763564,
+    "epe_median_delta": 0.3310966239581171,
+    "epe_max_delta": 1.442276357095405,
+    "epe_min_delta": -0.9728052718697402,
+    "d1_5b_worse_in": 38,
+    "d1_mean_delta": 5.519015095256087
+  }
+}
+
+Descriptive non-overlap over three seeds per arm on one dataset, one recipe and one deterministic protocol. Not a statistical test, and not a universal law about refinement capacity. No materiality band is used: the historical E3b/E3c band stays invalidated and no new threshold was invented.
+=== BATCH 2 COMPLETE 2026-09-10T06:51:19Z -- HARD STOP, no further runs ===

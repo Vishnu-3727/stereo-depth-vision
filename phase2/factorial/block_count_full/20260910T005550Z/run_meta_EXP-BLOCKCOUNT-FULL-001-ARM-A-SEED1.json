@@ -1,0 +1,65 @@
+{
+  "arm": "A",
+  "seed": 1,
+  "experiment_id": "EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED1",
+  "controls": {
+    "torch.use_deterministic_algorithms": true,
+    "torch.backends.cudnn.deterministic": true,
+    "torch.backends.cudnn.benchmark": false,
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+  },
+  "batch": 1,
+  "batch_note": "batch 1 of a sequential campaign: 6b/seed1, 6b/seed2, 5b/seed1; batch 2 (5b/seed2, 4b/seed1, 4b/seed2) is NOT authorised and is refused by this script until the research lead reviews batch 1",
+  "blocks": 6,
+  "parameters": 423586,
+  "init_weight_sha": "c27a63f9fac30273",
+  "epoch_budget": 200,
+  "schedule_T_max": 200,
+  "changed_variables": {
+    "refinement_blocks": 6,
+    "seed": 1
+  },
+  "initialised_from": "fresh, per the frozen recipe; no checkpoint loaded",
+  "provenance": {
+    "head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "head_subject": "docs: add the Phase 1 overview",
+    "phase_1_frozen_commit": "b4207e518166f5089731b4d037a4a79234f70986",
+    "phase_1_diff_vs_frozen": "",
+    "status_short": "M .gitignore\n?? phase2/",
+    "phase_2_committed": false
+  },
+  "environment": {
+    "command": "phase2/factorial/block_count_full/exp_blockcount_full.py train --out phase2/factorial/block_count_full/20260910T005550Z --arm A --seed 1",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "numpy": "2.5.1",
+    "cuda_version": "12.8",
+    "cudnn_version": 90701,
+    "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "nvidia_driver": "616.64",
+    "flags": {
+      "deterministic_algorithms": true,
+      "cudnn.deterministic": true,
+      "cudnn.benchmark": false
+    },
+    "env": {
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+    }
+  },
+  "started_utc": "2026-09-10T01:02:06Z",
+  "wall_clock_s": 5010.306891679764,
+  "finished_utc": "2026-09-10T02:25:36Z",
+  "schedule_T_max_requested_by_training_code": 200,
+  "checkpoint": "phase2\\factorial\\block_count_full\\20260910T005550Z\\checkpoints\\EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED1_checkpoint.pth",
+  "checkpoint_sha256": "58117f2613bba4b2c817328c7d6757f21b340ec5e64a828e633193ae091d4adf",
+  "final_weight_sha": "80151d1b2d3dca67",
+  "snapshots": [
+    "EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED1_epoch10.pth",
+    "EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED1_epoch100.pth",
+    "EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED1_epoch150.pth",
+    "EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED1_epoch20.pth",
+    "EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED1_epoch200.pth",
+    "EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED1_epoch50.pth"
+  ]
+}

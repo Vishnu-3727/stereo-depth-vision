@@ -1,0 +1,170 @@
+# STATISTIC AUDIT — GEOM-002 conditions C3 and C4
+
+Companion to `POSTMORTEM.md`. **Audit only. Nothing executed.** No GEOM-002
+response value is used to derive any conclusion below; every result follows from
+the **frozen statistic definition** and the **structure of the construction**.
+Observed values appear only where the anti-post-hoc rule permits: to show that a
+design choice was inadequate.
+
+---
+
+## TASK C — IS `|Slope_h| > |Slope_v|` CAPABLE OF DISTINGUISHING A RAMP FROM A STEP?
+
+### C.1 The frozen definition
+
+`PREREGISTRATION.md` §7:
+
+```
+m_axis(t)  = median( disparity_initial[mask] )
+Slope_axis = Σ_t (m_axis(t) − m_axis(0)) · u_t  /  Σ_t u_t²      u_t = t/16
+             t ∈ {16, 32, 48, 64, 80, 96}   ⇒   u ∈ {1, 2, 3, 4, 5, 6}
+```
+
+**DERIVED constants:** `Σ u = 21`, `Σ u² = 91`.
+
+### C.2 `Slope` is a linear functional — the decisive structural fact
+
+Write the response as a vector `r ∈ ℝ⁶` with `r_t = m(t) − m(0)`. Then
+
+```
+Slope = ⟨r, u⟩ / ‖u‖²
+```
+
+This is an **inner product with a single fixed direction** `u`. It is the
+orthogonal projection of `r` onto `span(u)`, rescaled. **A 6-dimensional shape is
+collapsed to one number.** Everything orthogonal to `u` — which is a
+**5-dimensional subspace** — is discarded.
+
+**The map `r ↦ Slope` is therefore not injective, and its level sets are
+5-dimensional hyperplanes.** Any statistic of this form is a *magnitude* measure
+along one direction, not a *shape* test.
+
+### C.3 The two shapes, computed exactly
+
+**Ramp** (the correspondence hypothesis): `r_t = a·u_t`.
+
+```
+Slope = a·⟨u,u⟩ / ‖u‖² = a                                    exactly
+```
+
+**Step** (generic displacement sensitivity — any response that jumps once and then
+holds): `r_t = h` for every `t > 0`.
+
+```
+Slope = h·⟨1,u⟩ / ‖u‖² = h · 21/91 = 0.230769·h               exactly
+```
+
+### C.4 The equivalence — where the test becomes blind
+
+```
+a = 0.230769·h        ⟺        h = 4.3333·a
+```
+
+At the geometric anchor `a = 1` (one candidate of response per candidate of
+imposed disparity), **a step of height `h = 4.3333` candidates produces
+`Slope = 1.0000`, numerically identical to a perfect correspondence ramp.**
+
+The candidate axis spans `0 … 11`, so a step of ≈4.33 candidates is entirely
+attainable. **A step slightly larger than that yields `Slope_v > Slope_h` even
+when the horizontal arm is a perfect geometric ramp.**
+
+### C.5 Verdict on C3
+
+```
+C3 IS MISSPECIFIED, NOT MERELY UNDERPOWERED.
+```
+
+- **Underpowered** would mean the right quantity measured with too much noise.
+- **Misspecified** means the wrong quantity: `|Slope_h| > |Slope_v|` compares
+  `a` against `0.2308·h` — a comparison of **magnitudes along one fixed
+  direction**. Ramp-versus-step is a question about **shape**, which lies in the
+  orthogonal complement the statistic discards.
+
+No sample size, no number of scenes and no number of checkpoints repairs this.
+The statistic cannot see the distinction **in principle**.
+
+### C.6 What the design already contained, and did not use
+
+**C2 — strict monotonicity over the six levels — IS shape-sensitive.** It is
+exactly the kind of condition that separates a ramp from a step: a step is flat
+after its jump and fails strict increase, whereas a ramp passes.
+
+`PREREGISTRATION.md` §8 applied **C2 to the horizontal arm only**. The vertical
+control was assessed solely through C3.
+
+**DERIVED:** the design contained a shape discriminator and applied it
+asymmetrically. Had the same shape condition been evaluated on both arms, the
+design would have had a working ramp-versus-step test.
+
+**This is a diagnosis, not a redesign.** Per the standing instruction, no
+replacement statistic is proposed, selected, or specified here.
+
+---
+
+## TASK D — IS `Slope_h > Slope_h(NEG, same scene)` STILL MEANINGFUL?
+
+### D.1 The structural problem, argued without any observed value
+
+`Slope` subtracts `m(0)`. For the **search-free** model `shift="none"`:
+
+| condition | cost volume | regime |
+|---|---|---|
+| `t = 0` | left and right crops are **byte-identical** ⇒ `Lf = Rf` ⇒ `V[k] = 0` **exactly, for all `k`** | **degenerate: the zero tensor** |
+| `t > 0` | `V[k] = Lf[u] − Lf[u+t/16]`, `k`-constant but **non-zero** | non-degenerate |
+
+**DERIVED:** `m_NEG(0)` is produced by a *structurally different computation* from
+every `m_NEG(t>0)`. With `V ≡ 0` the aggregation receives **no image information
+at all**, and its output is determined by weights and voxel position alone
+(`POSTMORTEM.md` Task B). With `V ≠ 0` it receives image information.
+
+Consequently `Slope_h(NEG) = Σ (m(t) − m(0))·u / Σ u²` is dominated by the
+**offset between two regimes**, not by the search-free model's response to
+displacement — which is the quantity C4 was written to measure.
+
+### D.2 The consequence for C4
+
+**The comparand is not the intended quantity.** C4 intends "does the trained model
+respond more than the search-free model responds to the same displacement?" It
+actually computes "does the trained model's slope exceed a number generated by a
+baseline discontinuity?"
+
+**Permitted use of observed values — to show the design choice was inadequate
+(MEASURED):** `m_NEG(0) = 7.603198` against `m_NEG(t>0) ≈ 2.17 … 3.36`, giving
+`Slope_h(NEG) ∈ [−1.2468, −1.1114]` — **negative at every scene**, driven entirely
+by the anomalous baseline point.
+
+**DERIVED consequence:** since C1 requires `Slope_h > 0` and every
+`Slope_h(NEG) < 0`, **C4 is logically implied by C1**. It could not have failed at
+any unit at which C1 passed. It contributed **zero independent information**, and
+its 12/12 pass is an artefact of the rule's own structure.
+
+### D.3 Verdict on C4
+
+```
+C4 IS INVALID — VACUOUS AS SPECIFIED.
+```
+
+Precisely characterised:
+
+- **not merely WEAK** (a weak test can still fail; this one could not, given C1);
+- the failure is **structural, not numerical** — it follows from `t = 0` being a
+  degenerate regime for the `shift="none"` model, and would hold for any weights;
+- the search-free **arm** remains a sound idea; it is the **use of `Slope`, which
+  subtracts a degenerate baseline**, that invalidates the comparison.
+
+**Not repaired here.** No alternative baseline, reference point or comparison is
+proposed or selected.
+
+---
+
+## SUMMARY
+
+| condition | verdict | basis |
+|---|---|---|
+| **C1** sign | **VALID** | threshold-free, a priori; genuinely excludes a monocular-on-left pathway |
+| **C2** 6-level monotonicity | **VALID**, and the design's only shape-sensitive condition — **applied to one arm only** | `1/720` under an exchangeable null |
+| **C3** `\|Slope_h\| > \|Slope_v\|` | **INVALID — misspecified** | `Slope` is a linear functional, non-injective on shape; a step of `4.3333·a` is indistinguishable from a ramp of slope `a` |
+| **C4** vs search-free | **INVALID — vacuous** | comparand is a baseline-regime artefact; implied by C1 |
+
+**Two of four conditions cannot discriminate. Both defects were provable from the
+frozen definitions before execution, by algebra alone.**

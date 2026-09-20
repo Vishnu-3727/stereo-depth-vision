@@ -1,0 +1,57 @@
+{
+  "device": "cuda",
+  "torch": "2.7.0+cu128",
+  "cudnn_version": 90701,
+  "warn_only_warnings": [
+    "Deterministic behavior was enabled with either `torch.use_deterministic_algorithms(True)` or `at::Context::setDeterministicAlgorithms(true)`, but this operation is not deterministic because it uses CuBLAS and you have CUDA >= 10.2. To enable deterministic behavior in this case, you must set an environment variable before running your PyTorch application: CUBLAS_WORKSPACE_CONFIG=:4096:8 or CUBLAS_WORKSPACE_CONFIG=:16:8. For more information, go to https://docs.nvidia.com/cuda/cublas/index.html#results-reproducibility (Triggered internally at C:\\actions-runner\\_work\\pytorch\\pytorch\\pytorch\\aten\\src\\ATen\\Context.cpp:233.)"
+  ],
+  "forward_loss_repeat": {
+    "loss_1": 17.472463607788086,
+    "loss_2": 17.472463607788086,
+    "identical": true
+  },
+  "stage_gradient_repeat": {
+    "feature_extractor": {
+      "elements": 199552,
+      "bitwise_identical": false,
+      "elements_differing": 199442,
+      "max_abs_diff": 1.4334917068481445e-05,
+      "relative_max_diff": 2.645174208737444e-05
+    },
+    "aggregation": {
+      "elements": 111585,
+      "bitwise_identical": false,
+      "elements_differing": 109233,
+      "max_abs_diff": 4.6253204345703125e-05,
+      "relative_max_diff": 3.8995685258669255e-07
+    },
+    "refinement": {
+      "elements": 112449,
+      "bitwise_identical": false,
+      "elements_differing": 150,
+      "max_abs_diff": 7.152557373046875e-07,
+      "relative_max_diff": 1.6177622796931246e-07
+    }
+  },
+  "isolated_kernel_probe": {
+    "interpolate_bilinear_backward": {
+      "shape_in": [
+        2,
+        12,
+        23,
+        77
+      ],
+      "shape_out": [
+        256,
+        512
+      ],
+      "bitwise_identical": false,
+      "max_abs_diff": 0.00018310546875,
+      "elements_differing": 36612
+    },
+    "interpolate_bilinear_backward_deterministic": {
+      "bitwise_identical": true,
+      "max_abs_diff": 0.0
+    }
+  }
+}

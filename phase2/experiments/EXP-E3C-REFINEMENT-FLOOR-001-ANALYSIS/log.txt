@@ -1,0 +1,11 @@
+[08:44:34] note: one seed; the band is E3b's single-sample lower bound on same-seed noise, not a confidence interval; the arm also reduces the receptive field, so a negative result is ambiguous.
+[08:44:34] control (6 blocks)   late EPE 4.0921 +- 0.1000  D1 24.9097 +- 1.0821  params 423586
+[08:44:34] arm D (3 blocks)     late EPE 3.7695 +- 0.0580  D1 26.9402 +- 0.6617  params 368098
+[08:44:34] delta vs control: EPE -0.3226 (band 0.2138)  D1 +2.0304 (band 1.0000) -> materially different True
+[08:44:34] metric late_window = {'control': {'points': 10, 'epe_mean': 4.092099686806512, 'epe_sd': 0.10000498854517458, 'd1_mean': 24.909737750046475, 'd1_sd': 1.082096193588822}, 'arm_D': {'points': 10, 'epe_mean': 3.7694673344787275, 'epe_sd': 0.0579523248334476, 'd1_mean': 26.940184403396664, 'd1_sd': 0.6616706028421045}}
+[08:44:34] metric comparison = {'delta_epe_vs_control': -0.32263235232778475, 'delta_d1_vs_control': 2.0304466533501895, 'materially_different': True, 'worse': False, 'band': {'epe': 0.21380062638697517, 'd1': 1.0}}
+[08:44:34] metric stereo_verdict_epoch_200 = {'threshold_d1_points': 20.0, 'right_image_min_d1_penalty': 81.41106193884427, 'right_image_dependence': True, 'matching_map_min_d1_penalty': 65.78794004625836, 'matching_map_dependence': True, 'matching_gradient_fraction': 1.0, 'matching_gradient': True, 'softmax_entropy': 1.7176221336430284, 'entropy_ok': True, 'final_disparity_std': 18.71849666080227, 'not_collapsed': True, 'STEREO_FUNCTIONAL': True}
+[08:44:34] metric gates = {'arm_completed': True, 'control_stereo_functional': True, 'phase_1_diff_empty': True, 'PASS': True}
+[08:44:34] metric verdict = CAPACITY-REDUCIBLE-TO-3
+[08:44:34] conclusion: Three-block refinement: dEPE -0.3226 px, dD1 +2.0304 pt vs the six-block control; verdict CAPACITY-REDUCIBLE-TO-3.
+[08:44:34] status: completed

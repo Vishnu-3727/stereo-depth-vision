@@ -1,0 +1,358 @@
+{
+  "design_id": "DESIGN-CORRESPONDENCE-ARCH-001",
+  "design_date": "2026-09-11",
+  "proposed_experiment": "EXP-CORRESPONDENCE-ARCH-001",
+  "title": "Architecture-only control: is the candidate-axis ordering a property of the trained aggregation weights or of the Conv3D candidate-axis operator?",
+  "document_kind": "design + pre-flight specification; NOT an experiment record",
+
+  "FINAL_DESIGN_VERDICT": "CLEAN-DESIGN-AVAILABLE",
+  "verdict_qualifications": [
+    "circular rank total variation, proposed by the INDEX-003 design audit, is REJECTED as primary for this comparison (floor-pinned; see section 6)",
+    "16 random control seeds (0..15) are frozen instead of the recommended 3; section D's binding constraint is 'at least THREE' and 3 yields only 3 random-random baseline pairs"
+  ],
+  "execution_authorized": false,
+  "authorization_required_for": [
+    "rejection of circular rank TV as the primary statistic",
+    "16 control seeds instead of 3"
+  ],
+
+  "execution_state": {
+    "training_performed": false,
+    "inference_performed": false,
+    "checkpoint_loaded": false,
+    "scene_loaded": false,
+    "repo_model_class_instantiated": false,
+    "disparity_initial_computed": false,
+    "experiment_executed": false,
+    "results_md_created": false,
+    "historical_records_modified": false,
+    "index_001_modified": false,
+    "index_002_modified": false,
+    "index_003_design_audit_modified": false,
+    "stage_a_modified": false,
+    "experiment_record_directory_created": false,
+    "what_was_instantiated": "bare torch.nn.Conv3d primitives on synthetic tensors, for the section H operator-property check only",
+    "scope_note": "section O forbids instantiating models; section H requires the architectural analysis before any real output and permits a tiny synthetic tensor test. Reconciled by using no repository model class, no checkpoint and no dataset. The design verdict does not depend on the synthetic runs, which only confirm an analytic argument."
+  },
+
+  "unit_structure": {
+    "brief_stated": "3 seeds x 4 checkpoints",
+    "actual": "3 checkpoints (one per seed 0,1,2) x 4 scenes = 12 units",
+    "source": "phase2/diagnostics/correspondence_index/20260911T015124Z/results.json",
+    "unit_definition": "one (trained checkpoint c, scene s) pair; the cost volume is fixed within a unit so all weight-sets are compared on identical input",
+    "weight_sets_per_unit": {"trained": 1, "random": 16, "total": 17},
+    "no_trained_trained_pairs": "a trained checkpoint defines the volume, so exactly one trained weight-set exists per unit; no trained-trained pair is constructed within or across units",
+    "tag": "MEASURED"
+  },
+
+  "what_is_randomized": {
+    "randomized_module": "aggregation",
+    "randomized_parameter_count": 111585,
+    "randomized_layer_spec": "4 x Conv3d(32->32, 3x3x3, padding=1) + 1 x Conv3d(32->1, 3x3x3, padding=1), weights and biases",
+    "parameter_inventory": [
+      {"module": "feature_extractor", "has_parameters": true, "treatment": "held TRAINED and identical - it produces the cost volume"},
+      {"module": "cost_volume", "has_parameters": false, "treatment": "held identical; pure function of its inputs"},
+      {"module": "aggregation", "has_parameters": true, "n_params": 111585, "treatment": "THE RANDOMIZED MODULE"},
+      {"module": "regression (StandardisedDisparityRegression)", "has_parameters": false, "n_params": 0, "treatment": "held identical; nothing to randomize"},
+      {"module": "refinement", "has_parameters": true, "treatment": "never invoked; endpoint is disparity_initial"}
+    ],
+    "readout_has_learned_parameters": false,
+    "readout_evidence": "phase2/models/scaled_regression.py - the class holds only upsample_first (bool) and eps (float 1e-5); forward is interpolate -> standardise_across_disparity -> soft_argmin, all parameter-free; docstring states 'The module holds no state and no weights'",
+    "readout_consequence": "section C's question about freezing learned readout parameters is vacuous - there are none",
+    "feature_extractor_randomized": false,
+    "feature_extractor_reason": "source inspection does not place the ordering mechanism there - the candidate axis does not exist until build_cost_volume stacks the 12 levels - and randomizing it would change the cost volume and destroy the isolation section B requires",
+    "decided_from": "source inspection, before any result",
+    "tag": "MEASURED"
+  },
+
+  "what_is_held_identical": [
+    "the trained feature extractor of the checkpoint under test",
+    "the cost volume V(c,s) - the same tensor object, built once per unit, reused for every weight-set and every orbit position",
+    "the candidate intervention pi_m(k) = (k - m) mod 12 applied by volume.index_select(2, idx), identity included via the identical call",
+    "the parameter-free readout with its upsample_first and eps",
+    "scenes FOCUS_SCENES [27, 0, 31, 6], split hailo_val",
+    "mask: GT valid and GT/16 in [2,8], ground-truth-derived, model-independent",
+    "the aggregate d(x) = np.median(disparity_initial[mask]), identical to INDEX-001/002",
+    "dtype fp32, torch.no_grad(), eval(), determinism controls"
+  ],
+  "cost_volume_identity_verification": {
+    "guaranteed_by": "V is literally the same tensor object across conditions",
+    "verified_by": "sha256 of V.cpu().numpy().tobytes() recorded once per unit; every weight-set's run must report the same digest",
+    "on_mismatch": "HARD STOP"
+  },
+  "new_extraction_mechanism_required": false,
+  "new_extraction_note": "INDEX-002's harness already builds volume = model.cost_volume(lf, rf) and reuses it across arms; ARCH-001 reuses that pattern inside its own directory. No historical code path is altered.",
+
+  "orbit": {
+    "full_12_position_orbit_required": true,
+    "reasons": [
+      "the four-arm values m in {-1,0,+1,+2} are already published for the trained condition (INDEX-002, 12/12 strictly increasing), so a four-arm statistic has no predictive content on the trained side",
+      "m in {3..10} has never been computed for any condition - the only part of the design with genuine predictive content on both sides",
+      "the orbit under equivariance is a wrapped ramp whose distinguishing features (where it wraps, how sharply) lie outside the four-arm window"
+    ],
+    "positions": [0,1,2,3,4,5,6,7,8,9,10,11],
+    "generator": "pi_m(k) = (k - m) mod 12",
+    "four_arm_recovery": "m = -1 is congruent to m = 11, so the four preregistered arms are orbit positions {11, 0, 1, 2}, recovered exactly",
+    "new_intervention_invented": false,
+    "physical_disparity_conversion": false,
+    "conversion_note": "m is an exponent of the frozen generator; s_m is in candidate units; the primary statistic correlates z-scored orbits and is invariant to any affine rescaling of s, so no unit interpretation enters"
+  },
+
+  "section_H_architecture_analysis": {
+    "question": "Does Agg(shift_m(V)) induce an approximately shifted response even for arbitrary weights?",
+    "answer": "YES",
+    "completed_before_any_real_output": true,
+    "analytic_argument": {
+      "architecture_measured": "4 x [Conv3d(32->32, 3x3x3, padding=1) + LeakyReLU(0.01)] then Conv3d(32->1, 3x3x3, padding=1); five 3-tap zero-padded convolutions along D; receptive field 1 + 5*2 = 11",
+      "equivariance": "a convolution with shared kernels is translation-equivariant; this is a property of the OPERATOR, not of its weights",
+      "leakyrelu": "pointwise, commutes with any index permutation exactly",
+      "standardisation": "uses the per-pixel mean and population sd across the 12 candidates; a permutation preserves that multiset, so standardise(P c) = P standardise(c) exactly",
+      "soft_argmin": "its index grid 0..11 is linear, not circular, so under a circular shift s_m = sum_e p(e) * ((e+m) mod 12) - a WRAPPED RAMP, not a monotone function of m",
+      "exactness_condition": "[k-5, k+5] within [0,11] AND [k-m-5, k-m+5] within [0,11], i.e. k in {5,6} and k-m in {5,6}"
+    },
+    "synthetic_confirmation": {
+      "artifact": "preflight_architecture_analysis.py",
+      "uses_repo_model_class": false,
+      "uses_checkpoint": false,
+      "uses_dataset": false,
+      "H1_exact_positions": {
+        "m1_circular": [6], "m1_zerofill": [5, 6],
+        "m2_circular": [], "m2_zerofill": [6],
+        "m3_circular": [], "m3_zerofill": []
+      },
+      "H2_relative_error_m1": {
+        "k00": 0.484, "k01": 0.237, "k02": 0.074, "k03": 0.059, "k04": 0.034, "k05": 0.018,
+        "k06": 0.000, "k07": 0.011, "k08": 0.027, "k09": 0.065, "k10": 0.070, "k11": 0.344
+      },
+      "H2_relative_error_m2": {
+        "k00": 0.325, "k01": 0.412, "k02": 0.274, "k03": 0.054, "k04": 0.030, "k05": 0.045,
+        "k06": 0.018, "k07": 0.016, "k08": 0.032, "k09": 0.041, "k10": 0.062, "k11": 0.280
+      },
+      "interpretation": "exact equivariance survives at 0-2 of 12 positions and is gone by m=3, but APPROXIMATE equivariance is strong across the interior (relative error 0.00-0.07 for k=2..10 at m=1) and fails only at the two padded edges - with untrained weights",
+      "tag": "MEASURED, synthetic"
+    },
+    "consistency_with_measured_trained_deltas": {
+      "d_plus1_minus_d_identity": [1.2, 1.9],
+      "d_plus2_minus_d_identity": [1.8, 3.1],
+      "note": "larger than a unit shift, consistent with the padded-boundary distortion of an approximately equivariant operator; no unit slope was ever predicted and none is claimed",
+      "tag": "MEASURED from INDEX-002"
+    },
+    "consequence": "the PRESENCE of the four-arm ordering is not identifying; CASE A is the a-priori more likely outcome"
+  },
+
+  "section_G_statistic_audit": {
+    "audited_statistic": "circular rank total variation (TV) from the INDEX-003 design audit",
+    "verdict": "INAPPROPRIATE as primary for the trained-vs-random comparison",
+    "stopped_short_of_adopting": true,
+    "reasons": [
+      {
+        "id": "R1",
+        "title": "built for a different contrast",
+        "detail": "TV was designed for natural generator vs random generator, where the null orbit is scrambled and TV is large. ARCH-001 uses the SAME natural generator in both conditions; both orbits are expected to be structured, so the statistic's discriminative range is never exercised."
+      },
+      {
+        "id": "R2",
+        "title": "floor-pinning, demonstrated",
+        "synthetic_evidence": {
+          "sharp_peak_at_3": {"TV": 22.0, "range": 5.79},
+          "broad_peak_at_3": {"TV": 22.0, "range": 4.72},
+          "sharp_peak_at_8": {"TV": 22.0, "range": 5.11},
+          "random_ish_A": {"TV": 24.0, "range": 4.22},
+          "random_ish_B": {"TV": 28.0, "range": 4.35},
+          "floor": 22.0
+        },
+        "detail": "every STRUCTURED profile - sharp or broad, peaked at 3 or 8 - lands on the floor value 22, because a wrapped ramp is monotone around the circle whatever its phase or sharpness. TV retains only coarse integer-valued sensitivity to fully unstructured orbits. If trained and random orbits are both wrapped ramps, TV returns 22 for both and the paired difference is identically zero with no variance.",
+        "tag": "MEASURED, synthetic"
+      },
+      {
+        "id": "R3",
+        "title": "discards magnitude and shape",
+        "detail": "which is where any weight-dependence would live, and which the CASE A/B distinction is actually about"
+      }
+    ],
+    "retained_as": "reported descriptive only, for continuity with the INDEX-003 design audit, carrying the floor caveat; may not enter any verdict"
+  },
+
+  "identifiability": {
+    "ordering_presence_identifying": false,
+    "ordering_presence_reason": "architecturally forced; both conditions expected to show it",
+    "orbit_shape_identifying": true,
+    "orbit_shape_reason": "the architecture fixes that the orbit is a wrapped ramp but not WHICH ramp - phase is set by s_0, amplitude and sharpness by the cost curve's peakedness, and all are weight-dependent",
+    "headroom_check": {
+      "statistic": "orbit-shape agreement, Pearson r of z-scored 12-position orbits",
+      "peaked_peaked": {"n": 3, "mean": 0.592, "min": 0.276, "max": 0.751},
+      "random_random": {"n": 15, "mean": -0.019, "min": -0.682, "max": 0.542},
+      "peaked_random": {"n": 18, "mean": 0.124, "min": -0.552, "max": 0.735},
+      "conclusion": "continuous, spanning roughly [-0.7, +0.8], not floor-pinned",
+      "tag": "MEASURED, synthetic"
+    },
+    "declared_confound": {
+      "name": "phase sensitivity",
+      "evidence": {"peak2_vs_peak3": 0.751, "peak2_vs_peak4": 0.276, "peak3_vs_peak4": 0.751},
+      "detail": "orbits produced by the IDENTICAL mechanism but different phase can disagree substantially",
+      "why_baseline_is_mandatory": "random seeds also differ in phase from one another, so the random-random spread absorbs phase dispersion and the trained orbit is judged against that spread rather than against an absolute threshold",
+      "additional_reporting": "s_0 is reported per (unit, weight-set) so the phase is visible",
+      "handling": "declared now; must not be corrected later",
+      "tag": "MEASURED, synthetic"
+    },
+    "honest_expectation": "CASE A is the a-priori more likely outcome on the section H evidence. That is a reason to run the experiment, not to skip it: CASE A would close the ordering line on measurement rather than on an argument."
+  },
+
+  "primary_statistic": {
+    "orbit": "s^{u,w}_m = float(np.median(disparity_initial[0,0].cpu().numpy().astype(np.float64)[mask_u])) at orbit position m, m = 0..11",
+    "aggregation_identical_to": "INDEX-001 and INDEX-002",
+    "zscore": "z^{u,w} = (s - mean(s)) / sd(s), population sd across the 12 positions",
+    "degenerate_handling": "if sd(s) == 0, set z = 0, mark the (unit, weight-set) degenerate, do NOT compute agreement, and report it as such",
+    "agreement": "rho^u(w1,w2) = (1/12) * sum_m z^{u,w1}_m * z^{u,w2}_m  (Pearson r)",
+    "paired": true,
+    "paired_reason": "both weight-sets are evaluated on the same cost volume within a unit",
+    "pair_families": {
+      "TR_u": {"definition": "rho^u(A_c, R_j) for j = 0..15", "n": 16, "role": "cross"},
+      "RR_u": {"definition": "rho^u(R_j, R_k) for j < k", "n": 120, "role": "internal baseline"}
+    },
+    "secondaries_descriptive_only": [
+      "orbit range max_m s_m - min_m s_m",
+      "s_0 (identity response, exposes phase)",
+      "four-arm ordering indicator s_11 < s_0 < s_1 < s_2 (known for trained, predictive for random)",
+      "circular rank TV with its floor caveat",
+      "phase-aligned agreement max over circular lag, with the argmax lag"
+    ],
+    "accuracy_metrics_computed": "none - no EPE, D1 or RMSE (section E)"
+  },
+
+  "decision_rule": {
+    "inferential_or_descriptive": "descriptive",
+    "p_value_used": false,
+    "p_value_reason": "trained and random weight-sets are not exchangeable under any defensible null - they differ by construction - so permuting their labels would test nothing (section J)",
+    "alpha": null,
+    "effect_size_threshold": null,
+    "per_unit": {
+      "inside_u": "min(RR_u) <= rho <= max(RR_u) for EVERY rho in TR_u",
+      "separated_u": "max(TR_u) < min(RR_u)"
+    },
+    "global": {
+      "CASE_A_ARCHITECTURE_INDUCED": "inside_u at all 12 units",
+      "CASE_B_WEIGHT_DEPENDENT": "separated_u at all 12 units",
+      "CASE_C_ARCHITECTURE_CONTROL_INCONCLUSIVE": "otherwise"
+    },
+    "one_sided_note": "separated_u is one-sided because the interpretable weight-dependent outcome is the trained orbit agreeing with the random family LESS than its members agree with each other; the reverse (min TR > max RR) is recorded as an anomaly and routed to CASE C, never to CASE B",
+    "no_forcing": "CASE C is not forced into A or B (section I)",
+    "also_reported_never_decisive": [
+      "per-unit Delta_u = mean(RR_u) - mean(TR_u)",
+      "the full TR and RR distributions",
+      "the section-D-recommended {0,1,2} sub-analysis"
+    ]
+  },
+
+  "random_initialization": {
+    "procedure": "torch.manual_seed(j); agg = Aggregation(in_channels=32, channels=32, num_layers=4)  # repo class, identical forward code",
+    "custom_init": false,
+    "training": false,
+    "default_init_measured": {
+      "layer": "Conv3d(32,32,3,padding=1)",
+      "weight_shape": [32, 32, 3, 3, 3],
+      "bias_shape": [32],
+      "weight_init": "kaiming_uniform_(weight, a=sqrt(5))",
+      "bias_init": "U(-1/sqrt(fan_in), +1/sqrt(fan_in))",
+      "source": "torch.nn.modules.conv._ConvNd.reset_parameters (framework default)",
+      "aggregation_param_count": 111585,
+      "tag": "MEASURED"
+    },
+    "seed_list": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
+    "n_seeds": 16,
+    "seeds_are": "CONTROL seeds, not training seeds",
+    "seed_selection_rule": "the first 16 non-negative integers - a non-adaptive rule containing section D's recommended {0,1,2} as a subset",
+    "seed_mutation_after_output": "forbidden - no seed may be added, removed or substituted after any output is seen",
+    "deviation_from_recommendation": {
+      "recommended": 3,
+      "frozen": 16,
+      "binding_constraint_satisfied": "section D requires at least THREE",
+      "reason": "3 seeds give |RR_u| = 3, so the baseline interval [min RR, max RR] is the range of three numbers - far too crude to support the containment rule, and the synthetic check shows the random family's internal spread is wide",
+      "cost": "approximately 35 s total instead of 8 s",
+      "decided_when": "before any output exists",
+      "recommended_subset_reported_separately": true
+    },
+    "recorded_per_seed": ["PyTorch version", "CUDA version", "init method", "seed",
+      "every randomised parameter tensor name / shape / dtype", "sha256 of each tensor"],
+    "seed_distinctness_spot_check": {
+      "seed0_first_layer_weight_sha256_prefix": "86578c2c4bf5b035",
+      "seed1_first_layer_weight_sha256_prefix": "d86fa15ecd82cce4",
+      "seed2_first_layer_weight_sha256_prefix": "1af241b75fabce75",
+      "distinct": true,
+      "tag": "MEASURED, bare Conv3d"
+    }
+  },
+
+  "controls": {
+    "K1_cost_volume_identity": {"criterion": "sha256(V) identical across all weight-sets at each unit", "on_failure": "HARD STOP"},
+    "K2_permutation_implementation": {"criterion": "idx_m == [(k-m) mod 12]; idx_0 is the identity list", "on_failure": "HARD STOP"},
+    "K3_identity_same_index_select_path": {"criterion": "max_abs_diff(V.index_select(2, idx_0), V) == 0", "on_failure": "HARD STOP"},
+    "K4_determinism": {"criterion": "use_deterministic_algorithms(True), cudnn.deterministic=True, cudnn.benchmark=False, CUBLAS_WORKSPACE_CONFIG=:4096:8, no_grad, eval, fp32", "on_failure": "HARD STOP"},
+    "K5_random_inits_differ": {"criterion": "pairwise sha256 of every randomised tensor distinct across all 16 seeds", "on_failure": "HARD STOP"},
+    "K6_trained_checkpoint_hashes": {"criterion": "the four INDEX-001/002 sha256 values, verified at load", "on_failure": "HARD STOP"},
+    "K7_no_training": {"criterion": "harness imports no optimizer, constructs none, calls no .backward()/.step(); checkpoints opened read-only", "on_failure": "HARD STOP"},
+    "negative_control": {
+      "checkpoint": "NEG_shift_none",
+      "algebraic_property": "V(k) is constant in k, so for EVERY weight-set (trained and random) and EVERY orbit position: max_abs_diff(V_perm, V) == 0 and max_abs_diff(d_perm, d_identity) == 0",
+      "on_failure": "HARD STOP, positives not run",
+      "predeclared_degeneracy": "the negative orbit is constant, so sd = 0, z is the zero vector, agreement is undefined and circular rank TV is 0 for every weight-set. This is correct behaviour for a degenerate model and is declared now so that a degenerate 0 is never mistaken for a structured result.",
+      "gate_criterion": "the algebraic identity alone - never the orbit statistic",
+      "new_value": "running the full orbit on the negative control with RANDOM aggregations confirms the invariance is a property of the volume, not of the trained weights"
+    }
+  },
+
+  "checkpoints": {
+    "NEG_shift_none": "d40d805bbe4cca310683f8617c7518d660e30055c43431081bcbb6a7c388f9b1",
+    "POS_6b_seed0": "581d62e699b159945580f9627b451d953ce07b5dc763d608a9f4a8b5ecba692a",
+    "POS_6b_seed1": "58117f2613bba4b2c817328c7d6757f21b340ec5e64a828e633193ae091d4adf",
+    "POS_6b_seed2": "245a3f5bcb801c7d9c3550b02cb8775cb86486beae606f04097900340754fa69",
+    "note": "the same four checkpoints used by INDEX-001 and INDEX-002; none loaded by this design task"
+  },
+
+  "compute_budget": {
+    "throughput_s_per_arm": 0.0107,
+    "throughput_source": "INDEX-002 measured: 24640 arms in 264.1 s",
+    "positive": {"volume_builds": 12, "arms": 2448, "estimate_s": 26},
+    "negative": {"volume_builds": 4, "arms": 816, "estimate_s": 9},
+    "total": {"volume_builds": 16, "arms": 3264, "estimate_s": 35},
+    "with_3_seeds": {"arms": 768, "estimate_s": 8},
+    "training_required": false,
+    "expensive_feature_recomputation_required": false,
+    "hard_stop_if_either_becomes_necessary": true
+  },
+
+  "outputs_at_execution": {
+    "directory": "phase2/diagnostics/correspondence_arch/<UTC_TIMESTAMP>/",
+    "created_now": false,
+    "files": ["PREREGISTRATION.md", "RESULTS.md", "results.json", "ENVIRONMENT.txt",
+      "RELATED_RUNS.md", "run.log", "random_init_metadata.json", "generator.json",
+      "statistic.md", "the harness with its sha256"],
+    "related_runs_must_point_to": [
+      "INDEX-001 both executions", "INDEX-002", "INDEX-003 design audit", "Stage A"
+    ],
+    "freeze_order": "artefacts hashed -> preregistration written containing those hashes -> execution (carried over unchanged from INDEX-002)"
+  },
+
+  "claim_ceiling": {
+    "on_CASE_B": "Candidate-axis response structure is weight-dependent under the tested aggregation architecture.",
+    "on_CASE_A": "Candidate-axis response structure is reproduced by untrained weights of the same architecture; the ordering carries no information about training.",
+    "not_equivalent_to": [
+      "candidate-coordinate sensitivity proven", "geometric correspondence", "correct matching",
+      "disparity search", "correct disparity", "stereo correctness"
+    ],
+    "geometric_experiment_designed": false,
+    "geometric_experiment_preregistered": false,
+    "geometric_experiment_launched": false
+  },
+
+  "required_answers": {
+    "1_which_weights_randomized": "Only the aggregation module's 111,585 parameters - 4 x Conv3d(32->32, 3x3x3, padding=1) plus Conv3d(32->1, 3x3x3, padding=1), weights and biases. Feature extractor stays trained (it produces the volume that must be held identical); cost volume has no parameters; readout has ZERO parameters, verified from source; refinement never invoked.",
+    "2_which_inputs_identical": "The cost volume V(c,s) - the same tensor object, sha256-verified - the scenes, the GT mask, the permutation set, the identity index_select path, the parameter-free readout with its upsample_first and eps, dtype, device and the determinism controls. Only aggregation weights differ.",
+    "3_full_orbit_required": "Yes. The four-arm values are already published for the trained condition, so only m in {3..10} carries predictive content; and the orbit's distinguishing features under equivariance - where it wraps, how sharply - lie outside the four-arm window. m = -1 is congruent to 11, so the four preregistered arms are recovered exactly.",
+    "4_primary_statistic": "Orbit-shape agreement. s^{u,w}_m = np.median(disparity_initial[mask_u]) at orbit position m; z^{u,w} its within-unit z-score across the 12 positions; rho^u(w1,w2) = (1/12) sum_m z^{u,w1}_m z^{u,w2}_m; partitioned per unit into TR_u (trained vs each of 16 random, 16 values) and RR_u (random vs random, 120 values). Circular rank TV is explicitly rejected as primary and retained only as a caveated descriptive.",
+    "5_exact_decision_rule": "Per unit: inside_u iff every rho in TR_u lies in [min RR_u, max RR_u]; separated_u iff max TR_u < min RR_u. Globally: CASE A iff inside_u at all 12 units; CASE B iff separated_u at all 12 units; CASE C otherwise. Descriptive and threshold-free - no p-value, because trained and random weight-sets are not exchangeable under any defensible null. The reverse separation is CASE C, never CASE B.",
+    "6_architecture_predicts_ordering_for_random_weights": "Yes. Convolutional translation-equivariance is a property of the operator, not its weights; LeakyReLU commutes with any permutation; standardisation commutes exactly with a circular candidate permutation. Synthetic confirmation with untrained weights: relative equivariance error 0.00-0.07 across the interior k = 2..10 at m = 1, failing only at the two padded edges (0.48, 0.34). Exact equivariance survives at just 0-2 of 12 positions, which is why the response is an approximate, distorted shift - consistent with the measured trained deltas being larger than m. No unit slope is predicted or claimed.",
+    "7_still_identifiable": "Yes, but only for the right contrast. Ordering presence is not identifying: it is architecturally forced. Orbit shape is identifying: the architecture fixes that the orbit is a wrapped ramp but not which ramp - phase is set by s_0, amplitude and sharpness by the cost curve's peakedness, all weight-dependent. The design is identifiable because the random-random baseline supplies the reference dispersion (including phase dispersion) against which the trained orbit is judged, and because all three outcomes are distinguishable and each is informative. Honest expectation: CASE A is the a-priori more likely outcome, which is a reason to run it, not to skip it.",
+    "8_execution_authorized": "No. This task was design + pre-flight only and nothing was executed. The design is complete and ready, and awaits explicit authorisation - which should cover the rejection of circular rank TV as primary and the 16 control seeds instead of 3. Without authorisation of those two points the specification is not internally consistent and must not be run."
+  }
+}

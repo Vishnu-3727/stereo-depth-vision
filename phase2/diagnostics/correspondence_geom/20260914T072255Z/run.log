@@ -1,0 +1,28 @@
+EXP-CORRESPONDENCE-GEOM-A
+device=cuda torch=2.7.0+cu128 numpy=2.5.1
+freeze verified: translation_spec 7d0f0e10910fcd72 | mask_spec 61e81f72e6fe553f | scene_selection edbe049119a1f0a9
+done NEG_shift_none 000165_10.png S_h=-0.003503 S_v=-0.002201  odd_h=-0.0455 -0.1174
+done NEG_shift_none 000169_10.png S_h=+0.002482 S_v=-0.003506  odd_h=-0.0532 +0.1259
+done POS_6b_seed0   000165_10.png S_h=-0.101703 S_v=-0.004200  odd_h=-1.8016 -3.1673
+done POS_6b_seed0   000169_10.png S_h=-0.102970 S_v=-0.001797  odd_h=-1.7862 -3.2257
+done POS_6b_seed1   000165_10.png S_h=-0.066013 S_v=-0.002573  odd_h=-1.2075 -2.0368
+done POS_6b_seed1   000169_10.png S_h=-0.068890 S_v=-0.009030  odd_h=-1.2289 -2.1411
+done POS_6b_seed2   000165_10.png S_h=-0.081630 S_v=-0.004963  odd_h=-1.5020 -2.5142
+done POS_6b_seed2   000169_10.png S_h=-0.085254 S_v=-0.012312  odd_h=-1.4318 -2.6943
+
+VERDICT: CONSISTENCY-EVIDENCE-SIGNED-AXIS-ASYMMETRIC-RESPONSE
+{
+  "positive_units": 6,
+  "units_pass": 6,
+  "C1_pass": 6,
+  "C2_pass": 6,
+  "C3_pass": 6,
+  "C4_pass": 6,
+  "global_pass": true,
+  "failure_classes": {
+    "sign": 0,
+    "monotonicity": 0,
+    "axis-specificity": 0,
+    "trained-vs-search-free": 0
+  }
+}

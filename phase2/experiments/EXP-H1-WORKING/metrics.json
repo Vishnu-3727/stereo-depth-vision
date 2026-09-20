@@ -1,0 +1,219 @@
+{
+  "experiment_id": "EXP-H1-WORKING",
+  "description": "H1: cost_volume_shift='left' -- working shifted correspondence volume",
+  "status": "completed",
+  "started_utc": "2026-09-07T02:45:44.232843+00:00",
+  "finished_utc": "2026-09-07T02:52:00.461877+00:00",
+  "duration_s": 376.229034,
+  "metrics": {
+    "history": [
+      {
+        "epoch": 0,
+        "mean_loss": 11.305557852983474,
+        "valid_pixels": 5077447,
+        "lr": 0.0009938441702975688,
+        "median_grad_norm": 42.92795181274414,
+        "val_epe": 17.21358736975443,
+        "val_d1": 89.31455273956486
+      },
+      {
+        "epoch": 1,
+        "mean_loss": 10.477099525928498,
+        "valid_pixels": 5235120,
+        "lr": 0.0009755282581475768,
+        "median_grad_norm": 48.97788619995117
+      },
+      {
+        "epoch": 2,
+        "mean_loss": 10.722215539216995,
+        "valid_pixels": 4921340,
+        "lr": 0.0009455032620941839,
+        "median_grad_norm": 44.283111572265625
+      },
+      {
+        "epoch": 3,
+        "mean_loss": 10.527233058214188,
+        "valid_pixels": 5070525,
+        "lr": 0.0009045084971874737,
+        "median_grad_norm": 34.691972732543945
+      },
+      {
+        "epoch": 4,
+        "mean_loss": 9.213110405206681,
+        "valid_pixels": 4915605,
+        "lr": 0.0008535533905932737,
+        "median_grad_norm": 25.00000286102295
+      },
+      {
+        "epoch": 5,
+        "mean_loss": 9.342903649806976,
+        "valid_pixels": 4868518,
+        "lr": 0.0007938926261462366,
+        "median_grad_norm": 30.35328960418701,
+        "val_epe": 20.05343296416638,
+        "val_d1": 89.87092192027953
+      },
+      {
+        "epoch": 6,
+        "mean_loss": 9.2855424284935,
+        "valid_pixels": 5061000,
+        "lr": 0.0007269952498697733,
+        "median_grad_norm": 26.849730491638184
+      },
+      {
+        "epoch": 7,
+        "mean_loss": 8.837640863656997,
+        "valid_pixels": 4880738,
+        "lr": 0.0006545084971874737,
+        "median_grad_norm": 23.464802742004395
+      },
+      {
+        "epoch": 8,
+        "mean_loss": 8.958683544397354,
+        "valid_pixels": 5088028,
+        "lr": 0.0005782172325201155,
+        "median_grad_norm": 23.305968284606934
+      },
+      {
+        "epoch": 9,
+        "mean_loss": 8.741105169057846,
+        "valid_pixels": 4936565,
+        "lr": 0.0005,
+        "median_grad_norm": 22.726491928100586
+      },
+      {
+        "epoch": 10,
+        "mean_loss": 8.427923172712326,
+        "valid_pixels": 4870989,
+        "lr": 0.0004217827674798847,
+        "median_grad_norm": 24.053253173828125,
+        "val_epe": 18.676326820334857,
+        "val_d1": 88.47237011336908
+      },
+      {
+        "epoch": 11,
+        "mean_loss": 8.874720203876496,
+        "valid_pixels": 4870503,
+        "lr": 0.00034549150281252633,
+        "median_grad_norm": 22.170047760009766
+      },
+      {
+        "epoch": 12,
+        "mean_loss": 9.279664891958237,
+        "valid_pixels": 5072344,
+        "lr": 0.00027300475013022663,
+        "median_grad_norm": 29.333760261535645
+      },
+      {
+        "epoch": 13,
+        "mean_loss": 8.614873224496842,
+        "valid_pixels": 4936729,
+        "lr": 0.00020610737385376348,
+        "median_grad_norm": 22.97095775604248
+      },
+      {
+        "epoch": 14,
+        "mean_loss": 8.81820946931839,
+        "valid_pixels": 4864560,
+        "lr": 0.00014644660940672625,
+        "median_grad_norm": 21.865086555480957
+      },
+      {
+        "epoch": 15,
+        "mean_loss": 9.278209885954857,
+        "valid_pixels": 4978769,
+        "lr": 9.549150281252631e-05,
+        "median_grad_norm": 21.864670753479004,
+        "val_epe": 17.749693017735428,
+        "val_d1": 87.87323636449595
+      },
+      {
+        "epoch": 16,
+        "mean_loss": 8.756521314382553,
+        "valid_pixels": 4963620,
+        "lr": 5.4496737905816096e-05,
+        "median_grad_norm": 26.276758193969727
+      },
+      {
+        "epoch": 17,
+        "mean_loss": 8.868048280477524,
+        "valid_pixels": 5117354,
+        "lr": 2.447174185242323e-05,
+        "median_grad_norm": 23.55507183074951
+      },
+      {
+        "epoch": 18,
+        "mean_loss": 8.768789315223694,
+        "valid_pixels": 4961080,
+        "lr": 6.15582970243117e-06,
+        "median_grad_norm": 26.615269660949707
+      },
+      {
+        "epoch": 19,
+        "mean_loss": 8.616900038719177,
+        "valid_pixels": 4911398,
+        "lr": 0.0,
+        "median_grad_norm": 25.16449546813965,
+        "val_epe": 19.21188108098442,
+        "val_d1": 88.9902726724739
+      }
+    ],
+    "wall_clock_s": 375.0113170146942,
+    "first_epoch_loss": 11.305557852983474,
+    "final_epoch_loss": 8.616900038719177,
+    "loss_reduction_factor": 1.312021469691314,
+    "min_loss": 8.427923172712326,
+    "loss_decreased_monotonically_over_halves": true,
+    "gradient_norms": {
+      "median": 26.84498119354248,
+      "max": 246.4553680419922,
+      "any_nan": false
+    },
+    "parameter_count_unique": 423586,
+    "cost_volume_bytes_per_image": 2720256,
+    "checkpoint": "phase2\\results\\training\\EXP-H1-WORKING_checkpoint.pth",
+    "validation_epe_series": [
+      {
+        "epoch": 0,
+        "val_epe": 17.21358736975443,
+        "val_d1": 89.31455273956486
+      },
+      {
+        "epoch": 5,
+        "val_epe": 20.05343296416638,
+        "val_d1": 89.87092192027953
+      },
+      {
+        "epoch": 10,
+        "val_epe": 18.676326820334857,
+        "val_d1": 88.47237011336908
+      },
+      {
+        "epoch": 15,
+        "val_epe": 17.749693017735428,
+        "val_d1": 87.87323636449595
+      },
+      {
+        "epoch": 19,
+        "val_epe": 19.21188108098442,
+        "val_d1": 88.9902726724739
+      }
+    ],
+    "validation_epe_initial": 17.21358736975443,
+    "validation_epe_final": 19.21188108098442,
+    "validation_epe_best": 17.21358736975443,
+    "validation_epe_best_epoch": 0,
+    "validation_change": "did not improve",
+    "loss_change": "improved",
+    "non_finite_gradient_count": 0
+  },
+  "observations": [
+    "H1: a genuinely shifted stereo correspondence volume, everything else held fixed, changes accuracy by a measurable amount versus Phase 1's frozen degenerate volume (docs/research_questions.md, H1).",
+    "160 scenes from random init is a convergence-pipeline proof (Phase 1 EXP-016), not a competitive accuracy result. Both H1 arms share this budget, so the A/B comparison is valid; neither arm's absolute number is a ceiling.",
+    "no batch normalisation, because the model reproduces the BN-folded exported artifact rather than the training-time upstream model",
+    "Loss went from 11.3056 to 8.6169 over 20 epochs. Gradient norms had median 26.845 and maximum 246.455, with no non-finite values.",
+    "Validation EPE went from 17.214 px to 19.212 px, so validation did not improve. The best recorded value was 17.214 px at epoch 0. A better intermediate value does not establish improvement, since the run did not end there."
+  ],
+  "conclusion": "Training loss went from 11.3056 to 8.6169, so the loss decreased. All 1600 gradient norms were finite, with a maximum of 246.455. Validation EPE went from 17.214 px to 19.212 px, so validation did not improve. The best recorded value was 17.214 px at epoch 0. A better intermediate value does not establish improvement, since the run did not end there. A checkpoint was written. cost_volume_shift='left'. Compare against the paired H1 arm before drawing any conclusion about the value of a working cost volume.",
+  "error": null
+}

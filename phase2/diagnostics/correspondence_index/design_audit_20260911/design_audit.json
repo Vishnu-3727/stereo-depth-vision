@@ -1,0 +1,391 @@
+{
+  "audit_id": "DESIGN-AUDIT-CORRESPONDENCE-INDEX-003",
+  "audit_date": "2026-09-11",
+  "audit_kind": "design audit only; nothing executed",
+  "proposed_experiment": "EXP-CORRESPONDENCE-INDEX-003",
+  "proposed_question": "Does the repeatedly observed ordered response d(-1) < d(0) < d(+1) < d(+2) contain statistically discriminative structure relative to arbitrary candidate-axis permutations?",
+
+  "execution_state": {
+    "training_performed": false,
+    "inference_performed": false,
+    "model_instantiated": false,
+    "index_003_executed": false,
+    "new_experimental_outputs_generated": false,
+    "new_experimental_outputs_inspected": false,
+    "historical_records_modified": false,
+    "index_001_modified": false,
+    "index_002_modified": false,
+    "geometric_experiment_launched": false,
+    "computations_performed": [
+      "permutation algebra (cycle types, conjugacy, generator counts)",
+      "counting arithmetic (attainable p-values, arm budgets)",
+      "reads of already-published numbers from the INDEX-002 record",
+      "source inspection of aggregation.py, regression.py, cost_volume.py"
+    ]
+  },
+
+  "FINAL_DESIGN_VERDICT": "DESIGN-INCONCLUSIVE",
+
+  "verdict_reason": "A non-circular, structurally matched, exactly generable ordering-vs-permutation test exists and is fully specified. It cannot be made discriminative for the scientific question without an architecture-only (untrained-weights) control, because the ordered response is an expected consequence of the aggregation's five zero-padded 3-tap candidate-axis convolutions and would be produced by arbitrary weights. Without that control a PASS is statistically valid and scientifically vacuous, which is assumption-dependence, i.e. the DESIGN-INCONCLUSIVE criterion.",
+
+  "brief_correction": {
+    "brief_stated": "12 positive units: 3 seeds x 4 checkpoints",
+    "actual": "12 positive units = 3 checkpoints (one per seed 0,1,2) x 4 scenes",
+    "source": "20260911T015124Z/results.json",
+    "checkpoints": ["POS_6b_seed0", "POS_6b_seed1", "POS_6b_seed2"],
+    "scenes": ["000160_10.png", "000166_10.png", "000187_10.png", "000191_10.png"],
+    "why_it_matters": "the dependence structure is 3 weight sets x 4 images, not 3 x 4 independent draws",
+    "tag": "MEASURED"
+  },
+
+  "decisive_finding": {
+    "id": "F1",
+    "title": "The ordered response is architecturally expected for arbitrary weights",
+    "source_measured": {
+      "file": "src/models/stereonet/aggregation.py",
+      "structure": "4 x [Conv3d(32->32, 3x3x3, padding=1) + LeakyReLU(0.01)] then Conv3d(32->1, 3x3x3, padding=1)",
+      "n_three_tap_convs_along_candidate_axis": 5,
+      "padding": 1,
+      "receptive_field_along_D": 11,
+      "padding_free_candidates": [5, 6],
+      "readout": "soft_argmin over candidate index (src/models/stereonet/regression.py)"
+    },
+    "derivation": "Conv3d with padding=1 is translation-equivariant along D except in the padding-affected boundary band; this is a property of the operator, not of its weights. Hence Agg_w(shift_m(V)) ~= shift_m(Agg_w(V)) and soft_argmin(shift_m(c)) = soft_argmin(c) + m, so d(pi_m) ~= d(pi_0) + m for ANY weight set w.",
+    "observed_deltas_are_not_equal_to_m": {
+      "d_plus1_minus_d_identity_range": [1.2, 1.9],
+      "d_plus2_minus_d_identity_range": [1.8, 3.1],
+      "note": "exact equivariance is broken by zero padding, so the slope is not unity; the SIGN and the ORDERING still follow from the operator",
+      "tag": "MEASURED from INDEX-002 record"
+    },
+    "prediction": "A randomly initialised network of this architecture with shift='left' would reproduce the same ordering.",
+    "prediction_status": "INFERRED and explicitly UNTESTED - no such model was instantiated and no such measurement exists",
+    "consequence": "An ordering-vs-permutation test confirms a near-theorem about the architecture, not a property of the trained weights."
+  },
+
+  "already_known_problem": {
+    "id": "F2",
+    "title": "The ordered-side value of any 4-arm statistic is already published",
+    "record": "phase2/diagnostics/correspondence_index/20260911T015124Z/results.json",
+    "fact": "d(-1) < d(0) < d(+1) < d(+2) holds strictly at 12/12 positive units",
+    "consequence": "A statistic computed only from the four ordered arms cannot be preregistered predictively; the most it can be is a null calibration of an already-measured quantity, and a preregistration must say so in those words.",
+    "disqualifies": ["S1", "S2", "S3", "S4"],
+    "tag": "MEASURED"
+  },
+
+  "index_002_null_reusability": {
+    "reusable_for_ordering_test": false,
+    "index_002_null_construction": {
+      "n_permutations": 1536,
+      "distribution": "i.i.d. uniform over S_12",
+      "grouping": "512 arbitrary disjoint triples standing in for (+2, +1, -1) with a shared d(identity)",
+      "tag": "MEASURED"
+    },
+    "structural_mismatches": [
+      {
+        "id": "M1",
+        "issue": "wrong object",
+        "detail": "the ordered arms are the powers of a single generator c: k -> k-1 (a one-parameter cyclic family); an INDEX-002 triple is three unrelated permutations. Comparing a one-parameter family to unrelated triples confounds 'the natural order matters' with 'a one-parameter family is smoother than three unrelated draws', which is true by construction for any local operator."
+      },
+      {
+        "id": "M2",
+        "issue": "wrong cycle type",
+        "detail": "only 11!/12! = 1/12 of uniform S_12 draws are single 12-cycles. Ordered-family cycle types are [12] at m=+1 and m=-1, [6,6] at m=+2, [1^12] at m=0. An arbitrary triple matches none of that.",
+        "tag": "DERIVED"
+      },
+      {
+        "id": "M3",
+        "issue": "powers never computed",
+        "detail": "even for draws that happen to be 12-cycles, gamma^2, gamma^3, ... were never evaluated, so no power-family statistic can be recovered from the record."
+      }
+    ],
+    "reusable_element": "the convention of a single shared d(identity) across the ordered family and every null family, since identity belongs to every power-family by definition",
+    "index_002_reinterpreted": false,
+    "index_002_rescored": false
+  },
+
+  "candidate_statistics": [
+    {
+      "id": "S1",
+      "name": "strict-order indicator on four arms",
+      "definition": "S1 = 1[ d(+2) > d(+1) > d(0) > d(-1) ]",
+      "information_used": "4 values, ordinal only",
+      "permutation_invariant": false,
+      "null_analogue": "requires assigning labels -1,0,+1,+2 to a null family",
+      "exact_null_generable": true,
+      "leaks_expected_sign_or_order": true,
+      "restates_hypothesis": true,
+      "directional_or_two_sided": "one-sided by construction",
+      "tie_handling": "strict inequality; any tie gives 0",
+      "identical_for_ordered_and_random": true,
+      "verdict": "REJECT",
+      "reject_reason": "hard-codes the observed direction and is literally the observed pattern; also already published (F2)"
+    },
+    {
+      "id": "S2",
+      "name": "signed Spearman rho over m in {-1,0,+1,+2}",
+      "definition": "rho(m, d(pi_m)) on 4 points",
+      "information_used": "4 values, ordinal",
+      "permutation_invariant": false,
+      "null_analogue": "same formula on a label-matched null family",
+      "exact_null_generable": true,
+      "leaks_expected_sign_or_order": true,
+      "restates_hypothesis": true,
+      "directional_or_two_sided": "signed; must be two-sided to avoid the leak",
+      "tie_handling": "midranks; generically absent for continuous medians",
+      "identical_for_ordered_and_random": true,
+      "verdict": "REJECT as primary",
+      "reject_reason": "only 24 attainable orderings; on 4 points rho=+1 is exactly the S1 event"
+    },
+    {
+      "id": "S3",
+      "name": "direction-free |Spearman rho| on four arms",
+      "definition": "|rho(m, d(pi_m))| on 4 points",
+      "information_used": "4 values, ordinal",
+      "permutation_invariant": false,
+      "null_analogue": "same formula on a label-matched null family",
+      "exact_null_generable": true,
+      "leaks_expected_sign_or_order": false,
+      "restates_hypothesis": "partially",
+      "directional_or_two_sided": "two-sided by construction",
+      "tie_handling": "midranks",
+      "identical_for_ordered_and_random": true,
+      "verdict": "REJECT as primary; acceptable as secondary descriptive",
+      "reject_reason": "fixes the sign leak but still uses only the four already-published arms (F2)"
+    },
+    {
+      "id": "S4",
+      "name": "Kendall tau / inversion count on four arms",
+      "definition": "number of discordant pairs among the 4 labelled arms",
+      "information_used": "4 values, ordinal",
+      "permutation_invariant": false,
+      "null_analogue": "same formula on a label-matched null family",
+      "exact_null_generable": true,
+      "leaks_expected_sign_or_order": "yes in signed form",
+      "restates_hypothesis": true,
+      "directional_or_two_sided": "either",
+      "tie_handling": "tau-b",
+      "identical_for_ordered_and_random": true,
+      "verdict": "REJECT as primary",
+      "reject_reason": "equivalent information to S2/S3 on 4 points"
+    },
+    {
+      "id": "S5",
+      "name": "circular rank total variation over all twelve offsets",
+      "selected_as_primary": true,
+      "definition": "s_m = d(g^-m) for m=0..11; r = midrank(s) within the family; TV(g) = sum_{m=0}^{11} |r_{(m+1) mod 12} - r_m| (circular, wraps 11->0)",
+      "information_used": "all 12 offsets, ordinal only - scale-free, no calibration",
+      "permutation_invariant": "invariant to any monotone transform of d; equivariant to the choice of generator, which is exactly what is being tested",
+      "null_analogue": "identical formula with g = gamma, a random 12-cycle",
+      "exact_null_generable": true,
+      "leaks_expected_sign_or_order": false,
+      "leak_reason": "TV is direction-free: reversing the family (g -> g^-1) leaves TV unchanged",
+      "restates_hypothesis": false,
+      "restates_reason": "TV measures smoothness of the response along the natural cyclic order, a strictly broader property than the observed 4-arm monotonicity; monotone-over-a-window is neither necessary nor sufficient for low TV",
+      "directional_or_two_sided": "naturally two-sided; low TV is the structured side",
+      "tie_handling": "midranks, declared in advance, formula unchanged if ties occur",
+      "identical_for_ordered_and_random": true,
+      "range_derived": {"min": 22, "max_approx": 72, "note": "min 22 attained by a monotone arrangement around the circle"},
+      "decisive_advantage": "s_m for m in {3..10} has NEVER been computed in any record, so two thirds of the ordered-side input is unmeasured and the statistic retains genuine predictive content; it also removes the window-selection problem because no window is chosen",
+      "verdict": "ACCEPT as best available primary, subject to the architecture-control precondition"
+    },
+    {
+      "id": "S6",
+      "name": "first-harmonic energy fraction over all twelve offsets",
+      "definition": "S6(g) = |FFT(s)_1|^2 / sum_{j=1}^{11} |FFT(s)_j|^2",
+      "information_used": "all 12 offsets, magnitude-bearing",
+      "permutation_invariant": false,
+      "null_analogue": "identical formula with a random 12-cycle generator",
+      "exact_null_generable": true,
+      "leaks_expected_sign_or_order": false,
+      "restates_hypothesis": false,
+      "directional_or_two_sided": "two-sided; |FFT_1| is reversal-invariant",
+      "tie_handling": "not applicable (continuous)",
+      "identical_for_ordered_and_random": true,
+      "verdict": "ACCEPT as preregistered secondary; REJECT as primary",
+      "reject_reason": "scale- and shape-sensitive rather than purely ordinal, so it is vulnerable to differences in the spread of s between natural and random families - a nuisance dimension unrelated to order - and would need a normalisation choice that is a free parameter"
+    },
+    {
+      "id": "S7",
+      "name": "isotonic-regression residual / magnitude-bearing trend statistic",
+      "definition": "residual of an isotonic or linear fit of s_m on m, retaining magnitude",
+      "information_used": "magnitude and order",
+      "exact_null_generable": true,
+      "leaks_expected_sign_or_order": "yes in the isotonic-increasing form",
+      "restates_hypothesis": "partially",
+      "verdict": "REJECT",
+      "reject_reason": "mixing magnitude with order re-imports the failure INDEX-002 already recorded: the ordered arms are typical in MAGNITUDE of arbitrary re-indexing (S_order +4.11..+6.83 against null p99 +5.00..+6.87), so magnitude dilutes the ordinal signal with a dimension already known to be non-discriminative"
+    }
+  ],
+
+  "null_construction": {
+    "what_is_an_ordered_arm": "a single element of the cyclic family generated by the natural successor map c: k -> k-1 (mod 12); arm m is c^m, i.e. pi_m(k) = (k-m) mod 12, with m=0 the identity. The family is one generator plus an integer exponent - that, not the list of four permutations, is what makes it 'ordered'.",
+    "what_is_a_random_arm": "the corresponding power gamma^m of a generator gamma drawn uniformly from the 12-cycles of S_12",
+    "how_candidate_positions_are_assigned": "by the exponent m of the frozen generator; no arbitrary labelling is used or permitted",
+    "do_random_permutations_need_grouping": false,
+    "grouping_note": "NO grouping. This is the sharpest practical contrast with INDEX-002, where three unrelated permutations had to be grouped into an artificial triple.",
+    "can_one_random_permutation_generate_the_full_statistic": true,
+    "one_permutation_note": "a single generator gamma produces the entire family through its powers",
+    "do_multiple_random_permutations_create_a_valid_null": true,
+    "multiple_note": "M i.i.d. uniform 12-cycle generators give M i.i.d. draws of the family statistic, an exact finite-sample null for the exchangeability hypothesis 'the natural generator is exchangeable with a uniformly random 12-cycle generator'",
+    "structural_matching": {
+      "group_structure": "powers of one generator - matched",
+      "cycle_type_at_every_offset": "matched ([12] at m=+-1, [6,6] at m=+2, [1^12] at m=0)",
+      "identity_membership": "matched (gamma^0 = c^0 = identity)",
+      "step_relation": "matched (each arm is one further application of the generator)",
+      "only_difference": "whether the generator is the natural successor on the candidate index or an arbitrary 12-cycle"
+    },
+    "conjugation_equivalence": {
+      "statement": "sigma pi_m sigma^-1 = (sigma c sigma^-1)^m = gamma^m with gamma = sigma c sigma^-1; since the 12-cycles form a single conjugacy class and conjugation acts transitively on it, gamma is uniform over 12-cycles",
+      "consequence": "the random-generator null and 'relabel the candidate axis' are the SAME null, which gives it its interpretation: the candidate axis is relabelled, nothing else changes",
+      "tag": "DERIVED"
+    },
+    "generator_supply": {"n_twelve_cycles": 39916800, "formula": "11!", "tag": "DERIVED"},
+    "screening_policy": "none. Every drawn generator enters the null. No rejection for fixed points (a 12-cycle has none by definition, so this must not be used as a filter elsewhere), directional bias, occupancy, displacement, or response magnitude.",
+    "declared_nuisance": {
+      "fact": "d(identity) sits low among random permutations (e.g. seed0/000187: d(id)=5.6118 against random d min/median/max 2.1129/6.7718/8.9545)",
+      "tag": "MEASURED from INDEX-002 record",
+      "effect": "identity occupies a fixed interior position (m=0) in both the ordered and the null family, so any tendency of identity to be extreme affects both identically and does not bias the comparison; it does reduce the null's chance of appearing structured, which makes the test more permissive toward H1",
+      "handling": "declared in the preregistration as a known property of the design; never corrected afterwards"
+    }
+  },
+
+  "independence_and_multiple_testing": {
+    "unit_of_analysis": "the 12 positive (checkpoint, scene) units",
+    "units_independent": false,
+    "dependence_sources": [
+      "units sharing a checkpoint share the entire weight set",
+      "units sharing a scene share the images, the features and the GT mask",
+      "within a unit all arms share one cached cost volume"
+    ],
+    "forbidden_methods": [
+      "Fisher combination", "Stouffer combination", "Bonferroni treated as independent",
+      "any 'k of 12 units must pass' rule"
+    ],
+    "forbidden_reason": "these assume independence that does not hold and would manufacture significance out of shared structure; additionally a 'k of 12' rule would be a threshold set by the previously observed 12/12, which the brief forbids",
+    "chosen_method": "one global statistic with a shared-generator null",
+    "chosen_method_definition": "T(g) = sum over the 12 units of TV_unit(g); each null replicate uses ONE generator applied across all twelve units, exactly as the ordered family is one generator applied across all twelve units",
+    "why_valid": "the dependence among units is reproduced identically in every null draw, so it cancels; no independence assumption is made anywhere and no correction is needed",
+    "aggregation_choice": "sum",
+    "aggregation_justification": "TV is already on a common bounded integer scale across units (every unit has exactly 12 offsets), so the sum needs no weighting and introduces no free parameter",
+    "aggregation_fixed_when": "in this audit, before any null exists",
+    "per_unit_statistics": "reported descriptively with their own ranks; not the primary test; cannot alter the verdict"
+  },
+
+  "power_and_resolution": {
+    "p_formula": "p = min(1, 2 * min((1+ge)/(M+1), (1+le)/(M+1)))",
+    "min_attainable_two_sided_p": "2/(M+1)",
+    "table": [
+      {"M": 64, "min_p": 0.030769, "reaches_alpha_0.01": false},
+      {"M": 128, "min_p": 0.015504, "reaches_alpha_0.01": false},
+      {"M": 199, "min_p": 0.010000, "reaches_alpha_0.01": true},
+      {"M": 256, "min_p": 0.007782, "reaches_alpha_0.01": true},
+      {"M": 512, "min_p": 0.003899, "reaches_alpha_0.01": true},
+      {"M": 1000, "min_p": 0.001998, "reaches_alpha_0.01": true},
+      {"M": 2000, "min_p": 0.001000, "reaches_alpha_0.01": true}
+    ],
+    "mandatory_minimum": 199,
+    "specified_M": 1000,
+    "specified_M_reason": "so the 1st and 99th percentiles of the null are estimated from about 10 draws per tail rather than 2-5; INDEX-002's near-miss (nominal alpha 0.01 unreachable at M=64) must not recur",
+    "cost_basis_s_per_arm": 0.0107,
+    "cost_basis_source": "measured INDEX-002 throughput (24640 arms in 264.1 s)",
+    "arms_per_generator_per_unit": 11,
+    "arms_note": "m=0 is identity, computed once per unit and shared",
+    "cost_table": [
+      {"M": 512, "positive_arms": 67584, "negative_gate_arms": 22528, "total": 90112, "minutes": 16.1},
+      {"M": 1000, "positive_arms": 132000, "negative_gate_arms": 44000, "total": 176000, "minutes": 31.4},
+      {"M": 2000, "positive_arms": 264000, "negative_gate_arms": 88000, "total": 352000, "minutes": 62.8}
+    ],
+    "budget_warning": "about 31 minutes at M=1000 is an order of magnitude beyond INDEX-002's 264 s and well beyond the 'order of seconds' budget those protocols assumed; it must be authorised in advance, not discovered mid-run"
+  },
+
+  "circularity_assessment": {
+    "success_defined_as_observed_ordering": {"S1_to_S4": true, "S5": false},
+    "window_chosen_post_hoc": {"S1_to_S4": "the window is the whole statistic", "S5": "no window is chosen"},
+    "expected_direction_embedded": {"S1_S2": true, "S5": false},
+    "ordered_side_value_already_published": {"S1_to_S4": "fully", "S5": "only 4 of 12 inputs are known"},
+    "null_structurally_matched": {"index_002_null": false, "random_generator_null": true},
+    "conclusion": "S5 plus the random-generator null is NOT circular in the sense the brief warns about; the circularity objection is answerable. It is the architecture confound (F1), not circularity, that blocks the design."
+  },
+
+  "conditional_preregistration": {
+    "status": "NOT AUTHORISED FOR EXECUTION",
+    "purpose": "recorded so the design is complete and inspectable, and so no part of it can be chosen later with knowledge of an outcome",
+    "primary_statistic": "s^u_m = d_u(g^-m) for m=0..11 with d_u(x) = np.median(disparity_initial[mask_u]) identical to INDEX-001/002; r^u = midrank(s^u) within the unit; TV_u(g) = sum_{m=0}^{11} |r^u_{(m+1) mod 12} - r^u_m|; T(g) = sum over 12 units of TV_u(g)",
+    "ordered_value": "T(c) with c(k) = (k-1) mod 12",
+    "null_statistic": "T(gamma_i) for i=1..M, identical formula, identical code path, identical mask, identical d_u",
+    "unit_of_analysis": "12 positive (checkpoint, scene) units; primary test on the global T; per-unit TV reported descriptively only",
+    "permutation_generation": "draw sigma_i uniform from S_12; set gamma_i = sigma_i c sigma_i^-1 (uniform over 12-cycles); reject nothing; record every generator, its inverse, its powers' cycle types and its retained-band displacement as descriptive metadata that is not an input to any decision",
+    "number_of_permutations": 1000,
+    "rng_seed_policy": "a single seed numpy.random.default_rng(<YYYYMMDD of the freeze date>) written into the preregistration before execution; the full generator list serialised to generators.json with its sha256 recorded in the preregistration before any arm runs (the INDEX-002 procedure, which verified correctly)",
+    "tie_handling": "midranks (scipy.stats.rankdata method='average' or an explicit equivalent, named in the preregistration), applied identically to ordered and null families; the formula does not change if ties occur",
+    "empirical_p_calculation": "ge = #{T(gamma_i) >= T(c)}; le = #{T(gamma_i) <= T(c)}; p = min(1, 2*min((1+ge)/(M+1), (1+le)/(M+1)))",
+    "multiple_unit_aggregation": "already inside T; no p-value combination of any kind",
+    "alpha": 0.01,
+    "alpha_justification": "the threshold INDEX-002 already froze, carried forward unchanged, and reachable at M=1000; NOT derived from the observed 12/12",
+    "pass_fail_rule": "PASS iff the negative control passes AND p <= 0.01 AND T(c) is below the null's 1st percentile (the structured side). No intermediate verdict. No effect-size threshold and no required number of per-unit successes - both would be set by the prior 12/12 and are forbidden.",
+    "negative_control": "unchanged and algebraic: on the trained shift='none' checkpoint V(k) is constant in k, so for every arm of every family max|V_perm - V| == 0 and max|d_perm - d_id| == 0; any non-zero is a HARD STOP with no positive arms",
+    "negative_control_caveat": "TV is undefined there - all 12 responses tie, midranks are all 6.5, TV = 0 for every generator and the null is degenerate. This is correct behaviour for a degenerate model and must be declared in advance so it is not mistaken for a structured result; the negative control's pass criterion is the algebraic identity, never the ordering statistic.",
+    "hard_stop_conditions": [
+      "INDEX-002's full hard-stop list",
+      "any screening or rejection of a generator",
+      "any generator drawn after an output is inspected",
+      "M changed after execution begins",
+      "runtime exceeding the authorised budget",
+      "the architecture-only control absent or altered"
+    ],
+    "mandatory_precondition": {
+      "id": "9.14",
+      "requirement": "an arm in which the same architecture with shift='left' and randomly initialised, UNTRAINED weights is run through the identical pipeline, under a seed frozen in the preregistration",
+      "rationale": "without it the test cannot separate learned candidate-coordinate tracking from convolutional equivariance, and a PASS would be uninterpretable",
+      "interpretation_table": [
+        {"trained": "PASS", "untrained": "PASS", "conclusion": "the ordering is architectural; it carries no information about learning. Close the ordering line."},
+        {"trained": "PASS", "untrained": "FAIL", "conclusion": "the ordering is weight-dependent; candidate-coordinate ordering is distinguishable from the arbitrary-permutation null and is not merely structural. Strongest outcome available."},
+        {"trained": "FAIL", "untrained": "either", "conclusion": "candidate-coordinate ordering is not distinguishable under this design."}
+      ],
+      "authorisation_note": "this control instantiates new weights; it performs no training and modifies no checkpoint, but it steps outside the current protocol's 'do not change weights/checkpoints' rule and therefore requires explicit authorisation before INDEX-003 is preregistered at all"
+    },
+    "secondary_statistic": "S6 (first-harmonic energy fraction), descriptive only, may not change any verdict",
+    "claim_ceiling_on_pass_with_untrained_failing": "Candidate-coordinate ordering is statistically distinguishable from the preregistered arbitrary-permutation null under the specified candidate-axis intervention.",
+    "claim_ceiling_on_pass_with_untrained_also_passing": "the ordering is architectural and carries no information about learning",
+    "claims_explicitly_not_established": [
+      "geometric correspondence", "correct matching", "correct disparity",
+      "genuine disparity search", "physical translation correspondence", "stereo correctness"
+    ]
+  },
+
+  "reference_frame_compliance": {
+    "candidate_index_converted_to_physical_disparity": false,
+    "physical_slope_claimed": false,
+    "why_no_conversion_occurs": "TV is a function of ranks of masked medians within a family, invariant to any monotone transform of d, so no unit interpretation of d enters at all; the labels -1, 0, +1, +2, ..., 11 are used only as exponents of the frozen generator",
+    "candidate_axis_ordering": "a property of the map m -> d(g^-m) on Z_12; this is what S5 tests",
+    "physical_disparity_correspondence": "requires mapping candidate index k to a disparity of 16k full-resolution pixels AND resolving that the volume indexes that magnitude at the RIGHT image column while GT indexes the LEFT (measured: cost_volume.py, level k at column u is left_feat[u+k] - right_feat[u]); untested and untouched by this design",
+    "geometric_experiment_designed": false,
+    "geometric_experiment_preregistered": false,
+    "geometric_experiment_launched": false
+  },
+
+  "what_this_audit_does_not_conclude": [
+    "it does NOT conclude that candidate-coordinate sensitivity is absent",
+    "it does NOT re-score, reinterpret or overturn INDEX-001 or INDEX-002; INDEX-002's NOT-DEMONSTRATED remains its verdict",
+    "it does NOT claim to have measured what an untrained network does; the equivariance expectation is INFERRED and untested",
+    "it does NOT recommend ABANDON-ORDERING-HYPOTHESIS - the ordering is real, reproduced three times, and the architecture-control design would settle whether it is architectural, which is worth knowing and is the cheapest remaining question in this line"
+  ],
+
+  "closing_answer": {
+    "question": "Is EXP-CORRESPONDENCE-INDEX-003 scientifically justified, and what exact preregistered statistic would it use?",
+    "justified_as_proposed": false,
+    "reasons_not_justified": [
+      "H0 as stated is refutable from the architecture alone: five zero-padded 3-tap convolutions along the candidate axis are translation-equivariant in the interior, so d(pi_m) ~= d(pi_0) + m is expected for ANY weights, and rejecting that H0 confirms a near-theorem rather than a property of the trained model",
+      "every statistic confined to the four arms has a value already published in INDEX-002 (12/12 strictly increasing), so it cannot be preregistered predictively and would at best calibrate an already-measured quantity"
+    ],
+    "becomes_justified_under": "adding the architecture-only control (identical architecture, shift='left', randomly initialised untrained weights) and reframing the question from 'is the ordering significant?' (answer effectively known) to 'is the ordering a property of the trained weights or of the convolution?' (genuinely unknown, and decisive for whether this line continues)",
+    "exact_statistic": "For a 12-cycle generator g and unit u, s^u_m = d_u(g^-m) for m = 0..11, where d_u(x) = np.median(disparity_initial[mask_u]) exactly as in INDEX-001 and INDEX-002. Let r^u be the midrank vector of s^u within the unit. Circular rank total variation TV_u(g) = sum_{m=0}^{11} |r^u_{(m+1) mod 12} - r^u_m|; global statistic T(g) = sum_{u=1}^{12} TV_u(g). Observed value T(c) for the natural successor generator c(k) = (k-1) mod 12. Null: {T(gamma_i)} for M = 1000 generators drawn i.i.d. uniform over the 12-cycles of S_12 via gamma_i = sigma_i c sigma_i^-1, each generator applied across ALL twelve units so the units' shared checkpoints and scenes are reproduced identically in every null draw and no independence assumption is made. Two-sided exact p = min(1, 2*min((1+#{T(gamma)>=T(c)})/(M+1), (1+#{T(gamma)<=T(c)})/(M+1))), alpha = 0.01 (reachable: 2/1001 = 0.001998), midrank tie handling, no screening of generators, algebraic shift='none' gate unchanged, and the same statistic computed identically for the trained and untrained-weights arms.",
+    "statistic_chosen_because": [
+      "scale-free and ordinal, immune to the magnitude dimension INDEX-002 already showed is non-discriminative",
+      "direction-free, so no expected-sign leak",
+      "window-free, so no post-hoc offset selection",
+      "structurally matched to the ordered family at every offset",
+      "two thirds of its ordered-side input (offsets m = 3..10) has never been computed, so it retains real predictive content"
+    ]
+  }
+}

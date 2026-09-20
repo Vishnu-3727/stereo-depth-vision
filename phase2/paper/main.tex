@@ -1,0 +1,266 @@
+\documentclass[conference]{IEEEtran}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{url}
+\usepackage{xcolor}
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+
+\begin{document}
+
+\title{A Candidate-Invariant Cost Volume in a Deployed Stereo Network: Separating Stereo Accuracy from Identifiable Geometric Correspondence}
+
+\author{\IEEEauthorblockN{Anonymous Authors}
+\IEEEauthorblockA{Manuscript prepared from repository records only.\\
+No new experiment, measurement, or citation was produced for this paper.}}
+\maketitle
+
+\begin{abstract}
+\textbf{Background.} Cost-volume stereo networks are widely assumed to perform a disparity search over candidate slices, an assumption rarely tested on deployed artefacts. \textbf{Gap.} The signatures normally taken as evidence of geometric correspondence have not been checked against models that provably cannot search. \textbf{Method.} We forensically reconstruct a deployed production stereo network (Hailo's StereoNet), train under a bit-reproducible deterministic harness with pre-registered interventions, and apply an adversarial protocol in which each candidate signature must survive an explicit correspondence-free counterexample. \textbf{Main empirical result.} The deployed model's cost volume is candidate-invariant by algebraic identity ($\max_k |V_k - V_0| = 0.0$); the model reaches 8.154\% D1 under the official protocol and loses approximately 89--90 D1 points under right-image ablation in the EXP-007 protocol (10 scenes, 1\,837\,304 px). A controlled $2\times2$ shows candidate-varying content and readout conditioning interact (2.2955 vs.\ 8.3717 EPE on the deterministic 40-scene pooled set; plain cells are H1-v2 10-scene late-window means). The frozen volume still consumes $L_f - R_f$ at a single alignment, so this is a statement about the absence of a disparity search, not about the absence of all geometric use. \textbf{Identification result.} Across eight intervention families, each apparently geometric signature admits a correspondence-free counterexample, and two failures are structural. Genuine local geometric correspondence is therefore \textbf{not demonstrated} by these experiments, which is not the same as showing it absent. \textbf{Significance.} Stereo performance and \emph{identifiable} geometric correspondence can come apart, and mechanism claims in cost-volume stereo need stronger evidence than the standard signatures. \textbf{Limitation.} One architecture, one dataset, 160-scene from-scratch training, three seeds, no significance tests.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+Can stereo accuracy and geometric correspondence be experimentally separated in a cost-volume stereo network, and what can controlled interventions establish about which of the two a given network has? This question presupposes nothing: a negative answer---that accuracy and correspondence always co-occur and interventions attribute cleanly---is a coherent outcome the evidence could have produced and did not.
+
+This paper reports two findings. First, the deployed model retains useful stereo prediction despite a candidate-invariant cost volume. All twelve candidate slices are the same tensor; this is an algebraic identity of the construction, not an empirical observation. The network still consumes a single-alignment binocular difference, so this is a statement about the absence of a disparity search, not about the absence of all geometric use. Second, each of the standard signatures used to attribute correspondence admits an explicit correspondence-free counterexample, and two of the failures are structural rather than incidental. Genuine local geometric correspondence is \textbf{not demonstrated} by these experiments; this is not the same as showing it absent.
+
+The paper is organised as follows. Section~\ref{sec:model} defines the deployed model and the two hypotheses under test. Section~\ref{sec:methods} documents the determinism, pre-registration, and protocol discipline that make the numbers comparable. Section~\ref{sec:pillar1} establishes the candidate-invariant volume with strong binocular dependence. Section~\ref{sec:pillar2} shows, in a controlled factorial, that candidate-varying cost-volume geometry contributes materially to the trained solution under this recipe. Section~\ref{sec:pillar3} presents the identification boundary as one adversarial-methodology argument. Section~\ref{sec:sensitivity} reports architectural sensitivity, and Sections~\ref{sec:discussion}--\ref{sec:conclusion} discuss, limit, and conclude.
+
+\begin{figure}[t]
+\centering
+\fbox{\parbox{0.9\linewidth}{\centering \textbf{F1 placeholder:} pipeline diagram showing feature extraction ($\times 2$, shared weights), the per-candidate construction $V[k] = \mathrm{shift}_k(L_f) - R_f$, 3D aggregation, full-resolution soft-argmin, and six-block guided refinement; inset shows the pad-right / slice-from-zero identity that makes $\mathrm{shift}_k$ a no-op. States $H_{\mathrm{CORR}}$ vs.\ $H_{\mathrm{ALT}}$.}}
+\caption{F1: the deployed architecture and the shift construction. It shows the pipeline, the identity $V[k]=\mathrm{shift}_k(L_f)-R_f$ with the pad-right/slice-from-zero construction, and the two hypotheses $H_{\mathrm{CORR}}$ (candidate slices carry searched correspondence) vs.\ $H_{\mathrm{ALT}}$ (they do not). It must not be read as a claim about what the aggregation does with the volume.}
+\label{fig:f1}
+\end{figure}
+
+\section{Related Work}
+\label{sec:related}
+
+Cost-volume stereo descends from the StereoNet design of Khamis \emph{et al.}~\cite{khamis2018stereonet}: a low-resolution matching volume, sub-pixel soft-argmin readout, and learned guided refinement. The deployed artefact studied here is Hailo's compiled StereoNet baseline~\cite{hailo2023stereonet}, whose published accuracy figure and benchmark context are documented in~\cite{hailo2023benchmark}; the upstream PyTorch source it derives from is the nivosco reimplementation~\cite{nivosco_stereonet}. Evaluation uses the KITTI 2015 stereo data and disparity ground truth~\cite{geiger2015kitti}.
+
+The field has explored four broad answers to the cost of 3D aggregation: smaller volumes, more informative volumes (group-wise correlation, attention volumes), cheaper replacements for 3D convolution (sparse-point, channel excitation), and abandoning the volume (tile hypotheses, recurrent updates). \todo{CITATION NEEDED: competitor survey beyond abstracts --- group-wise correlation, attention concatenation volumes, iterative refinement methods; repo records SR-040--SR-050 were inspected at abstract level only and cannot support full citations.} No competitor was implemented or measured in this project, and no cross-paper accuracy comparison is attempted: the repo's competitive-landscape record establishes that published figures use mutually incomparable protocols.
+
+Mechanistic interpretability of stereo networks---gradient flow, softmax sharpness, pruning sensitivity, oracle substitution as mechanism probes---is the second relevant literature. \todo{CITATION NEEDED: interpretability and identifiability literature for deep vision models.} Our contribution is to test each such proxy against an explicit correspondence-free counterexample in a system where the ground truth (candidate invariance) is known by construction.
+
+\section{The Deployed Model and Problem Formulation}
+\label{sec:model}
+
+The deployed network takes rectified stereo pairs at $368\times1232$ and outputs full-resolution disparity. Feature extraction (shared Siamese weights, 199\,552 parameters per branch occurrence) downsamples $16\times$ to $23\times77$ with 32 channels. The cost volume is constructed per disparity candidate $k \in 0\ldots11$ as $V[k] = \mathrm{shift}_k(L_f) - R_f$, stacked to $1\times32\times12\times23\times77$, aggregated by five 3D convolutions (111\,585 parameters, 2.369~GMAC, 4.2\% of the model), upsampled to full resolution before a soft-argmin, and refined by six dilated residual blocks (dilations 1,2,4,8,1,1; 112\,449 parameters; 50.79~GMAC; 90.6\% of arithmetic). Unique parameters total 423\,586; total MACs 56.04~GMAC at $368\times1232$. The model description here is verified against the exported graph; the upstream source~\cite{nivosco_stereonet} and the Model Zoo configuration~\cite{hailo2023stereonet} are recorded as the provenance chain.
+
+Two hypotheses organise the paper. $H_{\mathrm{CORR}}$: the network's stereo behaviour is produced by genuine geometric correspondence implemented as candidate search in the cost volume. $H_{\mathrm{ALT}}$: the behaviour is produced without candidate-varying correspondence information---for example through a single-alignment binocular difference consumed by downstream stages. ``Identifiable'' here has a fixed operational meaning: a signature counts as evidence for $H_{\mathrm{CORR}}$ only if no correspondence-free mechanism reproduces it. A test that fires on a provably search-free model is not evidence, however geometric it looks.
+
+\section{Methodology and Protocol Discipline}
+\label{sec:methods}
+
+Four disciplines govern every number. First, \textbf{determinism}: the historical harness was not bit-reproducible (same seed, epoch-0 loss 10.8798 vs.\ 10.5762; bilinear backward isolated as one nondeterministic operation). All from-scratch comparisons reported here use deterministic controls, verified by two independent Stage~B runs with identical weight SHA \texttt{3ad382c50d413ad2}. Second, \textbf{pre-registration}: decision boundaries, gates, and verdicts were frozen before results were seen; the frozen 6-block three-seed EPE range $[2.2955182, 2.3982217]$ was asserted against frozen records before the 4-block batch launched. Third, a \textbf{MEASURED/DERIVED/INFERRED/UNKNOWN} convention: identities and direct measurements are MEASURED; arithmetic on them is DERIVED; everything else is labelled INFERRED or UNKNOWN. Fourth, \textbf{protocol and pixel-set labelling}: every reported number carries dataset, split, scene count, valid-pixel set and rule, checkpoint identity (and hash where recorded), seed, evaluation protocol, metric, and pipeline stage. Table~\ref{tab:t1} is that labelling, and it is normative: no table in this paper places the official-protocol 8.154\% D1 and the EXP-007 baseline 9.3315\% (1\,837\,304 px, 10 scenes) in the same block without labelling protocol and pixel set. \todo{UNVERIFIED: metric-aggregation rule (per-image mean vs.\ pooled) behind the EXP-007 9.3315\% baseline --- not stated in the files found.} \todo{UNVERIFIED: EXP-007 checkpoint hash --- not quoted in the files found; Table~\ref{tab:t1} records it only where recorded.}
+
+\begin{table*}[t]
+\centering
+\footnotesize
+\caption{T1: protocol table. Every number in the paper, with dataset, split, scene count, valid-pixel set, checkpoint, seed, protocol, metric, and pipeline stage. Official-protocol and EXP-007 figures are never mixed without labels.}
+\label{tab:t1}
+\begin{tabular}{p{2.6cm}p{2.2cm}p{2.6cm}p{2.4cm}p{2.2cm}p{2.2cm}}
+\toprule
+Quantity & Dataset / split / scenes / pixels & Checkpoint / seed & Protocol & Metric & Stage \\
+\midrule
+Deployed accuracy 8.154\% / 1.3134~px & KITTI 2015 train split, hailo\_val scenes 160--199, 40 scenes, 3\,802\,797 px, gt${>}0$ & Pretrained Hailo-exported weights & Official KITTI D1-all, pooled & D1 / EPE & Final output \\
+fp32 CUDA 1.314~px / 8.155\% / 90.1~ms & Same 40 scenes & Same pretrained weights & Project stack tabulation & EPE / D1 / latency & Final output \\
+EXP-007 baseline 9.3315\% / 1.4422~px & KITTI 2015, 10-scene EXP-007 variant set, 1\,837\,304 px \todo{UNVERIFIED: aggregation rule} & Same pretrained weights \todo{UNVERIFIED: hash} & EXP-007 ablation protocol & D1 / EPE & Final output \\
+EXP-007 five ablations +89.1--90.0~pt & Same 10 scenes / px as baseline & Same, right image altered & EXP-007, within-protocol deltas & $\Delta$D1 / correlation & Final output \\
+Invariance $\max_k|V_k-V_0|=0.0$ & 5 scenes (EXP-010); 6\,160 perm.\ arms; 816 arms $\times$ 17 weight-sets & Pretrained + 16 random (ARCH-001) & Graph identity + measurement & max abs diff & Cost volume \\
+Factorial plain cells 14.423 / 14.414 & hailo\_val, first 10 scenes, late-window means epochs 150--199, pre-determinism harness & Seed 0, random init, 200 epochs & H1-v2 recorded validation & EPE (D1 in text) & Final output \\
+Factorial std cells 2.2955 / 8.3717 & hailo\_val, 40 scenes, 3\,802\,797 px pooled & Seed 0, deterministic, 200 epochs, SHA \texttt{3ad382c50d413ad2} (left+std) & Deterministic 40-scene & EPE / D1 & Final output \\
+H2 three seeds 4.199 / 3.745 / 4.333 & Same 40 scenes / px & Seeds 0/1/2, 200 epochs & Recorded + deterministic & EPE / D1 / entropy / gradient & Final + disparity\_initial \\
+H3 10-epoch viability & Same 40 scenes / px & Seed 0, 10 epochs & Matched-budget control & $\Delta$D1 & Final output \\
+SHIFT-001 translation response & Synthetic translation sweep, shift=none+std & From-scratch model & Pre-registered analytic prediction & Candidates & disparity\_initial \\
+EMERGENCE-001 onset series & Saved snapshots epochs 10--200, seeds 1--2 & Seeds 1/2 & Re-ablation, frozen 20-pt criterion & $\Delta$D1 / gradient \% & Final + matching path \\
+INDEX-001/002 permutations & 24\,640 arms; null 6\,160 arms & Trained + algebraic null & Ordered-vs-random contrast & Pattern reproduction & Candidate axis \\
+TR-001 vs.\ ARCH-RATE & Synthetic horizontal response; 384 untrained units & Trained agg.\ vs.\ random pop.\ & Frozen scoring & $\alpha_h$ slope & Aggregation output \\
+GEOM-002 / O1 / CP-001 & Design gates, no new training & As recorded & Pre-registered stop rules & Verdicts & As recorded \\
+Zone-001 zone-local statistic & 3 seeds, $\Delta\in\{1,3,6\}$, interiors $[0,224)$/$[912,1136)$ & Seeds 0/1/2 & Zone-local design & ZI-1 / ZI-2 & Zone statistic \\
+Block depth $3\times3$ & Same 40 scenes, 3\,802\,797 px, epoch-200 final & Seeds 0/1/2, deterministic, 200 epochs & Pre-registered boundary & EPE / D1 & Final output \\
+E2 temperature $9\times3$ grid & Same 40 scenes / px & H2 seeds, inference only & Frozen grid $T\in\{0.25\ldots4.0\}$ & EPE / D1 / entropy / dep.\ & Readout \\
+E3 13 ablations $\times$ 3 seeds & Same 40 scenes / px & H2 seeds, inference only & Frozen 4-gate protocol & EPE / D1 / dep.\ / MACs & Refinement \\
+E1 three oracles & Same 40 scenes / px & H2 seeds, measurement only & Frozen oracle protocol & EPE removed \% & Matching$\to$refinement boundary \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\section{A Candidate-Invariant Cost Volume with Strong Binocular Dependence}
+\label{sec:pillar1}
+
+The deployed cost volume contains no candidate-varying information. In the exported graph, each disparity shift is implemented as a pad-right followed by a slice from zero, so $\mathrm{shift}_k$ is the identity for every $k$; all twelve candidate slices are the same tensor, and $\max_k |V_k - V_0| = 0.0$ exactly over 5 measured scenes. The construction is present in the upstream PyTorch source, so it survives export and compilation rather than being an export artefact, and it is re-confirmed at 0.0 across 6\,160 permutation arms and 816 arms over 17 weight-sets including 16 random initialisations. Invariance is therefore a property of the volume construction, not of any particular weights. The network still consumes a single-alignment binocular difference $L_f - R_f$ inside that volume, so this is a statement about the absence of a disparity search, not about the absence of all geometric use.
+
+The same model is nevertheless strongly binocular and usefully accurate. Under the official protocol the pretrained weights reach D1 8.154\% (EPE 1.3134~px; fp32 CUDA tabulation 1.314~px / 8.155\% / 90.1~ms recorded separately). Under the distinct EXP-007 ablation protocol (10 scenes, 1\,837\,304 px, baseline EPE 1.4422 / D1 9.3315), five right-image ablations each cost roughly +89 to +90 D1 points: right:=left +89.678, other-scene +89.957, horizontal flip +89.128, black +89.649, noise +89.806, with baseline prediction correlation falling to $-0.310$, $+0.00019$, $+0.121$, $+0.348$, and $-0.147$ respectively. A monocular predictor is by definition unaffected by any of these interventions. The deployed model retains useful stereo prediction despite a candidate-invariant cost volume, and useful binocular stereo behaviour can exist without candidate-varying correspondence information in the cost volume. The ablation deltas are computed strictly within the EXP-007 protocol and are never subtracted from the 8.154\% official-protocol figure.
+
+\begin{figure}[t]
+\centering
+\fbox{\parbox{0.9\linewidth}{\centering \textbf{F2 placeholder:} values of $\max_k |V_k - V_0|$ across scenes, checkpoints, and weight-sets, all at 0.0, with the pad-right/slice-from-zero algebraic identity inset.}}
+\caption{F2: candidate invariance. It shows the max slice deviation across scenes, checkpoints, and weight-sets (all 0.0) with the algebraic identity inset. It must not be read as ``the network ignores the right image''---Fig.~\ref{fig:f3} immediately refutes that reading.}
+\label{fig:f2}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\fbox{\parbox{0.9\linewidth}{\centering \textbf{F3 placeholder:} D1 penalty bars for the five right-image ablations (+89.1 to +90.0~pt) against the labelled EXP-007 baseline, with pixel set and protocol named on the axis.}}
+\caption{F3: binocular dependence. It shows the D1 penalty of each of the five right-image ablations against the labelled EXP-007 baseline with pixel set and protocol named. It must not be read as evidence of geometric use of the right image---dependence is not search.}
+\label{fig:f3}
+\end{figure}
+
+\begin{table}[t]
+\centering
+\caption{T2: deployed model. Accuracy under the official protocol (upper block) and the five ablations under the EXP-007 protocol (lower block). The two protocols use different pixel sets and are never mixed.}
+\label{tab:t2}
+\begin{tabular}{lrr}
+\toprule
+Condition & EPE (px) & D1 (\%) \\
+\midrule
+\multicolumn{3}{c}{\emph{Official protocol: 40 scenes, 3\,802\,797 px, pretrained weights}} \\
+Official D1-all & 1.3134 & 8.154 \\
+fp32 CUDA tabulation & 1.314 & 8.155 \\
+\midrule
+\multicolumn{3}{c}{\emph{EXP-007 protocol: 10 scenes, 1\,837\,304 px, same pretrained weights}} \\
+Unmodified baseline & 1.4422 & 9.3315 \\
+\quad right:=left ($\Delta$+89.678) & 47.9634 & 99.0090 \\
+\quad right from other scene ($\Delta$+89.957) & 69.4266 & 99.2882 \\
+\quad right flipped ($\Delta$+89.128) & 64.4702 & 98.4595 \\
+\quad right black ($\Delta$+89.649) & 54.4779 & 98.9802 \\
+\quad right noise ($\Delta$+89.806) & 68.5338 & 99.1373 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Shift $\times$ Readout: What Candidate-Varying Geometry Contributes}
+\label{sec:pillar2}
+
+Neither a genuinely shifted volume nor a conditioned readout alone produces a binocular trained model; only their combination does. The complete $2\times2$, run at matched recipe with 423\,586 parameters in every cell, reads: shift=none with plain readout 14.423~EPE, shift=left with plain readout 14.414~EPE (both H1-v2 10-scene late-window means, pre-determinism harness), shift=none with standardised readout 8.3717466~EPE / 66.5977700\% D1, shift=left with standardised readout 2.2955182~EPE / 15.6045143\% D1 (both deterministic 40-scene pooled). One changed variable per cell. The shift without the readout fix is worth $-0.008$~px; the readout fix without the shift leaves EPE at 8.37; the combination reaches 2.30. Candidate-varying cost-volume geometry contributes materially to the trained solution under this recipe. The 6.08~px gap is approximately $59\times$ the separately measured 6-block three-seed EPE range of 0.1027~px, which is the stated defence of the single-seed-per-cell design; the result is 160 scenes from random initialisation and is not a competitive-accuracy claim. Directional corroboration comes from H3, where removing candidate-varying content under the standardised readout returns right-image $\Delta$D1 of $-1.08\ldots+1.91$---the monocular signature---showing the ablation is capable of detecting monocularity when present.
+
+A readout change alone makes a trained model binocular: standardising the aggregated cost before the frozen soft-argmin takes softmax entropy 0.0000 to 1.67--1.83~nats, matching-path gradient from 5/150 crops to 16\,000/16\,000 batches, $r(\mathrm{disparity\_initial},\mathrm{GT})$ from $-0.001\ldots+0.283$ to $+0.978\ldots+0.988$, right-image $\Delta$D1 from $\le+0.8$ to $+74.88\ldots+83.95$~pt, and EPE from 14.41 to 4.199/3.745/4.333 across three seeds. Binocular dependence is a property of the whole trained configuration: it is destroyed by truncating refinement below five blocks and by moving the readout temperature away from its trained value in either direction (Section~\ref{sec:sensitivity}). Explicitly, this section claims materiality, not mechanism: a candidate-pointwise latch reproduces the downstream candidate-axis signatures without correspondence, the statistic used is architecturally available without correspondence, and a search-free model still responds to translation---so the factorial measures information content, not how it is used. Correspondence-free use of candidate-varying content is the surviving alternative we do not adjudicate.
+
+\begin{figure}[t]
+\centering
+\fbox{\parbox{0.9\linewidth}{\centering \textbf{F4 placeholder:} four bars (EPE and D1) for the $2\times2$, one changed variable per cell, with evaluation sets labelled per cell (plain: H1-v2 10-scene; std: deterministic 40-scene).}}
+\caption{F4: the shift $\times$ readout factorial. It shows EPE and D1 for the four cells with evaluation sets labelled per cell. It must not be read as evidence that the shift is used as correspondence---materiality is not mechanism.}
+\label{fig:f4}
+\end{figure}
+
+\begin{table}[t]
+\centering
+\caption{T3: the $2\times2$ factorial. Parameters identical (423\,586) in every cell; evaluation sets labelled per cell. EPE primary; D1 as recorded.}
+\label{tab:t3}
+\begin{tabular}{lcc}
+\toprule
+Cell & EPE (px) & D1 (\%) \\
+\midrule
+none + plain (H1-v2, 10-scene) & $14.423 \pm 0.228$ & $81.397 \pm 0.559$ \\
+left + plain (H1-v2, 10-scene) & $14.414 \pm 0.227$ & $80.756 \pm 0.398$ \\
+none + standardised (40-scene) & 8.3717466 & 66.5977700 \\
+left + standardised (40-scene) & 2.2955182 & 15.6045143 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Adversarial Identification Analysis}
+\label{sec:pillar3}
+
+A correspondence signature counts here only if no correspondence-free mechanism reproduces it. What follows is one adversarial-methodology argument---apparent signature, correspondence-free counterexample, stronger intervention, new counterexample or identifiability failure, boundary---not a chronology of experiments. Individual diagnostic records belong in the supplement and are referenced by ID.
+
+Three counterexamples, strongest first. First, a provably search-free model still responds to translation: SHIFT-001 measures a maximum translation response of 0.6975 candidates, with $\mathrm{disparity\_initial}$ 3.6452--4.2717 against the pre-registered prediction of 5.5 (maximum deviation 1.8548). Translation response therefore cannot serve as correspondence evidence; the test fires on the wrong hypothesis, which is the live positive control proving the tests were capable of firing at all. Second, matching-path gradient is not a stereo proxy: EMERGENCE-001 finds gradient on 100\% of batches at every checkpoint, including seed~2 at epoch~20 where corrupting the right image \emph{improves} D1 by 0.91~pt, with re-measurement reproducing training-time ablation to 0.00~pt. Third, candidate-axis ordering is not discriminating: across 24\,640 INDEX-001/002 arms a random permutation reproduces the ordered pattern, with the algebraic null at 6\,160 arms all at 0.0. A candidate-pointwise latch reproduces the signature in a provably degenerate model (O1 audit, scored not-identifiable without execution).
+
+The strongest attempted intervention failed structurally. Zone-local translation was designed to confine the statistic to a zone; instead ZI-1 and ZI-2 are both 0.0 bit-exact across 3 seeds and every $\Delta\in\{1,3,6\}$, with clean interiors $[0,224)$/$[912,1136)$: under a bounded receptive field the zone-local statistic \emph{is} the global one. This holds for any zone-local design, regardless of who designs it---it is architectural, not incidental.
+
+The null-impossibility argument, in two lines: for a fixed left image, a null that is content-matched to the test pair inside the tested window necessarily shares the content whose geometric status is under test, so no paired null over fixed-$L$ interventions can be simultaneously content-matched and geometrically non-corresponding. Its concrete consequences are A4s (scene-identity conditioning) and A5r (readout pinning), which survive even the feasible artefact-free spatially varying field gate (D-y kills A3/A5/A9/M1; A4s/A5r survive because the obstruction is intervention-agnostic).
+
+The boundary is Table~\ref{tab:t4} and Fig.~\ref{fig:f7}: eight intervention families, each closed by counterexample or structural result. What they share is that correspondence never varies independently of content in any available data, so every signature has a content-matched correspondence-free twin. Crossing the boundary requires data in which correspondence varies independently of content---multi-view or multi-baseline capture, or renderer control with its own conceded ceiling. We establish the boundary for the families examined and give the structural reason it is expected to extend; the fallback, stated here rather than defended against, is a boundary for translation-based and field-based interventions on fixed-left-image pairs.
+
+\begin{figure}[t]
+\centering
+\fbox{\parbox{0.9\linewidth}{\centering \textbf{F5 placeholder:} right-image dependence vs.\ epoch for seeds 1 and 2, with matching-path gradient pinned at 100\% throughout and the point where corrupting the right image improves D1 marked.}}
+\caption{F5: emergence with the gradient proxy pinned. It shows stereo-dependence onset (seed~1 in (10,20], seed~2 in (20,50], saturating after epoch~150) with gradient at 100\% throughout. It must not be read as a claim about when correspondence appears---gradient is not a correspondence clock.}
+\label{fig:f5}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\fbox{\parbox{0.9\linewidth}{\centering \textbf{F6 placeholder:} right-image dependence vs.\ readout temperature (E2) and vs.\ refinement depth (E3) on a shared dependence axis.}}
+\caption{F6: destroyed from both ends. It shows stereo dependence collapsing as temperature leaves 1.0 in either direction and as refinement truncates below five blocks. It must not be read as a capacity or optimality claim---both studies are inference-time except where stated, and weights were trained as a six-block stack through $T=1.0$.}
+\label{fig:f6}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\fbox{\parbox{0.9\linewidth}{\centering \textbf{F7 placeholder:} flow diagram signature $\to$ counterexample $\to$ stronger intervention $\to$ new counterexample $\to$ boundary, with the eight families labelled.}}
+\caption{F7: the identification ladder. It shows the single adversarial flow with all eight families labelled. It must not be read as a chronology of the project, nor as a claim that no intervention could ever work---it bounds the enumerated families and argues the extension.}
+\label{fig:f7}
+\end{figure}
+
+\begin{table}[t]
+\centering
+\caption{T4: the identification boundary. Family, the signature it offered, the explicit counterexample, and the verdict. Design errors are recorded as errors in the supplement and carry no boundary weight.}
+\label{tab:t4}
+\begin{tabular}{p{2.0cm}p{2.4cm}p{2.5cm}l}
+\toprule
+Family & Signature & Counterexample & Verdict \\
+\midrule
+Translation response & Output moves with input shift & Search-free model moves 0.6975 cand.\ (SHIFT-001) & Not discriminating \\
+Gradient flow & Matching-path gradient & 100\% incl.\ where right image hurts (EMERGENCE-001) & Invalid proxy \\
+Candidate ordering & Ordered $>$ random & Random reproduces ordered; null 0.0 (INDEX-001/002) & Not discriminating \\
+Trained response & Calibrated $\alpha_h$ (TR-001) & Pointwise latch reproduces it (O1); statistic available (GEOM-002) & Not mechanism \\
+Zone-local statistic & Localised translation effect & ZI-1=ZI-2=0.0: statistic is global (Zone-001) & Structural failure \\
+Paired nulls & Content-matched control & Null-impossibility; A4s/A5r survive (S* audit) & Structural failure \\
+Spatial field & Varying-$\delta$ escape & A4s/A5r survive any field (field gate) & Boundary generalises \\
+Sharpness / accuracy & Low entropy = matching & Sharpest readout destroys stereo (E2); EPE/D1 are not mechanism & Invalid proxies \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Three hostile criticisms, answered where the blueprint marks them. First: the candidate-invariant volume only proves the aggregation cannot use candidate variation, since the network still receives $L-R$ information. Valid, entirely---it is the correct reading, and EXP-007's +89--90~pt dependence supports the reviewer. We concede and adopt it: the claim is stated as ``no candidate-varying correspondence information in the cost volume,'' never as ``no correspondence,'' in the title, abstract, every results paragraph, and the conclusion; the residual binocular channel might be geometric, which is why Section~\ref{sec:pillar3} exists. A casual citer may still compress this to ``StereoNet doesn't do stereo matching''; the disclaimer sits in the abstract, not only in Limitations, as mitigation. Second: 8.15\% D1 may reflect monocular prediction. No, as stated---five right-image ablations cost +89.128 to +89.957~pt (noise +89.806), correlation falls to $-0.310\ldots+0.348$, and H3 shows the ablation detects monocularity when present ($\Delta$D1 $-1.08\ldots+1.91$); the baseline is the 9.3315\% EXP-007 figure, not 8.154\%. Dependence is still not geometric use---that is the thesis, not a forced concession. Third: the intervention failures merely show poor experimental design. Partially, and the honest answer says so: GEOM-001's halt at HS1, the invalid epoch-10 gate recalibrated from a control, the diverging inverse-oracle that falsely confirmed with ratio 1.000, and Zone-001's $S$ adopted before its collapse---those are errors, recorded as errors in the supplement, and carry no boundary weight. That the boundary is not merely incompetence rests on four points: the counterexamples are constructions (latch, A4s, A5r, M1); ZI-2${}={}$0.0 is architectural; the null-impossibility argument references no intervention; and SHIFT-001 is a live positive control.
+
+Four methodological negatives transfer beyond this system: gradient flow, softmax sharpness (T${}={}$0.25 gives entropy 0.290~nats yet right-dependence +0.57/$-2.98$/$-1.17), inference-time pruning sensitivity (dropping block~4 costs seed~0 +0.19~px but seeds~1/2 +24.16/+16.37~px---a one-seed study would call block~4 free), and oracle substitution (a diverging inverse-oracle returned ratio 1.000 and falsely confirmed the pre-registered verdict). Each is a direct measurement in this system, presented as a caution rather than a law.
+
+\section{Architectural Sensitivity}
+\label{sec:sensitivity}
+
+Block depth, readout temperature, and refinement truncation were tested as empirical sensitivity, not causal attribution. The deterministic $3\times3$ (blocks $\times$ seeds, 200 epochs, same 40 scenes and 3\,802\,797 px) in Table~\ref{tab:t5} gives: five blocks carry a reproducible EPE penalty relative to six at three seeds---ranges disjoint by +0.0748~px, 9/9 pairings---with the D1 exception always quoted (ranges overlap by 0.13~pt; 5-block seed~1 beats 6-block seed~1). The four-block arm straddles the frozen boundary $[2.2955182, 2.3982217]$ (seed~0 inside, seeds~1--2 above), 7/9 pairings, D1 overlap 1.36~pt, own seed spread 0.3166~px ($3.08\times$ the reference arm's and larger than the 0.1603~px gap it would need to show): inconclusive, and no fourth seed should be bought. Monotonicity is not established (4-block beats 5-block in only 5/9 pairings). No p-value is claimed or computable at $n=3$; nothing here is a parameter-count or receptive-field cause, a latency claim, or transferable. Readout temperature: no $T \ne 1.0$ of 24 non-control cells improves accuracy; $T=0.75$ costs +3.5~px / +56~pt, $T=1.25$ +2.2~px / +37~pt, and stereo function collapses in both directions---inference-only evidence, since a network adapts to the readout it trains through. Refinement truncation below five blocks drives right-image dependence negative ($-14$ to $-18$~pt), the H1 monocular signature, with weights trained as a six-block stack.
+
+\begin{table}[t]
+\centering
+\caption{T5: block depth $3\times3$. EPE and D1 means and ranges; frozen boundary $[2.2955182, 2.3982217]$. EPE primary; D1 cannot override.}
+\label{tab:t5}
+\begin{tabular}{lcccc}
+\toprule
+Arm & Seed 0 & Seed 1 & Seed 2 & Mean / range \\
+\midrule
+6-block EPE & 2.2955182 & 2.3982217 & 2.3950488 & 2.3629296 / 0.1027035 \\
+5-block EPE & 2.6457595 & 2.4729830 & 2.6372994 & 2.5853473 / 0.1727766 \\
+4-block EPE & 2.3387143 & 2.6553489 & 2.5756633 & 2.5232422 / 0.3166346 \\
+6-block D1 & 15.6045143 & 18.3357145 & 17.4699044 & 17.1367110 / 2.7312002 \\
+5-block D1 & 21.3711907 & 18.2061782 & 20.6593989 & 20.0789226 / 3.1650125 \\
+4-block D1 & 16.9797389 & 20.0897392 & 20.0793521 & 19.0496101 / 3.1100003 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Discussion}
+\label{sec:discussion}
+
+Performance and identifiable correspondence come apart. The deployed network proves the first half by existence: useful stereo prediction without candidate-varying correspondence information in the cost volume, with the single-alignment $L_f - R_f$ channel load-bearing. The factorial proves the second half is non-trivial: candidate-varying geometry is material once the readout permits learning, so the deployed degeneracy cannot be dismissed as ``the volume never matters.'' The boundary then delimits what follows: none of the standard interventions decides whether the from-scratch binocular models---or the residual binocular channel of the deployed model---implement genuine geometric correspondence, because each signature has a content-matched correspondence-free twin and two obstructions are structural. Training installs a calibrated candidate-axis response that untrained aggregations do not produce (TR-001 median +1.0014, min +0.9534, 12/12 outside; random median +0.0032, max +0.2441; 0/384 qualify, 378/384 flat)---reported as a trained-vs-untrained separation, never read as matching. Error accounting (about one third upstream, two thirds downstream by the held-out fixed point: 29.3/41.5/32.9\% removed) and the late emergence of stereo dependence (onset after epoch~10--50, saturating after~150) are budgets and timelines, not mechanisms.
+
+\section{Limitations}
+\label{sec:limitations}
+
+One architecture; one dataset; 160-scene from-scratch training from random initialisation; $n=3$ seeds with no computable p-values; single-seed factorial cells defended only by the $59\times$ effect-to-seed-scale ratio; inference-only readout and pruning studies; the generalisation step in the boundary claim, argued beyond the enumerated families with the stated fallback; no literature accuracy comparator. \todo{CITATION NEEDED: literature anchor for what 8.154\% D1 means against contemporary stereo networks.} Genuine local geometric correspondence is not demonstrated in any model in this project; whether H2's binocularity is search or non-search binocular readout is not demonstrated; whether four blocks differ from six is not demonstrated. H2's mechanism is unattributed and, by the campaign's own findings, cannot be attributed with available data. \todo{UNVERIFIED: TR-001 raw-curve non-monotonicity detail at $t=96$ for seeds 0 and 2 --- omitted; no supporting line found in the records searched.}
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+The deployed model retains useful stereo prediction despite a candidate-invariant cost volume: all twelve slices identical by algebraic identity, 8.154\% D1 official-protocol accuracy, +89--90~pt binocular dependence under the labelled EXP-007 protocol, the frozen volume still consuming $L_f - R_f$ at one alignment. Candidate-varying cost-volume geometry contributes materially to the trained solution under this recipe, interacting with readout conditioning. Each standard correspondence signature admits an explicit correspondence-free counterexample, with two structural obstructions, so genuine local geometric correspondence is not demonstrated---which is not the same as showing it absent. Stereo performance and identifiable geometric correspondence can come apart, and mechanism claims need stronger evidence than the standard signatures.
+
+\bibliographystyle{IEEEtran}
+\bibliography{refs}
+
+\end{document}

@@ -1,0 +1,233 @@
+{
+  "provenance": {
+    "head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "head_subject": "docs: add the Phase 1 overview",
+    "phase_1_frozen_commit": "b4207e518166f5089731b4d037a4a79234f70986",
+    "phase_1_frozen_tag_object": "0fc4f296b409f79bc12cd8e294a1bdb34ed1e262",
+    "phase_1_diff_vs_frozen": "",
+    "status_short": "M .gitignore\n?? phase2/",
+    "stage_a_basis": "phase2/diagnostics/determinism/20260909T022238Z"
+  },
+  "stage_a_basis": "phase2/diagnostics/determinism/20260909T022238Z",
+  "reproducibility": {
+    "final_weight_sha_A": "3ad382c50d413ad2",
+    "final_weight_sha_B": "3ad382c50d413ad2",
+    "final_weight_sha_identical": true,
+    "checkpoint_sha256_A": "581d62e699b159945580f9627b451d953ce07b5dc763d608a9f4a8b5ecba692a",
+    "checkpoint_sha256_B": "adcfb6d667d553679d68026310d7d63d6162775b34d8970d36c55fe6f56da1d0",
+    "checkpoint_file_sha256_identical": false,
+    "snapshot_sha256_identical": false,
+    "epoch_loss_series_identical": true,
+    "first_epoch_with_differing_loss": null,
+    "validation_series_identical": true,
+    "first_validation_point_differing": null,
+    "epochs_completed_A": 200,
+    "epochs_completed_B": 200,
+    "late_window_A": {
+      "points": 10,
+      "epe_mean": 3.8670191778987144,
+      "epe_sd": 0.11131507610570436,
+      "d1_mean": 23.4954124793027,
+      "d1_sd": 0.9342409784052281
+    },
+    "late_window_B": {
+      "points": 10,
+      "epe_mean": 3.8670191778987144,
+      "epe_sd": 0.11131507610570436,
+      "d1_mean": 23.4954124793027,
+      "d1_sd": 0.9342409784052281
+    },
+    "late_window_identical": true,
+    "final_checkpoint_metrics_A": {
+      "val_epe": 3.8346742340931033,
+      "val_d1": 23.047093674819514,
+      "val_loss": 3.3030083179473877
+    },
+    "final_checkpoint_metrics_B": {
+      "val_epe": 3.8346742340931033,
+      "val_d1": 23.047093674819514,
+      "val_loss": 3.3030083179473877
+    },
+    "gradient_norms_A": {
+      "median": 21.9161958694458,
+      "max": 308.0343933105469,
+      "any_nan": false,
+      "batches_above_1e4": 0
+    },
+    "gradient_norms_B": {
+      "median": 21.9161958694458,
+      "max": 308.0343933105469,
+      "any_nan": false,
+      "batches_above_1e4": 0
+    },
+    "stereo_verdict_A": {
+      "threshold_d1_points": 20.0,
+      "right_image_min_d1_penalty": 80.81279935893934,
+      "right_image_dependence": true,
+      "matching_map_min_d1_penalty": 66.18769236372907,
+      "matching_map_dependence": true,
+      "matching_gradient_fraction": 1.0,
+      "matching_gradient": true,
+      "softmax_entropy": 1.7754722617356193,
+      "entropy_ok": true,
+      "final_disparity_std": 18.00000275061116,
+      "not_collapsed": true,
+      "STEREO_FUNCTIONAL": true
+    },
+    "stereo_verdict_B": {
+      "threshold_d1_points": 20.0,
+      "right_image_min_d1_penalty": 80.81279935893934,
+      "right_image_dependence": true,
+      "matching_map_min_d1_penalty": 66.18769236372907,
+      "matching_map_dependence": true,
+      "matching_gradient_fraction": 1.0,
+      "matching_gradient": true,
+      "softmax_entropy": 1.7754722617356193,
+      "entropy_ok": true,
+      "final_disparity_std": 18.00000275061116,
+      "not_collapsed": true,
+      "STEREO_FUNCTIONAL": true
+    },
+    "stereo_verdict_identical": true,
+    "ALL_IDENTICAL": true
+  },
+  "runtime": {
+    "controlled_wall_clock_s_A": 4948.996661901474,
+    "controlled_wall_clock_s_B": 4927.78104186058,
+    "controlled_s_per_epoch_A": 24.74498330950737,
+    "controlled_s_per_epoch_B": 24.6389052093029,
+    "historical_uncontrolled_wall_clock_s": 4361.485775947571,
+    "historical_uncontrolled_s_per_epoch": 21.807428879737856,
+    "stage_a_uncontrolled_s_per_epoch": [
+      36.1,
+      37.5
+    ],
+    "stage_a_controlled_s_per_epoch": [
+      42.0,
+      41.2
+    ],
+    "overhead_vs_historical_percent": 13.470429943710194,
+    "overhead_stage_a_percent": 13.043478260869579
+  },
+  "historical_comparison": {
+    "note": "HISTORICAL values come from EXP-E3B-REFINEMENT-CAPACITY-001-ARM-A-RUN2, which is untouched. The training protocol differs (no determinism controls), so differences are a protocol/reproducibility characterisation and NOT an architecture effect.",
+    "historical_late_window": {
+      "points": 10,
+      "epe_mean": 4.092099686806512,
+      "epe_sd": 0.10000498854517458,
+      "d1_mean": 24.909737750046475,
+      "d1_sd": 1.082096193588822
+    },
+    "controlled_late_window": {
+      "points": 10,
+      "epe_mean": 3.8670191778987144,
+      "epe_sd": 0.11131507610570436,
+      "d1_mean": 23.4954124793027,
+      "d1_sd": 0.9342409784052281
+    },
+    "delta_late_epe": -0.22508050890779785,
+    "delta_late_d1": -1.414325270743774,
+    "historical_epoch_200": {
+      "val_epe": 4.075263729467705,
+      "val_d1": 24.295002455201967
+    },
+    "controlled_epoch_200": {
+      "val_epe": 3.8346742340931033,
+      "val_d1": 23.047093674819514
+    },
+    "historical_stereo_verdict": {
+      "threshold_d1_points": 20.0,
+      "right_image_min_d1_penalty": 81.9993211811448,
+      "right_image_dependence": true,
+      "matching_map_min_d1_penalty": 68.06807627164946,
+      "matching_map_dependence": true,
+      "matching_gradient_fraction": 1.0,
+      "matching_gradient": true,
+      "softmax_entropy": 1.7797850402681354,
+      "entropy_ok": true,
+      "final_disparity_std": 17.655515288250328,
+      "not_collapsed": true,
+      "STEREO_FUNCTIONAL": true
+    },
+    "historical_wall_clock_s": 4361.485775947571
+  },
+  "eval40": {
+    "A": {
+      "pooled": {
+        "epe": 2.2955181809208267,
+        "d1": 15.6045142562172,
+        "rmse": 6.043707506355849,
+        "bad1": 48.84467932419217,
+        "bad2": 25.18869663566054,
+        "valid_pixels": 3802797
+      },
+      "per_scene_summary": {
+        "scenes": 40,
+        "epe": {
+          "mean": 2.2591602146793806,
+          "median": 1.692049073512894,
+          "sd": 1.7051294491747107,
+          "min": 1.093144341783755,
+          "max": 10.671040082163309,
+          "argmin": "000171_10.png",
+          "argmax": "000161_10.png"
+        },
+        "d1": {
+          "mean": 15.425549627239263,
+          "median": 13.969797263328662,
+          "sd": 7.81697630697508,
+          "min": 4.977690610443736,
+          "max": 39.38936756549343,
+          "argmin": "000185_10.png",
+          "argmax": "000161_10.png"
+        }
+      },
+      "first_10_scene_subset": {
+        "epe": 3.8346742340931033,
+        "d1": 23.047093674819514,
+        "valid_pixels": 930677,
+        "note": "the historical training-time validation subset, for cross-reference only"
+      },
+      "per_scene_file": "phase2\\diagnostics\\determinism\\20260909T041500Z_baseline\\eval40_run_A.json"
+    },
+    "B": {
+      "pooled": {
+        "epe": 2.2955181809208267,
+        "d1": 15.6045142562172,
+        "rmse": 6.043707506355849,
+        "bad1": 48.84467932419217,
+        "bad2": 25.18869663566054,
+        "valid_pixels": 3802797
+      },
+      "per_scene_summary": {
+        "scenes": 40,
+        "epe": {
+          "mean": 2.2591602146793806,
+          "median": 1.692049073512894,
+          "sd": 1.7051294491747107,
+          "min": 1.093144341783755,
+          "max": 10.671040082163309,
+          "argmin": "000171_10.png",
+          "argmax": "000161_10.png"
+        },
+        "d1": {
+          "mean": 15.425549627239263,
+          "median": 13.969797263328662,
+          "sd": 7.81697630697508,
+          "min": 4.977690610443736,
+          "max": 39.38936756549343,
+          "argmin": "000185_10.png",
+          "argmax": "000161_10.png"
+        }
+      },
+      "first_10_scene_subset": {
+        "epe": 3.8346742340931033,
+        "d1": 23.047093674819514,
+        "valid_pixels": 930677,
+        "note": "the historical training-time validation subset, for cross-reference only"
+      },
+      "per_scene_file": "phase2\\diagnostics\\determinism\\20260909T041500Z_baseline\\eval40_run_B.json"
+    },
+    "identical": true
+  }
+}

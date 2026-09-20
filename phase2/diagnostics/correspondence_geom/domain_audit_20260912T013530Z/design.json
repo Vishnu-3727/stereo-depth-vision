@@ -1,0 +1,272 @@
+{
+  "record": "phase2/diagnostics/correspondence_geom/domain_audit_20260912T013530Z",
+  "date_utc": "2026-09-12",
+  "kind": "DESIGN AND VALIDATION ONLY -- the experiment was NOT run",
+  "supersedes_nothing": "GEOM-001 (20260912T011452Z) is immutable and is not edited; it produced NO admissible experimental result",
+  "executability_verdict": "EXECUTABLE (horizontal arm); vertical control NOT executable as a clean null",
+
+  "prohibitions_observed": [
+    "no aggregation forward pass on real data (trained or random)",
+    "no standardisation / softmax / soft-argmin / readout on real data",
+    "no interaction statistic, no argmin, no h, no h_rand, no h_trained",
+    "no gate, no G-PASS, no vertical arm, no search-free arm",
+    "no gate.json, no trained.json, no results.json",
+    "no training, no optimizer, no .backward(), no .step()",
+    "no historical record modified"
+  ],
+  "what_was_executed": {
+    "validate_domain.py": {
+      "mandate": "brief section 4",
+      "touches": "feature extractor and cost volume only (parameter-frozen wiring stages)",
+      "aggregation_set_to_None_at_load": true,
+      "refinement_set_to_None_at_load": true,
+      "stops_before_aggregation": true
+    },
+    "synthetic_mask_check.py": {
+      "mandate": "brief section 10",
+      "touches": "synthetic fields + framework-default random aggregation weights",
+      "trained_model_used": false,
+      "real_data_used": false,
+      "is_the_experiment_gate": false,
+      "computes_h_rand": false
+    },
+    "section_12_reading": "section 12 forbids the EXPERIMENT arms; section 4 requires running the extractor and the cost volume. Wiring stages executed, experimental stages not."
+  },
+
+  "root_cause_confirmed": {
+    "class": "false premise in a frozen bound; not a harness bug, not a property of the trained model",
+    "statement": "V(tau,w)=0 holds only where the extractor is exactly translation-equivariant, which excludes a 15-feature-cell (240 px) halo at every crop edge whose source column differs between the two crops. GEOM-001's HS1 window w<54 started at w=0, inside that halo.",
+    "propagated_into_the_mask": "GEOM-001 mask x in [64,864) = feature columns [4,54), including contaminated 4..14; there the POSITIVE cells do not correspond, so the TREATMENT was corrupted, not a nuisance term",
+    "why_the_design_audit_missed_it": "the 477 px receptive field was derived correctly and the contamination was declared, then argued away as a main effect cancelled by the 2x2. That argument is true of the CANCELLATION and false of the ANCHOR.",
+    "empirical_confirmation": "two different arbitrary halos flipped the GEOM-001-mask argmin in 8 of 24 cells; the corrected mask is bit-identical 24/24"
+  },
+
+  "geometry_source": {
+    "source_frame": [1232, 368],
+    "crop": [1136, 272],
+    "feature_grid": [71, 17],
+    "stride": 16,
+    "D": 12,
+    "extractor": "4 x Conv2d(k=5,s=2,p=2) [no activations] + 6 x ResBlock(32) + Conv2d(32->32,k=3,p=1)",
+    "receptive_field_px": 477,
+    "receptive_field_one_sided_cells": 14.875,
+    "shift_convention": "shift_left(x,k)[w] = x[w+k]; zero fill for w >= FW-k",
+    "aggregation": "5 x Conv3d(3x3x3, padding=1) -> spatial radius 5 cells in (k,y,w)",
+    "readout": "bilinear upsample (17,71)->(272,1136) align_corners=True; per-pixel z across k; softmax(-z); soft-argmin",
+    "match_is_a": "MINIMUM of z(k)"
+  },
+
+  "derived_domain": {
+    "extractor_halo_cells_adopted": 15,
+    "extractor_halo_cells_measured": {"left": 15, "right": 14,
+      "note": "one-cell asymmetry from stride/padding parity; NOT relied upon; the adopted symmetric bound is a strict subset"},
+    "extractor_clean": [15, 55],
+    "extractor_clean_measured_tight": [15, 56],
+    "translation_valid": "w in [15, 55-tau]  (measured tight: [15, 56-tau])",
+    "cost_volume_clean": [15, 44],
+    "cost_volume_binding_constraint": "Lf[w+k] clean at k=11 => w <= 55-11 = 44; this is stricter than 55-tau for every tau<=6, so the domain is TAU-INDEPENDENT",
+    "aggregation_radius_cells": 5,
+    "statistic_clean_feature": [20, 39],
+    "statistic_clean_pixel": [325, 632],
+    "pixel_band_derivation": "align_corners: u = 70x/1135; need floor(u) >= 20 and floor(u)+1 <= 39 => x >= ceil(1135*20/70)=325 and 70x < 1135*39 => x <= 632",
+    "rows_derived_valid": "ALL 17 feature rows (horizontal arm: both crops share rows [0,272), so row halos are identical and cancel)"
+  },
+
+  "corrected_mask": {
+    "rule": "retain (y,x) iff 64 <= y < 208 AND 325 <= x < 633",
+    "retained_pixels": 44352,
+    "rows_px": 144,
+    "cols_px": 308,
+    "feature_columns": 20,
+    "feature_rows_spanned": 11,
+    "effective_feature_cells": 220,
+    "tau_dependent": false,
+    "gt_dependent": false,
+    "response_dependent": false,
+    "identical_across": ["all four cells", "all six tau", "both arms", "all models"],
+    "row_bound_provenance": "INHERITED unchanged from ARCH-RATE classification_spec.json; the derivation independently shows all rows are admissible, so this border is strictly conservative. Inherited, not derived -- stated, not hidden.",
+    "geom001_mask": {"rule": "64 <= y < 208 AND 64 <= x < 864", "retained_pixels": 115200,
+      "inadmissible_columns": 492, "inadmissible_fraction_of_columns": 0.615,
+      "corrected_is_strict_subset": true},
+    "why_not_15_to_55_minus_tau": "it would be wrong twice: TOO WIDE (ignores the k<=11 reach and the 5-cell aggregation radius) and TAU-DEPENDENT (a support shrinking with tau confounds the across-tau comparison the statistic depends on)"
+  },
+
+  "measured_validation": {
+    "script": "validate_domain.py",
+    "output": "validate_domain.json",
+    "scope": "3 extractors x 6 pairs x 2 scenes x 6 tau = 216 records",
+    "pixel_identity": "right[:, :-t] == left[:, t:] exact, every scene, every tau",
+    "derived_band_exact_everywhere": true,
+    "observed_valid_run_lo_values": [15],
+    "observed_valid_run_hi_values": [50, 51, 52, 53, 54, 55],
+    "fails_immediately_left_of_band_all": true,
+    "fails_immediately_right_of_band_all": false,
+    "fails_right_note": "the true band extends one cell further right than the adopted conservative bound, so the right probe sits INSIDE the valid region. The adopted bound is conservative, not wrong.",
+    "anchor_exact_zero_on_cost_volume_domain": true,
+    "anchor_checks": 216,
+    "anchor_cells_per_check": 16320,
+    "anchor_cells_total": 3525120,
+    "anchor_max_abs_over_all": 0.0,
+    "cancellation_real_features": {
+      "max_relative_residual": 1.8089e-07,
+      "median_relative_residual": 1.1943e-07,
+      "n_checks": 108,
+      "note": "first measurement of the 2x2 identity on real extractor features"
+    },
+    "wall_clock_s": 8.9
+  },
+
+  "synthetic_validation": {
+    "script": "synthetic_mask_check.py",
+    "output": "synthetic_mask_check.json",
+    "n_random_seeds": 4,
+    "S1_matched_anchor_with_halo": "zero band = [15, 55-tau] at every tau, exactly as predicted; anchor exact on [15,44]",
+    "S2_cross_pair_construction": "AB/BA from the identical crops; each field once as a left and once as a right",
+    "S3_cancellation_entire_tensor_incl_halo_and_fill": {"max_relative": 1.391e-07},
+    "S4_affine_aggregation_interaction": {"max_relative": 2.308e-06},
+    "S5_nonlinear_aggregation_interaction": {"min_relative": 0.7111, "median_relative": 0.8589},
+    "S6_boundary_contamination_exclusion": {
+      "corrected_mask_bit_identical": "24/24",
+      "corrected_max_abs_diff": 0.0,
+      "corrected_argmin_changed_by_halo": "0/24",
+      "geom001_mask_bit_identical": "0/24",
+      "geom001_max_abs_diff": 0.1157,
+      "geom001_argmin_changed_by_halo": "8/24"
+    },
+    "new_discriminators_introduced": "NONE -- S6 is an invariance test of the mask, not a statistic about the model"
+  },
+
+  "hard_stops": {
+    "HS1_withdrawn": "the GEOM-001 HS1 (V(tau,w)=0 over w<54 from w=0) is over-broad and is WITHDRAWN",
+    "HS1-A": {"condition": "Rf[w] == Lf[w+tau] bit-exactly for all w in [15,44], every positive pair, scene, tau, extractor", "validated": "216/216"},
+    "HS1-B": {"condition": "V[tau,c,y,w] == 0.0 EXACTLY for all w in [15,44], all rows, all channels", "tolerance": 0.0, "tolerance_provenance": "exact equality is ACHIEVABLE (3525120 cells, max 0.0), so the strictest possible tolerance is correct; fixed before the experiment, not chosen after seeing errors", "validated": true},
+    "HS1-C": {"condition": "integer assertions checked in code before any measurement: CV_LO >= HALO; CV_HI <= FW-1-HALO-(D-1); ST_LO >= CV_LO+AGG_R; ST_HI <= CV_HI-AGG_R; PX_LO*(FW-1) >= ST_LO*(CROP_W-1); ST_HI*(CROP_W-1) > PX_HI*(FW-1)", "validated_empirically": "S6, 24/24 bit-identical, max diff 0.0"},
+    "HS1-D": {"condition": "STRUCTURAL, defined before execution: halt if the admissible column band (i) is empty at any tau, (ii) DIFFERS across tau, or (iii) is narrower than the aggregation spatial DIAMETER 2*AGG_R+1 = 11 cells", "no_magnitude_threshold": true, "status": "band = 20 columns at every tau; 20 >= 11 PASS"},
+    "HS2": "exact AA/BB/AB/BA construction; each frame exactly once as a left and once as a right",
+    "HS3": "tau identical across the four cells of a level",
+    "HS4": {"condition": "max|V_AA+V_BB-V_AB-V_BA| / max|V_AB| <= 1e-5", "provenance": "float32 round-off with 10x margin", "now_measured_on_real_features": 1.8089e-07},
+    "HS5": "checkpoint sha256; num_disparities == 12; cost_volume_shift as specified; readout parameter count == 0",
+    "HS6": "W4 process-restart repeat bit-identical (IEEE-754 bytes)",
+    "HS7": "no trained aggregation loaded before G-PASS; two-process enforcement (held in GEOM-001)",
+    "HS8": "no historical record modified (held in GEOM-001; 41 records re-verified here)",
+    "HS9": {"condition": "mask retained-pixel count == 44352", "changed_from": 115200},
+    "HS10": "any non-finite response",
+    "HS11": "no optimizer, no .backward(), no .step(), refinement never invoked",
+    "policy": "any hard stop RAISES and the process exits; nothing is repaired and continued"
+  },
+
+  "interaction_validity": {
+    "cancellation": "UNCONDITIONAL -- pointwise, content-independent, valid inside the halo and inside the zero-fill region (there every term reduces to -Rf and cancels)",
+    "cancellation_measured_real": 1.8089e-07,
+    "cancellation_measured_synthetic_entire_tensor": 1.391e-07,
+    "anchor": "H1's prediction 'the minimum sits at k=tau' exists ONLY where V(tau)=0, i.e. only on the clean domain. THIS is what needed the mask.",
+    "the_conflation_that_caused_the_failure": "'main effects cancel' is true and was used to justify ignoring the halo. But the halo does not introduce a main effect -- it DESTROYS THE TREATMENT in the positive cells. Cancellation protects against H2/H3; it cannot manufacture an anchor that is not there.",
+    "aggregation_receptive_field": "does NOT break cancellation -- under an affine aggregation the identically-zero cost interaction maps to an identically-zero aggregated interaction, receptive field and padding included (S4). The receptive field is handled by the 5-cell shrink.",
+    "aggregation_own_padding": "needs no exclusion -- it is part of the LINEAR operator, applied identically to all four cells, so it lives in the channel the interaction cancels exactly",
+    "approximate_only_to": "float32 round-off (~1.8e-07 relative), bounded by HS4 at 1e-5",
+    "verdict": "VALID under the corrected geometry"
+  },
+
+  "random_gate": {
+    "question_unchanged": "can the architecture / random aggregation alone produce argmin-at-tau tracking?",
+    "validity_under_corrected_mask": "IMPROVED -- every aggregated location scored is now supported entirely by admissible V, so a random-weight hit can no longer be manufactured by halo garbage (S6 shows it could under the old mask)",
+    "old_numbers_reusable": false,
+    "old_numbers_void_reason": "the design-audit figures (5/48, h<=3) were computed on the old mask and on synthetic fields",
+    "H_star": "must be REGENERATED in Stage 1; never inherited",
+    "new_statistic_invented": false,
+    "rule_unchanged": "G-STOP if max(h_rand) == 6 -> terminal STATISTIC-ARCHITECTURALLY-AVAILABLE, trained weights never loaded; else H* := max(h_rand), unaltered",
+    "seeds": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+    "separate_process": true
+  },
+
+  "coverage": {
+    "tau_independent": true,
+    "per_tau": {
+      "total_feature_columns": 71,
+      "extractor_valid": 41,
+      "translation_valid": {"1": 40, "2": 39, "3": 38, "4": 37, "5": 36, "6": 35},
+      "cost_volume_valid": 30,
+      "aggregation_valid_final": 20,
+      "final_pixel_columns": 308,
+      "final_rows_px": 144,
+      "admissible_pixels": 44352,
+      "retained_fraction_of_crop": 0.1436,
+      "retained_fraction_of_columns": 0.2817
+    },
+    "per_scene": "identical for all 12 preregistered scenes -- the mask is purely geometric and depends on no image content; validation covered 12 scenes x 6 tau x 3 extractors, all passed",
+    "effective_independent_support": {"feature_cells": 220, "note": "the 44352 pixels are a bilinear upsampling of 20 columns x 11 rows; the pixel count overstates independence by about 16^2"},
+    "versus_geom001": {"nominal_px": 115200, "admissible_px": 44352, "admissible_fraction": 0.385},
+    "HS1D_verdict": "PASS -- non-empty, tau-independent, 20 >= 11"
+  },
+
+  "vertical_control": {
+    "clean_rows": "[15, FH-1-15] = [15, 1] = EMPTY (FH = 17)",
+    "rescuable_by_taller_crop": false,
+    "rescue_requirement": "FH >= 31 cells = 496 px, which exceeds the KITTI frame height of 368 px",
+    "structural_reason": "the crop is 71 cells wide but only 17 tall, against a 15-cell halo: 71-30 = 41 > 0 but 17-30 < 0",
+    "disposition": "RETAINED and RECLASSIFIED as a CONTAMINATED NULL / downgrade-trigger only",
+    "classification_of_this_change": "VALIDITY CORRECTION -- strictly conservative: a false positive there only downgrades to CASE C; a negative there is declared UNINFORMATIVE",
+    "removal_would_be": "a SCIENTIFIC-DESIGN CHANGE and is NOT proposed",
+    "cost_to_the_design": "it was the second geometry-breaking negative (the content-identical one). Its demotion leaves the cross-pairing negative AB/BA carrying the design alone -- which is the negative the intervention was built on and is unaffected. The loss is a redundancy, not a load-bearing control."
+  },
+
+  "search_free_control": {
+    "checkpoint": "NEG_shift_none",
+    "own_clean_domain": "[20, 50] -- the k-constant volume has no k-reach, so only the halo and the aggregation radius bind",
+    "mask_used": "[20, 39], the trained arm's domain -- a subset of its own, so valid, and identical across arms as the comparison requires",
+    "reporting": "SEPARATE; never mixed into the null; never redefines H*",
+    "declared_confound": "differs from the trained arm in TWO ways at once -- a different checkpoint AND a different cost-volume construction"
+  },
+
+  "changes_from_geom001": [
+    {"n": 1, "change": "mask x in [64,864) -> [325,633); retained 115200 -> 44352", "class": "VALIDITY CORRECTION"},
+    {"n": 2, "change": "HS1 -> HS1-A/B/C/D", "class": "VALIDITY CORRECTION"},
+    {"n": 3, "change": "HS1-B tolerance fixed at exactly zero", "class": "WIRING CORRECTION"},
+    {"n": 4, "change": "HS9 pixel count 115200 -> 44352", "class": "WIRING CORRECTION"},
+    {"n": 5, "change": "vertical arm reclassified as a contaminated null / downgrade trigger only (retained, not removed)", "class": "VALIDITY CORRECTION"},
+    {"n": 6, "change": "random-gate H* regenerated rather than inherited", "class": "VALIDITY CORRECTION"}
+  ],
+  "scientific_design_changes_proposed": "NONE",
+  "unchanged": [
+    "AA/BB positive pair", "AB/BA crossed negative", "matched image marginals",
+    "identical translation magnitude", "identical crops", "same feature extractor",
+    "same trained aggregation weights", "parameter-free z-score/readout",
+    "interaction statistic I_tau(k) and argmin_k == tau", "h = sum over tau of hit",
+    "random-aggregation gate before trained Stage 2", "seeds 0..31",
+    "the six tau", "the six scene pairs", "the three checkpoints",
+    "the search-free control", "two-process HS7 enforcement"
+  ],
+
+  "claim_ceiling": {
+    "permitted_now": [
+      "the pixel construction is exact",
+      "the feature translation law is bit-exact on the measured interior (216/216, three extractors)",
+      "the extractor halo is 15 cells left and 14 cells right; the adopted bound is the conservative 15 both sides",
+      "the GEOM-001 mask was invalid; 61.5% of its columns were inadmissible",
+      "GEOM-001 produced no admissible geometric result",
+      "the 2x2 cancellation identity holds on REAL features to float32 round-off (1.81e-07)",
+      "V(tau) = 0 exactly on w in [15,44] -- 3525120 cells, all zero",
+      "the corrected mask makes the statistic provably invariant to arbitrary halo content (24/24 bit-identical); the GEOM-001 mask does not (0/24, argmin flipped 8/24)"
+    ],
+    "prohibited": [
+      "correspondence", "geometric matching", "correct disparity search",
+      "candidate-coordinate correspondence", "trained geometric sensitivity",
+      "any statement whatever about the trained aggregation's behaviour"
+    ],
+    "status_if_the_corrected_experiment_eventually_passes": "CONSISTENCY EVIDENCE AT BEST -- three checkpoints irreducibly reused; the designer has read eight prior response curves"
+  },
+
+  "unresolved_questions": [
+    "whether ~220 feature cells of support yield a stable argmin -- UNKNOWN until Stage 1 runs; it is what the gate measures",
+    "why the right halo is 14 cells and the left 15 -- UNKNOWN, stride/padding parity likely, not load-bearing",
+    "whether a learned non-correspondence shortcut could place its minimum at k=tau -- UNKNOWN, not addressable by any ablation of this architecture",
+    "whether the row border should be widened to the derived-valid [0,272) -- DEFERRED; it would roughly double the support and the derivation permits it, but changing it after seeing that support is thin would be support-shopping and is NOT proposed here"
+  ],
+
+  "next_action": {
+    "authorized_here": false,
+    "preregistration_written": false,
+    "experiment_launched": false,
+    "note": "a successor authorisation would carry the mask, hard stops, statistic, gate, arms, scenes, tau, checkpoints and seeds recorded above, all already derived"
+  }
+}

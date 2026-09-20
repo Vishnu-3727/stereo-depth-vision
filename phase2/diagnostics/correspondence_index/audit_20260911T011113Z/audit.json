@@ -1,0 +1,515 @@
+{
+  "audit_id": "AUDIT-CORRESPONDENCE-INDEX-001-PROVENANCE",
+  "audit_timestamp_utc": "2026-09-11T01:11:13Z",
+  "audited_experiment": "EXP-CORRESPONDENCE-INDEX-001",
+  "audit_kind": "read-only provenance and admissibility audit",
+  "mutations_to_historical_records": "none",
+  "training_performed": false,
+  "inference_performed": false,
+  "model_loaded": false,
+  "records_re_run": false,
+  "records_re_scored": false,
+  "ground_truth_read_only": true,
+
+  "final_verdict": "NO-CONFIRMATORY-EVIDENCE",
+  "level_C_confirmatorily_established": false,
+
+  "naming_warning": {
+    "issue": "directory names invert the actual execution order",
+    "user_label_Run1": "20260910T164326Z",
+    "user_label_Run2": "20260910T164346Z",
+    "actual_first_executed": "20260910T164346Z",
+    "actual_second_executed": "20260910T164326Z",
+    "evidence": "NTFS creation times; see chronology block",
+    "tag": "MEASURED"
+  },
+
+  "chronology_utc": [
+    {"t": "16:43:58.829", "run": "20260910T164346Z", "event": "PREREGISTRATION.md created"},
+    {"t": "16:44:09.619", "run": "20260910T164326Z", "event": "PREREGISTRATION.md created"},
+    {"t": "16:44:15.209", "run": "20260910T164346Z", "event": "run_index.py created (harness)"},
+    {"t": "16:44:36.202", "run": "20260910T164346Z", "event": "results.json created (DATA EXISTS)"},
+    {"t": "16:44:36.204", "run": "20260910T164346Z", "event": "run.log created"},
+    {"t": "16:45:04.847", "run": "20260910T164346Z", "event": "summarize.py created"},
+    {"t": "16:45:26.285", "run": "20260910T164346Z", "event": "ENVIRONMENT.txt created"},
+    {"t": "16:45:26.287", "run": "20260910T164346Z", "event": "RESULTS.md created (VERDICT EXISTS)"},
+    {"t": "16:45:31.507", "run": "shared", "event": "exp_correspondence_index.py created (RUN-B harness)"},
+    {"t": "16:45:38.017", "run": "20260910T164326Z", "event": "gate_stdout.log created (EXECUTION BEGINS)"},
+    {"t": "16:45:46.981", "run": "20260910T164326Z", "event": "gate_negative_control.json created"},
+    {"t": "16:45:57.745", "run": "20260910T164326Z", "event": "positive_stdout.log created"},
+    {"t": "16:46:07.981", "run": "20260910T164326Z", "event": "positive_checkpoints.json created"},
+    {"t": "16:46:17.558", "run": "20260910T164326Z", "event": "report_stdout.log created"},
+    {"t": "16:46:22.088", "run": "20260910T164326Z", "event": "results.json created (VERDICT)"},
+    {"t": "16:48:03.828", "run": "20260910T164326Z", "event": "exp_correspondence_index.snapshot.py created"},
+    {"t": "16:48:03.832", "run": "20260910T164326Z", "event": "ENVIRONMENT.txt created"},
+    {"t": "16:48:46.271", "run": "20260910T164326Z", "event": "RESULTS.md created"}
+  ],
+
+  "chronology_derived_facts": {
+    "runA_prereg_precedes_runB_prereg_s": 10.79,
+    "runB_prereg_precedes_runA_results_s": 26.58,
+    "runA_verdict_precedes_runB_harness_s": 5.22,
+    "runA_full_lifecycle_completes_before_runB_harness_exists": true,
+    "tag": "MEASURED"
+  },
+
+  "provenance_caveat": {
+    "phase2_tracked_in_git": false,
+    "git_ls_files_phase2_count": 0,
+    "cryptographic_timestamping_available": false,
+    "only_chronology_source": "NTFS creation/modification times (mutable)",
+    "runB_discloses_this": true,
+    "runA_discloses_this": false,
+    "tag": "MEASURED"
+  },
+
+  "runs": {
+    "20260910T164346Z": {
+      "audit_label": "RUN-A",
+      "user_label": "Run 2",
+      "recorded_verdict": "CANDIDATE-COORDINATE-SENSITIVITY-ESTABLISHED",
+      "admissibility_status": "EXPLORATORY-ONLY",
+
+      "preregistration": {
+        "created_utc": "2026-09-10T16:43:58.829Z",
+        "size_bytes": 3092,
+        "self_declared_freeze": "2026-09-10T16:43:46Z",
+        "frozen_before_execution": true,
+        "frozen_before_other_run_results": true,
+        "references_other_run": false
+      },
+
+      "permutations": {
+        "identity": [0,1,2,3,4,5,6,7,8,9,10,11],
+        "plus1":    [11,0,1,2,3,4,5,6,7,8,9,10],
+        "plus2":    [10,11,0,1,2,3,4,5,6,7,8,9],
+        "minus1":   [1,2,3,4,5,6,7,8,9,10,11,0],
+        "random":   [7,2,10,0,5,11,1,8,4,9,6,3]
+      },
+
+      "random_permutation_provenance": {
+        "generator_recorded": null,
+        "seed_recorded": null,
+        "declared_as": "fixed, single draw",
+        "reproducible_from_record": false,
+        "reverse_seed_search": {
+          "numpy_default_rng_seeds": "0..400000",
+          "numpy_RandomState_seeds": "0..400000",
+          "python_random_shuffle_seeds": "0..400000",
+          "torch_randperm_seeds": "0..200000",
+          "match_found": false
+        },
+        "tag": "MEASURED/UNKNOWN"
+      },
+
+      "acceptance_criteria": {
+        "negative_gate": "max|V_id - V_perm| == 0 AND max|d_id - d_perm| == 0 for every permutation; violation -> STOP/INVALID",
+        "positive": "qualitative d(+2) > d(+1) > d(0) > d(-1) in median/aggregate sense; +2 generally larger than +1; no unit slope; no threshold",
+        "random_control": "random = substantial but unstructured; no directional prediction, no threshold; Random ~= ordered in magnitude AND structure -> do NOT claim C",
+        "numeric_threshold_preregistered": false,
+        "criterion_implemented_in_code": false,
+        "verdict_source": "hand-written prose in RESULTS.md"
+      },
+
+      "checkpoints": {
+        "NEG_shift_none": "d40d805bbe4cca310683f8617c7518d660e30055c43431081bcbb6a7c388f9b1",
+        "POS_6b_seed0":   "581d62e699b159945580f9627b451d953ce07b5dc763d608a9f4a8b5ecba692a",
+        "POS_6b_seed1":   "58117f2613bba4b2c817328c7d6757f21b340ec5e64a828e633193ae091d4adf",
+        "POS_6b_seed2":   "245a3f5bcb801c7d9c3550b02cb8775cb86486beae606f04097900340754fa69"
+      },
+      "seeds": [0, 1, 2],
+      "scenes": [27, 0, 31, 6],
+      "split": "hailo_val",
+      "harness_hash_recorded": false,
+      "environment_recorded": {
+        "device": "cuda",
+        "torch": "2.7.0+cu128",
+        "git_HEAD": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+        "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+        "cudnn_deterministic": true,
+        "cudnn_benchmark": false,
+        "use_deterministic_algorithms": true
+      },
+      "wall_clock_s": 7.726246118545532,
+
+      "recomputed_from_raw": {
+        "negative_gate": {
+          "volume_diff_cells": 16,
+          "max_abs_volume_diff": 0.0,
+          "disparity_diff_rows": 16,
+          "max_abs_disparity_full_frame_diff": 0.0,
+          "gate_pass_recomputed": true,
+          "gate_flag_recorded": true,
+          "agrees": true
+        },
+        "positive_checkpoint_delta_median_vs_identity_mean_over_scenes": {
+          "NEG_shift_none": {"minus1": 0.0, "identity": 0.0, "plus1": 0.0, "plus2": 0.0, "random": 0.0},
+          "POS_6b_seed0":  {"minus1": -1.7804, "identity": 0.0, "plus1": 1.7861, "plus2": 2.9650, "random": -0.8096},
+          "POS_6b_seed1":  {"minus1": -1.2030, "identity": 0.0, "plus1": 1.0935, "plus2": 1.9338, "random": -0.3602},
+          "POS_6b_seed2":  {"minus1": -1.4651, "identity": 0.0, "plus1": 1.4094, "plus2": 2.5545, "random": 0.5600}
+        },
+        "identity_absolute_median_mean_over_scenes": {
+          "NEG_shift_none": 6.5365, "POS_6b_seed0": 5.5358,
+          "POS_6b_seed1": 4.1448, "POS_6b_seed2": 4.6954
+        },
+        "ordered_monotone_per_scene_cases": "12/12",
+        "random_full_frame_max_abs_diff_range": [5.444, 6.957],
+        "results_md_reproduces": true
+      },
+
+      "verdict_components": {
+        "gate_pass": true,
+        "plus1_positive_all_checkpoints": true,
+        "minus1_negative_all_checkpoints": true,
+        "plus2_larger_than_plus1_all_checkpoints": true,
+        "ordered_monotone_all_cases": true,
+        "random_separated_from_ordered_magnitude": true,
+        "random_separated_from_ordered_spatial_structure": "NOT MEASURED",
+        "verdict_follows_preregistered_rule_literally": "partially - magnitude half met, structure half never executed, no decidable rule existed"
+      },
+
+      "protocol_deviations": [
+        {"id": "D-4", "desc": "no success criterion evaluated in code; verdict is hand-written prose", "severity": "decisive", "direction": "unfalsifiable"},
+        {"id": "D-5", "desc": "random permutation has no recorded generator or seed; not reproducible", "severity": "decisive", "direction": "provenance gap"},
+        {"id": "D-6", "desc": "spatial-structure half of the random-control criterion never measured", "severity": "moderate", "direction": "incomplete"},
+        {"id": "D-7", "desc": "no harness hash, no code-snapshot integrity record", "severity": "moderate", "direction": "provenance gap"},
+        {"id": "D-8", "desc": "RESULTS.md table mixes two estimators in one row (absolute = mean of per-scene medians; delta = mean of per-scene median-of-differences)", "severity": "minor", "direction": "reporting"},
+        {"id": "D-11", "desc": "random permutation has a fixed point at index 9", "severity": "minor", "direction": "design"}
+      ],
+      "self_reported_deviations": "none",
+      "self_report_contradicted_by": ["D-4", "D-5", "D-6", "D-7", "D-11"],
+
+      "may_support": [
+        "degenerate shift=none readout is algebraically invariant under candidate permutation",
+        "ordered +-1/+-2 response is large, consistent, 12/12 ordered",
+        "this particular scramble produced a response of opposite sign to the ordered arms on 2 of 3 checkpoints"
+      ],
+      "may_not_support": [
+        "confirmatory claim of candidate-coordinate sensitivity (level C)",
+        "any claim at level D (geometric correspondence) or E (disparity search)",
+        "that its random permutation was a neutral or unbiased control"
+      ],
+      "reason": "Chronology clean and measurement reproducible, but the decisive criterion was never reduced to a decidable form before execution, was never implemented in code, and was applied by hand after the numbers were visible; the control it rests on cannot be regenerated from the record."
+    },
+
+    "20260910T164326Z": {
+      "audit_label": "RUN-B",
+      "user_label": "Run 1",
+      "recorded_verdict": "CANDIDATE-COORDINATE-SENSITIVITY-NOT-DEMONSTRATED",
+      "admissibility_status": "EXPLORATORY-ONLY",
+
+      "preregistration": {
+        "created_utc": "2026-09-10T16:44:09.619Z",
+        "size_bytes": 8283,
+        "self_declared_freeze": "2026-09-10, before any arm was executed",
+        "frozen_before_execution": true,
+        "frozen_before_other_run_results": true,
+        "margin_before_other_run_results_s": 26.58,
+        "references_other_run": false
+      },
+
+      "permutations": {
+        "identity":  [0,1,2,3,4,5,6,7,8,9,10,11],
+        "m_plus_1":  [11,0,1,2,3,4,5,6,7,8,9,10],
+        "m_plus_2":  [10,11,0,1,2,3,4,5,6,7,8,9],
+        "m_minus_1": [1,2,3,4,5,6,7,8,9,10,11,0],
+        "random":    [1,10,9,5,3,8,11,0,6,7,2,4]
+      },
+
+      "random_permutation_provenance": {
+        "generator_recorded": "numpy.random.default_rng(20260910).permutation(12)",
+        "seed_recorded": 20260910,
+        "reproducible_from_record": true,
+        "reproduction_verified": true,
+        "fixed_points": [],
+        "tag": "MEASURED"
+      },
+
+      "acceptance_criteria": {
+        "negative_gate": "max_abs_diff(volume_identity, volume_permuted) == 0 AND max_abs_diff(disparity_initial_identity, disparity_initial_perm) == 0; any non-zero -> STOP IMMEDIATELY, INVALID-DIAGNOSTIC",
+        "positive": "qualitative d(+2) > d(+1) > d(0) > d(-1) over interior-masked pixels; +2 larger than +1; no numerical slope threshold preregistered and none may be invented afterwards",
+        "random_control": "order-destruction control only; no numerical expected output preregistered; if ordered and random are indistinguishable in BOTH magnitude AND spatial structure, tracking is not established",
+        "numeric_threshold_preregistered": false,
+        "criterion_implemented_in_code": true,
+        "code_rule": "abs(dm['random'] - dm['m_plus_1']) < 0.5 * abs(dm['m_plus_1'])",
+        "code_rule_location": "exp_correspondence_index.snapshot.py:358-360",
+        "code_rule_appears_in_preregistration": false,
+        "verdict_source": "computed by harness cmd_report"
+      },
+
+      "checkpoints": {
+        "NEG_shift_none": "d40d805bbe4cca310683f8617c7518d660e30055c43431081bcbb6a7c388f9b1",
+        "6b_seed0":       "581d62e699b159945580f9627b451d953ce07b5dc763d608a9f4a8b5ecba692a",
+        "6b_seed1":       "58117f2613bba4b2c817328c7d6757f21b340ec5e64a828e633193ae091d4adf",
+        "6b_seed2":       "245a3f5bcb801c7d9c3550b02cb8775cb86486beae606f04097900340754fa69"
+      },
+      "seeds": [0, 1, 2],
+      "scenes": [27, 0, 31, 6],
+      "split": "hailo_val",
+
+      "integrity_verification": {
+        "harness_sha256_claimed": "031a8829f8cbc46972183b78896db18c417cea38e7d01eb4693fb57cd29b5058",
+        "harness_sha256_actual_snapshot": "031a8829f8cbc46972183b78896db18c417cea38e7d01eb4693fb57cd29b5058",
+        "harness_sha256_actual_parent": "031a8829f8cbc46972183b78896db18c417cea38e7d01eb4693fb57cd29b5058",
+        "snapshot_matches_executed_file": true,
+        "git_HEAD_claimed": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+        "git_HEAD_actual": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+        "phase_1_frozen_claimed": "b4207e518166f5089731b4d037a4a79234f70986",
+        "phase_1_frozen_actual": "b4207e518166f5089731b4d037a4a79234f70986",
+        "git_diff_phase1_frozen_src_scripts_empty": true,
+        "working_tree_claimed": "M .gitignore, ?? phase2/",
+        "working_tree_actual": "M .gitignore, ?? phase2/",
+        "all_provenance_claims_verified": true
+      },
+
+      "environment_recorded": {
+        "python": "3.12.9",
+        "torch": "2.7.0+cu128",
+        "numpy": "2.5.1",
+        "cuda": "12.8",
+        "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+        "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+        "cudnn_deterministic": true,
+        "cudnn_benchmark": false,
+        "use_deterministic_algorithms": true
+      },
+      "wall_clock_s": {"gate": 3.01, "positive": 4.48},
+
+      "recomputed_from_raw": {
+        "negative_gate": {
+          "arm_scene_cells": 20,
+          "max_abs_volume_diff": 0.0,
+          "max_abs_disparity_initial_diff": 0.0,
+          "max_abs_identity_indexed_vs_original": 0.0,
+          "gate_pass_recomputed": true,
+          "gate_pass_recorded": true,
+          "agrees": true,
+          "pooled_identity_median": 6.536478161811829,
+          "pooled_identity_mean": 6.482193347263124
+        },
+        "pooled_delta_median_vs_identity": {
+          "6b_seed0": {"m_minus_1": -1.7788, "identity": 0.0, "m_plus_1": 1.9338, "m_plus_2": 2.8208, "random": 2.3269},
+          "6b_seed1": {"m_minus_1": -1.2219, "identity": 0.0, "m_plus_1": 1.1251, "m_plus_2": 1.9217, "random": 1.5548},
+          "6b_seed2": {"m_minus_1": -1.4928, "identity": 0.0, "m_plus_1": 1.4455, "m_plus_2": 2.4833, "random": 2.0561}
+        },
+        "pooled_per_pixel_median_delta": {
+          "6b_seed0": {"m_minus_1": -1.780434101819992, "m_plus_1": 1.786055088043213, "m_plus_2": 2.965045154094696, "random": 2.248198688030243},
+          "6b_seed1": {"m_minus_1": -1.202953726053238, "m_plus_1": 1.093479871749878, "m_plus_2": 1.9338273406028748, "random": 1.4844638109207153},
+          "6b_seed2": {"m_minus_1": -1.4650807082653046, "m_plus_1": 1.4094287157058716, "m_plus_2": 2.554482102394104, "random": 1.8884762227535248}
+        },
+        "identity_absolute_median": {
+          "NEG_shift_none": 6.5365, "6b_seed0": 5.5358, "6b_seed1": 4.1448, "6b_seed2": 4.6954
+        },
+        "ordered_monotone_per_scene_cases": "12/12",
+        "criterion6_code_evaluation": {
+          "6b_seed0": {"abs_rand_minus_plus1": 0.3931, "threshold": 0.9669, "random_reproduces_ordered_plus1": true},
+          "6b_seed1": {"abs_rand_minus_plus1": 0.4297, "threshold": 0.5625, "random_reproduces_ordered_plus1": true},
+          "6b_seed2": {"abs_rand_minus_plus1": 0.6106, "threshold": 0.7228, "random_reproduces_ordered_plus1": true}
+        },
+        "criteria_summary_recomputed": {
+          "all_ordered_monotone": true,
+          "all_directions_correct": true,
+          "random_does_not_reproduce_ordered": false
+        },
+        "criteria_summary_recorded": {
+          "all_ordered_monotone": true,
+          "all_directions_correct": true,
+          "random_does_not_reproduce_ordered": false
+        },
+        "verdict_follows_from_code": true,
+        "results_md_reproduces": true,
+        "post_hoc_band_observation_reproduces": true
+      },
+
+      "verdict_components": {
+        "gate_pass": true,
+        "plus1_positive_all_checkpoints": true,
+        "minus1_negative_all_checkpoints": true,
+        "plus2_larger_than_plus1_all_checkpoints": true,
+        "ordered_monotone_all_cases": true,
+        "random_does_not_reproduce_ordered": false,
+        "random_separated_from_ordered_spatial_structure": "NOT MEASURED",
+        "verdict_follows_preregistered_rule_literally": false,
+        "literal_preregistered_outcome": "criterion 6 UNDETERMINED (structure half never executed); recorded NOT-DEMONSTRATED is a conservative reading"
+      },
+
+      "protocol_deviations": [
+        {"id": "D-1", "desc": "criterion-6 numeric threshold 0.5*|delta_plus1| is not in the preregistration; prereg explicitly forecloses inventing numerical thresholds", "severity": "decisive", "direction": "conservative (toward negative)"},
+        {"id": "D-2", "desc": "spatial-structure half of the preregistered criterion-6 conjunction never executed", "severity": "moderate", "direction": "incomplete"},
+        {"id": "D-3", "desc": "harness authored 5.2 s after the other run's verdict document existed", "severity": "decisive", "direction": "independence break"}
+      ],
+      "self_reported_deviations": "no threshold was tuned post hoc",
+      "self_report_assessment": "true in spirit (threshold favours no outcome; applied to RUN-A's data it yields clean) but false in letter (threshold did not exist at preregistration time)",
+
+      "may_support": [
+        "degenerate readout is bit-exactly invariant (0.0) under every candidate permutation tested",
+        "ordered response is large and 12/12 ordered across three seeds",
+        "its own frozen random control was badly chosen; as designed the experiment did not settle level C",
+        "its explicit refusal to re-score against a different control is correct practice and should be preserved as written"
+      ],
+      "may_not_support": [
+        "a confirmatory refutation of candidate-coordinate sensitivity",
+        "any claim that the model is insensitive to candidate coordinates",
+        "any claim at level D or E",
+        "its own post-hoc band-bias explanation, which is not supported once GT occupancy is used"
+      ],
+      "reason": "Preregistration is independent of the other run's results and provenance verifies completely, but the rule that produced the verdict was authored after the other run's verdict was on disk, is a numeric threshold the preregistration forecloses, and implements only half of the preregistered conjunction."
+    }
+  },
+
+  "cross_contamination": {
+    "textual_cross_references_found": 0,
+    "grep_164326Z_outside_own_dir": 0,
+    "grep_164346Z_outside_own_dir": 0,
+    "each_run_references_other_permutation": false,
+    "protocol_amendment_files_found": 0,
+    "errata_or_revision_files_found": 0,
+    "case_assessment": "Neither CASE 1 nor CASE 2 as posed - the premise that 20260910T164326Z executed first is false",
+    "runA_could_be_post_hoc_repair_of_runB": false,
+    "runA_repair_rationale": "RUN-A's entire lifecycle (prereg, harness, data, verdict) completes 5.2 s before RUN-B's harness first exists and 96 s before RUN-B's results",
+    "runB_prereg_contaminated_by_runA": false,
+    "runB_harness_contaminated_by_runA": true,
+    "runB_contamination_detail": "harness created 16:45:31.507Z, 5.2 s after RUN-A's RESULTS.md; the decisive criterion-6 threshold exists only in that harness",
+    "runB_threshold_tuned_to_force_outcome": false,
+    "runB_threshold_tuning_evidence": "applying RUN-B's threshold to RUN-A's recorded deltas yields 'does not reproduce ordered' on all 3 checkpoints; it fails only on RUN-B's own data",
+    "disclosure_defect": "neither record discloses the existence of the other; a reader of either directory alone would believe it is the sole execution"
+  },
+
+  "permutation_audit": {
+    "convention": "V'(k) = V(pi(k)); a position-tracking readout moves a signature at candidate d to pi_inv(d)",
+    "retained_band_nominal": [2, 8],
+    "mask_rule": "GT valid and GT/16 in [2,8]",
+    "mask_pixel_counts": {
+      "000187_10.png": 33026, "000160_10.png": 42676,
+      "000191_10.png": 37892, "000166_10.png": 62908, "pooled": 176502
+    },
+    "mask_counts_reproduce_both_runs": true,
+    "retained_band_actual_occupancy_d2_to_d8": [0.3532, 0.4878, 0.1527, 0.0064, 0.0, 0.0, 0.0],
+    "retained_band_effective": [2, 4],
+    "fraction_in_d_2_to_4": 0.9937,
+    "pooled_retained_mean_d": 2.8357,
+    "pooled_retained_median_d": 2.7507,
+
+    "20260910T164326Z": {
+      "pi": [1,10,9,5,3,8,11,0,6,7,2,4],
+      "pi_inv": [7,0,10,4,11,3,8,9,5,2,1,6],
+      "fixed_points": [],
+      "pi_inv_on_band_d2_to_d8": [10,4,11,3,8,9,5],
+      "displacement_per_d": [8,1,7,-2,2,2,-3],
+      "mean_pi_inv_over_band_uniform": 7.142857142857143,
+      "mean_d_over_band_uniform": 5.0,
+      "expected_displacement_uniform": 2.142857142857143,
+      "expected_displacement_gt_weighted": 4.3695,
+      "displacement_sd_uniform": 3.8333,
+      "displacement_range": [-3, 8],
+      "observed_random_delta_mean_over_checkpoints": 1.9793,
+      "reported_post_hoc_observation_reproduces_exactly": true,
+      "intrinsically_biased_over_retained_band": true
+    },
+
+    "20260910T164346Z": {
+      "pi": [7,2,10,0,5,11,1,8,4,9,6,3],
+      "pi_inv": [3,6,1,11,8,4,10,0,7,9,2,5],
+      "fixed_points": [9],
+      "pi_inv_on_band_d2_to_d8": [1,11,8,4,10,0,7],
+      "displacement_per_d": [-1,8,4,-1,4,-7,-1],
+      "mean_pi_inv_over_band_uniform": 5.857142857142857,
+      "mean_d_over_band_uniform": 5.0,
+      "expected_displacement_uniform": 0.8571428571428571,
+      "expected_displacement_gt_weighted": 4.1536,
+      "displacement_sd_uniform": 4.5175,
+      "displacement_range": [-7, 8],
+      "observed_random_delta_mean_over_checkpoints": -0.2033,
+      "intrinsically_biased_over_retained_band": true
+    },
+
+    "key_finding": {
+      "statement": "Under GT-weighted occupancy the two random permutations carry nearly identical expected band displacement (+4.15 vs +4.37) yet produced observed responses of opposite sign (-0.20 vs +1.98). The position-tracking band-bias model has no demonstrated predictive power over the random arm.",
+      "consequence": "Criterion 6 as implemented in both runs uses a single uncalibrated permutation with no null distribution and therefore has no established discriminative power in either direction.",
+      "tag": "DERIVED"
+    },
+
+    "reference_frame_caveat": {
+      "statement": "The band analysis maps GT/16 onto candidate index d. Both preregistrations forbid reinterpreting candidate indices as physical disparity, and both record an unresolved right-referenced/left-referenced discrepancy in the cost volume.",
+      "consequence": "The GT-weighted numbers are DERIVED under an assumption both protocols reject and are admissible only as a design warning for the next experiment, never as a result.",
+      "applies_also_to": "RUN-B's own post-hoc band-bias note",
+      "tag": "INFERRED"
+    },
+
+    "mask_design_intent_failure": {
+      "prereg_claim": "the band keeps candidate content away from the extreme indices for |m| <= 2",
+      "actual": "99.4% of retained content is at d in [2,4]; a -1 arm places content at index 1 and a -2 arm at index 0",
+      "holds": false,
+      "tag": "DERIVED"
+    }
+  },
+
+  "cross_run_consistency": {
+    "note": "This is a consistency verification of two independently computed arrays, NOT a merge. No derived quantity in this audit mixes the two runs.",
+    "shared_arms": ["identity", "plus1", "plus2", "minus1"],
+    "agreement_to_decimal_places": 4,
+    "identity_absolute_medians_identical": true,
+    "ordered_arm_deltas_identical": true,
+    "determinism_held": true,
+    "evidence_of_fabrication_or_editing": "none"
+  },
+
+  "jointly_confirmatory_findings": [
+    {
+      "finding": "The degenerate shift=none checkpoint's disparity_initial is bit-exactly invariant (0.0) under all four non-trivial candidate permutations, on all four scenes, in both runs.",
+      "criterion_preregistered": true,
+      "threshold_free": true,
+      "tag": "MEASURED"
+    },
+    {
+      "finding": "For all three 6-block checkpoints, on 12/12 scene-checkpoint cases in both runs, d(+2) > d(+1) > d(0) > d(-1) holds, with responses of 1.09-2.97 candidates against a control that is exactly zero.",
+      "criterion_preregistered": true,
+      "threshold_free": true,
+      "tag": "MEASURED"
+    },
+    {
+      "finding": "The two executions agree to four decimal places on every shared arm.",
+      "criterion_preregistered": false,
+      "threshold_free": true,
+      "tag": "MEASURED"
+    }
+  ],
+
+  "blocked_claims": {
+    "level_C_candidate_coordinate_sensitivity": "NOT confirmatorily established",
+    "level_D_geometric_correspondence": "not established, not claimed",
+    "level_E_genuine_disparity_search": "not established, not claimed",
+    "correct_matching": "not established, not claimed",
+    "final_disparity_correctness": "not established, not claimed",
+    "monotonic_physical_translation_response": "not established, not claimed",
+    "stereo_depth_correctness": "not established, not claimed",
+    "max_supported_claim_if_confirmatory_had_existed": "Under direct candidate-axis re-indexing, the trained aggregation/readout pipeline is sensitive to candidate coordinate identity.",
+    "max_supported_claim_currently_assertable": false
+  },
+
+  "runs_merged": false,
+  "verdicts_averaged": false,
+  "permutations_combined": false,
+  "historical_records_modified": false,
+  "failed_results_deleted": false,
+  "thresholds_changed_after_outcome": false,
+  "candidate_index_experiment_rerun": false,
+  "rerun_justification": "the integrity audit did not find the recorded executions invalid; both gates pass bit-exactly and all raw numbers reproduce, so no re-run is warranted",
+
+  "next_experiment": {
+    "launched": false,
+    "designed": false,
+    "constraints_for_any_new_preregistration": [
+      "Replace the single-draw scramble with an empirical permutation null; preregister the ordered arms' position within that null, with the threshold written into both the protocol and the code before any arm runs. Cost is negligible: 80 arms ran in 7.5-7.7 s with volumes cached.",
+      "Fix the mask or stop describing it as [2,8]: 99.4% of retained pixels lie in d in [2,4] and bins 6-8 are empty.",
+      "Measure spatial structure or delete it from the criterion; both runs preregistered a magnitude-and-structure conjunction and executed only magnitude.",
+      "Resolve or explicitly bracket the right-referenced/left-referenced discrepancy before any geometric diagnostic, since a correspondence experiment necessarily converts candidate indices to physical disparity.",
+      "Carry a RELATED_RUNS.md naming both existing executions so no future reader encounters either directory believing it is the only one."
+    ]
+  },
+
+  "closing_answer": {
+    "question": "Which experiment, if any, is the admissible basis for the next geometric correspondence diagnostic, and why?",
+    "answer": "Neither run is admissible as a confirmatory basis, and no level-C result may be carried forward as established. The only admissible inheritance is the part of both records that was preregistered without a threshold, executed identically twice, and reproduces bit-exactly: the negative-control gate (degenerate shift=none readout invariant at 0.0 under every candidate permutation) and the ordered-arm response (d(+2) > d(+1) > d(0) > d(-1) on 12/12 scene-checkpoint cases across three seeds, agreeing to four decimal places across both executions). Those establish that the aggregation/readout path responds to candidate-axis re-indexing in an ordered, direction-consistent way; they do not establish that it tracks coordinate identity, because the control meant to separate ordered tracking from generic candidate-axis disturbance failed in both runs. The reason neither is confirmatory is the same in both cases and is not about chronology: the decisive criterion was never both preregistered and decidable. The next diagnostic must be preregistered fresh, must treat candidate-coordinate sensitivity as open rather than assume it as a premise, and must replace the random-permutation control with a calibrated null before any verdict language is written."
+  }
+}

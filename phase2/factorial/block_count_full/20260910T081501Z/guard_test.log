@@ -1,0 +1,15 @@
+--- attempt: arm C seed 0
+STOP: batch 3 authorises only arm C seeds 1 and 2 (4 blocks). Refusing arm C seed 0.
+exit=1
+--- attempt: arm C seed 3
+STOP: batch 3 authorises only arm C seeds 1 and 2 (4 blocks). Refusing arm C seed 3.
+exit=1
+--- attempt: arm A seed 1
+STOP: batch 3 authorises only arm C seeds 1 and 2 (4 blocks). Refusing arm A seed 1.
+exit=1
+--- attempt: arm B seed 2
+STOP: batch 3 authorises only arm C seeds 1 and 2 (4 blocks). Refusing arm B seed 2.
+exit=1
+--- attempt: arm A seed 0
+STOP: batch 3 authorises only arm C seeds 1 and 2 (4 blocks). Refusing arm A seed 0.
+exit=1

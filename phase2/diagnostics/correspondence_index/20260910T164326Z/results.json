@@ -1,0 +1,274 @@
+{
+  "experiment": "EXP-CORRESPONDENCE-INDEX-001",
+  "kind": "inference-only; no training; no image or feature modification",
+  "claim_level_targeted": "C -- candidate-coordinate sensitivity",
+  "claim_levels_NOT_established": [
+    "D geometric correspondence",
+    "E genuine disparity search"
+  ],
+  "arms": {
+    "identity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "m_plus_1": [
+      11,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "m_plus_2": [
+      10,
+      11,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "m_minus_1": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      0
+    ],
+    "random": [
+      1,
+      10,
+      9,
+      5,
+      3,
+      8,
+      11,
+      0,
+      6,
+      7,
+      2,
+      4
+    ]
+  },
+  "random_permutation_frozen": [
+    1,
+    10,
+    9,
+    5,
+    3,
+    8,
+    11,
+    0,
+    6,
+    7,
+    2,
+    4
+  ],
+  "mask": {
+    "source": "ground truth only, model-independent",
+    "rule": "GT valid and GT/16 in [2, 8]",
+    "border_mask": "none required -- no image is translated"
+  },
+  "scenes": [
+    27,
+    0,
+    31,
+    6
+  ],
+  "split": "hailo_val",
+  "negative_control_gate": {
+    "algebraic_claim": "V(k)=D for all k, so V[:,:,pi] == V element-wise for any pi",
+    "volume_invariant_under_every_permutation": true,
+    "disparity_initial_invariant_under_every_permutation": true,
+    "identity_index_select_equals_original_max_abs_diff": 0.0,
+    "PASS": true
+  },
+  "negative_control_pooled_mean": {
+    "m_minus_1": 6.482193347263124,
+    "identity": 6.482193347263124,
+    "m_plus_1": 6.482193347263124,
+    "m_plus_2": 6.482193347263124,
+    "random": 6.482193347263124
+  },
+  "per_checkpoint": {
+    "6b_seed0": {
+      "seed": 0,
+      "checkpoint_sha256": "581d62e699b159945580f9627b451d953ce07b5dc763d608a9f4a8b5ecba692a",
+      "delta_median_vs_identity": {
+        "m_minus_1": -1.7788487672805786,
+        "identity": 0.0,
+        "m_plus_1": 1.9337788820266724,
+        "m_plus_2": 2.8207502961158752,
+        "random": 2.3269041180610657
+      },
+      "identity_median": 5.535818874835968,
+      "identity_mean": 5.6103349114395265,
+      "max_abs_diff_vs_identity": {
+        "m_minus_1": {
+          "volume": 24341334.0,
+          "disparity_initial": 7.7786853313446045
+        },
+        "identity": {
+          "volume": 0.0,
+          "disparity_initial": 0.0
+        },
+        "m_plus_1": {
+          "volume": 24341334.0,
+          "disparity_initial": 4.054246425628662
+        },
+        "m_plus_2": {
+          "volume": 23977730.0,
+          "disparity_initial": 5.554874539375305
+        },
+        "random": {
+          "volume": 24834108.0,
+          "disparity_initial": 7.882007598876953
+        }
+      }
+    },
+    "6b_seed1": {
+      "seed": 1,
+      "checkpoint_sha256": "58117f2613bba4b2c817328c7d6757f21b340ec5e64a828e633193ae091d4adf",
+      "delta_median_vs_identity": {
+        "m_minus_1": -1.221926599740982,
+        "identity": 0.0,
+        "m_plus_1": 1.125083178281784,
+        "m_plus_2": 1.9216755330562592,
+        "random": 1.5547575652599335
+      },
+      "identity_median": 4.144783705472946,
+      "identity_mean": 4.190791867730225,
+      "max_abs_diff_vs_identity": {
+        "m_minus_1": {
+          "volume": 117251997696.0,
+          "disparity_initial": 7.256171941757202
+        },
+        "identity": {
+          "volume": 0.0,
+          "disparity_initial": 0.0
+        },
+        "m_plus_1": {
+          "volume": 117251997696.0,
+          "disparity_initial": 4.315774917602539
+        },
+        "m_plus_2": {
+          "volume": 111175843840.0,
+          "disparity_initial": 5.422289252281189
+        },
+        "random": {
+          "volume": 117251997696.0,
+          "disparity_initial": 6.7606360912323
+        }
+      }
+    },
+    "6b_seed2": {
+      "seed": 2,
+      "checkpoint_sha256": "245a3f5bcb801c7d9c3550b02cb8775cb86486beae606f04097900340754fa69",
+      "delta_median_vs_identity": {
+        "m_minus_1": -1.4927916824817657,
+        "identity": 0.0,
+        "m_plus_1": 1.4455207586288452,
+        "m_plus_2": 2.4833176136016846,
+        "random": 2.0561464428901672
+      },
+      "identity_median": 4.695350766181946,
+      "identity_mean": 4.749923072294694,
+      "max_abs_diff_vs_identity": {
+        "m_minus_1": {
+          "volume": 106379247616.0,
+          "disparity_initial": 6.784542560577393
+        },
+        "identity": {
+          "volume": 0.0,
+          "disparity_initial": 0.0
+        },
+        "m_plus_1": {
+          "volume": 106379247616.0,
+          "disparity_initial": 5.9729167222976685
+        },
+        "m_plus_2": {
+          "volume": 117220392960.0,
+          "disparity_initial": 5.806926131248474
+        },
+        "random": {
+          "volume": 117220384768.0,
+          "disparity_initial": 6.785327672958374
+        }
+      }
+    }
+  },
+  "per_checkpoint_criteria": {
+    "6b_seed0": {
+      "ordered_monotone_d2_gt_d1_gt_id_gt_dm1": true,
+      "plus1_positive": true,
+      "minus1_negative": true,
+      "plus2_larger_than_plus1": true,
+      "random_reproduces_ordered_plus1": true
+    },
+    "6b_seed1": {
+      "ordered_monotone_d2_gt_d1_gt_id_gt_dm1": true,
+      "plus1_positive": true,
+      "minus1_negative": true,
+      "plus2_larger_than_plus1": true,
+      "random_reproduces_ordered_plus1": true
+    },
+    "6b_seed2": {
+      "ordered_monotone_d2_gt_d1_gt_id_gt_dm1": true,
+      "plus1_positive": true,
+      "minus1_negative": true,
+      "plus2_larger_than_plus1": true,
+      "random_reproduces_ordered_plus1": true
+    }
+  },
+  "criteria_summary": {
+    "all_ordered_monotone": true,
+    "all_directions_correct": true,
+    "random_does_not_reproduce_ordered": false
+  },
+  "unit_slope_claimed": false,
+  "reference_frame_note": "cost volume stores slice k = left_feat[u+k] - right_feat[u] at output column u (right-referenced) while GT, the visualiser convention and the refinement guidance are left-referenced. PRESERVED, not corrected. Candidate indices are NOT reinterpreted as physical disparity anywhere in this experiment.",
+  "environment": {
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "numpy": "2.5.1",
+    "cuda": "12.8",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+  },
+  "provenance": {
+    "head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "phase_1_frozen_commit": "b4207e518166f5089731b4d037a4a79234f70986",
+    "phase_1_diff_vs_frozen": "",
+    "status_short": "M .gitignore\n?? phase2/",
+    "phase_2_committed": false
+  },
+  "VERDICT": "CANDIDATE-COORDINATE-SENSITIVITY-NOT-DEMONSTRATED"
+}

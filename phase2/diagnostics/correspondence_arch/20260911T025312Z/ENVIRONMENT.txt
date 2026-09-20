@@ -1,0 +1,91 @@
+EXP-CORRESPONDENCE-ARCH-001 -- ENVIRONMENT
+============================================
+
+Inference only. No training, no optimizer, no fine-tuning, no weight optimisation.
+No architecture / padding / kernel / depth / readout / preprocessing change.
+Only the aggregation module's 111,585 parameters differ between conditions.
+Refinement never invoked. Primary endpoint: disparity_initial only.
+
+python                     3.12.9
+torch                      2.7.0+cu128
+numpy                      2.5.1
+cuda                       12.8
+gpu                        NVIDIA GeForce RTX 4060 Laptop GPU
+device used                cuda
+CUBLAS_WORKSPACE_CONFIG    :4096:8
+
+deterministic controls
+  torch.use_deterministic_algorithms       True
+  torch.backends.cudnn.deterministic       True
+  torch.backends.cudnn.benchmark           False
+  CUBLAS_WORKSPACE_CONFIG                  :4096:8
+  torch.no_grad / model.eval / fp32        True
+
+randomised module          aggregation ONLY
+  architecture             4 x [Conv3d(32->32, 3x3x3, padding=1) + LeakyReLU(0.01)]
+                           then Conv3d(32->1, 3x3x3, padding=1)
+  constructor              Aggregation(in_channels=32, channels=32, num_layers=4)
+  parameters randomised    111,585   (verified for every weight-set)
+  initialisation           framework default: kaiming_uniform_(weight, a=sqrt(5));
+                           bias ~ U(-1/sqrt(fan_in), +1/sqrt(fan_in))
+  seeding                  torch.manual_seed(seed) immediately before construction
+  control seeds            0 .. 15  (16)   frozen before execution
+  training performed       NO
+
+NOT randomised             feature extractor, cost-volume construction, readout,
+                           standardisation, refinement (never invoked)
+readout parameter count    0  (StandardisedDisparityRegression, verified at load)
+
+frozen artefacts (written BEFORE the preregistration, hashed into it)
+  random_initialization_metadata.json  sha256 945e3283f1156eaf6c5a5dd608eff3d15ee9b56440155b98a8895db86ea860e1
+  generator.json                       sha256 fed055f06934f9626d542ca15e8d391687a2f7a7db46f9b00ef0619849e7bb7c
+
+generator                  c(k) = (k-1) mod 12; powers c^m, m = 0..11
+                           pi_m(k) = (k-m) mod 12; m=0 identity; m=11 == old -1
+scenes                     FOCUS_SCENES [27, 0, 31, 6], split hailo_val
+mask                       GT valid and GT/16 in [2,8]; unchanged from INDEX-001/002
+volume                     (1, 32, 12, 23, 77), candidate axis dim=2, N=12
+
+checkpoints (read-only; sha256 verified at load, HARD STOP on mismatch)
+  NEG_shift_none   d40d805bbe4cca310683f8617c7518d660e30055c43431081bcbb6a7c388f9b1
+      phase2/factorial/shift_none_standardized/20260909T071500Z/checkpoints/EXP-FACTORIAL-SHIFT-NONE-STANDARDISED-001-ARM-A_checkpoint.pth
+      shift=none seed=None regression=StandardisedDisparityRegression
+      trained_aggregation_sha256 5f881edb741cbc375262d61b62c8bdfa02b89ff2f2d646e07342b6ae4b6a45fa
+  POS_6b_seed0     581d62e699b159945580f9627b451d953ce07b5dc763d608a9f4a8b5ecba692a
+      phase2/diagnostics/determinism/20260909T041500Z_baseline/checkpoints/STAGEB-DETERMINISTIC-BASELINE-ARM-A-RUNA_checkpoint.pth
+      shift=left seed=0 regression=StandardisedDisparityRegression
+      trained_aggregation_sha256 d8d12446c584e7c0acdf26dbe9cb04169723adb7501ef4725ca301a45dd7696d
+  POS_6b_seed1     58117f2613bba4b2c817328c7d6757f21b340ec5e64a828e633193ae091d4adf
+      phase2/factorial/block_count_full/20260910T005550Z/checkpoints/EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED1_checkpoint.pth
+      shift=left seed=1 regression=StandardisedDisparityRegression
+      trained_aggregation_sha256 75f3c7c64ddf481bf3fb037b25f81ba0e5df80397b209beb20d3a55a33c53d6e
+  POS_6b_seed2     245a3f5bcb801c7d9c3550b02cb8775cb86486beae606f04097900340754fa69
+      phase2/factorial/block_count_full/20260910T005550Z/checkpoints/EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED2_checkpoint.pth
+      shift=left seed=2 regression=StandardisedDisparityRegression
+      trained_aggregation_sha256 1e3bb32e902ea177ad432ba3c370957f35b9308eacaf24918aae4ff4cfa7881f
+
+harness
+  freeze_random_init.py              sha256 83121a79d653fc177d4ac76c63906e2f9c3b4d359625a3d06d17429134637537
+  run_arch_control.py                sha256 c2f4d2b8233a3782e0017f4b9e8be19652c87a1602832718d194d4dc9aab352e
+  preflight_architecture_analysis.py sha256 d6f737ea13425eebc0f2d6c5d16a7e47be8a8dee820fd9ac81dd0bdd456b77e3
+
+statistics (frozen in PREREGISTRATION.md section 6 before execution)
+  s_m       np.median(disparity_initial[mask]) at orbit position m, m=0..11
+  z         (s - mean(s)) / std(s)   population std; std==0 -> z=0 and degenerate
+  rho       (1/12) * sum_m z1_m z2_m
+  TR        16 trained-vs-random per unit; RR 120 random-vs-random per unit
+  rule      INSIDE: every TR in [min RR, max RR]; SEPARATED: max(TR) < min(RR)
+  global    CASE A = INSIDE 12/12; CASE B = SEPARATED 12/12; CASE C otherwise
+  p-value   NOT used
+
+compute   16 cost-volume builds; 17 weight-sets x 12 orbit positions per unit
+          3264 aggregation/readout arms total
+wall clock  40.9 s
+
+provenance
+  HEAD                    58e8a19908ddbd35451652c61aef478f56b51ebd
+  phase-1-frozen^{commit} b4207e518166f5089731b4d037a4a79234f70986
+  phase 1 diff vs frozen  EMPTY
+  phase 2 committed       False  (phase2/ untracked; no cryptographic versioning claimed)
+
+VERDICT  CASE-A-ARCHITECTURE-INDUCED

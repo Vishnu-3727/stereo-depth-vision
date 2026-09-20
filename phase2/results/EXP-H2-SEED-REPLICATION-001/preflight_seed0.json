@@ -1,0 +1,888 @@
+{
+  "purpose": "Parts B/C/D for seed 0: forward sanity, stereo probe and gradient probe on the *untrained* initialisation",
+  "seed": 0,
+  "git": {
+    "commit": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "phase_1_diff_vs_frozen": "",
+    "tracked_changes": "M .gitignore\n?? phase2/"
+  },
+  "config": {
+    "architecture": "StereoNet (Phase 1 src/models/stereonet) + phase2 StandardisedDisparityRegression",
+    "cost_volume_shift": "left",
+    "cost_volume_method": "subtract",
+    "num_disparities": 12,
+    "regression": "standardised soft-argmin (phase2.models.scaled_regression)",
+    "seed": 0,
+    "dataset": "kitti2015",
+    "train_split": "hailo_calib (scenes 0-159)",
+    "validation_split": "hailo_val (scenes 160-199), first 10 scenes validated",
+    "crop": [
+      256,
+      512
+    ],
+    "augmentation": "random crop, per-image gain jitter sigma=0.1, no flip",
+    "optimizer": "Adam betas=(0.9, 0.999)",
+    "learning_rate": 0.001,
+    "scheduler": "CosineAnnealingLR T_max=200",
+    "loss": "masked smooth L1, beta=1.0, valid = gt > 0 and gt < max_disparity",
+    "batch_size": 2,
+    "epochs": 200,
+    "precision": "fp32",
+    "device": "cuda"
+  },
+  "parameter_count": 423586,
+  "cost_volume_shift": "left",
+  "forward_sanity": [
+    {
+      "scene": "000187_10.png",
+      "stages": {
+        "left_features": {
+          "shape": [
+            1,
+            32,
+            23,
+            77
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": -0.28872036933898926,
+          "max": 0.28174808621406555,
+          "std": 0.07374579459428787
+        },
+        "right_features": {
+          "shape": [
+            1,
+            32,
+            23,
+            77
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": -0.27793633937835693,
+          "max": 0.27575886249542236,
+          "std": 0.0733749270439148
+        },
+        "cost_volume": {
+          "shape": [
+            1,
+            32,
+            12,
+            23,
+            77
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": -0.2601066827774048,
+          "max": 0.22455650568008423,
+          "std": 0.03845830261707306
+        },
+        "aggregated_cost": {
+          "shape": [
+            1,
+            12,
+            23,
+            77
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": 0.01574443280696869,
+          "max": 0.032685406506061554,
+          "std": 0.002380795544013381
+        },
+        "disparity_initial": {
+          "shape": [
+            1,
+            1,
+            368,
+            1232
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": 5.612808704376221,
+          "max": 9.396527290344238,
+          "std": 0.311381995677948
+        },
+        "refinement_residual": {
+          "shape": [
+            1,
+            1,
+            368,
+            1232
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": -0.3546617031097412,
+          "max": 1.2552056312561035,
+          "std": 0.2749794125556946
+        },
+        "disparity_final": {
+          "shape": [
+            1,
+            1,
+            368,
+            1232
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": 5.7678985595703125,
+          "max": 10.5302734375,
+          "std": 0.46250277757644653
+        },
+        "softmax_input": {
+          "shape": [
+            1,
+            12,
+            368,
+            1232
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": -3.2300591468811035,
+          "max": 1.4797166585922241,
+          "std": 0.9949896931648254
+        }
+      },
+      "softmax_entropy_nats": 1.5342206085227819,
+      "metrics_untrained": {
+        "epe": 22.50212191373318,
+        "d1": 93.29710379891311
+      }
+    },
+    {
+      "scene": "000160_10.png",
+      "stages": {
+        "left_features": {
+          "shape": [
+            1,
+            32,
+            23,
+            77
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": -0.2750213146209717,
+          "max": 0.26987719535827637,
+          "std": 0.07365842163562775
+        },
+        "right_features": {
+          "shape": [
+            1,
+            32,
+            23,
+            77
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": -0.27144959568977356,
+          "max": 0.2562696933746338,
+          "std": 0.07366029173135757
+        },
+        "cost_volume": {
+          "shape": [
+            1,
+            32,
+            12,
+            23,
+            77
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": -0.25268539786338806,
+          "max": 0.2412673681974411,
+          "std": 0.03762194514274597
+        },
+        "aggregated_cost": {
+          "shape": [
+            1,
+            12,
+            23,
+            77
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": 0.015905842185020447,
+          "max": 0.03286246955394745,
+          "std": 0.0023723747581243515
+        },
+        "disparity_initial": {
+          "shape": [
+            1,
+            1,
+            368,
+            1232
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": 5.986123561859131,
+          "max": 9.426422119140625,
+          "std": 0.3180476129055023
+        },
+        "refinement_residual": {
+          "shape": [
+            1,
+            1,
+            368,
+            1232
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": -0.4092637598514557,
+          "max": 1.16134774684906,
+          "std": 0.3056701421737671
+        },
+        "disparity_final": {
+          "shape": [
+            1,
+            1,
+            368,
+            1232
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": 5.979884624481201,
+          "max": 10.472496032714844,
+          "std": 0.5005057454109192
+        },
+        "softmax_input": {
+          "shape": [
+            1,
+            12,
+            368,
+            1232
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": -3.241772413253784,
+          "max": 1.477674126625061,
+          "std": 0.9949443936347961
+        }
+      },
+      "softmax_entropy_nats": 1.5353950230988698,
+      "metrics_untrained": {
+        "epe": 23.834170456600173,
+        "d1": 91.76932138079741
+      }
+    },
+    {
+      "scene": "000191_10.png",
+      "stages": {
+        "left_features": {
+          "shape": [
+            1,
+            32,
+            23,
+            77
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": -0.2671237587928772,
+          "max": 0.2486647069454193,
+          "std": 0.07199534773826599
+        },
+        "right_features": {
+          "shape": [
+            1,
+            32,
+            23,
+            77
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": -0.2726651430130005,
+          "max": 0.23911920189857483,
+          "std": 0.07162583619356155
+        },
+        "cost_volume": {
+          "shape": [
+            1,
+            32,
+            12,
+            23,
+            77
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": -0.20132151246070862,
+          "max": 0.23920486867427826,
+          "std": 0.03640589118003845
+        },
+        "aggregated_cost": {
+          "shape": [
+            1,
+            12,
+            23,
+            77
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": 0.015941394492983818,
+          "max": 0.032830070704221725,
+          "std": 0.002372035523876548
+        },
+        "disparity_initial": {
+          "shape": [
+            1,
+            1,
+            368,
+            1232
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": 6.058774471282959,
+          "max": 9.39448356628418,
+          "std": 0.3197522759437561
+        },
+        "refinement_residual": {
+          "shape": [
+            1,
+            1,
+            368,
+            1232
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": -0.33081483840942383,
+          "max": 1.1415659189224243,
+          "std": 0.2934468984603882
+        },
+        "disparity_final": {
+          "shape": [
+            1,
+            1,
+            368,
+            1232
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": 6.031771183013916,
+          "max": 10.253748893737793,
+          "std": 0.48522987961769104
+        },
+        "softmax_input": {
+          "shape": [
+            1,
+            12,
+            368,
+            1232
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": -3.22814679145813,
+          "max": 1.4399746656417847,
+          "std": 0.9949682354927063
+        }
+      },
+      "softmax_entropy_nats": 1.5351037284235336,
+      "metrics_untrained": {
+        "epe": 23.972765590229585,
+        "d1": 95.30978146863933
+      }
+    },
+    {
+      "scene": "000166_10.png",
+      "stages": {
+        "left_features": {
+          "shape": [
+            1,
+            32,
+            23,
+            77
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": -0.25527554750442505,
+          "max": 0.2624361217021942,
+          "std": 0.07114057242870331
+        },
+        "right_features": {
+          "shape": [
+            1,
+            32,
+            23,
+            77
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": -0.28489965200424194,
+          "max": 0.25359004735946655,
+          "std": 0.07086407393217087
+        },
+        "cost_volume": {
+          "shape": [
+            1,
+            32,
+            12,
+            23,
+            77
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": -0.22961735725402832,
+          "max": 0.24482472240924835,
+          "std": 0.033694542944431305
+        },
+        "aggregated_cost": {
+          "shape": [
+            1,
+            12,
+            23,
+            77
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": 0.015934424474835396,
+          "max": 0.03280864655971527,
+          "std": 0.00237717991694808
+        },
+        "disparity_initial": {
+          "shape": [
+            1,
+            1,
+            368,
+            1232
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": 5.914725303649902,
+          "max": 9.407246589660645,
+          "std": 0.3008245527744293
+        },
+        "refinement_residual": {
+          "shape": [
+            1,
+            1,
+            368,
+            1232
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": -0.42836135625839233,
+          "max": 1.2165180444717407,
+          "std": 0.29966267943382263
+        },
+        "disparity_final": {
+          "shape": [
+            1,
+            1,
+            368,
+            1232
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": 5.997212886810303,
+          "max": 10.50747013092041,
+          "std": 0.47961729764938354
+        },
+        "softmax_input": {
+          "shape": [
+            1,
+            12,
+            368,
+            1232
+          ],
+          "nan": 0,
+          "inf": 0,
+          "min": -3.233804702758789,
+          "max": 1.4111371040344238,
+          "std": 0.9949951171875
+        }
+      },
+      "softmax_entropy_nats": 1.5386410182034942,
+      "metrics_untrained": {
+        "epe": 25.89154709858514,
+        "d1": 94.92523994245023
+      }
+    }
+  ],
+  "stereo_probe_untrained": [
+    {
+      "scene": "000187_10.png",
+      "baseline": {
+        "epe": 22.50212191373318,
+        "d1": 93.29710379891311
+      },
+      "softmax_entropy": 1.5342206085227819,
+      "right_black": {
+        "epe": 22.72291267080373,
+        "d1": 93.76013281280399,
+        "d1_penalty": 0.4630290138908748,
+        "mean_abs_change_px": 0.2901781758546981
+      },
+      "right_noise": {
+        "epe": 22.41921620084405,
+        "d1": 93.31785579953568,
+        "d1_penalty": 0.020752000622564992,
+        "mean_abs_change_px": 0.2748189763124466
+      },
+      "right_equals_left": {
+        "epe": 22.504488755184067,
+        "d1": 93.13886979416608,
+        "d1_penalty": -0.15823400474702964,
+        "mean_abs_change_px": 0.11121140386570584
+      },
+      "initial_constant_mean": {
+        "epe": 22.531039604177316,
+        "d1": 93.18556179556685,
+        "d1_penalty": -0.11154200334625841,
+        "mean_abs_change_px": 0.23724261660997575
+      },
+      "initial_shuffled": {
+        "epe": 22.531584499624476,
+        "d1": 93.24133279723998,
+        "d1_penalty": -0.05577100167313631,
+        "mean_abs_change_px": 0.350307268082658
+      }
+    },
+    {
+      "scene": "000160_10.png",
+      "baseline": {
+        "epe": 23.834170456600173,
+        "d1": 91.76932138079741
+      },
+      "softmax_entropy": 1.5353950230988698,
+      "right_black": {
+        "epe": 24.107433580439725,
+        "d1": 92.09475512608061,
+        "d1_penalty": 0.3254337452832061,
+        "mean_abs_change_px": 0.29769116227700676
+      },
+      "right_noise": {
+        "epe": 23.798007838231516,
+        "d1": 91.5626809351728,
+        "d1_penalty": -0.2066404456246005,
+        "mean_abs_change_px": 0.26970428500044724
+      },
+      "right_equals_left": {
+        "epe": 23.832361500297534,
+        "d1": 91.78429532613252,
+        "d1_penalty": 0.014973945335114536,
+        "mean_abs_change_px": 0.11504683970147139
+      },
+      "initial_constant_mean": {
+        "epe": 23.872553901030514,
+        "d1": 91.61658713837923,
+        "d1_penalty": -0.1527342424181768,
+        "mean_abs_change_px": 0.24470747603952278
+      },
+      "initial_shuffled": {
+        "epe": 23.87473569937931,
+        "d1": 91.68946033901013,
+        "d1_penalty": -0.07986104178728226,
+        "mean_abs_change_px": 0.3579029138723229
+      }
+    },
+    {
+      "scene": "000191_10.png",
+      "baseline": {
+        "epe": 23.972765590229585,
+        "d1": 95.30978146863933
+      },
+      "softmax_entropy": 1.5351037284235336,
+      "right_black": {
+        "epe": 24.200169685443225,
+        "d1": 95.68366629237053,
+        "d1_penalty": 0.3738848237312027,
+        "mean_abs_change_px": 0.29049141621001523
+      },
+      "right_noise": {
+        "epe": 23.882369930835576,
+        "d1": 95.33322639157957,
+        "d1_penalty": 0.023444922940242918,
+        "mean_abs_change_px": 0.28438285006213365
+      },
+      "right_equals_left": {
+        "epe": 23.962656221311985,
+        "d1": 95.21723572019101,
+        "d1_penalty": -0.09254574844831609,
+        "mean_abs_change_px": 0.10575107028492253
+      },
+      "initial_constant_mean": {
+        "epe": 23.991660741920015,
+        "d1": 95.26289162275884,
+        "d1_penalty": -0.046889845880485836,
+        "mean_abs_change_px": 0.2479446738220032
+      },
+      "initial_shuffled": {
+        "epe": 23.992646785660348,
+        "d1": 95.27152922594736,
+        "d1_penalty": -0.03825224269196781,
+        "mean_abs_change_px": 0.3612916527924936
+      }
+    },
+    {
+      "scene": "000166_10.png",
+      "baseline": {
+        "epe": 25.89154709858514,
+        "d1": 94.92523994245023
+      },
+      "softmax_entropy": 1.5386410182034942,
+      "right_black": {
+        "epe": 26.11781287692202,
+        "d1": 95.26944581034074,
+        "d1_penalty": 0.34420586789050844,
+        "mean_abs_change_px": 0.29683877009622867
+      },
+      "right_noise": {
+        "epe": 25.768118098927182,
+        "d1": 94.89154783368846,
+        "d1_penalty": -0.033692108761769646,
+        "mean_abs_change_px": 0.2876688772428598
+      },
+      "right_equals_left": {
+        "epe": 25.88723357396502,
+        "d1": 94.96257444134841,
+        "d1_penalty": 0.03733449889817564,
+        "mean_abs_change_px": 0.10012349209531023
+      },
+      "initial_constant_mean": {
+        "epe": 25.906113759793417,
+        "d1": 94.99353475750787,
+        "d1_penalty": 0.06829481505764079,
+        "mean_abs_change_px": 0.22454394288529353
+      },
+      "initial_shuffled": {
+        "epe": 25.907426687700617,
+        "d1": 94.99535595257608,
+        "d1_penalty": 0.07011601012584379,
+        "mean_abs_change_px": 0.33310219059887075
+      }
+    }
+  ],
+  "gradient_probe": {
+    "batches": 12,
+    "matching_present": 12,
+    "matching_present_fraction": 1.0,
+    "matching_norm": {
+      "median": 307.152069804234,
+      "min": 213.18467732137046,
+      "max": 343.9755749368544
+    },
+    "total_norm": {
+      "median": 308.552895352016,
+      "max": 345.42683026280605
+    },
+    "spikes_above_1e4": 0,
+    "mean_softmax_entropy": 1.5263772856172242,
+    "exact_ties_total": 0,
+    "any_non_finite": false,
+    "crops": [
+      {
+        "scene": "000000_10.png",
+        "crop_yx": [
+          96,
+          459
+        ],
+        "loss": 22.65997886657715,
+        "feature_extractor": 5.270693513514818,
+        "aggregation": 322.3114061390058,
+        "refinement": 29.88102184918051,
+        "matching_path": 322.3544985530938,
+        "matching_present": true,
+        "matching_exactly_zero": false,
+        "tensors_with_exactly_zero_gradient": 0,
+        "softmax_entropy": 1.53430665885788,
+        "exact_ties": 0
+      },
+      {
+        "scene": "000001_10.png",
+        "crop_yx": [
+          57,
+          194
+        ],
+        "loss": 14.60595989227295,
+        "feature_extractor": 5.148731207072057,
+        "aggregation": 282.42414114278415,
+        "refinement": 26.35448668469714,
+        "matching_path": 282.4710691969745,
+        "matching_present": true,
+        "matching_exactly_zero": false,
+        "tensors_with_exactly_zero_gradient": 0,
+        "softmax_entropy": 1.5177060361348094,
+        "exact_ties": 0
+      },
+      {
+        "scene": "000002_10.png",
+        "crop_yx": [
+          34,
+          29
+        ],
+        "loss": 14.786818504333496,
+        "feature_extractor": 6.239033033899276,
+        "aggregation": 322.55765359180293,
+        "refinement": 30.311009886150913,
+        "matching_path": 322.61798682628904,
+        "matching_present": true,
+        "matching_exactly_zero": false,
+        "tensors_with_exactly_zero_gradient": 0,
+        "softmax_entropy": 1.5300738047321594,
+        "exact_ties": 0
+      },
+      {
+        "scene": "000003_10.png",
+        "crop_yx": [
+          8,
+          11
+        ],
+        "loss": 8.119013786315918,
+        "feature_extractor": 7.776974689796666,
+        "aggregation": 332.39139512018005,
+        "refinement": 33.932369235210665,
+        "matching_path": 332.48236176565126,
+        "matching_present": true,
+        "matching_exactly_zero": false,
+        "tensors_with_exactly_zero_gradient": 0,
+        "softmax_entropy": 1.5169307567125947,
+        "exact_ties": 0
+      },
+      {
+        "scene": "000004_10.png",
+        "crop_yx": [
+          19,
+          586
+        ],
+        "loss": 21.808652877807617,
+        "feature_extractor": 4.404390831193969,
+        "aggregation": 343.94737605416566,
+        "refinement": 31.630664113639508,
+        "matching_path": 343.9755749368544,
+        "matching_present": true,
+        "matching_exactly_zero": false,
+        "tensors_with_exactly_zero_gradient": 0,
+        "softmax_entropy": 1.5291862452415286,
+        "exact_ties": 0
+      },
+      {
+        "scene": "000005_10.png",
+        "crop_yx": [
+          73,
+          658
+        ],
+        "loss": 34.12576675415039,
+        "feature_extractor": 3.902258950123254,
+        "aggregation": 335.6493160122628,
+        "refinement": 31.151745693803644,
+        "matching_path": 335.67199907709556,
+        "matching_present": true,
+        "matching_exactly_zero": false,
+        "tensors_with_exactly_zero_gradient": 0,
+        "softmax_entropy": 1.5300214943285244,
+        "exact_ties": 0
+      },
+      {
+        "scene": "000006_10.png",
+        "crop_yx": [
+          56,
+          437
+        ],
+        "loss": 21.523452758789062,
+        "feature_extractor": 4.682842807923941,
+        "aggregation": 313.559425872279,
+        "refinement": 29.71424543006741,
+        "matching_path": 313.5943918027186,
+        "matching_present": true,
+        "matching_exactly_zero": false,
+        "tensors_with_exactly_zero_gradient": 0,
+        "softmax_entropy": 1.5285331928893284,
+        "exact_ties": 0
+      },
+      {
+        "scene": "000007_10.png",
+        "crop_yx": [
+          109,
+          525
+        ],
+        "loss": 22.99619483947754,
+        "feature_extractor": 5.339639117989715,
+        "aggregation": 300.66233664941643,
+        "refinement": 29.01985492426717,
+        "matching_path": 300.7097478057494,
+        "matching_present": true,
+        "matching_exactly_zero": false,
+        "tensors_with_exactly_zero_gradient": 0,
+        "softmax_entropy": 1.527658299040142,
+        "exact_ties": 0
+      },
+      {
+        "scene": "000008_10.png",
+        "crop_yx": [
+          71,
+          391
+        ],
+        "loss": 15.43771743774414,
+        "feature_extractor": 3.468189922611503,
+        "aggregation": 213.15646437130997,
+        "refinement": 20.459140772346966,
+        "matching_path": 213.18467732137046,
+        "matching_present": true,
+        "matching_exactly_zero": false,
+        "tensors_with_exactly_zero_gradient": 0,
+        "softmax_entropy": 1.5284580996445334,
+        "exact_ties": 0
+      },
+      {
+        "scene": "000009_10.png",
+        "crop_yx": [
+          63,
+          674
+        ],
+        "loss": 16.06639289855957,
+        "feature_extractor": 3.4248692988958847,
+        "aggregation": 254.75388848500637,
+        "refinement": 24.845103161952323,
+        "matching_path": 254.77690913413952,
+        "matching_present": true,
+        "matching_exactly_zero": false,
+        "tensors_with_exactly_zero_gradient": 0,
+        "softmax_entropy": 1.524177278090406,
+        "exact_ties": 0
+      },
+      {
+        "scene": "000010_10.png",
+        "crop_yx": [
+          31,
+          588
+        ],
+        "loss": 12.56678295135498,
+        "feature_extractor": 3.8538787208041674,
+        "aggregation": 262.6705802056161,
+        "refinement": 25.762367700436815,
+        "matching_path": 262.6988505622924,
+        "matching_present": true,
+        "matching_exactly_zero": false,
+        "tensors_with_exactly_zero_gradient": 0,
+        "softmax_entropy": 1.5236394420803578,
+        "exact_ties": 0
+      },
+      {
+        "scene": "000011_10.png",
+        "crop_yx": [
+          75,
+          1
+        ],
+        "loss": 18.058080673217773,
+        "feature_extractor": 5.644467281437654,
+        "aggregation": 279.3538798552659,
+        "refinement": 26.20845854685279,
+        "matching_path": 279.41089850090236,
+        "matching_present": true,
+        "matching_exactly_zero": false,
+        "tensors_with_exactly_zero_gradient": 0,
+        "softmax_entropy": 1.5258361196544237,
+        "exact_ties": 0
+      }
+    ]
+  },
+  "gate": {
+    "shift_is_left": true,
+    "no_nan_or_inf": true,
+    "parameter_count_matches_reference": true,
+    "softmax_not_saturated": true,
+    "min_softmax_entropy_nats": 1.5342206085227819,
+    "matching_gradient_fraction": 1.0,
+    "matching_gradient_gate": true,
+    "no_gradient_spike": true,
+    "no_non_finite_gradient": true,
+    "PASS": true
+  },
+  "reference_checkpoint_sha256": "e3d48021d7f6a3d4d16fe33031e8ba85fd24389c5ba892f52c7e873e48454927"
+}

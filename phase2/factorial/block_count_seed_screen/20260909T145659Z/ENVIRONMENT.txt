@@ -1,0 +1,115 @@
+EXP-BLOCKCOUNT-SEEDSCREEN-001 -- 20260909T145659Z -- ENVIRONMENT
+==============================================================================
+
+PROVENANCE (before, recorded by the preflight)
+------------------------------------------------------------------------------
+HEAD                       : 58e8a19908ddbd35451652c61aef478f56b51ebd  (docs: add the Phase 1 overview)
+phase-1-frozen^{commit}    : b4207e518166f5089731b4d037a4a79234f70986
+git diff phase-1-frozen -- src scripts : []  <- EMPTY
+git status --short         : M .gitignore | ?? phase2/
+phase 2 committed to git   : False
+
+PROVENANCE (after, recorded at analysis time)
+------------------------------------------------------------------------------
+HEAD                       : 58e8a19908ddbd35451652c61aef478f56b51ebd
+phase-1-frozen^{commit}    : b4207e518166f5089731b4d037a4a79234f70986
+git diff phase-1-frozen -- src scripts : []  <- EMPTY
+git status --short         : M .gitignore | ?? phase2/
+
+Phase 2 is NOT committed to git. No external immutability is claimed for any
+Phase 2 record, including this one.
+
+PLATFORM
+------------------------------------------------------------------------------
+platform                   : Windows-11-10.0.26200-SP0
+python                     : 3.12.9
+torch                      : 2.7.0+cu128
+numpy                      : 2.5.1
+cuda_version               : 12.8
+cudnn_version              : 90701
+gpu_name                   : NVIDIA GeForce RTX 4060 Laptop GPU
+nvidia_driver              : 616.64
+CUBLAS_WORKSPACE_CONFIG    : :4096:8
+
+DETERMINISTIC CONTROLS (enabled in every process)
+------------------------------------------------------------------------------
+torch.use_deterministic_algorithms         : True
+torch.backends.cudnn.deterministic         : True
+torch.backends.cudnn.benchmark             : False
+CUBLAS_WORKSPACE_CONFIG                    : :4096:8
+
+LEARNING-RATE SCHEDULE
+------------------------------------------------------------------------------
+class                                  : FrozenCosineAnnealingLR
+T_max requested by the training code    : 30
+T_max actually used (FROZEN)            : 200
+lr at construction                      : 0.001
+optimizer state empty at construction   : True
+
+The epoch BUDGET is 30; the SCHEDULE stays on its frozen 200-epoch cosine, so
+each run is a strict prefix of the 200-epoch run it screens for. Registered in
+advance in PREREGISTRATION.md section 5.1.
+
+PREFLIGHT CHECKS (all blocking)
+------------------------------------------------------------------------------
+phase_1_diff_empty                            : True
+deterministic_controls_enabled                : True
+shift_is_left                                 : True
+readout_is_standardised                       : True
+candidates_are_12                             : True
+block_counts_correct                          : True
+dilations_correct                             : True
+parameter_counts_match_registration           : True
+seeds_are_1_and_2_only                        : True
+seed_0_not_scheduled                          : True
+epoch_budget_is_30                            : True
+budget_is_not_200                             : True
+schedule_T_max_frozen_at_200                  : True
+initialisation_is_fresh_not_stage_b           : True
+no_stage_b_checkpoint_loaded                  : True
+optimizer_state_fresh                         : True
+surviving_weights_bit_identical_within_seed   : True
+run_count_is_6                                : True
+PASS                                          : True
+
+PER-RUN RECORDS
+------------------------------------------------------------------------------
+run        blocks seed   params    init_weight_sha   final_weight_sha    wall_s
+armAs1          6    1   423586   c27a63f9fac30273   4358e41e0fecec9e     797.6
+armAs2          6    2   423586   60551302b5834cfc   6897898ec457c043     773.4
+armBs1          5    1   405090   a469638e5ed79cce   2f3901a7c19988af     768.2
+armBs2          5    2   405090   540d81706f0d4850   4f469f1483b95e2d     766.4
+armCs1          4    1   386594   2cac2916ed802495   d83e671f4f334358     738.7
+armCs2          4    2   386594   e622226a5a22fc9b   d919a5fed881e2d0     737.9
+
+Total training wall clock: 4582.1 s (1.27 GPU-hours)
+
+CHECKPOINT SHA-256
+------------------------------------------------------------------------------
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-A-SEED1 : 31bc77222ecafab0e2681f173ea7263f9c184c0175036248eab9224d2cfe2884
+    snapshots: EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-A-SEED1_epoch10.pth, EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-A-SEED1_epoch20.pth, EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-A-SEED1_epoch30.pth
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-A-SEED2 : ce4b7f15938f96cef53cb2f9b6f19518cde981fbf778fdec676974bb495eb90c
+    snapshots: EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-A-SEED2_epoch10.pth, EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-A-SEED2_epoch20.pth, EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-A-SEED2_epoch30.pth
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED1 : 6d349eef5d8c8019abedf2312f045bdd237a6a588191e6e96fa7ac9ff15e433e
+    snapshots: EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED1_epoch10.pth, EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED1_epoch20.pth, EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED1_epoch30.pth
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED2 : aa3cc9463f7ba28833ebe2759d485ae44c8f7e949ca3dff44e49be86f5bddf59
+    snapshots: EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED2_epoch10.pth, EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED2_epoch20.pth, EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED2_epoch30.pth
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-C-SEED1 : 92addd1dbd061ed664e4399286325a8e38c24df458628877b6a0df345bf95520
+    snapshots: EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-C-SEED1_epoch10.pth, EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-C-SEED1_epoch20.pth, EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-C-SEED1_epoch30.pth
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-C-SEED2 : fa70996d32ff4821c8aa867c51fe7f3e4f6a95ddb81e084f6cc3b08257e1edc6
+    snapshots: EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-C-SEED2_epoch10.pth, EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-C-SEED2_epoch20.pth, EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-C-SEED2_epoch30.pth
+
+READ-ONLY RECORDS CONSULTED (never written)
+------------------------------------------------------------------------------
+6 blocks, seed 0 : phase2/diagnostics/determinism/20260909T041500Z_baseline/experiments/STAGEB-DETERMINISTIC-BASELINE-ARM-A-RUNA
+5 blocks, seed 0 : phase2/factorial/block_count_deterministic/20260909T131500Z/experiments/EXP-BLOCKCOUNT-DETERMINISTIC-001-ARM-B
+4 blocks, seed 0 : phase2/factorial/block_count_deterministic/20260909T131500Z/experiments/EXP-BLOCKCOUNT-DETERMINISTIC-001-ARM-C
+
+NON-FINITE STATUS
+------------------------------------------------------------------------------
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-A-SEED1            nan_in_gradients=False aborted=None
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED1            nan_in_gradients=False aborted=None
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-C-SEED1            nan_in_gradients=False aborted=None
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-A-SEED2            nan_in_gradients=False aborted=None
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED2            nan_in_gradients=False aborted=None
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-C-SEED2            nan_in_gradients=False aborted=None

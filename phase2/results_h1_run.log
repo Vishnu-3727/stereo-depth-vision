@@ -1,0 +1,96 @@
+EXP-H1-BASE [02:39:19] note: H1: a genuinely shifted stereo correspondence volume, everything else held fixed, changes accuracy by a measurable amount versus Phase 1's frozen degenerate volume (docs/research_questions.md, H1).
+EXP-H1-BASE [02:39:19] note: 160 scenes from random init is a convergence-pipeline proof (Phase 1 EXP-016), not a competitive accuracy result. Both H1 arms share this budget, so the A/B comparison is valid; neither arm's absolute number is a ceiling.
+EXP-H1-BASE [02:39:19] note: no batch normalisation, because the model reproduces the BN-folded exported artifact rather than the training-time upstream model
+EXP-H1-BASE [02:39:43] epoch   0  loss  11.4948  grad    42.281  lr 9.94e-04  val EPE 18.414  D1 88.69%
+EXP-H1-BASE [02:40:03] epoch   1  loss  11.0495  grad    47.270  lr 9.76e-04
+EXP-H1-BASE [02:40:21] epoch   2  loss  10.0509  grad    51.242  lr 9.46e-04
+EXP-H1-BASE [02:40:39] epoch   3  loss  10.0232  grad    53.099  lr 9.05e-04
+EXP-H1-BASE [02:40:58] epoch   4  loss   8.9447  grad    45.525  lr 8.54e-04
+EXP-H1-BASE [02:41:17] epoch   5  loss   9.4769  grad    44.870  lr 7.94e-04  val EPE 20.959  D1 90.84%
+EXP-H1-BASE [02:41:35] epoch   6  loss   9.5395  grad    24.121  lr 7.27e-04
+EXP-H1-BASE [02:41:53] epoch   7  loss   9.0979  grad    25.827  lr 6.55e-04
+EXP-H1-BASE [02:42:11] epoch   8  loss   9.3896  grad    40.970  lr 5.78e-04
+EXP-H1-BASE [02:42:29] epoch   9  loss   8.8457  grad    21.215  lr 5.00e-04
+EXP-H1-BASE [02:42:49] epoch  10  loss   8.5161  grad    24.863  lr 4.22e-04  val EPE 18.602  D1 88.54%
+EXP-H1-BASE [02:43:08] epoch  11  loss   8.9595  grad    24.273  lr 3.45e-04
+EXP-H1-BASE [02:43:26] epoch  12  loss   9.2702  grad    34.469  lr 2.73e-04
+EXP-H1-BASE [02:43:44] epoch  13  loss   8.5277  grad    25.750  lr 2.06e-04
+EXP-H1-BASE [02:44:02] epoch  14  loss   8.7303  grad    27.567  lr 1.46e-04
+EXP-H1-BASE [02:44:21] epoch  15  loss   9.2191  grad    24.783  lr 9.55e-05  val EPE 17.413  D1 88.02%
+EXP-H1-BASE [02:44:38] epoch  16  loss   8.6552  grad    30.976  lr 5.45e-05
+EXP-H1-BASE [02:44:56] epoch  17  loss   8.7298  grad    27.606  lr 2.45e-05
+EXP-H1-BASE [02:45:14] epoch  18  loss   8.6163  grad    30.777  lr 6.16e-06
+EXP-H1-BASE [02:45:34] epoch  19  loss   8.4836  grad    29.607  lr 0.00e+00  val EPE 19.191  D1 88.83%
+EXP-H1-BASE [02:45:34] metric history = [{'epoch': 0, 'mean_loss': 11.49475201368332, 'valid_pixels': 5077447, 'lr': 0.0009938441702975688, 'median_grad_norm': 42.28120231628418, 'val_epe': 18.413936867482953, 'val_d1': 88.6917802846745}, {'epoch': 1, 'mean_loss': 11.049526339769363, 'valid_pixels': 5235120, 'lr': 0.0009755282581475768, 'median_grad_norm': 47.27024459838867}, {'epoch': 2, 'mean_loss': 10.050863951444626, 'valid_pixels': 4921340, 'lr': 0.0009455032620941839, 'median_grad_norm': 51.24244689941406}, {'epoch': 3, 'mean_loss': 10.02323545217514, 'valid_pixels': 5070525, 'lr': 0.0009045084971874737, 'median_grad_norm': 53.09864807128906}, {'epoch': 4, 'mean_loss': 8.944657507538796, 'valid_pixels': 4915605, 'lr': 0.0008535533905932737, 'median_grad_norm': 45.52488899230957}, {'epoch': 5, 'mean_loss': 9.476914978027343, 'valid_pixels': 4868518, 'lr': 0.0007938926261462366, 'median_grad_norm': 44.869773864746094, 'val_epe': 20.958912627916636, 'val_d1': 90.84043121297722}, {'epoch': 6, 'mean_loss': 9.539527416229248, 'valid_pixels': 5061000, 'lr': 0.0007269952498697733, 'median_grad_norm': 24.12062358856201}, {'epoch': 7, 'mean_loss': 9.097869253158569, 'valid_pixels': 4880738, 'lr': 0.0006545084971874737, 'median_grad_norm': 25.82702350616455}, {'epoch': 8, 'mean_loss': 9.389640402793884, 'valid_pixels': 5088028, 'lr': 0.0005782172325201155, 'median_grad_norm': 40.97045135498047}, {'epoch': 9, 'mean_loss': 8.845679432153702, 'valid_pixels': 4936565, 'lr': 0.0005, 'median_grad_norm': 21.215246200561523}, {'epoch': 10, 'mean_loss': 8.516089242696761, 'valid_pixels': 4870989, 'lr': 0.0004217827674798847, 'median_grad_norm': 24.863350868225098, 'val_epe': 18.60225399165593, 'val_d1': 88.53941807952705}, {'epoch': 11, 'mean_loss': 8.959490621089936, 'valid_pixels': 4870503, 'lr': 0.00034549150281252633, 'median_grad_norm': 24.273228645324707}, {'epoch': 12, 'mean_loss': 9.270238709449767, 'valid_pixels': 5072344, 'lr': 0.00027300475013022663, 'median_grad_norm': 34.469051361083984}, {'epoch': 13, 'mean_loss': 8.527693468332291, 'valid_pixels': 4936729, 'lr': 0.00020610737385376348, 'median_grad_norm': 25.75029182434082}, {'epoch': 14, 'mean_loss': 8.730318921804429, 'valid_pixels': 4864560, 'lr': 0.00014644660940672625, 'median_grad_norm': 27.566594123840332}, {'epoch': 15, 'mean_loss': 9.219142970442771, 'valid_pixels': 4978769, 'lr': 9.549150281252631e-05, 'median_grad_norm': 24.783392906188965, 'val_epe': 17.412560960762075, 'val_d1': 88.02377194236024}, {'epoch': 16, 'mean_loss': 8.655187922716141, 'valid_pixels': 4963620, 'lr': 5.4496737905816096e-05, 'median_grad_norm': 30.976401329040527}, {'epoch': 17, 'mean_loss': 8.72982622385025, 'valid_pixels': 5117354, 'lr': 2.447174185242323e-05, 'median_grad_norm': 27.606051445007324}, {'epoch': 18, 'mean_loss': 8.616334801912307, 'valid_pixels': 4961080, 'lr': 6.15582970243117e-06, 'median_grad_norm': 30.777413368225098}, {'epoch': 19, 'mean_loss': 8.483581602573395, 'valid_pixels': 4911398, 'lr': 0.0, 'median_grad_norm': 29.606521606445312, 'val_epe': 19.190911557640728, 'val_d1': 88.83157099616732}]
+EXP-H1-BASE [02:45:34] metric wall_clock_s = 374.70749831199646
+EXP-H1-BASE [02:45:34] metric first_epoch_loss = 11.49475201368332
+EXP-H1-BASE [02:45:34] metric final_epoch_loss = 8.483581602573395
+EXP-H1-BASE [02:45:34] metric loss_reduction_factor = 1.3549409379402353
+EXP-H1-BASE [02:45:34] metric min_loss = 8.483581602573395
+EXP-H1-BASE [02:45:34] metric loss_decreased_monotonically_over_halves = True
+EXP-H1-BASE [02:45:34] metric gradient_norms = {'median': 31.795228958129883, 'max': 130158.046875, 'any_nan': False}
+EXP-H1-BASE [02:45:34] metric parameter_count_unique = 423586
+EXP-H1-BASE [02:45:34] metric cost_volume_bytes_per_image = 2720256
+EXP-H1-BASE [02:45:34] metric checkpoint = phase2\results\training\EXP-H1-BASE_checkpoint.pth
+EXP-H1-BASE [02:45:34] metric validation_epe_series = [{'epoch': 0, 'val_epe': 18.413936867482953, 'val_d1': 88.6917802846745}, {'epoch': 5, 'val_epe': 20.958912627916636, 'val_d1': 90.84043121297722}, {'epoch': 10, 'val_epe': 18.60225399165593, 'val_d1': 88.53941807952705}, {'epoch': 15, 'val_epe': 17.412560960762075, 'val_d1': 88.02377194236024}, {'epoch': 19, 'val_epe': 19.190911557640728, 'val_d1': 88.83157099616732}]
+EXP-H1-BASE [02:45:34] metric validation_epe_initial = 18.413936867482953
+EXP-H1-BASE [02:45:34] metric validation_epe_final = 19.190911557640728
+EXP-H1-BASE [02:45:34] metric validation_epe_best = 17.412560960762075
+EXP-H1-BASE [02:45:34] metric validation_epe_best_epoch = 15
+EXP-H1-BASE [02:45:34] metric validation_change = did not improve
+EXP-H1-BASE [02:45:34] metric loss_change = improved
+EXP-H1-BASE [02:45:34] metric non_finite_gradient_count = 0
+EXP-H1-BASE [02:45:34] note: Loss went from 11.4948 to 8.4836 over 20 epochs. Gradient norms had median 31.795 and maximum 130158.047, with no non-finite values.
+EXP-H1-BASE [02:45:34] note: Validation EPE went from 18.414 px to 19.191 px, so validation did not improve. The best recorded value was 17.413 px at epoch 15. A better intermediate value does not establish improvement, since the run did not end there.
+EXP-H1-BASE [02:45:34] conclusion: Training loss went from 11.4948 to 8.4836, so the loss decreased. All 1600 gradient norms were finite, with a maximum of 130158.047. Validation EPE went from 18.414 px to 19.191 px, so validation did not improve. The best recorded value was 17.413 px at epoch 15. A better intermediate value does not establish improvement, since the run did not end there. A checkpoint was written. cost_volume_shift='none'. Compare against the paired H1 arm before drawing any conclusion about the value of a working cost volume.
+
+recorded as EXP-H1-BASE
+EXP-H1-BASE [02:45:34] status: completed
+EXP-H1-WORKING [02:45:45] note: H1: a genuinely shifted stereo correspondence volume, everything else held fixed, changes accuracy by a measurable amount versus Phase 1's frozen degenerate volume (docs/research_questions.md, H1).
+EXP-H1-WORKING [02:45:45] note: 160 scenes from random init is a convergence-pipeline proof (Phase 1 EXP-016), not a competitive accuracy result. Both H1 arms share this budget, so the A/B comparison is valid; neither arm's absolute number is a ceiling.
+EXP-H1-WORKING [02:45:45] note: no batch normalisation, because the model reproduces the BN-folded exported artifact rather than the training-time upstream model
+EXP-H1-WORKING [02:46:06] epoch   0  loss  11.3056  grad    42.928  lr 9.94e-04  val EPE 17.214  D1 89.31%
+EXP-H1-WORKING [02:46:25] epoch   1  loss  10.4771  grad    48.978  lr 9.76e-04
+EXP-H1-WORKING [02:46:43] epoch   2  loss  10.7222  grad    44.283  lr 9.46e-04
+EXP-H1-WORKING [02:47:01] epoch   3  loss  10.5272  grad    34.692  lr 9.05e-04
+EXP-H1-WORKING [02:47:19] epoch   4  loss   9.2131  grad    25.000  lr 8.54e-04
+EXP-H1-WORKING [02:47:39] epoch   5  loss   9.3429  grad    30.353  lr 7.94e-04  val EPE 20.053  D1 89.87%
+EXP-H1-WORKING [02:47:57] epoch   6  loss   9.2855  grad    26.850  lr 7.27e-04
+EXP-H1-WORKING [02:48:15] epoch   7  loss   8.8376  grad    23.465  lr 6.55e-04
+EXP-H1-WORKING [02:48:34] epoch   8  loss   8.9587  grad    23.306  lr 5.78e-04
+EXP-H1-WORKING [02:48:53] epoch   9  loss   8.7411  grad    22.726  lr 5.00e-04
+EXP-H1-WORKING [02:49:13] epoch  10  loss   8.4279  grad    24.053  lr 4.22e-04  val EPE 18.676  D1 88.47%
+EXP-H1-WORKING [02:49:31] epoch  11  loss   8.8747  grad    22.170  lr 3.45e-04
+EXP-H1-WORKING [02:49:49] epoch  12  loss   9.2797  grad    29.334  lr 2.73e-04
+EXP-H1-WORKING [02:50:07] epoch  13  loss   8.6149  grad    22.971  lr 2.06e-04
+EXP-H1-WORKING [02:50:26] epoch  14  loss   8.8182  grad    21.865  lr 1.46e-04
+EXP-H1-WORKING [02:50:46] epoch  15  loss   9.2782  grad    21.865  lr 9.55e-05  val EPE 17.750  D1 87.87%
+EXP-H1-WORKING [02:51:04] epoch  16  loss   8.7565  grad    26.277  lr 5.45e-05
+EXP-H1-WORKING [02:51:22] epoch  17  loss   8.8680  grad    23.555  lr 2.45e-05
+EXP-H1-WORKING [02:51:40] epoch  18  loss   8.7688  grad    26.615  lr 6.16e-06
+EXP-H1-WORKING [02:52:00] epoch  19  loss   8.6169  grad    25.164  lr 0.00e+00  val EPE 19.212  D1 88.99%
+EXP-H1-WORKING [02:52:00] metric history = [{'epoch': 0, 'mean_loss': 11.305557852983474, 'valid_pixels': 5077447, 'lr': 0.0009938441702975688, 'median_grad_norm': 42.92795181274414, 'val_epe': 17.21358736975443, 'val_d1': 89.31455273956486}, {'epoch': 1, 'mean_loss': 10.477099525928498, 'valid_pixels': 5235120, 'lr': 0.0009755282581475768, 'median_grad_norm': 48.97788619995117}, {'epoch': 2, 'mean_loss': 10.722215539216995, 'valid_pixels': 4921340, 'lr': 0.0009455032620941839, 'median_grad_norm': 44.283111572265625}, {'epoch': 3, 'mean_loss': 10.527233058214188, 'valid_pixels': 5070525, 'lr': 0.0009045084971874737, 'median_grad_norm': 34.691972732543945}, {'epoch': 4, 'mean_loss': 9.213110405206681, 'valid_pixels': 4915605, 'lr': 0.0008535533905932737, 'median_grad_norm': 25.00000286102295}, {'epoch': 5, 'mean_loss': 9.342903649806976, 'valid_pixels': 4868518, 'lr': 0.0007938926261462366, 'median_grad_norm': 30.35328960418701, 'val_epe': 20.05343296416638, 'val_d1': 89.87092192027953}, {'epoch': 6, 'mean_loss': 9.2855424284935, 'valid_pixels': 5061000, 'lr': 0.0007269952498697733, 'median_grad_norm': 26.849730491638184}, {'epoch': 7, 'mean_loss': 8.837640863656997, 'valid_pixels': 4880738, 'lr': 0.0006545084971874737, 'median_grad_norm': 23.464802742004395}, {'epoch': 8, 'mean_loss': 8.958683544397354, 'valid_pixels': 5088028, 'lr': 0.0005782172325201155, 'median_grad_norm': 23.305968284606934}, {'epoch': 9, 'mean_loss': 8.741105169057846, 'valid_pixels': 4936565, 'lr': 0.0005, 'median_grad_norm': 22.726491928100586}, {'epoch': 10, 'mean_loss': 8.427923172712326, 'valid_pixels': 4870989, 'lr': 0.0004217827674798847, 'median_grad_norm': 24.053253173828125, 'val_epe': 18.676326820334857, 'val_d1': 88.47237011336908}, {'epoch': 11, 'mean_loss': 8.874720203876496, 'valid_pixels': 4870503, 'lr': 0.00034549150281252633, 'median_grad_norm': 22.170047760009766}, {'epoch': 12, 'mean_loss': 9.279664891958237, 'valid_pixels': 5072344, 'lr': 0.00027300475013022663, 'median_grad_norm': 29.333760261535645}, {'epoch': 13, 'mean_loss': 8.614873224496842, 'valid_pixels': 4936729, 'lr': 0.00020610737385376348, 'median_grad_norm': 22.97095775604248}, {'epoch': 14, 'mean_loss': 8.81820946931839, 'valid_pixels': 4864560, 'lr': 0.00014644660940672625, 'median_grad_norm': 21.865086555480957}, {'epoch': 15, 'mean_loss': 9.278209885954857, 'valid_pixels': 4978769, 'lr': 9.549150281252631e-05, 'median_grad_norm': 21.864670753479004, 'val_epe': 17.749693017735428, 'val_d1': 87.87323636449595}, {'epoch': 16, 'mean_loss': 8.756521314382553, 'valid_pixels': 4963620, 'lr': 5.4496737905816096e-05, 'median_grad_norm': 26.276758193969727}, {'epoch': 17, 'mean_loss': 8.868048280477524, 'valid_pixels': 5117354, 'lr': 2.447174185242323e-05, 'median_grad_norm': 23.55507183074951}, {'epoch': 18, 'mean_loss': 8.768789315223694, 'valid_pixels': 4961080, 'lr': 6.15582970243117e-06, 'median_grad_norm': 26.615269660949707}, {'epoch': 19, 'mean_loss': 8.616900038719177, 'valid_pixels': 4911398, 'lr': 0.0, 'median_grad_norm': 25.16449546813965, 'val_epe': 19.21188108098442, 'val_d1': 88.9902726724739}]
+EXP-H1-WORKING [02:52:00] metric wall_clock_s = 375.0113170146942
+EXP-H1-WORKING [02:52:00] metric first_epoch_loss = 11.305557852983474
+EXP-H1-WORKING [02:52:00] metric final_epoch_loss = 8.616900038719177
+EXP-H1-WORKING [02:52:00] metric loss_reduction_factor = 1.312021469691314
+EXP-H1-WORKING [02:52:00] metric min_loss = 8.427923172712326
+EXP-H1-WORKING [02:52:00] metric loss_decreased_monotonically_over_halves = True
+EXP-H1-WORKING [02:52:00] metric gradient_norms = {'median': 26.84498119354248, 'max': 246.4553680419922, 'any_nan': False}
+EXP-H1-WORKING [02:52:00] metric parameter_count_unique = 423586
+EXP-H1-WORKING [02:52:00] metric cost_volume_bytes_per_image = 2720256
+EXP-H1-WORKING [02:52:00] metric checkpoint = phase2\results\training\EXP-H1-WORKING_checkpoint.pth
+EXP-H1-WORKING [02:52:00] metric validation_epe_series = [{'epoch': 0, 'val_epe': 17.21358736975443, 'val_d1': 89.31455273956486}, {'epoch': 5, 'val_epe': 20.05343296416638, 'val_d1': 89.87092192027953}, {'epoch': 10, 'val_epe': 18.676326820334857, 'val_d1': 88.47237011336908}, {'epoch': 15, 'val_epe': 17.749693017735428, 'val_d1': 87.87323636449595}, {'epoch': 19, 'val_epe': 19.21188108098442, 'val_d1': 88.9902726724739}]
+EXP-H1-WORKING [02:52:00] metric validation_epe_initial = 17.21358736975443
+EXP-H1-WORKING [02:52:00] metric validation_epe_final = 19.21188108098442
+EXP-H1-WORKING [02:52:00] metric validation_epe_best = 17.21358736975443
+EXP-H1-WORKING [02:52:00] metric validation_epe_best_epoch = 0
+EXP-H1-WORKING [02:52:00] metric validation_change = did not improve
+EXP-H1-WORKING [02:52:00] metric loss_change = improved
+EXP-H1-WORKING [02:52:00] metric non_finite_gradient_count = 0
+EXP-H1-WORKING [02:52:00] note: Loss went from 11.3056 to 8.6169 over 20 epochs. Gradient norms had median 26.845 and maximum 246.455, with no non-finite values.
+EXP-H1-WORKING [02:52:00] note: Validation EPE went from 17.214 px to 19.212 px, so validation did not improve. The best recorded value was 17.214 px at epoch 0. A better intermediate value does not establish improvement, since the run did not end there.
+EXP-H1-WORKING [02:52:00] conclusion: Training loss went from 11.3056 to 8.6169, so the loss decreased. All 1600 gradient norms were finite, with a maximum of 246.455. Validation EPE went from 17.214 px to 19.212 px, so validation did not improve. The best recorded value was 17.214 px at epoch 0. A better intermediate value does not establish improvement, since the run did not end there. A checkpoint was written. cost_volume_shift='left'. Compare against the paired H1 arm before drawing any conclusion about the value of a working cost volume.
+
+recorded as EXP-H1-WORKING
+EXP-H1-WORKING [02:52:00] status: completed

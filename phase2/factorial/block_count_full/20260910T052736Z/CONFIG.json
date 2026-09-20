@@ -1,0 +1,231 @@
+{
+  "experiment": "EXP-BLOCKCOUNT-FULL-001",
+  "batch": 2,
+  "authorised_batch": [
+    [
+      "B",
+      2
+    ]
+  ],
+  "not_authorised": [
+    "4b/seed1",
+    "4b/seed2",
+    "any other 5b seed",
+    "any 6b seed",
+    "seed 0",
+    "any 30-epoch run",
+    "any rerun"
+  ],
+  "epochs": 200,
+  "blocks": 5,
+  "seed": 2,
+  "dilations": [
+    1,
+    2,
+    4,
+    8,
+    1
+  ],
+  "scheduler": "CosineAnnealingLR T_max=200 (native, not re-fitted)",
+  "checkpoint_epochs": [
+    1,
+    2,
+    5,
+    10,
+    20,
+    50,
+    100,
+    150,
+    200
+  ],
+  "weight_snapshot_epochs": [
+    10,
+    20,
+    50,
+    100,
+    150,
+    200
+  ],
+  "gates": {
+    "viability": 10,
+    "collapse_check": 100,
+    "stereo_verdict": 200
+  },
+  "run": {
+    "id": "EXP-BLOCKCOUNT-FULL-001-ARM-B-SEED2",
+    "parameters": 405090,
+    "init_weight_sha": "540d81706f0d4850",
+    "final_weight_sha": "793f2c77e3074810",
+    "wall_clock_s": 4777.600305080414
+  },
+  "recipe": {
+    "cost_volume_shift": "left",
+    "num_disparities": 12,
+    "regression": "StandardisedDisparityRegression",
+    "dilations": [
+      1,
+      2,
+      4,
+      8,
+      1
+    ],
+    "train_split": "hailo_calib",
+    "val_split": "hailo_val",
+    "train_scenes": 160,
+    "batch_size": 2,
+    "optimizer": "Adam(lr=1e-3, betas=(0.9, 0.999))"
+  },
+  "frozen_records_readonly": {
+    "6b_seed0": {
+      "epe": 2.2955182,
+      "d1": 15.6045143,
+      "eval40": "phase2/diagnostics/determinism/20260909T041500Z_baseline/eval40_run_A.json"
+    },
+    "6b_seed1": {
+      "epe": 2.3982217,
+      "d1": 18.3357145,
+      "eval40": "phase2/factorial/block_count_full/20260910T005550Z/eval40_EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED1.json"
+    },
+    "6b_seed2": {
+      "epe": 2.3950488,
+      "d1": 17.4699044,
+      "eval40": "phase2/factorial/block_count_full/20260910T005550Z/eval40_EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED2.json"
+    },
+    "5b_seed0": {
+      "epe": 2.6457595,
+      "d1": 21.3711907,
+      "eval40": "phase2/factorial/block_count_deterministic/20260909T131500Z/eval40_arm_B.json"
+    },
+    "5b_seed1": {
+      "epe": 2.472983,
+      "d1": 18.2061782,
+      "eval40": "phase2/factorial/block_count_full/20260910T005550Z/eval40_EXP-BLOCKCOUNT-FULL-001-ARM-B-SEED1.json"
+    },
+    "4b_seed0": {
+      "epe": 2.3387143,
+      "d1": 16.9797389,
+      "eval40": "phase2/factorial/block_count_deterministic/20260909T131500Z/eval40_arm_C.json"
+    }
+  },
+  "result_40_scene": {
+    "id": "EXP-BLOCKCOUNT-FULL-001-ARM-B-SEED2",
+    "blocks": 5,
+    "seed": 2,
+    "epe": 2.637299378667016,
+    "d1": 20.659398858261433,
+    "rmse": 6.443872277360179
+  },
+  "seed_ranges": {
+    "6_blocks": {
+      "seeds": {
+        "0": {
+          "epe": 2.2955181809208267,
+          "d1": 15.6045142562172
+        },
+        "1": {
+          "epe": 2.3982217171269924,
+          "d1": 18.335714475424272
+        },
+        "2": {
+          "epe": 2.3950487882916516,
+          "d1": 17.469904388795932
+        }
+      },
+      "epe": {
+        "n": 3,
+        "mean": 2.3629295621131567,
+        "sd": 0.05840152057131535,
+        "min": 2.2955181809208267,
+        "max": 2.3982217171269924,
+        "range": 0.10270353620616568
+      },
+      "d1": {
+        "n": 3,
+        "mean": 17.1367110401458,
+        "sd": 1.39575320706696,
+        "min": 15.6045142562172,
+        "max": 18.335714475424272,
+        "range": 2.7312002192070715
+      }
+    },
+    "5_blocks": {
+      "seeds": {
+        "0": {
+          "epe": 2.6457595145748534,
+          "d1": 21.37119073145372
+        },
+        "1": {
+          "epe": 2.4729829593541792,
+          "d1": 18.20617824196243
+        },
+        "2": {
+          "epe": 2.637299378667016,
+          "d1": 20.659398858261433
+        }
+      },
+      "epe": {
+        "n": 3,
+        "mean": 2.585347284198683,
+        "sd": 0.09740225663820949,
+        "min": 2.4729829593541792,
+        "max": 2.6457595145748534,
+        "range": 0.17277655522067414
+      },
+      "d1": {
+        "n": 3,
+        "mean": 20.078922610559193,
+        "sd": 1.66043383495664,
+        "min": 18.20617824196243,
+        "max": 21.37119073145372,
+        "range": 3.165012489491289
+      }
+    },
+    "4_blocks_seed0_only": {
+      "epe": 2.3387143497258114,
+      "d1": 16.97973886063337
+    }
+  },
+  "non_overlap": {
+    "min_5b_epe_gt_max_6b_epe": true,
+    "min_5b_epe": 2.4729829593541792,
+    "max_6b_epe": 2.3982217171269924,
+    "epe_margin": 0.07476124222718683,
+    "min_5b_d1_gt_max_6b_d1": false,
+    "min_5b_d1": 18.20617824196243,
+    "max_6b_d1": 18.335714475424272,
+    "d1_margin": -0.12953623346184173
+  },
+  "deterministic_controls": {
+    "torch.use_deterministic_algorithms": true,
+    "torch.backends.cudnn.deterministic": true,
+    "torch.backends.cudnn.benchmark": false,
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+  },
+  "environment": {
+    "command": "phase2/factorial/block_count_full/exp_blockcount_batch2.py train --out phase2/factorial/block_count_full/20260910T052736Z",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "numpy": "2.5.1",
+    "cuda_version": "12.8",
+    "cudnn_version": 90701,
+    "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "nvidia_driver": "616.64",
+    "flags": {
+      "deterministic_algorithms": true,
+      "cudnn.deterministic": true,
+      "cudnn.benchmark": false
+    },
+    "env": {
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+    }
+  },
+  "provenance": {
+    "head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "head_subject": "docs: add the Phase 1 overview",
+    "phase_1_frozen_commit": "b4207e518166f5089731b4d037a4a79234f70986",
+    "phase_1_diff_vs_frozen": "",
+    "status_short": "M .gitignore\n?? phase2/",
+    "phase_2_committed": false
+  }
+}

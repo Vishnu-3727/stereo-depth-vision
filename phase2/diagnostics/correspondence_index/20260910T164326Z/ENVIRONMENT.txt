@@ -1,0 +1,54 @@
+EXP-CORRESPONDENCE-INDEX-001 -- ENVIRONMENT
+============================================
+
+Inference only. No training, no optimizer, no weight/architecture change.
+No image or feature modification. Refinement never invoked.
+
+python                     3.12.9
+torch                      2.7.0+cu128
+numpy                      2.5.1
+cuda                       12.8
+gpu                        NVIDIA GeForce RTX 4060 Laptop GPU
+CUBLAS_WORKSPACE_CONFIG    :4096:8
+
+deterministic controls
+  torch.use_deterministic_algorithms       True
+  torch.backends.cudnn.deterministic       True
+  torch.backends.cudnn.benchmark           False
+  CUBLAS_WORKSPACE_CONFIG                  :4096:8
+
+frozen random permutation (generated once, before execution)
+  numpy.random.default_rng(20260910).permutation(12)
+  [1, 10, 9, 5, 3, 8, 11, 0, 6, 7, 2, 4]
+
+permutation arms  V'(k) = V(pi(k))
+  identity    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+  m_plus_1    [11, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  m_plus_2    [10, 11, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  m_minus_1   [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0]
+  random      [1, 10, 9, 5, 3, 8, 11, 0, 6, 7, 2, 4]
+
+scenes    FOCUS_SCENES [27, 0, 31, 6], split hailo_val
+mask      GT valid and GT/16 in [2,8]; model-independent; no border mask
+
+checkpoints (loaded read-only)
+  NEG_shift_none   d40d805bbe4cca310683f8617c7518d660e30055c43431081bcbb6a7c388f9b1
+      phase2/factorial/shift_none_standardized/20260909T071500Z/checkpoints/EXP-FACTORIAL-SHIFT-NONE-STANDARDISED-001-ARM-A_checkpoint.pth
+  6b_seed0         581d62e699b159945580f9627b451d953ce07b5dc763d608a9f4a8b5ecba692a
+      phase2/diagnostics/determinism/20260909T041500Z_baseline/checkpoints/STAGEB-DETERMINISTIC-BASELINE-ARM-A-RUNA_checkpoint.pth
+  6b_seed1         58117f2613bba4b2c817328c7d6757f21b340ec5e64a828e633193ae091d4adf
+      phase2/factorial/block_count_full/20260910T005550Z/checkpoints/EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED1_checkpoint.pth
+  6b_seed2         245a3f5bcb801c7d9c3550b02cb8775cb86486beae606f04097900340754fa69
+      phase2/factorial/block_count_full/20260910T005550Z/checkpoints/EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED2_checkpoint.pth
+
+harness snapshot
+  exp_correspondence_index.snapshot.py
+  sha256 031a8829f8cbc46972183b78896db18c417cea38e7d01eb4693fb57cd29b5058
+
+wall clock  gate 3.01 s + positive 4.48 s
+
+provenance
+  HEAD                    58e8a19908ddbd35451652c61aef478f56b51ebd
+  phase-1-frozen^{commit} b4207e518166f5089731b4d037a4a79234f70986
+  phase 1 diff vs frozen  EMPTY
+  phase 2 committed       False

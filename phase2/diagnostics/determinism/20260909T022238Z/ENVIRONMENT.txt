@@ -1,0 +1,130 @@
+STAGE A DETERMINISM DIAGNOSTIC -- ENVIRONMENT
+run directory: 20260909T022238Z
+
+== PROVENANCE (git) ==
+HEAD                           58e8a19908ddbd35451652c61aef478f56b51ebd
+HEAD subject                   docs: add the Phase 1 overview
+phase-1-frozen (ref resolves)  0fc4f296b409f79bc12cd8e294a1bdb34ed1e262
+phase-1-frozen ^{commit}       b4207e518166f5089731b4d037a4a79234f70986
+tag object type                tag
+git diff phase-1-frozen -- src scripts : EMPTY
+git status --short            :
+    M .gitignore
+    ?? phase2/
+
+== run_A ==
+  label                        RUN_A default flags
+  command                      phase2/diagnostics/determinism/diag_determinism.py --out phase2/diagnostics/determinism/20260909T022238Z/run_A --label RUN_A default flags
+  cwd                          C:\Users\vishn\stereo_depth_vision
+  platform                     Windows-11-10.0.26200-SP0
+  python                       3.12.9
+  torch                        2.7.0+cu128
+  numpy                        2.5.1
+  cuda (torch.version.cuda)    12.8
+  cudnn version                90701
+  gpu                          NVIDIA GeForce RTX 4060 Laptop GPU cap 8.9
+  nvidia driver                616.64
+  deterministic requested      False
+    flag cuda.matmul.allow_tf32         False
+    flag cudnn.allow_tf32               True
+    flag cudnn.benchmark                False
+    flag cudnn.deterministic            False
+    flag cudnn.enabled                  True
+    flag deterministic_algorithms       False
+    flag float32_matmul_precision       highest
+    env  CUBLAS_WORKSPACE_CONFIG        None
+    env  CUDA_LAUNCH_BLOCKING           None
+    env  CUDA_VISIBLE_DEVICES           None
+    env  OMP_NUM_THREADS                None
+    env  PYTHONHASHSEED                 None
+    env  TORCH_USE_CUDA_DSA             None
+  determinism setup error      None
+  nondeterministic op error    None
+
+== run_B ==
+  label                        RUN_B default flags, fresh process
+  command                      phase2/diagnostics/determinism/diag_determinism.py --out phase2/diagnostics/determinism/20260909T022238Z/run_B --label RUN_B default flags, fresh process
+  cwd                          C:\Users\vishn\stereo_depth_vision
+  platform                     Windows-11-10.0.26200-SP0
+  python                       3.12.9
+  torch                        2.7.0+cu128
+  numpy                        2.5.1
+  cuda (torch.version.cuda)    12.8
+  cudnn version                90701
+  gpu                          NVIDIA GeForce RTX 4060 Laptop GPU cap 8.9
+  nvidia driver                616.64
+  deterministic requested      False
+    flag cuda.matmul.allow_tf32         False
+    flag cudnn.allow_tf32               True
+    flag cudnn.benchmark                False
+    flag cudnn.deterministic            False
+    flag cudnn.enabled                  True
+    flag deterministic_algorithms       False
+    flag float32_matmul_precision       highest
+    env  CUBLAS_WORKSPACE_CONFIG        None
+    env  CUDA_LAUNCH_BLOCKING           None
+    env  CUDA_VISIBLE_DEVICES           None
+    env  OMP_NUM_THREADS                None
+    env  PYTHONHASHSEED                 None
+    env  TORCH_USE_CUDA_DSA             None
+  determinism setup error      None
+  nondeterministic op error    None
+
+== run_C_deterministic ==
+  label                        RUN_C determinism controls ON
+  command                      phase2/diagnostics/determinism/diag_determinism.py --out phase2/diagnostics/determinism/20260909T022238Z/run_C_deterministic --deterministic --label RUN_C determinism controls ON
+  cwd                          C:\Users\vishn\stereo_depth_vision
+  platform                     Windows-11-10.0.26200-SP0
+  python                       3.12.9
+  torch                        2.7.0+cu128
+  numpy                        2.5.1
+  cuda (torch.version.cuda)    12.8
+  cudnn version                90701
+  gpu                          NVIDIA GeForce RTX 4060 Laptop GPU cap 8.9
+  nvidia driver                616.64
+  deterministic requested      True
+    flag cuda.matmul.allow_tf32         False
+    flag cudnn.allow_tf32               True
+    flag cudnn.benchmark                False
+    flag cudnn.deterministic            True
+    flag cudnn.enabled                  True
+    flag deterministic_algorithms       True
+    flag float32_matmul_precision       highest
+    env  CUBLAS_WORKSPACE_CONFIG        :4096:8
+    env  CUDA_LAUNCH_BLOCKING           None
+    env  CUDA_VISIBLE_DEVICES           None
+    env  OMP_NUM_THREADS                None
+    env  PYTHONHASHSEED                 None
+    env  TORCH_USE_CUDA_DSA             None
+  determinism setup error      None
+  nondeterministic op error    None
+
+== run_D_deterministic ==
+  label                        RUN_D determinism controls ON, fresh process
+  command                      phase2/diagnostics/determinism/diag_determinism.py --out phase2/diagnostics/determinism/20260909T022238Z/run_D_deterministic --deterministic --label RUN_D determinism controls ON, fresh process
+  cwd                          C:\Users\vishn\stereo_depth_vision
+  platform                     Windows-11-10.0.26200-SP0
+  python                       3.12.9
+  torch                        2.7.0+cu128
+  numpy                        2.5.1
+  cuda (torch.version.cuda)    12.8
+  cudnn version                90701
+  gpu                          NVIDIA GeForce RTX 4060 Laptop GPU cap 8.9
+  nvidia driver                616.64
+  deterministic requested      True
+    flag cuda.matmul.allow_tf32         False
+    flag cudnn.allow_tf32               True
+    flag cudnn.benchmark                False
+    flag cudnn.deterministic            True
+    flag cudnn.enabled                  True
+    flag deterministic_algorithms       True
+    flag float32_matmul_precision       highest
+    env  CUBLAS_WORKSPACE_CONFIG        :4096:8
+    env  CUDA_LAUNCH_BLOCKING           None
+    env  CUDA_VISIBLE_DEVICES           None
+    env  OMP_NUM_THREADS                None
+    env  PYTHONHASHSEED                 None
+    env  TORCH_USE_CUDA_DSA             None
+  determinism setup error      None
+  nondeterministic op error    None
+

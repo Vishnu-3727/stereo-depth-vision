@@ -1,0 +1,118 @@
+{
+  "protocol": "trained EXP-H1-*-v2 weights, 150 single-sample 256x512 crops from hailo_calib, identical crops for both arms; forward + backward only, no optimizer step, nothing saved.",
+  "git_revision": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+  "models": {
+    "BASE": {
+      "crops": 150,
+      "total_norm_median": 54.570486068725586,
+      "total_norm_max": 261.8133239746094,
+      "spike_count_above_1e4": 0,
+      "matching_path_grad_zero_on": 150,
+      "matching_path_grad_max": 0.0,
+      "spikes_with_nonzero_matching_gradient": 0,
+      "median_total_norm_when_matching_gradient_nonzero": null,
+      "median_total_norm_when_matching_gradient_zero": 54.570486068725586,
+      "cost_gap": {
+        "low_res": {
+          "min_over_crops": 441569136.0,
+          "median_over_crops": 403940323328.0,
+          "mean_fraction_pixels_below_88": 0.0,
+          "max_fraction_pixels_below_88": 0.0
+        },
+        "upsampled": {
+          "min_over_crops": 441569136.0,
+          "median_over_crops": 458232913920.0,
+          "mean_fraction_pixels_below_88": 0.0,
+          "max_fraction_pixels_below_88": 0.0
+        }
+      },
+      "unsaturated_fraction_upsampled": {
+        "on_spike_crops": [],
+        "median_on_non_spike_crops": 0.0
+      }
+    },
+    "WORKING": {
+      "crops": 150,
+      "total_norm_median": 58.44719696044922,
+      "total_norm_max": 3978315431936.0,
+      "spike_count_above_1e4": 5,
+      "matching_path_grad_zero_on": 145,
+      "matching_path_grad_max": 1000000000.0,
+      "spikes_with_nonzero_matching_gradient": 5,
+      "median_total_norm_when_matching_gradient_nonzero": 79890656.0,
+      "median_total_norm_when_matching_gradient_zero": 57.32480239868164,
+      "cost_gap": {
+        "low_res": {
+          "min_over_crops": 1677721600.0,
+          "median_over_crops": 4.808375016410317e+16,
+          "mean_fraction_pixels_below_88": 0.0,
+          "max_fraction_pixels_below_88": 0.0
+        },
+        "upsampled": {
+          "min_over_crops": 0.0,
+          "median_over_crops": 5.311997942326886e+16,
+          "mean_fraction_pixels_below_88": 3.5603841145833335e-07,
+          "max_fraction_pixels_below_88": 7.62939453125e-06
+        }
+      },
+      "unsaturated_fraction_upsampled": {
+        "on_spike_crops": [
+          7.62939453125e-06,
+          7.62939453125e-06,
+          7.62939453125e-06,
+          7.62939453125e-06,
+          7.62939453125e-06
+        ],
+        "median_on_non_spike_crops": 0.0
+      }
+    }
+  },
+  "column_bands": {
+    "BASE": {
+      "x=0_left_edge": {
+        "crops": 90,
+        "median": 60.49733543395996,
+        "p90": 128.42607879638675,
+        "max": 195.15110778808594,
+        "spikes_above_1e4": 0
+      },
+      "x=max_right_edge": {
+        "crops": 90,
+        "median": 85.04262924194336,
+        "p90": 160.82277832031264,
+        "max": 270.44390869140625,
+        "spikes_above_1e4": 0
+      },
+      "x=random_interior": {
+        "crops": 90,
+        "median": 53.42818832397461,
+        "p90": 98.23861541748047,
+        "max": 147.19070434570312,
+        "spikes_above_1e4": 0
+      }
+    },
+    "WORKING": {
+      "x=0_left_edge": {
+        "crops": 90,
+        "median": 63.38102340698242,
+        "p90": 132.6684112548828,
+        "max": 3258674688.0,
+        "spikes_above_1e4": 2
+      },
+      "x=max_right_edge": {
+        "crops": 90,
+        "median": 114.19681930541992,
+        "p90": 388.423815917969,
+        "max": 923076864.0,
+        "spikes_above_1e4": 4
+      },
+      "x=random_interior": {
+        "crops": 90,
+        "median": 58.69559097290039,
+        "p90": 113.7304641723633,
+        "max": 8935257931776.0,
+        "spikes_above_1e4": 2
+      }
+    }
+  }
+}

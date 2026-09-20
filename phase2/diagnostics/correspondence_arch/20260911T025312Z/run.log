@@ -1,0 +1,22 @@
+EXP-CORRESPONDENCE-ARCH-001
+device=cuda torch=2.7.0+cu128 numpy=2.5.1
+seeds=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]  random_init sha256=945e3283f1156eaf6c5a5dd608eff3d15ee9b56440155b98a8895db86ea860e1  generator sha256=fed055f06934f9626d542ca15e8d391687a2f7a7db46f9b00ef0619849e7bb7c
+random aggregations reconstructed and hash-verified: 16
+done NEG_shift_none 000187_10.png mask=33026  cls=DEGENERATE-NOT-CLASSIFIED  TR[degenerate]  RR[degenerate]
+done NEG_shift_none 000160_10.png mask=42676  cls=DEGENERATE-NOT-CLASSIFIED  TR[degenerate]  RR[degenerate]
+done NEG_shift_none 000191_10.png mask=37892  cls=DEGENERATE-NOT-CLASSIFIED  TR[degenerate]  RR[degenerate]
+done NEG_shift_none 000166_10.png mask=62908  cls=DEGENERATE-NOT-CLASSIFIED  TR[degenerate]  RR[degenerate]
+done POS_6b_seed0   000187_10.png mask=33026  cls=INSIDE  TR[-0.7748..0.6562]  RR[-0.9668..0.9613]
+done POS_6b_seed0   000160_10.png mask=42676  cls=INSIDE  TR[-0.7763..0.8255]  RR[-0.9428..0.9911]
+done POS_6b_seed0   000191_10.png mask=37892  cls=INSIDE  TR[-0.6626..0.8069]  RR[-0.9811..0.9910]
+done POS_6b_seed0   000166_10.png mask=62908  cls=INSIDE  TR[-0.6726..0.7645]  RR[-0.9697..0.9945]
+done POS_6b_seed1   000187_10.png mask=33026  cls=INSIDE  TR[-0.8374..0.7648]  RR[-0.9480..0.9711]
+done POS_6b_seed1   000160_10.png mask=42676  cls=INSIDE  TR[-0.9048..0.9130]  RR[-0.9783..0.9674]
+done POS_6b_seed1   000191_10.png mask=37892  cls=INSIDE  TR[-0.9270..0.8396]  RR[-0.9860..0.9804]
+done POS_6b_seed1   000166_10.png mask=62908  cls=INSIDE  TR[-0.8904..0.8560]  RR[-0.9684..0.9543]
+done POS_6b_seed2   000187_10.png mask=33026  cls=INSIDE  TR[-0.8558..0.7168]  RR[-0.9612..0.9739]
+done POS_6b_seed2   000160_10.png mask=42676  cls=INSIDE  TR[-0.8341..0.6175]  RR[-0.9746..0.9851]
+done POS_6b_seed2   000191_10.png mask=37892  cls=INSIDE  TR[-0.8971..0.7694]  RR[-0.9795..0.9820]
+done POS_6b_seed2   000166_10.png mask=62908  cls=INSIDE  TR[-0.9022..0.7330]  RR[-0.9722..0.9840]
+VERDICT: CASE-A-ARCHITECTURE-INDUCED
+wall_clock_s=40.88

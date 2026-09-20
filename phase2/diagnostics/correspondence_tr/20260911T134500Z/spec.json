@@ -1,0 +1,233 @@
+{
+  "experiment_id": "EXP-CORRESPONDENCE-TR-001",
+  "title": "Trained-vs-Random Geometric Separation",
+  "kind": "inference-only; no training; distributional comparison against a hash-verified pre-existing random population",
+  "primary_question": "Under the same synthetic geometric construction, does the trained aggregation produce a response distinguishable from the empirically observed random-weight population?",
+  "checkpoints": {
+    "H2_seed0": {
+      "path": "phase2/diagnostics/determinism/20260909T041500Z_baseline/checkpoints/STAGEB-DETERMINISTIC-BASELINE-ARM-A-RUNA_checkpoint.pth",
+      "sha256": "581d62e699b159945580f9627b451d953ce07b5dc763d608a9f4a8b5ecba692a"
+    },
+    "H2_seed1": {
+      "path": "phase2/factorial/block_count_full/20260910T005550Z/checkpoints/EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED1_checkpoint.pth",
+      "sha256": "58117f2613bba4b2c817328c7d6757f21b340ec5e64a828e633193ae091d4adf"
+    },
+    "H2_seed2": {
+      "path": "phase2/factorial/block_count_full/20260910T005550Z/checkpoints/EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED2_checkpoint.pth",
+      "sha256": "245a3f5bcb801c7d9c3550b02cb8775cb86486beae606f04097900340754fa69"
+    },
+    "NEG_shift_none": {
+      "path": "phase2/factorial/shift_none_standardized/20260909T071500Z/checkpoints/EXP-FACTORIAL-SHIFT-NONE-STANDARDISED-001-ARM-A_checkpoint.pth",
+      "sha256": "d40d805bbe4cca310683f8617c7518d660e30055c43431081bcbb6a7c388f9b1"
+    }
+  },
+  "trained_checkpoints": [
+    "H2_seed0",
+    "H2_seed1",
+    "H2_seed2"
+  ],
+  "search_free_control": {
+    "checkpoint": "NEG_shift_none",
+    "purpose": "tests whether the trained geometric statistic requires the candidate-dependent construction",
+    "reporting": "SEPARATE. Never mixed into the random-weight null.",
+    "note": "not previously measured on these scenes; run fresh under identical conditions"
+  },
+  "construction": {
+    "inherited_from": "correspondence_arch_rate/20260911T130507Z/construction_spec.json",
+    "inherited_sha256": "7a4e2341fc50e3695648cc286cdb4219390a0378a6669994ec0e4555b75cf9b0",
+    "rule": "self-pair crops of scene.left; a_R = a_L + t; imposed disparity d = t px exactly and uniformly; candidate coordinate k_true = t/16",
+    "left_crop": "rows [0,272), cols [0,1136)   FIXED every condition",
+    "right_crop_horizontal": "rows [0,272), cols [t, 1136+t)",
+    "right_crop_vertical": "rows [t, 272+t), cols [0,1136)",
+    "crop_size": {
+      "width": 1136,
+      "height": 272
+    },
+    "t_levels_px": [
+      0,
+      16,
+      32,
+      48,
+      64,
+      80,
+      96
+    ],
+    "u_levels": [
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0
+    ],
+    "fill_padding_interpolation": "NONE -- integer slicing only",
+    "sign_verification_required": true
+  },
+  "mask": {
+    "inherited_from": "correspondence_arch_rate/20260911T130507Z/classification_spec.json",
+    "inherited_sha256": "273f7562b62dd4c29a2d617e3b2b4b24d98532fcc7d99531b82b55b377d0cd28",
+    "definition_crop_coords": "retain (y,x) iff 64 <= y < 208 AND 64 <= x < 1072",
+    "retained_pixels_per_scene": 145152,
+    "gt_dependent": false
+  },
+  "scenes": [
+    5,
+    7,
+    8,
+    9
+  ],
+  "scene_names": [
+    "000165_10.png",
+    "000167_10.png",
+    "000168_10.png",
+    "000169_10.png"
+  ],
+  "scene_note": "IDENTICAL to the random reference. Required for an apples-to-apples comparison under identical input construction.",
+  "primary_statistic": {
+    "name": "alpha_h",
+    "definition": "FREE-INTERCEPT ordinary-least-squares slope of m_h(t) on u = t/16 over ALL SEVEN levels t in {0,16,32,48,64,80,96}; m_h(t) = median predicted candidate disparity over the fixed mask",
+    "intercept": "FREE -- the through-origin form is prohibited (GEOM-002 defect)",
+    "identical_to_reference": true,
+    "reference_definition_sha256": "273f7562b62dd4c29a2d617e3b2b4b24d98532fcc7d99531b82b55b377d0cd28"
+  },
+  "secondary_statistics": {
+    "alpha_v": "same fit on the vertical arm; control axis; NO expectation that it is zero",
+    "R_h": "max(m_h) - min(m_h); recorded, no unregistered threshold applied",
+    "first_differences": "Delta_i = m_h(t_i) - m_h(t_{i-1}), all six; positive count, negative count, min, max"
+  },
+  "classification": {
+    "inherited_verbatim_from_ARCH_RATE": true,
+    "order": [
+      "NONFINITE",
+      "CLIPPED",
+      "FLAT",
+      "ANTI_CORRELATED",
+      "NON_MONOTONE",
+      "NON_SPECIFIC",
+      "QUALIFYING"
+    ],
+    "CLIPPED": "min_t m_h(t) <= 1.0 OR max_t m_h(t) >= 10.0",
+    "FLAT": "max_t m_h(t) - min_t m_h(t) < 1.0",
+    "threshold_provenance": "candidate grid spacing (1 candidate); inherited unchanged from ARCH-RATE-001; NOT derived from any trained observation",
+    "precedence_note": "CLIPPED is evaluated before every ordinary class. A clipped response can never be classified monotonic."
+  },
+  "unit_structure": {
+    "primary": "MATCHED units: checkpoint c supplies BOTH its feature extractor and its aggregation. 3 checkpoints x 4 scenes = 12 units. These are the real models.",
+    "secondary": "FULL CROSS: 3 feature extractors x 3 trained aggregations x 4 scenes = 36 units, closest analogue of the ARCH-RATE 3 x 32 x 4 structure. Off-diagonal pairs are chimeras, not real models.",
+    "n_matched": 12,
+    "n_cross": 36,
+    "independence": "Units are NOT independent replicates. They share three checkpoints and four scenes, and the three checkpoints originate from related training conditions. NO p-value is computed anywhere.",
+    "reporting_required": [
+      "per-unit",
+      "grouped by checkpoint",
+      "grouped by scene"
+    ],
+    "pooling_prohibited": "matched and cross populations are never pooled"
+  },
+  "random_reference": {
+    "source": "phase2/diagnostics/correspondence_arch_rate/20260911T130507Z",
+    "results_sha256": "1f0463ec08b950d3c1b69804407299f66b4b6cee5c04af51419a061dba7458f1",
+    "n": 384,
+    "alpha_h_observed_range": [
+      -0.1613065379006522,
+      0.24412651743207658
+    ],
+    "alpha_v_observed_range": [
+      -0.0780966145651681,
+      0.07384134020124163
+    ],
+    "range_h_observed_range": [
+      0.08178079128265381,
+      1.2132842540740967
+    ],
+    "alpha_h_summary": {
+      "n": 384,
+      "min": -0.1613065379006522,
+      "p25": -0.04970684732709612,
+      "median": 0.0031561715262276788,
+      "p75": 0.061659050839287896,
+      "max": 0.24412651743207658,
+      "mean": 0.008771887306301367,
+      "std": 0.07823336358107541
+    },
+    "alpha_v_summary": {
+      "n": 384,
+      "min": -0.0780966145651681,
+      "p25": -0.012771570682525634,
+      "median": -3.973415919712611e-05,
+      "p75": 0.01601218751498631,
+      "max": 0.07384134020124163,
+      "mean": 0.0009400016140370138,
+      "std": 0.021793732358619266
+    },
+    "regeneration_prohibited": true,
+    "seed18_retained_unchanged": true
+  },
+  "comparison_procedure": {
+    "per_trained_unit": [
+      "empirical percentile rank of alpha_h within the 384 random values",
+      "empirical CDF position",
+      "nearest random observations above and below",
+      "outside-observed-random-range flag"
+    ],
+    "key_descriptive_quantity": "trained_outside_random_range_rate = (# trained units outside the complete observed random alpha_h range) / (total trained units)",
+    "also_computed_for": [
+      "alpha_v",
+      "R_h",
+      "positive first-difference count"
+    ],
+    "binary_conversion_prohibited": "secondary quantities are reported, never converted into a new binary claim",
+    "distributional_requirement": "report trained median/IQR/min/max, random median/IQR/min/max, overlap, outside-range fraction, and a nonparametric effect size (rank-biserial from Mann-Whitney U, reported as an EFFECT SIZE ONLY, with NO p-value)",
+    "invalid_inference_explicitly_rejected": "'0/384 random qualified therefore any trained qualification proves learning' is INVALID and is not used"
+  },
+  "decision_logic": {
+    "no_arbitrary_pass_threshold": true,
+    "CASE_A_CLEAR_SEPARATION": "trained distribution substantially displaced from random, little or no overlap, high outside-range fraction, AND consistent across all three checkpoints and all four scenes",
+    "CASE_B_OVERLAP": "trained responses substantially overlap the random population",
+    "CASE_C_AMBIGUOUS": "partial separation, mixed checkpoints, strong scene dependence, clipping, or other structure preventing a clean conclusion",
+    "heterogeneity_rule": "if one checkpoint separates while others overlap -> MIXED -> CASE C, never overall success. If one scene drives the result, report it explicitly. Heterogeneity is never averaged away."
+  },
+  "wiring_checks": {
+    "W1": "left input byte-identical across all translation conditions (hash compared)",
+    "W2": "right-image construction matches the frozen spec at every level (crop origin asserted = (0,t) horizontal, (t,0) vertical)",
+    "W3": "record k_true = t/16; the model output is NOT required to equal it",
+    "W4": "deterministic repeat of one complete trained unit after process restart; the complete response vector must be BIT-IDENTICAL",
+    "no_numeric_t0_expectation": "the invalid 5.5 expectation is never reinstated"
+  },
+  "hard_stops": [
+    "trained weights modified",
+    "trained aggregation retrained",
+    "random reference not hash-verifiable",
+    "construction differs from this spec",
+    "translation levels differ",
+    "mask differs",
+    "preprocessing differs",
+    "deterministic repeat fails",
+    "trained curves inspected before freeze",
+    "post-hoc statistic introduced",
+    "post-hoc threshold introduced",
+    "historical results overwritten",
+    "-> VERDICT = NO DETERMINATION; do not continue merely to obtain a result"
+  ],
+  "claim_ceiling": {
+    "maximum": "Under the specified synthetic translation construction, the trained aggregation response is / is not distinguishable from the empirically sampled random aggregation population.",
+    "unavailable": [
+      "genuine stereo correspondence",
+      "correct disparity estimation",
+      "true disparity search",
+      "correct correspondence on natural scenes",
+      "metric depth correctness",
+      "generalisation",
+      "biological/physical scene correspondence"
+    ],
+    "language_requirement": "'outside the observed random population' -- NEVER 'impossible under random weights' and NEVER 'proves learned correspondence'. The reference contains 384 sampled parameterisations, not the space of random weights."
+  },
+  "compute": {
+    "cost_volumes": 156,
+    "trained_readout_passes": 504,
+    "search_free_readout_passes": 56,
+    "deterministic_repeat_passes": 14,
+    "training": false
+  }
+}

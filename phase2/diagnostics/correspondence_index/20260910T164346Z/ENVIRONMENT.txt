@@ -1,0 +1,6 @@
+EXP-CORRESPONDENCE-INDEX-001 environment
+device=cuda torch=2.7.0+cu128
+determinism: cudnn.deterministic=True cudnn.benchmark=False use_deterministic_algorithms=True CUBLAS_WORKSPACE_CONFIG=:4096:8
+git HEAD=58e8a19908ddbd35451652c61aef478f56b51ebd
+mode: torch.no_grad, eval, fp32, read-only checkpoints
+primary endpoint: disparity_initial only (no refinement)

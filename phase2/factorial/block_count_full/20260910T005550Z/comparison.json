@@ -1,0 +1,418 @@
+{
+  "experiment": "EXP-BLOCKCOUNT-FULL-001",
+  "authorised_batch": [
+    [
+      "A",
+      1
+    ],
+    [
+      "A",
+      2
+    ],
+    [
+      "B",
+      1
+    ]
+  ],
+  "batch_note": "batch 1 of a sequential campaign: 6b/seed1, 6b/seed2, 5b/seed1; batch 2 (5b/seed2, 4b/seed1, 4b/seed2) is NOT authorised and is refused by this script until the research lead reviews batch 1",
+  "compare_epochs": [
+    10,
+    20,
+    50,
+    100,
+    150,
+    200
+  ],
+  "seed0_records_readonly": {
+    "A": {
+      "blocks": 6,
+      "record": "phase2/diagnostics/determinism/20260909T041500Z_baseline",
+      "experiment": "STAGEB-DETERMINISTIC-BASELINE-ARM-A-RUNA",
+      "frozen_40_scene": {
+        "epe": 2.2955181809208267,
+        "d1": 15.6045142562172
+      }
+    },
+    "B": {
+      "blocks": 5,
+      "record": "phase2/factorial/block_count_deterministic/20260909T131500Z",
+      "experiment": "EXP-BLOCKCOUNT-DETERMINISTIC-001-ARM-B",
+      "frozen_40_scene": {
+        "epe": 2.6458,
+        "d1": 21.3712
+      }
+    },
+    "C": {
+      "blocks": 4,
+      "record": "phase2/factorial/block_count_deterministic/20260909T131500Z",
+      "experiment": "EXP-BLOCKCOUNT-DETERMINISTIC-001-ARM-C",
+      "frozen_40_scene": {
+        "epe": 2.3387,
+        "d1": 16.9797
+      }
+    }
+  },
+  "provenance": {
+    "head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "head_subject": "docs: add the Phase 1 overview",
+    "phase_1_frozen_commit": "b4207e518166f5089731b4d037a4a79234f70986",
+    "phase_1_diff_vs_frozen": "",
+    "status_short": "M .gitignore\n?? phase2/",
+    "phase_2_committed": false
+  },
+  "runs": {
+    "EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED1": {
+      "arm": "A",
+      "seed": 1,
+      "blocks": 6,
+      "epochs_completed": 200,
+      "at_epoch": {
+        "10": {
+          "epe": 16.354468555031907,
+          "d1": 86.71300569370469,
+          "train_loss": 7.006065624952316,
+          "median_grad_norm": 35.836652755737305,
+          "median_matching_grad_norm": 12.573111960255442,
+          "matching_present_fraction_this_epoch": 1.0
+        },
+        "20": {
+          "epe": 11.531113655002551,
+          "d1": 77.13223814492031,
+          "train_loss": 5.865046879649162,
+          "median_grad_norm": 32.79374408721924,
+          "median_matching_grad_norm": 12.530276473616588,
+          "matching_present_fraction_this_epoch": 1.0
+        },
+        "50": {
+          "epe": 6.169618695218914,
+          "d1": 45.81385378600739,
+          "train_loss": 2.6338399067521094,
+          "median_grad_norm": 26.132208824157715,
+          "median_matching_grad_norm": 8.991071455809996,
+          "matching_present_fraction_this_epoch": 1.0
+        },
+        "100": {
+          "epe": 4.404146008461303,
+          "d1": 32.0092792665984,
+          "train_loss": 1.5427469089627266,
+          "median_grad_norm": 20.149968147277832,
+          "median_matching_grad_norm": 5.588738992276097,
+          "matching_present_fraction_this_epoch": 1.0
+        },
+        "150": {
+          "epe": 4.056053978442787,
+          "d1": 29.077112682488128,
+          "train_loss": 1.1551184609532357,
+          "median_grad_norm": 17.367541313171387,
+          "median_matching_grad_norm": 3.9583907474743363,
+          "matching_present_fraction_this_epoch": 1.0
+        },
+        "200": {
+          "epe": 3.771619626791916,
+          "d1": 26.867108567204305,
+          "train_loss": 0.9604812912642956,
+          "median_grad_norm": 14.39847469329834,
+          "median_matching_grad_norm": 3.339158104973989,
+          "matching_present_fraction_this_epoch": 1.0
+        }
+      },
+      "late_window": {
+        "points": 10,
+        "epe_mean": 3.8551528025519004,
+        "epe_sd": 0.10663994406113898,
+        "d1_mean": 27.582738157276907,
+        "d1_sd": 1.00864279035461
+      },
+      "final_train_loss": 0.9604812912642956,
+      "eval40": {
+        "epe": 2.3982217171269924,
+        "d1": 18.335714475424272,
+        "rmse": 5.677181675088253,
+        "bad1": 52.98673581576929,
+        "bad2": 29.16490151854017,
+        "valid_pixels": 3802797
+      }
+    },
+    "EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED2": {
+      "arm": "A",
+      "seed": 2,
+      "blocks": 6,
+      "epochs_completed": 200,
+      "at_epoch": {
+        "10": {
+          "epe": 15.342843913060761,
+          "d1": 86.42149746904673,
+          "train_loss": 7.344067171216011,
+          "median_grad_norm": 34.34088897705078,
+          "median_matching_grad_norm": 13.011547919033099,
+          "matching_present_fraction_this_epoch": 1.0
+        },
+        "20": {
+          "epe": 13.264679111775289,
+          "d1": 83.31107355183377,
+          "train_loss": 5.411596474051476,
+          "median_grad_norm": 27.630681037902832,
+          "median_matching_grad_norm": 13.829925757567379,
+          "matching_present_fraction_this_epoch": 1.0
+        },
+        "50": {
+          "epe": 6.622251526930431,
+          "d1": 54.11694927456034,
+          "train_loss": 2.4670781813561917,
+          "median_grad_norm": 23.919300079345703,
+          "median_matching_grad_norm": 9.960641243504405,
+          "matching_present_fraction_this_epoch": 1.0
+        },
+        "100": {
+          "epe": 4.6174564068776665,
+          "d1": 29.277934234970886,
+          "train_loss": 1.535718996822834,
+          "median_grad_norm": 17.419330596923828,
+          "median_matching_grad_norm": 6.06334637221246,
+          "matching_present_fraction_this_epoch": 1.0
+        },
+        "150": {
+          "epe": 4.224714857928113,
+          "d1": 27.12842371735844,
+          "train_loss": 1.1822573632001876,
+          "median_grad_norm": 19.058064460754395,
+          "median_matching_grad_norm": 5.500432065703549,
+          "matching_present_fraction_this_epoch": 1.0
+        },
+        "200": {
+          "epe": 3.9892760797350344,
+          "d1": 25.79982099052625,
+          "train_loss": 0.9883302293717862,
+          "median_grad_norm": 13.466969966888428,
+          "median_matching_grad_norm": 4.003039373744188,
+          "matching_present_fraction_this_epoch": 1.0
+        }
+      },
+      "late_window": {
+        "points": 10,
+        "epe_mean": 3.9651374591095774,
+        "epe_sd": 0.06397654477811923,
+        "d1_mean": 25.722275289923356,
+        "d1_sd": 0.4726014091491606
+      },
+      "final_train_loss": 0.9883302293717862,
+      "eval40": {
+        "epe": 2.3950487882916516,
+        "d1": 17.469904388795932,
+        "rmse": 5.934968151526864,
+        "bad1": 52.06089097051459,
+        "bad2": 27.873851799083678,
+        "valid_pixels": 3802797
+      }
+    },
+    "EXP-BLOCKCOUNT-FULL-001-ARM-B-SEED1": {
+      "arm": "B",
+      "seed": 1,
+      "blocks": 5,
+      "epochs_completed": 200,
+      "at_epoch": {
+        "10": {
+          "epe": 16.518099166643857,
+          "d1": 87.15279307428894,
+          "train_loss": 7.0657232910394665,
+          "median_grad_norm": 33.310340881347656,
+          "median_matching_grad_norm": 12.444987684327664,
+          "matching_present_fraction_this_epoch": 1.0
+        },
+        "20": {
+          "epe": 11.794639559516389,
+          "d1": 78.85678919754115,
+          "train_loss": 6.26748928129673,
+          "median_grad_norm": 32.59548759460449,
+          "median_matching_grad_norm": 12.912165812114033,
+          "matching_present_fraction_this_epoch": 1.0
+        },
+        "50": {
+          "epe": 6.5219985885154035,
+          "d1": 49.50578987124427,
+          "train_loss": 2.4910504549741743,
+          "median_grad_norm": 20.589457511901855,
+          "median_matching_grad_norm": 8.78818377975974,
+          "matching_present_fraction_this_epoch": 1.0
+        },
+        "100": {
+          "epe": 4.943623574614236,
+          "d1": 32.696198573726434,
+          "train_loss": 1.5829467169940472,
+          "median_grad_norm": 20.239142417907715,
+          "median_matching_grad_norm": 6.157907850529401,
+          "matching_present_fraction_this_epoch": 1.0
+        },
+        "150": {
+          "epe": 4.649278412635284,
+          "d1": 31.23554143918889,
+          "train_loss": 1.2641914635896683,
+          "median_grad_norm": 17.6206636428833,
+          "median_matching_grad_norm": 5.1282889210873055,
+          "matching_present_fraction_this_epoch": 1.0
+        },
+        "200": {
+          "epe": 4.30859402087679,
+          "d1": 27.964159423731328,
+          "train_loss": 1.0251687988638878,
+          "median_grad_norm": 13.945436954498291,
+          "median_matching_grad_norm": 4.091563039984129,
+          "matching_present_fraction_this_epoch": 1.0
+        }
+      },
+      "late_window": {
+        "points": 10,
+        "epe_mean": 4.366961997631597,
+        "epe_sd": 0.09837613161544478,
+        "d1_mean": 28.356529709018275,
+        "d1_sd": 0.5515693036529358
+      },
+      "final_train_loss": 1.0251687988638878,
+      "eval40": {
+        "epe": 2.4729829593541792,
+        "d1": 18.20617824196243,
+        "rmse": 6.2149082513542035,
+        "bad1": 52.927384764424716,
+        "bad2": 28.872353691243575,
+        "valid_pixels": 3802797
+      }
+    }
+  },
+  "seed_spread_6_blocks": {
+    "10": {
+      "seed1_epe": 16.354468555031907,
+      "seed2_epe": 15.342843913060761,
+      "abs_delta_epe": 1.0116246419711459,
+      "seed1_d1": 86.71300569370469,
+      "seed2_d1": 86.42149746904673,
+      "abs_delta_d1": 0.2915082246579601
+    },
+    "20": {
+      "seed1_epe": 11.531113655002551,
+      "seed2_epe": 13.264679111775289,
+      "abs_delta_epe": 1.7335654567727374,
+      "seed1_d1": 77.13223814492031,
+      "seed2_d1": 83.31107355183377,
+      "abs_delta_d1": 6.178835406913464
+    },
+    "50": {
+      "seed1_epe": 6.169618695218914,
+      "seed2_epe": 6.622251526930431,
+      "abs_delta_epe": 0.4526328317115169,
+      "seed1_d1": 45.81385378600739,
+      "seed2_d1": 54.11694927456034,
+      "abs_delta_d1": 8.303095488552948
+    },
+    "100": {
+      "seed1_epe": 4.404146008461303,
+      "seed2_epe": 4.6174564068776665,
+      "abs_delta_epe": 0.2133103984163638,
+      "seed1_d1": 32.0092792665984,
+      "seed2_d1": 29.277934234970886,
+      "abs_delta_d1": 2.7313450316275123
+    },
+    "150": {
+      "seed1_epe": 4.056053978442787,
+      "seed2_epe": 4.224714857928113,
+      "abs_delta_epe": 0.16866087948532638,
+      "seed1_d1": 29.077112682488128,
+      "seed2_d1": 27.12842371735844,
+      "abs_delta_d1": 1.948688965129687
+    },
+    "200": {
+      "seed1_epe": 3.771619626791916,
+      "seed2_epe": 3.9892760797350344,
+      "abs_delta_epe": 0.21765645294311842,
+      "seed1_d1": 26.867108567204305,
+      "seed2_d1": 25.79982099052625,
+      "abs_delta_d1": 1.067287576678055
+    }
+  },
+  "blocks5_vs_6block_seed_range": {
+    "10": {
+      "blocks5_seed1_epe": 16.518099166643857,
+      "blocks6_seed_range_epe": [
+        15.342843913060761,
+        16.354468555031907
+      ],
+      "epe_inside_6block_seed_range": false,
+      "blocks5_seed1_d1": 87.15279307428894,
+      "blocks6_seed_range_d1": [
+        86.42149746904673,
+        86.71300569370469
+      ],
+      "d1_inside_6block_seed_range": false
+    },
+    "20": {
+      "blocks5_seed1_epe": 11.794639559516389,
+      "blocks6_seed_range_epe": [
+        11.531113655002551,
+        13.264679111775289
+      ],
+      "epe_inside_6block_seed_range": true,
+      "blocks5_seed1_d1": 78.85678919754115,
+      "blocks6_seed_range_d1": [
+        77.13223814492031,
+        83.31107355183377
+      ],
+      "d1_inside_6block_seed_range": true
+    },
+    "50": {
+      "blocks5_seed1_epe": 6.5219985885154035,
+      "blocks6_seed_range_epe": [
+        6.169618695218914,
+        6.622251526930431
+      ],
+      "epe_inside_6block_seed_range": true,
+      "blocks5_seed1_d1": 49.50578987124427,
+      "blocks6_seed_range_d1": [
+        45.81385378600739,
+        54.11694927456034
+      ],
+      "d1_inside_6block_seed_range": true
+    },
+    "100": {
+      "blocks5_seed1_epe": 4.943623574614236,
+      "blocks6_seed_range_epe": [
+        4.404146008461303,
+        4.6174564068776665
+      ],
+      "epe_inside_6block_seed_range": false,
+      "blocks5_seed1_d1": 32.696198573726434,
+      "blocks6_seed_range_d1": [
+        29.277934234970886,
+        32.0092792665984
+      ],
+      "d1_inside_6block_seed_range": false
+    },
+    "150": {
+      "blocks5_seed1_epe": 4.649278412635284,
+      "blocks6_seed_range_epe": [
+        4.056053978442787,
+        4.224714857928113
+      ],
+      "epe_inside_6block_seed_range": false,
+      "blocks5_seed1_d1": 31.23554143918889,
+      "blocks6_seed_range_d1": [
+        27.12842371735844,
+        29.077112682488128
+      ],
+      "d1_inside_6block_seed_range": false
+    },
+    "200": {
+      "blocks5_seed1_epe": 4.30859402087679,
+      "blocks6_seed_range_epe": [
+        3.771619626791916,
+        3.9892760797350344
+      ],
+      "epe_inside_6block_seed_range": false,
+      "blocks5_seed1_d1": 27.964159423731328,
+      "blocks6_seed_range_d1": [
+        25.79982099052625,
+        26.867108567204305
+      ],
+      "d1_inside_6block_seed_range": false
+    }
+  },
+  "interpretation_limit": "One 5-block seed against two 6-block seeds cannot separate an architecture effect from a seed effect. 'Inside the 6-block seed range' is a descriptive statement about two seeds, not a test."
+}

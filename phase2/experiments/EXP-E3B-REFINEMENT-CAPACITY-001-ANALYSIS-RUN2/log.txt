@@ -1,0 +1,15 @@
+[07:31:21] note: the noise band is a SINGLE-SAMPLE lower bound from one same-seed repeat, not a confidence interval; no p-value is claimed. 160 training scenes; no transfer to a pretrained model is implied.
+[07:31:21] same-seed noise (arm A vs recorded H2): EPE 0.1069 px, D1 0.1267 pt
+[07:31:21] material band: EPE > 0.2138 px and D1 > 1.0000 pt
+[07:31:21] arm A (6 blocks): late EPE 4.092 +- 0.100  D1 24.910 +- 1.082  params 423586  stereo True
+[07:31:21] arm B (5 blocks): late EPE 3.859 +- 0.064  D1 25.786 +- 0.713  params 405090  stereo True
+[07:31:21] arm C (4 blocks): late EPE 4.003 +- 0.075  D1 26.071 +- 0.643  params 386594  stereo True
+[07:31:21] metric same_seed_noise = {'epe': 0.10690031319348758, 'd1': 0.12673775004647325}
+[07:31:21] metric material_band = {'epe': 0.21380062638697517, 'd1': 1.0}
+[07:31:21] metric late_window = {'A': {'points': 10, 'epe_mean': 4.092099686806512, 'epe_sd': 0.10000498854517458, 'd1_mean': 24.909737750046475, 'd1_sd': 1.082096193588822}, 'B': {'points': 10, 'epe_mean': 3.8588195128144753, 'epe_sd': 0.06437538868632975, 'd1_mean': 25.78562702204954, 'd1_sd': 0.713044673068346}, 'C': {'points': 10, 'epe_mean': 4.002835971017821, 'epe_sd': 0.07533899977872507, 'd1_mean': 26.070763540949223, 'd1_sd': 0.642541067029065}}
+[07:31:21] metric comparison = {'B': {'delta_epe_vs_A': -0.23328017399203693, 'delta_d1_vs_A': 0.8758892720030644, 'materially_different': False, 'worse': False, 'stereo_functional': True, 'stereo_verdict': {'threshold_d1_points': 20.0, 'right_image_min_d1_penalty': 79.70733395253964, 'right_image_dependence': True, 'matching_map_min_d1_penalty': 63.52419457648109, 'matching_map_dependence': True, 'matching_gradient_fraction': 1.0, 'matching_gradient': True, 'softmax_entropy': 1.813790926508656, 'entropy_ok': True, 'final_disparity_std': 18.267516803390144, 'not_collapsed': True, 'STEREO_FUNCTIONAL': True}, 'aborted': None}, 'C': {'delta_epe_vs_A': -0.0892637157886913, 'delta_d1_vs_A': 1.1610257909027482, 'materially_different': False, 'worse': False, 'stereo_functional': True, 'stereo_verdict': {'threshold_d1_points': 20.0, 'right_image_min_d1_penalty': 75.41568777431752, 'right_image_dependence': True, 'matching_map_min_d1_penalty': 64.19075197144366, 'matching_map_dependence': True, 'matching_gradient_fraction': 1.0, 'matching_gradient': True, 'softmax_entropy': 1.814939866826061, 'entropy_ok': True, 'final_disparity_std': 18.034799907826745, 'not_collapsed': True, 'STEREO_FUNCTIONAL': True}, 'aborted': None}}
+[07:31:21] metric gates = {'control_completed': True, 'control_stereo_functional': True, 'control_converged': True, 'arms_completed': True, 'PASS': True}
+[07:31:21] metric verdict = CAPACITY-REDUCIBLE
+[07:31:21] metric stage_2_triggered_for = []
+[07:31:21] conclusion: E3b stage 1: verdict CAPACITY-REDUCIBLE; stage 2 triggered for no arm.
+[07:31:21] status: completed

@@ -1,0 +1,352 @@
+{
+  "run_1": "run_A",
+  "run_2": "run_B",
+  "env.git_head": {
+    "run_1": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "run_2": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "identical": true
+  },
+  "env.python": {
+    "run_1": "3.12.9",
+    "run_2": "3.12.9",
+    "identical": true
+  },
+  "env.torch": {
+    "run_1": "2.7.0+cu128",
+    "run_2": "2.7.0+cu128",
+    "identical": true
+  },
+  "env.cuda_version": {
+    "run_1": "12.8",
+    "run_2": "12.8",
+    "identical": true
+  },
+  "env.cudnn_version": {
+    "run_1": 90701,
+    "run_2": 90701,
+    "identical": true
+  },
+  "env.gpu_name": {
+    "run_1": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "run_2": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "identical": true
+  },
+  "env.nvidia_driver": {
+    "run_1": "616.64",
+    "run_2": "616.64",
+    "identical": true
+  },
+  "env.deterministic_requested": {
+    "run_1": false,
+    "run_2": false,
+    "identical": true
+  },
+  "flag.cuda.matmul.allow_tf32": {
+    "run_1": false,
+    "run_2": false,
+    "identical": true
+  },
+  "flag.cudnn.allow_tf32": {
+    "run_1": true,
+    "run_2": true,
+    "identical": true
+  },
+  "flag.cudnn.benchmark": {
+    "run_1": false,
+    "run_2": false,
+    "identical": true
+  },
+  "flag.cudnn.deterministic": {
+    "run_1": false,
+    "run_2": false,
+    "identical": true
+  },
+  "flag.cudnn.enabled": {
+    "run_1": true,
+    "run_2": true,
+    "identical": true
+  },
+  "flag.deterministic_algorithms": {
+    "run_1": false,
+    "run_2": false,
+    "identical": true
+  },
+  "flag.float32_matmul_precision": {
+    "run_1": "highest",
+    "run_2": "highest",
+    "identical": true
+  },
+  "model.weights_sha": {
+    "run_1": "c4d02385e3da28a5",
+    "run_2": "c4d02385e3da28a5",
+    "identical": true
+  },
+  "model.parameters_total": {
+    "run_1": 423586,
+    "run_2": 423586,
+    "identical": true
+  },
+  "model.refinement_blocks": {
+    "run_1": 6,
+    "run_2": 6,
+    "identical": true
+  },
+  "model.cost_volume_shift": {
+    "run_1": "left",
+    "run_2": "left",
+    "identical": true
+  },
+  "model.regression": {
+    "run_1": "StandardisedDisparityRegression",
+    "run_2": "StandardisedDisparityRegression",
+    "identical": true
+  },
+  "rng_before_build.numpy_global_legacy": {
+    "run_1": "151bc7ceca853da9",
+    "run_2": "dc4ade536afecdb6",
+    "identical": false
+  },
+  "rng_before_build.python_random": {
+    "run_1": "96f75b923b1a9f58",
+    "run_2": "5bbbaf0e7ee75dd3",
+    "identical": false
+  },
+  "rng_before_build.torch_cpu": {
+    "run_1": "a5bfc0da9e2c4494",
+    "run_2": "fe96c6a9165e432d",
+    "identical": false
+  },
+  "rng_before_build.torch_cuda": {
+    "run_1": "89b56329ff74558c",
+    "run_2": "91798575f115a75a",
+    "identical": false
+  },
+  "rng_after_build.numpy_global_legacy": {
+    "run_1": "129790f8d58ee719",
+    "run_2": "129790f8d58ee719",
+    "identical": true
+  },
+  "rng_after_build.python_random": {
+    "run_1": "96f75b923b1a9f58",
+    "run_2": "5bbbaf0e7ee75dd3",
+    "identical": false
+  },
+  "rng_after_build.torch_cpu": {
+    "run_1": "96616bad7a384d6c",
+    "run_2": "96616bad7a384d6c",
+    "identical": true
+  },
+  "rng_after_build.torch_cuda": {
+    "run_1": "374708fff7719dd5",
+    "run_2": "374708fff7719dd5",
+    "identical": true
+  },
+  "rng_after_loader_built.numpy_global_legacy": {
+    "run_1": "129790f8d58ee719",
+    "run_2": "129790f8d58ee719",
+    "identical": true
+  },
+  "rng_after_loader_built.python_random": {
+    "run_1": "96f75b923b1a9f58",
+    "run_2": "5bbbaf0e7ee75dd3",
+    "identical": false
+  },
+  "rng_after_loader_built.torch_cpu": {
+    "run_1": "96616bad7a384d6c",
+    "run_2": "96616bad7a384d6c",
+    "identical": true
+  },
+  "rng_after_loader_built.torch_cuda": {
+    "run_1": "374708fff7719dd5",
+    "run_2": "374708fff7719dd5",
+    "identical": true
+  },
+  "rng_at_batch0.numpy_global_legacy": {
+    "run_1": "129790f8d58ee719",
+    "run_2": "129790f8d58ee719",
+    "identical": true
+  },
+  "rng_at_batch0.python_random": {
+    "run_1": "96f75b923b1a9f58",
+    "run_2": "5bbbaf0e7ee75dd3",
+    "identical": false
+  },
+  "rng_at_batch0.torch_cpu": {
+    "run_1": "d694240d043c4dc0",
+    "run_2": "d694240d043c4dc0",
+    "identical": true
+  },
+  "rng_at_batch0.torch_cuda": {
+    "run_1": "374708fff7719dd5",
+    "run_2": "374708fff7719dd5",
+    "identical": true
+  },
+  "batch0.left_sha": {
+    "run_1": "b87563da2698e20c",
+    "run_2": "b87563da2698e20c",
+    "identical": true
+  },
+  "batch0.right_sha": {
+    "run_1": "947f0d2c884b6275",
+    "run_2": "947f0d2c884b6275",
+    "identical": true
+  },
+  "batch0.disparity_sha": {
+    "run_1": "c2cbb4218344e505",
+    "run_2": "c2cbb4218344e505",
+    "identical": true
+  },
+  "batch0.left_shape": {
+    "run_1": [
+      2,
+      3,
+      256,
+      512
+    ],
+    "run_2": [
+      2,
+      3,
+      256,
+      512
+    ],
+    "identical": true
+  },
+  "batch0.disparity_valid_px": {
+    "run_1": 68599,
+    "run_2": 68599,
+    "identical": true
+  },
+  "batch0.disparity_max": {
+    "run_1": 59.3046875,
+    "run_2": 59.3046875,
+    "identical": true
+  },
+  "batch0.sample0.dataset_index": {
+    "run_1": 111,
+    "run_2": 111,
+    "identical": true
+  },
+  "batch0.sample0.scene_name": {
+    "run_1": "000111_10.png",
+    "run_2": "000111_10.png",
+    "identical": true
+  },
+  "batch0.sample0.crop_y": {
+    "run_1": 96,
+    "run_2": 96,
+    "identical": true
+  },
+  "batch0.sample0.crop_x": {
+    "run_1": 459,
+    "run_2": 459,
+    "identical": true
+  },
+  "batch0.sample0.jitter_left": {
+    "run_1": -0.013210486329130189,
+    "run_2": -0.013210486329130189,
+    "identical": true
+  },
+  "batch0.sample0.jitter_right": {
+    "run_1": 0.06404226504432821,
+    "run_2": 0.06404226504432821,
+    "identical": true
+  },
+  "batch0.sample1.dataset_index": {
+    "run_1": 54,
+    "run_2": 54,
+    "identical": true
+  },
+  "batch0.sample1.scene_name": {
+    "run_1": "000054_10.png",
+    "run_2": "000054_10.png",
+    "identical": true
+  },
+  "batch0.sample1.crop_y": {
+    "run_1": 8,
+    "run_2": 8,
+    "identical": true
+  },
+  "batch0.sample1.crop_x": {
+    "run_1": 11,
+    "run_2": 11,
+    "identical": true
+  },
+  "batch0.sample1.jitter_left": {
+    "run_1": -0.0535669373161111,
+    "run_2": -0.0535669373161111,
+    "identical": true
+  },
+  "batch0.sample1.jitter_right": {
+    "run_1": 0.03615950549094848,
+    "run_2": 0.03615950549094848,
+    "identical": true
+  },
+  "data_order_identical": true,
+  "data_order_items": 160,
+  "first_data_order_difference_at_item": null,
+  "batch0.loss": {
+    "run_1": 17.472463607788086,
+    "run_2": 17.472463607788086,
+    "identical": true
+  },
+  "batch0.out_sha": {
+    "run_1": "9ac6c0574d69a414",
+    "run_2": "9ac6c0574d69a414",
+    "identical": true
+  },
+  "forward_repeat_identical": {
+    "run_A": true,
+    "run_B": true
+  },
+  "backward_repeat_identical": {
+    "run_A": false,
+    "run_B": false
+  },
+  "first_batch_with_differing_loss": 1,
+  "first_batch_with_differing_grad_norm": 0,
+  "epoch.first_batch_loss": {
+    "run_1": 17.472463607788086,
+    "run_2": 17.472463607788086,
+    "identical": true
+  },
+  "epoch.last_batch_loss": {
+    "run_1": 8.576350212097168,
+    "run_2": 9.650322914123535,
+    "identical": false
+  },
+  "epoch.mean_loss": {
+    "run_1": 10.76587097644806,
+    "run_2": 10.792867290973664,
+    "identical": false
+  },
+  "epoch.median_grad_norm": {
+    "run_1": 47.74975395202637,
+    "run_2": 46.424570083618164,
+    "identical": false
+  },
+  "epoch.max_grad_norm": {
+    "run_1": 308.0355529785156,
+    "run_2": 308.03558349609375,
+    "identical": false
+  },
+  "epoch.weights_after_epoch_sha": {
+    "run_1": "eda467853cd05550",
+    "run_2": "6f437e1198893e43",
+    "identical": false
+  },
+  "epoch.any_nan_or_inf": {
+    "run_1": false,
+    "run_2": false,
+    "identical": true
+  },
+  "validation.epe": {
+    "run_1": 17.496794678353552,
+    "run_2": 18.750414115637223,
+    "delta": 1.253619437283671
+  },
+  "validation.d1": {
+    "run_1": 89.52611915841908,
+    "run_2": 88.2904595257001,
+    "delta": -1.2356596327189777
+  }
+}

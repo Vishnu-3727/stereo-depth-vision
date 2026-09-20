@@ -1,0 +1,918 @@
+{
+  "scores": {
+    "H2": {
+      "0.25": {
+        "epe": 19.173873529778433,
+        "d1": 97.33409382620214,
+        "pixels": 3802797,
+        "finite": true,
+        "readout": {
+          "mean_entropy_nats": 0.2904883755948036,
+          "median_entropy_nats": 0.20063255383556725,
+          "max_entropy_possible_nats": 2.4849066497880004,
+          "mean_peak_probability": 0.884332048500028,
+          "max_peak_probability": 0.9999936398298849,
+          "mean_top2_gap": 0.7794417416629371,
+          "disparity_initial_mean_candidates": 2.518950105594436,
+          "disparity_initial_std_candidates": 3.3985700201746227,
+          "pixels": 18135040
+        }
+      },
+      "0.5": {
+        "epe": 11.563388968092246,
+        "d1": 90.15658737502949,
+        "pixels": 3802797,
+        "finite": true,
+        "readout": {
+          "mean_entropy_nats": 0.7572522175866833,
+          "median_entropy_nats": 0.8371870260582501,
+          "max_entropy_possible_nats": 2.4849066497880004,
+          "mean_peak_probability": 0.747802274477382,
+          "max_peak_probability": 0.9918380633179755,
+          "mean_top2_gap": 0.5845531607261973,
+          "disparity_initial_mean_candidates": 2.703739847771226,
+          "disparity_initial_std_candidates": 2.9533410462400775,
+          "pixels": 18135040
+        }
+      },
+      "0.75": {
+        "epe": 5.943191971647375,
+        "d1": 72.84046453176438,
+        "pixels": 3802797,
+        "finite": true,
+        "readout": {
+          "mean_entropy_nats": 1.303400732766121,
+          "median_entropy_nats": 1.4069714032914393,
+          "max_entropy_possible_nats": 2.4849066497880004,
+          "mean_peak_probability": 0.6000187785495724,
+          "max_peak_probability": 0.9171447099319404,
+          "mean_top2_gap": 0.4224922761984037,
+          "disparity_initial_mean_candidates": 3.1061572067980285,
+          "disparity_initial_std_candidates": 2.4570628353752704,
+          "pixels": 18135040
+        }
+      },
+      "1.0": {
+        "epe": 2.4004242992562075,
+        "d1": 16.71777378597911,
+        "pixels": 3802797,
+        "finite": true,
+        "readout": {
+          "mean_entropy_nats": 1.7258966968860656,
+          "median_entropy_nats": 1.8157164049404315,
+          "max_entropy_possible_nats": 2.4849066497880004,
+          "mean_peak_probability": 0.47298720460937876,
+          "max_peak_probability": 0.7693959188688667,
+          "mean_top2_gap": 0.30004105761626076,
+          "disparity_initial_mean_candidates": 3.595369346188208,
+          "disparity_initial_std_candidates": 1.9522903711785495,
+          "pixels": 18135040
+        }
+      },
+      "1.25": {
+        "epe": 4.6084530620212405,
+        "d1": 54.067992585457496,
+        "pixels": 3802797,
+        "finite": true,
+        "readout": {
+          "mean_entropy_nats": 1.9919324237445606,
+          "median_entropy_nats": 2.0517396180092087,
+          "max_entropy_possible_nats": 2.4849066497880004,
+          "mean_peak_probability": 0.38002725300054313,
+          "max_peak_probability": 0.6189126542835439,
+          "mean_top2_gap": 0.21669597666856016,
+          "disparity_initial_mean_candidates": 4.009321138292421,
+          "disparity_initial_std_candidates": 1.5389743160154359,
+          "pixels": 18135040
+        }
+      },
+      "1.5": {
+        "epe": 6.850228591383547,
+        "d1": 69.88726981745279,
+        "pixels": 3802797,
+        "finite": true,
+        "readout": {
+          "mean_entropy_nats": 2.150843258432334,
+          "median_entropy_nats": 2.188444392293362,
+          "max_entropy_possible_nats": 2.4849066497880004,
+          "mean_peak_probability": 0.3158779045953365,
+          "max_peak_probability": 0.5011974376896727,
+          "mean_top2_gap": 0.1622436641570531,
+          "disparity_initial_mean_candidates": 4.315226909489871,
+          "disparity_initial_std_candidates": 1.2360222562817045,
+          "pixels": 18135040
+        }
+      },
+      "2.0": {
+        "epe": 9.70045799849282,
+        "d1": 80.1116914734076,
+        "pixels": 3802797,
+        "finite": true,
+        "readout": {
+          "mean_entropy_nats": 2.3092985423338925,
+          "median_entropy_nats": 2.3250157625960277,
+          "max_entropy_possible_nats": 2.4849066497880004,
+          "mean_peak_probability": 0.2398035539334149,
+          "max_peak_probability": 0.35535596961741317,
+          "mean_top2_gap": 0.10161600247471765,
+          "disparity_initial_mean_candidates": 4.694879272850525,
+          "disparity_initial_std_candidates": 0.8605389135630535,
+          "pixels": 18135040
+        }
+      },
+      "3.0": {
+        "epe": 12.32909209763306,
+        "d1": 85.11776989410689,
+        "pixels": 3802797,
+        "finite": true,
+        "readout": {
+          "mean_entropy_nats": 2.414270803196887,
+          "median_entropy_nats": 2.418359953391282,
+          "max_entropy_possible_nats": 2.4849066497880004,
+          "mean_peak_probability": 0.1741836408066096,
+          "max_peak_probability": 0.23216078030834716,
+          "mean_top2_gap": 0.05397212304647729,
+          "disparity_initial_mean_candidates": 5.03334251745593,
+          "disparity_initial_std_candidates": 0.5212190134797982,
+          "pixels": 18135040
+        }
+      },
+      "4.0": {
+        "epe": 13.501462691134236,
+        "d1": 86.72868943569694,
+        "pixels": 3802797,
+        "finite": true,
+        "readout": {
+          "mean_entropy_nats": 2.447397238492608,
+          "median_entropy_nats": 2.4489412992727537,
+          "max_entropy_possible_nats": 2.4849066497880004,
+          "mean_peak_probability": 0.14640700042880778,
+          "max_peak_probability": 0.1829463476048556,
+          "mean_top2_gap": 0.035605139198208985,
+          "disparity_initial_mean_candidates": 5.178152763253585,
+          "disparity_initial_std_candidates": 0.37125698168672033,
+          "pixels": 18135040
+        }
+      }
+    },
+    "SEED1": {
+      "0.25": {
+        "epe": 11.78008926788101,
+        "d1": 96.27305901419403,
+        "pixels": 3802797,
+        "finite": true,
+        "readout": {
+          "mean_entropy_nats": 0.3103645163935696,
+          "median_entropy_nats": 0.23256965535800156,
+          "max_entropy_possible_nats": 2.4849066497880004,
+          "mean_peak_probability": 0.8740352220134696,
+          "max_peak_probability": 0.9999942682798799,
+          "mean_top2_gap": 0.7604997079515916,
+          "disparity_initial_mean_candidates": 1.755797776670788,
+          "disparity_initial_std_candidates": 1.756384098889781,
+          "pixels": 18135040
+        }
+      },
+      "0.5": {
+        "epe": 10.965299325552811,
+        "d1": 96.34624198977752,
+        "pixels": 3802797,
+        "finite": true,
+        "readout": {
+          "mean_entropy_nats": 0.7126651718704476,
+          "median_entropy_nats": 0.793463151406838,
+          "max_entropy_possible_nats": 2.4849066497880004,
+          "mean_peak_probability": 0.7458536873238131,
+          "max_peak_probability": 0.992127807303477,
+          "mean_top2_gap": 0.564987981045095,
+          "disparity_initial_mean_candidates": 1.8596053224898423,
+          "disparity_initial_std_candidates": 1.7043036424028721,
+          "pixels": 18135040
+        }
+      },
+      "0.75": {
+        "epe": 7.128416538539331,
+        "d1": 86.12799999579256,
+        "pixels": 3802797,
+        "finite": true,
+        "readout": {
+          "mean_entropy_nats": 1.2385546298398549,
+          "median_entropy_nats": 1.334222148937974,
+          "max_entropy_possible_nats": 2.4849066497880004,
+          "mean_peak_probability": 0.6069581429007022,
+          "max_peak_probability": 0.9187290674105727,
+          "mean_top2_gap": 0.407559515874168,
+          "disparity_initial_mean_candidates": 2.2813374792886782,
+          "disparity_initial_std_candidates": 1.5513709644798692,
+          "pixels": 18135040
+        }
+      },
+      "1.0": {
+        "epe": 2.3193164497173653,
+        "d1": 17.250592129950665,
+        "pixels": 3802797,
+        "finite": true,
+        "readout": {
+          "mean_entropy_nats": 1.6751140430913467,
+          "median_entropy_nats": 1.7474678438056397,
+          "max_entropy_possible_nats": 2.4849066497880004,
+          "mean_peak_probability": 0.4818124141065745,
+          "max_peak_probability": 0.7719732877331464,
+          "mean_top2_gap": 0.2882369564822722,
+          "disparity_initial_mean_candidates": 2.857928692004149,
+          "disparity_initial_std_candidates": 1.2948123460228158,
+          "pixels": 18135040
+        }
+      },
+      "1.25": {
+        "epe": 6.320424104826044,
+        "d1": 78.36360973252056,
+        "pixels": 3802797,
+        "finite": true,
+        "readout": {
+          "mean_entropy_nats": 1.9567548584050118,
+          "median_entropy_nats": 2.002161116373754,
+          "max_entropy_possible_nats": 2.4849066497880004,
+          "mean_peak_probability": 0.3882284043466417,
+          "max_peak_probability": 0.6215279956367585,
+          "mean_top2_gap": 0.20719721342090142,
+          "disparity_initial_mean_candidates": 3.3690203906970475,
+          "disparity_initial_std_candidates": 1.0477541439234688,
+          "pixels": 18135040
+        }
+      },
+      "1.5": {
+        "epe": 10.405667293257567,
+        "d1": 91.57249256271108,
+        "pixels": 3802797,
+        "finite": true,
+        "readout": {
+          "mean_entropy_nats": 2.1267384439148183,
+          "median_entropy_nats": 2.154157886185348,
+          "max_entropy_possible_nats": 2.4849066497880004,
+          "mean_peak_probability": 0.32297145544752004,
+          "max_peak_probability": 0.503432975960049,
+          "mean_top2_gap": 0.15445686172106896,
+          "disparity_initial_mean_candidates": 3.759748113254755,
+          "disparity_initial_std_candidates": 0.8562428565065202,
+          "pixels": 18135040
+        }
+      },
+      "2.0": {
+        "epe": 15.869600978611908,
+        "d1": 95.81213512054417,
+        "pixels": 3802797,
+        "finite": true,
+        "readout": {
+          "mean_entropy_nats": 2.2972287313254713,
+          "median_entropy_nats": 2.3080260685178398,
+          "max_entropy_possible_nats": 2.4849066497880004,
+          "mean_peak_probability": 0.24498637733153025,
+          "max_peak_probability": 0.3568275886529002,
+          "mean_top2_gap": 0.09604217946649299,
+          "disparity_initial_mean_candidates": 4.26474616551779,
+          "disparity_initial_std_candidates": 0.6118219822158328,
+          "pixels": 18135040
+        }
+      },
+      "3.0": {
+        "epe": 21.249872623242602,
+        "d1": 97.12159234374067,
+        "pixels": 3802797,
+        "finite": true,
+        "readout": {
+          "mean_entropy_nats": 2.410216673017057,
+          "median_entropy_nats": 2.412806054774956,
+          "max_entropy_possible_nats": 2.4849066497880004,
+          "mean_peak_probability": 0.1772765449338513,
+          "max_peak_probability": 0.23289033477806553,
+          "mean_top2_gap": 0.050522460122380375,
+          "disparity_initial_mean_candidates": 4.743092974795045,
+          "disparity_initial_std_candidates": 0.3840426605273999,
+          "pixels": 18135040
+        }
+      },
+      "4.0": {
+        "epe": 23.773870158311112,
+        "d1": 97.42439578026384,
+        "pixels": 3802797,
+        "finite": true,
+        "readout": {
+          "mean_entropy_nats": 2.445606509977957,
+          "median_entropy_nats": 2.446536121132354,
+          "max_entropy_possible_nats": 2.4849066497880004,
+          "mean_peak_probability": 0.14853180376642056,
+          "max_peak_probability": 0.18339447008663337,
+          "mean_top2_gap": 0.03313666413859475,
+          "disparity_initial_mean_candidates": 4.96054244440397,
+          "disparity_initial_std_candidates": 0.27965807377316576,
+          "pixels": 18135040
+        }
+      }
+    },
+    "SEED2": {
+      "0.25": {
+        "epe": 16.496222999632796,
+        "d1": 96.85718170073238,
+        "pixels": 3802797,
+        "finite": true,
+        "readout": {
+          "mean_entropy_nats": 0.4495340389277408,
+          "median_entropy_nats": 0.17910909589509025,
+          "max_entropy_possible_nats": 2.4849066497880004,
+          "mean_peak_probability": 0.8477084136180302,
+          "max_peak_probability": 0.9999940052439366,
+          "mean_top2_gap": 0.760777178152175,
+          "disparity_initial_mean_candidates": 1.6340840397856566,
+          "disparity_initial_std_candidates": 1.8911331798060282,
+          "pixels": 18135040
+        }
+      },
+      "0.5": {
+        "epe": 11.978690027033613,
+        "d1": 92.2253278310675,
+        "pixels": 3802797,
+        "finite": true,
+        "readout": {
+          "mean_entropy_nats": 0.9337238663716484,
+          "median_entropy_nats": 0.7857407424890807,
+          "max_entropy_possible_nats": 2.4849066497880004,
+          "mean_peak_probability": 0.7015349270155697,
+          "max_peak_probability": 0.991999833418406,
+          "mean_top2_gap": 0.574912427318803,
+          "disparity_initial_mean_candidates": 1.962529296672254,
+          "disparity_initial_std_candidates": 1.9899079798597392,
+          "pixels": 18135040
+        }
+      },
+      "0.75": {
+        "epe": 6.75650540194857,
+        "d1": 80.1596824653012,
+        "pixels": 3802797,
+        "finite": true,
+        "readout": {
+          "mean_entropy_nats": 1.4157441525107106,
+          "median_entropy_nats": 1.33406384013352,
+          "max_entropy_possible_nats": 2.4849066497880004,
+          "mean_peak_probability": 0.5642268640712134,
+          "max_peak_probability": 0.9180193748670714,
+          "mean_top2_gap": 0.42117472254094784,
+          "disparity_initial_mean_candidates": 2.510018452709633,
+          "disparity_initial_std_candidates": 1.8642942632814887,
+          "pixels": 18135040
+        }
+      },
+      "1.0": {
+        "epe": 2.556149774060891,
+        "d1": 19.7592193325071,
+        "pixels": 3802797,
+        "finite": true,
+        "readout": {
+          "mean_entropy_nats": 1.7949425010280218,
+          "median_entropy_nats": 1.7483659536100014,
+          "max_entropy_possible_nats": 2.4849066497880004,
+          "mean_peak_probability": 0.44620451320840554,
+          "max_peak_probability": 0.7708114727063495,
+          "mean_top2_gap": 0.3010329393468771,
+          "disparity_initial_mean_candidates": 3.122733002207614,
+          "disparity_initial_std_candidates": 1.5798610434220053,
+          "pixels": 18135040
+        }
+      },
+      "1.25": {
+        "epe": 5.261924364577162,
+        "d1": 65.41732309139826,
+        "pixels": 3802797,
+        "finite": true,
+        "readout": {
+          "mean_entropy_nats": 2.03607076250876,
+          "median_entropy_nats": 2.0031010081983442,
+          "max_entropy_possible_nats": 2.4849066497880004,
+          "mean_peak_probability": 0.35929556427832693,
+          "max_peak_probability": 0.6203452033440289,
+          "mean_top2_gap": 0.21802649504624041,
+          "disparity_initial_mean_candidates": 3.630902948056703,
+          "disparity_initial_std_candidates": 1.296561185017219,
+          "pixels": 18135040
+        }
+      },
+      "1.5": {
+        "epe": 8.193783183880578,
+        "d1": 79.05560039097539,
+        "pixels": 3802797,
+        "finite": true,
+        "readout": {
+          "mean_entropy_nats": 2.1803122095313254,
+          "median_entropy_nats": 2.1549090047916084,
+          "max_entropy_possible_nats": 2.4849066497880004,
+          "mean_peak_probability": 0.29929572222001477,
+          "max_peak_probability": 0.5024201580692104,
+          "mean_top2_gap": 0.1635273762189426,
+          "disparity_initial_mean_candidates": 4.005989205917511,
+          "disparity_initial_std_candidates": 1.072856881277966,
+          "pixels": 18135040
+        }
+      },
+      "2.0": {
+        "epe": 11.995313565350049,
+        "d1": 84.97689989762799,
+        "pixels": 3802797,
+        "finite": true,
+        "readout": {
+          "mean_entropy_nats": 2.324049838388992,
+          "median_entropy_nats": 2.3085204563801485,
+          "max_entropy_possible_nats": 2.4849066497880004,
+          "mean_peak_probability": 0.22830826385762032,
+          "max_peak_probability": 0.3561597910227454,
+          "mean_top2_gap": 0.10268354744162314,
+          "disparity_initial_mean_candidates": 4.475237633760286,
+          "disparity_initial_std_candidates": 0.7806156451937503,
+          "pixels": 18135040
+        }
+      },
+      "3.0": {
+        "epe": 15.579222606872996,
+        "d1": 87.36161830358023,
+        "pixels": 3802797,
+        "finite": true,
+        "readout": {
+          "mean_entropy_nats": 2.419414252801211,
+          "median_entropy_nats": 2.413016674619846,
+          "max_entropy_possible_nats": 2.4849066497880004,
+          "mean_peak_probability": 0.16734477516855334,
+          "max_peak_probability": 0.23255897105262657,
+          "mean_top2_gap": 0.05472480543733125,
+          "disparity_initial_mean_candidates": 4.90069734115203,
+          "disparity_initial_std_candidates": 0.4996252210367456,
+          "pixels": 18135040
+        }
+      },
+      "4.0": {
+        "epe": 17.20067988935834,
+        "d1": 87.94676655104125,
+        "pixels": 3802797,
+        "finite": true,
+        "readout": {
+          "mean_entropy_nats": 2.4497441555728696,
+          "median_entropy_nats": 2.446638767969337,
+          "max_entropy_possible_nats": 2.4849066497880004,
+          "mean_peak_probability": 0.14163175518229082,
+          "max_peak_probability": 0.18319088829016641,
+          "mean_top2_gap": 0.03617740264204759,
+          "disparity_initial_mean_candidates": 5.085550288403672,
+          "disparity_initial_std_candidates": 0.36765652732475884,
+          "pixels": 18135040
+        }
+      }
+    }
+  },
+  "untempered_control": {
+    "H2": {
+      "epe": 2.4004242992562075,
+      "d1": 16.71777378597911,
+      "pixels": 3802797
+    },
+    "SEED1": {
+      "epe": 2.3193164497173653,
+      "d1": 17.250592129950665,
+      "pixels": 3802797
+    },
+    "SEED2": {
+      "epe": 2.556149774060891,
+      "d1": 19.7592193325071,
+      "pixels": 3802797
+    }
+  },
+  "stereo_dependence": {
+    "H2": {
+      "0.25": {
+        "right_dependence_worst_pt": 0.5720047118014691,
+        "matching_map_dependence_worst_pt": -15.652196469565894,
+        "meets_c2": false,
+        "meets_c3": false,
+        "softmax_entropy_probe": 1.7434737618347487
+      },
+      "0.5": {
+        "right_dependence_worst_pt": 5.740012378461472,
+        "matching_map_dependence_worst_pt": -8.889638266689147,
+        "meets_c2": false,
+        "meets_c3": false,
+        "softmax_entropy_probe": 1.7434737618347487
+      },
+      "0.75": {
+        "right_dependence_worst_pt": 20.253952607618572,
+        "matching_map_dependence_worst_pt": 3.61473910844218,
+        "meets_c2": true,
+        "meets_c3": false,
+        "softmax_entropy_probe": 1.7434737618347487
+      },
+      "1.0": {
+        "right_dependence_worst_pt": 83.94892886377703,
+        "matching_map_dependence_worst_pt": 69.11981642353713,
+        "meets_c2": true,
+        "meets_c3": true,
+        "softmax_entropy_probe": 1.7434737618347487
+      },
+      "1.25": {
+        "right_dependence_worst_pt": 27.43526264300116,
+        "matching_map_dependence_worst_pt": 23.037914029588514,
+        "meets_c2": true,
+        "meets_c3": true,
+        "softmax_entropy_probe": 1.7434737618347487
+      },
+      "1.5": {
+        "right_dependence_worst_pt": 9.152929274587876,
+        "matching_map_dependence_worst_pt": 11.50697785852617,
+        "meets_c2": false,
+        "meets_c3": false,
+        "softmax_entropy_probe": 1.7434737618347487
+      },
+      "2.0": {
+        "right_dependence_worst_pt": -2.545570706969883,
+        "matching_map_dependence_worst_pt": 4.509278988872495,
+        "meets_c2": false,
+        "meets_c3": false,
+        "softmax_entropy_probe": 1.7434737618347487
+      },
+      "3.0": {
+        "right_dependence_worst_pt": -0.4543881695168466,
+        "matching_map_dependence_worst_pt": 1.8175526780673437,
+        "meets_c2": false,
+        "meets_c3": false,
+        "softmax_entropy_probe": 1.7434737618347487
+      },
+      "4.0": {
+        "right_dependence_worst_pt": -1.6864266331566853,
+        "matching_map_dependence_worst_pt": 0.5937095922344184,
+        "meets_c2": false,
+        "meets_c3": false,
+        "softmax_entropy_probe": 1.7434737618347487
+      }
+    },
+    "SEED1": {
+      "0.25": {
+        "right_dependence_worst_pt": -2.9758220695989053,
+        "matching_map_dependence_worst_pt": -7.9751232854832494,
+        "meets_c2": false,
+        "meets_c3": false,
+        "softmax_entropy_probe": 1.6697495143833243
+      },
+      "0.5": {
+        "right_dependence_worst_pt": -2.498652344919833,
+        "matching_map_dependence_worst_pt": -9.244913849901167,
+        "meets_c2": false,
+        "meets_c3": false,
+        "softmax_entropy_probe": 1.6697495143833243
+      },
+      "0.75": {
+        "right_dependence_worst_pt": -0.08385409387665277,
+        "matching_map_dependence_worst_pt": -5.851817836963676,
+        "meets_c2": false,
+        "meets_c3": false,
+        "softmax_entropy_probe": 1.6697495143833243
+      },
+      "1.0": {
+        "right_dependence_worst_pt": 76.7821226292864,
+        "matching_map_dependence_worst_pt": 67.77941685333917,
+        "meets_c2": true,
+        "meets_c3": true,
+        "softmax_entropy_probe": 1.6697495143833243
+      },
+      "1.25": {
+        "right_dependence_worst_pt": -2.561575076847248,
+        "matching_map_dependence_worst_pt": 1.8509149689663218,
+        "meets_c2": false,
+        "meets_c3": false,
+        "softmax_entropy_probe": 1.6697495143833243
+      },
+      "1.5": {
+        "right_dependence_worst_pt": -11.0073029922235,
+        "matching_map_dependence_worst_pt": -9.260776921816088,
+        "meets_c2": false,
+        "meets_c3": false,
+        "softmax_entropy_probe": 1.6697495143833243
+      },
+      "2.0": {
+        "right_dependence_worst_pt": -13.037024895736579,
+        "matching_map_dependence_worst_pt": -8.22916795202427,
+        "meets_c2": false,
+        "meets_c3": false,
+        "softmax_entropy_probe": 1.6697495143833243
+      },
+      "3.0": {
+        "right_dependence_worst_pt": -7.872558334670103,
+        "matching_map_dependence_worst_pt": -8.765933293024517,
+        "meets_c2": false,
+        "meets_c3": false,
+        "softmax_entropy_probe": 1.6697495143833243
+      },
+      "4.0": {
+        "right_dependence_worst_pt": -5.152947273602237,
+        "matching_map_dependence_worst_pt": -7.343196653545732,
+        "meets_c2": false,
+        "meets_c3": false,
+        "softmax_entropy_probe": 1.6697495143833243
+      }
+    },
+    "SEED2": {
+      "0.25": {
+        "right_dependence_worst_pt": -1.1692072337868211,
+        "matching_map_dependence_worst_pt": -5.398932779690043,
+        "meets_c2": false,
+        "meets_c3": false,
+        "softmax_entropy_probe": 1.793849676579375
+      },
+      "0.5": {
+        "right_dependence_worst_pt": 1.4897375657906764,
+        "matching_map_dependence_worst_pt": -4.759718090522497,
+        "meets_c2": false,
+        "meets_c3": false,
+        "softmax_entropy_probe": 1.793849676579375
+      },
+      "0.75": {
+        "right_dependence_worst_pt": 10.076672312371372,
+        "matching_map_dependence_worst_pt": -1.8111784953286332,
+        "meets_c2": false,
+        "meets_c3": false,
+        "softmax_entropy_probe": 1.793849676579375
+      },
+      "1.0": {
+        "right_dependence_worst_pt": 74.88025642426561,
+        "matching_map_dependence_worst_pt": 59.957384035404026,
+        "meets_c2": true,
+        "meets_c3": true,
+        "softmax_entropy_probe": 1.793849676579375
+      },
+      "1.25": {
+        "right_dependence_worst_pt": 16.509513495285404,
+        "matching_map_dependence_worst_pt": 16.58713837922015,
+        "meets_c2": false,
+        "meets_c3": false,
+        "softmax_entropy_probe": 1.793849676579375
+      },
+      "1.5": {
+        "right_dependence_worst_pt": -1.172849623923213,
+        "matching_map_dependence_worst_pt": 0.20761623777522686,
+        "meets_c2": false,
+        "meets_c3": false,
+        "softmax_entropy_probe": 1.793849676579375
+      },
+      "2.0": {
+        "right_dependence_worst_pt": -5.303320038609343,
+        "matching_map_dependence_worst_pt": -1.398677812380484,
+        "meets_c2": false,
+        "meets_c3": false,
+        "softmax_entropy_probe": 1.793849676579375
+      },
+      "3.0": {
+        "right_dependence_worst_pt": -5.012839425230837,
+        "matching_map_dependence_worst_pt": 0.6765739678376974,
+        "meets_c2": false,
+        "meets_c3": false,
+        "softmax_entropy_probe": 1.793849676579375
+      },
+      "4.0": {
+        "right_dependence_worst_pt": -2.077983572820486,
+        "matching_map_dependence_worst_pt": 0.5946201897685199,
+        "meets_c2": false,
+        "meets_c3": false,
+        "softmax_entropy_probe": 1.793849676579375
+      }
+    }
+  },
+  "per_temperature": {
+    "0.25": {
+      "per_seed_delta": {
+        "H2": {
+          "epe": 16.773449230522225,
+          "d1": 80.61632004022303
+        },
+        "SEED1": {
+          "epe": 9.460772818163644,
+          "d1": 79.02246688424337
+        },
+        "SEED2": {
+          "epe": 13.940073225571904,
+          "d1": 77.09796236822528
+        }
+      },
+      "per_seed_band": {
+        "H2": "MATERIAL DEGRADATION",
+        "SEED1": "MATERIAL DEGRADATION",
+        "SEED2": "MATERIAL DEGRADATION"
+      },
+      "improves_on_all_seeds": false,
+      "stereo_ok_on_all_seeds": false,
+      "viable": false
+    },
+    "0.5": {
+      "per_seed_delta": {
+        "H2": {
+          "epe": 9.16296466883604,
+          "d1": 73.43881358905038
+        },
+        "SEED1": {
+          "epe": 8.645982875835447,
+          "d1": 79.09564985982686
+        },
+        "SEED2": {
+          "epe": 9.422540252972722,
+          "d1": 72.4661084985604
+        }
+      },
+      "per_seed_band": {
+        "H2": "MATERIAL DEGRADATION",
+        "SEED1": "MATERIAL DEGRADATION",
+        "SEED2": "MATERIAL DEGRADATION"
+      },
+      "improves_on_all_seeds": false,
+      "stereo_ok_on_all_seeds": false,
+      "viable": false
+    },
+    "0.75": {
+      "per_seed_delta": {
+        "H2": {
+          "epe": 3.542767672391167,
+          "d1": 56.12269074578528
+        },
+        "SEED1": {
+          "epe": 4.809100088821966,
+          "d1": 68.8774078658419
+        },
+        "SEED2": {
+          "epe": 4.20035562788768,
+          "d1": 60.4004631327941
+        }
+      },
+      "per_seed_band": {
+        "H2": "MATERIAL DEGRADATION",
+        "SEED1": "MATERIAL DEGRADATION",
+        "SEED2": "MATERIAL DEGRADATION"
+      },
+      "improves_on_all_seeds": false,
+      "stereo_ok_on_all_seeds": false,
+      "viable": false
+    },
+    "1.0": {
+      "per_seed_delta": {
+        "H2": {
+          "epe": 0.0,
+          "d1": 0.0
+        },
+        "SEED1": {
+          "epe": 0.0,
+          "d1": 0.0
+        },
+        "SEED2": {
+          "epe": 0.0,
+          "d1": 0.0
+        }
+      },
+      "per_seed_band": {
+        "H2": "NEGLIGIBLE",
+        "SEED1": "NEGLIGIBLE",
+        "SEED2": "NEGLIGIBLE"
+      },
+      "improves_on_all_seeds": false,
+      "stereo_ok_on_all_seeds": true,
+      "viable": false
+    },
+    "1.25": {
+      "per_seed_delta": {
+        "H2": {
+          "epe": 2.208028762765033,
+          "d1": 37.350218799478384
+        },
+        "SEED1": {
+          "epe": 4.001107655108679,
+          "d1": 61.1130176025699
+        },
+        "SEED2": {
+          "epe": 2.705774590516271,
+          "d1": 45.65810375889116
+        }
+      },
+      "per_seed_band": {
+        "H2": "MATERIAL DEGRADATION",
+        "SEED1": "MATERIAL DEGRADATION",
+        "SEED2": "MATERIAL DEGRADATION"
+      },
+      "improves_on_all_seeds": false,
+      "stereo_ok_on_all_seeds": false,
+      "viable": false
+    },
+    "1.5": {
+      "per_seed_delta": {
+        "H2": {
+          "epe": 4.4498042921273395,
+          "d1": 53.169496031473685
+        },
+        "SEED1": {
+          "epe": 8.086350843540203,
+          "d1": 74.32190043276042
+        },
+        "SEED2": {
+          "epe": 5.637633409819687,
+          "d1": 59.296381058468285
+        }
+      },
+      "per_seed_band": {
+        "H2": "MATERIAL DEGRADATION",
+        "SEED1": "MATERIAL DEGRADATION",
+        "SEED2": "MATERIAL DEGRADATION"
+      },
+      "improves_on_all_seeds": false,
+      "stereo_ok_on_all_seeds": false,
+      "viable": false
+    },
+    "2.0": {
+      "per_seed_delta": {
+        "H2": {
+          "epe": 7.300033699236612,
+          "d1": 63.3939176874285
+        },
+        "SEED1": {
+          "epe": 13.550284528894544,
+          "d1": 78.56154299059351
+        },
+        "SEED2": {
+          "epe": 9.439163791289158,
+          "d1": 65.21768056512089
+        }
+      },
+      "per_seed_band": {
+        "H2": "MATERIAL DEGRADATION",
+        "SEED1": "MATERIAL DEGRADATION",
+        "SEED2": "MATERIAL DEGRADATION"
+      },
+      "improves_on_all_seeds": false,
+      "stereo_ok_on_all_seeds": false,
+      "viable": false
+    },
+    "3.0": {
+      "per_seed_delta": {
+        "H2": {
+          "epe": 9.928667798376853,
+          "d1": 68.39999610812778
+        },
+        "SEED1": {
+          "epe": 18.930556173525236,
+          "d1": 79.87100021379001
+        },
+        "SEED2": {
+          "epe": 13.023072832812105,
+          "d1": 67.60239897107313
+        }
+      },
+      "per_seed_band": {
+        "H2": "MATERIAL DEGRADATION",
+        "SEED1": "MATERIAL DEGRADATION",
+        "SEED2": "MATERIAL DEGRADATION"
+      },
+      "improves_on_all_seeds": false,
+      "stereo_ok_on_all_seeds": false,
+      "viable": false
+    },
+    "4.0": {
+      "per_seed_delta": {
+        "H2": {
+          "epe": 11.101038391878028,
+          "d1": 70.01091564971783
+        },
+        "SEED1": {
+          "epe": 21.454553708593746,
+          "d1": 80.17380365031318
+        },
+        "SEED2": {
+          "epe": 14.64453011529745,
+          "d1": 68.18754721853415
+        }
+      },
+      "per_seed_band": {
+        "H2": "MATERIAL DEGRADATION",
+        "SEED1": "MATERIAL DEGRADATION",
+        "SEED2": "MATERIAL DEGRADATION"
+      },
+      "improves_on_all_seeds": false,
+      "stereo_ok_on_all_seeds": false,
+      "viable": false
+    }
+  },
+  "gates": {
+    "control_matches_untempered_in_process": true,
+    "control_matches_record": true,
+    "all_finite": true,
+    "checkpoints_unchanged": true,
+    "parameter_count_unchanged": true,
+    "macs_unchanged": true,
+    "phase_1_diff_empty": true,
+    "PASS": true
+  },
+  "macs": {
+    "1.0": 56033873280.0,
+    "0.25": 56033873280.0
+  },
+  "viable_temperatures": [],
+  "case": "B",
+  "verdict": "READOUT-ROBUST"
+}

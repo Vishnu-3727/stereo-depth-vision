@@ -1,0 +1,30 @@
+EXP-CORRESPONDENCE-SHIFT-001 -- ENVIRONMENT
+============================================
+
+Inference only. 36 forward passes. Zero training.
+
+python         3.12.9
+torch          2.7.0+cu128
+numpy          2.5.1
+cuda           12.8
+gpu            NVIDIA GeForce RTX 4060 Laptop GPU
+CUBLAS         :4096:8
+
+stage A checkpoint (negative control)
+  phase2/factorial/shift_none_standardized/20260909T071500Z/checkpoints/EXP-FACTORIAL-SHIFT-NONE-STANDARDISED-001-ARM-A_checkpoint.pth
+  sha256 d40d805bbe4cca310683f8617c7518d660e30055c43431081bcbb6a7c388f9b1
+  cost_volume_shift none  blocks 6
+  role: negative control -- cost volume provably degenerate (EXP-010)
+
+stage C (6b seeds 0/1/2): NOT RUN -- halted at stage A
+
+wall clock  4.63 s
+scenes      FOCUS_SCENES [27, 0, 31, 6], split hailo_val
+conditions  horizontal {-32,-16,0,16,32} px, vertical {-32,-16,16,32} px
+mask        baseline candidate in [1,10], 32 px border, 355072 px/scene
+
+provenance
+  HEAD                    58e8a19908ddbd35451652c61aef478f56b51ebd
+  phase-1-frozen^{commit} b4207e518166f5089731b4d037a4a79234f70986
+  phase 1 diff vs frozen  EMPTY
+  phase 2 committed       False

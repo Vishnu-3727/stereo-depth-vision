@@ -1,0 +1,79 @@
+=== M1 tau-covariance ===
+units analysed: 576
+R^2 shift-covariant Phi(k-tau) : mean 0.8672  median 0.8902  p05 0.6622  min 0.0422
+R^2 tau-constant   Psi(k)      : mean 0.2891  median 0.2747  p95 0.5392  max 0.7018
+units where Phi beats Psi      : 574 / 576
+  R^2_Phi in [0.99,1.01): 0 units
+  R^2_Phi in [0.95,0.99): 81 units
+  R^2_Phi in [0.90,0.95): 188 units
+  R^2_Phi in [0.00,0.90): 307 units
+  h=0 : n=414  R^2_Phi mean 0.8700  R^2_Psi mean 0.2738
+  h=1 : n= 67  R^2_Phi mean 0.8105  R^2_Psi mean 0.3234
+  h=2 : n= 19  R^2_Phi mean 0.8303  R^2_Psi mean 0.2560
+  h=3 : n= 13  R^2_Phi mean 0.8930  R^2_Psi mean 0.3681
+  h=4 : n= 10  R^2_Phi mean 0.8770  R^2_Psi mean 0.3199
+  h=5 : n= 22  R^2_Phi mean 0.9050  R^2_Psi mean 0.3640
+  h=6 : n= 31  R^2_Phi mean 0.9339  R^2_Psi mean 0.3430
+
+=== M2/M3/M4 offset provenance, profile, gate arithmetic ===
+=== M2a: is the constant offset c a property of the WEIGHTS or the CONTENT? ===
+seeds with >=1 offset-constant unit: 27
+  of those, seeds whose c is identical across ALL their constant units: 8
+  seed : n_constant_of_18 : c values
+    7  :  12  : [(1, 10), (3, 2)]
+   19  :  11  : [(1, 6), (2, 4), (3, 1)]
+   25  :  10  : [(1, 2), (2, 5), (3, 3)]
+   27  :  10  : [(0, 10)]
+    1  :   8  : [(1, 2), (2, 2), (3, 4)]
+   18  :   8  : [(-1, 2), (1, 5), (3, 1)]
+   22  :   8  : [(-1, 2), (0, 6)]
+    4  :   8  : [(0, 1), (1, 5), (2, 2)]
+   11  :   7  : [(0, 1), (1, 6)]
+   17  :   7  : [(-1, 3), (0, 4)]
+   12  :   7  : [(0, 1), (1, 3), (2, 3)]
+   15  :   7  : [(0, 2), (1, 5)]
+
+=== M2b: within a seed, does c change with extractor / scene pair? ===
+seeds whose c varies across (extractor, pair): 19 of 27
+
+=== M3: mean aligned profile Phi(d), per-unit RMS-normalised ===
+  d    :     -1       0       1       2       3       4       5
+  mean : -0.026  -0.066  -0.278  -0.090  -0.159   0.054   0.114
+  sd   :  1.042   1.074   1.138   0.947   0.794   0.694   0.690
+  argmin of the mean aligned profile: d = 1
+  per-unit argmin of aligned profile: [(-1, 85), (0, 79), (1, 149), (2, 81), (3, 73), (4, 43), (5, 66)]
+
+=== M4: the gate rule's own arithmetic (no data needed for the derivation) ===
+observed P(unit h=6 | random) = 31/576 = 0.0538
+  95% CI  [0.0354, 0.0722]
+P(max over 576 random units < 6) = (1-p)^576 = 1.449e-14
+  -> G-STOP was certain to within 1e-14
+smallest p for which a 576-unit max-gate passes with prob >= 0.5: p <= 0.00120
+  i.e. the null must produce a perfect unit less than once in 831 draws
+and even on G-PASS the brief requires min(h_trained) > H*, so with H*=5
+  ALL 18 trained units must score 6; with H*=6 the design is unfalsifiable-positive.
+
+=== M4b: a RATE comparison on the same data, for contrast ===
+null rate of c==0 per unit            : 31/576 = 0.0538
+null rate of offset-constant per unit : 153/576 = 0.2656
+null rate of c==0 GIVEN constant      : 31/153 = 0.2026
+  P(>= 18 of 18 trained units at c==0 | null rate 0.0538) = 1.435e-23
+  P(>= 15 of 18 trained units at c==0 | null rate 0.0538) = 6.432e-17
+  P(>= 12 of 18 trained units at c==0 | null rate 0.0538) = 8.077e-12
+
+=== M5 disparity-output tracking ===
+AA  slope: mean +0.008  median +0.003  [p05 -0.151, p95 +0.165] | R2 median 0.685 | mean|m-tau| median 2.144
+BB  slope: mean +0.010  median +0.011  [p05 -0.141, p95 +0.174] | R2 median 0.699 | mean|m-tau| median 2.127
+AB  slope: mean +0.000  median +0.001  [p05 -0.084, p95 +0.081] | R2 median 0.502 | mean|m-tau| median 2.093
+BA  slope: mean +0.003  median +0.002  [p05 -0.068, p95 +0.079] | R2 median 0.391 | mean|m-tau| median 2.084
+
+AA slope within +-0.2 of 1.0 : 0 / 576 units
+AA slope within +-0.5 of 1.0 : 0 / 576 units
+AA median |m - tau| <= 0.5   : 0 / 576 units
+AA median |m - tau| <= 1.0   : 0 / 576 units
+
+=== M6 reparameterisation (frozen cost-volume op, random tensors) ===
+reparameterisation checks: 60  (4 cells x 15 tau pairs)
+max |V^{t1}[k-s, w+s] - V^{t2}[k, w]| over the clean band = 0.0
+EXACT
+max |V[:, tau, :, clean band]| for AA/BB = 0.0

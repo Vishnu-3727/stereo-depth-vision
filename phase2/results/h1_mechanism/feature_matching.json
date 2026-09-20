@@ -1,0 +1,66 @@
+{
+  "protocol": "inference only; L1 cost volume built directly from the trained feature maps over the same 12 shifts, argmin -> candidate * 16 px, nearest-upsampled to full resolution, correlated with ground truth on gt > 0 pixels",
+  "git_revision": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+  "models": {
+    "BASE": {
+      "27": {
+        "scene": "000187_10.png",
+        "corr_with_gt": 0.016226252055951847,
+        "mean_disparity_px": 32.09938049316406,
+        "fraction_argmin_not_0": 0.6036137938499451,
+        "corr_with_network_initial": NaN
+      },
+      "0": {
+        "scene": "000160_10.png",
+        "corr_with_gt": 0.2287443941178901,
+        "mean_disparity_px": 26.488988876342773,
+        "fraction_argmin_not_0": 0.5798983573913574,
+        "corr_with_network_initial": NaN
+      },
+      "31": {
+        "scene": "000191_10.png",
+        "corr_with_gt": 0.23709105053031046,
+        "mean_disparity_px": 26.895538330078125,
+        "fraction_argmin_not_0": 0.5160925984382629,
+        "corr_with_network_initial": NaN
+      },
+      "6": {
+        "scene": "000166_10.png",
+        "corr_with_gt": 0.1770614911171701,
+        "mean_disparity_px": 23.489553451538086,
+        "fraction_argmin_not_0": 0.5341615080833435,
+        "corr_with_network_initial": NaN
+      }
+    },
+    "WORKING": {
+      "27": {
+        "scene": "000187_10.png",
+        "corr_with_gt": 0.04486145288627653,
+        "mean_disparity_px": 21.92659568786621,
+        "fraction_argmin_not_0": 0.5573122501373291,
+        "corr_with_network_initial": 0.08734147638600592
+      },
+      "0": {
+        "scene": "000160_10.png",
+        "corr_with_gt": 0.3296243565261613,
+        "mean_disparity_px": 18.077922821044922,
+        "fraction_argmin_not_0": 0.6516092419624329,
+        "corr_with_network_initial": -0.13523153588277068
+      },
+      "31": {
+        "scene": "000191_10.png",
+        "corr_with_gt": 0.20253619051894575,
+        "mean_disparity_px": 25.693958282470703,
+        "fraction_argmin_not_0": 0.4534161388874054,
+        "corr_with_network_initial": -0.020670513570403694
+      },
+      "6": {
+        "scene": "000166_10.png",
+        "corr_with_gt": 0.2846867710001368,
+        "mean_disparity_px": 22.62224769592285,
+        "fraction_argmin_not_0": 0.4601919651031494,
+        "corr_with_network_initial": 0.3064303099891724
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+H-1  exact positions where Agg(shift_m V)(k) == Agg(V)(k-m)
+   m=1 circular  -> [6]
+   m=1 zero-fill -> [5, 6]
+   m=2 circular  -> none
+   m=2 zero-fill -> [6]
+   m=3 circular  -> none
+   m=3 zero-fill -> none
+
+H-2  per-position relative error of the circular-shift approximation
+   m=1  k00:0.484  k01:0.237  k02:0.074  k03:0.059  k04:0.034  k05:0.018  k06:0.000  k07:0.011  k08:0.027  k09:0.065  k10:0.070  k11:0.344
+   m=2  k00:0.325  k01:0.412  k02:0.274  k03:0.054  k04:0.030  k05:0.045  k06:0.018  k07:0.016  k08:0.032  k09:0.041  k10:0.062  k11:0.280
+
+G-1  orbit shape and circular rank TV under ideal circular equivariance
+   sharp peak @3   TV=22.0  range=5.79  orbit= 3.57  4.34  5.11  5.89  6.66  7.43  8.04  8.39  7.57  3.43  2.61  2.96
+   broad peak @3   TV=22.0  range=4.72  orbit= 3.62  4.47  5.29  6.07  6.79  7.38  7.76  7.61  6.49  4.30  3.18  3.04
+   sharp peak @8   TV=22.0  range=5.11  orbit= 7.25  7.91  8.08  7.04  4.84  3.28  2.98  3.45  4.11  4.90  5.68  6.47
+   random-ish A    TV=24.0  range=4.22  orbit= 6.97  7.36  6.80  3.90  3.15  3.98  4.88  5.49  5.11  5.55  6.29  6.51
+   random-ish B    TV=28.0  range=4.35  orbit= 2.77  3.47  3.57  4.46  4.95  5.80  6.51  6.88  7.09  7.13  6.47  6.91
+   TV floor for a monotone-around-the-circle rank sequence = 22
+
+G-2  headroom of the replacement statistic (orbit-shape agreement)
+   peaked-peaked   n=  3 mean=+0.592 min=+0.276 max=+0.751
+   random-random   n= 15 mean=-0.019 min=-0.682 max=+0.542
+   peaked-random   n= 18 mean=+0.124 min=-0.552 max=+0.735
+
+G-3  phase sensitivity (same mechanism, different peak position)
+   peak2 vs peak3 : r=+0.751
+   peak2 vs peak4 : r=+0.276
+   peak3 vs peak4 : r=+0.751

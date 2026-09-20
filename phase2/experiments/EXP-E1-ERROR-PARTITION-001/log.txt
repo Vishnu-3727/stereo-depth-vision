@@ -1,0 +1,33 @@
+[00:50:14] note: H2's residual error is partitioned by substituting a perfect (oracle) matching output at the matching -> refinement boundary: the fraction of error it removes says whether the ceiling is upstream or downstream.
+[00:50:14] note: measures the ceiling of THESE trained refinement weights; a refinement stage retrained against a perfect matching input could behave differently. One dataset slice, three seeds, no significance test and none claimed.
+[00:50:14] note: Thresholds and variants were frozen in phase2/docs/EXP_E1_ERROR_PARTITION_001_PREREGISTRATION.md before this run.
+[00:50:19] H2 affine fit: initial = 0.095162*gt + 1.014066  R2 0.8634  residual 0.686 candidates
+[00:50:33] H2     as trained                       EPE   2.400  D1  16.72 %
+[00:50:33] H2     initial := itself                EPE   2.400  D1  16.72 %
+[00:50:33] H2     initial := a*gt+b where gt>0     EPE   2.213  D1  16.35 %
+[00:50:33] H2     initial := a*gt+b densified      EPE   2.597  D1  34.40 %
+[00:50:33] H2     initial := a*gt+b shuffled       EPE  15.152  D1  88.06 %
+[00:50:33] H2 ratio 0.922 -> DOWNSTREAM-LIMITED (gates PASS)
+[00:50:37] SEED1 affine fit: initial = 0.063323*gt + 1.100980  R2 0.8903  residual 0.402 candidates
+[00:50:50] SEED1  as trained                       EPE   2.319  D1  17.25 %
+[00:50:50] SEED1  initial := itself                EPE   2.319  D1  17.25 %
+[00:50:50] SEED1  initial := a*gt+b where gt>0     EPE   2.039  D1  14.60 %
+[00:50:50] SEED1  initial := a*gt+b densified      EPE   2.291  D1  26.19 %
+[00:50:50] SEED1  initial := a*gt+b shuffled       EPE  15.152  D1  88.34 %
+[00:50:50] SEED1 ratio 0.879 -> DOWNSTREAM-LIMITED (gates PASS)
+[00:50:54] SEED2 affine fit: initial = 0.076833*gt + 1.017420  R2 0.8623  residual 0.556 candidates
+[00:51:07] SEED2  as trained                       EPE   2.556  D1  19.76 %
+[00:51:07] SEED2  initial := itself                EPE   2.556  D1  19.76 %
+[00:51:07] SEED2  initial := a*gt+b where gt>0     EPE   2.334  D1  18.63 %
+[00:51:07] SEED2  initial := a*gt+b densified      EPE   2.649  D1  34.24 %
+[00:51:07] SEED2  initial := a*gt+b shuffled       EPE  15.031  D1  88.07 %
+[00:51:07] SEED2 ratio 0.913 -> DOWNSTREAM-LIMITED (gates PASS)
+[00:51:08] metric affine_fits = {'H2': {'a': np.float64(0.09516206330710517), 'b': np.float64(1.0140655324364356), 'r2': 0.8633936846880473, 'residual_std_candidates': 0.6855228093875361, 'pixels': 3802797, 'initial_mean_candidates': np.float64(4.436991066754318)}, 'SEED1': {'a': np.float64(0.06332337920162186), 'b': np.float64(1.1009803077147153), 'r2': 0.8903377144057271, 'residual_std_candidates': 0.40247828064042157, 'pixels': 3802797, 'initial_mean_candidates': np.float64(3.378686402516696)}, 'SEED2': {'a': np.float64(0.07683300114258249), 'b': np.float64(1.0174198236019818), 'r2': 0.862274996059492, 'residual_std_candidates': 0.5561070523349091, 'pixels': 3802797, 'initial_mean_candidates': np.float64(3.781059370177308)}}
+[00:51:08] metric scores = {'H2': {'as trained': {'epe': 2.4004242992562075, 'd1': 16.71777378597911, 'pixels': 3802797}, 'initial := itself': {'epe': 2.4004242992562075, 'd1': 16.71777378597911, 'pixels': 3802797}, 'initial := a*gt+b where gt>0': {'epe': 2.213098118114666, 'd1': 16.351911500929447, 'pixels': 3802797}, 'initial := a*gt+b densified': {'epe': 2.5971903517127966, 'd1': 34.402388557685306, 'pixels': 3802797}, 'initial := a*gt+b shuffled': {'epe': 15.151565926191891, 'd1': 88.05823713440397, 'pixels': 3802797}}, 'SEED1': {'as trained': {'epe': 2.3193164497173653, 'd1': 17.250592129950665, 'pixels': 3802797}, 'initial := itself': {'epe': 2.3193164497173653, 'd1': 17.250592129950665, 'pixels': 3802797}, 'initial := a*gt+b where gt>0': {'epe': 2.039131774013614, 'd1': 14.599490848446552, 'pixels': 3802797}, 'initial := a*gt+b densified': {'epe': 2.291115341611864, 'd1': 26.187829642234387, 'pixels': 3802797}, 'initial := a*gt+b shuffled': {'epe': 15.152006089965418, 'd1': 88.34302751369584, 'pixels': 3802797}}, 'SEED2': {'as trained': {'epe': 2.556149774060891, 'd1': 19.7592193325071, 'pixels': 3802797}, 'initial := itself': {'epe': 2.556149774060891, 'd1': 19.7592193325071, 'pixels': 3802797}, 'initial := a*gt+b where gt>0': {'epe': 2.3344398812129814, 'd1': 18.633810850276785, 'pixels': 3802797}, 'initial := a*gt+b densified': {'epe': 2.648663405694805, 'd1': 34.23701028479827, 'pixels': 3802797}, 'initial := a*gt+b shuffled': {'epe': 15.031203150198646, 'd1': 88.06636273248348, 'pixels': 3802797}}}
+[00:51:08] metric gates = {'H2': {'substitution_fidelity': True, 'identity_epe_delta': 0.0, 'negative_control': True, 'record_fidelity': True, 'record_epe_delta': 0.00042429925620757203, 'record_d1_delta': -0.0022262140208901826, 'PASS': True}, 'SEED1': {'substitution_fidelity': True, 'identity_epe_delta': 0.0, 'negative_control': True, 'PASS': True}, 'SEED2': {'substitution_fidelity': True, 'identity_epe_delta': 0.0, 'negative_control': True, 'PASS': True}}
+[00:51:08] metric checkpoint_integrity = {'before': {'H2': 'e3d48021d7f6a3d4d16fe33031e8ba85fd24389c5ba892f52c7e873e48454927', 'SEED1': '849a371eb54847b642525c9ee8bc997897ee0a8e94db9894d45c6c582ba5c9a7', 'SEED2': '9528c5b68c89c929d71b7acbb9c4d3e1b72f39d9082f3b6c889a8b5c25f4b294'}, 'after': {'H2': 'e3d48021d7f6a3d4d16fe33031e8ba85fd24389c5ba892f52c7e873e48454927', 'SEED1': '849a371eb54847b642525c9ee8bc997897ee0a8e94db9894d45c6c582ba5c9a7', 'SEED2': '9528c5b68c89c929d71b7acbb9c4d3e1b72f39d9082f3b6c889a8b5c25f4b294'}, 'unchanged': True}
+[00:51:08] metric verdicts = {'H2': {'epe_ratio': 0.9219612211059578, 'error_removed_fraction': 0.0780387788940422, 'verdict': 'DOWNSTREAM-LIMITED'}, 'SEED1': {'epe_ratio': 0.8791951500460857, 'error_removed_fraction': 0.12080484995391427, 'verdict': 'DOWNSTREAM-LIMITED'}, 'SEED2': {'epe_ratio': 0.9132641228234116, 'error_removed_fraction': 0.08673587717658837, 'verdict': 'DOWNSTREAM-LIMITED'}}
+[00:51:08] metric overall_verdict = DOWNSTREAM-LIMITED
+[00:51:08] metric wall_clock_s = 53.723140716552734
+[00:51:08] conclusion: Oracle matching output removes 7.8%, 12.1%, 8.7% of H2's pooled EPE across seeds; overall verdict DOWNSTREAM-LIMITED.
+[00:51:08] status: completed

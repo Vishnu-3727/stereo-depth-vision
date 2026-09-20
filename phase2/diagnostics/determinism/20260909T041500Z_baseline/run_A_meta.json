@@ -1,0 +1,61 @@
+{
+  "run": "A",
+  "experiment_id": "STAGEB-DETERMINISTIC-BASELINE-ARM-A-RUNA",
+  "controls": {
+    "torch.use_deterministic_algorithms": true,
+    "torch.backends.cudnn.deterministic": true,
+    "torch.backends.cudnn.benchmark": false,
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+  },
+  "provenance": {
+    "head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "head_subject": "docs: add the Phase 1 overview",
+    "phase_1_frozen_commit": "b4207e518166f5089731b4d037a4a79234f70986",
+    "phase_1_frozen_tag_object": "0fc4f296b409f79bc12cd8e294a1bdb34ed1e262",
+    "phase_1_diff_vs_frozen": "",
+    "status_short": "M .gitignore\n?? phase2/",
+    "stage_a_basis": "phase2/diagnostics/determinism/20260909T022238Z"
+  },
+  "environment": {
+    "command": "phase2/diagnostics/determinism/stageb_deterministic_baseline.py train --run A --out C:/Users/vishn/stereo_depth_vision/phase2/diagnostics/determinism/20260909T041500Z_baseline",
+    "cwd": "C:\\Users\\vishn\\stereo_depth_vision",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "numpy": "2.5.1",
+    "cuda_version": "12.8",
+    "cudnn_version": 90701,
+    "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_capability": "8.9",
+    "nvidia_driver": [
+      "616.64"
+    ],
+    "flags": {
+      "deterministic_algorithms": true,
+      "cudnn.deterministic": true,
+      "cudnn.benchmark": false,
+      "cudnn.allow_tf32": true,
+      "cuda.matmul.allow_tf32": false,
+      "float32_matmul_precision": "highest"
+    },
+    "env": {
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+    }
+  },
+  "started_utc": "2026-09-09T04:11:58Z",
+  "init_weight_sha": "c4d02385e3da28a5",
+  "init_weight_sha_matches": true,
+  "wall_clock_s": 4948.996661901474,
+  "finished_utc": "2026-09-09T05:34:28Z",
+  "checkpoint": "phase2\\diagnostics\\determinism\\20260909T041500Z_baseline\\checkpoints\\STAGEB-DETERMINISTIC-BASELINE-ARM-A-RUNA_checkpoint.pth",
+  "checkpoint_sha256": "581d62e699b159945580f9627b451d953ce07b5dc763d608a9f4a8b5ecba692a",
+  "final_weight_sha": "3ad382c50d413ad2",
+  "snapshots": {
+    "STAGEB-DETERMINISTIC-BASELINE-ARM-A-RUNA_epoch10.pth": "e5650dd766028cac4f5f9a9894144fa7f4cf142ea8fa135c4aa8af45c37ed12c",
+    "STAGEB-DETERMINISTIC-BASELINE-ARM-A-RUNA_epoch100.pth": "be9f8a502763bf7cfd6ba05b17f620db08ba7e96cae3bd1b6adb41912f9e5217",
+    "STAGEB-DETERMINISTIC-BASELINE-ARM-A-RUNA_epoch150.pth": "e33ee189e539e30af0d616e12967ed9cb81323d3143b406039f5aab9cc2ca1f2",
+    "STAGEB-DETERMINISTIC-BASELINE-ARM-A-RUNA_epoch20.pth": "fd3b9da46858f58f1d971c3a74c5360653e257a6e9146d007bc6ecf9ee79b336",
+    "STAGEB-DETERMINISTIC-BASELINE-ARM-A-RUNA_epoch200.pth": "a34b7716134d76fc693ab5227720364aa59c7eeb6d1f20c8400bdfb73c38ee4e",
+    "STAGEB-DETERMINISTIC-BASELINE-ARM-A-RUNA_epoch50.pth": "885a1b5ec3c5341d270c298d856129a79a1a5cc63d3392ae544c1bd68f5e68f0"
+  }
+}

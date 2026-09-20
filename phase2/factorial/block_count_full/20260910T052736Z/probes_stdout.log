@@ -1,0 +1,8 @@
+EXP-BLOCKCOUNT-FULL-001-ARM-B-SEED2 (5 blocks, seed 2):
+    epoch  10  right   -2.651  map   -4.088  entropy 1.9728  std  8.776  init r(GT) +0.5183
+    epoch  20  right   -0.026  map   +3.568  entropy 1.8646  std 10.912  init r(GT) +0.7085
+    epoch  50  right  +42.048  map  +32.965  entropy 1.7930  std 16.954  init r(GT) +0.8058
+    epoch 100  right  +61.287  map  +52.094  entropy 1.8204  std 16.995  init r(GT) +0.8821
+    epoch 150  right  +74.089  map  +60.943  entropy 1.8365  std 17.793  init r(GT) +0.8858
+    epoch 200  right  +73.592  map  +60.096  entropy 1.8441  std 18.053  init r(GT) +0.8844
+wrote C:\Users\vishn\stereo_depth_vision\phase2\factorial\block_count_full\20260910T052736Z\probes.json

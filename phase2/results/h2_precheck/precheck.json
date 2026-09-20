@@ -1,0 +1,5192 @@
+{
+  "purpose": "numerical pre-check for EXP-H2-SOFTARGMIN-SCALE: does per-pixel standardisation of the aggregated cost across the disparity axis change the saturation regime, using the control's own weights",
+  "protocol": {
+    "weights": "EXP-H1-WORKING-v2 checkpoint, unmodified, for BOTH arms",
+    "checkpoint_sha256": "a5c16c6b864383a6356e0bf995051d135704084dd0eb843760416d696ad4d1e9",
+    "inputs": "40 random 256x512 crops from hailo_calib (identical for both arms) plus full frames of hailo_val scenes [27, 0, 31, 6]",
+    "loss": "masked smooth L1, max_disparity=176.0",
+    "backward": "yes, gradients measured; no optimizer step, nothing saved",
+    "gradient_present_threshold": 1e-12,
+    "saturation_gap_threshold": 88.0,
+    "device": "cuda"
+  },
+  "git_revision": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+  "crops": {
+    "control": {
+      "summary": {
+        "batches": 40,
+        "matching_path_gradient_present_fraction": 0.025,
+        "softmax_input_gradient_present_fraction": 0.025,
+        "raw_cost_gradient_present_fraction": 0.025,
+        "median_softmax_input_gradient_norm": 0.0,
+        "median_pixels_with_cost_gradient": 0.0,
+        "pixels_total": 131072,
+        "mean_softmax_entropy_nats": 1.3220733271788507e-07,
+        "mean_max_softmax_weight": 0.9999999046325684,
+        "mean_fraction_pixels_gap_below_88": 1.9073486328125e-07,
+        "median_top2_gap": 7.74718641710039e+16,
+        "disparity_initial_std_mean": 3.712588766913312,
+        "matching_path_gradient_norm": {
+          "median": 0.0,
+          "max": 69392920059.55902,
+          "p90": 0.0
+        },
+        "total_gradient_norm": {
+          "median": 60.295739348953774,
+          "max": 69392920059.55902,
+          "p90": 131.60293682194649,
+          "batches_above_1e4": 1
+        }
+      },
+      "batches": [
+        {
+          "loss": 2.8681981563568115,
+          "valid_pixels": 20014,
+          "cost_entering_softmax": {
+            "min": -1.0311715512710595e+18,
+            "max": 1.2262203373213712e+19,
+            "mean": 1.5514152677483597e+18,
+            "std": 2.3161375215744353e+18,
+            "median_top2_gap": 5.900532586433741e+16,
+            "min_top2_gap": 2052994367488.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 2.7686920166015625,
+            "std": 3.9427017482077495
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 15.49741407276503
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 15.49741407276503
+          }
+        },
+        {
+          "loss": 7.124621391296387,
+          "valid_pixels": 26233,
+          "cost_entering_softmax": {
+            "min": -1.6250258216116552e+18,
+            "max": 2.165674628076903e+19,
+            "mean": 2.616620510074926e+18,
+            "std": 3.910211353069831e+18,
+            "median_top2_gap": 1.36030204198912e+17,
+            "min_top2_gap": 68719476736.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 2.61993408203125,
+            "std": 3.6613671558685046
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 131.59406436007353
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 131.59406436007353
+          }
+        },
+        {
+          "loss": 5.588909149169922,
+          "valid_pixels": 22412,
+          "cost_entering_softmax": {
+            "min": -3.508252157797204e+18,
+            "max": 4.34903995844007e+19,
+            "mean": 3.35881745498393e+18,
+            "std": 7.780928347231565e+18,
+            "median_top2_gap": 6.454806705917133e+16,
+            "min_top2_gap": 773094113280.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 4.959053039550781,
+            "std": 4.2015917087377215
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 171.66584367422385
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 171.66584367422385
+          }
+        },
+        {
+          "loss": 4.35978364944458,
+          "valid_pixels": 26023,
+          "cost_entering_softmax": {
+            "min": -6.133378912626934e+17,
+            "max": 1.6020322022324175e+19,
+            "mean": 1.9887722991437448e+18,
+            "std": 2.7733256101279764e+18,
+            "median_top2_gap": 2.3943815609974784e+17,
+            "min_top2_gap": 128849018880.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 1.6510391235351562,
+            "std": 3.3552744963624894
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 64.37347934540196
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 64.37347934540196
+          }
+        },
+        {
+          "loss": 3.051072359085083,
+          "valid_pixels": 39215,
+          "cost_entering_softmax": {
+            "min": -1.4998427806570906e+17,
+            "max": 7.961217350563267e+18,
+            "mean": 4.876634420576592e+17,
+            "std": 1.186703029067431e+18,
+            "median_top2_gap": 4384943102754816.0,
+            "min_top2_gap": 352321536.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 3.0774688720703125,
+            "std": 4.072450597124435
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 80.09692288325809
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 80.09692288325809
+          }
+        },
+        {
+          "loss": 2.2200746536254883,
+          "valid_pixels": 37617,
+          "cost_entering_softmax": {
+            "min": -6.327950551862477e+17,
+            "max": 1.0113779642771964e+19,
+            "mean": 1.188143479199593e+18,
+            "std": 1.8066974396858237e+18,
+            "median_top2_gap": 3.726437321067725e+16,
+            "min_top2_gap": 187904819200.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 2.5522918701171875,
+            "std": 3.8239376552772812
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 60.41889823143095
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 60.41889823143095
+          }
+        },
+        {
+          "loss": 4.152557373046875,
+          "valid_pixels": 33067,
+          "cost_entering_softmax": {
+            "min": -5.51619829694464e+17,
+            "max": 8.736072881470964e+18,
+            "mean": 1.0533947558902452e+18,
+            "std": 1.5309721423137452e+18,
+            "median_top2_gap": 8.637149596981658e+16,
+            "min_top2_gap": 188978561024.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 10.0,
+            "mean": 2.1320953369140625,
+            "std": 3.4976636827167265
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 59.84110892626885
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 59.84110892626885
+          }
+        },
+        {
+          "loss": 4.396279335021973,
+          "valid_pixels": 28369,
+          "cost_entering_softmax": {
+            "min": -5.961025654609674e+17,
+            "max": 9.177006181267276e+18,
+            "mean": 8.325645311076947e+17,
+            "std": 1.804172500301566e+18,
+            "median_top2_gap": 1.5170365655351296e+16,
+            "min_top2_gap": 34275852288.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 5.503349304199219,
+            "std": 4.232760702864517
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 72.35083293518858
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 72.35083293518858
+          }
+        },
+        {
+          "loss": 2.2183735370635986,
+          "valid_pixels": 50851,
+          "cost_entering_softmax": {
+            "min": -1.3529335960961024e+16,
+            "max": 1.5478468398505e+19,
+            "mean": 2.1931289381278536e+18,
+            "std": 2.933573489385905e+18,
+            "median_top2_gap": 1.825694132564132e+17,
+            "min_top2_gap": 3154116608.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 1.17431640625,
+            "std": 2.787468618353213
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 50.6888493761391
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 50.6888493761391
+          }
+        },
+        {
+          "loss": 6.317181587219238,
+          "valid_pixels": 35247,
+          "cost_entering_softmax": {
+            "min": -5.953701532779151e+17,
+            "max": 1.6326499726776074e+19,
+            "mean": 2.530196616042203e+18,
+            "std": 2.9280687182336056e+18,
+            "median_top2_gap": 1.0611792916198195e+17,
+            "min_top2_gap": 227633266688.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 1.3468093872070312,
+            "std": 2.595239155286531
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 39.87338250030937
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 39.87338250030937
+          }
+        },
+        {
+          "loss": 2.640594005584717,
+          "valid_pixels": 20899,
+          "cost_entering_softmax": {
+            "min": -2.364621526445064e+18,
+            "max": 2.0849423271004733e+19,
+            "mean": 2.1170535197704556e+18,
+            "std": 3.95146967921854e+18,
+            "median_top2_gap": 7.897170111050547e+16,
+            "min_top2_gap": 257698037760.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 3.9173583984375,
+            "std": 4.267578606263413
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 32.05885757338966
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 32.05885757338966
+          }
+        },
+        {
+          "loss": 3.274404525756836,
+          "valid_pixels": 10569,
+          "cost_entering_softmax": {
+            "min": -2.0968191142647562e+18,
+            "max": 4.832015834103467e+19,
+            "mean": 4.02800649805427e+18,
+            "std": 8.067142553991635e+18,
+            "median_top2_gap": 1.3334527411329434e+17,
+            "min_top2_gap": 54307848192.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 3.0050277709960938,
+            "std": 3.9699642190496083
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 89.04041967167502
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 89.04041967167502
+          }
+        },
+        {
+          "loss": 4.0178704261779785,
+          "valid_pixels": 31136,
+          "cost_entering_softmax": {
+            "min": -2.956396001822245e+18,
+            "max": 2.915050076522519e+19,
+            "mean": 2.520609580873986e+18,
+            "std": 4.919847944287669e+18,
+            "median_top2_gap": 6.749104736986726e+16,
+            "min_top2_gap": 28286386176.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 2.7353286743164062,
+            "std": 3.51787001067457
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 79.90084673169132
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 79.90084673169132
+          }
+        },
+        {
+          "loss": 3.2920947074890137,
+          "valid_pixels": 29071,
+          "cost_entering_softmax": {
+            "min": -1.0356981719231365e+18,
+            "max": 1.948978258525972e+19,
+            "mean": 3.3554509667711846e+18,
+            "std": 3.922637195610004e+18,
+            "median_top2_gap": 3.7574484452337254e+17,
+            "min_top2_gap": 2542620639232.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 2.6988143920898438,
+            "std": 3.959379675130219
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 32.276417577929934
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 32.276417577929934
+          }
+        },
+        {
+          "loss": 5.42307186126709,
+          "valid_pixels": 29561,
+          "cost_entering_softmax": {
+            "min": -1.167235221855142e+18,
+            "max": 1.5859455774599152e+19,
+            "mean": 1.6436950808817833e+18,
+            "std": 3.019807071415718e+18,
+            "median_top2_gap": 3.491303216119808e+16,
+            "min_top2_gap": 313532612608.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 10.0,
+            "mean": 4.267753601074219,
+            "std": 4.067440591241835
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 76.72890589898229
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 76.72890589898229
+          }
+        },
+        {
+          "loss": 1.7918375730514526,
+          "valid_pixels": 37077,
+          "cost_entering_softmax": {
+            "min": -1.065299223966122e+18,
+            "max": 1.4192575256169808e+19,
+            "mean": 1.7055517059582653e+18,
+            "std": 2.76746206366709e+18,
+            "median_top2_gap": 5.925738890500506e+16,
+            "min_top2_gap": 1013612281856.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 2.811492919921875,
+            "std": 3.9113342553081
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 31.042081290403218
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 31.042081290403218
+          }
+        },
+        {
+          "loss": 7.253951549530029,
+          "valid_pixels": 35473,
+          "cost_entering_softmax": {
+            "min": -5.898868200707195e+17,
+            "max": 2.0468499666584994e+19,
+            "mean": 2.3410443425809336e+18,
+            "std": 3.1995941203305247e+18,
+            "median_top2_gap": 1.5414651369239347e+17,
+            "min_top2_gap": 7751073792.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 1.5137557983398438,
+            "std": 3.4755806175283093
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 65.809450308251
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 65.809450308251
+          }
+        },
+        {
+          "loss": 4.796974182128906,
+          "valid_pixels": 31171,
+          "cost_entering_softmax": {
+            "min": -2.1626906239565824e+16,
+            "max": 6.205053326862582e+17,
+            "mean": 2.369582942049319e+16,
+            "std": 7.565978468345422e+16,
+            "median_top2_gap": 455515893137408.0,
+            "min_top2_gap": 671088640.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 4.635223388671875,
+            "std": 4.461082187884407
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 131.68278897880293
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 131.68278897880293
+          }
+        },
+        {
+          "loss": 4.3731231689453125,
+          "valid_pixels": 42628,
+          "cost_entering_softmax": {
+            "min": -4.191351038185308e+17,
+            "max": 6.168061220218733e+18,
+            "mean": 1.099756212004342e+18,
+            "std": 1.2769725262238915e+18,
+            "median_top2_gap": 6.86003829300265e+16,
+            "min_top2_gap": 573378134016.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 0.9610443115234375,
+            "std": 1.9893573835180784
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 77.3786923301181
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 77.3786923301181
+          }
+        },
+        {
+          "loss": 2.386918306350708,
+          "valid_pixels": 45314,
+          "cost_entering_softmax": {
+            "min": -6.144767104311624e+17,
+            "max": 1.4174092465706893e+19,
+            "mean": 1.258060512045162e+18,
+            "std": 2.390955921463951e+18,
+            "median_top2_gap": 3.172006811087667e+16,
+            "min_top2_gap": 34359738368.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 4.080192565917969,
+            "std": 4.288077360418899
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 53.8851425736476
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 53.8851425736476
+          }
+        },
+        {
+          "loss": 2.3720476627349854,
+          "valid_pixels": 29236,
+          "cost_entering_softmax": {
+            "min": -6.796657927693271e+17,
+            "max": 1.7146801371794637e+19,
+            "mean": 1.8325526042183e+18,
+            "std": 3.082066206029352e+18,
+            "median_top2_gap": 7.597202723150234e+16,
+            "min_top2_gap": 841813590016.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 3.4232101440429688,
+            "std": 4.283022285123503
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 51.89674818562346
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 51.89674818562346
+          }
+        },
+        {
+          "loss": 2.63476300239563,
+          "valid_pixels": 44503,
+          "cost_entering_softmax": {
+            "min": -7.211321558239805e+17,
+            "max": 2.5216179880205484e+19,
+            "mean": 3.2638757057403044e+18,
+            "std": 4.4409470869480576e+18,
+            "median_top2_gap": 3.3851111160938496e+17,
+            "min_top2_gap": 910533066752.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 2.3737258911132812,
+            "std": 3.921489234270073
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 21.26624708946227
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 21.26624708946227
+          }
+        },
+        {
+          "loss": 2.6293747425079346,
+          "valid_pixels": 20926,
+          "cost_entering_softmax": {
+            "min": -3.991449172736737e+17,
+            "max": 6.000035502529446e+18,
+            "mean": 6.100945904208572e+17,
+            "std": 1.0333912816958748e+18,
+            "median_top2_gap": 2.973748597411021e+16,
+            "min_top2_gap": 402653184.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 2.8664321899414062,
+            "std": 3.8388376147816516
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 72.56208229288244
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 72.56208229288244
+          }
+        },
+        {
+          "loss": 3.161302328109741,
+          "valid_pixels": 37603,
+          "cost_entering_softmax": {
+            "min": -7.272481892534845e+17,
+            "max": 1.2492095861418885e+19,
+            "mean": 1.8931407187642964e+18,
+            "std": 1.9457657114290033e+18,
+            "median_top2_gap": 2.8456356500262093e+17,
+            "min_top2_gap": 214748364800.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 1.1927719116210938,
+            "std": 2.802287345833318
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 20.76814119263136
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 20.76814119263136
+          }
+        },
+        {
+          "loss": 4.2214484214782715,
+          "valid_pixels": 37739,
+          "cost_entering_softmax": {
+            "min": -4.660810205091594e+17,
+            "max": 7.68232842520114e+18,
+            "mean": 9.035862900403642e+17,
+            "std": 1.3716614055978537e+18,
+            "median_top2_gap": 5.207186996409139e+16,
+            "min_top2_gap": 3623878656.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 2.3663330078125,
+            "std": 3.714375412941459
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 143.6279298678174
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 143.6279298678174
+          }
+        },
+        {
+          "loss": 3.4063310623168945,
+          "valid_pixels": 12613,
+          "cost_entering_softmax": {
+            "min": -2.018772068073472e+18,
+            "max": 2.41614909434474e+19,
+            "mean": 2.4178170316637297e+18,
+            "std": 3.815775775678755e+18,
+            "median_top2_gap": 1.8827617925228134e+17,
+            "min_top2_gap": 1924145348608.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 2.731201171875,
+            "std": 4.060242165971684
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 59.463335936900606
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 59.463335936900606
+          }
+        },
+        {
+          "loss": 2.490875720977783,
+          "valid_pixels": 40207,
+          "cost_entering_softmax": {
+            "min": -1.0640800030098719e+18,
+            "max": 8.514121066241589e+18,
+            "mean": 1.2990080593029002e+18,
+            "std": 1.696404158608172e+18,
+            "median_top2_gap": 1.0056443444278067e+17,
+            "min_top2_gap": 2785017856.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 1.0259780883789062,
+            "std": 2.691916155862234
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 23.705921528114185
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 23.705921528114185
+          }
+        },
+        {
+          "loss": 3.362758159637451,
+          "valid_pixels": 24792,
+          "cost_entering_softmax": {
+            "min": -1.6147346676535788e+18,
+            "max": 1.7488569168126018e+19,
+            "mean": 2.1089327651581896e+18,
+            "std": 2.983513955044898e+18,
+            "median_top2_gap": 1.854983576139858e+17,
+            "min_top2_gap": 416611827712.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 10.0,
+            "mean": 2.4174041748046875,
+            "std": 3.589349272494392
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 33.22215456664279
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 33.22215456664279
+          }
+        },
+        {
+          "loss": 2.4621357917785645,
+          "valid_pixels": 36271,
+          "cost_entering_softmax": {
+            "min": -7.973957254355354e+17,
+            "max": 9.373630196395016e+18,
+            "mean": 1.1699777103605404e+18,
+            "std": 1.6839127221916626e+18,
+            "median_top2_gap": 4.147396085180006e+16,
+            "min_top2_gap": 164282499072.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 2.2800369262695312,
+            "std": 3.633225620148536
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 45.0181031415285
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 45.0181031415285
+          }
+        },
+        {
+          "loss": 11.448905944824219,
+          "valid_pixels": 51909,
+          "cost_entering_softmax": {
+            "min": -6.502707617175962e+17,
+            "max": 8.449484625935335e+18,
+            "mean": 1.1458311679831542e+18,
+            "std": 1.5619375152841533e+18,
+            "median_top2_gap": 9.590462255988736e+16,
+            "min_top2_gap": 83349209088.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 1.9461746215820312,
+            "std": 3.280868683729117
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 60.1725804664766
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 60.1725804664766
+          }
+        },
+        {
+          "loss": 17.066930770874023,
+          "valid_pixels": 59398,
+          "cost_entering_softmax": {
+            "min": -9.341698179701146e+17,
+            "max": 2.1131846026738532e+19,
+            "mean": 1.99627551389333e+18,
+            "std": 3.6643406664048266e+18,
+            "median_top2_gap": 4.873176409230541e+16,
+            "min_top2_gap": 6106906624.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 2.18853759765625,
+            "std": 3.230302592818188
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 81.50178513197875
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 81.50178513197875
+          }
+        },
+        {
+          "loss": 4.112091064453125,
+          "valid_pixels": 45789,
+          "cost_entering_softmax": {
+            "min": -1.5077950672244572e+18,
+            "max": 1.8116687175725613e+19,
+            "mean": 1.0245743657394991e+18,
+            "std": 2.659473691062462e+18,
+            "median_top2_gap": 5294200027348992.0,
+            "min_top2_gap": 0.0,
+            "fraction_pixels_gap_below_88": 7.62939453125e-06,
+            "exact_ties": 1,
+            "mean_softmax_entropy_nats": 5.288293308715403e-06,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.9999961853027344,
+            "fraction_zero_softmax_probabilities": 0.9166660308837891
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 4.097934722900391,
+            "std": 3.82087733677609
+          },
+          "softmax_input_gradient": {
+            "norm": 7.615894719492644e-05,
+            "max_abs": 5.385250551626086e-05,
+            "pixels_with_gradient": 1,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 7.615894719492644e-05,
+            "max_abs": 5.385250551626086e-05,
+            "pixels_with_gradient": 1,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 27855807575.36474,
+              "aggregation": 63556520819.79158,
+              "refinement": 41.94899393989789
+            },
+            "matching_path_norm": 69392920059.55902,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 1,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 69392920059.55902
+          }
+        },
+        {
+          "loss": 5.133213996887207,
+          "valid_pixels": 29358,
+          "cost_entering_softmax": {
+            "min": -2.141170801989124e+18,
+            "max": 3.5743438567184007e+19,
+            "mean": 4.113408584005868e+18,
+            "std": 6.674661336445383e+18,
+            "median_top2_gap": 1.7367562690809037e+17,
+            "min_top2_gap": 103079215104.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 10.0,
+            "mean": 3.6239471435546875,
+            "std": 4.121346760047461
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 92.94428509332664
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 92.94428509332664
+          }
+        },
+        {
+          "loss": 2.663709878921509,
+          "valid_pixels": 22234,
+          "cost_entering_softmax": {
+            "min": -5.878876330535158e+17,
+            "max": 2.2170671209731064e+19,
+            "mean": 2.7028336416257444e+18,
+            "std": 3.5964258376078054e+18,
+            "median_top2_gap": 2.8987222188988826e+17,
+            "min_top2_gap": 1443109011456.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 2.4342803955078125,
+            "std": 3.893299870673508
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 52.04364897891462
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 52.04364897891462
+          }
+        },
+        {
+          "loss": 8.61345386505127,
+          "valid_pixels": 26260,
+          "cost_entering_softmax": {
+            "min": -5.5796085069080166e+17,
+            "max": 5.698197570472378e+18,
+            "mean": 2.4190393308290323e+17,
+            "std": 7.077744914976e+17,
+            "median_top2_gap": 3085538865184768.0,
+            "min_top2_gap": 1342177280.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 4.246940612792969,
+            "std": 4.214836543915459
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 67.21268463936761
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 67.21268463936761
+          }
+        },
+        {
+          "loss": 4.04296875,
+          "valid_pixels": 24795,
+          "cost_entering_softmax": {
+            "min": -2.891323330277671e+18,
+            "max": 2.870338436179008e+19,
+            "mean": 2.495122126092524e+18,
+            "std": 4.863196241194772e+18,
+            "median_top2_gap": 7.34817364738048e+16,
+            "min_top2_gap": 390842023936.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 2.9853744506835938,
+            "std": 3.8813542868769835
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 34.35347086730074
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 34.35347086730074
+          }
+        },
+        {
+          "loss": 1.9196401834487915,
+          "valid_pixels": 32324,
+          "cost_entering_softmax": {
+            "min": -1.4558823129137807e+18,
+            "max": 2.6975521629949395e+19,
+            "mean": 2.376096239802065e+18,
+            "std": 4.0513105602054144e+18,
+            "median_top2_gap": 1.3305527792146842e+17,
+            "min_top2_gap": 450971566080.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 2.2077102661132812,
+            "std": 3.628430292799535
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 31.075667941367318
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 31.075667941367318
+          }
+        },
+        {
+          "loss": 3.955644130706787,
+          "valid_pixels": 42004,
+          "cost_entering_softmax": {
+            "min": -3.20181221982208e+17,
+            "max": 3.136460712128702e+19,
+            "mean": 4.598326745611832e+18,
+            "std": 6.062671640766942e+18,
+            "median_top2_gap": 5.6014925678719795e+17,
+            "min_top2_gap": 2259152797696.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 4.014045715332031,
+            "std": 5.034350454428601
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 67.59113283734293
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 67.59113283734293
+          }
+        },
+        {
+          "loss": 3.0622897148132324,
+          "valid_pixels": 22364,
+          "cost_entering_softmax": {
+            "min": -4.084680199629701e+17,
+            "max": 1.6388643024466346e+19,
+            "mean": 1.8018243810135552e+18,
+            "std": 2.826103837702089e+18,
+            "median_top2_gap": 9.364411684749312e+16,
+            "min_top2_gap": 141733920768.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 11.0,
+            "mean": 3.4524154663085938,
+            "std": 4.3358829662467135
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 57.150873115169745
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 57.150873115169745
+          }
+        },
+        {
+          "loss": 8.00960636138916,
+          "valid_pixels": 33989,
+          "cost_entering_softmax": {
+            "min": -6.47208346956333e+17,
+            "max": 2.3362662760519303e+19,
+            "mean": 2.484689765662897e+18,
+            "std": 4.129374308007934e+18,
+            "median_top2_gap": 4.541258759615283e+16,
+            "min_top2_gap": 858993459200.0,
+            "fraction_pixels_gap_below_88": 0.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 0.0,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 1.0,
+            "fraction_zero_softmax_probabilities": 0.9166666666666666
+          },
+          "disparity_initial": {
+            "min": 0.0,
+            "max": 9.0,
+            "mean": 1.5592117309570312,
+            "std": 2.4491353529773563
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "cost_tensor_gradient": {
+            "norm": 0.0,
+            "max_abs": 0.0,
+            "pixels_with_gradient": 0,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0,
+              "aggregation": 0.0,
+              "refinement": 62.00051147996677
+            },
+            "matching_path_norm": 0.0,
+            "matching_path_present": false,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 62.00051147996677
+          }
+        }
+      ]
+    },
+    "h2_scaled": {
+      "summary": {
+        "batches": 40,
+        "matching_path_gradient_present_fraction": 1.0,
+        "softmax_input_gradient_present_fraction": 1.0,
+        "raw_cost_gradient_present_fraction": 0.0,
+        "median_softmax_input_gradient_norm": 0.03132421523332596,
+        "median_pixels_with_cost_gradient": 105925.0,
+        "pixels_total": 131072,
+        "mean_softmax_entropy_nats": 2.0889275763387483,
+        "mean_max_softmax_weight": 0.25344267067718285,
+        "mean_fraction_pixels_gap_below_88": 1.0,
+        "median_top2_gap": 0.1735917329788208,
+        "disparity_initial_std_mean": 1.8766170978039107,
+        "matching_path_gradient_norm": {
+          "median": 0.12495591949377148,
+          "max": 0.7395401386154503,
+          "p90": 0.40938743346975137
+        },
+        "total_gradient_norm": {
+          "median": 71.10862962107225,
+          "max": 190.07998073628713,
+          "p90": 110.50775186593228,
+          "batches_above_1e4": 0
+        }
+      },
+      "batches": [
+        {
+          "loss": 2.742856740951538,
+          "valid_pixels": 20014,
+          "cost_entering_softmax": {
+            "min": -2.494208574295044,
+            "max": 2.5277559757232666,
+            "mean": -4.012270094176188e-08,
+            "std": 1.0000003170744851,
+            "median_top2_gap": 0.20566070079803467,
+            "min_top2_gap": 7.3909759521484375e-06,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 2.058938938312056,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.27236026182910583,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.188138484954834,
+            "max": 8.406707763671875,
+            "mean": 4.178850346126637,
+            "std": 1.9467887499217973
+          },
+          "softmax_input_gradient": {
+            "norm": 0.03175325691699982,
+            "max_abs": 0.0009236130863428116,
+            "pixels_with_gradient": 95747,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 1.2707647463346557e-19,
+            "max_abs": 4.556509056170581e-21,
+            "pixels_with_gradient": 95747,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.06101999470807365,
+              "aggregation": 0.09258789406792725,
+              "refinement": 23.611337916859828
+            },
+            "matching_path_norm": 0.11088714029186186,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 23.61159829791335
+          }
+        },
+        {
+          "loss": 7.0475172996521,
+          "valid_pixels": 26233,
+          "cost_entering_softmax": {
+            "min": -2.402660846710205,
+            "max": 2.01524019241333,
+            "mean": -3.6645300468864564e-08,
+            "std": 0.9749834068359912,
+            "median_top2_gap": 0.16209089756011963,
+            "min_top2_gap": 0.0,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 6476,
+            "mean_softmax_entropy_nats": 2.079104934584783,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.2585641770509003,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.581801414489746,
+            "max": 8.47752571105957,
+            "mean": 4.225480014403729,
+            "std": 1.8681843346805003
+          },
+          "softmax_input_gradient": {
+            "norm": 0.03132421895861626,
+            "max_abs": 0.001390526769682765,
+            "pixels_with_gradient": 94047,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 3.5531145131545513e-19,
+            "max_abs": 4.2794657510699716e-20,
+            "pixels_with_gradient": 89209,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0593442066194189,
+              "aggregation": 0.07262656518040522,
+              "refinement": 143.80133587378577
+            },
+            "matching_path_norm": 0.09378887369614762,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 143.80136645886984
+          }
+        },
+        {
+          "loss": 5.547578811645508,
+          "valid_pixels": 22412,
+          "cost_entering_softmax": {
+            "min": -2.2585930824279785,
+            "max": 2.088085889816284,
+            "mean": 7.246510016177543e-09,
+            "std": 0.9019803941414327,
+            "median_top2_gap": 0.07946133613586426,
+            "min_top2_gap": 0.0,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 24436,
+            "mean_softmax_entropy_nats": 2.160798449927362,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.2137015476669863,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.587618589401245,
+            "max": 8.483190536499023,
+            "mean": 5.86306922825861,
+            "std": 2.014169793458123
+          },
+          "softmax_input_gradient": {
+            "norm": 0.03199690952897072,
+            "max_abs": 0.0011962299467995763,
+            "pixels_with_gradient": 72839,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 7.072453690934914e-19,
+            "max_abs": 5.801638667528651e-20,
+            "pixels_with_gradient": 63112,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.21871073353709278,
+              "aggregation": 0.05658353358343486,
+              "refinement": 178.98531957891015
+            },
+            "matching_path_norm": 0.22591166689022701,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 178.9854621494322
+          }
+        },
+        {
+          "loss": 4.2515645027160645,
+          "valid_pixels": 26023,
+          "cost_entering_softmax": {
+            "min": -2.780703067779541,
+            "max": 2.0887765884399414,
+            "mean": -5.565106818659441e-08,
+            "std": 1.0000003181210515,
+            "median_top2_gap": 0.376279354095459,
+            "min_top2_gap": 9.5367431640625e-07,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 2.0402568868658095,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.29747252091427934,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 1.9641506671905518,
+            "max": 8.011149406433105,
+            "mean": 3.6812648471714056,
+            "std": 1.8839428252783548
+          },
+          "softmax_input_gradient": {
+            "norm": 0.03307843208312988,
+            "max_abs": 0.0012655268656089902,
+            "pixels_with_gradient": 106302,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 7.470078765154301e-20,
+            "max_abs": 4.397638679772115e-21,
+            "pixels_with_gradient": 106302,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.05963888955432471,
+              "aggregation": 0.09903133396478526,
+              "refinement": 77.94735179847498
+            },
+            "matching_path_norm": 0.11560277788235787,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 77.94743752297106
+          }
+        },
+        {
+          "loss": 3.366445541381836,
+          "valid_pixels": 39215,
+          "cost_entering_softmax": {
+            "min": -2.7955546379089355,
+            "max": 2.2604408264160156,
+            "mean": -3.291239803610013e-08,
+            "std": 1.0000003172834886,
+            "median_top2_gap": 0.257809042930603,
+            "min_top2_gap": 2.5033950805664062e-06,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 2.049816874540498,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.28089603189451695,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.040496826171875,
+            "max": 8.409209251403809,
+            "mean": 4.45374587830338,
+            "std": 2.0610981703645965
+          },
+          "softmax_input_gradient": {
+            "norm": 0.0447118766605854,
+            "max_abs": 0.0011934491340070963,
+            "pixels_with_gradient": 113255,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 1.0359231970074182e-17,
+            "max_abs": 3.9875748447797194e-19,
+            "pixels_with_gradient": 113255,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.38931918723734615,
+              "aggregation": 0.32525321719559136,
+              "refinement": 108.24443739815727
+            },
+            "matching_path_norm": 0.5073057114277646,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 108.24562617828231
+          }
+        },
+        {
+          "loss": 2.2981748580932617,
+          "valid_pixels": 37617,
+          "cost_entering_softmax": {
+            "min": -2.7818191051483154,
+            "max": 2.3829996585845947,
+            "mean": -4.042284904026694e-08,
+            "std": 1.0000003171780714,
+            "median_top2_gap": 0.16352498531341553,
+            "min_top2_gap": 2.384185791015625e-07,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 2.0631656388462414,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.265539494210688,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.018795967102051,
+            "max": 8.296754837036133,
+            "mean": 4.045859560515964,
+            "std": 1.897083755704425
+          },
+          "softmax_input_gradient": {
+            "norm": 0.03180992603302002,
+            "max_abs": 0.0008125978638418019,
+            "pixels_with_gradient": 108042,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 9.786551541699599e-20,
+            "max_abs": 4.343077071086293e-21,
+            "pixels_with_gradient": 108042,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.08937881669439242,
+              "aggregation": 0.06326306042174674,
+              "refinement": 88.99149239034722
+            },
+            "matching_path_norm": 0.10950245516706637,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 88.9915597607375
+          }
+        },
+        {
+          "loss": 4.385180473327637,
+          "valid_pixels": 33067,
+          "cost_entering_softmax": {
+            "min": -2.295161247253418,
+            "max": 2.509510040283203,
+            "mean": -3.5225404886966384e-08,
+            "std": 1.0000003171773104,
+            "median_top2_gap": 0.19325268268585205,
+            "min_top2_gap": 2.0265579223632812e-06,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 2.0782510704027364,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.25807060887376443,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.5649609565734863,
+            "max": 8.41588020324707,
+            "mean": 3.882893769578004,
+            "std": 1.968249981422103
+          },
+          "softmax_input_gradient": {
+            "norm": 0.02700785920023918,
+            "max_abs": 0.000626502966042608,
+            "pixels_with_gradient": 127157,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 2.2868235214641003e-19,
+            "max_abs": 2.606684247698126e-20,
+            "pixels_with_gradient": 127157,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.15906586507573586,
+              "aggregation": 0.14561030319534524,
+              "refinement": 68.56972803125095
+            },
+            "matching_path_norm": 0.21564857947348637,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 68.57006713274788
+          }
+        },
+        {
+          "loss": 4.4947357177734375,
+          "valid_pixels": 28369,
+          "cost_entering_softmax": {
+            "min": -2.245417594909668,
+            "max": 2.137708902359009,
+            "mean": -2.80832940582898e-09,
+            "std": 1.0000003169884817,
+            "median_top2_gap": 0.1306973695755005,
+            "min_top2_gap": 1.1920928955078125e-07,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 2.08548926293156,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.2450135110793169,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.587442398071289,
+            "max": 8.594792366027832,
+            "mean": 5.759158169723378,
+            "std": 2.378012085529396
+          },
+          "softmax_input_gradient": {
+            "norm": 0.032971836626529694,
+            "max_abs": 0.0012945325579494238,
+            "pixels_with_gradient": 112123,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 1.6881922659246206e-19,
+            "max_abs": 9.817679866801875e-21,
+            "pixels_with_gradient": 112123,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.048279026461247584,
+              "aggregation": 0.06151232891644105,
+              "refinement": 88.43762679230234
+            },
+            "matching_path_norm": 0.07819610607165983,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 88.43766136259799
+          }
+        },
+        {
+          "loss": 2.3863325119018555,
+          "valid_pixels": 50851,
+          "cost_entering_softmax": {
+            "min": -2.729702949523926,
+            "max": 2.4449374675750732,
+            "mean": -3.680993708339112e-08,
+            "std": 1.0000003177857149,
+            "median_top2_gap": 0.28094184398651123,
+            "min_top2_gap": 4.291534423828125e-06,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 2.0572325689844364,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.27282622187340755,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.067540407180786,
+            "max": 8.050493240356445,
+            "mean": 3.3707529449911817,
+            "std": 1.4406713664315836
+          },
+          "softmax_input_gradient": {
+            "norm": 0.034604739397764206,
+            "max_abs": 0.0009715444757603109,
+            "pixels_with_gradient": 124319,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 1.3148053207323239e-17,
+            "max_abs": 7.315641172110324e-19,
+            "pixels_with_gradient": 124319,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.330404583518714,
+              "aggregation": 0.15264528127184102,
+              "refinement": 48.528730424242774
+            },
+            "matching_path_norm": 0.36396122142988574,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 48.53009524366845
+          }
+        },
+        {
+          "loss": 6.272554874420166,
+          "valid_pixels": 35247,
+          "cost_entering_softmax": {
+            "min": -2.647596836090088,
+            "max": 2.196183681488037,
+            "mean": -4.353596932728705e-08,
+            "std": 0.9973952995941355,
+            "median_top2_gap": 0.10361278057098389,
+            "min_top2_gap": 0.0,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 682,
+            "mean_softmax_entropy_nats": 2.094303455914768,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.2387779566502998,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.036536455154419,
+            "max": 8.117325782775879,
+            "mean": 3.397024307980246,
+            "std": 1.193220665539891
+          },
+          "softmax_input_gradient": {
+            "norm": 0.03132421150803566,
+            "max_abs": 0.0010618093656376004,
+            "pixels_with_gradient": 107900,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 5.822082307120929e-20,
+            "max_abs": 2.5505219556697215e-21,
+            "pixels_with_gradient": 107218,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.24963870756102313,
+              "aggregation": 0.07999551618744238,
+              "refinement": 43.600267798093576
+            },
+            "matching_path_norm": 0.26214264613533106,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 43.6010558453852
+          }
+        },
+        {
+          "loss": 2.44785737991333,
+          "valid_pixels": 20899,
+          "cost_entering_softmax": {
+            "min": -2.2574894428253174,
+            "max": 2.3987152576446533,
+            "mean": -1.3911946724828872e-08,
+            "std": 0.9695808173816605,
+            "median_top2_gap": 0.1314084529876709,
+            "min_top2_gap": 0.0,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 7853,
+            "mean_softmax_entropy_nats": 2.099086622519934,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.24415739346145535,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.5898051261901855,
+            "max": 8.6644287109375,
+            "mean": 5.017314105922196,
+            "std": 2.1841973238782133
+          },
+          "softmax_input_gradient": {
+            "norm": 0.023181375116109848,
+            "max_abs": 0.0008086157031357288,
+            "pixels_with_gradient": 82487,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 2.974568107616654e-19,
+            "max_abs": 1.470978999153457e-20,
+            "pixels_with_gradient": 82005,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.09255318229810756,
+              "aggregation": 0.053160736069667314,
+              "refinement": 26.18949756848237
+            },
+            "matching_path_norm": 0.10673404055396553,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 26.18971506230942
+          }
+        },
+        {
+          "loss": 3.046787738800049,
+          "valid_pixels": 10569,
+          "cost_entering_softmax": {
+            "min": -2.5127968788146973,
+            "max": 2.145348310470581,
+            "mean": -2.3888845080329475e-08,
+            "std": 0.9050666950525628,
+            "median_top2_gap": 0.16514968872070312,
+            "min_top2_gap": 0.0,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 23705,
+            "mean_softmax_entropy_nats": 2.116509596701171,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.251290804634349,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.512490749359131,
+            "max": 8.32796859741211,
+            "mean": 4.835615948632039,
+            "std": 2.0140465035706363
+          },
+          "softmax_input_gradient": {
+            "norm": 0.056794460862874985,
+            "max_abs": 0.0024843441788107157,
+            "pixels_with_gradient": 60911,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 1.6473379447175973e-19,
+            "max_abs": 9.009422626348132e-21,
+            "pixels_with_gradient": 60179,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.03986537392336286,
+              "aggregation": 0.09024939793193128,
+              "refinement": 106.99978801791576
+            },
+            "matching_path_norm": 0.09866205889360723,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 106.99983350492082
+          }
+        },
+        {
+          "loss": 3.919896364212036,
+          "valid_pixels": 31136,
+          "cost_entering_softmax": {
+            "min": -2.9392340183258057,
+            "max": 2.339418649673462,
+            "mean": -1.6829149640980774e-08,
+            "std": 0.9445821132331305,
+            "median_top2_gap": 0.07924997806549072,
+            "min_top2_gap": 0.0,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 14125,
+            "mean_softmax_entropy_nats": 2.1287437521752417,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.23041523723920737,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 1.66322660446167,
+            "max": 7.961655616760254,
+            "mean": 4.336701922231441,
+            "std": 1.901731122052916
+          },
+          "softmax_input_gradient": {
+            "norm": 0.02349911257624626,
+            "max_abs": 0.0008929072064347565,
+            "pixels_with_gradient": 90608,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 4.406177542450878e-20,
+            "max_abs": 1.235546614909512e-21,
+            "pixels_with_gradient": 84271,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.017571958987250096,
+              "aggregation": 0.03492657712912523,
+              "refinement": 79.0602905565199
+            },
+            "matching_path_norm": 0.03909782004928578,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 79.06030022407506
+          }
+        },
+        {
+          "loss": 3.4797656536102295,
+          "valid_pixels": 29071,
+          "cost_entering_softmax": {
+            "min": -2.6014459133148193,
+            "max": 2.1878459453582764,
+            "mean": -4.135861436197855e-08,
+            "std": 0.9795426395317818,
+            "median_top2_gap": 0.19425511360168457,
+            "min_top2_gap": 0.0,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 5308,
+            "mean_softmax_entropy_nats": 2.0884274818916024,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.2574426069164632,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.0296006202697754,
+            "max": 8.468210220336914,
+            "mean": 4.2311312139026995,
+            "std": 1.9076228396644448
+          },
+          "softmax_input_gradient": {
+            "norm": 0.024282127618789673,
+            "max_abs": 0.0011504469439387321,
+            "pixels_with_gradient": 96588,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 1.636650189592044e-20,
+            "max_abs": 1.4083693027704706e-21,
+            "pixels_with_gradient": 91280,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.01192907639102917,
+              "aggregation": 0.09351209770878233,
+              "refinement": 41.379145892704614
+            },
+            "matching_path_norm": 0.09426990655262082,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 41.379253275343366
+          }
+        },
+        {
+          "loss": 5.780407428741455,
+          "valid_pixels": 29561,
+          "cost_entering_softmax": {
+            "min": -2.2655718326568604,
+            "max": 2.5446269512176514,
+            "mean": -1.1409461161728435e-08,
+            "std": 0.9994737500904463,
+            "median_top2_gap": 0.11926829814910889,
+            "min_top2_gap": 0.0,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 138,
+            "mean_softmax_entropy_nats": 2.0951530357248935,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.2403617759864191,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.5853922367095947,
+            "max": 8.521746635437012,
+            "mean": 5.024618530191219,
+            "std": 2.297081253562157
+          },
+          "softmax_input_gradient": {
+            "norm": 0.03024294041097164,
+            "max_abs": 0.0008987021865323186,
+            "pixels_with_gradient": 82579,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 1.1019193472306246e-19,
+            "max_abs": 5.515728777899169e-21,
+            "pixels_with_gradient": 82579,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.0606102503065327,
+              "aggregation": 0.1332461734397588,
+              "refinement": 79.8927927793774
+            },
+            "matching_path_norm": 0.14638355501407538,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 79.89292688488585
+          }
+        },
+        {
+          "loss": 1.7768733501434326,
+          "valid_pixels": 37077,
+          "cost_entering_softmax": {
+            "min": -2.7058663368225098,
+            "max": 2.1916205883026123,
+            "mean": -3.7568940207631053e-08,
+            "std": 1.0000003173178171,
+            "median_top2_gap": 0.13517391681671143,
+            "min_top2_gap": 1.6689300537109375e-06,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 2.0836866211229506,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.2530415662661779,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.2737152576446533,
+            "max": 8.358041763305664,
+            "mean": 4.296018893743167,
+            "std": 1.9221015747088808
+          },
+          "softmax_input_gradient": {
+            "norm": 0.019583726301789284,
+            "max_abs": 0.0004425030492711812,
+            "pixels_with_gradient": 102361,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 8.261106415059933e-20,
+            "max_abs": 5.246648297884733e-21,
+            "pixels_with_gradient": 102361,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.01929779334412754,
+              "aggregation": 0.045938043973095276,
+              "refinement": 23.61380445029615
+            },
+            "matching_path_norm": 0.04982678709315591,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 23.613857019249064
+          }
+        },
+        {
+          "loss": 7.198729991912842,
+          "valid_pixels": 35473,
+          "cost_entering_softmax": {
+            "min": -2.727792978286743,
+            "max": 2.370190382003784,
+            "mean": -4.9367106328782974e-08,
+            "std": 0.9877333014386723,
+            "median_top2_gap": 0.22668325901031494,
+            "min_top2_gap": 0.0,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 3196,
+            "mean_softmax_entropy_nats": 2.0560886141165877,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.2744494235659375,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.1172821521759033,
+            "max": 8.489606857299805,
+            "mean": 3.6519056041306612,
+            "std": 1.7522076002385525
+          },
+          "softmax_input_gradient": {
+            "norm": 0.038052722811698914,
+            "max_abs": 0.0019882568158209324,
+            "pixels_with_gradient": 113418,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 4.3206577299879784e-19,
+            "max_abs": 3.7158717337032214e-20,
+            "pixels_with_gradient": 110222,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.06981409656695856,
+              "aggregation": 0.1351196759702211,
+              "refinement": 64.78949726320556
+            },
+            "matching_path_norm": 0.15208989089929073,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 64.78967577441513
+          }
+        },
+        {
+          "loss": 4.641054630279541,
+          "valid_pixels": 31171,
+          "cost_entering_softmax": {
+            "min": -2.5836522579193115,
+            "max": 2.2435171604156494,
+            "mean": -4.279865409989592e-09,
+            "std": 1.0000003175234649,
+            "median_top2_gap": 0.11934316158294678,
+            "min_top2_gap": 5.960464477539062e-07,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 2.0878031296491475,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.24048893519905554,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.1865854263305664,
+            "max": 8.756326675415039,
+            "mean": 5.288200862927624,
+            "std": 2.382888637365429
+          },
+          "softmax_input_gradient": {
+            "norm": 0.05461626127362251,
+            "max_abs": 0.0012524910271167755,
+            "pixels_with_gradient": 108597,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 2.1757022286433192e-17,
+            "max_abs": 1.1757960885086543e-18,
+            "pixels_with_gradient": 108597,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.16610123650850633,
+              "aggregation": 0.12796696250467257,
+              "refinement": 130.86671507801228
+            },
+            "matching_path_norm": 0.20967871676049296,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 130.8668830547817
+          }
+        },
+        {
+          "loss": 4.55332612991333,
+          "valid_pixels": 42628,
+          "cost_entering_softmax": {
+            "min": -2.3555784225463867,
+            "max": 2.206158399581909,
+            "mean": -4.840042631034287e-08,
+            "std": 1.0000003173997272,
+            "median_top2_gap": 0.20802319049835205,
+            "min_top2_gap": 4.76837158203125e-07,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 2.0736140711438305,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.2661482635071596,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.308133363723755,
+            "max": 7.177477836608887,
+            "mean": 3.4121991334668564,
+            "std": 0.9797969410735238
+          },
+          "softmax_input_gradient": {
+            "norm": 0.03609275817871094,
+            "max_abs": 0.0012630828423425555,
+            "pixels_with_gradient": 124185,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 4.1921766768250037e-19,
+            "max_abs": 3.809596466984308e-20,
+            "pixels_with_gradient": 124185,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.059074564514091085,
+              "aggregation": 0.05167755541614,
+              "refinement": 106.96496920929397
+            },
+            "matching_path_norm": 0.07848804944905773,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 106.96499800551166
+          }
+        },
+        {
+          "loss": 2.459320306777954,
+          "valid_pixels": 45314,
+          "cost_entering_softmax": {
+            "min": -2.2551164627075195,
+            "max": 2.1473488807678223,
+            "mean": -2.920966693954058e-08,
+            "std": 1.0000003166365279,
+            "median_top2_gap": 0.09626162052154541,
+            "min_top2_gap": 1.1920928955078125e-06,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 2.120968473992723,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.2222360661390043,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.576364278793335,
+            "max": 8.265217781066895,
+            "mean": 4.958749388710203,
+            "std": 2.1792763296923003
+          },
+          "softmax_input_gradient": {
+            "norm": 0.019693292677402496,
+            "max_abs": 0.000546630471944809,
+            "pixels_with_gradient": 126870,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 6.774883220387205e-20,
+            "max_abs": 3.753034761426727e-21,
+            "pixels_with_gradient": 126870,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.003719558066489001,
+              "aggregation": 0.020735564803731198,
+              "refinement": 69.9522088766465
+            },
+            "matching_path_norm": 0.021066531749192114,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 69.95221204880329
+          }
+        },
+        {
+          "loss": 2.2339026927948,
+          "valid_pixels": 29236,
+          "cost_entering_softmax": {
+            "min": -2.7195513248443604,
+            "max": 2.1549177169799805,
+            "mean": -3.620871283187277e-08,
+            "std": 0.9958297846033278,
+            "median_top2_gap": 0.17812788486480713,
+            "min_top2_gap": 0.0,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 1091,
+            "mean_softmax_entropy_nats": 2.0821237926554628,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.25716987534250435,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.1308107376098633,
+            "max": 8.494696617126465,
+            "mean": 4.56873868508228,
+            "std": 2.1446853696656842
+          },
+          "softmax_input_gradient": {
+            "norm": 0.026380762457847595,
+            "max_abs": 0.0007212727214209735,
+            "pixels_with_gradient": 105888,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 7.51141388509237e-20,
+            "max_abs": 4.291200972113784e-21,
+            "pixels_with_gradient": 104797,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.012398503265671428,
+              "aggregation": 0.0464504832429672,
+              "refinement": 91.24936336743744
+            },
+            "matching_path_norm": 0.04807671241603404,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 91.24937603256754
+          }
+        },
+        {
+          "loss": 2.8430697917938232,
+          "valid_pixels": 44503,
+          "cost_entering_softmax": {
+            "min": -2.2474217414855957,
+            "max": 2.175933361053467,
+            "mean": -4.329418183216897e-08,
+            "std": 0.9561382795372988,
+            "median_top2_gap": 0.28963804244995117,
+            "min_top2_gap": 0.0,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 11246,
+            "mean_softmax_entropy_nats": 2.105443197581913,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.2558583251870602,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.4995956420898438,
+            "max": 8.112042427062988,
+            "mean": 4.34652718596044,
+            "std": 1.7345232424819843
+          },
+          "softmax_input_gradient": {
+            "norm": 0.01941012591123581,
+            "max_abs": 0.000489111349452287,
+            "pixels_with_gradient": 123781,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 3.971416259254408e-20,
+            "max_abs": 1.0129935297382458e-21,
+            "pixels_with_gradient": 112535,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.05163947746099486,
+              "aggregation": 0.061770846938231615,
+              "refinement": 23.594421148577684
+            },
+            "matching_path_norm": 0.08051256525481619,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 23.594558516946524
+          }
+        },
+        {
+          "loss": 3.0777626037597656,
+          "valid_pixels": 20926,
+          "cost_entering_softmax": {
+            "min": -2.161621332168579,
+            "max": 2.2420873641967773,
+            "mean": -1.985804741304331e-08,
+            "std": 1.0000003175297079,
+            "median_top2_gap": 0.17499172687530518,
+            "min_top2_gap": 1.3113021850585938e-06,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 2.0979699864989243,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.24616118111244858,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.4874024391174316,
+            "max": 8.148942947387695,
+            "mean": 4.334264865237856,
+            "std": 1.9493419890030559
+          },
+          "softmax_input_gradient": {
+            "norm": 0.041208941489458084,
+            "max_abs": 0.001196232158690691,
+            "pixels_with_gradient": 118387,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 1.158120355512223e-17,
+            "max_abs": 3.5035684624141563e-19,
+            "pixels_with_gradient": 118387,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.06747232249670176,
+              "aggregation": 0.3242371646240683,
+              "refinement": 100.9016176692619
+            },
+            "matching_path_norm": 0.3311831113244667,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 100.90216117867412
+          }
+        },
+        {
+          "loss": 3.0694804191589355,
+          "valid_pixels": 37603,
+          "cost_entering_softmax": {
+            "min": -2.6818838119506836,
+            "max": 2.091451644897461,
+            "mean": -5.29565203367018e-08,
+            "std": 1.0000003174368155,
+            "median_top2_gap": 0.272442102432251,
+            "min_top2_gap": 1.1920928955078125e-07,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 2.0457394626037124,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.2836673247634002,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.042186737060547,
+            "max": 7.991214752197266,
+            "mean": 3.3466984975584637,
+            "std": 1.2683378538433747
+          },
+          "softmax_input_gradient": {
+            "norm": 0.027442656457424164,
+            "max_abs": 0.0010354493279010057,
+            "pixels_with_gradient": 95613,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 7.912411012777618e-20,
+            "max_abs": 5.316832634155297e-21,
+            "pixels_with_gradient": 95613,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.03673115907662468,
+              "aggregation": 0.038915785635438085,
+              "refinement": 22.020875457201615
+            },
+            "matching_path_norm": 0.05351276874481152,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 22.020940477600025
+          }
+        },
+        {
+          "loss": 4.498464107513428,
+          "valid_pixels": 37739,
+          "cost_entering_softmax": {
+            "min": -2.4044065475463867,
+            "max": 2.249238967895508,
+            "mean": -3.6445939198317026e-08,
+            "std": 1.000000317386368,
+            "median_top2_gap": 0.20294439792633057,
+            "min_top2_gap": 1.430511474609375e-06,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 2.0685474329286664,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.2633150264580907,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.056875467300415,
+            "max": 8.22016716003418,
+            "mean": 4.049360568335032,
+            "std": 1.8393293454330204
+          },
+          "softmax_input_gradient": {
+            "norm": 0.06395746022462845,
+            "max_abs": 0.0027305108960717916,
+            "pixels_with_gradient": 105205,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 1.5231516856733015e-17,
+            "max_abs": 1.2600936511436271e-18,
+            "pixels_with_gradient": 105205,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.5457744871483992,
+              "aggregation": 0.4865628622743473,
+              "refinement": 190.07857444619452
+            },
+            "matching_path_norm": 0.7311724897496511,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 190.07998073628713
+          }
+        },
+        {
+          "loss": 3.2952592372894287,
+          "valid_pixels": 12613,
+          "cost_entering_softmax": {
+            "min": -2.2904253005981445,
+            "max": 2.163538932800293,
+            "mean": -3.765045239149713e-08,
+            "std": 0.9696949076279161,
+            "median_top2_gap": 0.21296381950378418,
+            "min_top2_gap": 0.0,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 7824,
+            "mean_softmax_entropy_nats": 2.097942112999166,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.25266011672263133,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.5732784271240234,
+            "max": 8.228567123413086,
+            "mean": 4.425970341728316,
+            "std": 1.9486924848992018
+          },
+          "softmax_input_gradient": {
+            "norm": 0.05590123310685158,
+            "max_abs": 0.003708421718329191,
+            "pixels_with_gradient": 71995,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 1.9139719896027938e-19,
+            "max_abs": 1.1445271620892896e-20,
+            "pixels_with_gradient": 71303,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.1647594563604305,
+              "aggregation": 0.06187534436901972,
+              "refinement": 65.70137125441669
+            },
+            "matching_path_norm": 0.17599499055646264,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 65.70160697385866
+          }
+        },
+        {
+          "loss": 2.56923770904541,
+          "valid_pixels": 40207,
+          "cost_entering_softmax": {
+            "min": -2.850249767303467,
+            "max": 2.631965160369873,
+            "mean": -4.7941376858535535e-08,
+            "std": 1.0000003176919448,
+            "median_top2_gap": 0.20145368576049805,
+            "min_top2_gap": 2.384185791015625e-06,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 2.0567082222693838,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.27098353668953057,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 1.8906402587890625,
+            "max": 8.106914520263672,
+            "mean": 3.3610750462094074,
+            "std": 1.3019823849964143
+          },
+          "softmax_input_gradient": {
+            "norm": 0.03420679271221161,
+            "max_abs": 0.0008883296977728605,
+            "pixels_with_gradient": 95751,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 2.513033596195712e-17,
+            "max_abs": 4.1198346657759895e-18,
+            "pixels_with_gradient": 95751,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.038141706051910106,
+              "aggregation": 0.251569727994219,
+              "refinement": 38.18545958523927
+            },
+            "matching_path_norm": 0.2544447244169854,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 38.18630730842831
+          }
+        },
+        {
+          "loss": 3.226544141769409,
+          "valid_pixels": 24792,
+          "cost_entering_softmax": {
+            "min": -2.5064773559570312,
+            "max": 2.3790767192840576,
+            "mean": -3.042605823307583e-08,
+            "std": 0.9924838155168988,
+            "median_top2_gap": 0.17219173908233643,
+            "min_top2_gap": 0.0,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 1963,
+            "mean_softmax_entropy_nats": 2.0859057020523535,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.2560728562346355,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.086458206176758,
+            "max": 8.517313003540039,
+            "mean": 4.1044322737070615,
+            "std": 1.9037780672780849
+          },
+          "softmax_input_gradient": {
+            "norm": 0.01592634618282318,
+            "max_abs": 0.0005876985960640013,
+            "pixels_with_gradient": 88801,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 4.8287711927071485e-20,
+            "max_abs": 2.5149085587353676e-21,
+            "pixels_with_gradient": 88684,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.01922952014743643,
+              "aggregation": 0.03216822763738976,
+              "refinement": 27.857892620091334
+            },
+            "matching_path_norm": 0.037477584159489125,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 27.85791782961989
+          }
+        },
+        {
+          "loss": 2.4907445907592773,
+          "valid_pixels": 36271,
+          "cost_entering_softmax": {
+            "min": -2.8795485496520996,
+            "max": 2.5463240146636963,
+            "mean": -4.269683840513183e-08,
+            "std": 1.0000003172999257,
+            "median_top2_gap": 0.16817212104797363,
+            "min_top2_gap": 3.5762786865234375e-07,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 2.060706521307999,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.26743653117839616,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 1.9444587230682373,
+            "max": 8.29123306274414,
+            "mean": 3.928633509402971,
+            "std": 1.78060717424495
+          },
+          "softmax_input_gradient": {
+            "norm": 0.031182637438178062,
+            "max_abs": 0.0009181945351883769,
+            "pixels_with_gradient": 105962,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 9.784301998174367e-20,
+            "max_abs": 5.617989385022821e-21,
+            "pixels_with_gradient": 105962,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.06988826374135869,
+              "aggregation": 0.035593704809590565,
+              "refinement": 72.26500463277232
+            },
+            "matching_path_norm": 0.07843010411094697,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 72.26504719334123
+          }
+        },
+        {
+          "loss": 11.341201782226562,
+          "valid_pixels": 51909,
+          "cost_entering_softmax": {
+            "min": -2.6438770294189453,
+            "max": 1.9712144136428833,
+            "mean": -4.668133875632141e-08,
+            "std": 1.0000003171383904,
+            "median_top2_gap": 0.1860055923461914,
+            "min_top2_gap": 8.821487426757812e-06,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 2.023769408177206,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.29536215305329405,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.0717520713806152,
+            "max": 8.182906150817871,
+            "mean": 3.791474530562482,
+            "std": 1.6288669342639814
+          },
+          "softmax_input_gradient": {
+            "norm": 0.054324183613061905,
+            "max_abs": 0.0012347125448286533,
+            "pixels_with_gradient": 118331,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 2.308080202050335e-18,
+            "max_abs": 1.6516087816177852e-19,
+            "pixels_with_gradient": 118331,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.3101763051172756,
+              "aggregation": 0.25019789522237995,
+              "refinement": 77.60974032682208
+            },
+            "matching_path_norm": 0.39850762480774976,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 77.61076344118632
+          }
+        },
+        {
+          "loss": 16.883132934570312,
+          "valid_pixels": 59398,
+          "cost_entering_softmax": {
+            "min": -2.5086288452148438,
+            "max": 2.529287815093994,
+            "mean": -2.94601687304367e-08,
+            "std": 0.9525007376863899,
+            "median_top2_gap": 0.1084526777267456,
+            "min_top2_gap": 0.0,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 12156,
+            "mean_softmax_entropy_nats": 2.1254491616058147,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.224733808221095,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.601320266723633,
+            "max": 8.18910026550293,
+            "mean": 4.062604561202534,
+            "std": 1.665549655855871
+          },
+          "softmax_input_gradient": {
+            "norm": 0.048353347927331924,
+            "max_abs": 0.0015890609938651323,
+            "pixels_with_gradient": 126082,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 1.701482065008506e-17,
+            "max_abs": 1.3474184880253908e-18,
+            "pixels_with_gradient": 113926,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.5419295267192568,
+              "aggregation": 0.2330144482401011,
+              "refinement": 104.86841282927621
+            },
+            "matching_path_norm": 0.5899011315625665,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 104.87007195895558
+          }
+        },
+        {
+          "loss": 4.166733741760254,
+          "valid_pixels": 45789,
+          "cost_entering_softmax": {
+            "min": -1.9611753225326538,
+            "max": 2.28658127784729,
+            "mean": -5.363265040414511e-10,
+            "std": 0.9821755882868766,
+            "median_top2_gap": 0.05146801471710205,
+            "min_top2_gap": 0.0,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 4632,
+            "mean_softmax_entropy_nats": 2.141097064854376,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.20720121892369592,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.6507296562194824,
+            "max": 8.467851638793945,
+            "mean": 4.928376835789095,
+            "std": 2.033046729769811
+          },
+          "softmax_input_gradient": {
+            "norm": 0.02402607910335064,
+            "max_abs": 0.0005811281153000891,
+            "pixels_with_gradient": 118872,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 8.272087366938545e-18,
+            "max_abs": 3.549164984223552e-19,
+            "pixels_with_gradient": 114241,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.16755708073155656,
+              "aggregation": 0.12123116068916301,
+              "refinement": 41.283391158782415
+            },
+            "matching_path_norm": 0.2068148196462793,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 41.28390918915818
+          }
+        },
+        {
+          "loss": 5.171106338500977,
+          "valid_pixels": 29358,
+          "cost_entering_softmax": {
+            "min": -2.3430590629577637,
+            "max": 2.1209988594055176,
+            "mean": -1.1430268338311992e-08,
+            "std": 0.8918451504677641,
+            "median_top2_gap": 0.11400091648101807,
+            "min_top2_gap": 0.0,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 26819,
+            "mean_softmax_entropy_nats": 2.1464977425352743,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.23038699752541308,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.3689491748809814,
+            "max": 8.426567077636719,
+            "mean": 5.219863333952162,
+            "std": 2.1459949090872863
+          },
+          "softmax_input_gradient": {
+            "norm": 0.020260417833924294,
+            "max_abs": 0.001023534219712019,
+            "pixels_with_gradient": 75733,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 4.950620066815038e-20,
+            "max_abs": 2.962354705092952e-21,
+            "pixels_with_gradient": 63820,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.011173823706486088,
+              "aggregation": 0.0501004782515617,
+              "refinement": 104.94988827865404
+            },
+            "matching_path_norm": 0.05133139640861952,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 104.9499008318456
+          }
+        },
+        {
+          "loss": 2.4811336994171143,
+          "valid_pixels": 22234,
+          "cost_entering_softmax": {
+            "min": -2.8961527347564697,
+            "max": 2.2194809913635254,
+            "mean": -4.2095296059104406e-08,
+            "std": 0.9820202190840766,
+            "median_top2_gap": 0.23229050636291504,
+            "min_top2_gap": 0.0,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 4671,
+            "mean_softmax_entropy_nats": 2.0878763183290214,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.2596385367284423,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 1.8175694942474365,
+            "max": 8.283918380737305,
+            "mean": 4.25012453945601,
+            "std": 2.0085992068464775
+          },
+          "softmax_input_gradient": {
+            "norm": 0.029727939516305923,
+            "max_abs": 0.0008265184587799013,
+            "pixels_with_gradient": 90143,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 7.856096168934096e-20,
+            "max_abs": 3.974178347797868e-21,
+            "pixels_with_gradient": 89010,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.04414760043620196,
+              "aggregation": 0.05378046997047024,
+              "refinement": 30.062203260026504
+            },
+            "matching_path_norm": 0.06957980723255268,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 30.062283782120122
+          }
+        },
+        {
+          "loss": 8.385432243347168,
+          "valid_pixels": 26260,
+          "cost_entering_softmax": {
+            "min": -2.637118339538574,
+            "max": 2.2576818466186523,
+            "mean": -1.855039981462266e-08,
+            "std": 1.000000317194166,
+            "median_top2_gap": 0.07947790622711182,
+            "min_top2_gap": 9.5367431640625e-07,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 2.0910402591412334,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.23668732452885793,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.034438133239746,
+            "max": 8.585220336914062,
+            "mean": 5.074735797359608,
+            "std": 2.1533849559255636
+          },
+          "softmax_input_gradient": {
+            "norm": 0.03153638541698456,
+            "max_abs": 0.0011209911899641156,
+            "pixels_with_gradient": 91840,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 4.366231504330529e-18,
+            "max_abs": 3.577946992131276e-19,
+            "pixels_with_gradient": 91840,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.13945706302374566,
+              "aggregation": 0.19261671226522584,
+              "refinement": 64.72234102931141
+            },
+            "matching_path_norm": 0.23780132520882588,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 64.7227778898956
+          }
+        },
+        {
+          "loss": 3.8057491779327393,
+          "valid_pixels": 24795,
+          "cost_entering_softmax": {
+            "min": -2.2615816593170166,
+            "max": 2.028775930404663,
+            "mean": -2.238042561287142e-08,
+            "std": 0.9486160427538898,
+            "median_top2_gap": 0.08502984046936035,
+            "min_top2_gap": 0.0,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 13124,
+            "mean_softmax_entropy_nats": 2.123863769106994,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.2294182913930684,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.5865416526794434,
+            "max": 8.41856861114502,
+            "mean": 4.546130948314385,
+            "std": 1.9546334779089232
+          },
+          "softmax_input_gradient": {
+            "norm": 0.026733051985502243,
+            "max_abs": 0.0010684417793527246,
+            "pixels_with_gradient": 77096,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 3.4122363490548794e-19,
+            "max_abs": 2.192634468440733e-20,
+            "pixels_with_gradient": 76176,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.724094396947989,
+              "aggregation": 0.15035598069876563,
+              "refinement": 38.69282210469127
+            },
+            "matching_path_norm": 0.7395401386154503,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 38.699888915110705
+          }
+        },
+        {
+          "loss": 1.8289998769760132,
+          "valid_pixels": 32324,
+          "cost_entering_softmax": {
+            "min": -2.79695725440979,
+            "max": 2.3479397296905518,
+            "mean": -3.829490530411761e-08,
+            "std": 0.9655515080400329,
+            "median_top2_gap": 0.18488812446594238,
+            "min_top2_gap": 0.0,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 8875,
+            "mean_softmax_entropy_nats": 2.083087701437358,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.26263442658392544,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 1.9971296787261963,
+            "max": 8.300848960876465,
+            "mean": 4.112119142255324,
+            "std": 1.872534293114216
+          },
+          "softmax_input_gradient": {
+            "norm": 0.022905820980668068,
+            "max_abs": 0.0005931779160164297,
+            "pixels_with_gradient": 90971,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 9.99184678374275e-20,
+            "max_abs": 7.32590651582385e-21,
+            "pixels_with_gradient": 88764,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.03814888358787124,
+              "aggregation": 0.08785165216202562,
+              "refinement": 34.34655119959278
+            },
+            "matching_path_norm": 0.0957770854985601,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 34.34668473894322
+          }
+        },
+        {
+          "loss": 4.016660690307617,
+          "valid_pixels": 42004,
+          "cost_entering_softmax": {
+            "min": -2.795591354370117,
+            "max": 2.1165244579315186,
+            "mean": -5.00698615745615e-08,
+            "std": 0.9232604746061656,
+            "median_top2_gap": 0.2472449541091919,
+            "min_top2_gap": 0.0,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 19345,
+            "mean_softmax_entropy_nats": 2.1021431826324353,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.2661898033798674,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.0679550170898438,
+            "max": 8.344717025756836,
+            "mean": 5.1781669194715505,
+            "std": 2.171983677949785
+          },
+          "softmax_input_gradient": {
+            "norm": 0.025761744007468224,
+            "max_abs": 0.0009982642950490117,
+            "pixels_with_gradient": 125354,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 2.984925184367642e-20,
+            "max_abs": 1.4893111269462543e-21,
+            "pixels_with_gradient": 106009,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.08502676594214235,
+              "aggregation": 0.16166130499998793,
+              "refinement": 102.52401276433467
+            },
+            "matching_path_norm": 0.18265795482507458,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 102.52417547695724
+          }
+        },
+        {
+          "loss": 2.991115093231201,
+          "valid_pixels": 22364,
+          "cost_entering_softmax": {
+            "min": -2.604673385620117,
+            "max": 2.145491600036621,
+            "mean": -4.285070906151026e-08,
+            "std": 1.0000003172251983,
+            "median_top2_gap": 0.21605896949768066,
+            "min_top2_gap": 3.5762786865234375e-06,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 0,
+            "mean_softmax_entropy_nats": 2.0789805688412857,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.2620581818546222,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.5398290157318115,
+            "max": 8.389667510986328,
+            "mean": 4.606476529459542,
+            "std": 2.075872242086806
+          },
+          "softmax_input_gradient": {
+            "norm": 0.03230913355946541,
+            "max_abs": 0.0014681918546557426,
+            "pixels_with_gradient": 106985,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 1.438739925584887e-19,
+            "max_abs": 6.5588108004706396e-21,
+            "pixels_with_gradient": 106985,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.15227110528954646,
+              "aggregation": 0.11269095758472505,
+              "refinement": 91.90765806180829
+            },
+            "matching_path_norm": 0.1894353225442986,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 91.90785328875711
+          }
+        },
+        {
+          "loss": 8.063789367675781,
+          "valid_pixels": 33989,
+          "cost_entering_softmax": {
+            "min": -2.3885698318481445,
+            "max": 2.254417657852173,
+            "mean": -3.230352303128699e-08,
+            "std": 0.9426254496166157,
+            "median_top2_gap": 0.06659996509552002,
+            "min_top2_gap": 0.0,
+            "fraction_pixels_gap_below_88": 1.0,
+            "exact_ties": 14609,
+            "mean_softmax_entropy_nats": 2.1347719656430053,
+            "max_possible_entropy_nats": 2.4849066497880004,
+            "mean_max_softmax_weight": 0.226816906247841,
+            "fraction_zero_softmax_probabilities": 0.0
+          },
+          "disparity_initial": {
+            "min": 2.1693718433380127,
+            "max": 7.627084732055664,
+            "mean": 3.6804293533077725,
+            "std": 1.3105680633641215
+          },
+          "softmax_input_gradient": {
+            "norm": 0.03052026405930519,
+            "max_abs": 0.0009506680653430521,
+            "pixels_with_gradient": 120521,
+            "pixels_total": 131072,
+            "present": true
+          },
+          "cost_tensor_gradient": {
+            "norm": 2.3247533714648365e-19,
+            "max_abs": 1.6454764652219262e-20,
+            "pixels_with_gradient": 105912,
+            "pixels_total": 131072,
+            "present": false
+          },
+          "parameter_gradients": {
+            "stage_norms": {
+              "feature_extractor": 0.07745912408101527,
+              "aggregation": 0.1097224133509568,
+              "refinement": 65.34199556960947
+            },
+            "matching_path_norm": 0.1343090611051851,
+            "matching_path_present": true,
+            "tensors_with_exactly_zero_gradient": {
+              "feature_extractor": 0,
+              "aggregation": 0,
+              "refinement": 0
+            },
+            "tensors_counted": {
+              "feature_extractor": 34,
+              "aggregation": 10,
+              "refinement": 28
+            },
+            "total_norm": 65.3421336041513
+          }
+        }
+      ]
+    }
+  },
+  "scenes": {
+    "27": {
+      "name": "000187_10.png",
+      "control": {
+        "loss": 6.13560152053833,
+        "valid_pixels": 77101,
+        "cost_entering_softmax": {
+          "min": -3.325604584725938e+18,
+          "max": 6.1509372062254236e+19,
+          "mean": 3.4794998104349107e+18,
+          "std": 7.202659484838053e+18,
+          "median_top2_gap": 1.1536831912869888e+17,
+          "min_top2_gap": 2818572288.0,
+          "fraction_pixels_gap_below_88": 0.0,
+          "exact_ties": 0,
+          "mean_softmax_entropy_nats": 0.0,
+          "max_possible_entropy_nats": 2.4849066497880004,
+          "mean_max_softmax_weight": 0.9999999999999999,
+          "fraction_zero_softmax_probabilities": 0.9166666666666666
+        },
+        "disparity_initial": {
+          "min": 0.0,
+          "max": 11.0,
+          "mean": 2.424120376905703,
+          "std": 3.9428203121229264
+        },
+        "softmax_input_gradient": {
+          "norm": 0.0,
+          "max_abs": 0.0,
+          "pixels_with_gradient": 0,
+          "pixels_total": 453376,
+          "present": false
+        },
+        "cost_tensor_gradient": {
+          "norm": 0.0,
+          "max_abs": 0.0,
+          "pixels_with_gradient": 0,
+          "pixels_total": 453376,
+          "present": false
+        },
+        "parameter_gradients": {
+          "stage_norms": {
+            "feature_extractor": 0.0,
+            "aggregation": 0.0,
+            "refinement": 57.22863454363781
+          },
+          "matching_path_norm": 0.0,
+          "matching_path_present": false,
+          "tensors_with_exactly_zero_gradient": {
+            "feature_extractor": 34,
+            "aggregation": 10,
+            "refinement": 0
+          },
+          "tensors_counted": {
+            "feature_extractor": 34,
+            "aggregation": 10,
+            "refinement": 28
+          },
+          "total_norm": 57.22863454363781
+        }
+      },
+      "h2_scaled": {
+        "loss": 6.1448974609375,
+        "valid_pixels": 77101,
+        "cost_entering_softmax": {
+          "min": -2.78269624710083,
+          "max": 2.2391421794891357,
+          "mean": -3.8053310823169676e-08,
+          "std": 0.9302077007607212,
+          "median_top2_gap": 0.24967122077941895,
+          "min_top2_gap": 0.0,
+          "fraction_pixels_gap_below_88": 0.9999999999999999,
+          "exact_ties": 61076,
+          "mean_softmax_entropy_nats": 2.109087307698602,
+          "max_possible_entropy_nats": 2.4849066497880004,
+          "mean_max_softmax_weight": 0.25543802448909153,
+          "fraction_zero_softmax_probabilities": 0.0
+        },
+        "disparity_initial": {
+          "min": 1.9846327304840088,
+          "max": 8.451743125915527,
+          "mean": 4.4861949999413895,
+          "std": 1.9309935194005616
+        },
+        "softmax_input_gradient": {
+          "norm": 0.030791589990258217,
+          "max_abs": 0.0010661173146218061,
+          "pixels_with_gradient": 319456,
+          "pixels_total": 453376,
+          "present": true
+        },
+        "cost_tensor_gradient": {
+          "norm": 2.607322094423284e-18,
+          "max_abs": 1.543726205918e-19,
+          "pixels_with_gradient": 289700,
+          "pixels_total": 453376,
+          "present": false
+        },
+        "parameter_gradients": {
+          "stage_norms": {
+            "feature_extractor": 0.046559175994761816,
+            "aggregation": 0.12714377697053852,
+            "refinement": 57.97109397887666
+          },
+          "matching_path_norm": 0.13540050550734753,
+          "matching_path_present": true,
+          "tensors_with_exactly_zero_gradient": {
+            "feature_extractor": 0,
+            "aggregation": 0,
+            "refinement": 0
+          },
+          "tensors_counted": {
+            "feature_extractor": 34,
+            "aggregation": 10,
+            "refinement": 28
+          },
+          "total_norm": 57.97125210312989
+        }
+      }
+    },
+    "0": {
+      "name": "000160_10.png",
+      "control": {
+        "loss": 5.937592506408691,
+        "valid_pixels": 100174,
+        "cost_entering_softmax": {
+          "min": -3.2731108759589356e+18,
+          "max": 4.149771068091715e+19,
+          "mean": 1.632792290714905e+18,
+          "std": 4.541364065762923e+18,
+          "median_top2_gap": 1.1627069175758848e+16,
+          "min_top2_gap": 1543503872.0,
+          "fraction_pixels_gap_below_88": 0.0,
+          "exact_ties": 0,
+          "mean_softmax_entropy_nats": 0.0,
+          "max_possible_entropy_nats": 2.4849066497880004,
+          "mean_max_softmax_weight": 0.9999999999999999,
+          "fraction_zero_softmax_probabilities": 0.9166666666666666
+        },
+        "disparity_initial": {
+          "min": 0.0,
+          "max": 11.0,
+          "mean": 4.283757852202146,
+          "std": 4.3201501664084345
+        },
+        "softmax_input_gradient": {
+          "norm": 0.0,
+          "max_abs": 0.0,
+          "pixels_with_gradient": 0,
+          "pixels_total": 453376,
+          "present": false
+        },
+        "cost_tensor_gradient": {
+          "norm": 0.0,
+          "max_abs": 0.0,
+          "pixels_with_gradient": 0,
+          "pixels_total": 453376,
+          "present": false
+        },
+        "parameter_gradients": {
+          "stage_norms": {
+            "feature_extractor": 0.0,
+            "aggregation": 0.0,
+            "refinement": 62.55582003363363
+          },
+          "matching_path_norm": 0.0,
+          "matching_path_present": false,
+          "tensors_with_exactly_zero_gradient": {
+            "feature_extractor": 34,
+            "aggregation": 10,
+            "refinement": 0
+          },
+          "tensors_counted": {
+            "feature_extractor": 34,
+            "aggregation": 10,
+            "refinement": 28
+          },
+          "total_norm": 62.55582003363363
+        }
+      },
+      "h2_scaled": {
+        "loss": 6.057980537414551,
+        "valid_pixels": 100174,
+        "cost_entering_softmax": {
+          "min": -2.548995018005371,
+          "max": 2.244267225265503,
+          "mean": -9.594319928236595e-09,
+          "std": 0.9657973837963953,
+          "median_top2_gap": 0.12339818477630615,
+          "min_top2_gap": 0.0,
+          "fraction_pixels_gap_below_88": 0.9999999999999999,
+          "exact_ties": 30483,
+          "mean_softmax_entropy_nats": 2.119084938900984,
+          "max_possible_entropy_nats": 2.4849066497880004,
+          "mean_max_softmax_weight": 0.2315080777733862,
+          "fraction_zero_softmax_probabilities": 0.0
+        },
+        "disparity_initial": {
+          "min": 2.128324031829834,
+          "max": 8.632573127746582,
+          "mean": 5.206995834593299,
+          "std": 2.224890370833413
+        },
+        "softmax_input_gradient": {
+          "norm": 0.020274465903639793,
+          "max_abs": 0.000556707673240453,
+          "pixels_with_gradient": 319682,
+          "pixels_total": 453376,
+          "present": true
+        },
+        "cost_tensor_gradient": {
+          "norm": 1.0377002291173659e-17,
+          "max_abs": 6.637845759269193e-19,
+          "pixels_with_gradient": 305171,
+          "pixels_total": 453376,
+          "present": false
+        },
+        "parameter_gradients": {
+          "stage_norms": {
+            "feature_extractor": 0.06767377508601782,
+            "aggregation": 0.053210152163408825,
+            "refinement": 70.43882386735538
+          },
+          "matching_path_norm": 0.08608751435397613,
+          "matching_path_present": true,
+          "tensors_with_exactly_zero_gradient": {
+            "feature_extractor": 0,
+            "aggregation": 0,
+            "refinement": 0
+          },
+          "tensors_counted": {
+            "feature_extractor": 34,
+            "aggregation": 10,
+            "refinement": 28
+          },
+          "total_norm": 70.43887647369485
+        }
+      }
+    },
+    "31": {
+      "name": "000191_10.png",
+      "control": {
+        "loss": 8.395441055297852,
+        "valid_pixels": 81041,
+        "cost_entering_softmax": {
+          "min": -2.88734144891768e+18,
+          "max": 3.912141096659557e+19,
+          "mean": 2.7196544394172227e+18,
+          "std": 5.180421359640272e+18,
+          "median_top2_gap": 7.524930449466982e+16,
+          "min_top2_gap": 134217728.0,
+          "fraction_pixels_gap_below_88": 0.0,
+          "exact_ties": 0,
+          "mean_softmax_entropy_nats": 0.0,
+          "max_possible_entropy_nats": 2.4849066497880004,
+          "mean_max_softmax_weight": 0.9999999999999999,
+          "fraction_zero_softmax_probabilities": 0.9166666666666666
+        },
+        "disparity_initial": {
+          "min": 0.0,
+          "max": 11.0,
+          "mean": 3.0912178853754937,
+          "std": 4.275265217333136
+        },
+        "softmax_input_gradient": {
+          "norm": 0.0,
+          "max_abs": 0.0,
+          "pixels_with_gradient": 0,
+          "pixels_total": 453376,
+          "present": false
+        },
+        "cost_tensor_gradient": {
+          "norm": 0.0,
+          "max_abs": 0.0,
+          "pixels_with_gradient": 0,
+          "pixels_total": 453376,
+          "present": false
+        },
+        "parameter_gradients": {
+          "stage_norms": {
+            "feature_extractor": 0.0,
+            "aggregation": 0.0,
+            "refinement": 110.10314305577492
+          },
+          "matching_path_norm": 0.0,
+          "matching_path_present": false,
+          "tensors_with_exactly_zero_gradient": {
+            "feature_extractor": 34,
+            "aggregation": 10,
+            "refinement": 0
+          },
+          "tensors_counted": {
+            "feature_extractor": 34,
+            "aggregation": 10,
+            "refinement": 28
+          },
+          "total_norm": 110.10314305577492
+        }
+      },
+      "h2_scaled": {
+        "loss": 8.363194465637207,
+        "valid_pixels": 81041,
+        "cost_entering_softmax": {
+          "min": -2.8102266788482666,
+          "max": 2.264305353164673,
+          "mean": -3.265973798634782e-08,
+          "std": 0.9587766272286153,
+          "median_top2_gap": 0.20539546012878418,
+          "min_top2_gap": 0.0,
+          "fraction_pixels_gap_below_88": 0.9999999999999999,
+          "exact_ties": 36609,
+          "mean_softmax_entropy_nats": 2.085041900712305,
+          "max_possible_entropy_nats": 2.4849066497880004,
+          "mean_max_softmax_weight": 0.26504557203356843,
+          "fraction_zero_softmax_probabilities": 0.0
+        },
+        "disparity_initial": {
+          "min": 2.020704746246338,
+          "max": 8.637017250061035,
+          "mean": 4.64597351394356,
+          "std": 2.1331648900872926
+        },
+        "softmax_input_gradient": {
+          "norm": 0.03134656324982643,
+          "max_abs": 0.0006871100631542504,
+          "pixels_with_gradient": 315981,
+          "pixels_total": 453376,
+          "present": true
+        },
+        "cost_tensor_gradient": {
+          "norm": 4.569920594268649e-18,
+          "max_abs": 2.265010251723194e-19,
+          "pixels_with_gradient": 297218,
+          "pixels_total": 453376,
+          "present": false
+        },
+        "parameter_gradients": {
+          "stage_norms": {
+            "feature_extractor": 0.03747841608815919,
+            "aggregation": 0.11389695918562123,
+            "refinement": 119.52208343150829
+          },
+          "matching_path_norm": 0.11990474963156489,
+          "matching_path_present": true,
+          "tensors_with_exactly_zero_gradient": {
+            "feature_extractor": 0,
+            "aggregation": 0,
+            "refinement": 0
+          },
+          "tensors_counted": {
+            "feature_extractor": 34,
+            "aggregation": 10,
+            "refinement": 28
+          },
+          "total_norm": 119.52214357581366
+        }
+      }
+    },
+    "6": {
+      "name": "000166_10.png",
+      "control": {
+        "loss": 8.785161018371582,
+        "valid_pixels": 109818,
+        "cost_entering_softmax": {
+          "min": -9.323103376491151e+17,
+          "max": 4.493850917473983e+19,
+          "mean": 2.654108750896262e+18,
+          "std": 5.946684709995676e+18,
+          "median_top2_gap": 9456836696604672.0,
+          "min_top2_gap": 402653184.0,
+          "fraction_pixels_gap_below_88": 0.0,
+          "exact_ties": 0,
+          "mean_softmax_entropy_nats": 0.0,
+          "max_possible_entropy_nats": 2.4849066497880004,
+          "mean_max_softmax_weight": 0.9999999999999999,
+          "fraction_zero_softmax_probabilities": 0.9166666666666666
+        },
+        "disparity_initial": {
+          "min": 0.0,
+          "max": 11.0,
+          "mean": 2.3914785961321288,
+          "std": 3.873320944419638
+        },
+        "softmax_input_gradient": {
+          "norm": 0.0,
+          "max_abs": 0.0,
+          "pixels_with_gradient": 0,
+          "pixels_total": 453376,
+          "present": false
+        },
+        "cost_tensor_gradient": {
+          "norm": 0.0,
+          "max_abs": 0.0,
+          "pixels_with_gradient": 0,
+          "pixels_total": 453376,
+          "present": false
+        },
+        "parameter_gradients": {
+          "stage_norms": {
+            "feature_extractor": 0.0,
+            "aggregation": 0.0,
+            "refinement": 99.1701076299001
+          },
+          "matching_path_norm": 0.0,
+          "matching_path_present": false,
+          "tensors_with_exactly_zero_gradient": {
+            "feature_extractor": 34,
+            "aggregation": 10,
+            "refinement": 0
+          },
+          "tensors_counted": {
+            "feature_extractor": 34,
+            "aggregation": 10,
+            "refinement": 28
+          },
+          "total_norm": 99.1701076299001
+        }
+      },
+      "h2_scaled": {
+        "loss": 8.519018173217773,
+        "valid_pixels": 109818,
+        "cost_entering_softmax": {
+          "min": -2.714946746826172,
+          "max": 2.2401905059814453,
+          "mean": -3.0901778618627585e-08,
+          "std": 0.9407611657168049,
+          "median_top2_gap": 0.16950786113739014,
+          "min_top2_gap": 0.0,
+          "fraction_pixels_gap_below_88": 0.9999999999999999,
+          "exact_ties": 52124,
+          "mean_softmax_entropy_nats": 2.1089328214567087,
+          "max_possible_entropy_nats": 2.4849066497880004,
+          "mean_max_softmax_weight": 0.2513639017232143,
+          "fraction_zero_softmax_probabilities": 0.0
+        },
+        "disparity_initial": {
+          "min": 2.0708999633789062,
+          "max": 8.506019592285156,
+          "mean": 4.371198461350013,
+          "std": 2.0028441301235946
+        },
+        "softmax_input_gradient": {
+          "norm": 0.042034149169921875,
+          "max_abs": 0.0011117446701973677,
+          "pixels_with_gradient": 328496,
+          "pixels_total": 453376,
+          "present": true
+        },
+        "cost_tensor_gradient": {
+          "norm": 1.1917134009589204e-17,
+          "max_abs": 4.336965854258403e-19,
+          "pixels_with_gradient": 295637,
+          "pixels_total": 453376,
+          "present": false
+        },
+        "parameter_gradients": {
+          "stage_norms": {
+            "feature_extractor": 0.18590105034057255,
+            "aggregation": 0.3521182604313627,
+            "refinement": 106.2408286267702
+          },
+          "matching_path_norm": 0.3981789419933418,
+          "matching_path_present": true,
+          "tensors_with_exactly_zero_gradient": {
+            "feature_extractor": 0,
+            "aggregation": 0,
+            "refinement": 0
+          },
+          "tensors_counted": {
+            "feature_extractor": 34,
+            "aggregation": 10,
+            "refinement": 28
+          },
+          "total_norm": 106.24157478959262
+        }
+      }
+    }
+  }
+}

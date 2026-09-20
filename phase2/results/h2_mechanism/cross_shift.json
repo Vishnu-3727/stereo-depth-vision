@@ -1,0 +1,51 @@
+{
+  "protocol": "inference-only: each arm's trained weights run under both cost-volume shift settings, pooled over gt > 0 pixels of hailo_val scenes [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39]. Trained-with settings are BASE/none and WORKING/left.",
+  "git_revision": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+  "results": {
+    "WORKING_weights_shift_none": {
+      "valid_pixels": 3802797,
+      "epe": 11.527744720038966,
+      "rmse": 16.467559956100253,
+      "d1": 78.67853582507823,
+      "bad1": 92.83579954438798,
+      "bad2": 85.67130982800292,
+      "bad3": 78.6803239825844
+    },
+    "WORKING_weights_shift_left": {
+      "valid_pixels": 3802797,
+      "epe": 11.173144681288262,
+      "rmse": 16.06935266962886,
+      "d1": 77.93458341320874,
+      "bad1": 92.48731920215567,
+      "bad2": 85.07858820757458,
+      "bad3": 77.93597712420622
+    },
+    "H2_weights_shift_none": {
+      "valid_pixels": 3802797,
+      "epe": 30.44972426417768,
+      "rmse": 32.72109213341095,
+      "d1": 98.55432724912741,
+      "bad1": 99.58733006258288,
+      "bad2": 99.1530181600543,
+      "bad3": 98.70626804428426
+    },
+    "H2_weights_shift_left": {
+      "valid_pixels": 3802797,
+      "epe": 2.4004242992562075,
+      "rmse": 6.381729580327638,
+      "d1": 16.71777378597911,
+      "bad1": 50.84825721699055,
+      "bad2": 26.591821756459783,
+      "bad3": 16.954993916320014
+    },
+    "H2_weights_shift_left_no_standardisation": {
+      "valid_pixels": 3802797,
+      "epe": 25.81440994353221,
+      "rmse": 28.016110101958947,
+      "d1": 99.32589091660691,
+      "bad1": 99.81921201683919,
+      "bad2": 99.6399492268454,
+      "bad3": 99.4505623097946
+    }
+  }
+}

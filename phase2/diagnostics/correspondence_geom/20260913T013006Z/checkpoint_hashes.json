@@ -1,0 +1,25 @@
+{
+  "checkpoints": {
+    "H2_seed0": {
+      "path": "phase2/diagnostics/determinism/20260909T041500Z_baseline/checkpoints/STAGEB-DETERMINISTIC-BASELINE-ARM-A-RUNA_checkpoint.pth",
+      "sha256": "581d62e699b159945580f9627b451d953ce07b5dc763d608a9f4a8b5ecba692a",
+      "shift": "left",
+      "size_bytes": 1728755
+    },
+    "H2_seed1": {
+      "path": "phase2/factorial/block_count_full/20260910T005550Z/checkpoints/EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED1_checkpoint.pth",
+      "sha256": "58117f2613bba4b2c817328c7d6757f21b340ec5e64a828e633193ae091d4adf",
+      "shift": "left",
+      "size_bytes": 1729133
+    },
+    "H2_seed2": {
+      "path": "phase2/factorial/block_count_full/20260910T005550Z/checkpoints/EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED2_checkpoint.pth",
+      "sha256": "245a3f5bcb801c7d9c3550b02cb8775cb86486beae606f04097900340754fa69",
+      "shift": "left",
+      "size_bytes": 1729133
+    }
+  },
+  "controls_not_run": {
+    "NEG_shift_none": "excluded by the authorisation; see PREREGISTRATION.md B.4"
+  }
+}

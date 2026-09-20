@@ -1,0 +1,75 @@
+{
+  "arms": {
+    "D124": {
+      "constructs": true,
+      "forward_shape": [
+        2,
+        1,
+        256,
+        512
+      ],
+      "forward_finite": true,
+      "loss": 17.886394500732422,
+      "loss_finite": true,
+      "gradients_present": true,
+      "gradients_finite": true,
+      "gradient_norm": 314.3041687011719,
+      "refinement_gradient_abs_sum": 1073.7060614824295,
+      "refinement_receives_gradient": true,
+      "optimizer_moved_tensors": 60,
+      "optimizer_updates": true,
+      "validation_epe": 30.466357606418406,
+      "validation_d1": 90.73272451382877,
+      "validation_finite": true,
+      "checkpoint_roundtrip": true
+    },
+    "D128": {
+      "constructs": true,
+      "forward_shape": [
+        2,
+        1,
+        256,
+        512
+      ],
+      "forward_finite": true,
+      "loss": 17.88596534729004,
+      "loss_finite": true,
+      "gradients_present": true,
+      "gradients_finite": true,
+      "gradient_norm": 314.249267578125,
+      "refinement_gradient_abs_sum": 1067.6285494565964,
+      "refinement_receives_gradient": true,
+      "optimizer_moved_tensors": 60,
+      "optimizer_updates": true,
+      "validation_epe": 30.4680216327967,
+      "validation_d1": 90.74529188892302,
+      "validation_finite": true,
+      "checkpoint_roundtrip": true
+    },
+    "D148": {
+      "constructs": true,
+      "forward_shape": [
+        2,
+        1,
+        256,
+        512
+      ],
+      "forward_finite": true,
+      "loss": 17.881603240966797,
+      "loss_finite": true,
+      "gradients_present": true,
+      "gradients_finite": true,
+      "gradient_norm": 314.335205078125,
+      "refinement_gradient_abs_sum": 1061.4738079309464,
+      "refinement_receives_gradient": true,
+      "optimizer_moved_tensors": 60,
+      "optimizer_updates": true,
+      "validation_epe": 30.46869519830628,
+      "validation_d1": 90.7448264305862,
+      "validation_finite": true,
+      "checkpoint_roundtrip": true
+    }
+  },
+  "PASS": true,
+  "h2_checkpoint_sha256": "e3d48021d7f6a3d4d16fe33031e8ba85fd24389c5ba892f52c7e873e48454927"
+}

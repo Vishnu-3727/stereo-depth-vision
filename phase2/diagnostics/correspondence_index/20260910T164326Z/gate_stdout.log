@@ -1,0 +1,41 @@
+{
+  "gate": {
+    "algebraic_claim": "V(k)=D for all k, so V[:,:,pi] == V element-wise for any pi",
+    "volume_invariant_under_every_permutation": true,
+    "disparity_initial_invariant_under_every_permutation": true,
+    "identity_index_select_equals_original_max_abs_diff": 0.0,
+    "PASS": true
+  },
+  "max_abs_diff_vs_identity": {
+    "m_minus_1": {
+      "volume": 0.0,
+      "disparity_initial": 0.0
+    },
+    "identity": {
+      "volume": 0.0,
+      "disparity_initial": 0.0
+    },
+    "m_plus_1": {
+      "volume": 0.0,
+      "disparity_initial": 0.0
+    },
+    "m_plus_2": {
+      "volume": 0.0,
+      "disparity_initial": 0.0
+    },
+    "random": {
+      "volume": 0.0,
+      "disparity_initial": 0.0
+    }
+  },
+  "pooled_mean_disparity_initial": {
+    "m_minus_1": 6.482193347263124,
+    "identity": 6.482193347263124,
+    "m_plus_1": 6.482193347263124,
+    "m_plus_2": 6.482193347263124,
+    "random": 6.482193347263124
+  },
+  "wall_clock_s": 3.006755828857422
+}
+
+GATE PASS -- negative control invariant under every permutation.

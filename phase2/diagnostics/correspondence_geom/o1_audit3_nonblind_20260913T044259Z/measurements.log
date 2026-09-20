@@ -1,0 +1,37 @@
+==============================================================================
+M-B  THE DEGENERACY, QUANTIFIED
+==============================================================================
+  tau=2 :  ||V[tau]|| max over the band = 0.0
+           ||V[k!=tau]||  min 4.727   median 7.977   max 11.568
+           gap ratio (min over k!=tau) / (median over k!=tau) = 0.592
+  tau=4 :  ||V[tau]|| max over the band = 0.0
+           ||V[k!=tau]||  min 4.727   median 7.965   max 11.568
+           gap ratio (min over k!=tau) / (median over k!=tau) = 0.593
+
+  -> the matched slice is EXACTLY 0 while the nearest competitor sits at
+     an appreciable fraction of the typical slice norm.  It is an
+     isolated singularity, not merely the smallest of a graded set.
+     'smallest' and 'anomalous' therefore select the SAME slice.
+
+==============================================================================
+M-A  THE JOINT SIGNATURE NULL AT RANDOM INITIALISATION
+==============================================================================
+signature = ( E_orig small )  AND  ( Delta_P1 > 0 )
+random aggregations, 40 seeds x 3 random scenes x 6 tau, one fixed pi
+pi = [np.int64(5), np.int64(7), np.int64(10), np.int64(2), np.int64(3), np.int64(11), np.int64(0), np.int64(1), np.int64(4), np.int64(9), np.int64(6), np.int64(8)]
+
+  units = 120   E_orig: min 1.364  p05 1.442  median 2.155  max 3.646
+            Delta_P1: min -0.233  median +0.011  p95 +0.167  max +0.288
+    joint: E_orig <= 0.5 AND Delta >= 0.5  ->    0 / 120 units
+    joint: E_orig <= 0.5 AND Delta >= 1.0  ->    0 / 120 units
+    joint: E_orig <= 1.0 AND Delta >= 0.5  ->    0 / 120 units
+    joint: E_orig <= 1.0 AND Delta >= 1.0  ->    0 / 120 units
+    joint: E_orig <= 1.5 AND Delta >= 0.5  ->    0 / 120 units
+    joint: E_orig <= 1.5 AND Delta >= 1.0  ->    0 / 120 units
+  best random unit by E_orig: seed 27 scene 0  E_orig 1.364  Delta +0.191
+
+  LIMITATION, STATED: this null uses RANDOM feature fields, because the
+  frozen feature extractor lives inside a checkpoint and is out of bounds
+  for an audit.  Whether real features change it is UNKNOWN here.
+
+[exited with code 0]

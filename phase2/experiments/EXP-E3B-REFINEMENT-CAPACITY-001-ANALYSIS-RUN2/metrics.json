@@ -1,0 +1,101 @@
+{
+  "experiment_id": "EXP-E3B-REFINEMENT-CAPACITY-001-ANALYSIS-RUN2",
+  "description": "E3b stage 1 analysis",
+  "status": "completed",
+  "started_utc": "2026-09-08T07:31:17.555928+00:00",
+  "finished_utc": "2026-09-08T07:31:21.905754+00:00",
+  "duration_s": 4.349826,
+  "metrics": {
+    "same_seed_noise": {
+      "epe": 0.10690031319348758,
+      "d1": 0.12673775004647325
+    },
+    "material_band": {
+      "epe": 0.21380062638697517,
+      "d1": 1.0
+    },
+    "late_window": {
+      "A": {
+        "points": 10,
+        "epe_mean": 4.092099686806512,
+        "epe_sd": 0.10000498854517458,
+        "d1_mean": 24.909737750046475,
+        "d1_sd": 1.082096193588822
+      },
+      "B": {
+        "points": 10,
+        "epe_mean": 3.8588195128144753,
+        "epe_sd": 0.06437538868632975,
+        "d1_mean": 25.78562702204954,
+        "d1_sd": 0.713044673068346
+      },
+      "C": {
+        "points": 10,
+        "epe_mean": 4.002835971017821,
+        "epe_sd": 0.07533899977872507,
+        "d1_mean": 26.070763540949223,
+        "d1_sd": 0.642541067029065
+      }
+    },
+    "comparison": {
+      "B": {
+        "delta_epe_vs_A": -0.23328017399203693,
+        "delta_d1_vs_A": 0.8758892720030644,
+        "materially_different": false,
+        "worse": false,
+        "stereo_functional": true,
+        "stereo_verdict": {
+          "threshold_d1_points": 20.0,
+          "right_image_min_d1_penalty": 79.70733395253964,
+          "right_image_dependence": true,
+          "matching_map_min_d1_penalty": 63.52419457648109,
+          "matching_map_dependence": true,
+          "matching_gradient_fraction": 1.0,
+          "matching_gradient": true,
+          "softmax_entropy": 1.813790926508656,
+          "entropy_ok": true,
+          "final_disparity_std": 18.267516803390144,
+          "not_collapsed": true,
+          "STEREO_FUNCTIONAL": true
+        },
+        "aborted": null
+      },
+      "C": {
+        "delta_epe_vs_A": -0.0892637157886913,
+        "delta_d1_vs_A": 1.1610257909027482,
+        "materially_different": false,
+        "worse": false,
+        "stereo_functional": true,
+        "stereo_verdict": {
+          "threshold_d1_points": 20.0,
+          "right_image_min_d1_penalty": 75.41568777431752,
+          "right_image_dependence": true,
+          "matching_map_min_d1_penalty": 64.19075197144366,
+          "matching_map_dependence": true,
+          "matching_gradient_fraction": 1.0,
+          "matching_gradient": true,
+          "softmax_entropy": 1.814939866826061,
+          "entropy_ok": true,
+          "final_disparity_std": 18.034799907826745,
+          "not_collapsed": true,
+          "STEREO_FUNCTIONAL": true
+        },
+        "aborted": null
+      }
+    },
+    "gates": {
+      "control_completed": true,
+      "control_stereo_functional": true,
+      "control_converged": true,
+      "arms_completed": true,
+      "PASS": true
+    },
+    "verdict": "CAPACITY-REDUCIBLE",
+    "stage_2_triggered_for": []
+  },
+  "observations": [
+    "the noise band is a SINGLE-SAMPLE lower bound from one same-seed repeat, not a confidence interval; no p-value is claimed. 160 training scenes; no transfer to a pretrained model is implied."
+  ],
+  "conclusion": "E3b stage 1: verdict CAPACITY-REDUCIBLE; stage 2 triggered for no arm.",
+  "error": null
+}

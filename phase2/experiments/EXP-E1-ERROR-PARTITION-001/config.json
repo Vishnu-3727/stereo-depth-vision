@@ -1,0 +1,31 @@
+{
+  "experiment": "EXP-E1-ERROR-PARTITION-001",
+  "hypothesis": "H2's residual error is partitioned by substituting a perfect (oracle) matching output at the matching -> refinement boundary: the fraction of error it removes says whether the ceiling is upstream or downstream.",
+  "preregistration": "phase2/docs/EXP_E1_ERROR_PARTITION_001_PREREGISTRATION.md",
+  "measurement_only": true,
+  "training": "none -- trained H2 checkpoints, inference and substitution only",
+  "models": [
+    "H2",
+    "SEED1",
+    "SEED2"
+  ],
+  "harness": "phase2.scripts.h1_mechanism_probe._forward_parts / ._finish, imported unchanged",
+  "oracle": "disparity_initial := a*gt + b, with a, b fitted by least squares per model over every gt>0 pixel of the 40 scenes; the candidate->pixel scale is learned, so it is measured, not assumed",
+  "verdict_thresholds": {
+    "matching_limited_max_epe_ratio": 0.35,
+    "downstream_limited_min_epe_ratio": 0.65
+  },
+  "dataset": "kitti2015",
+  "split": "hailo_val, all 40 scenes, pooled over gt > 0",
+  "resolution": "368x1232 full frames",
+  "crop": null,
+  "disparity_range": 12,
+  "batch_size": 1,
+  "precision": "fp32",
+  "seed": [
+    0,
+    1,
+    2
+  ],
+  "known_limitation": "measures the ceiling of THESE trained refinement weights; a refinement stage retrained against a perfect matching input could behave differently. One dataset slice, three seeds, no significance test and none claimed."
+}

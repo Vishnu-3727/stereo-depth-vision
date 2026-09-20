@@ -1,0 +1,188 @@
+{
+  "probe_epochs": [
+    10,
+    50,
+    100,
+    150,
+    200
+  ],
+  "focus_scenes": [
+    27,
+    0,
+    31,
+    6
+  ],
+  "probe_implementation": "exp_h2_seed_replication.stereo_probe, imported unchanged",
+  "caveat": "right-image and matching-map probes establish binocular dependence, NOT correct disparity search: Phase 1 EXP-007 measured +89.7 D1 on the reference weights despite a provably degenerate shift.",
+  "arms": {
+    "B": {
+      "10": {
+        "epoch": 10,
+        "right_image_min_d1_penalty": -3.0786885650473153,
+        "matching_map_min_d1_penalty": -2.2790932984538586,
+        "softmax_entropy": 2.027331175197385,
+        "final_disparity_std": 10.124602594125252,
+        "disparity_initial_corr_gt": 0.41373167304256764,
+        "final_corr_gt": 0.45128868872896755
+      },
+      "50": {
+        "epoch": 50,
+        "right_image_min_d1_penalty": 29.83845999745032,
+        "matching_map_min_d1_penalty": 28.722023678798884,
+        "softmax_entropy": 1.7921295417542145,
+        "final_disparity_std": 14.818113932615171,
+        "disparity_initial_corr_gt": 0.7827916955590959,
+        "final_corr_gt": 0.8022549223426202
+      },
+      "100": {
+        "epoch": 100,
+        "right_image_min_d1_penalty": 62.171046640805685,
+        "matching_map_min_d1_penalty": 50.81771658562349,
+        "softmax_entropy": 1.7157336728027581,
+        "final_disparity_std": 17.20741573635177,
+        "disparity_initial_corr_gt": 0.8712838901611322,
+        "final_corr_gt": 0.8822191448905704
+      },
+      "150": {
+        "epoch": 150,
+        "right_image_min_d1_penalty": 63.69538691289224,
+        "matching_map_min_d1_penalty": 53.71068495146515,
+        "softmax_entropy": 1.7376572016348983,
+        "final_disparity_std": 17.368344259602722,
+        "disparity_initial_corr_gt": 0.8924732971606903,
+        "final_corr_gt": 0.9102317399203157
+      },
+      "200": {
+        "epoch": 200,
+        "right_image_min_d1_penalty": 70.41104372689358,
+        "matching_map_min_d1_penalty": 58.6761733049227,
+        "softmax_entropy": 1.7518047921208677,
+        "final_disparity_std": 17.78339778344351,
+        "disparity_initial_corr_gt": 0.9013986776614995,
+        "final_corr_gt": 0.9184705428629837
+      }
+    },
+    "C": {
+      "10": {
+        "epoch": 10,
+        "right_image_min_d1_penalty": 18.97598179168248,
+        "matching_map_min_d1_penalty": 27.25357877293508,
+        "softmax_entropy": 1.8626703441029169,
+        "final_disparity_std": 14.243735712336132,
+        "disparity_initial_corr_gt": 0.7403349184447388,
+        "final_corr_gt": 0.7423356412212849
+      },
+      "50": {
+        "epoch": 50,
+        "right_image_min_d1_penalty": 64.7917463439509,
+        "matching_map_min_d1_penalty": 53.1515780655266,
+        "softmax_entropy": 1.762360204799668,
+        "final_disparity_std": 17.616881788798015,
+        "disparity_initial_corr_gt": 0.857355043498712,
+        "final_corr_gt": 0.8612908950570344
+      },
+      "100": {
+        "epoch": 100,
+        "right_image_min_d1_penalty": 75.19805496366716,
+        "matching_map_min_d1_penalty": 63.37576717842249,
+        "softmax_entropy": 1.7441567136049418,
+        "final_disparity_std": 17.51665628957025,
+        "disparity_initial_corr_gt": 0.8887789541515645,
+        "final_corr_gt": 0.8962077135206578
+      },
+      "150": {
+        "epoch": 150,
+        "right_image_min_d1_penalty": 76.99102150831376,
+        "matching_map_min_d1_penalty": 65.98189732102205,
+        "softmax_entropy": 1.781753933321778,
+        "final_disparity_std": 17.91380326010197,
+        "disparity_initial_corr_gt": 0.912533446709961,
+        "final_corr_gt": 0.9223002314543558
+      },
+      "200": {
+        "epoch": 200,
+        "right_image_min_d1_penalty": 79.25124319788749,
+        "matching_map_min_d1_penalty": 67.24762789342367,
+        "softmax_entropy": 1.7812027684142724,
+        "final_disparity_std": 18.30536487195419,
+        "disparity_initial_corr_gt": 0.9194672991203865,
+        "final_corr_gt": 0.9290055114310578
+      }
+    }
+  },
+  "control": {
+    "10": {
+      "epoch": 10,
+      "right_image_min_d1_penalty": 31.475714363765505,
+      "matching_map_min_d1_penalty": 33.438962647289145,
+      "softmax_entropy": 1.7350130575698444,
+      "final_disparity_std": 13.673578046582193,
+      "disparity_initial_corr_gt": 0.7548377640815696,
+      "final_corr_gt": 0.7634300789864008
+    },
+    "50": {
+      "epoch": 50,
+      "right_image_min_d1_penalty": 58.07244713981314,
+      "matching_map_min_d1_penalty": 47.844615636780865,
+      "softmax_entropy": 1.7150942156974431,
+      "final_disparity_std": 16.75229162833795,
+      "disparity_initial_corr_gt": 0.8596167166728049,
+      "final_corr_gt": 0.8681259994764092
+    },
+    "100": {
+      "epoch": 100,
+      "right_image_min_d1_penalty": 71.17503505800507,
+      "matching_map_min_d1_penalty": 57.58436686153455,
+      "softmax_entropy": 1.7561254206241652,
+      "final_disparity_std": 17.182712801581026,
+      "disparity_initial_corr_gt": 0.8865279080512328,
+      "final_corr_gt": 0.8936259008071079
+    },
+    "150": {
+      "epoch": 150,
+      "right_image_min_d1_penalty": 80.04334444262327,
+      "matching_map_min_d1_penalty": 65.02668050774919,
+      "softmax_entropy": 1.7590573064265942,
+      "final_disparity_std": 18.028154826157603,
+      "disparity_initial_corr_gt": 0.9157955198019231,
+      "final_corr_gt": 0.9250700248922896
+    },
+    "200": {
+      "epoch": 200,
+      "right_image_min_d1_penalty": 80.81279935893934,
+      "matching_map_min_d1_penalty": 66.18769236372907,
+      "softmax_entropy": 1.7754722617356193,
+      "final_disparity_std": 18.00000275061116,
+      "disparity_initial_corr_gt": 0.9167753674046011,
+      "final_corr_gt": 0.9243262505968642
+    }
+  },
+  "environment": {
+    "command": "phase2/factorial/block_count_deterministic/exp_blockcount_deterministic.py probes --out C:/Users/vishn/stereo_depth_vision/phase2/factorial/block_count_deterministic/20260909T131500Z",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "numpy": "2.5.1",
+    "cuda_version": "12.8",
+    "cudnn_version": 90701,
+    "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "nvidia_driver": "616.64",
+    "flags": {
+      "deterministic_algorithms": true,
+      "cudnn.deterministic": true,
+      "cudnn.benchmark": false
+    },
+    "env": {
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+    }
+  },
+  "provenance": {
+    "head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "head_subject": "docs: add the Phase 1 overview",
+    "phase_1_frozen_commit": "b4207e518166f5089731b4d037a4a79234f70986",
+    "phase_1_diff_vs_frozen": "",
+    "status_short": "M .gitignore\n?? phase2/",
+    "phase_2_committed": false,
+    "control_record": "phase2/diagnostics/determinism/20260909T041500Z_baseline"
+  }
+}

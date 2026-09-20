@@ -1,0 +1,291 @@
+{
+  "experiment": "EXP-CORRESPONDENCE-GEOM-A",
+  "split": "hailo_val",
+  "criterion": "exclude GEOM-001 scenes {27, 0, 31, 6}; from the remaining held-out hailo_val scenes keep those whose band retention (fraction of valid-GT pixels inside the geometric mask interior with GT/16 in [2,9]) is >= 0.50; take the first N = 4 qualifying scenes by ascending scene index",
+  "criterion_met": false,
+  "criterion_status": "SHORTFALL: only 2 scene(s) meet retention >= 0.50; N = 4 unmet; no scene list frozen",
+  "band": {
+    "lo": 2.0,
+    "hi": 9.0,
+    "quantity": "GT/16",
+    "gt_scale": 256.0
+  },
+  "geometry_original_coords": {
+    "width": 1232,
+    "height": 368,
+    "crop_margin_M": 32,
+    "inner_border_B": 64,
+    "edge_exclusion_px": 96,
+    "interior": "EDGE <= y < H-EDGE AND EDGE <= x < W-EDGE"
+  },
+  "excluded_geom001_scenes": [
+    0,
+    6,
+    27,
+    31
+  ],
+  "retention_threshold": 0.5,
+  "n_requested": 4,
+  "per_candidate_scene": {
+    "1": {
+      "name": "000161_10.png",
+      "scene_index": 1,
+      "valid_interior_pixels": 59458,
+      "band_pixels": 15940,
+      "band_retention": 0.26808839853341854
+    },
+    "2": {
+      "name": "000162_10.png",
+      "scene_index": 2,
+      "valid_interior_pixels": 37035,
+      "band_pixels": 13077,
+      "band_retention": 0.3530984204131227
+    },
+    "3": {
+      "name": "000163_10.png",
+      "scene_index": 3,
+      "valid_interior_pixels": 56587,
+      "band_pixels": 21287,
+      "band_retention": 0.37618180854259814
+    },
+    "4": {
+      "name": "000164_10.png",
+      "scene_index": 4,
+      "valid_interior_pixels": 56096,
+      "band_pixels": 19584,
+      "band_retention": 0.34911580148317173
+    },
+    "5": {
+      "name": "000165_10.png",
+      "scene_index": 5,
+      "valid_interior_pixels": 57645,
+      "band_pixels": 41068,
+      "band_retention": 0.7124295255442796
+    },
+    "7": {
+      "name": "000167_10.png",
+      "scene_index": 7,
+      "valid_interior_pixels": 51617,
+      "band_pixels": 17223,
+      "band_retention": 0.33366914001201153
+    },
+    "8": {
+      "name": "000168_10.png",
+      "scene_index": 8,
+      "valid_interior_pixels": 49843,
+      "band_pixels": 21009,
+      "band_retention": 0.4215035210561162
+    },
+    "9": {
+      "name": "000169_10.png",
+      "scene_index": 9,
+      "valid_interior_pixels": 34635,
+      "band_pixels": 24692,
+      "band_retention": 0.7129204561859391
+    },
+    "10": {
+      "name": "000170_10.png",
+      "scene_index": 10,
+      "valid_interior_pixels": 47878,
+      "band_pixels": 11546,
+      "band_retention": 0.2411546012782489
+    },
+    "11": {
+      "name": "000171_10.png",
+      "scene_index": 11,
+      "valid_interior_pixels": 45738,
+      "band_pixels": 8934,
+      "band_retention": 0.19532992260264986
+    },
+    "12": {
+      "name": "000172_10.png",
+      "scene_index": 12,
+      "valid_interior_pixels": 47626,
+      "band_pixels": 20969,
+      "band_retention": 0.44028471843110906
+    },
+    "13": {
+      "name": "000173_10.png",
+      "scene_index": 13,
+      "valid_interior_pixels": 55372,
+      "band_pixels": 22379,
+      "band_retention": 0.40415733583760743
+    },
+    "14": {
+      "name": "000174_10.png",
+      "scene_index": 14,
+      "valid_interior_pixels": 50466,
+      "band_pixels": 8288,
+      "band_retention": 0.16422938215828478
+    },
+    "15": {
+      "name": "000175_10.png",
+      "scene_index": 15,
+      "valid_interior_pixels": 34728,
+      "band_pixels": 5003,
+      "band_retention": 0.1440624280119788
+    },
+    "16": {
+      "name": "000176_10.png",
+      "scene_index": 16,
+      "valid_interior_pixels": 48912,
+      "band_pixels": 6197,
+      "band_retention": 0.12669692508995747
+    },
+    "17": {
+      "name": "000177_10.png",
+      "scene_index": 17,
+      "valid_interior_pixels": 49088,
+      "band_pixels": 10028,
+      "band_retention": 0.20428617992177314
+    },
+    "18": {
+      "name": "000178_10.png",
+      "scene_index": 18,
+      "valid_interior_pixels": 49833,
+      "band_pixels": 6863,
+      "band_retention": 0.13771998474906186
+    },
+    "19": {
+      "name": "000179_10.png",
+      "scene_index": 19,
+      "valid_interior_pixels": 40962,
+      "band_pixels": 6637,
+      "band_retention": 0.1620282212782579
+    },
+    "20": {
+      "name": "000180_10.png",
+      "scene_index": 20,
+      "valid_interior_pixels": 34859,
+      "band_pixels": 2330,
+      "band_retention": 0.06684070111018675
+    },
+    "21": {
+      "name": "000181_10.png",
+      "scene_index": 21,
+      "valid_interior_pixels": 34147,
+      "band_pixels": 768,
+      "band_retention": 0.02249099481652854
+    },
+    "22": {
+      "name": "000182_10.png",
+      "scene_index": 22,
+      "valid_interior_pixels": 38953,
+      "band_pixels": 4987,
+      "band_retention": 0.12802608271506688
+    },
+    "23": {
+      "name": "000183_10.png",
+      "scene_index": 23,
+      "valid_interior_pixels": 50668,
+      "band_pixels": 2968,
+      "band_retention": 0.058577405857740586
+    },
+    "24": {
+      "name": "000184_10.png",
+      "scene_index": 24,
+      "valid_interior_pixels": 47580,
+      "band_pixels": 4314,
+      "band_retention": 0.09066834804539722
+    },
+    "25": {
+      "name": "000185_10.png",
+      "scene_index": 25,
+      "valid_interior_pixels": 51373,
+      "band_pixels": 1769,
+      "band_retention": 0.03443443053744185
+    },
+    "26": {
+      "name": "000186_10.png",
+      "scene_index": 26,
+      "valid_interior_pixels": 39096,
+      "band_pixels": 4361,
+      "band_retention": 0.11154593820339677
+    },
+    "28": {
+      "name": "000188_10.png",
+      "scene_index": 28,
+      "valid_interior_pixels": 56264,
+      "band_pixels": 16130,
+      "band_retention": 0.28668420304279824
+    },
+    "29": {
+      "name": "000189_10.png",
+      "scene_index": 29,
+      "valid_interior_pixels": 60117,
+      "band_pixels": 15518,
+      "band_retention": 0.2581299798725818
+    },
+    "30": {
+      "name": "000190_10.png",
+      "scene_index": 30,
+      "valid_interior_pixels": 63934,
+      "band_pixels": 2834,
+      "band_retention": 0.04432696217974787
+    },
+    "32": {
+      "name": "000192_10.png",
+      "scene_index": 32,
+      "valid_interior_pixels": 55491,
+      "band_pixels": 11275,
+      "band_retention": 0.20318610225081546
+    },
+    "33": {
+      "name": "000193_10.png",
+      "scene_index": 33,
+      "valid_interior_pixels": 55837,
+      "band_pixels": 11685,
+      "band_retention": 0.20926983899564805
+    },
+    "34": {
+      "name": "000194_10.png",
+      "scene_index": 34,
+      "valid_interior_pixels": 45930,
+      "band_pixels": 10910,
+      "band_retention": 0.23753537992597432
+    },
+    "35": {
+      "name": "000195_10.png",
+      "scene_index": 35,
+      "valid_interior_pixels": 58998,
+      "band_pixels": 16444,
+      "band_retention": 0.27872131258686733
+    },
+    "36": {
+      "name": "000196_10.png",
+      "scene_index": 36,
+      "valid_interior_pixels": 63926,
+      "band_pixels": 16855,
+      "band_retention": 0.26366423677376966
+    },
+    "37": {
+      "name": "000197_10.png",
+      "scene_index": 37,
+      "valid_interior_pixels": 62953,
+      "band_pixels": 22050,
+      "band_retention": 0.35026130605372263
+    },
+    "38": {
+      "name": "000198_10.png",
+      "scene_index": 38,
+      "valid_interior_pixels": 56768,
+      "band_pixels": 19492,
+      "band_retention": 0.34336245772266066
+    },
+    "39": {
+      "name": "000199_10.png",
+      "scene_index": 39,
+      "valid_interior_pixels": 25268,
+      "band_pixels": 5386,
+      "band_retention": 0.2131549786290961
+    }
+  },
+  "n_qualifying": 2,
+  "qualifying_scenes_ascending": [
+    5,
+    9
+  ],
+  "chosen_scenes": [],
+  "gt_only": true,
+  "checkpoint_opened": false
+}

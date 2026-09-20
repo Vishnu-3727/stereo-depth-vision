@@ -1,0 +1,72 @@
+{
+  "experiment": "EXP-CORRESPONDENCE-ARCH-RATE-001",
+  "unit": "(feature_extractor, scene, random_seed)",
+  "n_units": 384,
+  "statistic_alpha": "free-intercept OLS slope of m_axis(t) on t/16 over t in T_FIT (NOT through the origin; the through-origin form is the proven GEOM-002 defect)",
+  "conditions": {
+    "Q1_sign": "alpha_h > 0",
+    "Q2_monotone": "m_h(t) strictly increasing over all 7 levels",
+    "Q3_axis_specific": "|alpha_h| > |alpha_v|"
+  },
+  "conditions_note": "these are exactly the threshold-free conditions that would be used to qualify a TRAINED model. If they are not identical, the measurement does not bear on diagnosticity.",
+  "classification_order": [
+    "NONFINITE",
+    "CLIPPED",
+    "FLAT",
+    "ANTI_CORRELATED",
+    "NON_MONOTONE",
+    "NON_SPECIFIC",
+    "QUALIFYING"
+  ],
+  "class_definitions": {
+    "NONFINITE": "any m value not finite -> IMPLEMENTATION FAULT -> HARD STOP (not an outcome)",
+    "CLIPPED": "min_t m_h(t) <= 1.0 OR max_t m_h(t) >= 10.0",
+    "FLAT": "max_t m_h(t) - min_t m_h(t) < 1.0",
+    "ANTI_CORRELATED": "alpha_h < 0",
+    "NON_MONOTONE": "Q2 fails (some first difference <= 0), not already FLAT",
+    "NON_SPECIFIC": "Q1 and Q2 hold but Q3 fails",
+    "QUALIFYING": "Q1 and Q2 and Q3 all hold"
+  },
+  "threshold_provenance": "the two magnitude cuts (1.0 candidate from each rail for CLIPPED; range < 1.0 candidate for FLAT) are derived from the CANDIDATE GRID SPACING of the architecture (one candidate), not from any observed response. No threshold in this specification derives from any previous experiment's output.",
+  "primary_result": "the RATE k/N_units of QUALIFYING units, reported with the full classification tally. NOT a pass/fail verdict.",
+  "clipping_must_not_be_folded": true,
+  "raw_publication_requirement": "every m_h(t) and m_v(t) value for every unit must be published, so any reader can reclassify under an alternative definition without re-running the experiment.",
+  "mask": {
+    "definition_crop_coords": "retain (y,x) iff 64 <= y < 208 AND 64 <= x < 1072",
+    "border_px": 64,
+    "retained_pixels_per_scene": 145152,
+    "gt_dependent": false,
+    "t_dependent": false,
+    "axis_dependent": false,
+    "model_dependent": false,
+    "scene_dependent": false
+  },
+  "scenes": [
+    5,
+    7,
+    8,
+    9
+  ],
+  "scene_names": [
+    "000165_10.png",
+    "000167_10.png",
+    "000168_10.png",
+    "000169_10.png"
+  ],
+  "scene_selection_rule": "first four hailo_val indices excluding BOTH prior correspondence sets {27,0,31,6} and {1,2,3,4}; no ground truth consulted",
+  "prior_scene_sets_excluded": {
+    "GEOM-001": [
+      27,
+      0,
+      31,
+      6
+    ],
+    "GEOM-002": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "split": "hailo_val"
+}

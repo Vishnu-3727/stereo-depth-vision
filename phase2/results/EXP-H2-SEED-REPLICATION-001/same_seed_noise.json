@@ -1,0 +1,11 @@
+{
+  "protocol": "same seed (0), same recipe, two independent runs; fp32 cuDNN is not bit-deterministic by default",
+  "epochs_compared": 10,
+  "train_loss_abs_difference": {
+    "mean": 0.8019476751983163,
+    "max": 2.4429597958922384
+  },
+  "val_epe_difference_at_shared_checkpoints": [
+    -0.5707979694090497
+  ]
+}

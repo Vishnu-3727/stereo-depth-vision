@@ -1,0 +1,35 @@
+EXP-CORRESPONDENCE-GEOM-001 -- execution environment
+captured after the halt; recorded, not re-run
+
+platform      : Windows-11-10.0.26200-SP0
+machine       : AMD64
+python        : 3.12.9 (tags/v3.12.9:fdb8142, Feb  4 2025, 15:27:58) [MSC v.1942 64 bit (AMD64)]
+executable    : C:\Users\vishn\.pyenv\pyenv-win\versions\3.12.9\python.exe
+torch         : 2.7.0+cu128
+numpy         : 2.5.1
+cuda available: True
+cuda version  : 12.8
+cudnn version : 90701
+gpu           : NVIDIA GeForce RTX 4060 Laptop GPU
+capability    : (8, 9)
+
+determinism (as set by run_geom.setup_determinism)
+  torch.use_deterministic_algorithms(True)
+  torch.backends.cudnn.deterministic = True
+  torch.backends.cudnn.benchmark     = False
+  torch.set_grad_enabled(False)
+  CUBLAS_WORKSPACE_CONFIG            = :4096:8  (set by run_geom.py at
+      import, before torch is imported; this capture script does not import
+      run_geom, so it observes the unset shell value -- recorded as-is)
+  dtype                              = float32
+
+execution
+  stage 1 : STARTED, HALTED at HS1 before any readout pass
+  stage 2 : NEVER RUN (no G-PASS exists)
+  stage w4: NEVER RUN (no stage-2 reference exists)
+  training performed                 : NO
+  optimizer constructed              : NO
+  trained aggregation applied        : NO
+  aggregation forward passes         : 0
+  readout passes                     : 0
+  historical records modified        : 0 of 36 (re-verified after the halt)

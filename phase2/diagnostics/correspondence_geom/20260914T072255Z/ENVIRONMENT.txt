@@ -1,0 +1,13 @@
+EXP-CORRESPONDENCE-GEOM-A execution environment
+record: phase2/diagnostics/correspondence_geom/20260914T072255Z/
+
+python = 3.12.9 (tags/v3.12.9:fdb8142, MSC v.1942 64 bit AMD64)
+torch = 2.7.0+cu128
+numpy = 2.5.1
+device = cuda (NVIDIA GeForce RTX 4060 Laptop GPU)
+determinism flags (asserted in-harness, HS-DETERMINISM):
+  torch.use_deterministic_algorithms(True)
+  torch.backends.cudnn.deterministic = True
+  torch.backends.cudnn.benchmark = False
+  CUBLAS_WORKSPACE_CONFIG = :4096:8
+  torch.no_grad, model.eval, fp32

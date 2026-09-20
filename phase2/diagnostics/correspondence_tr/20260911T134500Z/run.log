@@ -1,0 +1,32 @@
+freeze verified: 7 artifacts, all file-bytes digests OK
+random reference verified: 384 units, 1f0463ec08b9, spec hashes OK
+PRIMARY statistic reproduces the frozen random alpha_h exactly (T_FIT, six levels; see PRE_EXECUTION_ADDENDUM.md)
+device=cuda torch=2.7.0+cu128 numpy=2.5.1
+scenes [5, 7, 8, 9] ['000165_10.png', '000167_10.png', '000168_10.png', '000169_10.png']
+loaded 3 trained checkpoints, aggregation hashes distinct
+done TRAINED  ext=H2_seed0  scene=000165_10.png  3 aggregations
+done TRAINED  ext=H2_seed0  scene=000167_10.png  3 aggregations
+done TRAINED  ext=H2_seed0  scene=000168_10.png  3 aggregations
+done TRAINED  ext=H2_seed0  scene=000169_10.png  3 aggregations
+done TRAINED  ext=H2_seed1  scene=000165_10.png  3 aggregations
+done TRAINED  ext=H2_seed1  scene=000167_10.png  3 aggregations
+done TRAINED  ext=H2_seed1  scene=000168_10.png  3 aggregations
+done TRAINED  ext=H2_seed1  scene=000169_10.png  3 aggregations
+done TRAINED  ext=H2_seed2  scene=000165_10.png  3 aggregations
+done TRAINED  ext=H2_seed2  scene=000167_10.png  3 aggregations
+done TRAINED  ext=H2_seed2  scene=000168_10.png  3 aggregations
+done TRAINED  ext=H2_seed2  scene=000169_10.png  3 aggregations
+done SEARCH-FREE scene=000165_10.png
+done SEARCH-FREE scene=000167_10.png
+done SEARCH-FREE scene=000168_10.png
+done SEARCH-FREE scene=000169_10.png
+W1 OK: left crop byte-identical across every condition, all 4 scenes
+W4: recomputing H2_seed0/H2_seed0/000165_10.png in a fresh process
+W4 OK: all 14 values bit-identical after process restart
+volumes=208 (spec 156)  readout passes=560 (spec 560)
+MATCHED tally: {"CLIPPED": 0, "FLAT": 0, "ANTI_CORRELATED": 0, "NON_MONOTONE": 8, "NON_SPECIFIC": 0, "QUALIFYING": 4}
+MATCHED alpha_h: {"n": 12, "min": 0.9534197994640895, "p25": 0.9643626247133528, "median": 1.0013984033039638, "p75": 1.2009855934551783, "max": 1.2245933839253016, "mean": 1.0549335576239087, "std": 0.1162129753604767}
+MATCHED outside observed random alpha_h range: 12/12 = 1.0000
+CROSS   outside rate: 1.0000
+SEARCH-FREE tally: {"CLIPPED": 0, "FLAT": 0, "ANTI_CORRELATED": 1, "NON_MONOTONE": 3, "NON_SPECIFIC": 0, "QUALIFYING": 0}
+wall_clock_s=23.68

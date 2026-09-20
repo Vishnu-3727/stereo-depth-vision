@@ -1,0 +1,13 @@
+metric,value
+H_star,
+gate_decision,G-STOP
+gate_units,576
+gate_h_max,6
+gate_h_min,0
+gate_h_mean,0.8333333333333334
+gate_hit_rate,0.1388888888888889
+chance_rate,0.08333333333333333
+mask_pixels,44352
+mask_rows,64-208
+mask_cols,325-633
+verdict,STATISTIC-ARCHITECTURALLY-AVAILABLE

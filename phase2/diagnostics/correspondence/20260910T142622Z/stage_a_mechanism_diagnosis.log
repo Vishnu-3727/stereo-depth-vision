@@ -1,0 +1,38 @@
+=== 1. is the cost volume degenerate (EXP-010)? ===
+   max |slice_k - slice_0| over all 12 slices = 0.0
+
+=== 2. aggregated cost across the disparity axis (mean over pixels) ===
+   d= 0  -7062140485632.000000
+   d= 1  -7769641975808.000000
+   d= 2  -6890446651392.000000
+   d= 3  -5811554222080.000000
+   d= 4  -5850767294464.000000
+   d= 5  -5897817948160.000000
+   d= 6  -5897817948160.000000
+   d= 7  -5619450904576.000000
+   d= 8  -4516022845440.000000
+   d= 9  -1765031936000.000000
+   d=10  +1717014102016.000000
+   d=11  +1521290182656.000000
+   interior d=1..10 spread = 9.487e+12   endpoints d0=-7062140485632.000000 d11=1521290182656.000000
+
+=== 3. per-pixel across-d structure of aggregated cost ===
+   mean over pixels of std_d(aggregated) = 5.390203e+12
+   same, restricted to d=1..10          = 4.122617e+12
+
+=== 4. the tensor the softmax consumes (standardised, full-res) ===
+   d= 0  standardised mean -0.458638
+   d= 1  standardised mean -0.723302
+   d= 2  standardised mean -0.414022
+   d= 3  standardised mean -0.225815
+   d= 4  standardised mean -0.260420
+   d= 5  standardised mean -0.276568
+   d= 6  standardised mean -0.276568
+   d= 7  standardised mean -0.211176
+   d= 8  standardised mean +0.034937
+   d= 9  standardised mean +0.471623
+   d=10  standardised mean +1.060399
+   d=11  standardised mean +1.279551
+   soft-argmin mean 3.900396  (uniform anchor would be 5.5)
+   soft-argmin min 1.3145 max 9.6841 std 1.9582
+   mean max-softmax-weight 0.306903  (uniform would be 0.083333)

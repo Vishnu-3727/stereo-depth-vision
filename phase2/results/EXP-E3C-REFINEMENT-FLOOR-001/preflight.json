@@ -1,0 +1,165 @@
+{
+  "git": {
+    "commit": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "phase_1_diff_vs_frozen": "",
+    "tracked_changes": "M .gitignore\n?? phase2/"
+  },
+  "arms": {
+    "A": {
+      "blocks": 6,
+      "dilations": [
+        1,
+        2,
+        4,
+        8,
+        1,
+        1
+      ],
+      "parameters": 423586,
+      "parameters_expected": 423586,
+      "parameters_match": true,
+      "finite_at_init": true,
+      "stage_max_abs": {
+        "left_features": 0.28872036933898926,
+        "right_features": 0.28489965200424194,
+        "cost_volume": 0.2601066827774048,
+        "aggregated_cost": 0.03286246955394745,
+        "disparity_initial": 9.426422119140625,
+        "refinement_residual": 1.2552056312561035,
+        "disparity_final": 10.5302734375,
+        "softmax_input": 3.241772413253784
+      },
+      "cost_volume_shift": "left",
+      "macs": {
+        "macs": 16199516160.0,
+        "thop_params": 423586.0,
+        "input": [
+          1,
+          3,
+          256,
+          512
+        ]
+      }
+    },
+    "B": {
+      "blocks": 5,
+      "dilations": [
+        1,
+        2,
+        4,
+        8,
+        1
+      ],
+      "parameters": 405090,
+      "parameters_expected": 405090,
+      "parameters_match": true,
+      "finite_at_init": true,
+      "stage_max_abs": {
+        "left_features": 0.28872036933898926,
+        "right_features": 0.28489965200424194,
+        "cost_volume": 0.2601066827774048,
+        "aggregated_cost": 0.03286246955394745,
+        "disparity_initial": 9.426422119140625,
+        "refinement_residual": 1.7811977863311768,
+        "disparity_final": 11.052268981933594,
+        "softmax_input": 3.241772413253784
+      },
+      "cost_volume_shift": "left",
+      "macs": {
+        "macs": 13783597056.0,
+        "thop_params": 405090.0,
+        "input": [
+          1,
+          3,
+          256,
+          512
+        ]
+      }
+    },
+    "C": {
+      "blocks": 4,
+      "dilations": [
+        1,
+        2,
+        4,
+        8
+      ],
+      "parameters": 386594,
+      "parameters_expected": 386594,
+      "parameters_match": true,
+      "finite_at_init": true,
+      "stage_max_abs": {
+        "left_features": 0.28872036933898926,
+        "right_features": 0.28489965200424194,
+        "cost_volume": 0.2601066827774048,
+        "aggregated_cost": 0.03286246955394745,
+        "disparity_initial": 9.426422119140625,
+        "refinement_residual": 1.730682134628296,
+        "disparity_final": 10.986961364746094,
+        "softmax_input": 3.241772413253784
+      },
+      "cost_volume_shift": "left",
+      "macs": {
+        "macs": 11367677952.0,
+        "thop_params": 386594.0,
+        "input": [
+          1,
+          3,
+          256,
+          512
+        ]
+      }
+    },
+    "D": {
+      "blocks": 3,
+      "dilations": [
+        1,
+        2,
+        4
+      ],
+      "parameters": 368098,
+      "parameters_expected": 368098,
+      "parameters_match": true,
+      "finite_at_init": true,
+      "stage_max_abs": {
+        "left_features": 0.28872036933898926,
+        "right_features": 0.28489965200424194,
+        "cost_volume": 0.2601066827774048,
+        "aggregated_cost": 0.03286246955394745,
+        "disparity_initial": 9.426422119140625,
+        "refinement_residual": 1.7923731803894043,
+        "disparity_final": 11.089553833007812,
+        "softmax_input": 3.241772413253784
+      },
+      "cost_volume_shift": "left",
+      "macs": {
+        "macs": 8951758848.0,
+        "thop_params": 368098.0,
+        "input": [
+          1,
+          3,
+          256,
+          512
+        ]
+      }
+    }
+  },
+  "checks": {
+    "surviving_weights_bit_identical": true,
+    "parameter_counts_match_registration": true,
+    "block_counts_correct": true,
+    "all_finite_at_init": true,
+    "shift_is_left": true,
+    "h2_checkpoint_sha256": "e3d48021d7f6a3d4d16fe33031e8ba85fd24389c5ba892f52c7e873e48454927",
+    "phase_1_diff_empty": true,
+    "PASS": true
+  },
+  "control": {
+    "experiment": "EXP-E3B-REFINEMENT-CAPACITY-001-ARM-A-RUN2",
+    "checkpoint_sha256": "2f72b9e4ca80c05278d75be9a7422cb4f1e2928f864cc6e99f8a324a299df854",
+    "band": {
+      "epe": 0.21380062638697517,
+      "d1": 1.0
+    }
+  }
+}

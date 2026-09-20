@@ -1,0 +1,629 @@
+{
+  "tool": "phase2 mentor demo, built on Stereo Depth Visualizer V1",
+  "model": "ARMP_S1",
+  "experiment": "EXP-ARMP-SEED1",
+  "split": "hailo_val",
+  "git_revision": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+  "probe_boxes": {
+    "road ahead": [
+      560,
+      300,
+      700,
+      355
+    ],
+    "left side": [
+      180,
+      160,
+      330,
+      265
+    ],
+    "right side": [
+      900,
+      160,
+      1050,
+      265
+    ],
+    "far centre": [
+      590,
+      150,
+      700,
+      205
+    ]
+  },
+  "scene_selection": "ranked all 40 hailo_val scenes by this model's per-scene D1; the demonstration scenes are drawn from the better half and the failure case is the single worst scene. Representative demonstration scenes, not a statistical benchmark.",
+  "ranking": [
+    {
+      "index": 25,
+      "scene": "000185_10.png",
+      "epe_px": 0.6658783630928475,
+      "d1_percent": 1.2101005148320667
+    },
+    {
+      "index": 23,
+      "scene": "000183_10.png",
+      "epe_px": 0.7658320894517964,
+      "d1_percent": 2.2441412651589645
+    },
+    {
+      "index": 39,
+      "scene": "000199_10.png",
+      "epe_px": 0.8610541048188434,
+      "d1_percent": 2.487066010097862
+    },
+    {
+      "index": 20,
+      "scene": "000180_10.png",
+      "epe_px": 0.755759811950475,
+      "d1_percent": 2.524897723046407
+    },
+    {
+      "index": 28,
+      "scene": "000188_10.png",
+      "epe_px": 0.8100583347192883,
+      "d1_percent": 2.598904980572236
+    },
+    {
+      "index": 30,
+      "scene": "000190_10.png",
+      "epe_px": 0.7478417344923616,
+      "d1_percent": 2.9493731634826683
+    },
+    {
+      "index": 21,
+      "scene": "000181_10.png",
+      "epe_px": 0.8114006051565001,
+      "d1_percent": 3.2143685136443603
+    },
+    {
+      "index": 11,
+      "scene": "000171_10.png",
+      "epe_px": 0.8637687858916473,
+      "d1_percent": 3.304319031174606
+    },
+    {
+      "index": 24,
+      "scene": "000184_10.png",
+      "epe_px": 0.9206419468213739,
+      "d1_percent": 3.728658264056494
+    },
+    {
+      "index": 35,
+      "scene": "000195_10.png",
+      "epe_px": 0.952050878682697,
+      "d1_percent": 4.084678829439711
+    },
+    {
+      "index": 27,
+      "scene": "000187_10.png",
+      "epe_px": 0.8860746803896706,
+      "d1_percent": 4.1607761248232835
+    },
+    {
+      "index": 7,
+      "scene": "000167_10.png",
+      "epe_px": 0.9707379102604874,
+      "d1_percent": 4.186961217876868
+    },
+    {
+      "index": 6,
+      "scene": "000166_10.png",
+      "epe_px": 0.8435211015469706,
+      "d1_percent": 4.196033437141452
+    },
+    {
+      "index": 0,
+      "scene": "000160_10.png",
+      "epe_px": 0.8300753212409218,
+      "d1_percent": 4.212669954279553
+    },
+    {
+      "index": 26,
+      "scene": "000186_10.png",
+      "epe_px": 0.8839918682009887,
+      "d1_percent": 4.254377647133194
+    },
+    {
+      "index": 22,
+      "scene": "000182_10.png",
+      "epe_px": 1.01194114261683,
+      "d1_percent": 4.300342227615451
+    },
+    {
+      "index": 31,
+      "scene": "000191_10.png",
+      "epe_px": 0.9729552187725271,
+      "d1_percent": 4.316333707629472
+    },
+    {
+      "index": 32,
+      "scene": "000192_10.png",
+      "epe_px": 0.9436802249584855,
+      "d1_percent": 4.74344924669678
+    },
+    {
+      "index": 36,
+      "scene": "000196_10.png",
+      "epe_px": 1.0433572398833586,
+      "d1_percent": 4.760236015125831
+    },
+    {
+      "index": 12,
+      "scene": "000172_10.png",
+      "epe_px": 0.8891973924999494,
+      "d1_percent": 4.803286823852555
+    },
+    {
+      "index": 9,
+      "scene": "000169_10.png",
+      "epe_px": 1.360662790221947,
+      "d1_percent": 4.89108249526849
+    },
+    {
+      "index": 17,
+      "scene": "000177_10.png",
+      "epe_px": 1.1537250783368136,
+      "d1_percent": 4.940445365095806
+    },
+    {
+      "index": 37,
+      "scene": "000197_10.png",
+      "epe_px": 1.2108345492143817,
+      "d1_percent": 5.085829364191414
+    },
+    {
+      "index": 10,
+      "scene": "000170_10.png",
+      "epe_px": 1.1568105827712498,
+      "d1_percent": 5.1531186669669
+    },
+    {
+      "index": 29,
+      "scene": "000189_10.png",
+      "epe_px": 1.063269083161527,
+      "d1_percent": 6.577089039225326
+    },
+    {
+      "index": 38,
+      "scene": "000198_10.png",
+      "epe_px": 0.999864237885338,
+      "d1_percent": 6.674495628320046
+    },
+    {
+      "index": 2,
+      "scene": "000162_10.png",
+      "epe_px": 1.2471734624084092,
+      "d1_percent": 6.859947688440505
+    },
+    {
+      "index": 18,
+      "scene": "000178_10.png",
+      "epe_px": 1.1902069730205742,
+      "d1_percent": 7.113794057660576
+    },
+    {
+      "index": 15,
+      "scene": "000175_10.png",
+      "epe_px": 1.2873788369245238,
+      "d1_percent": 7.466866640139573
+    },
+    {
+      "index": 13,
+      "scene": "000173_10.png",
+      "epe_px": 1.3171245428520122,
+      "d1_percent": 7.860659752356565
+    },
+    {
+      "index": 33,
+      "scene": "000193_10.png",
+      "epe_px": 1.4671853455184427,
+      "d1_percent": 7.980836740593896
+    },
+    {
+      "index": 4,
+      "scene": "000164_10.png",
+      "epe_px": 1.5925455297265643,
+      "d1_percent": 8.149016067535511
+    },
+    {
+      "index": 14,
+      "scene": "000174_10.png",
+      "epe_px": 1.2643301242720273,
+      "d1_percent": 8.616330575837868
+    },
+    {
+      "index": 34,
+      "scene": "000194_10.png",
+      "epe_px": 1.3974347910519418,
+      "d1_percent": 8.913817424598642
+    },
+    {
+      "index": 19,
+      "scene": "000179_10.png",
+      "epe_px": 1.4697858209147914,
+      "d1_percent": 9.33757652441752
+    },
+    {
+      "index": 8,
+      "scene": "000168_10.png",
+      "epe_px": 1.83321453037268,
+      "d1_percent": 9.705325763719925
+    },
+    {
+      "index": 3,
+      "scene": "000163_10.png",
+      "epe_px": 1.5913223760974726,
+      "d1_percent": 10.525792664745055
+    },
+    {
+      "index": 5,
+      "scene": "000165_10.png",
+      "epe_px": 1.4501008574503933,
+      "d1_percent": 12.358510994310912
+    },
+    {
+      "index": 16,
+      "scene": "000176_10.png",
+      "epe_px": 1.7334462640220232,
+      "d1_percent": 12.501468436622275
+    },
+    {
+      "index": 1,
+      "scene": "000161_10.png",
+      "epe_px": 3.81752717438826,
+      "d1_percent": 19.829420588132695
+    }
+  ],
+  "scenes": {
+    "000191_10.png": {
+      "name": "000191_10.png",
+      "index": 31,
+      "rank": 17,
+      "of": 40,
+      "role": "demo",
+      "scene_metrics": {
+        "valid_pixels": 81041,
+        "epe": 0.9729552187725271,
+        "rmse": 2.0856000896132536,
+        "d1": 4.316333707629472,
+        "bad1": 25.643809923372118,
+        "bad2": 8.764699349711874,
+        "bad3": 4.364457496822596
+      },
+      "calibration": "f=718.856 px  B=0.5323 m  fB=382.67 px*m  (cx=607.2, cy=185.2); top-left crop, no resize, so the rectified intrinsics apply unchanged",
+      "checkpoint": "phase2\\results\\training\\EXP-ARMP-SEED1_checkpoint.pth",
+      "checkpoint_sha256": "b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454",
+      "device": "cuda",
+      "metric_depth": {
+        "valid_pixels": 453376,
+        "p2_m": 6.337693860866602,
+        "median_m": 19.19844616192956,
+        "p98_m": 78.99623764253235
+      },
+      "probe": {
+        "road ahead": {
+          "region": [
+            560,
+            300,
+            700,
+            355
+          ],
+          "median_disparity_px": 48.441612243652344,
+          "median_depth_m": 7.8996121838932005,
+          "depth_p10_m": 6.876669126745604,
+          "depth_p90_m": 9.295287191381355,
+          "ground_truth_pixels": 2724,
+          "disparity_mae_px": 0.39003055561306543
+        },
+        "left side": {
+          "region": [
+            180,
+            160,
+            330,
+            265
+          ],
+          "median_disparity_px": 18.691433906555176,
+          "median_depth_m": 20.473011964378166,
+          "depth_p10_m": 14.684540217721791,
+          "depth_p90_m": 25.993957091449843,
+          "ground_truth_pixels": 5550,
+          "disparity_mae_px": 0.5719387487463049
+        },
+        "right side": {
+          "region": [
+            900,
+            160,
+            1050,
+            265
+          ],
+          "median_disparity_px": 22.318105697631836,
+          "median_depth_m": 17.14616622689409,
+          "depth_p10_m": 9.322314661758442,
+          "depth_p90_m": 23.204152447192122,
+          "ground_truth_pixels": 3516,
+          "disparity_mae_px": 2.96659863985168
+        },
+        "far centre": {
+          "region": [
+            590,
+            150,
+            700,
+            205
+          ],
+          "median_disparity_px": 5.33170223236084,
+          "median_depth_m": 71.77256593166243,
+          "depth_p10_m": 47.63562907207334,
+          "depth_p90_m": 78.07899314817726,
+          "ground_truth_pixels": 390,
+          "disparity_mae_px": 0.5733511019975711
+        }
+      }
+    },
+    "000187_10.png": {
+      "name": "000187_10.png",
+      "index": 27,
+      "rank": 11,
+      "of": 40,
+      "role": "demo",
+      "scene_metrics": {
+        "valid_pixels": 77101,
+        "epe": 0.8860746803896706,
+        "rmse": 1.5039997892296626,
+        "d1": 4.1607761248232835,
+        "bad1": 26.161787784853637,
+        "bad2": 7.4849872245496165,
+        "bad3": 4.164667124940014
+      },
+      "calibration": "f=718.856 px  B=0.5323 m  fB=382.67 px*m  (cx=607.2, cy=185.2); top-left crop, no resize, so the rectified intrinsics apply unchanged",
+      "checkpoint": "phase2\\results\\training\\EXP-ARMP-SEED1_checkpoint.pth",
+      "checkpoint_sha256": "b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454",
+      "device": "cuda",
+      "metric_depth": {
+        "valid_pixels": 453376,
+        "p2_m": 6.308368668222655,
+        "median_m": 17.80640276200316,
+        "p98_m": 71.47201807683757
+      },
+      "probe": {
+        "road ahead": {
+          "region": [
+            560,
+            300,
+            700,
+            355
+          ],
+          "median_disparity_px": 47.1884765625,
+          "median_depth_m": 8.109394052380818,
+          "depth_p10_m": 7.065648411594587,
+          "depth_p90_m": 9.503387006148941,
+          "ground_truth_pixels": 2969,
+          "disparity_mae_px": 0.699738201528095
+        },
+        "left side": {
+          "region": [
+            180,
+            160,
+            330,
+            265
+          ],
+          "median_disparity_px": 15.139284133911133,
+          "median_depth_m": 25.27662118128901,
+          "depth_p10_m": 18.45017611560403,
+          "depth_p90_m": 31.339101752917912,
+          "ground_truth_pixels": 4980,
+          "disparity_mae_px": 0.5979322916053864
+        },
+        "right side": {
+          "region": [
+            900,
+            160,
+            1050,
+            265
+          ],
+          "median_disparity_px": 25.666592597961426,
+          "median_depth_m": 14.90926185799,
+          "depth_p10_m": 10.854420908969937,
+          "depth_p90_m": 26.816807693605924,
+          "ground_truth_pixels": 4196,
+          "disparity_mae_px": 1.1771759720957768
+        },
+        "far centre": {
+          "region": [
+            590,
+            150,
+            700,
+            205
+          ],
+          "median_disparity_px": 5.901591062545776,
+          "median_depth_m": 64.8418284928945,
+          "depth_p10_m": 48.17632750877674,
+          "depth_p90_m": 85.41897661655057,
+          "ground_truth_pixels": 683,
+          "disparity_mae_px": 0.8430861121215374
+        }
+      }
+    },
+    "000160_10.png": {
+      "name": "000160_10.png",
+      "index": 0,
+      "rank": 14,
+      "of": 40,
+      "role": "demo",
+      "scene_metrics": {
+        "valid_pixels": 100174,
+        "epe": 0.8300753212409218,
+        "rmse": 1.59394713837391,
+        "d1": 4.212669954279553,
+        "bad1": 21.293948529558566,
+        "bad2": 7.547866711921257,
+        "bad3": 4.344440673228582
+      },
+      "calibration": "f=718.335 px  B=0.5301 m  fB=380.82 px*m  (cx=600.4, cy=181.5); top-left crop, no resize, so the rectified intrinsics apply unchanged",
+      "checkpoint": "phase2\\results\\training\\EXP-ARMP-SEED1_checkpoint.pth",
+      "checkpoint_sha256": "b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454",
+      "device": "cuda",
+      "metric_depth": {
+        "valid_pixels": 453376,
+        "p2_m": 5.420564229794085,
+        "median_m": 19.29783359968209,
+        "p98_m": 67.30535356154961
+      },
+      "probe": {
+        "road ahead": {
+          "region": [
+            560,
+            300,
+            700,
+            355
+          ],
+          "median_disparity_px": 49.75203323364258,
+          "median_depth_m": 7.654330794120424,
+          "depth_p10_m": 6.706101266075294,
+          "depth_p90_m": 8.949245128909496,
+          "ground_truth_pixels": 3741,
+          "disparity_mae_px": 0.34878267575253524
+        },
+        "left side": {
+          "region": [
+            180,
+            160,
+            330,
+            265
+          ],
+          "median_disparity_px": 13.781143188476562,
+          "median_depth_m": 27.63330418294526,
+          "depth_p10_m": 14.333149065638379,
+          "depth_p90_m": 43.95976490657618,
+          "ground_truth_pixels": 5864,
+          "disparity_mae_px": 0.9646528209540561
+        },
+        "right side": {
+          "region": [
+            900,
+            160,
+            1050,
+            265
+          ],
+          "median_disparity_px": 20.5272216796875,
+          "median_depth_m": 18.551878378444755,
+          "depth_p10_m": 12.890729546846964,
+          "depth_p90_m": 23.2794720527976,
+          "ground_truth_pixels": 6556,
+          "disparity_mae_px": 0.5540332692363337
+        },
+        "far centre": {
+          "region": [
+            590,
+            150,
+            700,
+            205
+          ],
+          "median_disparity_px": 7.676583290100098,
+          "median_depth_m": 49.60781458097698,
+          "depth_p10_m": 29.21951042062478,
+          "depth_p90_m": 71.78372197814437,
+          "ground_truth_pixels": 2179,
+          "disparity_mae_px": 0.7844580932186525
+        }
+      }
+    },
+    "000161_10.png": {
+      "name": "000161_10.png",
+      "index": 1,
+      "rank": 40,
+      "of": 40,
+      "role": "failure_case",
+      "scene_metrics": {
+        "valid_pixels": 114668,
+        "epe": 3.81752717438826,
+        "rmse": 10.328404937769845,
+        "d1": 19.829420588132695,
+        "bad1": 46.758467924791574,
+        "bad2": 31.850211044057623,
+        "bad3": 25.085464122510203
+      },
+      "calibration": "f=718.335 px  B=0.5301 m  fB=380.82 px*m  (cx=600.4, cy=181.5); top-left crop, no resize, so the rectified intrinsics apply unchanged",
+      "checkpoint": "phase2\\results\\training\\EXP-ARMP-SEED1_checkpoint.pth",
+      "checkpoint_sha256": "b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454",
+      "device": "cuda",
+      "metric_depth": {
+        "valid_pixels": 453376,
+        "p2_m": 3.323479569925262,
+        "median_m": 18.178369827098454,
+        "p98_m": 69.74031197147096
+      },
+      "probe": {
+        "road ahead": {
+          "region": [
+            560,
+            300,
+            700,
+            355
+          ],
+          "median_disparity_px": 49.025814056396484,
+          "median_depth_m": 7.767714363637287,
+          "depth_p10_m": 6.753182847680739,
+          "depth_p90_m": 9.044831635033923,
+          "ground_truth_pixels": 3530,
+          "disparity_mae_px": 0.4626243720986688
+        },
+        "left side": {
+          "region": [
+            180,
+            160,
+            330,
+            265
+          ],
+          "median_disparity_px": 58.33219337463379,
+          "median_depth_m": 6.52844668649918,
+          "depth_p10_m": 3.9587801015066484,
+          "depth_p90_m": 41.60994716890142,
+          "ground_truth_pixels": 9028,
+          "disparity_mae_px": 5.197929454420223
+        },
+        "right side": {
+          "region": [
+            900,
+            160,
+            1050,
+            265
+          ],
+          "median_disparity_px": 20.675195693969727,
+          "median_depth_m": 18.4191011525689,
+          "depth_p10_m": 12.714073055086335,
+          "depth_p90_m": 26.234417237147614,
+          "ground_truth_pixels": 5955,
+          "disparity_mae_px": 0.7632727239434205
+        },
+        "far centre": {
+          "region": [
+            590,
+            150,
+            700,
+            205
+          ],
+          "median_disparity_px": 6.842591762542725,
+          "median_depth_m": 55.65413417019991,
+          "depth_p10_m": 21.680000256808047,
+          "depth_p90_m": 73.31895012670023,
+          "ground_truth_pixels": 1903,
+          "disparity_mae_px": 0.7515225087224466
+        }
+      }
+    }
+  },
+  "stereo_dependence_test": {
+    "scene": "000191_10.png",
+    "corruption": "right_from_other_scene",
+    "corruption_source": "scripts/exp_right_image_ablation.py::variants",
+    "normal": {
+      "epe_px": 0.9729552187725271,
+      "d1_percent": 4.316333707629472
+    },
+    "corrupted_right": {
+      "epe_px": 34.14305778920751,
+      "d1_percent": 95.8613541293913
+    },
+    "d1_penalty_points": 91.54502042176183,
+    "mean_abs_disparity_change_px": 40.34806442260742
+  }
+}

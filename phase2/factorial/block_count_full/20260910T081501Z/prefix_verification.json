@@ -1,0 +1,104 @@
+{
+  "source_screen": "phase2/factorial/block_count_seed_screen/20260909T145659Z",
+  "expectations_frozen_before_training": true,
+  "comparison": "exact float equality, not tolerance-based",
+  "runs": {
+    "EXP-BLOCKCOUNT-FULL-001-ARM-C-SEED1": {
+      "seed": 1,
+      "init_weight_sha_expected": "2cac2916ed802495",
+      "init_weight_sha_observed": "2cac2916ed802495",
+      "init_weight_sha_exact": true,
+      "epoch0_mean_loss_expected": 11.187826424837112,
+      "epoch0_mean_loss_observed": 11.187826424837112,
+      "epoch0_mean_loss_exact": true,
+      "checkpoints": {
+        "1": {
+          "expected_val_epe": 16.031864940965352,
+          "observed_val_epe": 16.031864940965352,
+          "val_epe_exact": true,
+          "expected_val_d1": 89.06086644453445,
+          "observed_val_d1": 89.06086644453445,
+          "val_d1_exact": true
+        },
+        "2": {
+          "expected_val_epe": 18.94565264092234,
+          "observed_val_epe": 18.94565264092234,
+          "val_epe_exact": true,
+          "expected_val_d1": 87.00300963707065,
+          "observed_val_d1": 87.00300963707065,
+          "val_d1_exact": true
+        },
+        "10": {
+          "expected_val_epe": 18.36530086611511,
+          "observed_val_epe": 18.36530086611511,
+          "val_epe_exact": true,
+          "expected_val_d1": 88.2830455679038,
+          "observed_val_d1": 88.2830455679038,
+          "val_d1_exact": true
+        },
+        "20": {
+          "expected_val_epe": 12.078822974549746,
+          "observed_val_epe": 12.078822974549746,
+          "val_epe_exact": true,
+          "expected_val_d1": 78.73558710487097,
+          "observed_val_d1": 78.73558710487097,
+          "val_d1_exact": true
+        }
+      },
+      "PREFIX_REPRODUCED_EXACTLY": true
+    },
+    "EXP-BLOCKCOUNT-FULL-001-ARM-C-SEED2": {
+      "seed": 2,
+      "init_weight_sha_expected": "e622226a5a22fc9b",
+      "init_weight_sha_observed": "e622226a5a22fc9b",
+      "init_weight_sha_exact": true,
+      "epoch0_mean_loss_expected": 10.646129465103149,
+      "epoch0_mean_loss_observed": 10.646129465103149,
+      "epoch0_mean_loss_exact": true,
+      "checkpoints": {
+        "1": {
+          "expected_val_epe": 21.45397410346398,
+          "observed_val_epe": 21.45397410346398,
+          "val_epe_exact": true,
+          "expected_val_d1": 89.77658199353804,
+          "observed_val_d1": 89.77658199353804,
+          "val_d1_exact": true
+        },
+        "2": {
+          "expected_val_epe": 17.84664041672191,
+          "observed_val_epe": 17.84664041672191,
+          "val_epe_exact": true,
+          "expected_val_d1": 89.12050045289612,
+          "observed_val_d1": 89.12050045289612,
+          "val_d1_exact": true
+        },
+        "10": {
+          "expected_val_epe": 16.342920881565185,
+          "observed_val_epe": 16.342920881565185,
+          "val_epe_exact": true,
+          "expected_val_d1": 87.35554870271855,
+          "observed_val_d1": 87.35554870271855,
+          "val_d1_exact": true
+        },
+        "20": {
+          "expected_val_epe": 15.506311573290349,
+          "observed_val_epe": 15.506311573290349,
+          "val_epe_exact": true,
+          "expected_val_d1": 85.64163506780548,
+          "observed_val_d1": 85.64163506780548,
+          "val_d1_exact": true
+        }
+      },
+      "PREFIX_REPRODUCED_EXACTLY": true
+    }
+  },
+  "ALL_PREFIXES_REPRODUCED": true,
+  "provenance": {
+    "head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "head_subject": "docs: add the Phase 1 overview",
+    "phase_1_frozen_commit": "b4207e518166f5089731b4d037a4a79234f70986",
+    "phase_1_diff_vs_frozen": "",
+    "status_short": "M .gitignore\n?? phase2/",
+    "phase_2_committed": false
+  }
+}

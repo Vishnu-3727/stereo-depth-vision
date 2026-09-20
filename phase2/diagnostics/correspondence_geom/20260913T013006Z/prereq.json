@@ -1,0 +1,81 @@
+{
+  "stage": 0,
+  "phase_1_frozen": "verified externally against git tag phase-1-frozen; the source files under test are in historical.sha256",
+  "freeze": {
+    "artifacts": 5,
+    "historical_records": 63,
+    "mismatches": 0
+  },
+  "geom001": {
+    "status": "HALTED -- INVALID DOMAIN -- NO-ADMISSIBLE-RESULT",
+    "manifests": {
+      "frozen.sha256": {
+        "entries": 5,
+        "mismatches": 0
+      },
+      "historical.sha256": {
+        "entries": 36,
+        "mismatches": 0
+      }
+    },
+    "gate_result_reused": false
+  },
+  "domain_static_check": {
+    "status": "PASS",
+    "extractor_band": [
+      15,
+      55
+    ],
+    "cost_volume_band": [
+      15,
+      44
+    ],
+    "statistic_band": [
+      20,
+      39
+    ],
+    "statistic_columns": 20,
+    "tau_independent": true,
+    "pixel_band": [
+      325,
+      632
+    ],
+    "mask_rows": [
+      64,
+      208
+    ],
+    "mask_pixels": 44352,
+    "fill_free_bound": 59
+  },
+  "checkpoints": {
+    "H2_seed0": {
+      "path": "phase2/diagnostics/determinism/20260909T041500Z_baseline/checkpoints/STAGEB-DETERMINISTIC-BASELINE-ARM-A-RUNA_checkpoint.pth",
+      "sha256": "581d62e699b159945580f9627b451d953ce07b5dc763d608a9f4a8b5ecba692a",
+      "shift": "left",
+      "size_bytes": 1728755
+    },
+    "H2_seed1": {
+      "path": "phase2/factorial/block_count_full/20260910T005550Z/checkpoints/EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED1_checkpoint.pth",
+      "sha256": "58117f2613bba4b2c817328c7d6757f21b340ec5e64a828e633193ae091d4adf",
+      "shift": "left",
+      "size_bytes": 1729133
+    },
+    "H2_seed2": {
+      "path": "phase2/factorial/block_count_full/20260910T005550Z/checkpoints/EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED2_checkpoint.pth",
+      "sha256": "245a3f5bcb801c7d9c3550b02cb8775cb86486beae606f04097900340754fa69",
+      "shift": "left",
+      "size_bytes": 1729133
+    }
+  },
+  "determinism": {
+    "use_deterministic_algorithms": true,
+    "cudnn_deterministic": true,
+    "cudnn_benchmark": false,
+    "grad_enabled": false,
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+    "dtype": "float32",
+    "device": "cuda"
+  },
+  "no_optimizer_no_backward_no_update": true,
+  "verdict": "PREREQUISITES PASS"
+}

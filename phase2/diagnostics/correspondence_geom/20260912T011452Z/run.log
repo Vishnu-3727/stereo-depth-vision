@@ -1,0 +1,27 @@
+EXP-CORRESPONDENCE-GEOM-001 -- consolidated execution log
+record 20260912T011452Z   HALTED AT HS1
+
+=== freeze ===
+d335f00eec35e1757b1c15115ee46d0bfb2c2bcefcd87bafff63e0afd3dbc204  PREREGISTRATION.md
+2b7b0a24144d506b72e10a461b50f2704eda880cc0f57eb2029bf13526d2a3a4  spec.json
+bcdd4e3384ecb07630a68016e3b174b2012510b322b4e3a9cc99f182077de63e  source_trace.md
+6a9b5e4e68e498dfee0b382208682e799c956315eb915b47fda624ff19ab3981  run_geom.py
+1b0c21de4feb29f186c6d03dd0a30dd4ddd33f2d3a47f80f5173bef1de311cd7  freeze_geom.py
+
+=== stage 1 (random-weight gate) -- stdout up to the halt ===
+freeze verified: 5 frozen artifacts, 36 historical records
+extractor H2_seed0 loaded (sha 581d62e699b1...), trained aggregation DISCARDED (its hash d8d12446c584... is recorded but never used)
+
+=== stage 1 traceback ===
+HardStop: HS1 AA |V[:,tau=1,:,w<54]| = 7233118.0 != 0
+  raised in build_volumes(); process exited non-zero; nothing repaired, nothing continued.
+
+=== stage 2 ===
+NEVER RUN -- no gate.json exists, so stage 2 refuses to start.
+
+=== stage w4 ===
+NEVER RUN -- requires a completed stage 2.
+
+=== post-halt integrity ===
+frozen.sha256      5 verified, 0 mismatches
+historical.sha256 36 verified, 0 mismatches

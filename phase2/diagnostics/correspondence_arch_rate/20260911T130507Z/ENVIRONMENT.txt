@@ -1,0 +1,79 @@
+EXP-CORRESPONDENCE-ARCH-RATE-001 -- ENVIRONMENT
+================================================
+
+Descriptive measurement. The result is a RATE, not a verdict.
+Inference only. No training. NO TRAINED AGGREGATION WAS EVER EXECUTED.
+The trained feature extractor is loaded only because the protocol requires it
+frozen -- it supplies the cost volume. Refinement never invoked.
+
+python                     3.12.9
+torch                      2.7.0+cu128
+numpy                      2.5.1
+cuda                       12.8
+gpu                        NVIDIA GeForce RTX 4060 Laptop GPU
+CUBLAS_WORKSPACE_CONFIG    :4096:8
+
+deterministic controls
+  torch.use_deterministic_algorithms     True
+  cudnn.deterministic                    True
+  cudnn.benchmark                        False
+  no_grad / eval / fp32                  True
+
+frozen artefacts (written BEFORE the preregistration, hashed over FILE BYTES)
+  construction_spec.json    sha256 7a4e2341fc50e3695648cc286cdb4219390a0378a6669994ec0e4555b75cf9b0
+  randomisation_spec.json   sha256 e52b5b03c5d4406e5ed9212f6681ee53bb448927eebddd367a7698ce9ce203ad
+  classification_spec.json  sha256 273f7562b62dd4c29a2d617e3b2b4b24d98532fcc7d99531b82b55b377d0cd28
+
+randomised                 aggregation ONLY, 111,585 params, seeds 0..31 (N=32)
+  init                     framework default: kaiming_uniform_(w, a=sqrt(5));
+                           bias ~ U(-1/sqrt(fan_in), +1/sqrt(fan_in))
+  rate resolution          1/32 = 0.03125
+NOT randomised             feature extractor (trained, frozen), cost volume,
+                           readout (0 params), refinement (never invoked)
+
+construction               self-pair crops of scene.left; a_R = a_L + t
+  t levels                 [0, 16, 32, 48, 64, 80, 96] px  (candidates [0, 1, 2, 3, 4, 5, 6])
+  fit levels               [16, 32, 48, 64, 80, 96]
+  crop                     1136 x 272 = 71x16 x 17x16, identical every condition
+  fill / padding / interp  NONE
+mask                       retain (y,x) iff 64 <= y < 208 AND 64 <= x < 1072 ; 145152 px ; no ground truth
+scenes                     [5, 7, 8, 9] ['000165_10.png', '000167_10.png', '000168_10.png', '000169_10.png'] (held out from GEOM-001 and GEOM-002)
+
+feature extractors (read-only; sha256 verified at load; TRAINED AGGREGATION NEVER RUN)
+  POS_6b_seed0     581d62e699b159945580f9627b451d953ce07b5dc763d608a9f4a8b5ecba692a
+      phase2/diagnostics/determinism/20260909T041500Z_baseline/checkpoints/STAGEB-DETERMINISTIC-BASELINE-ARM-A-RUNA_checkpoint.pth
+      role=FEATURE EXTRACTOR ONLY  trained_agg_executed=False
+  POS_6b_seed1     58117f2613bba4b2c817328c7d6757f21b340ec5e64a828e633193ae091d4adf
+      phase2/factorial/block_count_full/20260910T005550Z/checkpoints/EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED1_checkpoint.pth
+      role=FEATURE EXTRACTOR ONLY  trained_agg_executed=False
+  POS_6b_seed2     245a3f5bcb801c7d9c3550b02cb8775cb86486beae606f04097900340754fa69
+      phase2/factorial/block_count_full/20260910T005550Z/checkpoints/EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED2_checkpoint.pth
+      role=FEATURE EXTRACTOR ONLY  trained_agg_executed=False
+
+harness
+  freeze_rate.py       sha256 80f57aeba8c559b91c8ea1161939bbb5683bf6aa4c5286bd8f6a2c7686cf16af
+  run_arch_rate.py     sha256 f2496bb75dace8f006dcee85317107cfc8cb1617c82fad415ab4b4afff5a41ee
+
+statistic                  alpha = FREE-INTERCEPT OLS slope of m(t) on t/16
+                           (NOT through the origin -- the GEOM-002 defect)
+classification order       NONFINITE -> CLIPPED -> FLAT -> ANTI_CORRELATED -> NON_MONOTONE -> NON_SPECIFIC -> QUALIFYING
+thresholds                 RAIL 1.0 / 10.0, FLAT range 1.0 -- candidate grid spacing,
+                           NOT derived from any observation
+pass/fail rule             NONE (by design)
+
+compute   156 cost volumes + 5376 aggregation/readout passes
+wall clock  56.2 s
+
+protocol deviations        ONE, minor: 5376 passes executed vs 4992 specified;
+                           the 384 extra are redundant recomputation of the shared
+                           t=0 condition, verified bit-identical in 384/384 units.
+                           Zero numerical impact. RESULTS.md section 8.
+
+provenance
+  HEAD                    58e8a19908ddbd35451652c61aef478f56b51ebd
+  phase-1-frozen^{commit} b4207e518166f5089731b4d037a4a79234f70986
+  phase 1 diff vs frozen  EMPTY
+  phase 2 committed       False (untracked; no cryptographic versioning claimed)
+
+RESULT   QUALIFYING rate = 0 / 384 = 0.0000
+         tally {"CLIPPED": 0, "FLAT": 378, "ANTI_CORRELATED": 0, "NON_MONOTONE": 6, "NON_SPECIFIC": 0, "QUALIFYING": 0}

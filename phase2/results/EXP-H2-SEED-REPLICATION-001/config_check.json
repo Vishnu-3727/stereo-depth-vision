@@ -1,0 +1,143 @@
+{
+  "purpose": "Part A: the replication configuration must match the recorded seed-0 H2 run in everything except the seed",
+  "git": {
+    "commit": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "phase_1_diff_vs_frozen": "",
+    "tracked_changes": "M .gitignore\n?? phase2/"
+  },
+  "reference_experiment": "EXP-H2-SOFTARGMIN-SCALE",
+  "reference_checkpoint_sha256": "e3d48021d7f6a3d4d16fe33031e8ba85fd24389c5ba892f52c7e873e48454927",
+  "recorded_seed0_config": {
+    "hypothesis": "H2: the matching pathway is untrainable because the soft-argmin is numerically saturated. Standardising the aggregated cost across the disparity axis immediately before the soft-argmin, and changing nothing else, should restore gradient flow to the feature extractor and aggregation.",
+    "control": "EXP-H1-WORKING-v2 (already trained; not retrained for this experiment)",
+    "changed_variable": "regression stage: DisparityRegression -> phase2.models.scaled_regression.StandardisedDisparityRegression (per-pixel z-score across the 12 candidates, eps=1e-5, applied to the upsampled cost the softmax consumes)",
+    "held_fixed": "cost_volume_shift='left', feature extractor, cost volume, aggregation, refinement, loss, optimizer, schedule, seed, data split, crop, augmentation, epochs, batch size, precision -- the H1 recipe imported from phase2/scripts/exp_h1_cost_volume.py",
+    "new_parameters": 0,
+    "dataset": "kitti2015",
+    "split": "hailo_calib (scenes 0-159) train, hailo_val (160-199) validate",
+    "resolution": [
+      256,
+      512
+    ],
+    "crop": "random 256x512",
+    "disparity_range": 176,
+    "batch_size": 2,
+    "precision": "fp32",
+    "seed": 0,
+    "epochs": 200,
+    "optimizer": "Adam betas=(0.9, 0.999)",
+    "learning_rate": 0.001,
+    "schedule": "cosine annealing to 0 over 200 epochs",
+    "loss": "masked smooth L1, beta=1.0, valid = gt > 0 and gt < max_disparity",
+    "augmentation": "random crop, independent per-image gain jitter sigma=0.1; no horizontal flip (it inverts disparity)",
+    "initialisation": "PyTorch defaults, random, seed 0 -- identical to the H1 arms (the changed module holds no parameters)",
+    "validation_protocol": "first 10 scenes of hailo_val, full 368x1232 frames, pooled over gt > 0, every 5 epochs (exp_h1_cost_volume.validate, imported)",
+    "primary_endpoint": "fraction of training batches on which ||grad(feature_extractor)|| + ||grad(aggregation)|| (2-norm combined) exceeds 1e-12",
+    "gradient_present_threshold": 1e-12,
+    "numerical_precheck": "phase2/results/h2_precheck/precheck.json",
+    "device": "cuda",
+    "known_limitation": "one seed, 160 training scenes from random initialisation -- the same budget as both H1 arms. The comparison against EXP-H1-WORKING-v2 is a controlled A/B of the changed variable; neither arm's absolute accuracy is a ceiling."
+  },
+  "replication_config": {
+    "architecture": "StereoNet (Phase 1 src/models/stereonet) + phase2 StandardisedDisparityRegression",
+    "cost_volume_shift": "left",
+    "cost_volume_method": "subtract",
+    "num_disparities": 12,
+    "regression": "standardised soft-argmin (phase2.models.scaled_regression)",
+    "seed": 1,
+    "dataset": "kitti2015",
+    "train_split": "hailo_calib (scenes 0-159)",
+    "validation_split": "hailo_val (scenes 160-199), first 10 scenes validated",
+    "crop": [
+      256,
+      512
+    ],
+    "augmentation": "random crop, per-image gain jitter sigma=0.1, no flip",
+    "optimizer": "Adam betas=(0.9, 0.999)",
+    "learning_rate": 0.001,
+    "scheduler": "CosineAnnealingLR T_max=200",
+    "loss": "masked smooth L1, beta=1.0, valid = gt > 0 and gt < max_disparity",
+    "batch_size": 2,
+    "epochs": 200,
+    "precision": "fp32",
+    "device": "cuda"
+  },
+  "field_comparison": {
+    "cost_volume_shift": {
+      "seed0_record": "left",
+      "replication": "left"
+    },
+    "dataset": {
+      "seed0_record": "kitti2015",
+      "replication": "kitti2015"
+    },
+    "split": {
+      "seed0_record": "hailo_calib (scenes 0-159) train, hailo_val (160-199) validate",
+      "replication": "hailo_calib (scenes 0-159) / hailo_val (scenes 160-199), first 10 scenes validated"
+    },
+    "crop": {
+      "seed0_record": [
+        256,
+        512
+      ],
+      "replication": [
+        256,
+        512
+      ]
+    },
+    "batch_size": {
+      "seed0_record": 2,
+      "replication": 2
+    },
+    "optimizer": {
+      "seed0_record": "Adam betas=(0.9, 0.999)",
+      "replication": "Adam betas=(0.9, 0.999)"
+    },
+    "learning_rate": {
+      "seed0_record": 0.001,
+      "replication": 0.001
+    },
+    "scheduler": {
+      "seed0_record": "cosine annealing to 0 over 200 epochs",
+      "replication": "CosineAnnealingLR T_max=200"
+    },
+    "loss": {
+      "seed0_record": "masked smooth L1, beta=1.0, valid = gt > 0 and gt < max_disparity",
+      "replication": "masked smooth L1, beta=1.0, valid = gt > 0 and gt < max_disparity"
+    },
+    "augmentation": {
+      "seed0_record": "random crop, independent per-image gain jitter sigma=0.1; no horizontal flip (it inverts disparity)",
+      "replication": "random crop, per-image gain jitter sigma=0.1, no flip"
+    },
+    "epochs": {
+      "seed0_record": 200,
+      "replication": 200
+    },
+    "precision": {
+      "seed0_record": "fp32",
+      "replication": "fp32"
+    },
+    "seed": {
+      "seed0_record": 0,
+      "replication": "1 and 2 (the only intended difference)"
+    }
+  },
+  "parameter_count": 423586,
+  "parameter_count_per_occurrence": 623138,
+  "macs": {
+    "macs": 16199516160.0,
+    "thop_params": 423586.0,
+    "input": [
+      1,
+      3,
+      256,
+      512
+    ]
+  },
+  "mismatches": [],
+  "scheduler_substance_matches": true,
+  "split_substance_matches": true,
+  "augmentation_is_the_reference_class": true,
+  "augmentation_note": "the record's wording differs from this script's one-line summary; the augmentation itself is the same imported CroppedKitti (jitter 0.1, no flip)",
+  "PASS": true
+}

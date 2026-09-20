@@ -1,0 +1,48 @@
+{
+  "arm": "B",
+  "experiment_id": "EXP-BLOCKCOUNT-DETERMINISTIC-001-ARM-B",
+  "controls": {
+    "torch.use_deterministic_algorithms": true,
+    "torch.backends.cudnn.deterministic": true,
+    "torch.backends.cudnn.benchmark": false,
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+  },
+  "blocks": 5,
+  "parameters": 405090,
+  "init_weight_sha": "a437e6e58d17e4db",
+  "changed_variable": "refinement block count: 6 -> 5",
+  "provenance": {
+    "head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "head_subject": "docs: add the Phase 1 overview",
+    "phase_1_frozen_commit": "b4207e518166f5089731b4d037a4a79234f70986",
+    "phase_1_diff_vs_frozen": "",
+    "status_short": "M .gitignore\n?? phase2/",
+    "phase_2_committed": false,
+    "control_record": "phase2/diagnostics/determinism/20260909T041500Z_baseline"
+  },
+  "environment": {
+    "command": "phase2/factorial/block_count_deterministic/exp_blockcount_deterministic.py train --out C:/Users/vishn/stereo_depth_vision/phase2/factorial/block_count_deterministic/20260909T131500Z --arm B",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "numpy": "2.5.1",
+    "cuda_version": "12.8",
+    "cudnn_version": 90701,
+    "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "nvidia_driver": "616.64",
+    "flags": {
+      "deterministic_algorithms": true,
+      "cudnn.deterministic": true,
+      "cudnn.benchmark": false
+    },
+    "env": {
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+    }
+  },
+  "started_utc": "2026-09-09T10:25:13Z",
+  "wall_clock_s": 4764.574415922165,
+  "finished_utc": "2026-09-09T11:44:37Z",
+  "checkpoint": "phase2\\factorial\\block_count_deterministic\\20260909T131500Z\\checkpoints\\EXP-BLOCKCOUNT-DETERMINISTIC-001-ARM-B_checkpoint.pth",
+  "checkpoint_sha256": "a899ca126172abdb85eec9c0edea3fdf891048ea54d7dc35ac48760d711f51d6",
+  "final_weight_sha": "7b1b05716d8451ac"
+}

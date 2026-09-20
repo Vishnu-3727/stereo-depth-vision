@@ -1,0 +1,156 @@
+{
+  "artifact": "P2A seed 0, static-shape re-export",
+  "source_checkpoint": "phase2/runs/p2a_scale_coverage/p2a_best.pth",
+  "source_sha256": "0868ffd137a9985306bf5563685fd2362799bdd630d313e1181c980a7fbb6033",
+  "utc": "2026-09-17T15:15:30.321411+00:00",
+  "weights_touched": false,
+  "training_performed": false,
+  "git_head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+  "software": {
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "onnx": "1.22.0",
+    "onnxruntime": "1.27.0",
+    "numpy": "2.5.1",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "params": 397954,
+  "params_unchanged": true,
+  "state_dict_keys": 70,
+  "parity_static_vs_trained_pytorch": {
+    "scenes": 5,
+    "max_abs_diff_px": 3.0517578125e-05,
+    "per_scene": [
+      2.288818359375e-05,
+      3.0517578125e-05,
+      2.288818359375e-05,
+      2.288818359375e-05,
+      3.0517578125e-05
+    ],
+    "tolerance_px": 0.001,
+    "pass": true
+  },
+  "export": {
+    "path": "phase2/deploy/p2a_stereonet_static.onnx",
+    "sha256": "0665a9ae7d0455968a4758d2bc49d51ab45b921fbbbb7e548b352b645fc0e737",
+    "size_bytes": 1699043,
+    "opset": 13,
+    "n_nodes": 689,
+    "op_types": [
+      "Add",
+      "Cast",
+      "Concat",
+      "Constant",
+      "ConstantOfShape",
+      "Conv",
+      "Div",
+      "LeakyRelu",
+      "Mul",
+      "Neg",
+      "Pad",
+      "ReduceMean",
+      "ReduceSum",
+      "Relu",
+      "Reshape",
+      "Resize",
+      "Slice",
+      "Softmax",
+      "Sqrt",
+      "Squeeze",
+      "Sub",
+      "Transpose",
+      "Unsqueeze"
+    ],
+    "checker": "pass"
+  },
+  "dynamic_op_removal": {
+    "targeted": [
+      "Range",
+      "ReduceProd",
+      "Shape",
+      "Gather",
+      "ConstantOfShape"
+    ],
+    "present_in_original": [
+      "Range",
+      "ReduceProd",
+      "Shape",
+      "Gather",
+      "ConstantOfShape"
+    ],
+    "present_in_static": [
+      "ConstantOfShape"
+    ],
+    "all_removed": false,
+    "original_n_nodes": 712,
+    "static_n_nodes": 689,
+    "ops_dropped": [
+      "Gather",
+      "Range",
+      "ReduceProd",
+      "Shape"
+    ],
+    "ops_added": []
+  },
+  "parity_static_onnx_vs_original_onnx": {
+    "scenes": 5,
+    "max_abs_diff_px": 3.0517578125e-05,
+    "per_scene": [
+      2.288818359375e-05,
+      3.0517578125e-05,
+      3.0517578125e-05,
+      1.52587890625e-05,
+      3.0517578125e-05
+    ],
+    "tolerance_px": 0.001,
+    "pass": true
+  },
+  "parity_static_onnx_vs_trained_pytorch": {
+    "scenes": 5,
+    "max_abs_diff_px": 0.000621795654296875,
+    "per_scene": [
+      0.0002193450927734375,
+      0.000415802001953125,
+      0.00034332275390625,
+      0.0001354217529296875,
+      0.000621795654296875
+    ],
+    "tolerance_px": 0.001,
+    "pass": true
+  },
+  "deployed_accuracy_static_onnx": {
+    "protocol": "frozen contract, unchanged; no eval-time augmentation; no multi-scale inference",
+    "scenes": 40,
+    "metrics": {
+      "valid_pixels": 3802797,
+      "epe": 1.4150747583609593,
+      "rmse": 3.534783242826847,
+      "d1": 8.420039250057261,
+      "bad1": 35.193648254166604,
+      "bad2": 14.92614515052999,
+      "bad3": 8.752768028374904
+    },
+    "guard": {
+      "scenes": 40,
+      "valid_pixels": 3802797,
+      "gt_scale": 256.0,
+      "split": "hailo_val",
+      "gt_source": "disp_occ_0",
+      "contract": {
+        "scenes": 40,
+        "valid_pixels": 3802797,
+        "gt_scale": 256.0,
+        "split": "hailo_val",
+        "gt_source": "disp_occ_0"
+      },
+      "contract_match": true
+    },
+    "gt_lt_64_epe": 1.2396872550556997,
+    "gt_ge_64_epe": 5.040653058185153,
+    "gt_ge_96_epe": 11.727350809194913,
+    "gt_ge_96_signed": -11.094436258224224,
+    "slope_hi": 0.6226286050222207,
+    "max_pred_valid_px": 130.57273864746094,
+    "max_pred_all_px": 157.6991424560547
+  }
+}

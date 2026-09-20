@@ -1,0 +1,158 @@
+{
+  "git": {
+    "commit": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "phase_1_diff_vs_frozen": "",
+    "tracked_changes": "M .gitignore\n?? phase2/"
+  },
+  "arms": {
+    "D124": {
+      "blocks": 3,
+      "dilations_declared": [
+        1,
+        2,
+        4
+      ],
+      "dilations_effective": [
+        1,
+        2,
+        4
+      ],
+      "receptive_field_px": 33,
+      "parameters": 368098,
+      "parameters_expected": 368098,
+      "parameters_match": true,
+      "finite_at_init": true,
+      "stage_max_abs": {
+        "left_features": 0.28872036933898926,
+        "right_features": 0.28489965200424194,
+        "cost_volume": 0.2601066827774048,
+        "aggregated_cost": 0.03286246955394745,
+        "disparity_initial": 9.426422119140625,
+        "refinement_residual": 1.7923731803894043,
+        "disparity_final": 11.089553833007812,
+        "softmax_input": 3.241772413253784
+      },
+      "cost_volume_shift": "left",
+      "regression": "StandardisedDisparityRegression",
+      "num_disparities": 12,
+      "macs": {
+        "macs": 8951758848.0,
+        "thop_params": 368098.0,
+        "input": [
+          1,
+          3,
+          256,
+          512
+        ]
+      }
+    },
+    "D128": {
+      "blocks": 3,
+      "dilations_declared": [
+        1,
+        2,
+        8
+      ],
+      "dilations_effective": [
+        1,
+        2,
+        8
+      ],
+      "receptive_field_px": 49,
+      "parameters": 368098,
+      "parameters_expected": 368098,
+      "parameters_match": true,
+      "finite_at_init": true,
+      "stage_max_abs": {
+        "left_features": 0.28872036933898926,
+        "right_features": 0.28489965200424194,
+        "cost_volume": 0.2601066827774048,
+        "aggregated_cost": 0.03286246955394745,
+        "disparity_initial": 9.426422119140625,
+        "refinement_residual": 1.780720591545105,
+        "disparity_final": 11.071871757507324,
+        "softmax_input": 3.241772413253784
+      },
+      "cost_volume_shift": "left",
+      "regression": "StandardisedDisparityRegression",
+      "num_disparities": 12,
+      "macs": {
+        "macs": 8951758848.0,
+        "thop_params": 368098.0,
+        "input": [
+          1,
+          3,
+          256,
+          512
+        ]
+      }
+    },
+    "D148": {
+      "blocks": 3,
+      "dilations_declared": [
+        1,
+        4,
+        8
+      ],
+      "dilations_effective": [
+        1,
+        4,
+        8
+      ],
+      "receptive_field_px": 57,
+      "parameters": 368098,
+      "parameters_expected": 368098,
+      "parameters_match": true,
+      "finite_at_init": true,
+      "stage_max_abs": {
+        "left_features": 0.28872036933898926,
+        "right_features": 0.28489965200424194,
+        "cost_volume": 0.2601066827774048,
+        "aggregated_cost": 0.03286246955394745,
+        "disparity_initial": 9.426422119140625,
+        "refinement_residual": 1.7881208658218384,
+        "disparity_final": 11.07709789276123,
+        "softmax_input": 3.241772413253784
+      },
+      "cost_volume_shift": "left",
+      "regression": "StandardisedDisparityRegression",
+      "num_disparities": 12,
+      "macs": {
+        "macs": 8951758848.0,
+        "thop_params": 368098.0,
+        "input": [
+          1,
+          3,
+          256,
+          512
+        ]
+      }
+    }
+  },
+  "checks": {
+    "arms_registered": true,
+    "initial_weights_bit_identical_across_arms": true,
+    "declared_dilations_are_effective": true,
+    "dilation_schedules_are_distinct": true,
+    "parameter_counts_match_registration": true,
+    "macs_identical_across_arms": true,
+    "tensor_shapes_identical_across_arms": true,
+    "recipe_fields_identical_across_arms": true,
+    "all_finite_at_init": true,
+    "shift_is_left": true,
+    "readout_is_standardised": true,
+    "num_disparities_is_12": true,
+    "control_record_exists": true,
+    "phase_1_diff_empty": true,
+    "h2_checkpoint_sha256": "e3d48021d7f6a3d4d16fe33031e8ba85fd24389c5ba892f52c7e873e48454927",
+    "PASS": true
+  },
+  "control": {
+    "experiment": "EXP-E3B-REFINEMENT-CAPACITY-001-ARM-A-RUN2",
+    "checkpoint_sha256": "2f72b9e4ca80c05278d75be9a7422cb4f1e2928f864cc6e99f8a324a299df854",
+    "band": {
+      "epe": 0.21380062638697517,
+      "d1": 1.0
+    }
+  }
+}

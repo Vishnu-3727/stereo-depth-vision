@@ -1,0 +1,25 @@
+feature grid 71x17  adopted domain: ext [15,55] cv [15,44] stat [20,39]
+corrected pixel band x in [325,632]  (308 cols);  GEOM-001 band [64,864)
+S1 tau=1  zero cols with halo [15, 54]  predicted [15, 54]  anchor on cv domain True
+S1 tau=2  zero cols with halo [15, 53]  predicted [15, 53]  anchor on cv domain True
+S1 tau=3  zero cols with halo [15, 52]  predicted [15, 52]  anchor on cv domain True
+S1 tau=4  zero cols with halo [15, 51]  predicted [15, 51]  anchor on cv domain True
+S1 tau=5  zero cols with halo [15, 50]  predicted [15, 50]  anchor on cv domain True
+S1 tau=6  zero cols with halo [15, 49]  predicted [15, 49]  anchor on cv domain True
+S3 cancellation over the ENTIRE tensor: max rel 1.391e-07
+S4 affine    aggregated-cost interaction: max rel 2.308e-06
+S5 nonlinear aggregated-cost interaction: min rel 7.111e-01  median 8.589e-01
+S6 seed 0 done (18.1s)
+S6 seed 1 done (30.3s)
+S6 seed 2 done (42.5s)
+S6 seed 3 done (54.8s)
+
+============ S6  BOUNDARY CONTAMINATION EXCLUSION ============
+corrected mask  bit-identical under two different halos : 24/24
+   max |diff| over all cells                            : 0.000e+00
+GEOM-001 mask   bit-identical under two different halos : 0/24
+   max |diff| over all cells                            : 1.157e-01
+   argmin CHANGED by the halo, GEOM-001 mask            : 8/24
+   argmin changed by the halo, corrected mask           : 0/24
+
+wrote synthetic_mask_check.json  (54.8s)

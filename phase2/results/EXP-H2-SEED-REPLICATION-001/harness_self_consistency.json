@@ -1,0 +1,12 @@
+{
+  "protocol": "same harness, same seed 0, two consecutive 2-epoch runs",
+  "epoch_losses_run_a": [
+    10.879807955026626,
+    10.459676039218902
+  ],
+  "epoch_losses_run_b": [
+    10.576192182302474,
+    10.027842146158218
+  ],
+  "bit_identical": false
+}

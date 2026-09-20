@@ -1,0 +1,38 @@
+{
+  "experiment": "EXP-CORRESPONDENCE-GEOM-002",
+  "definition_crop_coords": "retain (y,x) iff 64 <= y < 208 AND 64 <= x < 1072",
+  "border_px": 64,
+  "retained_size": {
+    "width": 1008,
+    "height": 144
+  },
+  "retained_pixels_per_scene": 145152,
+  "single_fixed_mask": true,
+  "t_dependent": false,
+  "axis_dependent": false,
+  "model_dependent": false,
+  "scene_dependent": false,
+  "gt_dependent": false,
+  "why_no_gt": "the imposed disparity is t everywhere, so ground truth contributes nothing and is not consulted. This eliminates the band mask, the scene-selection question and the mask-occupancy confound present since INDEX-001.",
+  "why_a_border": "the feature receptive field is about 477 px, which no affordable border can exclude (the crop is only 272 px tall). The border reduces, but does not remove, the influence of differing content near the crop edge. The search-free control measures whatever residual survives.",
+  "scene_selection_rule": "the first four indices of hailo_val excluding the GEOM-001 focus set {27,0,31,6}; no ground truth consulted",
+  "scenes": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "scene_names": [
+    "000161_10.png",
+    "000162_10.png",
+    "000163_10.png",
+    "000164_10.png"
+  ],
+  "geom001_focus_excluded": [
+    27,
+    0,
+    31,
+    6
+  ],
+  "split": "hailo_val"
+}

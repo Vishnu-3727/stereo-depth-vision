@@ -1,0 +1,17 @@
+{
+  "protocol": "recreate the seed-0 initialisation and measure ||w - w0|| / ||w0|| per stage for each trained arm",
+  "git_revision": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+  "both_arms_share_the_initialisation": true,
+  "models": {
+    "BASE": {
+      "feature_extractor": 1.0972556209008768,
+      "aggregation": 1.9188422539032697,
+      "refinement": 1.5599662701615573
+    },
+    "WORKING": {
+      "feature_extractor": 1.5484414008059721,
+      "aggregation": 2.499647017771043,
+      "refinement": 1.6189027095420545
+    }
+  }
+}

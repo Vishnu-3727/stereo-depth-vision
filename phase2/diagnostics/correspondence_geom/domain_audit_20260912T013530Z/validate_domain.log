@@ -1,0 +1,39 @@
+device=cuda  FW=71 FH=17 D=12
+DERIVED domain under test:  extractor [15,55]  cost-volume [15,44]  statistic [20,39]
+
+extractor H2_seed0 (581d62e699b1...)
+  pair 0 (000161_10.png/000162_10.png) ok  (4.4s)
+  pair 1 (000163_10.png/000164_10.png) ok  (4.8s)
+  pair 2 (000170_10.png/000171_10.png) ok  (5.1s)
+  pair 3 (000172_10.png/000173_10.png) ok  (5.3s)
+  pair 4 (000174_10.png/000175_10.png) ok  (5.6s)
+  pair 5 (000176_10.png/000177_10.png) ok  (5.8s)
+
+extractor H2_seed1 (58117f2613bb...)
+  pair 0 (000161_10.png/000162_10.png) ok  (6.1s)
+  pair 1 (000163_10.png/000164_10.png) ok  (6.4s)
+  pair 2 (000170_10.png/000171_10.png) ok  (6.6s)
+  pair 3 (000172_10.png/000173_10.png) ok  (6.9s)
+  pair 4 (000174_10.png/000175_10.png) ok  (7.1s)
+  pair 5 (000176_10.png/000177_10.png) ok  (7.4s)
+
+extractor H2_seed2 (245a3f5bcb80...)
+  pair 0 (000161_10.png/000162_10.png) ok  (7.6s)
+  pair 1 (000163_10.png/000164_10.png) ok  (7.9s)
+  pair 2 (000170_10.png/000171_10.png) ok  (8.1s)
+  pair 3 (000172_10.png/000173_10.png) ok  (8.4s)
+  pair 4 (000174_10.png/000175_10.png) ok  (8.6s)
+  pair 5 (000176_10.png/000177_10.png) ok  (8.8s)
+
+================ VALIDATION SUMMARY ================
+records (extractor x pair x scene x tau) : 216
+derived band exact everywhere            : True
+measured band == derived band everywhere : False
+observed valid-run lo values             : [15]
+observed valid-run hi values             : [50, 51, 52, 53, 54, 55]
+fails immediately left  of band (all)    : True
+fails immediately right of band (all)    : False
+V[tau] exact zero on [15,44] everywhere  : True
+   checks=216  cells per check=16320  max|V|=0.0
+2x2 cancellation on REAL features        : max rel 1.8089e-07  median 1.1943e-07
+wall_clock_s=8.9

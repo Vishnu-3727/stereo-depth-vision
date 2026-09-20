@@ -1,0 +1,21 @@
+EXP-CORRESPONDENCE-INDEX-002
+device=cuda torch=2.7.0+cu128 numpy=2.5.1
+frozen seed=20260911  n_random=1536  M=512
+done NEG_shift_none 000187_10.png mask=33026 S_order=+0.0000 p2=1.000000 rank=1/513 null[0.0000,0.0000] order=False
+done NEG_shift_none 000160_10.png mask=42676 S_order=+0.0000 p2=1.000000 rank=1/513 null[0.0000,0.0000] order=False
+done NEG_shift_none 000191_10.png mask=37892 S_order=+0.0000 p2=1.000000 rank=1/513 null[0.0000,0.0000] order=False
+done NEG_shift_none 000166_10.png mask=62908 S_order=+0.0000 p2=1.000000 rank=1/513 null[0.0000,0.0000] order=False
+done POS_6b_seed0 000187_10.png mask=33026 S_order=+6.4262 p2=0.027290 rank=507/513 null[-5.6293,6.5169] order=True
+done POS_6b_seed0 000160_10.png mask=42676 S_order=+6.3072 p2=0.023392 rank=508/513 null[-5.5237,6.1447] order=True
+done POS_6b_seed0 000191_10.png mask=37892 S_order=+6.5678 p2=0.031189 rank=506/513 null[-6.1073,6.8656] order=True
+done POS_6b_seed0 000166_10.png mask=62908 S_order=+6.8322 p2=0.023392 rank=508/513 null[-4.9868,6.8265] order=True
+done POS_6b_seed1 000187_10.png mask=33026 S_order=+4.2074 p2=0.105263 rank=487/513 null[-4.2492,5.0025] order=True
+done POS_6b_seed1 000160_10.png mask=42676 S_order=+4.1137 p2=0.101365 rank=488/513 null[-4.1609,5.0189] order=True
+done POS_6b_seed1 000191_10.png mask=37892 S_order=+4.1659 p2=0.136452 rank=479/513 null[-4.6908,5.0091] order=True
+done POS_6b_seed1 000166_10.png mask=62908 S_order=+4.5877 p2=0.109162 rank=486/513 null[-3.6820,5.8432] order=True
+done POS_6b_seed2 000187_10.png mask=33026 S_order=+5.4962 p2=0.038986 rank=504/513 null[-4.8480,5.9902] order=True
+done POS_6b_seed2 000160_10.png mask=42676 S_order=+5.2037 p2=0.027290 rank=507/513 null[-4.3532,5.4164] order=True
+done POS_6b_seed2 000191_10.png mask=37892 S_order=+5.4582 p2=0.054581 rank=500/513 null[-4.1707,6.1357] order=True
+done POS_6b_seed2 000166_10.png mask=62908 S_order=+5.5284 p2=0.062378 rank=498/513 null[-4.0460,6.2677] order=True
+VERDICT: CANDIDATE-COORDINATE-SENSITIVITY-NOT-DEMONSTRATED
+wall_clock_s=264.11

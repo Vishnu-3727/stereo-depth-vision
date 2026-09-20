@@ -1,0 +1,44 @@
+{
+  "experiment": "EXP-H2-EMERGENCE-001-RUN2",
+  "hypothesis": "Stereo dependence in the H2 recipe is late-emerging: it is absent early in training and appears at some point before epoch 200. This experiment locates that point on the saved snapshot grid.",
+  "measurement_only": true,
+  "training": "none -- weights are read from EXP-H2-SEED-REPLICATION-001 snapshots",
+  "source_runs": [
+    "EXP-H2-SEED-REPLICATION-001-SEED1-RUN2",
+    "EXP-H2-SEED-REPLICATION-001-SEED2-RUN2"
+  ],
+  "snapshot_epochs": [
+    10,
+    20,
+    50,
+    100,
+    150,
+    200
+  ],
+  "probe": "phase2.scripts.exp_h2_seed_replication.stereo_probe (imported unchanged)",
+  "probe_scenes": [
+    27,
+    0,
+    31,
+    6
+  ],
+  "criterion_frozen_in": "phase2/docs/EXP_H2_SEED_REPLICATION_001_PROTOCOL_CORRECTION.md",
+  "criterion_right_image_d1_points": 20.0,
+  "rng_deviation": "fresh np.random.default_rng(0) per checkpoint, where training advanced a single generator across epochs; epochs 10/100/200 are cross-checked against the recorded ablation",
+  "validation_metrics": "read from each run's recorded metrics.json, not recomputed",
+  "dataset": "kitti2015",
+  "split": "hailo_val scenes [27, 0, 31, 6] (probe), first 10 scenes (recorded validation)",
+  "resolution": "368x1232 full frames",
+  "crop": [
+    256,
+    512
+  ],
+  "disparity_range": 12,
+  "batch_size": 1,
+  "precision": "fp32",
+  "seed": [
+    1,
+    2
+  ],
+  "known_limitation": "two seeds, four probe scenes, and a six-point epoch grid; the emergence point is an interval between two saved epochs, not a measured epoch, and the harness is not bit-reproducible (fp32 cuDNN)."
+}

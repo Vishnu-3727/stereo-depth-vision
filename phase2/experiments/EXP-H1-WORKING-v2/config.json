@@ -1,0 +1,28 @@
+{
+  "hypothesis": "H1: a genuinely shifted stereo correspondence volume, everything else held fixed, changes accuracy by a measurable amount versus Phase 1's frozen degenerate volume (docs/research_questions.md, H1).",
+  "changed_variable": "cost_volume_shift",
+  "cost_volume_shift": "left",
+  "held_fixed": "feature extractor, aggregation, refinement, loss, optimizer, schedule, seed, data split, crop, augmentation -- identical to Phase 1 EXP-016",
+  "dataset": "kitti2015",
+  "split": "hailo_calib (scenes 0-159) train, hailo_val (160-199) validate",
+  "resolution": [
+    256,
+    512
+  ],
+  "crop": "random 256x512",
+  "disparity_range": 176,
+  "batch_size": 2,
+  "precision": "fp32",
+  "seed": 0,
+  "epochs": 200,
+  "optimizer": "Adam betas=(0.9, 0.999)",
+  "learning_rate": 0.001,
+  "schedule": "cosine annealing to 0 over 200 epochs",
+  "loss": "masked smooth L1, beta=1.0, valid = gt > 0 and gt < max_disparity",
+  "augmentation": "random crop, independent per-image gain jitter sigma=0.1; no horizontal flip (it inverts disparity)",
+  "initialisation": "PyTorch defaults, random",
+  "run_variant": "rerun '-v2': identical to the v1 arms except the epoch budget (200 vs 20) and the cosine T_max that tracks it. Both v2 arms share this budget, so BASE-vs-WORKING remains a controlled A/B; v1 records are preserved unmodified.",
+  "device": "cuda",
+  "known_deviation": "no batch normalisation, because the model reproduces the BN-folded exported artifact rather than the training-time upstream model",
+  "known_limitation": "160 scenes from random init is a convergence-pipeline proof (Phase 1 EXP-016), not a competitive accuracy result. Both H1 arms share this budget, so the A/B comparison is valid; neither arm's absolute number is a ceiling."
+}

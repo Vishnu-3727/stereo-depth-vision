@@ -1,0 +1,120 @@
+{
+  "protocol": [
+    "Phase 1 EXP-007 variant set, applied to EXP-H1-*-v2 checkpoints; inference only, 10 hailo_val scenes, pooled over gt > 0 pixels."
+  ],
+  "git_revision": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+  "scenes_used": [
+    0,
+    3,
+    6,
+    9,
+    12,
+    15,
+    18,
+    21,
+    27,
+    31
+  ],
+  "models": {
+    "BASE": {
+      "baseline": {
+        "epe": 10.12551295375371,
+        "d1": 77.05750378166516,
+        "mean_disparity": 26.152007364122095,
+        "mean_abs_change_vs_baseline_px": 0.0,
+        "correlation_with_baseline": 1.0,
+        "d1_penalty_vs_baseline_points": 0.0
+      },
+      "right_equals_left": {
+        "epe": 10.125517741941458,
+        "d1": 77.05750378166516,
+        "mean_disparity": 26.15200062811665,
+        "mean_abs_change_vs_baseline_px": 1.4920594861687811e-05,
+        "correlation_with_baseline": 0.9999999998416431,
+        "d1_penalty_vs_baseline_points": 0.0
+      },
+      "right_from_other_scene": {
+        "epe": 10.12551295375371,
+        "d1": 77.05750378166516,
+        "mean_disparity": 26.152007364122095,
+        "mean_abs_change_vs_baseline_px": 0.0,
+        "correlation_with_baseline": 1.0,
+        "d1_penalty_vs_baseline_points": 0.0
+      },
+      "right_flipped_horizontally": {
+        "epe": 10.12551295375371,
+        "d1": 77.05750378166516,
+        "mean_disparity": 26.152007364122095,
+        "mean_abs_change_vs_baseline_px": 0.0,
+        "correlation_with_baseline": 1.0,
+        "d1_penalty_vs_baseline_points": 0.0
+      },
+      "right_black": {
+        "epe": 10.12551295375371,
+        "d1": 77.05750378166516,
+        "mean_disparity": 26.152007364122095,
+        "mean_abs_change_vs_baseline_px": 0.0,
+        "correlation_with_baseline": 1.0,
+        "d1_penalty_vs_baseline_points": 0.0
+      },
+      "right_noise": {
+        "epe": 10.12551295375371,
+        "d1": 77.05750378166516,
+        "mean_disparity": 26.152007364122095,
+        "mean_abs_change_vs_baseline_px": 0.0,
+        "correlation_with_baseline": 1.0,
+        "d1_penalty_vs_baseline_points": 0.0
+      }
+    },
+    "WORKING": {
+      "baseline": {
+        "epe": 9.92206415843062,
+        "d1": 76.01779718447784,
+        "mean_disparity": 26.110463689366743,
+        "mean_abs_change_vs_baseline_px": 0.0,
+        "correlation_with_baseline": 1.0,
+        "d1_penalty_vs_baseline_points": 0.0
+      },
+      "right_equals_left": {
+        "epe": 9.894413698468954,
+        "d1": 75.91833259020704,
+        "mean_disparity": 26.141955447523614,
+        "mean_abs_change_vs_baseline_px": 0.36888813126403924,
+        "correlation_with_baseline": 0.9965592381231706,
+        "d1_penalty_vs_baseline_points": -0.09946459427079901
+      },
+      "right_from_other_scene": {
+        "epe": 10.05191712708218,
+        "d1": 76.6003924179831,
+        "mean_disparity": 25.821489181136364,
+        "mean_abs_change_vs_baseline_px": 1.065300593443398,
+        "correlation_with_baseline": 0.986846071271171,
+        "d1_penalty_vs_baseline_points": 0.5825952335052591
+      },
+      "right_flipped_horizontally": {
+        "epe": 10.155652829550425,
+        "d1": 76.75449749091395,
+        "mean_disparity": 25.741987125392644,
+        "mean_abs_change_vs_baseline_px": 1.0796333193398981,
+        "correlation_with_baseline": 0.9864249223222756,
+        "d1_penalty_vs_baseline_points": 0.7367003064361057
+      },
+      "right_black": {
+        "epe": 9.763307560239795,
+        "d1": 75.59557530392289,
+        "mean_disparity": 26.456875934075686,
+        "mean_abs_change_vs_baseline_px": 0.8759672552257719,
+        "correlation_with_baseline": 0.9928467108615511,
+        "d1_penalty_vs_baseline_points": -0.42222188055495735
+      },
+      "right_noise": {
+        "epe": 10.254377139562948,
+        "d1": 76.80771873636205,
+        "mean_disparity": 25.450760661254854,
+        "mean_abs_change_vs_baseline_px": 1.2042873750684453,
+        "correlation_with_baseline": 0.9844799252170022,
+        "d1_penalty_vs_baseline_points": 0.7899215518842055
+      }
+    }
+  }
+}

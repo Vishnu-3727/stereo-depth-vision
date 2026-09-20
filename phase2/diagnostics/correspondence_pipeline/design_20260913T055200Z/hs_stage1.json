@@ -1,0 +1,354 @@
+{
+ "stage": 1,
+ "y0": 96,
+ "xl": 0,
+ "deltas": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6
+ ],
+ "seam": 568,
+ "exclusion_px": 318,
+ "zone_interior": [
+  0,
+  250
+ ],
+ "comp_interior": [
+  886,
+  1136
+ ],
+ "HS-SLACK": {
+  "right_origins": [
+   0,
+   16,
+   32,
+   48,
+   64,
+   80,
+   96
+  ],
+  "all_in_range": true,
+  "frame": [
+   368,
+   1232
+  ],
+  "crop": [
+   272,
+   1136
+  ],
+  "frame_shapes": [
+   "(368, 1232, 3)"
+  ],
+  "zero_fill": [
+   {
+    "scene": "000161_10.png",
+    "all_zero_rows": 0,
+    "all_zero_cols": 0
+   },
+   {
+    "scene": "000162_10.png",
+    "all_zero_rows": 0,
+    "all_zero_cols": 0
+   },
+   {
+    "scene": "000163_10.png",
+    "all_zero_rows": 0,
+    "all_zero_cols": 0
+   },
+   {
+    "scene": "000164_10.png",
+    "all_zero_rows": 0,
+    "all_zero_cols": 0
+   },
+   {
+    "scene": "000170_10.png",
+    "all_zero_rows": 0,
+    "all_zero_cols": 0
+   },
+   {
+    "scene": "000171_10.png",
+    "all_zero_rows": 0,
+    "all_zero_cols": 0
+   },
+   {
+    "scene": "000172_10.png",
+    "all_zero_rows": 0,
+    "all_zero_cols": 0
+   },
+   {
+    "scene": "000173_10.png",
+    "all_zero_rows": 0,
+    "all_zero_cols": 0
+   },
+   {
+    "scene": "000174_10.png",
+    "all_zero_rows": 0,
+    "all_zero_cols": 0
+   },
+   {
+    "scene": "000175_10.png",
+    "all_zero_rows": 0,
+    "all_zero_cols": 0
+   },
+   {
+    "scene": "000176_10.png",
+    "all_zero_rows": 0,
+    "all_zero_cols": 0
+   },
+   {
+    "scene": "000177_10.png",
+    "all_zero_rows": 0,
+    "all_zero_cols": 0
+   }
+  ],
+  "PASS": true
+ },
+ "HS-GT": {
+  "per_scene": [
+   {
+    "scene": "000161_10.png",
+    "zone_interior_valid_px": 21550,
+    "zone_interior_frac": 0.31691176470588234,
+    "comp_interior_valid_px": 16936,
+    "comp_interior_frac": 0.24905882352941178,
+    "d_candidates_p05_p95": [
+     0.641357421875,
+     7.527099609375
+    ]
+   },
+   {
+    "scene": "000162_10.png",
+    "zone_interior_valid_px": 8362,
+    "zone_interior_frac": 0.12297058823529412,
+    "comp_interior_valid_px": 7982,
+    "comp_interior_frac": 0.11738235294117647,
+    "d_candidates_p05_p95": [
+     0.639404296875,
+     3.686279296875
+    ]
+   },
+   {
+    "scene": "000163_10.png",
+    "zone_interior_valid_px": 20589,
+    "zone_interior_frac": 0.3027794117647059,
+    "comp_interior_valid_px": 12974,
+    "comp_interior_frac": 0.19079411764705884,
+    "d_candidates_p05_p95": [
+     0.7880859375,
+     4.047607421875
+    ]
+   },
+   {
+    "scene": "000164_10.png",
+    "zone_interior_valid_px": 18915,
+    "zone_interior_frac": 0.27816176470588233,
+    "comp_interior_valid_px": 13837,
+    "comp_interior_frac": 0.20348529411764707,
+    "d_candidates_p05_p95": [
+     0.546276867389679,
+     4.081298828125
+    ]
+   },
+   {
+    "scene": "000170_10.png",
+    "zone_interior_valid_px": 13271,
+    "zone_interior_frac": 0.19516176470588234,
+    "comp_interior_valid_px": 15545,
+    "comp_interior_frac": 0.2286029411764706,
+    "d_candidates_p05_p95": [
+     0.52783203125,
+     3.627197265625
+    ]
+   },
+   {
+    "scene": "000171_10.png",
+    "zone_interior_valid_px": 11555,
+    "zone_interior_frac": 0.1699264705882353,
+    "comp_interior_valid_px": 13419,
+    "comp_interior_frac": 0.19733823529411765,
+    "d_candidates_p05_p95": [
+     0.50634765625,
+     3.51025390625
+    ]
+   },
+   {
+    "scene": "000172_10.png",
+    "zone_interior_valid_px": 13347,
+    "zone_interior_frac": 0.19627941176470587,
+    "comp_interior_valid_px": 16119,
+    "comp_interior_frac": 0.23704411764705882,
+    "d_candidates_p05_p95": [
+     0.6728515625,
+     3.6982421875
+    ]
+   },
+   {
+    "scene": "000173_10.png",
+    "zone_interior_valid_px": 27720,
+    "zone_interior_frac": 0.4076470588235294,
+    "comp_interior_valid_px": 18657,
+    "comp_interior_frac": 0.27436764705882355,
+    "d_candidates_p05_p95": [
+     0.5400390625,
+     3.706408739089966
+    ]
+   },
+   {
+    "scene": "000174_10.png",
+    "zone_interior_valid_px": 13320,
+    "zone_interior_frac": 0.19588235294117648,
+    "comp_interior_valid_px": 18511,
+    "comp_interior_frac": 0.2722205882352941,
+    "d_candidates_p05_p95": [
+     0.76123046875,
+     3.6214599609375
+    ]
+   },
+   {
+    "scene": "000175_10.png",
+    "zone_interior_valid_px": 2222,
+    "zone_interior_frac": 0.03267647058823529,
+    "comp_interior_valid_px": 13322,
+    "comp_interior_frac": 0.19591176470588234,
+    "d_candidates_p05_p95": [
+     0.66845703125,
+     3.8070311546325684
+    ]
+   },
+   {
+    "scene": "000176_10.png",
+    "zone_interior_valid_px": 12845,
+    "zone_interior_frac": 0.18889705882352942,
+    "comp_interior_valid_px": 15546,
+    "comp_interior_frac": 0.22861764705882354,
+    "d_candidates_p05_p95": [
+     0.36181640625,
+     3.719482421875
+    ]
+   },
+   {
+    "scene": "000177_10.png",
+    "zone_interior_valid_px": 15012,
+    "zone_interior_frac": 0.22076470588235295,
+    "comp_interior_valid_px": 18197,
+    "comp_interior_frac": 0.2676029411764706,
+    "d_candidates_p05_p95": [
+     0.700439453125,
+     3.842846632003784
+    ]
+   }
+  ],
+  "min_zone_valid": 2222,
+  "min_comp_valid": 7982,
+  "PASS": true
+ },
+ "HS-FRAME1": {
+  "per_scene": [
+   {
+    "scene": "000161_10.png",
+    "n": 105859,
+    "MAE_right_vs_left_x_plus_d": 21.141068150401317,
+    "MAE_right_vs_left_x_minus_d": 50.369960670955386,
+    "MAE_right_vs_left_x": 41.20756855817644,
+    "winner": "x+d"
+   },
+   {
+    "scene": "000162_10.png",
+    "n": 57323,
+    "MAE_right_vs_left_x_plus_d": 15.237903343044385,
+    "MAE_right_vs_left_x_minus_d": 50.28845896644163,
+    "MAE_right_vs_left_x": 39.6828498159552,
+    "winner": "x+d"
+   },
+   {
+    "scene": "000163_10.png",
+    "n": 98042,
+    "MAE_right_vs_left_x_plus_d": 18.80912602082101,
+    "MAE_right_vs_left_x_minus_d": 58.732155606780765,
+    "MAE_right_vs_left_x": 44.7878154260419,
+    "winner": "x+d"
+   },
+   {
+    "scene": "000164_10.png",
+    "n": 96853,
+    "MAE_right_vs_left_x_plus_d": 19.889416607298347,
+    "MAE_right_vs_left_x_minus_d": 60.020133604534706,
+    "MAE_right_vs_left_x": 46.933225265780784,
+    "winner": "x+d"
+   },
+   {
+    "scene": "000170_10.png",
+    "n": 86351,
+    "MAE_right_vs_left_x_plus_d": 7.885710646084006,
+    "MAE_right_vs_left_x_minus_d": 27.653742670418797,
+    "MAE_right_vs_left_x": 24.767460712672698,
+    "winner": "x+d"
+   },
+   {
+    "scene": "000171_10.png",
+    "n": 82367,
+    "MAE_right_vs_left_x_plus_d": 8.33402535805197,
+    "MAE_right_vs_left_x_minus_d": 29.36949263661418,
+    "MAE_right_vs_left_x": 24.372924431710107,
+    "winner": "x+d"
+   },
+   {
+    "scene": "000172_10.png",
+    "n": 82820,
+    "MAE_right_vs_left_x_plus_d": 10.55196409884891,
+    "MAE_right_vs_left_x_minus_d": 37.23619898575223,
+    "MAE_right_vs_left_x": 29.190702728809466,
+    "winner": "x+d"
+   },
+   {
+    "scene": "000173_10.png",
+    "n": 111168,
+    "MAE_right_vs_left_x_plus_d": 12.260935401074649,
+    "MAE_right_vs_left_x_minus_d": 36.96269909806179,
+    "MAE_right_vs_left_x": 30.28188267606985,
+    "winner": "x+d"
+   },
+   {
+    "scene": "000174_10.png",
+    "n": 94859,
+    "MAE_right_vs_left_x_plus_d": 14.273064934973663,
+    "MAE_right_vs_left_x_minus_d": 46.64252908703093,
+    "MAE_right_vs_left_x": 37.16885763782737,
+    "winner": "x+d"
+   },
+   {
+    "scene": "000175_10.png",
+    "n": 63059,
+    "MAE_right_vs_left_x_plus_d": 12.984998176311073,
+    "MAE_right_vs_left_x_minus_d": 43.70963700661285,
+    "MAE_right_vs_left_x": 35.47893242836074,
+    "winner": "x+d"
+   },
+   {
+    "scene": "000176_10.png",
+    "n": 90410,
+    "MAE_right_vs_left_x_plus_d": 11.19797957453084,
+    "MAE_right_vs_left_x_minus_d": 36.82348191571729,
+    "MAE_right_vs_left_x": 29.010485565756,
+    "winner": "x+d"
+   },
+   {
+    "scene": "000177_10.png",
+    "n": 92256,
+    "MAE_right_vs_left_x_plus_d": 12.943678459937566,
+    "MAE_right_vs_left_x_minus_d": 42.14873829344433,
+    "MAE_right_vs_left_x": 31.361064140363045,
+    "winner": "x+d"
+   }
+  ],
+  "unanimous": true,
+  "convention": "x+d",
+  "implied_d_prime": "d + 16*Delta  (candidates: d/16 + Delta), for xR = XL + 16*Delta",
+  "PASS": true
+ },
+ "VERDICT": "PASS"
+}

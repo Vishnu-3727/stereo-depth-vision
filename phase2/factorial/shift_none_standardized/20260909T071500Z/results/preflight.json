@@ -1,0 +1,129 @@
+{
+  "experiment": "EXP-FACTORIAL-SHIFT-NONE-STANDARDISED-001",
+  "provenance": {
+    "head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "head_subject": "docs: add the Phase 1 overview",
+    "phase_1_frozen_commit": "b4207e518166f5089731b4d037a4a79234f70986",
+    "phase_1_frozen_tag_object": "0fc4f296b409f79bc12cd8e294a1bdb34ed1e262",
+    "phase_1_diff_vs_frozen": "",
+    "status_short": "M .gitignore\n?? phase2/",
+    "phase_2_committed": false,
+    "stage_a_basis": "phase2/diagnostics/determinism/20260909T022238Z",
+    "stage_b_control": "phase2/diagnostics/determinism/20260909T041500Z_baseline"
+  },
+  "environment": {
+    "command": "phase2/factorial/shift_none_standardized/exp_factorial_shift.py preflight --out C:/Users/vishn/stereo_depth_vision/phase2/factorial/shift_none_standardized/20260909T071500Z",
+    "cwd": "C:\\Users\\vishn\\stereo_depth_vision",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "numpy": "2.5.1",
+    "cuda_version": "12.8",
+    "cudnn_version": 90701,
+    "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_capability": "8.9",
+    "nvidia_driver": "616.64",
+    "flags": {
+      "deterministic_algorithms": true,
+      "cudnn.deterministic": true,
+      "cudnn.benchmark": false,
+      "cudnn.allow_tf32": true,
+      "cuda.matmul.allow_tf32": false,
+      "float32_matmul_precision": "highest"
+    },
+    "env": {
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+    }
+  },
+  "deterministic_controls": {
+    "torch.use_deterministic_algorithms": true,
+    "torch.backends.cudnn.deterministic": true,
+    "torch.backends.cudnn.benchmark": false,
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+  },
+  "architecture": {
+    "refinement_blocks": 6,
+    "refinement_dilations": [
+      1,
+      2,
+      4,
+      8,
+      1,
+      1
+    ],
+    "parameter_count": 423586,
+    "parameter_count_control": 423586,
+    "parameters_equal": true,
+    "num_disparities": 12,
+    "cost_volume_method": "subtract",
+    "treatment_shift": "none",
+    "control_shift": "left",
+    "regression": "StandardisedDisparityRegression",
+    "standardisation_location": "after the full-resolution upsample, on the tensor the soft-argmin consumes (upsample_first=True)",
+    "upsample_before_argmin": true,
+    "macs_256x512": {
+      "macs": 16199516160.0,
+      "thop_params": 423586.0,
+      "input": [
+        1,
+        3,
+        256,
+        512
+      ]
+    }
+  },
+  "initialisation": {
+    "treatment_weight_sha": "c4d02385e3da28a5",
+    "control_weight_sha": "c4d02385e3da28a5",
+    "expected": "c4d02385e3da28a5",
+    "treatment_matches_expected": true,
+    "treatment_equals_control": true,
+    "hash_method": "sha256 of concatenated model.parameters() fp32 bytes, first 16 hex chars (Stage A method)"
+  },
+  "data": {
+    "train_split": "hailo_calib (scenes 0-159)",
+    "validation_split": "hailo_val (scenes 160-199), first 10 validated",
+    "evaluation": "all 40 hailo_val scenes, pooled over gt > 0",
+    "seed": 0,
+    "crop": [
+      256,
+      512
+    ],
+    "augmentation": "random crop, per-image gain jitter sigma=0.1, no flip",
+    "batch_size": 2,
+    "epochs": 200
+  },
+  "initial_tensors": {
+    "scene": "000187_10.png",
+    "cost_volume_shape": [
+      1,
+      32,
+      12,
+      23,
+      77
+    ],
+    "aggregated_cost_shape": [
+      1,
+      12,
+      23,
+      77
+    ],
+    "cost_slice_max_abs_diff_vs_slice0": 0.0,
+    "degenerate_volume_confirmed": true,
+    "standardised_cost_mean": -3.2058392207545694e-07,
+    "standardised_cost_std": 0.9949421882629395,
+    "softmax_entropy_nats": 1.5427868366241455,
+    "softmax_max_probability": 0.7429322600364685,
+    "disparity_initial_mean": 7.753047466278076,
+    "disparity_initial_std": 0.2687622606754303,
+    "disparity_initial_min": 5.794963836669922,
+    "disparity_initial_max": 9.339204788208008,
+    "initial_training_loss": 22.71526336669922,
+    "matching_path_gradient_norm": 327.9487319779159,
+    "matching_path_gradient_present": true
+  },
+  "PASS": true,
+  "checks": {
+    "PASS": true
+  }
+}

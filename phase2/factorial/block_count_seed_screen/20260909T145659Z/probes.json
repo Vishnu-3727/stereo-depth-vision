@@ -1,0 +1,248 @@
+{
+  "probe_epochs": [
+    10,
+    20,
+    30
+  ],
+  "focus_scenes": [
+    27,
+    0,
+    31,
+    6
+  ],
+  "probe_implementation": "exp_h2_seed_replication.stereo_probe and exp_h2_softargmin_scale.validation_stage_stats, imported unchanged -- no new stereo metric was introduced",
+  "caveat": "right-image and matching-map probes establish binocular DEPENDENCE, not correct disparity search: Phase 1 EXP-007 measured +89.7 D1 on the reference weights despite a provably degenerate shift.",
+  "runs": {
+    "EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-A-SEED1": {
+      "arm": "A",
+      "seed": 1,
+      "blocks": 6,
+      "series": {
+        "10": {
+          "epoch": 10,
+          "right_image_min_d1_penalty": -3.5758291072748705,
+          "matching_map_min_d1_penalty": -1.8832440564973183,
+          "softmax_entropy": 2.0932515034843027,
+          "final_disparity_std": 8.396321935901545,
+          "disparity_initial_corr_gt": 0.6333850072498921,
+          "final_corr_gt": 0.6228665750233702
+        },
+        "20": {
+          "epoch": 20,
+          "right_image_min_d1_penalty": 12.59516737785502,
+          "matching_map_min_d1_penalty": 10.217766306532994,
+          "softmax_entropy": 1.8132242543213057,
+          "final_disparity_std": 12.519512791914817,
+          "disparity_initial_corr_gt": 0.672123261957381,
+          "final_corr_gt": 0.6841434408083821
+        },
+        "30": {
+          "epoch": 30,
+          "right_image_min_d1_penalty": 31.962884044510012,
+          "matching_map_min_d1_penalty": 25.076945491631612,
+          "softmax_entropy": 1.7830100550371693,
+          "final_disparity_std": 15.044132748765657,
+          "disparity_initial_corr_gt": 0.8225756788013145,
+          "final_corr_gt": 0.8302631928396902
+        }
+      }
+    },
+    "EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED1": {
+      "arm": "B",
+      "seed": 1,
+      "blocks": 5,
+      "series": {
+        "10": {
+          "epoch": 10,
+          "right_image_min_d1_penalty": -2.0890660283066467,
+          "matching_map_min_d1_penalty": 2.1680384003158935,
+          "softmax_entropy": 2.0846997198806467,
+          "final_disparity_std": 7.943842835001378,
+          "disparity_initial_corr_gt": 0.5870405801033204,
+          "final_corr_gt": 0.576802288516033
+        },
+        "20": {
+          "epoch": 20,
+          "right_image_min_d1_penalty": 13.473201114571381,
+          "matching_map_min_d1_penalty": 14.99980544999417,
+          "softmax_entropy": 1.996563880413244,
+          "final_disparity_std": 11.974670276904849,
+          "disparity_initial_corr_gt": 0.6801806550126667,
+          "final_corr_gt": 0.694269154582581
+        },
+        "30": {
+          "epoch": 30,
+          "right_image_min_d1_penalty": 39.95701979639039,
+          "matching_map_min_d1_penalty": 28.886885574313872,
+          "softmax_entropy": 1.8240894252780102,
+          "final_disparity_std": 16.048080920411188,
+          "disparity_initial_corr_gt": 0.8141455649021033,
+          "final_corr_gt": 0.8268678939782437
+        }
+      }
+    },
+    "EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-C-SEED1": {
+      "arm": "C",
+      "seed": 1,
+      "blocks": 4,
+      "series": {
+        "10": {
+          "epoch": 10,
+          "right_image_min_d1_penalty": -7.461655211559574,
+          "matching_map_min_d1_penalty": -3.5253760442245294,
+          "softmax_entropy": 2.06696297639979,
+          "final_disparity_std": 8.117227940656726,
+          "disparity_initial_corr_gt": 0.43604517151070715,
+          "final_corr_gt": 0.44868934958572265
+        },
+        "20": {
+          "epoch": 20,
+          "right_image_min_d1_penalty": 5.353402902984939,
+          "matching_map_min_d1_penalty": 7.199184104609429,
+          "softmax_entropy": 1.9226639742010891,
+          "final_disparity_std": 12.161630147241343,
+          "disparity_initial_corr_gt": 0.638925766816332,
+          "final_corr_gt": 0.652798533820626
+        },
+        "30": {
+          "epoch": 30,
+          "right_image_min_d1_penalty": 37.624068914021365,
+          "matching_map_min_d1_penalty": 34.820560044616805,
+          "softmax_entropy": 1.8206052716699628,
+          "final_disparity_std": 14.437570898899173,
+          "disparity_initial_corr_gt": 0.7730334497404656,
+          "final_corr_gt": 0.7821783655680704
+        }
+      }
+    },
+    "EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-A-SEED2": {
+      "arm": "A",
+      "seed": 2,
+      "blocks": 6,
+      "series": {
+        "10": {
+          "epoch": 10,
+          "right_image_min_d1_penalty": -3.823990325884438,
+          "matching_map_min_d1_penalty": -4.320035537567406,
+          "softmax_entropy": 2.0510906408609695,
+          "final_disparity_std": 10.339186678058999,
+          "disparity_initial_corr_gt": 0.5856176825944139,
+          "final_corr_gt": 0.5973152881040693
+        },
+        "20": {
+          "epoch": 20,
+          "right_image_min_d1_penalty": -4.030304685934908,
+          "matching_map_min_d1_penalty": 6.875397206261908,
+          "softmax_entropy": 1.8764506028238799,
+          "final_disparity_std": 11.035503932683946,
+          "disparity_initial_corr_gt": 0.6870805146182563,
+          "final_corr_gt": 0.700504966844248
+        },
+        "30": {
+          "epoch": 30,
+          "right_image_min_d1_penalty": 46.38765958221784,
+          "matching_map_min_d1_penalty": 43.2133165783387,
+          "softmax_entropy": 1.8201407449911398,
+          "final_disparity_std": 15.349512583177326,
+          "disparity_initial_corr_gt": 0.7685756960699978,
+          "final_corr_gt": 0.7772094059010335
+        }
+      }
+    },
+    "EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED2": {
+      "arm": "B",
+      "seed": 2,
+      "blocks": 5,
+      "series": {
+        "10": {
+          "epoch": 10,
+          "right_image_min_d1_penalty": -2.651386587338024,
+          "matching_map_min_d1_penalty": -4.088054194790288,
+          "softmax_entropy": 1.9728091785463306,
+          "final_disparity_std": 8.775506586400677,
+          "disparity_initial_corr_gt": 0.5183274538764103,
+          "final_corr_gt": 0.5308824525940581
+        },
+        "20": {
+          "epoch": 20,
+          "right_image_min_d1_penalty": -0.02594000077820624,
+          "matching_map_min_d1_penalty": 3.5680471070414086,
+          "softmax_entropy": 1.8646387630406884,
+          "final_disparity_std": 10.912397134815107,
+          "disparity_initial_corr_gt": 0.7084907270789707,
+          "final_corr_gt": 0.724682828274421
+        },
+        "30": {
+          "epoch": 30,
+          "right_image_min_d1_penalty": 37.962266013499345,
+          "matching_map_min_d1_penalty": 34.91139885993189,
+          "softmax_entropy": 1.7188829119005113,
+          "final_disparity_std": 16.00117995345896,
+          "disparity_initial_corr_gt": 0.7333436410870613,
+          "final_corr_gt": 0.7468672157479583
+        }
+      }
+    },
+    "EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-C-SEED2": {
+      "arm": "C",
+      "seed": 2,
+      "blocks": 4,
+      "series": {
+        "10": {
+          "epoch": 10,
+          "right_image_min_d1_penalty": -3.863763115912903,
+          "matching_map_min_d1_penalty": -7.033631211008938,
+          "softmax_entropy": 2.0645275381019483,
+          "final_disparity_std": 9.438445631691376,
+          "disparity_initial_corr_gt": 0.49039200694702006,
+          "final_corr_gt": 0.5036782600067806
+        },
+        "20": {
+          "epoch": 20,
+          "right_image_min_d1_penalty": -3.19467923643586,
+          "matching_map_min_d1_penalty": -1.5641820469254526,
+          "softmax_entropy": 2.1143350164395294,
+          "final_disparity_std": 9.323190651250524,
+          "disparity_initial_corr_gt": 0.5371359441231677,
+          "final_corr_gt": 0.5507037042113582
+        },
+        "30": {
+          "epoch": 30,
+          "right_image_min_d1_penalty": 5.815748174472446,
+          "matching_map_min_d1_penalty": 7.783787721502847,
+          "softmax_entropy": 1.9587641494723484,
+          "final_disparity_std": 13.128975562866444,
+          "disparity_initial_corr_gt": 0.6890476966634214,
+          "final_corr_gt": 0.7104454369267171
+        }
+      }
+    }
+  },
+  "environment": {
+    "command": "phase2/factorial/block_count_seed_screen/exp_blockcount_seed_screen.py probes --out phase2/factorial/block_count_seed_screen/20260909T145659Z",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "numpy": "2.5.1",
+    "cuda_version": "12.8",
+    "cudnn_version": 90701,
+    "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "nvidia_driver": "616.64",
+    "flags": {
+      "deterministic_algorithms": true,
+      "cudnn.deterministic": true,
+      "cudnn.benchmark": false
+    },
+    "env": {
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+    }
+  },
+  "provenance": {
+    "head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "head_subject": "docs: add the Phase 1 overview",
+    "phase_1_frozen_commit": "b4207e518166f5089731b4d037a4a79234f70986",
+    "phase_1_diff_vs_frozen": "",
+    "status_short": "M .gitignore\n?? phase2/",
+    "phase_2_committed": false
+  }
+}

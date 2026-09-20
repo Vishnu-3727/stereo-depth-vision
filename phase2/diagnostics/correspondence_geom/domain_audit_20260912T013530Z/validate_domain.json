@@ -1,0 +1,8081 @@
+{
+  "kind": "VALIDITY VALIDATION -- extractor + cost volume only; no aggregation, no readout, no statistic, no gate",
+  "aggregation_run": false,
+  "readout_run": false,
+  "statistic_computed": false,
+  "training_performed": false,
+  "device": "cuda",
+  "geometry": {
+    "crop": [
+      1136,
+      272
+    ],
+    "feature_grid": [
+      71,
+      17
+    ],
+    "stride": 16,
+    "D": 12,
+    "taus": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "derived_domain": {
+    "extractor_halo_cells": 15,
+    "extractor_clean": [
+      15,
+      55
+    ],
+    "cost_volume_clean": [
+      15,
+      44
+    ],
+    "aggregation_radius_cells": 5,
+    "statistic_clean": [
+      20,
+      39
+    ]
+  },
+  "n_records": 216,
+  "n_zero_checks": 216,
+  "n_cancellation_checks": 108,
+  "translation_validity": {
+    "derived_band_exact_everywhere": true,
+    "measured_band_equals_derived_band_everywhere": false,
+    "observed_valid_run_lo_values": [
+      15
+    ],
+    "observed_valid_run_hi_values": [
+      50,
+      51,
+      52,
+      53,
+      54,
+      55
+    ],
+    "fails_immediately_left_of_band": {
+      "all": true,
+      "n": 216
+    },
+    "fails_immediately_right_of_band": {
+      "all": false,
+      "n": 216
+    },
+    "min_n_valid_cols": 36,
+    "max_n_valid_cols": 41
+  },
+  "cost_volume_anchor": {
+    "all_exact_zero_on_domain": true,
+    "max_abs_over_all": 0.0,
+    "cells_checked_per_check": 16320
+  },
+  "cancellation_real_features": {
+    "max_relative_residual": 1.8088509428138105e-07,
+    "min_relative_residual": 7.357300737809738e-08,
+    "median_relative_residual": 1.194340514166296e-07
+  },
+  "records": [
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "scene": "A",
+      "scene_name": "000161_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "scene": "B",
+      "scene_name": "000162_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "scene": "A",
+      "scene_name": "000161_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "scene": "B",
+      "scene_name": "000162_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "scene": "A",
+      "scene_name": "000161_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "scene": "B",
+      "scene_name": "000162_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "scene": "A",
+      "scene_name": "000161_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "scene": "B",
+      "scene_name": "000162_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "scene": "A",
+      "scene_name": "000161_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "scene": "B",
+      "scene_name": "000162_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "scene": "A",
+      "scene_name": "000161_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "scene": "B",
+      "scene_name": "000162_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "scene": "A",
+      "scene_name": "000163_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "scene": "B",
+      "scene_name": "000164_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "scene": "A",
+      "scene_name": "000163_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "scene": "B",
+      "scene_name": "000164_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "scene": "A",
+      "scene_name": "000163_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "scene": "B",
+      "scene_name": "000164_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "scene": "A",
+      "scene_name": "000163_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "scene": "B",
+      "scene_name": "000164_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "scene": "A",
+      "scene_name": "000163_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "scene": "B",
+      "scene_name": "000164_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "scene": "A",
+      "scene_name": "000163_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "scene": "B",
+      "scene_name": "000164_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "scene": "A",
+      "scene_name": "000170_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "scene": "B",
+      "scene_name": "000171_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "scene": "A",
+      "scene_name": "000170_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "scene": "B",
+      "scene_name": "000171_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "scene": "A",
+      "scene_name": "000170_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "scene": "B",
+      "scene_name": "000171_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "scene": "A",
+      "scene_name": "000170_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "scene": "B",
+      "scene_name": "000171_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "scene": "A",
+      "scene_name": "000170_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "scene": "B",
+      "scene_name": "000171_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "scene": "A",
+      "scene_name": "000170_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "scene": "B",
+      "scene_name": "000171_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "scene": "A",
+      "scene_name": "000172_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "scene": "B",
+      "scene_name": "000173_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "scene": "A",
+      "scene_name": "000172_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "scene": "B",
+      "scene_name": "000173_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "scene": "A",
+      "scene_name": "000172_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "scene": "B",
+      "scene_name": "000173_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "scene": "A",
+      "scene_name": "000172_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "scene": "B",
+      "scene_name": "000173_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "scene": "A",
+      "scene_name": "000172_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "scene": "B",
+      "scene_name": "000173_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "scene": "A",
+      "scene_name": "000172_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "scene": "B",
+      "scene_name": "000173_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "scene": "A",
+      "scene_name": "000174_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "scene": "B",
+      "scene_name": "000175_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "scene": "A",
+      "scene_name": "000174_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "scene": "B",
+      "scene_name": "000175_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "scene": "A",
+      "scene_name": "000174_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "scene": "B",
+      "scene_name": "000175_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "scene": "A",
+      "scene_name": "000174_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "scene": "B",
+      "scene_name": "000175_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "scene": "A",
+      "scene_name": "000174_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "scene": "B",
+      "scene_name": "000175_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "scene": "A",
+      "scene_name": "000174_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "scene": "B",
+      "scene_name": "000175_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "scene": "A",
+      "scene_name": "000176_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "scene": "B",
+      "scene_name": "000177_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "scene": "A",
+      "scene_name": "000176_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "scene": "B",
+      "scene_name": "000177_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "scene": "A",
+      "scene_name": "000176_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "scene": "B",
+      "scene_name": "000177_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "scene": "A",
+      "scene_name": "000176_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "scene": "B",
+      "scene_name": "000177_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "scene": "A",
+      "scene_name": "000176_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "scene": "B",
+      "scene_name": "000177_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "scene": "A",
+      "scene_name": "000176_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "scene": "B",
+      "scene_name": "000177_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "scene": "A",
+      "scene_name": "000161_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "scene": "B",
+      "scene_name": "000162_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "scene": "A",
+      "scene_name": "000161_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "scene": "B",
+      "scene_name": "000162_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "scene": "A",
+      "scene_name": "000161_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "scene": "B",
+      "scene_name": "000162_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "scene": "A",
+      "scene_name": "000161_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "scene": "B",
+      "scene_name": "000162_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "scene": "A",
+      "scene_name": "000161_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "scene": "B",
+      "scene_name": "000162_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "scene": "A",
+      "scene_name": "000161_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "scene": "B",
+      "scene_name": "000162_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "scene": "A",
+      "scene_name": "000163_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "scene": "B",
+      "scene_name": "000164_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "scene": "A",
+      "scene_name": "000163_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "scene": "B",
+      "scene_name": "000164_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "scene": "A",
+      "scene_name": "000163_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "scene": "B",
+      "scene_name": "000164_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "scene": "A",
+      "scene_name": "000163_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "scene": "B",
+      "scene_name": "000164_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "scene": "A",
+      "scene_name": "000163_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "scene": "B",
+      "scene_name": "000164_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "scene": "A",
+      "scene_name": "000163_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "scene": "B",
+      "scene_name": "000164_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "scene": "A",
+      "scene_name": "000170_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "scene": "B",
+      "scene_name": "000171_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "scene": "A",
+      "scene_name": "000170_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "scene": "B",
+      "scene_name": "000171_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "scene": "A",
+      "scene_name": "000170_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "scene": "B",
+      "scene_name": "000171_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "scene": "A",
+      "scene_name": "000170_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "scene": "B",
+      "scene_name": "000171_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "scene": "A",
+      "scene_name": "000170_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "scene": "B",
+      "scene_name": "000171_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "scene": "A",
+      "scene_name": "000170_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "scene": "B",
+      "scene_name": "000171_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "scene": "A",
+      "scene_name": "000172_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "scene": "B",
+      "scene_name": "000173_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "scene": "A",
+      "scene_name": "000172_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "scene": "B",
+      "scene_name": "000173_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "scene": "A",
+      "scene_name": "000172_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "scene": "B",
+      "scene_name": "000173_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "scene": "A",
+      "scene_name": "000172_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "scene": "B",
+      "scene_name": "000173_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "scene": "A",
+      "scene_name": "000172_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "scene": "B",
+      "scene_name": "000173_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "scene": "A",
+      "scene_name": "000172_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "scene": "B",
+      "scene_name": "000173_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "scene": "A",
+      "scene_name": "000174_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "scene": "B",
+      "scene_name": "000175_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "scene": "A",
+      "scene_name": "000174_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "scene": "B",
+      "scene_name": "000175_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "scene": "A",
+      "scene_name": "000174_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "scene": "B",
+      "scene_name": "000175_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "scene": "A",
+      "scene_name": "000174_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "scene": "B",
+      "scene_name": "000175_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "scene": "A",
+      "scene_name": "000174_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "scene": "B",
+      "scene_name": "000175_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "scene": "A",
+      "scene_name": "000174_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "scene": "B",
+      "scene_name": "000175_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "scene": "A",
+      "scene_name": "000176_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "scene": "B",
+      "scene_name": "000177_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "scene": "A",
+      "scene_name": "000176_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "scene": "B",
+      "scene_name": "000177_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "scene": "A",
+      "scene_name": "000176_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "scene": "B",
+      "scene_name": "000177_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "scene": "A",
+      "scene_name": "000176_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "scene": "B",
+      "scene_name": "000177_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "scene": "A",
+      "scene_name": "000176_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "scene": "B",
+      "scene_name": "000177_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "scene": "A",
+      "scene_name": "000176_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "scene": "B",
+      "scene_name": "000177_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "scene": "A",
+      "scene_name": "000161_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "scene": "B",
+      "scene_name": "000162_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "scene": "A",
+      "scene_name": "000161_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "scene": "B",
+      "scene_name": "000162_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "scene": "A",
+      "scene_name": "000161_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "scene": "B",
+      "scene_name": "000162_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "scene": "A",
+      "scene_name": "000161_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "scene": "B",
+      "scene_name": "000162_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "scene": "A",
+      "scene_name": "000161_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "scene": "B",
+      "scene_name": "000162_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "scene": "A",
+      "scene_name": "000161_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "scene": "B",
+      "scene_name": "000162_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "scene": "A",
+      "scene_name": "000163_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "scene": "B",
+      "scene_name": "000164_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "scene": "A",
+      "scene_name": "000163_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "scene": "B",
+      "scene_name": "000164_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "scene": "A",
+      "scene_name": "000163_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "scene": "B",
+      "scene_name": "000164_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "scene": "A",
+      "scene_name": "000163_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "scene": "B",
+      "scene_name": "000164_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "scene": "A",
+      "scene_name": "000163_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "scene": "B",
+      "scene_name": "000164_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "scene": "A",
+      "scene_name": "000163_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "scene": "B",
+      "scene_name": "000164_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "scene": "A",
+      "scene_name": "000170_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "scene": "B",
+      "scene_name": "000171_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "scene": "A",
+      "scene_name": "000170_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "scene": "B",
+      "scene_name": "000171_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "scene": "A",
+      "scene_name": "000170_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "scene": "B",
+      "scene_name": "000171_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "scene": "A",
+      "scene_name": "000170_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "scene": "B",
+      "scene_name": "000171_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "scene": "A",
+      "scene_name": "000170_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "scene": "B",
+      "scene_name": "000171_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "scene": "A",
+      "scene_name": "000170_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "scene": "B",
+      "scene_name": "000171_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "scene": "A",
+      "scene_name": "000172_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "scene": "B",
+      "scene_name": "000173_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "scene": "A",
+      "scene_name": "000172_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "scene": "B",
+      "scene_name": "000173_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "scene": "A",
+      "scene_name": "000172_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "scene": "B",
+      "scene_name": "000173_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "scene": "A",
+      "scene_name": "000172_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "scene": "B",
+      "scene_name": "000173_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "scene": "A",
+      "scene_name": "000172_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "scene": "B",
+      "scene_name": "000173_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "scene": "A",
+      "scene_name": "000172_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "scene": "B",
+      "scene_name": "000173_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "scene": "A",
+      "scene_name": "000174_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "scene": "B",
+      "scene_name": "000175_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "scene": "A",
+      "scene_name": "000174_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "scene": "B",
+      "scene_name": "000175_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "scene": "A",
+      "scene_name": "000174_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "scene": "B",
+      "scene_name": "000175_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "scene": "A",
+      "scene_name": "000174_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "scene": "B",
+      "scene_name": "000175_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "scene": "A",
+      "scene_name": "000174_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "scene": "B",
+      "scene_name": "000175_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "scene": "A",
+      "scene_name": "000174_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "scene": "B",
+      "scene_name": "000175_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "scene": "A",
+      "scene_name": "000176_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "scene": "B",
+      "scene_name": "000177_10.png",
+      "tau": 1,
+      "valid_run_lo": 15,
+      "valid_run_hi": 55,
+      "valid_run_len": 41,
+      "n_valid_cols": 41,
+      "derived_band": [
+        15,
+        54
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "scene": "A",
+      "scene_name": "000176_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "scene": "B",
+      "scene_name": "000177_10.png",
+      "tau": 2,
+      "valid_run_lo": 15,
+      "valid_run_hi": 54,
+      "valid_run_len": 40,
+      "n_valid_cols": 40,
+      "derived_band": [
+        15,
+        53
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "scene": "A",
+      "scene_name": "000176_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "scene": "B",
+      "scene_name": "000177_10.png",
+      "tau": 3,
+      "valid_run_lo": 15,
+      "valid_run_hi": 53,
+      "valid_run_len": 39,
+      "n_valid_cols": 39,
+      "derived_band": [
+        15,
+        52
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "scene": "A",
+      "scene_name": "000176_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "scene": "B",
+      "scene_name": "000177_10.png",
+      "tau": 4,
+      "valid_run_lo": 15,
+      "valid_run_hi": 52,
+      "valid_run_len": 38,
+      "n_valid_cols": 38,
+      "derived_band": [
+        15,
+        51
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "scene": "A",
+      "scene_name": "000176_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "scene": "B",
+      "scene_name": "000177_10.png",
+      "tau": 5,
+      "valid_run_lo": 15,
+      "valid_run_hi": 51,
+      "valid_run_len": 37,
+      "n_valid_cols": 37,
+      "derived_band": [
+        15,
+        50
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "scene": "A",
+      "scene_name": "000176_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "scene": "B",
+      "scene_name": "000177_10.png",
+      "tau": 6,
+      "valid_run_lo": 15,
+      "valid_run_hi": 50,
+      "valid_run_len": 36,
+      "n_valid_cols": 36,
+      "derived_band": [
+        15,
+        49
+      ],
+      "derived_band_all_exact": true,
+      "fails_just_left_of_band": true,
+      "fails_just_right_of_band": false
+    }
+  ],
+  "zero_checks": [
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "cell": "AA",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        55
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "cell": "BB",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "cell": "AA",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        54
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "cell": "BB",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "cell": "AA",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        53
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "cell": "BB",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "cell": "AA",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        52
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "cell": "BB",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "cell": "AA",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        51
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "cell": "BB",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "cell": "AA",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        50
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "cell": "BB",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "cell": "AA",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        55
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "cell": "BB",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "cell": "AA",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        54
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "cell": "BB",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "cell": "AA",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        53
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "cell": "BB",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "cell": "AA",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        52
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "cell": "BB",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "cell": "AA",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        51
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "cell": "BB",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "cell": "AA",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        50
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "cell": "BB",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "cell": "AA",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        55
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "cell": "BB",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "cell": "AA",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        54
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "cell": "BB",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "cell": "AA",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        53
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "cell": "BB",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "cell": "AA",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        52
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "cell": "BB",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "cell": "AA",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        51
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "cell": "BB",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "cell": "AA",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        50
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "cell": "BB",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "cell": "AA",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        55
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "cell": "BB",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "cell": "AA",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        54
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "cell": "BB",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "cell": "AA",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        53
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "cell": "BB",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "cell": "AA",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        52
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "cell": "BB",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "cell": "AA",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        51
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "cell": "BB",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "cell": "AA",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        50
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "cell": "BB",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "cell": "AA",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        55
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "cell": "BB",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "cell": "AA",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        54
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "cell": "BB",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "cell": "AA",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        53
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "cell": "BB",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "cell": "AA",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        52
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "cell": "BB",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "cell": "AA",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        51
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "cell": "BB",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "cell": "AA",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        50
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "cell": "BB",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "cell": "AA",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        55
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "cell": "BB",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "cell": "AA",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        54
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "cell": "BB",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "cell": "AA",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        53
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "cell": "BB",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "cell": "AA",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        52
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "cell": "BB",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "cell": "AA",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        51
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "cell": "BB",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "cell": "AA",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        50
+      ]
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "cell": "BB",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "cell": "AA",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        55
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "cell": "BB",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "cell": "AA",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        54
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "cell": "BB",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "cell": "AA",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        53
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "cell": "BB",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "cell": "AA",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        52
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "cell": "BB",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "cell": "AA",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        51
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "cell": "BB",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "cell": "AA",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        50
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "cell": "BB",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "cell": "AA",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        55
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "cell": "BB",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "cell": "AA",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        54
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "cell": "BB",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "cell": "AA",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        53
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "cell": "BB",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "cell": "AA",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        52
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "cell": "BB",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "cell": "AA",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        51
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "cell": "BB",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "cell": "AA",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        50
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "cell": "BB",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "cell": "AA",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        55
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "cell": "BB",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "cell": "AA",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        54
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "cell": "BB",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "cell": "AA",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        53
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "cell": "BB",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "cell": "AA",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        52
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "cell": "BB",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "cell": "AA",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        51
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "cell": "BB",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "cell": "AA",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        50
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "cell": "BB",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "cell": "AA",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        55
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "cell": "BB",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "cell": "AA",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        54
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "cell": "BB",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "cell": "AA",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        53
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "cell": "BB",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "cell": "AA",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        52
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "cell": "BB",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "cell": "AA",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        51
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "cell": "BB",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "cell": "AA",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        50
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "cell": "BB",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "cell": "AA",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        55
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "cell": "BB",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "cell": "AA",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        54
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "cell": "BB",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "cell": "AA",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        53
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "cell": "BB",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "cell": "AA",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        52
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "cell": "BB",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "cell": "AA",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        51
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "cell": "BB",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "cell": "AA",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        50
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "cell": "BB",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "cell": "AA",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        55
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "cell": "BB",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "cell": "AA",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        54
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "cell": "BB",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "cell": "AA",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        53
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "cell": "BB",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "cell": "AA",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        52
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "cell": "BB",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "cell": "AA",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        51
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "cell": "BB",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "cell": "AA",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        50
+      ]
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "cell": "BB",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "cell": "AA",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        55
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "cell": "BB",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "cell": "AA",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        54
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "cell": "BB",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "cell": "AA",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        53
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "cell": "BB",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "cell": "AA",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        52
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "cell": "BB",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "cell": "AA",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        51
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "cell": "BB",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "cell": "AA",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        50
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "cell": "BB",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "cell": "AA",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        55
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "cell": "BB",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "cell": "AA",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        54
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "cell": "BB",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "cell": "AA",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        53
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "cell": "BB",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "cell": "AA",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        52
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "cell": "BB",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "cell": "AA",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        51
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "cell": "BB",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "cell": "AA",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        50
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "cell": "BB",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "cell": "AA",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        55
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "cell": "BB",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "cell": "AA",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        54
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "cell": "BB",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "cell": "AA",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        53
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "cell": "BB",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "cell": "AA",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        52
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "cell": "BB",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "cell": "AA",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        51
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "cell": "BB",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "cell": "AA",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        50
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "cell": "BB",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "cell": "AA",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        55
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "cell": "BB",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "cell": "AA",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        54
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "cell": "BB",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "cell": "AA",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        53
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "cell": "BB",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "cell": "AA",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        52
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "cell": "BB",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "cell": "AA",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        51
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "cell": "BB",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "cell": "AA",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        50
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "cell": "BB",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "cell": "AA",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        55
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "cell": "BB",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "cell": "AA",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        54
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "cell": "BB",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "cell": "AA",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        53
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "cell": "BB",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "cell": "AA",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        52
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "cell": "BB",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "cell": "AA",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        51
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "cell": "BB",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "cell": "AA",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        50
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "cell": "BB",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "cell": "AA",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        55
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "cell": "BB",
+      "tau": 1,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "cell": "AA",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        54
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "cell": "BB",
+      "tau": 2,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "cell": "AA",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        53
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "cell": "BB",
+      "tau": 3,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "cell": "AA",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        52
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "cell": "BB",
+      "tau": 4,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "cell": "AA",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        51
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "cell": "BB",
+      "tau": 5,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "cell": "AA",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320,
+      "full_width_zero_cols": [
+        15,
+        50
+      ]
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "cell": "BB",
+      "tau": 6,
+      "domain": [
+        15,
+        44
+      ],
+      "max_abs": 0.0,
+      "exact_zero": true,
+      "n_cells": 16320
+    }
+  ],
+  "cancellation": [
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "tau": 1,
+      "max_abs_residual": 2.5,
+      "volume_scale": 22792676.0,
+      "relative": 1.0968435650118485e-07
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "tau": 2,
+      "max_abs_residual": 2.5,
+      "volume_scale": 22792676.0,
+      "relative": 1.0968435650118485e-07
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "tau": 3,
+      "max_abs_residual": 2.5,
+      "volume_scale": 22792676.0,
+      "relative": 1.0968435650118485e-07
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "tau": 4,
+      "max_abs_residual": 2.5,
+      "volume_scale": 22882972.0,
+      "relative": 1.0925154302509307e-07
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "tau": 5,
+      "max_abs_residual": 2.5,
+      "volume_scale": 22882972.0,
+      "relative": 1.0925154302509307e-07
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 0,
+      "tau": 6,
+      "max_abs_residual": 2.5,
+      "volume_scale": 22882972.0,
+      "relative": 1.0925154302509307e-07
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "tau": 1,
+      "max_abs_residual": 2.75,
+      "volume_scale": 30580916.0,
+      "relative": 8.992536390996268e-08
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "tau": 2,
+      "max_abs_residual": 2.75,
+      "volume_scale": 30580916.0,
+      "relative": 8.992536390996268e-08
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "tau": 3,
+      "max_abs_residual": 2.75,
+      "volume_scale": 30580916.0,
+      "relative": 8.992536390996268e-08
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "tau": 4,
+      "max_abs_residual": 2.5,
+      "volume_scale": 30581188.0,
+      "relative": 8.174960371062105e-08
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "tau": 5,
+      "max_abs_residual": 2.25,
+      "volume_scale": 30581868.0,
+      "relative": 7.357300737809738e-08
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 1,
+      "tau": 6,
+      "max_abs_residual": 2.25,
+      "volume_scale": 30581360.0,
+      "relative": 7.357422953066836e-08
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "tau": 1,
+      "max_abs_residual": 2.5,
+      "volume_scale": 22835038.0,
+      "relative": 1.0948087758820458e-07
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "tau": 2,
+      "max_abs_residual": 3.0,
+      "volume_scale": 22835008.0,
+      "relative": 1.313772257053731e-07
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "tau": 3,
+      "max_abs_residual": 2.5,
+      "volume_scale": 24094726.0,
+      "relative": 1.0375714585839242e-07
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "tau": 4,
+      "max_abs_residual": 2.5,
+      "volume_scale": 24094726.0,
+      "relative": 1.0375714585839242e-07
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "tau": 5,
+      "max_abs_residual": 2.5,
+      "volume_scale": 24094726.0,
+      "relative": 1.0375714585839242e-07
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 2,
+      "tau": 6,
+      "max_abs_residual": 2.5,
+      "volume_scale": 24094726.0,
+      "relative": 1.0375714585839242e-07
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "tau": 1,
+      "max_abs_residual": 2.0,
+      "volume_scale": 22113486.0,
+      "relative": 9.044254714069053e-08
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "tau": 2,
+      "max_abs_residual": 2.0,
+      "volume_scale": 22113486.0,
+      "relative": 9.044254714069053e-08
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "tau": 3,
+      "max_abs_residual": 2.5,
+      "volume_scale": 22113486.0,
+      "relative": 1.1305318392586316e-07
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "tau": 4,
+      "max_abs_residual": 4.0,
+      "volume_scale": 22113486.0,
+      "relative": 1.8088509428138105e-07
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "tau": 5,
+      "max_abs_residual": 4.0,
+      "volume_scale": 22113486.0,
+      "relative": 1.8088509428138105e-07
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 3,
+      "tau": 6,
+      "max_abs_residual": 4.0,
+      "volume_scale": 22113486.0,
+      "relative": 1.8088509428138105e-07
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "tau": 1,
+      "max_abs_residual": 2.125,
+      "volume_scale": 21237592.0,
+      "relative": 1.0005842470276292e-07
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "tau": 2,
+      "max_abs_residual": 2.125,
+      "volume_scale": 21237592.0,
+      "relative": 1.0005842470276292e-07
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "tau": 3,
+      "max_abs_residual": 2.125,
+      "volume_scale": 21821000.0,
+      "relative": 9.738325466293938e-08
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "tau": 4,
+      "max_abs_residual": 2.0,
+      "volume_scale": 21821000.0,
+      "relative": 9.165482791806058e-08
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "tau": 5,
+      "max_abs_residual": 2.0,
+      "volume_scale": 21821000.0,
+      "relative": 9.165482791806058e-08
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 4,
+      "tau": 6,
+      "max_abs_residual": 2.0,
+      "volume_scale": 21821000.0,
+      "relative": 9.165482791806058e-08
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "tau": 1,
+      "max_abs_residual": 2.25,
+      "volume_scale": 24514544.0,
+      "relative": 9.178224975345248e-08
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "tau": 2,
+      "max_abs_residual": 2.75,
+      "volume_scale": 24514496.0,
+      "relative": 1.1217852490216401e-07
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "tau": 3,
+      "max_abs_residual": 2.0,
+      "volume_scale": 24515796.0,
+      "relative": 8.158005556907065e-08
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "tau": 4,
+      "max_abs_residual": 2.0,
+      "volume_scale": 24437996.0,
+      "relative": 8.183977114981114e-08
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "tau": 5,
+      "max_abs_residual": 2.0,
+      "volume_scale": 24430740.0,
+      "relative": 8.186407779707042e-08
+    },
+    {
+      "extractor": "H2_seed0",
+      "pair": 5,
+      "tau": 6,
+      "max_abs_residual": 2.0,
+      "volume_scale": 21847212.0,
+      "relative": 9.154486165099693e-08
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "tau": 1,
+      "max_abs_residual": 12288.0,
+      "volume_scale": 86472196096.0,
+      "relative": 1.4210348013317558e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "tau": 2,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 91757993984.0,
+      "relative": 1.7855664982014436e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "tau": 3,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 101874229248.0,
+      "relative": 1.6082575663090625e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "tau": 4,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 101874229248.0,
+      "relative": 1.6082575663090625e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "tau": 5,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 101874229248.0,
+      "relative": 1.6082575663090625e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 0,
+      "tau": 6,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 106279067648.0,
+      "relative": 1.5416017812900262e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "tau": 1,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 111915466752.0,
+      "relative": 1.4639620845531798e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "tau": 2,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 111915466752.0,
+      "relative": 1.4639620845531798e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "tau": 3,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 111915286528.0,
+      "relative": 1.4639644420604596e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "tau": 4,
+      "max_abs_residual": 12288.0,
+      "volume_scale": 115550420992.0,
+      "relative": 1.0634318676217324e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "tau": 5,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 115550420992.0,
+      "relative": 1.4179091568289767e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 1,
+      "tau": 6,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 115550420992.0,
+      "relative": 1.4179091568289767e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "tau": 1,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 100303634432.0,
+      "relative": 1.6334403127842186e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "tau": 2,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 100303634432.0,
+      "relative": 1.6334403127842186e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "tau": 3,
+      "max_abs_residual": 10240.0,
+      "volume_scale": 100303634432.0,
+      "relative": 1.0209001954901367e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "tau": 4,
+      "max_abs_residual": 11264.0,
+      "volume_scale": 100899373056.0,
+      "relative": 1.1163597611006349e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "tau": 5,
+      "max_abs_residual": 10240.0,
+      "volume_scale": 100899373056.0,
+      "relative": 1.0148725100914863e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 2,
+      "tau": 6,
+      "max_abs_residual": 10240.0,
+      "volume_scale": 100899373056.0,
+      "relative": 1.0148725100914863e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "tau": 1,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 136638578688.0,
+      "relative": 1.1990757044839557e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "tau": 2,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 136638578688.0,
+      "relative": 1.1990757044839557e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "tau": 3,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 136638578688.0,
+      "relative": 1.1990757044839557e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "tau": 4,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 136638578688.0,
+      "relative": 1.1990757044839557e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "tau": 5,
+      "max_abs_residual": 10240.0,
+      "volume_scale": 136641757184.0,
+      "relative": 7.494048825946339e-08
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 3,
+      "tau": 6,
+      "max_abs_residual": 12288.0,
+      "volume_scale": 136648196096.0,
+      "relative": 8.992434844414092e-08
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "tau": 1,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 105338830848.0,
+      "relative": 1.555361861158446e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "tau": 2,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 105338830848.0,
+      "relative": 1.555361861158446e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "tau": 3,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 96662552576.0,
+      "relative": 1.694968688843411e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "tau": 4,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 96662552576.0,
+      "relative": 1.694968688843411e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "tau": 5,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 111936217088.0,
+      "relative": 1.4636907004923635e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 4,
+      "tau": 6,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 111936217088.0,
+      "relative": 1.4636907004923635e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "tau": 1,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 97488764928.0,
+      "relative": 1.6806039149332078e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "tau": 2,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 97488764928.0,
+      "relative": 1.6806039149332078e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "tau": 3,
+      "max_abs_residual": 10240.0,
+      "volume_scale": 97488764928.0,
+      "relative": 1.0503774468332549e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "tau": 4,
+      "max_abs_residual": 10240.0,
+      "volume_scale": 97488764928.0,
+      "relative": 1.0503774468332549e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "tau": 5,
+      "max_abs_residual": 12288.0,
+      "volume_scale": 99351085056.0,
+      "relative": 1.2368259484105056e-07
+    },
+    {
+      "extractor": "H2_seed1",
+      "pair": 5,
+      "tau": 6,
+      "max_abs_residual": 10240.0,
+      "volume_scale": 99351085056.0,
+      "relative": 1.0306882903420879e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "tau": 1,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 113633968128.0,
+      "relative": 1.4418223942989189e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "tau": 2,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 113633968128.0,
+      "relative": 1.4418223942989189e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "tau": 3,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 113633968128.0,
+      "relative": 1.4418223942989189e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "tau": 4,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 113633968128.0,
+      "relative": 1.4418223942989189e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "tau": 5,
+      "max_abs_residual": 10240.0,
+      "volume_scale": 113633968128.0,
+      "relative": 9.011389964368243e-08
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 0,
+      "tau": 6,
+      "max_abs_residual": 10240.0,
+      "volume_scale": 108943368192.0,
+      "relative": 9.39937893415705e-08
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "tau": 1,
+      "max_abs_residual": 10240.0,
+      "volume_scale": 90853605376.0,
+      "relative": 1.1270879078074551e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "tau": 2,
+      "max_abs_residual": 10240.0,
+      "volume_scale": 90853605376.0,
+      "relative": 1.1270879078074551e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "tau": 3,
+      "max_abs_residual": 10240.0,
+      "volume_scale": 90853605376.0,
+      "relative": 1.1270879078074551e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "tau": 4,
+      "max_abs_residual": 8192.0,
+      "volume_scale": 90853605376.0,
+      "relative": 9.016703262459642e-08
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "tau": 5,
+      "max_abs_residual": 11264.0,
+      "volume_scale": 90853605376.0,
+      "relative": 1.2397966985882007e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 1,
+      "tau": 6,
+      "max_abs_residual": 11264.0,
+      "volume_scale": 90853605376.0,
+      "relative": 1.2397966985882007e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "tau": 1,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 110726520832.0,
+      "relative": 1.4796816405763035e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "tau": 2,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 108393619456.0,
+      "relative": 1.5115280846074823e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "tau": 3,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 105153740800.0,
+      "relative": 1.5580995859350352e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "tau": 4,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 105153740800.0,
+      "relative": 1.5580995859350352e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "tau": 5,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 107805949952.0,
+      "relative": 1.5197676943893064e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 2,
+      "tau": 6,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 102925008896.0,
+      "relative": 1.5918385799271702e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "tau": 1,
+      "max_abs_residual": 10240.0,
+      "volume_scale": 103001120768.0,
+      "relative": 9.941639395424253e-08
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "tau": 2,
+      "max_abs_residual": 10240.0,
+      "volume_scale": 96212705280.0,
+      "relative": 1.0643084996102502e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "tau": 3,
+      "max_abs_residual": 12288.0,
+      "volume_scale": 103294763008.0,
+      "relative": 1.1896053238486365e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "tau": 4,
+      "max_abs_residual": 10240.0,
+      "volume_scale": 103294763008.0,
+      "relative": 9.913377698738637e-08
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "tau": 5,
+      "max_abs_residual": 10752.0,
+      "volume_scale": 103294763008.0,
+      "relative": 1.0409046583675569e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 3,
+      "tau": 6,
+      "max_abs_residual": 9216.0,
+      "volume_scale": 103294828544.0,
+      "relative": 8.922034268225059e-08
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "tau": 1,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 110560026624.0,
+      "relative": 1.4819099181044713e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "tau": 2,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 110563098624.0,
+      "relative": 1.4818687431796992e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "tau": 3,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 110579417088.0,
+      "relative": 1.4816500603327905e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "tau": 4,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 110601232384.0,
+      "relative": 1.4813578155364363e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "tau": 5,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 102039429120.0,
+      "relative": 1.6056538282600693e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 4,
+      "tau": 6,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 102475718656.0,
+      "relative": 1.598817770188012e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "tau": 1,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 108615450624.0,
+      "relative": 1.508441009623703e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "tau": 2,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 108615450624.0,
+      "relative": 1.508441009623703e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "tau": 3,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 108615450624.0,
+      "relative": 1.508441009623703e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "tau": 4,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 108615450624.0,
+      "relative": 1.508441009623703e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "tau": 5,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 108615450624.0,
+      "relative": 1.508441009623703e-07
+    },
+    {
+      "extractor": "H2_seed2",
+      "pair": 5,
+      "tau": 6,
+      "max_abs_residual": 16384.0,
+      "volume_scale": 108615450624.0,
+      "relative": 1.508441009623703e-07
+    }
+  ],
+  "wall_clock_s": 8.859546184539795
+}

@@ -1,0 +1,157 @@
+{
+  "affine_fits": {
+    "H2": {
+      "a": 0.09516206330710517,
+      "b": 1.0140655324364356,
+      "r2": 0.8633936846880473,
+      "residual_std_candidates": 0.6855228093875361,
+      "pixels": 3802797,
+      "initial_mean_candidates": 4.436991066754318
+    },
+    "SEED1": {
+      "a": 0.06332337920162186,
+      "b": 1.1009803077147153,
+      "r2": 0.8903377144057271,
+      "residual_std_candidates": 0.40247828064042157,
+      "pixels": 3802797,
+      "initial_mean_candidates": 3.378686402516696
+    },
+    "SEED2": {
+      "a": 0.07683300114258249,
+      "b": 1.0174198236019818,
+      "r2": 0.862274996059492,
+      "residual_std_candidates": 0.5561070523349091,
+      "pixels": 3802797,
+      "initial_mean_candidates": 3.781059370177308
+    }
+  },
+  "scores": {
+    "H2": {
+      "as trained": {
+        "epe": 2.4004242992562075,
+        "d1": 16.71777378597911,
+        "pixels": 3802797
+      },
+      "initial := itself": {
+        "epe": 2.4004242992562075,
+        "d1": 16.71777378597911,
+        "pixels": 3802797
+      },
+      "initial := a*gt+b where gt>0": {
+        "epe": 2.213098118114666,
+        "d1": 16.351911500929447,
+        "pixels": 3802797
+      },
+      "initial := a*gt+b densified": {
+        "epe": 2.5971903517127966,
+        "d1": 34.402388557685306,
+        "pixels": 3802797
+      },
+      "initial := a*gt+b shuffled": {
+        "epe": 15.151565926191891,
+        "d1": 88.05823713440397,
+        "pixels": 3802797
+      }
+    },
+    "SEED1": {
+      "as trained": {
+        "epe": 2.3193164497173653,
+        "d1": 17.250592129950665,
+        "pixels": 3802797
+      },
+      "initial := itself": {
+        "epe": 2.3193164497173653,
+        "d1": 17.250592129950665,
+        "pixels": 3802797
+      },
+      "initial := a*gt+b where gt>0": {
+        "epe": 2.039131774013614,
+        "d1": 14.599490848446552,
+        "pixels": 3802797
+      },
+      "initial := a*gt+b densified": {
+        "epe": 2.291115341611864,
+        "d1": 26.187829642234387,
+        "pixels": 3802797
+      },
+      "initial := a*gt+b shuffled": {
+        "epe": 15.152006089965418,
+        "d1": 88.34302751369584,
+        "pixels": 3802797
+      }
+    },
+    "SEED2": {
+      "as trained": {
+        "epe": 2.556149774060891,
+        "d1": 19.7592193325071,
+        "pixels": 3802797
+      },
+      "initial := itself": {
+        "epe": 2.556149774060891,
+        "d1": 19.7592193325071,
+        "pixels": 3802797
+      },
+      "initial := a*gt+b where gt>0": {
+        "epe": 2.3344398812129814,
+        "d1": 18.633810850276785,
+        "pixels": 3802797
+      },
+      "initial := a*gt+b densified": {
+        "epe": 2.648663405694805,
+        "d1": 34.23701028479827,
+        "pixels": 3802797
+      },
+      "initial := a*gt+b shuffled": {
+        "epe": 15.031203150198646,
+        "d1": 88.06636273248348,
+        "pixels": 3802797
+      }
+    }
+  },
+  "gates": {
+    "H2": {
+      "substitution_fidelity": true,
+      "identity_epe_delta": 0.0,
+      "negative_control": true,
+      "record_fidelity": true,
+      "record_epe_delta": 0.00042429925620757203,
+      "record_d1_delta": -0.0022262140208901826,
+      "PASS": true
+    },
+    "SEED1": {
+      "substitution_fidelity": true,
+      "identity_epe_delta": 0.0,
+      "negative_control": true,
+      "PASS": true
+    },
+    "SEED2": {
+      "substitution_fidelity": true,
+      "identity_epe_delta": 0.0,
+      "negative_control": true,
+      "PASS": true
+    }
+  },
+  "verdicts": {
+    "H2": {
+      "epe_ratio": 0.9219612211059578,
+      "error_removed_fraction": 0.0780387788940422,
+      "verdict": "DOWNSTREAM-LIMITED"
+    },
+    "SEED1": {
+      "epe_ratio": 0.8791951500460857,
+      "error_removed_fraction": 0.12080484995391427,
+      "verdict": "DOWNSTREAM-LIMITED"
+    },
+    "SEED2": {
+      "epe_ratio": 0.9132641228234116,
+      "error_removed_fraction": 0.08673587717658837,
+      "verdict": "DOWNSTREAM-LIMITED"
+    }
+  },
+  "overall_verdict": "DOWNSTREAM-LIMITED",
+  "checkpoint_sha256": {
+    "H2": "e3d48021d7f6a3d4d16fe33031e8ba85fd24389c5ba892f52c7e873e48454927",
+    "SEED1": "849a371eb54847b642525c9ee8bc997897ee0a8e94db9894d45c6c582ba5c9a7",
+    "SEED2": "9528c5b68c89c929d71b7acbb9c4d3e1b72f39d9082f3b6c889a8b5c25f4b294"
+  }
+}

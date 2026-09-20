@@ -1,0 +1,362 @@
+{
+  "experiment": "EXP-BLOCKCOUNT-FULL-001",
+  "batch": 3,
+  "batch_note": "batch 3, the final batch of the sequential campaign: TWO runs, 4 blocks / seed 1 and 4 blocks / seed 2, 200 epochs each, to bring the 4-block arm to three seeds {0,1,2} against the 6-block and 5-block arms' three each. No other run is authorised -- not a 4b/seed0 rerun, not 4b/seed3, not another 5b or 6b seed, not a 3-block arm, not a dilation, candidate-count, receptive-field, Scene Flow or pretrained variant, not longer training, not an altered recipe",
+  "new_runs": {
+    "EXP-BLOCKCOUNT-FULL-001-ARM-C-SEED1": {
+      "blocks": 4,
+      "seed": 1,
+      "epe": 2.6553489056679185,
+      "d1": 20.089739210375942,
+      "rmse": 6.351017212610435
+    },
+    "EXP-BLOCKCOUNT-FULL-001-ARM-C-SEED2": {
+      "blocks": 4,
+      "seed": 2,
+      "epe": 2.575663320030758,
+      "d1": 20.07935211897979,
+      "rmse": 6.175872685143725
+    }
+  },
+  "seed_ranges": {
+    "6_blocks": {
+      "seeds": {
+        "0": {
+          "epe": 2.2955181809208267,
+          "d1": 15.6045142562172,
+          "rmse": 6.043707506355849
+        },
+        "1": {
+          "epe": 2.3982217171269924,
+          "d1": 18.335714475424272,
+          "rmse": 5.677181675088253
+        },
+        "2": {
+          "epe": 2.3950487882916516,
+          "d1": 17.469904388795932,
+          "rmse": 5.934968151526864
+        }
+      },
+      "epe": {
+        "n": 3,
+        "mean": 2.3629295621131567,
+        "sd": 0.05840152057131535,
+        "min": 2.2955181809208267,
+        "max": 2.3982217171269924,
+        "range": 0.10270353620616568
+      },
+      "d1": {
+        "n": 3,
+        "mean": 17.1367110401458,
+        "sd": 1.39575320706696,
+        "min": 15.6045142562172,
+        "max": 18.335714475424272,
+        "range": 2.7312002192070715
+      }
+    },
+    "5_blocks": {
+      "seeds": {
+        "0": {
+          "epe": 2.6457595145748534,
+          "d1": 21.37119073145372,
+          "rmse": 6.053090634496522
+        },
+        "1": {
+          "epe": 2.4729829593541792,
+          "d1": 18.20617824196243,
+          "rmse": 6.2149082513542035
+        },
+        "2": {
+          "epe": 2.637299378667016,
+          "d1": 20.659398858261433,
+          "rmse": 6.443872277360179
+        }
+      },
+      "epe": {
+        "n": 3,
+        "mean": 2.585347284198683,
+        "sd": 0.09740225663820949,
+        "min": 2.4729829593541792,
+        "max": 2.6457595145748534,
+        "range": 0.17277655522067414
+      },
+      "d1": {
+        "n": 3,
+        "mean": 20.078922610559193,
+        "sd": 1.66043383495664,
+        "min": 18.20617824196243,
+        "max": 21.37119073145372,
+        "range": 3.165012489491289
+      }
+    },
+    "4_blocks": {
+      "seeds": {
+        "0": {
+          "epe": 2.3387143497258114,
+          "d1": 16.97973886063337,
+          "rmse": 5.864674728039264
+        },
+        "1": {
+          "epe": 2.6553489056679185,
+          "d1": 20.089739210375942,
+          "rmse": 6.351017212610435
+        },
+        "2": {
+          "epe": 2.575663320030758,
+          "d1": 20.07935211897979,
+          "rmse": 6.175872685143725
+        }
+      },
+      "epe": {
+        "n": 3,
+        "mean": 2.5232421918081624,
+        "sd": 0.16469772772343028,
+        "min": 2.3387143497258114,
+        "max": 2.6553489056679185,
+        "range": 0.3166345559421071
+      },
+      "d1": {
+        "n": 3,
+        "mean": 19.049610063329702,
+        "sd": 1.7925685676510645,
+        "min": 16.97973886063337,
+        "max": 20.089739210375942,
+        "range": 3.110000349742574
+      }
+    }
+  },
+  "decision_rule": {
+    "primary_metric": "40-scene pooled EPE",
+    "frozen_six_block_range": [
+      2.2955181809208267,
+      2.3982217171269924
+    ],
+    "boundary_fixed_before_launch": true,
+    "verdict_A_requires": "all three 4b EPE > max(6b EPE)",
+    "verdict_B_requires": "all three 4b EPE inside the 6b range",
+    "verdict_C_otherwise": true,
+    "d1_may_not_override_epe": true
+  },
+  "decision_inputs": {
+    "four_block_epe_by_seed": {
+      "0": 2.3387143497258114,
+      "1": 2.6553489056679185,
+      "2": 2.575663320030758
+    },
+    "all_four_block_epe_above_six_block_max": false,
+    "all_four_block_epe_inside_six_block_range": false,
+    "all_four_block_runs_stereo_functional": false
+  },
+  "non_overlap": {
+    "min_4b_epe": 2.3387143497258114,
+    "max_4b_epe": 2.6553489056679185,
+    "min_6b_epe": 2.2955181809208267,
+    "max_6b_epe": 2.3982217171269924,
+    "min_4b_epe_minus_max_6b_epe": -0.05950736740118101,
+    "epe_ranges_disjoint_4b_above_6b": false,
+    "min_4b_d1": 16.97973886063337,
+    "max_4b_d1": 20.089739210375942,
+    "min_6b_d1": 15.6045142562172,
+    "max_6b_d1": 18.335714475424272,
+    "min_4b_d1_minus_max_6b_d1": -1.3559756147909034,
+    "d1_ranges_disjoint_4b_above_6b": false
+  },
+  "mean_differences": {
+    "epe_4b_minus_6b": 0.1603126296950057,
+    "d1_4b_minus_6b": 1.9128990231839005,
+    "epe_4b_minus_5b": -0.06210509239052042,
+    "d1_4b_minus_5b": -1.029312547229491
+  },
+  "all_pairings_4b_vs_6b": {
+    "4b_seed0_vs_6b_seed0": {
+      "epe_4b_worse": true,
+      "d1_4b_worse": true,
+      "delta_epe": 0.04319616880498467,
+      "delta_d1": 1.375224604416168
+    },
+    "4b_seed0_vs_6b_seed1": {
+      "epe_4b_worse": false,
+      "d1_4b_worse": false,
+      "delta_epe": -0.05950736740118101,
+      "delta_d1": -1.3559756147909034
+    },
+    "4b_seed0_vs_6b_seed2": {
+      "epe_4b_worse": false,
+      "d1_4b_worse": false,
+      "delta_epe": -0.056334438565840195,
+      "delta_d1": -0.49016552816256365
+    },
+    "4b_seed1_vs_6b_seed0": {
+      "epe_4b_worse": true,
+      "d1_4b_worse": true,
+      "delta_epe": 0.35983072474709177,
+      "delta_d1": 4.485224954158742
+    },
+    "4b_seed1_vs_6b_seed1": {
+      "epe_4b_worse": true,
+      "d1_4b_worse": true,
+      "delta_epe": 0.2571271885409261,
+      "delta_d1": 1.7540247349516704
+    },
+    "4b_seed1_vs_6b_seed2": {
+      "epe_4b_worse": true,
+      "d1_4b_worse": true,
+      "delta_epe": 0.2603001173762669,
+      "delta_d1": 2.6198348215800102
+    },
+    "4b_seed2_vs_6b_seed0": {
+      "epe_4b_worse": true,
+      "d1_4b_worse": true,
+      "delta_epe": 0.2801451391099312,
+      "delta_d1": 4.474837862762591
+    },
+    "4b_seed2_vs_6b_seed1": {
+      "epe_4b_worse": true,
+      "d1_4b_worse": true,
+      "delta_epe": 0.17744160290376554,
+      "delta_d1": 1.7436376435555196
+    },
+    "4b_seed2_vs_6b_seed2": {
+      "epe_4b_worse": true,
+      "d1_4b_worse": true,
+      "delta_epe": 0.18061453173910635,
+      "delta_d1": 2.6094477301838594
+    }
+  },
+  "all_nine_pairings_4b_worse_epe": false,
+  "all_nine_pairings_4b_worse_d1": false,
+  "all_pairings_4b_vs_5b": {
+    "4b_seed0_vs_5b_seed0": {
+      "epe_4b_worse": false,
+      "delta_epe": -0.307045164849042
+    },
+    "4b_seed0_vs_5b_seed1": {
+      "epe_4b_worse": false,
+      "delta_epe": -0.13426860962836784
+    },
+    "4b_seed0_vs_5b_seed2": {
+      "epe_4b_worse": false,
+      "delta_epe": -0.29858502894120464
+    },
+    "4b_seed1_vs_5b_seed0": {
+      "epe_4b_worse": true,
+      "delta_epe": 0.009589391093065114
+    },
+    "4b_seed1_vs_5b_seed1": {
+      "epe_4b_worse": true,
+      "delta_epe": 0.18236594631373926
+    },
+    "4b_seed1_vs_5b_seed2": {
+      "epe_4b_worse": true,
+      "delta_epe": 0.018049527000902454
+    },
+    "4b_seed2_vs_5b_seed0": {
+      "epe_4b_worse": false,
+      "delta_epe": -0.07009619454409544
+    },
+    "4b_seed2_vs_5b_seed1": {
+      "epe_4b_worse": true,
+      "delta_epe": 0.10268036067657871
+    },
+    "4b_seed2_vs_5b_seed2": {
+      "epe_4b_worse": false,
+      "delta_epe": -0.061636058636258095
+    }
+  },
+  "all_nine_pairings_4b_better_than_5b_epe": false,
+  "per_scene_paired": {
+    "4b_seed0_vs_6b_seed0": {
+      "pairing": "4b/s0 vs 6b/s0",
+      "scenes": 40,
+      "epe_first_worse_in": 22,
+      "epe_mean_delta": 0.04435158460421463,
+      "epe_median_delta": 0.01931082231302572,
+      "epe_max_delta": 0.7549450209658244,
+      "epe_min_delta": -0.9641636710365882,
+      "d1_first_worse_in": 29,
+      "d1_mean_delta": 1.3584003015335417
+    },
+    "4b_seed0_vs_5b_seed0": {
+      "pairing": "4b/s0 vs 5b/s0",
+      "scenes": 40,
+      "epe_first_worse_in": 3,
+      "epe_mean_delta": -0.302192789823421,
+      "epe_median_delta": -0.2674691883817595,
+      "epe_max_delta": 0.41577506755807114,
+      "epe_min_delta": -1.0735511721519964,
+      "d1_first_worse_in": 4,
+      "d1_mean_delta": -4.160614793722545
+    },
+    "4b_seed1_vs_6b_seed1": {
+      "pairing": "4b/s1 vs 6b/s1",
+      "scenes": 40,
+      "epe_first_worse_in": 32,
+      "epe_mean_delta": 0.24251976647008266,
+      "epe_median_delta": 0.11553639014643058,
+      "epe_max_delta": 1.578883437144615,
+      "epe_min_delta": -0.25812038198687715,
+      "d1_first_worse_in": 30,
+      "d1_mean_delta": 1.610678658365932
+    },
+    "4b_seed1_vs_5b_seed1": {
+      "pairing": "4b/s1 vs 5b/s1",
+      "scenes": 40,
+      "epe_first_worse_in": 28,
+      "epe_mean_delta": 0.17137570335392055,
+      "epe_median_delta": 0.08833538352178705,
+      "epe_max_delta": 1.174286282496527,
+      "epe_min_delta": -0.895882029734155,
+      "d1_first_worse_in": 26,
+      "d1_mean_delta": 1.6827047759288072
+    },
+    "4b_seed2_vs_6b_seed2": {
+      "pairing": "4b/s2 vs 6b/s2",
+      "scenes": 40,
+      "epe_first_worse_in": 34,
+      "epe_mean_delta": 0.18097157866056288,
+      "epe_median_delta": 0.12025104536571452,
+      "epe_max_delta": 0.9411346516980972,
+      "epe_min_delta": -0.1992387584439579,
+      "d1_first_worse_in": 33,
+      "d1_mean_delta": 2.524686834300342
+    },
+    "4b_seed2_vs_5b_seed2": {
+      "pairing": "4b/s2 vs 5b/s2",
+      "scenes": 40,
+      "epe_first_worse_in": 17,
+      "epe_mean_delta": -0.05245978443467023,
+      "epe_median_delta": -0.01849731923315412,
+      "epe_max_delta": 0.530663397247058,
+      "epe_min_delta": -0.834742126983981,
+      "d1_first_worse_in": 15,
+      "d1_mean_delta": -0.5280446858640777
+    }
+  },
+  "stereo": {
+    "1": {
+      "STEREO_FUNCTIONAL": false,
+      "verdict": {},
+      "source": "this batch"
+    },
+    "2": {
+      "STEREO_FUNCTIONAL": false,
+      "verdict": {},
+      "source": "this batch"
+    },
+    "0": {
+      "STEREO_FUNCTIONAL": false,
+      "verdict": {},
+      "source": "frozen deterministic record, read-only"
+    }
+  },
+  "VERDICT": "4-BLOCK-STEREO-FUNCTIONALITY-FAILURE",
+  "interpretation_limit": "Descriptive comparison of three seeds per arm on one dataset, one recipe and one deterministic protocol. Not a statistical test. An empirical block-count effect is not a parameter-count or receptive-field CAUSE. The historical E3b/E3c materiality band stays invalidated; no band was reused and no threshold was invented after seeing the result.",
+  "provenance": {
+    "head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "head_subject": "docs: add the Phase 1 overview",
+    "phase_1_frozen_commit": "b4207e518166f5089731b4d037a4a79234f70986",
+    "phase_1_diff_vs_frozen": "",
+    "status_short": "M .gitignore\n?? phase2/",
+    "phase_2_committed": false
+  }
+}

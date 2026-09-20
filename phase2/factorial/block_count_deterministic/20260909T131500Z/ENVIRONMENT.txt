@@ -1,0 +1,64 @@
+EXP-BLOCKCOUNT-DETERMINISTIC-001 -- ENVIRONMENT
+run directory: 20260909T131500Z
+control:       phase2/diagnostics/determinism/20260909T041500Z_baseline (Stage B run A) -- FROZEN, NOT RETRAINED
+
+== PROVENANCE (git), start and end ==
+HEAD                           58e8a19908ddbd35451652c61aef478f56b51ebd
+HEAD subject                   docs: add the Phase 1 overview
+phase-1-frozen ^{commit}       b4207e518166f5089731b4d037a4a79234f70986
+phase-1-frozen (ref resolves)  0fc4f296b409f79bc12cd8e294a1bdb34ed1e262 (annotated tag object)
+git diff phase-1-frozen -- src scripts : EMPTY
+git status --short:
+    M .gitignore
+    ?? phase2/
+phase2 tracked                : NO -- Phase 2 is NOT committed; no external immutability is claimed
+
+== PREFLIGHT ==
+ control: {"blocks": 6, "dilations": [1, 2, 4, 8, 1, 1], "parameters": 423586, "init_weight_sha": "c4d02385e3da28a5", "init_weight_sha_expected": "c4d02385e3da28a5", "cost_volume_shift": "left", "num_disparities": 12, "regression": "StandardisedDisparityRegression", "retrained_here": false, "reason_not_retrained": "Stage B measured a fresh-process rerun of this configuration to be bit-identical (same final weight sha, loss series, validation series and 40-scene evaluation), so retraining could only reproduce it.", "record": "phase2/diagnostics/determinism/20260909T041500Z_baseline", "frozen_40_scene": {"epe": 2.2955181809208267, "d1": 15.6045142562172, "rmse": 6.043707506355849}}
+   macs @256x512: 16199516160.0
+ arm B: {"blocks": 5, "blocks_expected": 5, "dilations": [1, 2, 4, 8, 1], "dilations_expected": [1, 2, 4, 8, 1], "parameters": 405090, "parameters_expected": 405090, "parameters_match": true, "surviving_weights_bit_identical_to_control": true, "init_weight_sha": "a437e6e58d17e4db", "cost_volume_shift": "left", "num_disparities": 12, "regression": "StandardisedDisparityRegression"}
+   macs @256x512: 13783597056.0
+ arm C: {"blocks": 4, "blocks_expected": 4, "dilations": [1, 2, 4, 8], "dilations_expected": [1, 2, 4, 8], "parameters": 386594, "parameters_expected": 386594, "parameters_match": true, "surviving_weights_bit_identical_to_control": true, "init_weight_sha": "f89a7acb2e5b760a", "cost_volume_shift": "left", "num_disparities": 12, "regression": "StandardisedDisparityRegression"}
+   macs @256x512: 11367677952.0
+ checks: {"control_init_sha_matches": true, "surviving_weights_bit_identical": true, "parameter_counts_match_registration": true, "block_counts_correct": true, "dilations_correct": true, "shift_is_left": true, "readout_is_standardised": true, "candidates_are_12": true, "control_checkpoint_present": true, "phase_1_diff_empty": true, "PASS": true}
+ claim ceiling: Bitwise reproducibility removes EXECUTION noise, not SEED noise; results are 'at seed 0' only.
+ HISTORICAL reproducibility scales: {"stage_b_controlled_same_config_variance_epe": 0.0, "stage_b_controlled_same_config_variance_d1": 0.0, "stage_b_protocol_divergence_epe": 0.2250805, "stage_b_protocol_divergence_d1": 1.4143253, "o6_uncontrolled_same_config_epe": 0.3426, "o6_uncontrolled_same_config_d1": 1.9701}
+
+== ARM B (5 blocks) ==
+  experiment_id                EXP-BLOCKCOUNT-DETERMINISTIC-001-ARM-B
+  changed_variable             refinement block count: 6 -> 5
+  command                      phase2/factorial/block_count_deterministic/exp_blockcount_deterministic.py train --out C:/Users/vishn/stereo_depth_vision/phase2/factorial/block_count_deterministic/20260909T131500Z --arm B
+  started / finished (UTC)     2026-09-09T10:25:13Z / 2026-09-09T11:44:37Z
+  wall clock (s)               4764.574415922165
+  parameters                   405090
+  init weight sha              a437e6e58d17e4db
+  final weight sha             7b1b05716d8451ac
+  checkpoint file sha256       a899ca126172abdb85eec9c0edea3fdf891048ea54d7dc35ac48760d711f51d6
+  platform / python / torch    Windows-11-10.0.26200-SP0 / 3.12.9 / 2.7.0+cu128
+  cuda / cudnn / gpu / driver  12.8 / 90701 / NVIDIA GeForce RTX 4060 Laptop GPU / 616.64
+  DETERMINISTIC CONTROLS       {"torch.use_deterministic_algorithms": true, "torch.backends.cudnn.deterministic": true, "torch.backends.cudnn.benchmark": false, "CUBLAS_WORKSPACE_CONFIG": ":4096:8"}
+    flag cudnn.benchmark                  False
+    flag cudnn.deterministic              True
+    flag deterministic_algorithms         True
+    env  CUBLAS_WORKSPACE_CONFIG          :4096:8
+  determinism errors raised/suppressed: none (completed, aborted=None)
+
+== ARM C (4 blocks) ==
+  experiment_id                EXP-BLOCKCOUNT-DETERMINISTIC-001-ARM-C
+  changed_variable             refinement block count: 6 -> 4
+  command                      phase2/factorial/block_count_deterministic/exp_blockcount_deterministic.py train --out C:/Users/vishn/stereo_depth_vision/phase2/factorial/block_count_deterministic/20260909T131500Z --arm C
+  started / finished (UTC)     2026-09-09T11:45:07Z / 2026-09-09T13:02:14Z
+  wall clock (s)               4626.605711221695
+  parameters                   386594
+  init weight sha              f89a7acb2e5b760a
+  final weight sha             79b7daa568636434
+  checkpoint file sha256       c8d5ab9a51dab64ed1fbf085b34a92c4620c1cc7460bb3542df00f42c7b6ce12
+  platform / python / torch    Windows-11-10.0.26200-SP0 / 3.12.9 / 2.7.0+cu128
+  cuda / cudnn / gpu / driver  12.8 / 90701 / NVIDIA GeForce RTX 4060 Laptop GPU / 616.64
+  DETERMINISTIC CONTROLS       {"torch.use_deterministic_algorithms": true, "torch.backends.cudnn.deterministic": true, "torch.backends.cudnn.benchmark": false, "CUBLAS_WORKSPACE_CONFIG": ":4096:8"}
+    flag cudnn.benchmark                  False
+    flag cudnn.deterministic              True
+    flag deterministic_algorithms         True
+    env  CUBLAS_WORKSPACE_CONFIG          :4096:8
+  determinism errors raised/suppressed: none (completed, aborted=None)
+

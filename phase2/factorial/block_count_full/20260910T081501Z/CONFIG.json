@@ -1,0 +1,321 @@
+{
+  "experiment": "EXP-BLOCKCOUNT-FULL-001",
+  "batch": 3,
+  "batch_role": "final batch of the sequential block-count campaign",
+  "authorised_batch": [
+    [
+      "C",
+      1
+    ],
+    [
+      "C",
+      2
+    ]
+  ],
+  "not_authorised": [
+    "4b/seed0 rerun",
+    "4b/seed3",
+    "any other 5b seed",
+    "any 6b seed",
+    "3-block training",
+    "dilation variants",
+    "candidate-count variants",
+    "receptive-field experiments",
+    "Scene Flow",
+    "pretrained init",
+    "longer training",
+    "any altered hyperparameter, schedule, crop, augmentation or loss"
+  ],
+  "epochs": 200,
+  "blocks": 4,
+  "seeds": [
+    1,
+    2
+  ],
+  "dilations": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "scheduler": "CosineAnnealingLR T_max=200 (native, not re-fitted)",
+  "checkpoint_epochs": [
+    1,
+    2,
+    5,
+    10,
+    20,
+    50,
+    100,
+    150,
+    200
+  ],
+  "weight_snapshot_epochs": [
+    10,
+    20,
+    50,
+    100,
+    150,
+    200
+  ],
+  "gates": {
+    "viability": 10,
+    "collapse_check": 100,
+    "stereo_verdict": 200
+  },
+  "recipe": {
+    "cost_volume_shift": "left",
+    "num_disparities": 12,
+    "regression": "StandardisedDisparityRegression",
+    "dilations": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "parameters": 386594,
+    "train_split": "hailo_calib",
+    "val_split": "hailo_val",
+    "train_scenes": 160,
+    "batch_size": 2,
+    "optimizer": "Adam(lr=1e-3, betas=(0.9, 0.999))",
+    "macs_256x512": {
+      "macs": 11367677952.0,
+      "thop_params": 386594.0,
+      "input": [
+        1,
+        3,
+        256,
+        512
+      ]
+    }
+  },
+  "runs": {
+    "EXP-BLOCKCOUNT-FULL-001-ARM-C-SEED1": {
+      "seed": 1,
+      "parameters": 386594,
+      "init_weight_sha": "2cac2916ed802495",
+      "final_weight_sha": "89caa83582ddbd39",
+      "checkpoint_sha256": "7de305da0766b6ce86666d4e4743c3e1681d9ef29ff0a7f9f8402135ab910086",
+      "wall_clock_s": 4678.7842445373535,
+      "started_utc": "2026-09-10T08:17:30Z",
+      "finished_utc": "2026-09-10T09:35:29Z",
+      "result_40_scene": {
+        "epe": 2.6553489056679185,
+        "d1": 20.089739210375942,
+        "rmse": 6.351017212610435,
+        "valid_pixels": 3802797
+      }
+    },
+    "EXP-BLOCKCOUNT-FULL-001-ARM-C-SEED2": {
+      "seed": 2,
+      "parameters": 386594,
+      "init_weight_sha": "e622226a5a22fc9b",
+      "final_weight_sha": "fc7585ba79a4cf01",
+      "checkpoint_sha256": "47cd80901bf9f8ebf86e2c73d453272ca2acf9514500371d4db5793f03cf15ec",
+      "wall_clock_s": 4735.200435161591,
+      "started_utc": "2026-09-10T09:35:50Z",
+      "finished_utc": "2026-09-10T10:54:45Z",
+      "result_40_scene": {
+        "epe": 2.575663320030758,
+        "d1": 20.07935211897979,
+        "rmse": 6.175872685143725,
+        "valid_pixels": 3802797
+      }
+    }
+  },
+  "decision_rule": {
+    "primary_metric": "40-scene pooled EPE",
+    "frozen_six_block_range": [
+      2.2955181809208267,
+      2.3982217171269924
+    ],
+    "boundary_fixed_before_launch": true,
+    "verdict_A_requires": "all three 4b EPE > max(6b EPE)",
+    "verdict_B_requires": "all three 4b EPE inside the 6b range",
+    "verdict_C_otherwise": true,
+    "d1_may_not_override_epe": true
+  },
+  "decision_inputs": {
+    "four_block_epe_by_seed": {
+      "0": 2.3387143497258114,
+      "1": 2.6553489056679185,
+      "2": 2.575663320030758
+    },
+    "all_four_block_epe_above_six_block_max": false,
+    "all_four_block_epe_inside_six_block_range": false,
+    "all_four_block_runs_stereo_functional": true
+  },
+  "seed_ranges": {
+    "6_blocks": {
+      "seeds": {
+        "0": {
+          "epe": 2.2955181809208267,
+          "d1": 15.6045142562172,
+          "rmse": 6.043707506355849
+        },
+        "1": {
+          "epe": 2.3982217171269924,
+          "d1": 18.335714475424272,
+          "rmse": 5.677181675088253
+        },
+        "2": {
+          "epe": 2.3950487882916516,
+          "d1": 17.469904388795932,
+          "rmse": 5.934968151526864
+        }
+      },
+      "epe": {
+        "n": 3,
+        "mean": 2.3629295621131567,
+        "sd": 0.05840152057131535,
+        "min": 2.2955181809208267,
+        "max": 2.3982217171269924,
+        "range": 0.10270353620616568
+      },
+      "d1": {
+        "n": 3,
+        "mean": 17.1367110401458,
+        "sd": 1.39575320706696,
+        "min": 15.6045142562172,
+        "max": 18.335714475424272,
+        "range": 2.7312002192070715
+      }
+    },
+    "5_blocks": {
+      "seeds": {
+        "0": {
+          "epe": 2.6457595145748534,
+          "d1": 21.37119073145372,
+          "rmse": 6.053090634496522
+        },
+        "1": {
+          "epe": 2.4729829593541792,
+          "d1": 18.20617824196243,
+          "rmse": 6.2149082513542035
+        },
+        "2": {
+          "epe": 2.637299378667016,
+          "d1": 20.659398858261433,
+          "rmse": 6.443872277360179
+        }
+      },
+      "epe": {
+        "n": 3,
+        "mean": 2.585347284198683,
+        "sd": 0.09740225663820949,
+        "min": 2.4729829593541792,
+        "max": 2.6457595145748534,
+        "range": 0.17277655522067414
+      },
+      "d1": {
+        "n": 3,
+        "mean": 20.078922610559193,
+        "sd": 1.66043383495664,
+        "min": 18.20617824196243,
+        "max": 21.37119073145372,
+        "range": 3.165012489491289
+      }
+    },
+    "4_blocks": {
+      "seeds": {
+        "0": {
+          "epe": 2.3387143497258114,
+          "d1": 16.97973886063337,
+          "rmse": 5.864674728039264
+        },
+        "1": {
+          "epe": 2.6553489056679185,
+          "d1": 20.089739210375942,
+          "rmse": 6.351017212610435
+        },
+        "2": {
+          "epe": 2.575663320030758,
+          "d1": 20.07935211897979,
+          "rmse": 6.175872685143725
+        }
+      },
+      "epe": {
+        "n": 3,
+        "mean": 2.5232421918081624,
+        "sd": 0.16469772772343028,
+        "min": 2.3387143497258114,
+        "max": 2.6553489056679185,
+        "range": 0.3166345559421071
+      },
+      "d1": {
+        "n": 3,
+        "mean": 19.049610063329702,
+        "sd": 1.7925685676510645,
+        "min": 16.97973886063337,
+        "max": 20.089739210375942,
+        "range": 3.110000349742574
+      }
+    }
+  },
+  "non_overlap": {
+    "min_4b_epe": 2.3387143497258114,
+    "max_4b_epe": 2.6553489056679185,
+    "min_6b_epe": 2.2955181809208267,
+    "max_6b_epe": 2.3982217171269924,
+    "min_4b_epe_minus_max_6b_epe": -0.05950736740118101,
+    "epe_ranges_disjoint_4b_above_6b": false,
+    "min_4b_d1": 16.97973886063337,
+    "max_4b_d1": 20.089739210375942,
+    "min_6b_d1": 15.6045142562172,
+    "max_6b_d1": 18.335714475424272,
+    "min_4b_d1_minus_max_6b_d1": -1.3559756147909034,
+    "d1_ranges_disjoint_4b_above_6b": false
+  },
+  "mean_differences": {
+    "epe_4b_minus_6b": 0.1603126296950057,
+    "d1_4b_minus_6b": 1.9128990231839005,
+    "epe_4b_minus_5b": -0.06210509239052042,
+    "d1_4b_minus_5b": -1.029312547229491
+  },
+  "stereo_functional": {
+    "0": true,
+    "1": true,
+    "2": true
+  },
+  "VERDICT": "4-BLOCK-INCONCLUSIVE-AT-SEEDS-0-1-2",
+  "five_block_verdict_unchanged": "5-BLOCK-PENALTY-AT-SEEDS-0-1-2",
+  "corrections_disclosed": [
+    "CORRECTION_screen_prefix.md",
+    "CORRECTION_stereo_reader.md"
+  ],
+  "deterministic_controls": {
+    "torch.use_deterministic_algorithms": true,
+    "torch.backends.cudnn.deterministic": true,
+    "torch.backends.cudnn.benchmark": false,
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+  },
+  "environment": {
+    "command": "phase2/factorial/block_count_full/exp_blockcount_batch3.py preflight --out phase2/factorial/block_count_full/20260910T081501Z",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "numpy": "2.5.1",
+    "cuda_version": "12.8",
+    "cudnn_version": 90701,
+    "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "nvidia_driver": "616.64",
+    "flags": {
+      "deterministic_algorithms": true,
+      "cudnn.deterministic": true,
+      "cudnn.benchmark": false
+    },
+    "env": {
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+    }
+  },
+  "provenance": {
+    "head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "head_subject": "docs: add the Phase 1 overview",
+    "phase_1_frozen_commit": "b4207e518166f5089731b4d037a4a79234f70986",
+    "phase_1_diff_vs_frozen": "",
+    "status_short": "M .gitignore\n?? phase2/",
+    "phase_2_committed": false
+  },
+  "preflight_checks_passed": 28
+}

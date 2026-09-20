@@ -1,0 +1,159 @@
+{
+  "experiment_id": "EXP-CORRESPONDENCE-GEOM-002",
+  "record": "phase2/diagnostics/correspondence_geom/20260913T013006Z",
+  "status": "COMPLETE",
+  "verdict": "STATISTIC-ARCHITECTURALLY-AVAILABLE",
+  "comparison": {
+    "H_star": null,
+    "gate_decision": "G-STOP",
+    "note": "max(h_rand) == 6: a random aggregation reproduces the statistic perfectly. Trained weights were never loaded. This does NOT establish correspondence."
+  },
+  "gate": {
+    "axis": "horizontal",
+    "n_units": 576,
+    "n_readout_passes": 13824,
+    "unit_structure": "(extractor, pair, seed) = 3 x 6 x 32",
+    "h_rand_histogram": {
+      "0": 414,
+      "1": 67,
+      "2": 19,
+      "3": 13,
+      "4": 10,
+      "5": 22,
+      "6": 31
+    },
+    "h_rand_max": 6,
+    "h_rand_min": 0,
+    "h_rand_mean": 0.8333333333333334,
+    "hit_rate": 0.1388888888888889,
+    "chance_rate": 0.08333333333333333,
+    "decision": "G-STOP",
+    "H_star": null,
+    "offset_constant_units": 153,
+    "tracking_with_offset_units": 122,
+    "trained_aggregation_loaded": false,
+    "wall_clock_s": 241.3962140083313
+  },
+  "mask": {
+    "rows": [
+      64,
+      208
+    ],
+    "cols": [
+      325,
+      633
+    ],
+    "pixels": 44352,
+    "retained_rows": 144,
+    "retained_cols": 308
+  },
+  "domain": {
+    "extractor": [
+      15,
+      55
+    ],
+    "cost_volume": [
+      15,
+      44
+    ],
+    "statistic": [
+      20,
+      39
+    ],
+    "pixel": [
+      325,
+      632
+    ]
+  },
+  "taus": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31
+  ],
+  "pairs": [
+    [
+      1,
+      2
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      10,
+      11
+    ],
+    [
+      12,
+      13
+    ],
+    [
+      14,
+      15
+    ],
+    [
+      16,
+      17
+    ]
+  ],
+  "checkpoints": {
+    "H2_seed0": "581d62e699b159945580f9627b451d953ce07b5dc763d608a9f4a8b5ecba692a",
+    "H2_seed1": "58117f2613bba4b2c817328c7d6757f21b340ec5e64a828e633193ae091d4adf",
+    "H2_seed2": "245a3f5bcb801c7d9c3550b02cb8775cb86486beae606f04097900340754fa69"
+  },
+  "controls_not_run": {
+    "NEG_shift_none": "excluded by the authorisation (load exactly these three H2 checkpoints). This record therefore carries ONE null -- the random-aggregation gate -- and no architecture-level null."
+  },
+  "tie_events": [],
+  "n_tie_events": 0,
+  "claim_ceiling": {
+    "permitted": "TRUE CORRESPONDENCE -- NOT DEMONSTRATED",
+    "prohibited": [
+      "full stereo correspondence",
+      "general disparity search",
+      "correct disparity on natural scenes",
+      "metric depth recovery",
+      "causal uniqueness",
+      "architectural necessity",
+      "generalization",
+      "absence of correspondence"
+    ]
+  }
+}

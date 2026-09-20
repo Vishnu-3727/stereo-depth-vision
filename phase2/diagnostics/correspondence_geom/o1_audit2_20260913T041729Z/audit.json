@@ -1,0 +1,218 @@
+{
+  "audit_id": "O1-ADVERSARIAL-AUDIT-2",
+  "record": "phase2/diagnostics/correspondence_geom/o1_audit2_20260913T041729Z",
+  "role": "second auditor seat, same brief",
+  "date_utc": "2026-09-13",
+  "subject": "proposed successor O1 (candidate-axis permutation) with statistic S8",
+  "prior_audit_reviewed": "phase2/diagnostics/correspondence_geom/o1_adversarial_audit_20260913T033554Z",
+
+  "declared_contamination": {
+    "independent": false,
+    "reason": "the prior audit of this same proposal was in this auditor's working context and cannot be unseen",
+    "consequence_1": "this audit does NOT re-derive the prior findings and present them as independent corroboration",
+    "consequence_2": "this seat was spent attacking the prior audit's load-bearing claims and measuring what it asserted without testing",
+    "blind_third_seat_owed": true,
+    "blind_third_seat_should_receive": "the proposal WITHOUT either audit"
+  },
+
+  "constraints_honoured": {
+    "trained_checkpoint_loaded": false,
+    "checkpoints_opened": 0,
+    "historical_records_modified": 0,
+    "geom002_null_used_as_a_threshold": false,
+    "evidence": "frozen Aggregation class with hand-set or freshly randomised weights, frozen cost-volume operator, frozen standardisation, random feature fields"
+  },
+
+  "decision": "C",
+  "decision_label": "NOT IDENTIFIABLE",
+  "stricter_than_prior_audit": true,
+  "how": "the prior audit preserved a fallback claim at a lower level (P2 neighbourhood dependence); this audit refutes that fallback by measurement, leaving NO surviving claim level",
+
+  "findings": {
+    "F1_counterexample_is_architecturally_realizable": {
+      "what": "a non-matching operator built as HAND-SET WEIGHTS of the frozen Aggregation class reproduces the matcher's O1/S8 signature",
+      "why_it_matters": "the prior audit used an ABSTRACT outlier function; an abstract function is inadmissible unless the architecture can express it",
+      "receptive_field_along_k": "11 of 12 candidates (1 + 5*2), so the architecture can compute a near-global across-candidate statistic",
+      "signatures": {
+        "HC_match": {"E_orig": 0.783, "Delta_P1_reverse": 2.768, "Delta_P1_randA": 1.854, "Delta_P1_randB": 2.628},
+        "HC_contrast": {"E_orig": 0.840, "Delta_P1_reverse": 2.653, "Delta_P1_randA": 1.787, "Delta_P1_randB": 2.078}
+      },
+      "proof_they_are_different_functions": {
+        "test": "spike injection at a non-matched candidate k*",
+        "cases": 6,
+        "result": "matcher IGNORES the decoy and keeps reporting tau; contrast latch JUMPS to the decoy",
+        "examples": [
+          {"k_star": 8, "tau": 2, "matcher_argmin": 2, "contrast_argmin": 8},
+          {"k_star": 9, "tau": 3, "matcher_argmin": 3, "contrast_argmin": 9},
+          {"k_star": 10, "tau": 2, "matcher_argmin": 2, "contrast_argmin": 10}
+        ],
+        "conclusion": "they agree ONLY when the matched slice is the sole anomaly, which is exactly and only the synthetic case O1 proposes"
+      }
+    },
+    "F2_fallback_claim_refuted": {
+      "claim_under_test": "the aggregation is not a pointwise function of each candidate slice (the prior audit's highest defensible level)",
+      "population": "12 random seeds x 6 permutations x 6 tau = 432 units, randomly initialised aggregation",
+      "units_with_non_zero_cost_deviation_under_P2": "432 of 432",
+      "relative_deviation": {"mean": 0.8735, "median": 0.7862, "min": 0.5306},
+      "abs_Delta_P2": {"mean": 0.644, "median": 0.461, "p95": 2.061},
+      "conclusion": "the P2 claim is a property of the ARCHITECTURE, not of training; it cannot separate a trained model from random weights",
+      "correction": "the prior audit called this 'close to vacuous by prior probability'. It is vacuous BY MEASUREMENT."
+    },
+    "F3_padding_objection_overstated": {
+      "prior_audit_claim": "the k-axis zero padding is a control mismatch",
+      "measurement": "relative cost change when the matched slice is moved to each position, random Conv3d, tau=3",
+      "padded_ends": {"k0": 0.5987, "k11": 0.5294},
+      "interior_range": [0.5023, 0.7016],
+      "conclusion": "the padded ends sit INSIDE the interior range; the asymmetry is real but not distinguishable from the generic permutation effect",
+      "action": "withdraw it as a separate defect; it does not rescue O1 either"
+    }
+  },
+
+  "primary_question": {
+    "question": "does candidate-axis permutation identify geometric correspondence, or merely sensitivity to candidate-axis ordering?",
+    "answer": "merely sensitivity to candidate-axis ordering; and by F1 not even that cleanly, since a non-matching ordering-sensitive operator gives the same signature",
+    "additional_observation_ruling_out_the_architectural_alternative": "NONE EXISTS IN O1"
+  },
+
+  "symmetry_note": {
+    "prior_audit_argument": "A(V o pi) = A(V) o pi for pointwise operators, so no pi separates two pointwise mechanisms",
+    "correction": "correct but NARROWER THAN THE FAILURE. HC_contrast is NOT pointwise (3-tap kernel along k) and still reproduces the signature.",
+    "actual_defeating_class": "every operator whose response is driven by the single degenerate slice V[tau] == 0 -- by smallness, local contrast, or outlier-ness, pointwise or convolutional"
+  },
+
+  "alternative_mechanisms": {
+    "A1_fixed_lag": "SAME SIGNATURE -- not a distinct mechanism; the cost volume already performs the match",
+    "A2_conv_artifact": "SAME SIGNATURE, now realizably so (HC_contrast)",
+    "A3_index_bias": "EXCLUDED (Delta_P1 = 0) but worthless -- already excluded by the model having non-trivial KITTI accuracy",
+    "A4_adjacency": "SAME SIGNATURE -- HC_contrast IS pure adjacency sensitivity with no matching",
+    "A5_sharp_wrong": "excluded by the ABSOLUTE-ERROR clause, not by Delta",
+    "A6_nonlinear_artifact": "SAME SIGNATURE -- HC_contrast uses the LeakyReLU stack to form |g|",
+    "A7_readout": "no artifact of its own; z-score and softmax exactly permutation-equivariant",
+    "A8_anomaly_latching": "SAME SIGNATURE -- now demonstrated, not postulated"
+  },
+
+  "section5_identifiability_test": {
+    "question": "can a model with candidate-axis convolution, index dependence, arbitrary nonlinearity and arbitrary learned filters, but NO correspondence, produce a systematic S8 improvement?",
+    "answer": "YES",
+    "evidence": "MEASURED, with a constructed instance (HC_contrast) having all four properties, proved not a matcher, Delta_P1 = +1.787..+2.653 at E_orig = 0.840",
+    "what_O1_establishes_instead": "that the model's output moves when the candidate content is re-indexed -- nothing more"
+  },
+
+  "statistic_audit": {
+    "invariant_under_G": false,
+    "necessary_not_sufficient": true,
+    "defeating_invariance": "the degeneracy class (see symmetry_note)",
+    "absolute_index_dependence": "separates content-driven from index-driven and nothing finer",
+    "sharper_but_wrong_gives_positive_Delta": true,
+    "sharpness_refinement": "the z-score removes GLOBAL GAIN exactly; the nuisance is profile SHAPE peakedness, not scale",
+    "sign_uniquely_interpretable": false,
+    "threshold_1p0_candidate": "REJECTED",
+    "threshold_rejection_reasons": [
+      "the scale is set by pi and tau, not by the mechanism",
+      "m_pi = E[pi^-1] is pulled toward 5.5, so a fully disrupted model looks LEAST disrupted at tau ~ 5-6",
+      "the threshold equals the method's own readout blur (~1 candidate), so it cannot resolve the effect it thresholds"
+    ]
+  },
+
+  "counterexample_suite": {
+    "standard_applied": "each counterexample realized as WEIGHTS of the frozen module, with an intervention proof that it is not the mechanism under test",
+    "verdict": "NOT IDENTIFIABLE -- two provably different functions give materially the same observable prediction in every column",
+    "closure_result": {
+      "statement": "the spike test that separates them is NOT constructible inside this pipeline under a spatially reduced statistic",
+      "derivation": "V[k,w] = Lf[w+k] - Rf[w]. A spike in Rf[w] inflates V at ALL k for that w (not candidate-selective). A spike in Lf at column c inflates V at k = c - w, which MOVES with w; across the 20-column mask the anomalous candidate takes 20 different values and the spatial median removes it.",
+      "tag": "DERIVED"
+    }
+  },
+
+  "null_and_control": {
+    "null_hypothesis": "Delta = 0, the output does not follow candidate content",
+    "permutation_arm_is": "a PAIRED TREATMENT, not a null",
+    "random_aggregation_is": "a FLOOR, degenerate (near zero for flatness, not geometric blindness)",
+    "paired_on_identical_weights": true,
+    "pairing_removes": ["weights", "scene", "tau", "mask", "feature extractor"],
+    "pairing_does_not_remove": ["profile shape peakedness", "the E[pi^-1] readout blur"],
+    "unit_of_inference": "UNSPECIFIED; must be at least (checkpoint, pair, tau, pi) with pi a RANDOM EFFECT",
+    "max_rule_forbidden_proof": "P(max over N below threshold) = (1-p)^N -> 0 for any null with mass p > 0; derived here, not inherited",
+    "gate_can_pass_and_fail": "numerically yes; interpretably no -- a pass is reproduced by HC_contrast"
+  },
+
+  "control_validity": {
+    "matched": ["input", "weights", "cost volume", "scene", "tau", "mask", "feature extractor", "candidate count", "per-pixel multiset of input slices", "absolute candidate positions"],
+    "changed": ["candidate-axis adjacency", "Conv3D receptive neighbourhood along k", "which slice abuts the k zero padding", "the multiset of AGGREGATED costs", "soft-argmin weight labelling"],
+    "unchanged_contrary_to_intuition": ["z-score statistics for a pointwise operator", "absolute candidate position"],
+    "is_it_perfect": false,
+    "why_not": "peakedness and the readout blur are inside the pair, and both arms differ by 'content re-indexed', which EVERY content-driven mechanism responds to",
+    "padding_note": "NOT a distinguishable nuisance at this measurement -- see F3"
+  },
+
+  "claim_ceiling": {
+    "candidate_axis_ordering_dependence": "YES under P1, but worthless -- the only alternative excluded is a model ignoring the cost volume entirely, already excluded by non-trivial KITTI accuracy",
+    "candidate_axis_neighbourhood_dependence": "NO -- REFUTED by F2, true in 432/432 random units",
+    "learned_disparity_index_structure": "NO",
+    "geometric_candidate_axis_use": "NO",
+    "stereo_correspondence": "NO",
+    "correct_disparity_search": "NO",
+    "natural_scene_correspondence": "NO",
+    "metric_depth": "NO",
+    "highest_defensible_level": "NONE THAT IS NOT ALREADY KNOWN",
+    "disagreement_with_prior_audit": "the prior audit set the ceiling at neighbourhood dependence and called it close to vacuous; F2 shows it is not a claim about the trained model at all"
+  },
+
+  "methodological_defects": [
+    "under-specification: pi, fixed-vs-random, single-vs-ensemble, P1-vs-P2 undefined; would be D on its own, subsumed by C because F1 holds for every filling",
+    "designer contamination: O1/S8 is post-hoc; prior mention is not preregistration; not load-bearing because the mathematical justification fails anyway",
+    "auditor contamination: two audits of this proposal now written with the first in context; a BLIND THIRD SEAT IS OWED",
+    "same three checkpoints: n=1 recipe, three seeds bound seed-noise only; agreement is NOT replication; any claim is about THOSE THREE ARTIFACTS",
+    "the synthetic degeneracy V[tau] == 0 exactly is load-bearing and inherited by every design on this construction",
+    "the frozen readout blurs the only sharp prediction available by ~1 candidate, the size of the proposed threshold"
+  ],
+
+  "minimum_hard_stops": {
+    "HS-SYM": "pre-freeze; STRENGTHENED -- must verify the statistic distinguishes operators WITHIN THE DEGENERACY CLASS, not merely that it leaves G",
+    "HS-CEX": "pre-freeze; counterexamples must be REALIZED AS WEIGHTS of the frozen module and carry an INTERVENTION PROOF (spike test as template); halt if any reproduces the signature",
+    "HS-ARCH-NULL": "pre-freeze; NEW, from F2 -- any claimed property must be shown ABSENT AT RANDOM INITIALISATION before it may be attributed to training",
+    "HS-BLUR": "pre-trained; irreducible blur measured and shown smaller than the preregistered threshold; 1.0 candidate fails",
+    "HS-NULL-MATCH": "pre-trained; a floor at zero must be shown not to sit there for an unrelated reason",
+    "HS-NULL-RATE": "pre-trained; rate/quantile only; max-over-null forbidden",
+    "HS-CEILING": "pre-freeze; highest defensible claim written first and checked against the EXECUTED counterexample suite",
+    "retained": "HS1..HS11 from GEOM-002, unchanged"
+  },
+
+  "conditions_for_any_future_successor": [
+    "break the degeneracy or leave the construction; the separating decoy is NOT constructible here under a spatially reduced statistic (derived closure result)",
+    "the one opening found, INFERRED and not designed: a PER-PIXEL statistic (no spatial reduction) would not suffer that cancellation, so a decoy-slice design might be expressible there; it would need its own domain derivation, null and counterexample suite",
+    "every counterexample realized as weights, with an intervention proof (HS-CEX)",
+    "every claimed property checked against random initialisation first (HS-ARCH-NULL)",
+    "never treat the three checkpoints as replications",
+    "if the degeneracy cannot be broken, STOP and record the class as exhausted"
+  ],
+
+  "established_measured": [
+    "the aggregation's candidate-axis receptive field is 11 of 12",
+    "HC_contrast (hand-set weights, non-matching) reproduces the matcher's O1/S8 signature",
+    "spike injection separates matcher from contrast latch 6/6",
+    "432 of 432 randomly initialised units are non-pointwise in k; relative deviation mean 0.874, median 0.786, min 0.531",
+    "the k-padding asymmetry is not distinguishable from the generic permutation effect"
+  ],
+  "established_derived": [
+    "A(V o pi) = A(V) o pi iff A is pointwise along k; the defeating invariance class is larger than pointwise",
+    "the separating decoy is not constructible in this pipeline under a spatially reduced statistic",
+    "a max-over-null rule is forbidden by (1-p)^N"
+  ],
+  "corrections_to_prior_audit": [
+    "its fallback claim (neighbourhood dependence) is REFUTED by F2",
+    "its identifiability argument was NARROWER than the failure: the problem is the degeneracy, not pointwise-ness",
+    "its padding objection is OVERSTATED and should be withdrawn"
+  ],
+  "not_established": {
+    "level_D_geometric_correspondence": "NOT-DEMONSTRATED (UNCHANGED)",
+    "evidence_for_correspondence": "NONE",
+    "evidence_against_correspondence": "NONE",
+    "trained_aggregation_measured": "NEVER"
+  },
+  "unknown": [
+    "how peaked the trained model's standardised profile is -- not measurable without loading it",
+    "whether a per-pixel decoy design is viable -- untested",
+    "what a blind third seat would conclude -- this seat could not supply it"
+  ]
+}

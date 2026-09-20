@@ -1,0 +1,226 @@
+{
+  "experiment_id": "EXP-E1-ERROR-PARTITION-002-INVERSE-ORACLE",
+  "description": "E1 robustness: inverse (fixed-point) oracle at the matching -> refinement boundary",
+  "status": "completed",
+  "started_utc": "2026-09-08T00:53:09.346602+00:00",
+  "finished_utc": "2026-09-08T00:54:13.731598+00:00",
+  "duration_s": 64.384996,
+  "metrics": {
+    "affine_oracle_range_diagnostic": {
+      "H2": {
+        "fraction_outside_0_11": 0.005286898038470105,
+        "oracle_min": 0.0,
+        "oracle_max": 15.577206759711666
+      },
+      "SEED1": {
+        "fraction_outside_0_11": 0.0,
+        "oracle_min": 0.0,
+        "oracle_max": 10.791683538112917
+      },
+      "SEED2": {
+        "fraction_outside_0_11": 2.3666790522870404e-06,
+        "oracle_min": 0.0,
+        "oracle_max": 12.77557015861352
+      }
+    },
+    "traces": {
+      "H2": [
+        {
+          "epe": 2.4004242992562075,
+          "d1": 16.71777378597911,
+          "pixels": 3802797
+        },
+        {
+          "epe": 4.791139855911173,
+          "d1": 45.00434811534773,
+          "pixels": 3802797
+        },
+        {
+          "epe": 11.925379369750303,
+          "d1": 73.95945668411962,
+          "pixels": 3802797
+        },
+        {
+          "epe": 18.199941129128103,
+          "d1": 85.0736444779987,
+          "pixels": 3802797
+        },
+        {
+          "epe": 20.294198735422288,
+          "d1": 90.51227294015432,
+          "pixels": 3802797
+        },
+        {
+          "epe": 22.487139987020303,
+          "d1": 91.99260439092595,
+          "pixels": 3802797
+        },
+        {
+          "epe": 22.011721086098937,
+          "d1": 93.69282662208896,
+          "pixels": 3802797
+        },
+        {
+          "epe": 23.51994744972894,
+          "d1": 93.86070305619785,
+          "pixels": 3802797
+        },
+        {
+          "epe": 22.482487673571917,
+          "d1": 94.74770806856111,
+          "pixels": 3802797
+        }
+      ],
+      "SEED1": [
+        {
+          "epe": 2.3193164497173653,
+          "d1": 17.250592129950665,
+          "pixels": 3802797
+        },
+        {
+          "epe": 7.337393643417812,
+          "d1": 61.07162701558879,
+          "pixels": 3802797
+        },
+        {
+          "epe": 19.406386183332515,
+          "d1": 87.1969763308428,
+          "pixels": 3802797
+        },
+        {
+          "epe": 32.90984180039934,
+          "d1": 92.67449721875766,
+          "pixels": 3802797
+        },
+        {
+          "epe": 28.01633023924991,
+          "d1": 95.25380923567575,
+          "pixels": 3802797
+        },
+        {
+          "epe": 36.412737321217726,
+          "d1": 95.4339398079887,
+          "pixels": 3802797
+        },
+        {
+          "epe": 28.888980431346592,
+          "d1": 96.24486923703789,
+          "pixels": 3802797
+        },
+        {
+          "epe": 37.1795158701046,
+          "d1": 96.0962943854221,
+          "pixels": 3802797
+        },
+        {
+          "epe": 29.153049919093778,
+          "d1": 96.5721809499692,
+          "pixels": 3802797
+        }
+      ],
+      "SEED2": [
+        {
+          "epe": 2.556149774060891,
+          "d1": 19.7592193325071,
+          "pixels": 3802797
+        },
+        {
+          "epe": 6.404065531138199,
+          "d1": 55.433066766382744,
+          "pixels": 3802797
+        },
+        {
+          "epe": 14.68491599116496,
+          "d1": 81.52033884532885,
+          "pixels": 3802797
+        },
+        {
+          "epe": 23.6933253524574,
+          "d1": 88.9896831200824,
+          "pixels": 3802797
+        },
+        {
+          "epe": 21.786141995406112,
+          "d1": 91.98211211379413,
+          "pixels": 3802797
+        },
+        {
+          "epe": 27.274417715888166,
+          "d1": 92.99102739378411,
+          "pixels": 3802797
+        },
+        {
+          "epe": 22.83594677964113,
+          "d1": 93.71830786655191,
+          "pixels": 3802797
+        },
+        {
+          "epe": 28.144341873706193,
+          "d1": 94.2098145128441,
+          "pixels": 3802797
+        },
+        {
+          "epe": 23.15563896275529,
+          "d1": 94.34029741792686,
+          "pixels": 3802797
+        }
+      ]
+    },
+    "verdicts": {
+      "H2": {
+        "as_trained_epe": 2.4004242992562075,
+        "best_iteration": 0,
+        "best_epe": 2.4004242992562075,
+        "best_d1": 16.71777378597911,
+        "epe_ratio": 1.0,
+        "error_removed_fraction": 0.0,
+        "verdict": "DOWNSTREAM-LIMITED"
+      },
+      "SEED1": {
+        "as_trained_epe": 2.3193164497173653,
+        "best_iteration": 0,
+        "best_epe": 2.3193164497173653,
+        "best_d1": 17.250592129950665,
+        "epe_ratio": 1.0,
+        "error_removed_fraction": 0.0,
+        "verdict": "DOWNSTREAM-LIMITED"
+      },
+      "SEED2": {
+        "as_trained_epe": 2.556149774060891,
+        "best_iteration": 0,
+        "best_epe": 2.556149774060891,
+        "best_d1": 19.7592193325071,
+        "epe_ratio": 1.0,
+        "error_removed_fraction": 0.0,
+        "verdict": "DOWNSTREAM-LIMITED"
+      }
+    },
+    "gates": {
+      "all_finite": true,
+      "iteration_0_matches_parent_as_trained": true,
+      "checkpoints_unchanged": true,
+      "PASS": true
+    },
+    "overall_verdict": "DOWNSTREAM-LIMITED",
+    "checkpoint_integrity": {
+      "before": {
+        "H2": "e3d48021d7f6a3d4d16fe33031e8ba85fd24389c5ba892f52c7e873e48454927",
+        "SEED1": "849a371eb54847b642525c9ee8bc997897ee0a8e94db9894d45c6c582ba5c9a7",
+        "SEED2": "9528c5b68c89c929d71b7acbb9c4d3e1b72f39d9082f3b6c889a8b5c25f4b294"
+      },
+      "after": {
+        "H2": "e3d48021d7f6a3d4d16fe33031e8ba85fd24389c5ba892f52c7e873e48454927",
+        "SEED1": "849a371eb54847b642525c9ee8bc997897ee0a8e94db9894d45c6c582ba5c9a7",
+        "SEED2": "9528c5b68c89c929d71b7acbb9c4d3e1b72f39d9082f3b6c889a8b5c25f4b294"
+      },
+      "unchanged": true
+    },
+    "wall_clock_s": 59.32658863067627
+  },
+  "observations": [
+    "EXP-E1-ERROR-PARTITION-001's DOWNSTREAM-LIMITED verdict is not an artifact of its affine oracle: a targeted fixed-point search for the matching output that would make the refinement stage correct also fails to remove the error.",
+    "a clamped fixed point searches inputs to THESE refinement weights; it says nothing about a refinement stage retrained against a perfect matching input."
+  ],
+  "conclusion": "Fixed-point oracle removes 0.0%, 0.0%, 0.0% of pooled EPE; overall verdict DOWNSTREAM-LIMITED.",
+  "error": null
+}

@@ -1,0 +1,32 @@
+{
+  "experiment": "EXP-E1-ERROR-PARTITION-002-INVERSE-ORACLE-RUN3",
+  "hypothesis": "EXP-E1-ERROR-PARTITION-001's DOWNSTREAM-LIMITED verdict is not an artifact of its affine oracle: a targeted fixed-point search for the matching output that would make the refinement stage correct also fails to remove the error.",
+  "preregistration": "the module docstring of phase2/scripts/exp_e1_inverse_oracle.py",
+  "parent_run": "EXP-E1-ERROR-PARTITION-001",
+  "measurement_only": true,
+  "training": "none -- trained H2 checkpoints, inference and substitution only",
+  "models": [
+    "H2",
+    "SEED1",
+    "SEED2"
+  ],
+  "method": "initial <- clamp(initial + alpha*a*(gt - final), 0, 11) where gt > 0, 8 iterations at each alpha in [1.0, 0.5, 0.25], a = the candidates-per-pixel slope measured in run 001; model's own initial elsewhere",
+  "supersedes": "EXP-E1-ERROR-PARTITION-002-INVERSE-ORACLE, whose update was not scaled by a and diverged -- see its NOTE.md",
+  "verdict_thresholds": {
+    "matching_limited_max_epe_ratio": 0.35,
+    "downstream_limited_min_epe_ratio": 0.65
+  },
+  "dataset": "kitti2015",
+  "split": "hailo_val, all 40 scenes, pooled over gt > 0",
+  "resolution": "368x1232 full frames",
+  "crop": null,
+  "disparity_range": 12,
+  "batch_size": 1,
+  "precision": "fp32",
+  "seed": [
+    0,
+    1,
+    2
+  ],
+  "known_limitation": "a clamped fixed point searches inputs to THESE refinement weights; it says nothing about a refinement stage retrained against a perfect matching input."
+}

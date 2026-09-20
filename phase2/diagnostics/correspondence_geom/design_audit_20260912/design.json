@@ -1,0 +1,422 @@
+{
+  "record": "phase2/diagnostics/correspondence_geom/design_audit_20260912",
+  "date": "2026-09-12",
+  "status": "DESIGN AND AUDIT ONLY -- NOT EXECUTED, NOT LAUNCHED",
+  "experiment_id": "EXP-CORRESPONDENCE-GEOM-001",
+  "title": "Pairing-interaction localisation of the imposed matching candidate",
+  "design_verdict": "DIRECT-GEOMETRIC-DIAGNOSTIC-VALID (gated)",
+
+  "execution_prohibitions_observed_by_this_record": [
+    "no training",
+    "no StereoNet instantiated",
+    "no trained checkpoint loaded",
+    "no inference with any trained weights",
+    "no RESULTS.md created",
+    "no historical record modified",
+    "Phase 1 untouched",
+    "INDEX-001/002/003, ARCH-001, ARCH-RATE-001, TR-001, GEOM-001, GEOM-002, SHIFT-001 untouched"
+  ],
+  "what_was_run_in_this_record": {
+    "file": "synthetic_mechanism_check.py",
+    "kind": "analytical/synthetic mechanism demonstration -- NOT an experiment",
+    "trained_model_used": false,
+    "real_data_used": false,
+    "training_performed": false,
+    "modules_used": [
+      "src.models.stereonet.aggregation.Aggregation with FRAMEWORK-DEFAULT RANDOM weights",
+      "src.models.stereonet.cost_volume.build_cost_volume (no parameters)",
+      "src.models.stereonet.regression.soft_argmin (no parameters)",
+      "phase2.models.scaled_regression.standardise_across_disparity (no parameters)"
+    ],
+    "numbers_used_as_thresholds_anywhere": "NONE"
+  },
+
+  "contamination_disclosure": {
+    "designer_has_read_prior_response_curves": true,
+    "records_read": ["SHIFT-001", "INDEX-001/002/003", "ARCH-001", "ARCH-RATE-001", "GEOM-001", "GEOM-002", "TR-001"],
+    "statistic_provenance": "derived from an algebraic identity in cost_volume.py (the 2x2 cost-volume interaction is identically zero because the cost volume is linear in both feature maps) plus the sign convention of regression.py (softmax(-z) makes a match a MINIMUM). No observed curve is an input to the derivation.",
+    "achievable_status_declared_in_advance": "CONSISTENCY EVIDENCE AT BEST",
+    "reason": "three checkpoints are irreducibly reused; the designer is contaminated",
+    "preferred_mitigation_not_available": "specification by a party that has not read the prior curves"
+  },
+
+  "evidence_ladder": {
+    "A_right_image_dependence": "ESTABLISHED",
+    "B_binocular_matching_path": "ESTABLISHED",
+    "C_candidate_coordinate_sensitivity": "INCONCLUSIVE -- bypassed as structurally the wrong axis",
+    "C_prime_trained_realises_architecturally_available_ramp": "MEASURED (TR-001, CLEAR-SEPARATION)",
+    "D_geometric_correspondence": "NOT-DEMONSTRATED -- the open question"
+  },
+
+  "source_derived_geometry": {
+    "trace_document": "source_trace.md",
+    "extractor": "4 x Conv2d(k=5,s=2,p=2) [no activations] + 6 x ResBlock(32) + Conv2d(32->32,k=3,p=1); fully convolutional; scale = 16",
+    "receptive_field_px": 477,
+    "pixel_to_feature": "t px translation with 16 | t  ->  tau = t/16 feature cells, EXACT in the interior",
+    "cost_volume_shift_left": "V[k][w] = Lf[w+k] - Rf[w] for w < W_f - k; 0 - Rf[w] for w >= W_f - k",
+    "cost_volume_shift_none": "V[k][w] = Lf[w] - Rf[w] for EVERY k (candidate-constant; EXP-010)",
+    "self_pair_substitution": "Rf[w] = Lf[w+tau]  =>  V(k,w) = F(k-tau, w+tau), F tau-independent; V = 0 EXACTLY at k = tau",
+    "sign_convention": "right[y,x] = left[y,x+t]  =>  d = x_left - x_right = +t px  =>  k_true = tau = t/16",
+    "candidate_unit_px": 16,
+    "readout": "aggregate -> bilinear upsample (align_corners=True) -> z = (c - mean_k c)/(sd_k c + 1e-5) -> softmax(-z) -> soft-argmin over 0..11",
+    "match_is_a": "MINIMUM of z(k), because of the negation inside softmax(-z)",
+    "refinement_invoked": false,
+    "disparity_initial_is_physical_disparity": false,
+    "disparity_initial_reason": "soft_argmin emits candidate units 0..11; the scale is supplied by the refinement stage, which is never run; the scalar is additionally softmax-compressed toward the grid centre",
+    "resolution": "the primary statistic is an INTEGER argmin over the candidate axis in native candidate units; it is invariant to the per-pixel affine standardisation and immune to softmax compression; the exact conversion 1 candidate = 16 px is recorded and used by NO step of the decision rule",
+    "unknowns_not_built_upon": [
+      "the value of disparity_initial for any input",
+      "whether the trained aggregation maps small |V| to low cost (this is the hypothesis, not a premise)",
+      "whether a learned non-correspondence shortcut could mimic the signature"
+    ]
+  },
+
+  "why_the_translation_class_is_dead": {
+    "empirical": "SHIFT-001 Stage A: a provably search-free model (max|slice_k - slice_0| = 0.0) responded to right-image translation by up to 0.70 candidates",
+    "algebraic_trained_vs_random": "predesign_audit_20260911 1.6: Agg is shift-equivariant in (k,y,w) up to padding for ANY weights, so m(tau) ~ tau + const is architecturally forced; ideal correspondence and random weights predict the SAME leading-order observable",
+    "algebraic_matched_vs_crossed_NEW": "V_AB[kappa+tau][w] = Af[w+tau+kappa] - Bf[w+tau] = G[kappa][w+tau], G tau-independent. A CROSS-PAIRED volume translates with tau exactly as a matched one does. The slope therefore cannot separate corresponding from non-corresponding either.",
+    "consequence": "no number of extra offsets, scenes, seeds, statistics or mask area can revive the translation-slope class"
+  },
+
+  "interventions_considered": [
+    {"id": 1, "name": "geometry-consistent horizontal translation (the GEOM-002 sweep)", "verdict": "REJECT", "reason": "the artifact reproduces it; cross-paired volumes translate identically"},
+    {"id": 2, "name": "geometry-inconsistent translation (mislabelled tau)", "verdict": "REJECT", "reason": "the network never sees the label; vacuous"},
+    {"id": 3, "name": "phase-preserving transform of the right image", "verdict": "REJECT", "reason": "destroys F's structure uncontrollably; a generic-binocular explanation survives"},
+    {"id": 4, "name": "spatially shuffled correspondence (per-row shift jitter)", "verdict": "REJECT", "reason": "V(k,y,w) = F_y(k - tau(y), w + tau(y)); the equivariance is row-local, so the artifact tracks tau(y) for free"},
+    {"id": 5, "name": "block permutation of the right image", "verdict": "REJECT", "reason": "hard block seams are a large uncontrolled right-image main effect"},
+    {"id": 6, "name": "controlled synthetic stereo-pair rendering", "verdict": "REJECT for now", "reason": "severely off-manifold; a negative would test OOD behaviour; no renderer in-repo"},
+    {"id": 7, "name": "left/right patch reassignment", "verdict": "REJECT", "reason": "seams, and it breaks the exact V = 0 anchor"},
+    {"id": 8, "name": "cross-scene pairing at fixed tau (the 2x2)", "verdict": "ACCEPT", "reason": "the unique intervention that changes correspondence while leaving the k-translation structure EXACTLY unchanged"},
+    {"id": 9, "name": "vertical-axis 2x2", "verdict": "ACCEPT as secondary negative", "reason": "same images, same displacement magnitude, no kappa exists (predesign_audit 1.5); a pure null on the primary statistic"}
+  ],
+
+  "construction": {
+    "inherited_from": "phase2/diagnostics/correspondence_arch_rate/20260911T130507Z/construction_spec.json",
+    "inherited_sha256": "7a4e2341fc50e3695648cc286cdb4219390a0378a6669994ec0e4555b75cf9b0",
+    "source_frame": {"width": 1232, "height": 368},
+    "crop_size": {"width": 1136, "height": 272},
+    "crop_size_in_feature_cells": {"width": 71, "height": 17},
+    "left_crop": "rows [0,272), cols [0,1136)  -- FIXED in every condition",
+    "right_crop_horizontal": "rows [0,272), cols [16*tau, 1136 + 16*tau)",
+    "right_crop_vertical": "rows [16*tau, 272 + 16*tau), cols [0,1136)",
+    "fill_padding_interpolation": "NONE -- integer slicing only",
+    "cost_volume_shift": "left",
+    "tau_levels": [1, 2, 3, 4, 5, 6],
+    "t_levels_px": [16, 32, 48, 64, 80, 96],
+    "tau_zero_excluded": true,
+    "tau_zero_exclusion_reason": "at tau = 0 the matched cells are byte-identical, so V == 0 exactly and the aggregation receives NO image information; a structurally distinct regime (POSTMORTEM Task B, ALGEBRA_AUDIT 4). Excluded entirely, never used as a baseline.",
+    "cells": {
+      "AA": {"left": "A", "right": "A shifted by tau", "corresponds": true, "role": "POSITIVE"},
+      "BB": {"left": "B", "right": "B shifted by tau", "corresponds": true, "role": "POSITIVE"},
+      "AB": {"left": "A", "right": "B shifted by tau", "corresponds": false, "role": "NEGATIVE-1"},
+      "BA": {"left": "B", "right": "A shifted by tau", "corresponds": false, "role": "NEGATIVE-1"}
+    },
+    "balance_property": "each source appears exactly once as a left and once as a right, so every first-order (main) effect cancels IDENTICALLY, not approximately"
+  },
+
+  "cancellation_identity": {
+    "statement": "V_AA + V_BB - V_AB - V_BA == 0 identically, for every k, w, tau",
+    "proof": "(Af[w+k] - Af[w+tau]) + (Bf[w+k] - Bf[w+tau]) - (Af[w+k] - Bf[w+tau]) - (Bf[w+k] - Af[w+tau]) = 0; build_cost_volume is linear in both feature maps",
+    "consequences": [
+      "any AFFINE aggregation returns an identically-zero aggregated-cost interaction for ANY weights, including the entire D-axis padding boundary",
+      "a candidate-constant volume gives an identically-zero interaction (the shift=none special case)",
+      "the forced translation V(k,w) = F(k-tau, w+tau) applies to matched AND crossed cells alike, so it contributes only through the nonlinearity",
+      "every additive main effect cancels: left identity, right identity, tau, crop geometry, receptive-field edge contamination, architecture, padding"
+    ]
+  },
+
+  "causal_prediction_table": [
+    {"mechanism": "H1 genuine geometric correspondence", "interaction_nonzero": "yes", "extremum_location": "MINIMUM at k = tau", "tracks_tau": "yes, exactly, unit slope, zero offset", "expected_h_of_6": 6},
+    {"mechanism": "H2 generic binocular / right-image dependence", "interaction_nonzero": "approximately 0 -- a right-image main effect cancels identically", "extremum_location": "undefined / noise-located", "tracks_tau": "no", "expected_h_of_6": "chance-like"},
+    {"mechanism": "H3 candidate-axis architectural artifact", "interaction_nonzero": "EXACTLY 0 for any affine aggregation; nonzero only through the LeakyReLU", "extremum_location": "weight-determined", "tracks_tau": "no reliable tracking", "expected_h_of_6": "chance-like"},
+    {"mechanism": "H4 no useful correspondence", "interaction_nonzero": "arbitrary", "extremum_location": "arbitrary", "tracks_tau": "no", "expected_h_of_6": "chance-like"}
+  ],
+  "discriminative": true,
+  "discriminative_reason": "H1 is separated from H2, H3 and H4 by BOTH the location and the tracking of the extremum; H2 and H3 are additionally separated by amplitude, which is reported but gates nothing",
+
+  "synthetic_mechanism_check": {
+    "file": "synthetic_mechanism_check.py",
+    "sha256": "7a4c69e9ade002f6c952d23f233fc71b5069e6d4c5277d0b73c9397df119cace",
+    "output": "synthetic_mechanism_check.json",
+    "output_sha256": "06fa8ef8ef0c5f485fa6282a0341a1e9cae8285d81ab6e852b52f71e92a982c7",
+    "n_random_seeds": 8,
+    "S0_matched_volume_max_abs_at_k_equals_tau": 0.0,
+    "S0_cost_volume_interaction_max_relative_residual": 1.5657903616521657e-07,
+    "S1_random_nonlinear_slope_matched_median": 0.1719,
+    "S1_random_nonlinear_slope_crossed_median": 0.0025,
+    "S2_matched_arm_alone_argmin_hits": {"nonlinear": "6/96", "linear": "4/96", "chance": "8/96"},
+    "S3_interaction_argmin_hits": {"nonlinear": "5/48", "linear_affine": "2/48"},
+    "S3_max_per_unit_h": {"nonlinear": 3, "linear_affine": 2},
+    "S3_median_amplitude": {"nonlinear": 1.124, "linear_affine": 0.0789},
+    "reading": "the architecture does NOT reliably place the interaction minimum at k = tau; no random unit reached h = 6. The ~14x amplitude ratio between the nonlinear and affine arms confirms that the interaction is a nonlinearity-generated quantity and that the linear artifact channel cancels.",
+    "threshold_use": "NONE. Eight seeds on synthetic fields calibrate nothing. The check answers only yes/no: can the artifact produce the signature? Answer: not reliably."
+  },
+
+  "primary_statistic": {
+    "name": "h -- pairing-interaction localisation count",
+    "definition": [
+      "z_cell(k,y,x) = the standardised cost the softmax consumes, cell in {AA,BB,AB,BA}",
+      "I_tau(k,y,x)  = 0.5*[z_AA + z_BB](k,y,x) - 0.5*[z_AB + z_BA](k,y,x)      PER PIXEL",
+      "Ibar_tau(k)   = median over the fixed mask of I_tau(k,.,.)                k = 0..11",
+      "hit_tau       = [ argmin_k Ibar_tau(k) == tau ]                           BOOLEAN",
+      "h(c,p)        = sum over tau in {1..6} of hit_tau                         in {0..6}"
+    ],
+    "units": "native candidate units; the statistic is an INTEGER index",
+    "frozen_before_execution": true,
+    "through_origin_fit": "PROHIBITED anywhere (ALGEBRA_AUDIT requirement 1)",
+    "forced_choices": {
+      "interaction_not_raw_response": "the unique functional in which the linear artifact cancels exactly",
+      "argmin_not_argmax": "softmax(-z): the negation makes a match a MINIMUM (regression.py)",
+      "k_equals_tau_not_a_fitted_offset": "V = 0 exactly at k = tau -- the construction's own anchor",
+      "integer_argmin_not_the_soft_argmin_scalar": "the scalar is softmax-compressed and carries an unknown monotone distortion; argmin is invariant to the per-pixel affine standardisation",
+      "per_pixel_interaction_then_median": "the cancellation identity is pointwise; median-first would cancel medians, not effects"
+    },
+    "non_injectivity_proof": [
+      {"alternative": "Ibar constant in k", "h": "0 (tau=0 excluded)", "separated": true},
+      {"alternative": "Ibar a monotone ramp in k", "h": "<= 1, argmin pinned at an endpoint", "separated": true},
+      {"alternative": "Ibar a step of any height", "h": "<= 1, argmin tau-independent", "separated": true},
+      {"alternative": "Ibar a dip at a FIXED k0 != tau", "h": "<= 1", "separated": true},
+      {"alternative": "Ibar a dip tracking tau with a CONSTANT offset c != 0", "h": 0, "separated": true, "note": "captured as outcome class D"},
+      {"alternative": "Ibar pure noise", "h": "~Binomial(6, ~1/12)", "separated": true, "note": "calibrated empirically by the gate"},
+      {"alternative": "a MAXIMUM at k = tau (sign-inverted mechanism)", "h": 0, "separated": true, "note": "argmax recorded separately"}
+    ]
+  },
+
+  "secondary_quantities_reported_never_claimed": [
+    "argmax_k Ibar_tau(k)",
+    "anchor c_tau = argmin_k Ibar_tau(k) - tau",
+    "amplitude max_k Ibar_tau - min_k Ibar_tau",
+    "soft-argmin response m(tau) and its free-intercept slope alpha for every cell (continuity with TR-001; COMPARED TO NOTHING, since the slope is not a correspondence discriminator)"
+  ],
+
+  "mask": {
+    "definition_crop_coords": "retain (y,x) iff 64 <= y < 208 AND 64 <= x < 864",
+    "retained_pixels": 115200,
+    "gt_dependent": false,
+    "tau_dependent": false,
+    "axis_dependent": false,
+    "model_dependent": false,
+    "bounds_provenance": {
+      "top_bottom_left_border_64px": "inherited unchanged from correspondence_arch_rate/.../classification_spec.json (sha256 273f7562b62dd4c29a2d617e3b2b4b24d98532fcc7d99531b82b55b377d0cd28)",
+      "right_border_x_lt_864": "DERIVED: shift_left(x,k) zero-fills feature columns [71-k,71); max k = 11 -> [60,71). Aggregation spatial radius 5 cells (5 x Conv3d 3x3x3), bilinear upsample slop 1 cell. Safe iff w + 6 < 60 -> w < 54 -> x < 864 px."
+    },
+    "declared_limitation": "the extractor receptive field is ~477 px, so a 64 px border does NOT remove crop-edge contamination. It is a geometric MAIN EFFECT, identical in all four cells, and is cancelled by the interaction. Declared in advance, as GEOM-002 declared it."
+  },
+
+  "scenes": {
+    "split": "hailo_val",
+    "n_available": 40,
+    "previously_used_indices": [0, 5, 6, 7, 8, 9, 27, 31],
+    "selection_rule": "take the twelve LOWEST unused indices in ascending order and pair them consecutively; no GT-based and no response-based selection anywhere",
+    "pairs": [[1, 2], [3, 4], [10, 11], [12, 13], [14, 15], [16, 17]],
+    "pair_names": [
+      ["000161_10.png", "000162_10.png"],
+      ["000163_10.png", "000164_10.png"],
+      ["000170_10.png", "000171_10.png"],
+      ["000172_10.png", "000173_10.png"],
+      ["000174_10.png", "000175_10.png"],
+      ["000176_10.png", "000177_10.png"]
+    ],
+    "all_twelve_never_measured_in_any_correspondence_experiment": true
+  },
+
+  "checkpoints": {
+    "note": "paths and sha256 inherited verbatim from correspondence_tr/20260911T134500Z/spec.json (sha256 5e6a0bca39408018454fb69e3287f26f8524fc89475ee564a5da5c54a5fa0280); re-verified at load, never regenerated",
+    "H2_seed0": {
+      "path": "phase2/diagnostics/determinism/20260909T041500Z_baseline/checkpoints/STAGEB-DETERMINISTIC-BASELINE-ARM-A-RUNA_checkpoint.pth",
+      "sha256": "581d62e699b159945580f9627b451d953ce07b5dc763d608a9f4a8b5ecba692a"
+    },
+    "H2_seed1": {
+      "path": "phase2/factorial/block_count_full/20260910T005550Z/checkpoints/EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED1_checkpoint.pth",
+      "sha256": "58117f2613bba4b2c817328c7d6757f21b340ec5e64a828e633193ae091d4adf"
+    },
+    "H2_seed2": {
+      "path": "phase2/factorial/block_count_full/20260910T005550Z/checkpoints/EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED2_checkpoint.pth",
+      "sha256": "245a3f5bcb801c7d9c3550b02cb8775cb86486beae606f04097900340754fa69"
+    },
+    "NEG_shift_none": {
+      "path": "phase2/factorial/shift_none_standardized/20260909T071500Z/checkpoints/EXP-FACTORIAL-SHIFT-NONE-STANDARDISED-001-ARM-A_checkpoint.pth",
+      "sha256": "d40d805bbe4cca310683f8617c7518d660e30055c43431081bcbb6a7c388f9b1"
+    }
+  },
+
+  "controls": {
+    "trained_H2_arm": {"status": "REQUIRED", "reason": "it is the test arm"},
+    "search_free_NEG_shift_none": {
+      "status": "REQUIRED, reported separately, never mixed into the gate",
+      "reason": "with a k-constant volume no kappa exists, so no tracking mechanism exists",
+      "declared_confound": "it differs from the trained arm in TWO ways at once -- a different checkpoint AND a different cost-volume construction -- so it cannot isolate the construction as the cause (ALGEBRA_AUDIT 5.2)"
+    },
+    "right_image_corruption": {
+      "status": "NOT NEEDED",
+      "reason": "corrupting the right image changes a MAIN EFFECT of the right image, and every main effect cancels IDENTICALLY in the interaction. Such a control would test a channel the statistic has already closed algebraically."
+    },
+    "geometry_preserving": {"status": "PRESENT", "arm": "the POSITIVE cells AA, BB"},
+    "geometry_breaking": {
+      "status": "PRESENT, DOUBLED",
+      "NEGATIVE_1": "cross-pairing AB, BA -- breaks correspondence, holds the translation structure and every marginal exactly fixed",
+      "NEGATIVE_2": "the vertical 2x2 -- the SAME images, the SAME displacement magnitude, the wrong axis; no kappa exists, so a pure null on the primary statistic",
+      "NEGATIVE_2_declared_caveat": "roads, lane markings and horizon lines are vertically self-similar, so a partial spurious match at some tau is possible; the vertical arm is a magnitude-matched null and is NEVER assigned a predicted slope or location"
+    },
+    "random_weight_aggregation": {"status": "REQUIRED, AND IT GATES", "see": "gate"},
+    "affine_aggregation_arm": {"status": "SYNTHETIC ONLY, already run", "reason": "a mechanism demonstration; running it with trained weights would measure a model that does not exist"}
+  },
+
+  "gate": {
+    "rationale": "ALGEBRA_AUDIT 3.4 -- the random arm is not a control but a gate: it determines whether the observable is diagnostic at all, and it runs FIRST, before any trained aggregation is loaded",
+    "randomisation_inherited_verbatim_from": "phase2/diagnostics/correspondence_arch_rate/20260911T130507Z/randomisation_spec.json",
+    "randomisation_sha256": "e52b5b03c5d4406e5ed9212f6681ee53bb448927eebddd367a7698ce9ce203ad",
+    "randomised_module": "aggregation ONLY (111585 params)",
+    "initialisation": "framework default: kaiming_uniform_(weight, a=sqrt(5)); bias ~ U(-1/sqrt(fan_in), +1/sqrt(fan_in))",
+    "seed_procedure": "torch.manual_seed(seed) immediately before construction",
+    "seeds": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+    "frozen_not_randomised": ["feature_extractor (trained, frozen)", "cost_volume (no parameters)", "readout (zero parameters, asserted at load)", "refinement (never invoked)"],
+    "feature_extractor_sources": ["H2_seed0", "H2_seed1", "H2_seed2"],
+    "feature_extractor_must_stay_frozen_because": "randomising it changes Lf, hence F, hence the V = 0 structure at kappa = 0; the comparison would no longer hold the cost volume fixed",
+    "cost_volumes_bit_identical_between_arms": true,
+    "separation_not_containment": "ARCH-001 showed containment degrades into vacuity when the reference is wide (its interval spanned 97.4% of the statistic's range). If the random distribution is wide, separation simply fails -- and a wide random distribution IS the finding that the architecture can produce the signature."
+  },
+
+  "unit_of_analysis": {
+    "stage_1_gate": {
+      "unit": "(feature extractor e, scene pair p, random seed s)",
+      "n": 576,
+      "breakdown": "3 extractors x 6 pairs x 32 seeds"
+    },
+    "stage_2_trained": {
+      "unit": "(checkpoint c, scene pair p)",
+      "n": 18,
+      "breakdown": "3 checkpoints x 6 pairs",
+      "role": "PRIMARY"
+    },
+    "search_free": {"unit": "(NEG_shift_none, scene pair p)", "n": 6, "role": "reported separately"},
+    "independence": "units are NOT independent replicates -- they share 3 checkpoints and 12 scenes, and the checkpoints originate from related training conditions",
+    "p_value_computed_anywhere": false,
+    "combinatorial_null_explicitly_rejected": "P(h = 6) = 12^-6 under a uniform-argmin null is a fiction: the synthetic check shows argmin is NOT uniform under this architecture. Recorded only to state that it is not used.",
+    "shared_weights_accounting": "three checkpoints are the entire population; training is forbidden, so weight reuse is irreducible and caps evidential strength",
+    "reporting_required": ["per unit", "grouped by checkpoint", "grouped by scene pair"],
+    "heterogeneity_rule": "if one checkpoint separates while others overlap -> MIXED -> CASE C, never an overall success. If one pair drives the result, report it explicitly. Heterogeneity is never averaged away."
+  },
+
+  "decision_rule": {
+    "threshold_free": true,
+    "permitted_condition_forms": ["sign", "ordering", "strict monotonicity", "complete separation"],
+    "magnitude_criteria_gating_anything": "NONE",
+    "stage_1": {
+      "G_STOP": "if max over the 576 gate units of h_rand == 6 -> TERMINAL OUTCOME 'STATISTIC-ARCHITECTURALLY-AVAILABLE' -> HALT. Stage 2 is NOT run. The trained arms are never inspected.",
+      "G_PASS": "otherwise record H* := max over the 576 gate units of h_rand as an ORDERING reference for complete separation (not a chosen threshold), and proceed."
+    },
+    "stage_2_outcomes": {
+      "A_CORRESPONDENCE_CONSISTENT": {
+        "condition": "min h_trained > H*, AND every one of the 3 checkpoints and every one of the 6 pairs separates (no unit at or below H*)",
+        "interpretation": "the trained response is sensitive to WHICH left and right images are paired, and locates the imposed candidate"
+      },
+      "B_NO_SEPARATION": {
+        "condition": "the trained h distribution overlaps the random population",
+        "interpretation": "not demonstrated under this design. NOT evidence that correspondence is absent -- the input is OOD"
+      },
+      "C_MIXED": {
+        "condition": "partial separation, or one checkpoint / one pair separating while others do not",
+        "interpretation": "ambiguous; never an overall success; report the heterogeneity explicitly"
+      },
+      "D_TRACKING_WITH_OFFSET": {
+        "condition": "h_trained does not separate, BUT the anchor c_tau = argmin_k Ibar_tau - tau is IDENTICAL across all six tau with c != 0, and separates from the random anchor-constancy rate",
+        "interpretation": "the response tracks the imposed geometry with a SYSTEMATIC CANDIDATE OFFSET. Informative about equivariance; NOT a correspondence pass."
+      }
+    },
+    "required_alongside_every_outcome": [
+      "the vertical 2x2 (NEGATIVE-2) result, reported separately",
+      "the search-free arm result, reported separately",
+      "under outcome A, a vertical arm that ALSO tracks downgrades the result to C (it would indicate a non-epipolar mechanism)"
+    ]
+  },
+
+  "hard_stops": [
+    {"id": "HS1", "condition": "the left crop is byte-identical across every tau and every cell sharing that left source", "derivation": "same slice of the same array"},
+    {"id": "HS2", "condition": "the right-crop origin is exactly (0, 16*tau) horizontally and (16*tau, 0) vertically, asserted at every level", "derivation": "frozen construction"},
+    {"id": "HS3", "condition": "for every POSITIVE cell, max|V[:, tau, :, w < 54]| == 0.0 EXACTLY", "derivation": "source_trace.md 4.2; confirmed 0.0 by the synthetic check"},
+    {"id": "HS4", "condition": "cost-volume 2x2 interaction: max|residual| / max|V| <= 1e-5", "derivation": "zero in exact arithmetic; bound from float32 round-off (eps = 1.19e-7, accumulated over 32 channels and 4 terms ~ 1e-6) with a stated 10x margin. DERIVED FROM MACHINE PRECISION, not from any observation."},
+    {"id": "HS5", "condition": "one complete unit recomputed after a PROCESS RESTART is BIT-IDENTICAL (IEEE-754 byte comparison)", "derivation": "determinism"},
+    {"id": "HS6", "condition": "no optimizer imported or constructed; no .backward(); no .step(); no weight modified; refinement never invoked; readout parameter count == 0", "derivation": "source assertions"},
+    {"id": "HS7", "condition": "the Stage-1 G_STOP condition HALTS the process and Stage-2 code is unreachable in the same run", "derivation": "enforcement"},
+    {"id": "HS8", "condition": "mask retained-pixel count == 115200; mask identical in all cells, all tau, both axes, every model", "derivation": "mask definition"}
+  ],
+  "hard_stop_enforcement": "every hard stop must raise and the harness must be shown to have exited. 'Recorded and continued' is the GEOM-002 breach and is FORBIDDEN.",
+  "no_numeric_disparity_expectation_anywhere": true,
+  "invalid_5_5_anchor_reinstated": false,
+
+  "determinism": {
+    "torch.use_deterministic_algorithms": true,
+    "torch.backends.cudnn.deterministic": true,
+    "torch.backends.cudnn.benchmark": false,
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+    "grad_enabled": false,
+    "random_seeds": {
+      "aggregation_randomisation": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+      "any_other_stochastic_component": "NONE -- the pipeline is deterministic given the weights and the inputs"
+    }
+  },
+
+  "compute": {
+    "inference_only": true,
+    "training_proposed": false,
+    "extractor_passes": 252,
+    "cost_volumes_horizontal": 432,
+    "cost_volumes_vertical": 432,
+    "stage_1_gate_readouts": 13824,
+    "stage_2_trained_readouts": 864,
+    "search_free_readouts": 288,
+    "total_readouts_approx": 15000,
+    "measured_reference_rates": {
+      "ARCH-RATE-001": "5376 arms in 56.2 s",
+      "TR-001": "560 readouts + 208 volumes in 23.7 s"
+    },
+    "hardware_reference": "RTX 4060 Laptop, torch 2.7.0+cu128, CUDA 12.8",
+    "estimate": "5-10 minutes wall clock, single GPU, deterministic settings",
+    "peak_memory_note": "four z tensors held at once: 4 x 12 x 272 x 1136 x 4 B ~ 59 MB"
+  },
+
+  "claim_ceiling": {
+    "permitted_under_outcome_A": "Under the specified synthetic fronto-parallel 2x2 pairing intervention, the location of the trained aggregation's nonlinear left-right pairing response coincides with the imposed matching candidate k = tau at every tested tau, for all three checkpoints and all six scene pairs, and lies outside the observed random-weight population. The response is therefore sensitive to WHICH left and right images are actually paired -- not only to the translation applied to the right image.",
+    "required_phrasing": "'outside the observed random population'; the reference is 576 sampled parameterisations, NOT the space of random weights",
+    "prohibited_under_any_outcome": [
+      "complete correspondence",
+      "correct matching everywhere",
+      "correct disparity",
+      "sub-candidate precision",
+      "genuine disparity search",
+      "stereo correctness",
+      "real-scene correspondence",
+      "metric depth correctness",
+      "generalisation",
+      "'impossible under random weights'",
+      "'proves learned correspondence'"
+    ],
+    "terminology": {
+      "synthetic geometric pairing response": "the response depends on which images are paired, at the imposed candidate -- ATTAINABLE",
+      "architectural correspondence": "produced by the operator irrespective of weights -- the G_STOP outcome",
+      "learned correspondence": "weight-dependent and attributable to matching -- only PARTIALLY attainable; the gate shows weight-dependence, never that the mechanism is matching",
+      "correspondence (unqualified)": "NOT attainable by this construction",
+      "genuine disparity search": "NOT attainable",
+      "real-scene correspondence": "NOT attainable"
+    },
+    "irreducible_gap": "nothing in this design separates learned correspondence from a learned NON-correspondence shortcut that happens to place its nonlinear pairing minimum at k = tau. ALGEBRA_AUDIT 5.3 marks this UNKNOWN and not addressable by any ablation of this architecture on synthetic input. It remains UNKNOWN.",
+    "OOD_caveat": "a constant-disparity plane is not natural stereo; a NEGATIVE result remains ambiguous. Declared in advance. Mitigated only in that both arms draw on the same 12 real KITTI frames, so the OOD penalty is carried equally by POSITIVE and NEGATIVE and is cancelled by the interaction."
+  },
+
+  "verdict_conditions": [
+    "the gate runs FIRST and can terminate before any trained weight is inspected",
+    "separation, never containment",
+    "hard stops written against derivable properties AND enforced in code",
+    "the non-injectivity proof for the statistic, carried in the preregistration",
+    "shape conditions applied symmetrically to every arm",
+    "the contamination disclosure",
+    "the status declared in advance as CONSISTENCY EVIDENCE AT BEST"
+  ],
+
+  "cheapest_discriminating_experiment": "Hold the translation fixed and swap the pairing. At each tau in {1..6}, for two real KITTI frames A and B, run four forward passes -- (A,A_tau), (B,B_tau), (A,B_tau), (B,A_tau) -- and test the single boolean argmin_k Ibar_tau(k) == tau, with the random-weight arm run FIRST as a gate. The architectural artifact lives in the LINEAR part of the operator and the cost volume is linear in both feature maps, so the artifact cancels EXACTLY in the 2x2 interaction. ~15000 inference passes, 5-10 minutes, no training.",
+
+  "not_executed": true,
+  "results_md_created": false,
+  "experiment_launched": false
+}

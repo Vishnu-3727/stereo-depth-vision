@@ -1,0 +1,70 @@
+{
+  "architecture": "StereoNet (Phase 1 src/models/stereonet) + phase2 StandardisedDisparityRegression",
+  "cost_volume_shift": "left",
+  "cost_volume_method": "subtract",
+  "num_disparities": 12,
+  "regression": "standardised soft-argmin (phase2.models.scaled_regression)",
+  "seed": 1,
+  "dataset": "kitti2015",
+  "train_split": "hailo_calib (scenes 0-159)",
+  "validation_split": "hailo_val (scenes 160-199), first 10 scenes validated",
+  "crop": [
+    256,
+    512
+  ],
+  "augmentation": "random crop, per-image gain jitter sigma=0.1, no flip",
+  "optimizer": "Adam betas=(0.9, 0.999)",
+  "learning_rate": 0.001,
+  "scheduler": "CosineAnnealingLR T_max=200 -- the native frozen schedule, neither shortened nor re-fitted",
+  "loss": "masked smooth L1, beta=1.0, valid = gt > 0 and gt < max_disparity",
+  "batch_size": 2,
+  "epochs": 200,
+  "precision": "fp32",
+  "device": "cuda",
+  "experiment": "EXP-BLOCKCOUNT-FULL-001-ARM-C-SEED1",
+  "hypothesis": "A refinement stack trained at 4 residual blocks matches six-block H2 at the same budget, seed and recipe, and stays stereo-functional.",
+  "preregistration": "phase2/docs/EXP_E3B_REFINEMENT_CAPACITY_001_PREREGISTRATION.md",
+  "approved_by": "phase2/docs/PHASE_2_STAGE_E_DECISION_RECORD.md",
+  "arm": "C",
+  "arm_role": "ablated",
+  "refinement_blocks": 4,
+  "refinement_dilations": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "changed_variable": "number of residual blocks in Refinement.blocks (4 instead of 6); trailing dilation-1 blocks removed, the 1-2-4-8 ladder kept intact",
+  "control": "the seed-0 200-epoch records, READ-ONLY and NOT retrained: Stage B deterministic run A (6 blocks) and EXP-BLOCKCOUNT-DETERMINISTIC-001 arm B (5 blocks). Within this batch, the two 6-block seeds are the seed-noise reference the 5-block arm is read against.",
+  "gate_at_epoch": 10,
+  "stereo_gate_epoch": 200,
+  "checkpoint_epochs": [
+    1,
+    2,
+    5,
+    10,
+    20,
+    50,
+    100,
+    150,
+    200
+  ],
+  "validation_protocol": "first 10 scenes of hailo_val, full 368x1232 frames, pooled over gt > 0 (exp_h1_cost_volume.validate, imported); every 5 epochs, plus epochs 1 and 2",
+  "known_limitation": "160 training scenes from random initialisation: a capacity result here does NOT transfer to a pretrained model. MACs are arithmetic, not latency (Phase 1 measured 0.67x-142x misprediction on this stack). One seed in stage 1; no significance test and none claimed.",
+  "experiment_kind": "200-EPOCH BLOCK-COUNT EXPERIMENT, BATCH 1 OF A SEQUENTIAL CAMPAIGN WITH A HARD REVIEW GATE. batch 3, the final batch of the sequential campaign: TWO runs, 4 blocks / seed 1 and 4 blocks / seed 2, 200 epochs each, to bring the 4-block arm to three seeds {0,1,2} against the 6-block and 5-block arms' three each. No other run is authorised -- not a 4b/seed0 rerun, not 4b/seed3, not another 5b or 6b seed, not a 3-block arm, not a dilation, candidate-count, receptive-field, Scene Flow or pretrained variant, not longer training, not an altered recipe",
+  "epoch_budget": 200,
+  "changed_variables": [
+    "refinement block count",
+    "seed"
+  ],
+  "deterministic_controls": {
+    "torch.use_deterministic_algorithms": true,
+    "torch.backends.cudnn.deterministic": true,
+    "torch.backends.cudnn.benchmark": false,
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+  },
+  "materiality_band": "NONE. The historical E3b/E3c band is invalidated. No band is reused and none is invented here, before or after seeing the results. Establishing the seed-noise scale at 6 blocks is part of what this batch measures.",
+  "claim_ceiling": "Batch 1 has three runs: two seeds at 6 blocks and ONE seed at 5 blocks. A single 5-block seed cannot separate an architecture effect from a seed effect. No statement of the form 'N blocks are required/equivalent/superior' is supportable from batch 1 alone.",
+  "prior_screen": "EXP-BLOCKCOUNT-SEEDSCREEN-001 (phase2/factorial/block_count_seed_screen/20260909T145659Z), verdict CONTINUE-FULL",
+  "prior_batches": "batch 1 phase2/factorial/block_count_full/20260910T005550Z (verdict CONTINUE-BATCH-2); batch 2 phase2/factorial/block_count_full/20260910T052736Z (verdict 5-BLOCK-PENALTY-AT-SEEDS-0-1-2)"
+}

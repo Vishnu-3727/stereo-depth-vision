@@ -1,0 +1,65 @@
+{
+  "arm": "C",
+  "seed": 2,
+  "experiment_id": "EXP-BLOCKCOUNT-FULL-001-ARM-C-SEED2",
+  "controls": {
+    "torch.use_deterministic_algorithms": true,
+    "torch.backends.cudnn.deterministic": true,
+    "torch.backends.cudnn.benchmark": false,
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+  },
+  "batch": 1,
+  "batch_note": "batch 3, the final batch of the sequential campaign: TWO runs, 4 blocks / seed 1 and 4 blocks / seed 2, 200 epochs each, to bring the 4-block arm to three seeds {0,1,2} against the 6-block and 5-block arms' three each. No other run is authorised -- not a 4b/seed0 rerun, not 4b/seed3, not another 5b or 6b seed, not a 3-block arm, not a dilation, candidate-count, receptive-field, Scene Flow or pretrained variant, not longer training, not an altered recipe",
+  "blocks": 4,
+  "parameters": 386594,
+  "init_weight_sha": "e622226a5a22fc9b",
+  "epoch_budget": 200,
+  "schedule_T_max": 200,
+  "changed_variables": {
+    "refinement_blocks": 4,
+    "seed": 2
+  },
+  "initialised_from": "fresh, per the frozen recipe; no checkpoint loaded",
+  "provenance": {
+    "head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "head_subject": "docs: add the Phase 1 overview",
+    "phase_1_frozen_commit": "b4207e518166f5089731b4d037a4a79234f70986",
+    "phase_1_diff_vs_frozen": "",
+    "status_short": "M .gitignore\n?? phase2/",
+    "phase_2_committed": false
+  },
+  "environment": {
+    "command": "phase2/factorial/block_count_full/exp_blockcount_batch3.py train --out phase2/factorial/block_count_full/20260910T081501Z --arm C --seed 2",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "numpy": "2.5.1",
+    "cuda_version": "12.8",
+    "cudnn_version": 90701,
+    "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "nvidia_driver": "616.64",
+    "flags": {
+      "deterministic_algorithms": true,
+      "cudnn.deterministic": true,
+      "cudnn.benchmark": false
+    },
+    "env": {
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+    }
+  },
+  "started_utc": "2026-09-10T09:35:50Z",
+  "wall_clock_s": 4735.200435161591,
+  "finished_utc": "2026-09-10T10:54:45Z",
+  "schedule_T_max_requested_by_training_code": 200,
+  "checkpoint": "phase2\\factorial\\block_count_full\\20260910T081501Z\\checkpoints\\EXP-BLOCKCOUNT-FULL-001-ARM-C-SEED2_checkpoint.pth",
+  "checkpoint_sha256": "47cd80901bf9f8ebf86e2c73d453272ca2acf9514500371d4db5793f03cf15ec",
+  "final_weight_sha": "fc7585ba79a4cf01",
+  "snapshots": [
+    "EXP-BLOCKCOUNT-FULL-001-ARM-C-SEED2_epoch10.pth",
+    "EXP-BLOCKCOUNT-FULL-001-ARM-C-SEED2_epoch100.pth",
+    "EXP-BLOCKCOUNT-FULL-001-ARM-C-SEED2_epoch150.pth",
+    "EXP-BLOCKCOUNT-FULL-001-ARM-C-SEED2_epoch20.pth",
+    "EXP-BLOCKCOUNT-FULL-001-ARM-C-SEED2_epoch200.pth",
+    "EXP-BLOCKCOUNT-FULL-001-ARM-C-SEED2_epoch50.pth"
+  ]
+}

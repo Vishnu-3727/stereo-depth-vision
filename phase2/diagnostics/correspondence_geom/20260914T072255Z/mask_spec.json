@@ -1,0 +1,47 @@
+{
+  "experiment": "EXP-CORRESPONDENCE-GEOM-A",
+  "definition_original_coords": "retain pixel (y,x) iff GT[y,x] > 0 AND GT[y,x]/16 in [2,9] AND 96 <= y < 272 AND 96 <= x < 1136",
+  "band": {
+    "quantity": "GT/16",
+    "lo": 2.0,
+    "hi": 9.0,
+    "gt_scale": 256.0
+  },
+  "edge_exclusion_px": 96,
+  "edge_exclusion_decomposition": {
+    "crop_margin_M": 32,
+    "inner_border_B": 64
+  },
+  "edge_derivation": "EDGE = M + B = 32 + 64 = 96. M = 32 is this experiment's crop margin (max|Delta|). B = 64 is the inner border GEOM-001 used (its mask_spec.json edge_exclusion_decomposition: M = 48, B = 64, EDGE = 112). The brief requires the border to be at least M plus the border GEOM-001 used; 32 + 64 = 96 is that minimum, adopted exactly, so the crop window [M, H-M) x [M, W-M) always contains the mask interior with a further 64 px of real image content on every side.",
+  "crop_frame_mapping": "mask_crop[y, x] = mask_original[y + M, x + M]",
+  "single_fixed_mask": true,
+  "delta_dependent": false,
+  "model_dependent": false,
+  "derived_from": "ground truth and image geometry only",
+  "why_a_border_exists": "with crop-based translation no fill is ever produced, so the border is NOT needed to exclude fill. It is retained to reduce the residual influence of differing real content entering the feature receptive field near the crop edge. The feature receptive field is ~477 px, which no affordable border can fully exclude (the image is only 368 px tall); the shift=none control measures whatever residual survives.",
+  "why_single_mask_is_valid": "the crop window size is identical for every Delta and every axis, so one fixed pixel set is well defined for all conditions. A Delta-dependent mask would change the sample between conditions and bias the paired difference.",
+  "per_scene": {
+    "000165_10.png": {
+      "scene_index": 5,
+      "retained_pixels": 41068,
+      "gt_over_16_mean": 2.7741434616158718,
+      "gt_over_16_median": 2.5020751953125,
+      "gt_over_16_min": 2.00048828125,
+      "gt_over_16_max": 4.26318359375
+    },
+    "000169_10.png": {
+      "scene_index": 9,
+      "retained_pixels": 24692,
+      "gt_over_16_mean": 2.404947231137615,
+      "gt_over_16_median": 2.336181640625,
+      "gt_over_16_min": 2.0,
+      "gt_over_16_max": 6.944091796875
+    }
+  },
+  "pooled_retained_pixels": 65760,
+  "scenes": [
+    5,
+    9
+  ],
+  "split": "hailo_val"
+}

@@ -1,0 +1,76 @@
+=== TRAIN EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-A-SEED1 2026-09-09T15:03:12Z ===
+train EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-A-SEED1 exit=0
+recorded as EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-A-SEED1
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-A-SEED1 [15:16:37] status: completed
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-A-SEED1 done in 797.6s; final weight sha 4358e41e0fecec9e
+=== TRAIN EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED1 2026-09-09T15:16:38Z ===
+train EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED1 exit=0
+recorded as EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED1
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED1 [15:29:34] status: completed
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED1 done in 768.2s; final weight sha 2f3901a7c19988af
+=== TRAIN EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-C-SEED1 2026-09-09T15:29:36Z ===
+train EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-C-SEED1 exit=0
+recorded as EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-C-SEED1
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-C-SEED1 [15:42:01] status: completed
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-C-SEED1 done in 738.7s; final weight sha d83e671f4f334358
+=== TRAIN EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-A-SEED2 2026-09-09T15:42:03Z ===
+train EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-A-SEED2 exit=0
+recorded as EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-A-SEED2
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-A-SEED2 [15:55:03] status: completed
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-A-SEED2 done in 773.4s; final weight sha 6897898ec457c043
+=== TRAIN EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED2 2026-09-09T15:55:05Z ===
+train EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED2 exit=0
+recorded as EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED2
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED2 [16:07:58] status: completed
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED2 done in 766.4s; final weight sha 4f469f1483b95e2d
+=== TRAIN EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-C-SEED2 2026-09-09T16:08:00Z ===
+train EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-C-SEED2 exit=0
+recorded as EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-C-SEED2
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-C-SEED2 [16:20:26] status: completed
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-C-SEED2 done in 737.9s; final weight sha d919a5fed881e2d0
+=== EVAL40 arm A seed 1 2026-09-09T16:20:27Z ===
+eval40 exit=0
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-A-SEED1 40-scene @30ep  EPE 5.5463382  D1 53.9879725  RMSE 9.7367022
+=== EVAL40 arm B seed 1 2026-09-09T16:20:45Z ===
+eval40 exit=0
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED1 40-scene @30ep  EPE 4.7466210  D1 43.4034212  RMSE 9.0397244
+=== EVAL40 arm C seed 1 2026-09-09T16:21:02Z ===
+eval40 exit=0
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-C-SEED1 40-scene @30ep  EPE 6.0232913  D1 55.9165793  RMSE 10.7988622
+=== EVAL40 arm A seed 2 2026-09-09T16:21:18Z ===
+eval40 exit=0
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-A-SEED2 40-scene @30ep  EPE 4.8990151  D1 42.0543616  RMSE 10.0796620
+=== EVAL40 arm B seed 2 2026-09-09T16:21:35Z ===
+eval40 exit=0
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED2 40-scene @30ep  EPE 5.3959175  D1 50.9265943  RMSE 10.4334646
+=== EVAL40 arm C seed 2 2026-09-09T16:21:51Z ===
+eval40 exit=0
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-C-SEED2 40-scene @30ep  EPE 7.8344627  D1 69.7482932  RMSE 12.3655072
+=== PROBES 2026-09-09T16:22:08Z ===
+probes exit=0
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-A-SEED1 (6 blocks, seed 1):
+    epoch  10  right   -3.576  map   -1.883  entropy 2.0933  std  8.396  init r(GT) +0.6334
+    epoch  20  right  +12.595  map  +10.218  entropy 1.8132  std 12.520  init r(GT) +0.6721
+    epoch  30  right  +31.963  map  +25.077  entropy 1.7830  std 15.044  init r(GT) +0.8226
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED1 (5 blocks, seed 1):
+    epoch  10  right   -2.089  map   +2.168  entropy 2.0847  std  7.944  init r(GT) +0.5870
+    epoch  20  right  +13.473  map  +15.000  entropy 1.9966  std 11.975  init r(GT) +0.6802
+    epoch  30  right  +39.957  map  +28.887  entropy 1.8241  std 16.048  init r(GT) +0.8141
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-C-SEED1 (4 blocks, seed 1):
+    epoch  10  right   -7.462  map   -3.525  entropy 2.0670  std  8.117  init r(GT) +0.4360
+    epoch  20  right   +5.353  map   +7.199  entropy 1.9227  std 12.162  init r(GT) +0.6389
+    epoch  30  right  +37.624  map  +34.821  entropy 1.8206  std 14.438  init r(GT) +0.7730
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-A-SEED2 (6 blocks, seed 2):
+    epoch  10  right   -3.824  map   -4.320  entropy 2.0511  std 10.339  init r(GT) +0.5856
+    epoch  20  right   -4.030  map   +6.875  entropy 1.8765  std 11.036  init r(GT) +0.6871
+    epoch  30  right  +46.388  map  +43.213  entropy 1.8201  std 15.350  init r(GT) +0.7686
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED2 (5 blocks, seed 2):
+    epoch  10  right   -2.651  map   -4.088  entropy 1.9728  std  8.776  init r(GT) +0.5183
+    epoch  20  right   -0.026  map   +3.568  entropy 1.8646  std 10.912  init r(GT) +0.7085
+    epoch  30  right  +37.962  map  +34.911  entropy 1.7189  std 16.001  init r(GT) +0.7333
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-C-SEED2 (4 blocks, seed 2):
+    epoch  10  right   -3.864  map   -7.034  entropy 2.0645  std  9.438  init r(GT) +0.4904
+    epoch  20  right   -3.195  map   -1.564  entropy 2.1143  std  9.323  init r(GT) +0.5371
+    epoch  30  right   +5.816  map   +7.784  entropy 1.9588  std 13.129  init r(GT) +0.6890
+wrote C:\Users\vishn\stereo_depth_vision\phase2\factorial\block_count_seed_screen\20260909T145659Z\probes.json
+=== SCREEN COMPLETE 2026-09-09T16:23:45Z ===

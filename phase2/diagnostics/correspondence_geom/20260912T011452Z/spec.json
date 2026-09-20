@@ -1,0 +1,179 @@
+{
+  "experiment_id": "EXP-CORRESPONDENCE-GEOM-001",
+  "title": "Pairing-Swap Interaction Diagnostic",
+  "record": "phase2/diagnostics/correspondence_geom/20260912T011452Z",
+  "kind": "inference-only; two-stage gated; no training; no p-value",
+  "design_authority": {
+    "record": "phase2/diagnostics/correspondence_geom/design_audit_20260912",
+    "DESIGN_AUDIT.md": "e99bb53069fee829dfd3c1539198b49f0f5dcdd30922de7cca69271c082152c6",
+    "source_trace.md": "bcdd4e3384ecb07630a68016e3b174b2012510b322b4e3a9cc99f182077de63e"
+  },
+
+  "geometry": {
+    "source_frame": {"width": 1232, "height": 368},
+    "crop": {"width": 1136, "height": 272},
+    "crop_feature_cells": {"width": 71, "height": 17},
+    "stride": 16,
+    "num_disparities": 12,
+    "left_crop": "rows [0,272) cols [0,1136)",
+    "right_crop_horizontal": "rows [0,272) cols [16*tau, 1136+16*tau)",
+    "right_crop_vertical": "rows [16*tau, 272+16*tau) cols [0,1136)",
+    "fill_padding_interpolation": "NONE",
+    "tau_levels": [1, 2, 3, 4, 5, 6],
+    "t_levels_px": [16, 32, 48, 64, 80, 96],
+    "tau_zero_excluded": true,
+    "k_true": "tau",
+    "candidate_px": 16,
+    "sign": "right[y,x] = left[y,x+t] => d = x_L - x_R = +t px"
+  },
+
+  "cells": ["AA", "BB", "AB", "BA"],
+  "positive_cells": ["AA", "BB"],
+  "negative_cells": ["AB", "BA"],
+
+  "statistic": {
+    "per_pixel_interaction": "I_tau(k,y,x) = 0.5*[z_AA + z_BB] - 0.5*[z_AB + z_BA]",
+    "profile": "Ibar_tau(k) = median over mask of I_tau(k,.,.)",
+    "c_tau": "argmin_k Ibar_tau(k)",
+    "hit": "c_tau == tau",
+    "h": "sum over tau in {1..6} of hit",
+    "units": "native candidate index (integer)",
+    "through_origin_fit": "PROHIBITED"
+  },
+
+  "mask": {
+    "rule": "retain (y,x) iff 64 <= y < 208 AND 64 <= x < 864",
+    "retained_pixels": 115200,
+    "gt_dependent": false,
+    "tau_dependent": false,
+    "axis_dependent": false,
+    "right_bound_derivation": "shift_left zero-fills feature cols [71-k,71), max k=11 -> [60,71); aggregation spatial radius 5 cells; upsample slop 1 -> safe iff w+6<60 -> w<54 -> x<864"
+  },
+
+  "scenes": {
+    "split": "hailo_val",
+    "previously_used": [0, 5, 6, 7, 8, 9, 27, 31],
+    "selection_rule": "twelve lowest unused indices ascending, paired consecutively",
+    "pairs": [[1, 2], [3, 4], [10, 11], [12, 13], [14, 15], [16, 17]],
+    "pair_names": [
+      ["000161_10.png", "000162_10.png"],
+      ["000163_10.png", "000164_10.png"],
+      ["000170_10.png", "000171_10.png"],
+      ["000172_10.png", "000173_10.png"],
+      ["000174_10.png", "000175_10.png"],
+      ["000176_10.png", "000177_10.png"]
+    ]
+  },
+
+  "checkpoints": {
+    "H2_seed0": {
+      "path": "phase2/diagnostics/determinism/20260909T041500Z_baseline/checkpoints/STAGEB-DETERMINISTIC-BASELINE-ARM-A-RUNA_checkpoint.pth",
+      "sha256": "581d62e699b159945580f9627b451d953ce07b5dc763d608a9f4a8b5ecba692a",
+      "shift": "left"
+    },
+    "H2_seed1": {
+      "path": "phase2/factorial/block_count_full/20260910T005550Z/checkpoints/EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED1_checkpoint.pth",
+      "sha256": "58117f2613bba4b2c817328c7d6757f21b340ec5e64a828e633193ae091d4adf",
+      "shift": "left"
+    },
+    "H2_seed2": {
+      "path": "phase2/factorial/block_count_full/20260910T005550Z/checkpoints/EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED2_checkpoint.pth",
+      "sha256": "245a3f5bcb801c7d9c3550b02cb8775cb86486beae606f04097900340754fa69",
+      "shift": "left"
+    },
+    "NEG_shift_none": {
+      "path": "phase2/factorial/shift_none_standardized/20260909T071500Z/checkpoints/EXP-FACTORIAL-SHIFT-NONE-STANDARDISED-001-ARM-A_checkpoint.pth",
+      "sha256": "d40d805bbe4cca310683f8617c7518d660e30055c43431081bcbb6a7c388f9b1",
+      "shift": "none"
+    }
+  },
+  "trained_checkpoints": ["H2_seed0", "H2_seed1", "H2_seed2"],
+  "search_free_control": "NEG_shift_none",
+
+  "stage_1_gate": {
+    "randomisation_inherited_from": "phase2/diagnostics/correspondence_arch_rate/20260911T130507Z/randomisation_spec.json",
+    "randomisation_sha256": "e52b5b03c5d4406e5ed9212f6681ee53bb448927eebddd367a7698ce9ce203ad",
+    "randomised_module": "aggregation ONLY",
+    "constructor": "Aggregation(in_channels=32, channels=32, num_layers=4)",
+    "param_count": 111585,
+    "initialisation": "framework default kaiming_uniform_(a=sqrt(5)); bias ~ U(-1/sqrt(fan_in), +1/sqrt(fan_in))",
+    "seed_procedure": "torch.manual_seed(seed) immediately before construction",
+    "seeds": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+    "frozen_not_randomised": ["feature_extractor (trained, frozen)", "cost_volume", "readout", "refinement (never invoked)"],
+    "extractors": ["H2_seed0", "H2_seed1", "H2_seed2"],
+    "unit": "(extractor, pair, seed)",
+    "n_units": 576,
+    "axis": "horizontal only",
+    "separate_process": true
+  },
+
+  "gate_decision": {
+    "G_STOP": "max(h_rand) == 6 -> FINAL VERDICT STATISTIC-ARCHITECTURALLY-AVAILABLE; STOP; trained weights NOT loaded; terminal",
+    "G_PASS": "max(h_rand) < 6 -> record H* = max(h_rand), unaltered, proceed to Stage 2"
+  },
+
+  "stage_2_trained": {
+    "unit": "(checkpoint, pair)",
+    "n_units": 18,
+    "axis_primary": "horizontal",
+    "separate_process": true,
+    "requires": "gate.json with decision == G-PASS"
+  },
+
+  "decision": {
+    "CASE_A": "min(h_trained) > H* AND all three checkpoints separate AND all six pairs separate",
+    "CASE_B": "trained responses overlap the random reference -> NOT-DEMONSTRATED (not evidence of absence)",
+    "CASE_C": "any partial or heterogeneous separation -> never promoted to a pass",
+    "TRACKING_WITH_OFFSET": "h low but anchor c_tau - tau identical across all six tau",
+    "vertical_downgrade": "if the vertical interaction systematically tracks under the same criterion -> CASE C"
+  },
+
+  "controls": {
+    "vertical": {"arm": "trained checkpoints, vertical right crop", "n_units": 18, "predicted": "no tracking mechanism exists (no kappa)"},
+    "search_free": {"checkpoint": "NEG_shift_none", "shift": "none", "axes": ["horizontal", "vertical"], "n_units": 6, "reporting": "SEPARATE; never mixed into the null; never redefines H*"},
+    "right_image_corruption": {"run": false, "reason": "perturbs a main effect, which cancels identically in the interaction"}
+  },
+
+  "hard_stops": {
+    "HS1": "geometry mapping verified FROM THE ARRAYS: right[:, :-t]==left[:, t:] (horizontal), right[:-t, :]==left[t:, :] (vertical); and max|V[:,tau,:,w<54]|==0.0 exactly for horizontal POSITIVE cells",
+    "HS2": "exact AA/BB/AB/BA construction; each frame exactly once as left and once as right",
+    "HS3": "tau identical across the four cells of a level",
+    "HS4": "max|V_AA+V_BB-V_AB-V_BA| / max|V_AB| <= 1e-5 (bound from float32 round-off, 10x margin)",
+    "HS5": "checkpoint sha256 match; num_disparities==12; cost_volume_shift as specified; readout parameter count == 0",
+    "HS6": "W4 process-restart repeat bit-identical (IEEE-754 bytes)",
+    "HS7": "no trained aggregation loaded before G-PASS; Stage 1 sets model.aggregation=None after load and contains no Stage-2 code path",
+    "HS8": "no historical record modified; prior sha256 re-verified before and after",
+    "HS9": "mask retained pixel count == 115200",
+    "HS10": "any non-finite response",
+    "HS11": "no optimizer, no .backward(), no .step(), refinement never invoked"
+  },
+  "hard_stop_policy": "STOP IMMEDIATELY. The experiment is not repaired and continued.",
+  "numeric_disparity_expectation": "NONE anywhere",
+
+  "determinism": {
+    "torch.use_deterministic_algorithms": true,
+    "cudnn.deterministic": true,
+    "cudnn.benchmark": false,
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+    "grad_enabled": false,
+    "device": "cuda",
+    "dtype": "float32",
+    "W4": "one complete unit recomputed in a fresh process; full response vector bit-identical"
+  },
+
+  "post_hoc_thresholds_prohibited": [
+    "alpha_h ~ 1",
+    "TR-001 amplitude",
+    "ARCH-RATE behaviour",
+    "INDEX-002 ordering",
+    "any previous separation margin"
+  ],
+  "p_value_computed": false,
+  "epe_d1_rmse_computed": false,
+
+  "raw_data_published_per_unit_per_tau": [
+    "zbar_AA(k)", "zbar_BB(k)", "zbar_AB(k)", "zbar_BA(k)",
+    "Ibar_tau(k)", "argmin", "argmax", "hit", "amplitude", "anchor",
+    "m_AA", "m_BB", "m_AB", "m_BA"
+  ]
+}

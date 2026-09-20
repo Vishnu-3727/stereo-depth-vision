@@ -1,0 +1,240 @@
+{
+  "experiment_id": "EXP-H3-VIABILITY-001",
+  "description": "H3 viability: cost_volume_shift='none' under H2's working soft-argmin",
+  "status": "completed",
+  "started_utc": "2026-09-07T14:23:52.084124+00:00",
+  "finished_utc": "2026-09-07T14:27:29.108032+00:00",
+  "duration_s": 217.023908,
+  "metrics": {
+    "checkpoint_epoch_0": {
+      "epoch": 0,
+      "val_epe": 31.991686798260936,
+      "val_d1": 95.21208754487324,
+      "val_loss": 31.094595527648927,
+      "stage_stats": {
+        "entropy": 1.5407846006261454,
+        "max_weight": 0.5902363043687469,
+        "median_top2_gap": 1.4283790946006776,
+        "initial_std": 0.2717163179659999,
+        "initial_mean": 7.75581118075155,
+        "initial_corr_gt": 0.17344458094530035,
+        "residual_mean_abs": 0.4659918684392822,
+        "residual_corr_final": 0.7537462329149581,
+        "final_std": 0.4109416052773171,
+        "final_corr_gt": 0.15768742197551097
+      },
+      "train_loss_of_previous_epoch": null
+    },
+    "checkpoint_epoch_1": {
+      "epoch": 1,
+      "val_epe": 16.918805573780872,
+      "val_d1": 87.96908057252946,
+      "val_loss": 16.035114288330078,
+      "stage_stats": {
+        "entropy": 2.20653477442474,
+        "max_weight": 0.21686722585490842,
+        "median_top2_gap": 0.06230659484863281,
+        "initial_std": 1.0724885902166623,
+        "initial_mean": 7.061158911983116,
+        "initial_corr_gt": 0.5851044311558556,
+        "residual_mean_abs": 19.004370428565448,
+        "residual_corr_final": 0.9903437140483351,
+        "final_std": 5.437363348694856,
+        "final_corr_gt": 0.5020431628013746
+      },
+      "train_loss_of_previous_epoch": 10.372830641269683,
+      "grad": {
+        "median_total": 47.93923377990723,
+        "max_total": 313.043212890625,
+        "median_matching": 19.391149007920266,
+        "matching_present_fraction": 1.0
+      }
+    },
+    "checkpoint_epoch_2": {
+      "epoch": 2,
+      "val_epe": 15.428031567523508,
+      "val_d1": 87.76621749543611,
+      "val_loss": 14.63710126876831,
+      "stage_stats": {
+        "entropy": 2.1107524281950942,
+        "max_weight": 0.24248842586943828,
+        "median_top2_gap": 0.0,
+        "initial_std": 1.6283768603847748,
+        "initial_mean": 6.477310640387708,
+        "initial_corr_gt": 0.5829782797255876,
+        "residual_mean_abs": 19.569224433698054,
+        "residual_corr_final": 0.9961456723173626,
+        "final_std": 7.749605479495028,
+        "final_corr_gt": 0.5738791905899336
+      },
+      "train_loss_of_previous_epoch": 10.122478348016738,
+      "grad": {
+        "median_total": 52.59056854248047,
+        "max_total": 313.043212890625,
+        "median_matching": 25.976670861499567,
+        "matching_present_fraction": 1.0
+      }
+    },
+    "checkpoint_epoch_5": {
+      "epoch": 5,
+      "val_epe": 20.878413806409515,
+      "val_d1": 91.67369560008467,
+      "val_loss": 20.08742733001709,
+      "stage_stats": {
+        "entropy": 2.2073339607938682,
+        "max_weight": 0.19440475226276704,
+        "median_top2_gap": 0.06304054260253907,
+        "initial_std": 1.484904153464208,
+        "initial_mean": 6.048285479359812,
+        "initial_corr_gt": 0.5902032521061754,
+        "residual_mean_abs": 12.967191592631767,
+        "residual_corr_final": 0.9940655958926964,
+        "final_std": 6.102767850289656,
+        "final_corr_gt": 0.5762400118797617
+      },
+      "train_loss_of_previous_epoch": 8.5327738404274,
+      "grad": {
+        "median_total": 50.461286544799805,
+        "max_total": 313.043212890625,
+        "median_matching": 23.788982543189938,
+        "matching_present_fraction": 1.0
+      }
+    },
+    "checkpoint_epoch_10": {
+      "epoch": 10,
+      "val_epe": 16.531759738786345,
+      "val_d1": 88.70564116229367,
+      "val_loss": 15.779291439056397,
+      "stage_stats": {
+        "entropy": 2.1202600016085964,
+        "max_weight": 0.23833147725689258,
+        "median_top2_gap": 0.10455259084701538,
+        "initial_std": 1.826643982613873,
+        "initial_mean": 6.051492535261799,
+        "initial_corr_gt": 0.615889607303696,
+        "residual_mean_abs": 16.957410402389275,
+        "residual_corr_final": 0.9960285464311692,
+        "final_std": 8.662602189937227,
+        "final_corr_gt": 0.6049651545554104
+      },
+      "train_loss_of_previous_epoch": 8.112941139936447,
+      "grad": {
+        "median_total": 45.45113754272461,
+        "max_total": 313.043212890625,
+        "median_matching": 18.642344676560043,
+        "matching_present_fraction": 1.0
+      }
+    },
+    "history": [
+      {
+        "epoch": 0,
+        "mean_loss": 10.372830641269683,
+        "lr": 0.0009999383162408303,
+        "median_grad_norm": 47.93923377990723,
+        "median_matching_grad_norm": 19.391149007920266,
+        "matching_present_fraction_this_epoch": 1.0
+      },
+      {
+        "epoch": 1,
+        "mean_loss": 10.122478348016738,
+        "lr": 0.0009997532801828658,
+        "median_grad_norm": 62.502845764160156,
+        "median_matching_grad_norm": 32.6868128308379,
+        "matching_present_fraction_this_epoch": 1.0
+      },
+      {
+        "epoch": 2,
+        "mean_loss": 9.119872525334358,
+        "lr": 0.0009994449374809851,
+        "median_grad_norm": 55.3380069732666,
+        "median_matching_grad_norm": 25.507166015256683,
+        "matching_present_fraction_this_epoch": 1.0
+      },
+      {
+        "epoch": 3,
+        "mean_loss": 9.405028653144836,
+        "lr": 0.0009990133642141358,
+        "median_grad_norm": 54.85662841796875,
+        "median_matching_grad_norm": 25.015248778251,
+        "matching_present_fraction_this_epoch": 1.0
+      },
+      {
+        "epoch": 4,
+        "mean_loss": 8.5327738404274,
+        "lr": 0.000998458666866564,
+        "median_grad_norm": 37.42521667480469,
+        "median_matching_grad_norm": 15.096737001704364,
+        "matching_present_fraction_this_epoch": 1.0
+      },
+      {
+        "epoch": 5,
+        "mean_loss": 8.928738522529603,
+        "lr": 0.00099778098230154,
+        "median_grad_norm": 49.706186294555664,
+        "median_matching_grad_norm": 18.354252017859906,
+        "matching_present_fraction_this_epoch": 1.0
+      },
+      {
+        "epoch": 6,
+        "mean_loss": 8.52668326497078,
+        "lr": 0.0009969804777275899,
+        "median_grad_norm": 37.945730209350586,
+        "median_matching_grad_norm": 15.204244511674872,
+        "matching_present_fraction_this_epoch": 1.0
+      },
+      {
+        "epoch": 7,
+        "mean_loss": 8.448129367828368,
+        "lr": 0.000996057350657239,
+        "median_grad_norm": 39.924224853515625,
+        "median_matching_grad_norm": 15.413108315122694,
+        "matching_present_fraction_this_epoch": 1.0
+      },
+      {
+        "epoch": 8,
+        "mean_loss": 8.512458649277686,
+        "lr": 0.0009950118288582787,
+        "median_grad_norm": 29.943594932556152,
+        "median_matching_grad_norm": 14.309371429650978,
+        "matching_present_fraction_this_epoch": 1.0
+      },
+      {
+        "epoch": 9,
+        "mean_loss": 8.112941139936447,
+        "lr": 0.0009938441702975688,
+        "median_grad_norm": 33.70196723937988,
+        "median_matching_grad_norm": 16.295705511433553,
+        "matching_present_fraction_this_epoch": 1.0
+      }
+    ],
+    "aborted": null,
+    "wall_clock_s": 215.3611388206482,
+    "primary_endpoint_matching_gradient": {
+      "definition": "batches where ||grad(feature_extractor)|| + ||grad(aggregation)|| exceeds 1e-12",
+      "batches": 800,
+      "present_fraction": 1.0,
+      "norm": {
+        "median": 18.642344676560043,
+        "max": 311.68443707402065,
+        "p90": 45.046373255875594
+      }
+    },
+    "gradient_norms": {
+      "median": 45.45113754272461,
+      "max": 313.043212890625,
+      "p90": 96.6569793701172,
+      "any_nan": false,
+      "batches_above_1e4": 0
+    },
+    "parameter_count_unique": 423586,
+    "checkpoint": "phase2\\results\\training\\EXP-H3-VIABILITY-001_checkpoint.pth",
+    "checkpoint_sha256": "2b90933e0cb4cbaa264bbf4c0cd6e731f4f3460d3b92d6c23aff36324a9a28f6"
+  },
+  "observations": [
+    "H3: with the matching pathway functional (H2's standardised soft-argmin), how much does the disparity shift itself contribute? This run is a cheap viability gate, not the answer.",
+    "10 epochs, one seed, 160 training scenes. This can show that H3 is trainable and roughly where it sits early; it cannot say what H3 converges to.",
+    "Early-exit gates are active: the run stops on any non-finite loss or gradient."
+  ],
+  "conclusion": "Viability gate only (10 epochs of a 200-epoch schedule). Matching-path gradient present on 100.0% of 800 batches; total gradient max 313; no abort. Read the checkpoint progression before any conclusion about accuracy.",
+  "error": null
+}

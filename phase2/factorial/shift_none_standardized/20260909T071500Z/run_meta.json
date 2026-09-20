@@ -1,0 +1,62 @@
+{
+  "experiment_id": "EXP-FACTORIAL-SHIFT-NONE-STANDARDISED-001-ARM-A",
+  "controls": {
+    "torch.use_deterministic_algorithms": true,
+    "torch.backends.cudnn.deterministic": true,
+    "torch.backends.cudnn.benchmark": false,
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+  },
+  "changed_variable": "cost_volume_shift: left -> none",
+  "provenance": {
+    "head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "head_subject": "docs: add the Phase 1 overview",
+    "phase_1_frozen_commit": "b4207e518166f5089731b4d037a4a79234f70986",
+    "phase_1_frozen_tag_object": "0fc4f296b409f79bc12cd8e294a1bdb34ed1e262",
+    "phase_1_diff_vs_frozen": "",
+    "status_short": "M .gitignore\n?? phase2/",
+    "phase_2_committed": false,
+    "stage_a_basis": "phase2/diagnostics/determinism/20260909T022238Z",
+    "stage_b_control": "phase2/diagnostics/determinism/20260909T041500Z_baseline"
+  },
+  "environment": {
+    "command": "phase2/factorial/shift_none_standardized/exp_factorial_shift.py train --out C:/Users/vishn/stereo_depth_vision/phase2/factorial/shift_none_standardized/20260909T071500Z",
+    "cwd": "C:\\Users\\vishn\\stereo_depth_vision",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "numpy": "2.5.1",
+    "cuda_version": "12.8",
+    "cudnn_version": 90701,
+    "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_capability": "8.9",
+    "nvidia_driver": "616.64",
+    "flags": {
+      "deterministic_algorithms": true,
+      "cudnn.deterministic": true,
+      "cudnn.benchmark": false,
+      "cudnn.allow_tf32": true,
+      "cuda.matmul.allow_tf32": false,
+      "float32_matmul_precision": "highest"
+    },
+    "env": {
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+    }
+  },
+  "started_utc": "2026-09-09T07:28:27Z",
+  "init_weight_sha": "c4d02385e3da28a5",
+  "init_weight_sha_matches": true,
+  "shift_at_build": "none",
+  "wall_clock_s": 4827.181149721146,
+  "finished_utc": "2026-09-09T08:48:55Z",
+  "checkpoint": "phase2\\factorial\\shift_none_standardized\\20260909T071500Z\\checkpoints\\EXP-FACTORIAL-SHIFT-NONE-STANDARDISED-001-ARM-A_checkpoint.pth",
+  "checkpoint_sha256": "d40d805bbe4cca310683f8617c7518d660e30055c43431081bcbb6a7c388f9b1",
+  "final_weight_sha": "287ad985be0cf448",
+  "snapshots": {
+    "EXP-FACTORIAL-SHIFT-NONE-STANDARDISED-001-ARM-A_epoch10.pth": "621670d17ac305f4ac269e770b524a2835ec03e5e0fe5a60eced0e2af854e8dd",
+    "EXP-FACTORIAL-SHIFT-NONE-STANDARDISED-001-ARM-A_epoch100.pth": "736fa4c8d7eb8ca1695a03acb54c780b9990aa0dbeb76f93c3b4f912a7c690e2",
+    "EXP-FACTORIAL-SHIFT-NONE-STANDARDISED-001-ARM-A_epoch150.pth": "1229110e4d9f3e741c73b2bd8238834ff91826c37971640baa46647ca85fe0dc",
+    "EXP-FACTORIAL-SHIFT-NONE-STANDARDISED-001-ARM-A_epoch20.pth": "461a4e2583ea02c6d63bb2a8ae4ac87420290b2b30fe5302ae35832013c2a323",
+    "EXP-FACTORIAL-SHIFT-NONE-STANDARDISED-001-ARM-A_epoch200.pth": "ff03f9dd5b1f08e15b074a90f86fb91346a096d93619655632a5e12f3ca747e5",
+    "EXP-FACTORIAL-SHIFT-NONE-STANDARDISED-001-ARM-A_epoch50.pth": "cfd2c126b3cf2e5aafddb0e5a80cb457ee9282a27c363b30ebe11bf0242bb466"
+  }
+}

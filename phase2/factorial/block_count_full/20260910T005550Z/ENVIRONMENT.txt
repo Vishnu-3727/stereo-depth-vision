@@ -1,0 +1,37 @@
+EXP-BLOCKCOUNT-FULL-001 -- BATCH 1 ENVIRONMENT
+==============================================
+
+platform         Windows-11-10.0.26200-SP0
+python           3.12.9
+torch            2.7.0+cu128
+numpy            2.5.1
+cuda_version     12.8
+cudnn_version    90701
+gpu_name         NVIDIA GeForce RTX 4060 Laptop GPU
+nvidia_driver    616.64
+
+deterministic controls
+  torch.use_deterministic_algorithms         True
+  torch.backends.cudnn.deterministic         True
+  torch.backends.cudnn.benchmark             False
+  CUBLAS_WORKSPACE_CONFIG                    :4096:8
+
+runs
+  EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED1    blocks 6  seed 1  epochs 200  wall 5010.3s
+      init sha c27a63f9fac30273   final sha 80151d1b2d3dca67
+      checkpoint sha256 58117f2613bba4b2c817328c7d6757f21b340ec5e64a828e633193ae091d4adf
+  EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED2    blocks 6  seed 2  epochs 200  wall 5019.2s
+      init sha 60551302b5834cfc   final sha 18ad97f434a12a87
+      checkpoint sha256 245a3f5bcb801c7d9c3550b02cb8775cb86486beae606f04097900340754fa69
+  EXP-BLOCKCOUNT-FULL-001-ARM-B-SEED1    blocks 5  seed 1  epochs 200  wall 4836.0s
+      init sha a469638e5ed79cce   final sha d948eaf76954abdf
+      checkpoint sha256 2cdf0841fb5a624a3773087311ae98e33d0ab218d39373ca2202c3c37e7c4cd2
+
+batch training wall clock  14865.5 s = 4.13 GPU-hours
+
+provenance
+  HEAD                        58e8a19908ddbd35451652c61aef478f56b51ebd
+  phase-1-frozen^{commit}     b4207e518166f5089731b4d037a4a79234f70986
+  git diff phase-1-frozen -- src scripts   EMPTY
+  phase 2 committed to git    False
+  preflight checks            20/20 PASS

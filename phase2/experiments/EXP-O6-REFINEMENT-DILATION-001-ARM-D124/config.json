@@ -1,0 +1,46 @@
+{
+  "architecture": "StereoNet (Phase 1 src/models/stereonet) + phase2 StandardisedDisparityRegression",
+  "cost_volume_shift": "left",
+  "cost_volume_method": "subtract",
+  "num_disparities": 12,
+  "regression": "standardised soft-argmin (phase2.models.scaled_regression)",
+  "seed": 0,
+  "dataset": "kitti2015",
+  "train_split": "hailo_calib (scenes 0-159)",
+  "validation_split": "hailo_val (scenes 160-199), first 10 scenes validated",
+  "crop": [
+    256,
+    512
+  ],
+  "augmentation": "random crop, per-image gain jitter sigma=0.1, no flip",
+  "optimizer": "Adam betas=(0.9, 0.999)",
+  "learning_rate": 0.001,
+  "scheduler": "CosineAnnealingLR T_max=200",
+  "loss": "masked smooth L1, beta=1.0, valid = gt > 0 and gt < max_disparity",
+  "batch_size": 2,
+  "epochs": 200,
+  "precision": "fp32",
+  "device": "cuda",
+  "experiment": "EXP-O6-REFINEMENT-DILATION-001-ARM-D124",
+  "preregistration": "phase2/docs/EXP_O6_REFINEMENT_DILATION_001_PREREGISTRATION.md",
+  "approved_by": "phase2/docs/EXP_E3C_REFINEMENT_FLOOR_001_PREREGISTRATION.md section 8 (pre-committed follow-up)",
+  "hypothesis": "The D1 degradation of the three-block (1,2,4) stack is substantially attributable to removing the dilation-8 receptive field rather than to having fewer blocks.",
+  "arm": "D124",
+  "arm_role": "E3C's configuration, retrained under this harness",
+  "refinement_blocks": 3,
+  "refinement_dilations": [
+    1,
+    2,
+    4
+  ],
+  "refinement_receptive_field_px": 33,
+  "changed_variable": "refinement dilation schedule only: [1, 2, 4] instead of (1,2,4). Block count, parameter count, MACs and initial weights are identical across all three O6 arms by construction.",
+  "construction": "seed-0 six-block H2 model, keep refinement blocks [0, 1, 2], then re-dilate in place (dilation and padding only; weight tensors untouched)",
+  "control": "EXP-E3B-REFINEMENT-CAPACITY-001-ARM-A-RUN2 (6 blocks, seed 0, NOT retrained -- reused as a measured input); the within-experiment comparison the hypothesis turns on is D128/D148 against D124, both trained here",
+  "band": {
+    "epe": 0.21380062638697517,
+    "d1": 1.0
+  },
+  "known_limitation": "one seed per arm -- suggestive/exploratory, no significance claimed or claimable. 160 training scenes from random initialisation, so nothing transfers to a pretrained model. The six-block control was trained in an earlier session. MACs are arithmetic, not latency.",
+  "known_confound": "none intended within the three-block set: capacity, MACs and initialisation are held exactly constant. The control comparison carries cross-session harness drift; the three-block comparisons do not."
+}

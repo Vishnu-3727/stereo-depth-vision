@@ -1,0 +1,230 @@
+{
+  "probe_epochs": [
+    10,
+    20,
+    50,
+    100,
+    150,
+    200
+  ],
+  "focus_scenes": [
+    27,
+    0,
+    31,
+    6
+  ],
+  "probe_implementation": "exp_h2_seed_replication.stereo_probe and exp_h2_softargmin_scale.validation_stage_stats, imported unchanged -- no new stereo metric was introduced",
+  "caveat": "right-image and matching-map probes establish binocular DEPENDENCE, not correct disparity search: Phase 1 EXP-007 measured +89.7 D1 on the reference weights despite a provably degenerate shift.",
+  "runs": {
+    "EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED1": {
+      "arm": "A",
+      "seed": 1,
+      "blocks": 6,
+      "series": {
+        "10": {
+          "epoch": 10,
+          "right_image_min_d1_penalty": -3.5758291072748705,
+          "matching_map_min_d1_penalty": -1.8832440564973183,
+          "softmax_entropy": 2.0932515034843027,
+          "final_disparity_std": 8.396321935901545,
+          "disparity_initial_corr_gt": 0.6333850072498921,
+          "final_corr_gt": 0.6228665750233702
+        },
+        "20": {
+          "epoch": 20,
+          "right_image_min_d1_penalty": 12.59516737785502,
+          "matching_map_min_d1_penalty": 10.217766306532994,
+          "softmax_entropy": 1.8132242543213057,
+          "final_disparity_std": 12.519512791914817,
+          "disparity_initial_corr_gt": 0.672123261957381,
+          "final_corr_gt": 0.6841434408083821
+        },
+        "50": {
+          "epoch": 50,
+          "right_image_min_d1_penalty": 55.75497641552386,
+          "matching_map_min_d1_penalty": 43.13591578794004,
+          "softmax_entropy": 1.730708685370883,
+          "final_disparity_std": 17.979017849797238,
+          "disparity_initial_corr_gt": 0.8275052639402924,
+          "final_corr_gt": 0.8333296604802879
+        },
+        "100": {
+          "epoch": 100,
+          "right_image_min_d1_penalty": 73.6636981187055,
+          "matching_map_min_d1_penalty": 59.53759857218306,
+          "softmax_entropy": 1.747952773261908,
+          "final_disparity_std": 18.186555717887337,
+          "disparity_initial_corr_gt": 0.9023004633340236,
+          "final_corr_gt": 0.911743510167885
+        },
+        "150": {
+          "epoch": 150,
+          "right_image_min_d1_penalty": 72.52271940847584,
+          "matching_map_min_d1_penalty": 58.41392121510135,
+          "softmax_entropy": 1.773009286067954,
+          "final_disparity_std": 18.32428387678215,
+          "disparity_initial_corr_gt": 0.9087182183365957,
+          "final_corr_gt": 0.9224782900034944
+        },
+        "200": {
+          "epoch": 200,
+          "right_image_min_d1_penalty": 76.37636817279498,
+          "matching_map_min_d1_penalty": 61.40250232202371,
+          "softmax_entropy": 1.7617249755279378,
+          "final_disparity_std": 18.57084672037322,
+          "disparity_initial_corr_gt": 0.9113415510884006,
+          "final_corr_gt": 0.9249344835636542
+        }
+      }
+    },
+    "EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED2": {
+      "arm": "A",
+      "seed": 2,
+      "blocks": 6,
+      "series": {
+        "10": {
+          "epoch": 10,
+          "right_image_min_d1_penalty": -3.823990325884438,
+          "matching_map_min_d1_penalty": -4.320035537567406,
+          "softmax_entropy": 2.0510906408609695,
+          "final_disparity_std": 10.339186678058999,
+          "disparity_initial_corr_gt": 0.5856176825944139,
+          "final_corr_gt": 0.5973152881040693
+        },
+        "20": {
+          "epoch": 20,
+          "right_image_min_d1_penalty": -4.030304685934908,
+          "matching_map_min_d1_penalty": 6.875397206261908,
+          "softmax_entropy": 1.8764506028238799,
+          "final_disparity_std": 11.035503932683946,
+          "disparity_initial_corr_gt": 0.6870805146182563,
+          "final_corr_gt": 0.700504966844248
+        },
+        "50": {
+          "epoch": 50,
+          "right_image_min_d1_penalty": 41.159008541404866,
+          "matching_map_min_d1_penalty": 32.051212005317886,
+          "softmax_entropy": 1.8310707675478852,
+          "final_disparity_std": 17.797263519711144,
+          "disparity_initial_corr_gt": 0.8290859766865173,
+          "final_corr_gt": 0.8351182785638922
+        },
+        "100": {
+          "epoch": 100,
+          "right_image_min_d1_penalty": 71.56568140013476,
+          "matching_map_min_d1_penalty": 58.05605638419931,
+          "softmax_entropy": 1.8374607868389063,
+          "final_disparity_std": 16.913363208758007,
+          "disparity_initial_corr_gt": 0.9001419056508289,
+          "final_corr_gt": 0.9094835562490957
+        },
+        "150": {
+          "epoch": 150,
+          "right_image_min_d1_penalty": 75.8464004079477,
+          "matching_map_min_d1_penalty": 60.93809757963175,
+          "softmax_entropy": 1.8145592636447692,
+          "final_disparity_std": 17.622659225965865,
+          "disparity_initial_corr_gt": 0.9121440482441374,
+          "final_corr_gt": 0.9223808945939457
+        },
+        "200": {
+          "epoch": 200,
+          "right_image_min_d1_penalty": 74.40674570653262,
+          "matching_map_min_d1_penalty": 59.28263126263454,
+          "softmax_entropy": 1.8192656575772244,
+          "final_disparity_std": 17.966148188264945,
+          "disparity_initial_corr_gt": 0.9131148271863389,
+          "final_corr_gt": 0.9275587174750809
+        }
+      }
+    },
+    "EXP-BLOCKCOUNT-FULL-001-ARM-B-SEED1": {
+      "arm": "B",
+      "seed": 1,
+      "blocks": 5,
+      "series": {
+        "10": {
+          "epoch": 10,
+          "right_image_min_d1_penalty": -2.0890660283066467,
+          "matching_map_min_d1_penalty": 2.1680384003158935,
+          "softmax_entropy": 2.0846997198806467,
+          "final_disparity_std": 7.943842835001378,
+          "disparity_initial_corr_gt": 0.5870405801033204,
+          "final_corr_gt": 0.576802288516033
+        },
+        "20": {
+          "epoch": 20,
+          "right_image_min_d1_penalty": 13.473201114571381,
+          "matching_map_min_d1_penalty": 14.99980544999417,
+          "softmax_entropy": 1.996563880413244,
+          "final_disparity_std": 11.974670276904849,
+          "disparity_initial_corr_gt": 0.6801806550126667,
+          "final_corr_gt": 0.694269154582581
+        },
+        "50": {
+          "epoch": 50,
+          "right_image_min_d1_penalty": 53.12061774936714,
+          "matching_map_min_d1_penalty": 43.817953340982356,
+          "softmax_entropy": 1.7692391788448947,
+          "final_disparity_std": 17.287709776286203,
+          "disparity_initial_corr_gt": 0.8580930586597109,
+          "final_corr_gt": 0.8642277174527455
+        },
+        "100": {
+          "epoch": 100,
+          "right_image_min_d1_penalty": 67.24489610082135,
+          "matching_map_min_d1_penalty": 55.300588246007024,
+          "softmax_entropy": 1.786847227904546,
+          "final_disparity_std": 18.236009309001126,
+          "disparity_initial_corr_gt": 0.8654674693565549,
+          "final_corr_gt": 0.8769810812435551
+        },
+        "150": {
+          "epoch": 150,
+          "right_image_min_d1_penalty": 70.57586188056602,
+          "matching_map_min_d1_penalty": 58.57782877123968,
+          "softmax_entropy": 1.811631201459066,
+          "final_disparity_std": 17.228095154934415,
+          "disparity_initial_corr_gt": 0.8899047955015785,
+          "final_corr_gt": 0.9031702717856689
+        },
+        "200": {
+          "epoch": 200,
+          "right_image_min_d1_penalty": 75.18257480558742,
+          "matching_map_min_d1_penalty": 60.65854413666247,
+          "softmax_entropy": 1.8116361468302749,
+          "final_disparity_std": 17.61804369150662,
+          "disparity_initial_corr_gt": 0.8971684285069268,
+          "final_corr_gt": 0.910538685389413
+        }
+      }
+    }
+  },
+  "environment": {
+    "command": "phase2/factorial/block_count_full/exp_blockcount_full.py probes --out phase2/factorial/block_count_full/20260910T005550Z",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "numpy": "2.5.1",
+    "cuda_version": "12.8",
+    "cudnn_version": 90701,
+    "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "nvidia_driver": "616.64",
+    "flags": {
+      "deterministic_algorithms": true,
+      "cudnn.deterministic": true,
+      "cudnn.benchmark": false
+    },
+    "env": {
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+    }
+  },
+  "provenance": {
+    "head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "head_subject": "docs: add the Phase 1 overview",
+    "phase_1_frozen_commit": "b4207e518166f5089731b4d037a4a79234f70986",
+    "phase_1_diff_vs_frozen": "",
+    "status_short": "M .gitignore\n?? phase2/",
+    "phase_2_committed": false
+  }
+}

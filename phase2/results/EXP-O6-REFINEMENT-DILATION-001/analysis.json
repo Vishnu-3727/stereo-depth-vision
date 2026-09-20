@@ -1,0 +1,172 @@
+{
+  "verdict": "NO-GAP-TO-EXPLAIN",
+  "gap": {
+    "d1_gap_D124_minus_control": 0.06033242467579569,
+    "material": false,
+    "band": {
+      "epe": 0.21380062638697517,
+      "d1": 1.0
+    }
+  },
+  "control": {
+    "experiment": "EXP-E3B-REFINEMENT-CAPACITY-001-ARM-A-RUN2",
+    "late_window": {
+      "points": 10,
+      "epe_mean": 4.092099686806512,
+      "epe_sd": 0.10000498854517458,
+      "d1_mean": 24.909737750046475,
+      "d1_sd": 1.082096193588822
+    },
+    "parameters": 423586,
+    "dilations": [
+      1,
+      2,
+      4,
+      8,
+      1,
+      1
+    ],
+    "receptive_field_px": 73
+  },
+  "arms": {
+    "D124": {
+      "dilations": [
+        1,
+        2,
+        4
+      ],
+      "receptive_field_px": 33,
+      "parameters": 368098,
+      "late_window": {
+        "points": 10,
+        "epe_mean": 4.112059270197802,
+        "epe_sd": 0.06584136118301354,
+        "d1_mean": 24.97007017472227,
+        "d1_sd": 0.5897458194757295
+      },
+      "delta_epe_vs_control": 0.019959583391290003,
+      "delta_d1_vs_control": 0.06033242467579569,
+      "material_vs_control": false,
+      "delta_epe_vs_D124": 0.0,
+      "delta_d1_vs_D124": 0.0,
+      "material_vs_D124": false,
+      "d1_gap_recovery": null,
+      "stereo_functional": true,
+      "stereo_verdict": {
+        "threshold_d1_points": 20.0,
+        "right_image_min_d1_penalty": 79.55617476187875,
+        "right_image_dependence": true,
+        "matching_map_min_d1_penalty": 64.78537216121218,
+        "matching_map_dependence": true,
+        "matching_gradient_fraction": 1.0,
+        "matching_gradient": true,
+        "softmax_entropy": 1.8682441929262592,
+        "entropy_ok": true,
+        "final_disparity_std": 18.041320043620185,
+        "not_collapsed": true,
+        "STEREO_FUNCTIONAL": true
+      },
+      "aborted": null
+    },
+    "D128": {
+      "dilations": [
+        1,
+        2,
+        8
+      ],
+      "receptive_field_px": 49,
+      "parameters": 368098,
+      "late_window": {
+        "points": 10,
+        "epe_mean": 4.176421298726246,
+        "epe_sd": 0.08472011514624528,
+        "d1_mean": 28.03417297300782,
+        "d1_sd": 0.7070495327474607
+      },
+      "delta_epe_vs_control": 0.08432161191973364,
+      "delta_d1_vs_control": 3.1244352229613455,
+      "material_vs_control": false,
+      "delta_epe_vs_D124": 0.06436202852844364,
+      "delta_d1_vs_D124": 3.0641027982855498,
+      "material_vs_D124": false,
+      "d1_gap_recovery": null,
+      "stereo_functional": true,
+      "stereo_verdict": {
+        "threshold_d1_points": 20.0,
+        "right_image_min_d1_penalty": 76.8690014387441,
+        "right_image_dependence": true,
+        "matching_map_min_d1_penalty": 64.03412919557815,
+        "matching_map_dependence": true,
+        "matching_gradient_fraction": 1.0,
+        "matching_gradient": true,
+        "softmax_entropy": 1.813362240103253,
+        "entropy_ok": true,
+        "final_disparity_std": 18.306765432451435,
+        "not_collapsed": true,
+        "STEREO_FUNCTIONAL": true
+      },
+      "aborted": null
+    },
+    "D148": {
+      "dilations": [
+        1,
+        4,
+        8
+      ],
+      "receptive_field_px": 57,
+      "parameters": 368098,
+      "late_window": {
+        "points": 10,
+        "epe_mean": 4.160154651604983,
+        "epe_sd": 0.06287089746054964,
+        "d1_mean": 28.021193174431083,
+        "d1_sd": 0.7362800393642119
+      },
+      "delta_epe_vs_control": 0.06805496479847051,
+      "delta_d1_vs_control": 3.1114554243846086,
+      "material_vs_control": false,
+      "delta_epe_vs_D124": 0.048095381407180504,
+      "delta_d1_vs_D124": 3.051122999708813,
+      "material_vs_D124": false,
+      "d1_gap_recovery": null,
+      "stereo_functional": true,
+      "stereo_verdict": {
+        "threshold_d1_points": 20.0,
+        "right_image_min_d1_penalty": 80.3556793968202,
+        "right_image_dependence": true,
+        "matching_map_min_d1_penalty": 65.19605164909213,
+        "matching_map_dependence": true,
+        "matching_gradient_fraction": 1.0,
+        "matching_gradient": true,
+        "softmax_entropy": 1.814351281551327,
+        "entropy_ok": true,
+        "final_disparity_std": 18.128542249038496,
+        "not_collapsed": true,
+        "STEREO_FUNCTIONAL": true
+      },
+      "aborted": null
+    }
+  },
+  "cross_check_vs_E3C_arm_D": {
+    "reference": "EXP-E3C-REFINEMENT-FLOOR-001-ARM-D",
+    "delta_epe": 0.34259193571907476,
+    "delta_d1": -1.9701142286743938,
+    "band": {
+      "epe": 0.21380062638697517,
+      "d1": 1.0
+    },
+    "within_band": false
+  },
+  "gates": {
+    "arms_completed": true,
+    "control_stereo_functional": true,
+    "parameters_identical_across_arms": true,
+    "phase_1_diff_empty": true,
+    "h2_checkpoint_unchanged": true,
+    "PASS": true
+  },
+  "thresholds": {
+    "recovery_strong": 0.5,
+    "recovery_weak": 0.2
+  }
+}

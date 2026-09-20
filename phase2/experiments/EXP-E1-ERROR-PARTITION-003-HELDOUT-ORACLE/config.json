@@ -1,0 +1,34 @@
+{
+  "experiment": "EXP-E1-ERROR-PARTITION-003-HELDOUT-ORACLE",
+  "hypothesis": "With the ground truth that steers the oracle held apart from the ground truth it is scored on, how much of H2's error would a perfect matching stage remove?",
+  "preregistration": "the module docstring of phase2/scripts/exp_e1_heldout_oracle.py",
+  "parent_runs": [
+    "EXP-E1-ERROR-PARTITION-001",
+    "EXP-E1-ERROR-PARTITION-002-INVERSE-ORACLE-RUN3"
+  ],
+  "measurement_only": true,
+  "training": "none -- trained H2 checkpoints, inference and substitution only",
+  "models": [
+    "H2",
+    "SEED1",
+    "SEED2"
+  ],
+  "method": "gt>0 pixels split 50/50 (seed 0); initial <- clamp(initial + 1.0*a*(gt-final), 0, 11) on the FIT half only, 16 iterations; EPE/D1 pooled separately on both halves; the verdict reads the EVAL half",
+  "verdict_thresholds": {
+    "matching_limited_max_epe_ratio": 0.35,
+    "downstream_limited_min_epe_ratio": 0.65
+  },
+  "dataset": "kitti2015",
+  "split": "hailo_val, all 40 scenes",
+  "resolution": "368x1232 full frames",
+  "crop": null,
+  "disparity_range": 12,
+  "batch_size": 1,
+  "precision": "fp32",
+  "seed": [
+    0,
+    1,
+    2
+  ],
+  "known_limitation": "refinement is convolutional, so a corrected FIT pixel propagates to its EVAL neighbours; the EVAL number remains an upper bound on what a realizable matching stage buys, and says nothing about a refinement stage retrained against such an input."
+}

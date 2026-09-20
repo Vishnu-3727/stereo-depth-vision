@@ -1,0 +1,71 @@
+{
+ "11": [
+  {
+   "delta": 1,
+   "ZI2_zone_interior_zone_vs_global": 0.0,
+   "ZI1_comp_interior_zone_vs_delta0": 0.0,
+   "zone_interior_response_mean": 7.708392331551295e-06,
+   "max_diff_anywhere_zone_vs_delta0": 0.0019087791442871094
+  },
+  {
+   "delta": 3,
+   "ZI2_zone_interior_zone_vs_global": 0.0,
+   "ZI1_comp_interior_zone_vs_delta0": 0.0,
+   "zone_interior_response_mean": 1.1304166037007235e-05,
+   "max_diff_anywhere_zone_vs_delta0": 0.0026645660400390625
+  },
+  {
+   "delta": 6,
+   "ZI2_zone_interior_zone_vs_global": 0.0,
+   "ZI1_comp_interior_zone_vs_delta0": 0.0,
+   "zone_interior_response_mean": -0.00011571384675335139,
+   "max_diff_anywhere_zone_vs_delta0": 0.0026831626892089844
+  }
+ ],
+ "12": [
+  {
+   "delta": 1,
+   "ZI2_zone_interior_zone_vs_global": 0.0,
+   "ZI1_comp_interior_zone_vs_delta0": 0.0,
+   "zone_interior_response_mean": -8.831833838485181e-06,
+   "max_diff_anywhere_zone_vs_delta0": 0.0020127296447753906
+  },
+  {
+   "delta": 3,
+   "ZI2_zone_interior_zone_vs_global": 0.0,
+   "ZI1_comp_interior_zone_vs_delta0": 0.0,
+   "zone_interior_response_mean": -1.644099029363133e-05,
+   "max_diff_anywhere_zone_vs_delta0": 0.0024781227111816406
+  },
+  {
+   "delta": 6,
+   "ZI2_zone_interior_zone_vs_global": 0.0,
+   "ZI1_comp_interior_zone_vs_delta0": 0.0,
+   "zone_interior_response_mean": -1.7065899555746e-06,
+   "max_diff_anywhere_zone_vs_delta0": 0.00240325927734375
+  }
+ ],
+ "13": [
+  {
+   "delta": 1,
+   "ZI2_zone_interior_zone_vs_global": 0.0,
+   "ZI1_comp_interior_zone_vs_delta0": 0.0,
+   "zone_interior_response_mean": 3.823862425633706e-05,
+   "max_diff_anywhere_zone_vs_delta0": 0.0016465187072753906
+  },
+  {
+   "delta": 3,
+   "ZI2_zone_interior_zone_vs_global": 0.0,
+   "ZI1_comp_interior_zone_vs_delta0": 0.0,
+   "zone_interior_response_mean": 0.00012143974890932441,
+   "max_diff_anywhere_zone_vs_delta0": 0.0023856163024902344
+  },
+  {
+   "delta": 6,
+   "ZI2_zone_interior_zone_vs_global": 0.0,
+   "ZI1_comp_interior_zone_vs_delta0": 0.0,
+   "zone_interior_response_mean": 0.0003354224027134478,
+   "max_diff_anywhere_zone_vs_delta0": 0.0029234886169433594
+  }
+ ]
+}

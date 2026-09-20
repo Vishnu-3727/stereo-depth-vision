@@ -1,0 +1,50 @@
+EXP-BLOCKCOUNT-FULL-001 -- BATCH 3 (FINAL) ENVIRONMENT
+======================================================
+
+TWO runs: 4 blocks, seeds 1 and 2, 200 epochs each.
+
+platform         Windows-11-10.0.26200-SP0
+python           3.12.9
+torch            2.7.0+cu128
+numpy            2.5.1
+cuda_version     12.8
+cudnn_version    90701
+gpu_name         NVIDIA GeForce RTX 4060 Laptop GPU
+nvidia_driver    616.64
+
+deterministic controls
+  torch.use_deterministic_algorithms         True
+  torch.backends.cudnn.deterministic         True
+  torch.backends.cudnn.benchmark             False
+  CUBLAS_WORKSPACE_CONFIG                    :4096:8
+
+runs
+  EXP-BLOCKCOUNT-FULL-001-ARM-C-SEED1
+      blocks 4  seed 1  epochs 200  parameters 386594
+      wall clock 4678.8 s = 1.30 GPU-hours
+      init sha   2cac2916ed802495
+      final sha  89caa83582ddbd39
+      checkpoint sha256 7de305da0766b6ce86666d4e4743c3e1681d9ef29ff0a7f9f8402135ab910086
+      40-scene   EPE 2.6553489  D1 20.0897392  RMSE 6.3510172
+  EXP-BLOCKCOUNT-FULL-001-ARM-C-SEED2
+      blocks 4  seed 2  epochs 200  parameters 386594
+      wall clock 4735.2 s = 1.32 GPU-hours
+      init sha   e622226a5a22fc9b
+      final sha  fc7585ba79a4cf01
+      checkpoint sha256 47cd80901bf9f8ebf86e2c73d453272ca2acf9514500371d4db5793f03cf15ec
+      40-scene   EPE 2.5756633  D1 20.0793521  RMSE 6.1758727
+
+decision boundary (frozen 6-block EPE range, fixed before launch)
+  [2.2955181809208267, 2.3982217171269924]
+
+verdict
+  4-BLOCK-INCONCLUSIVE-AT-SEEDS-0-1-2
+
+provenance
+  HEAD                      58e8a19908ddbd35451652c61aef478f56b51ebd
+  phase-1-frozen^{commit}   b4207e518166f5089731b4d037a4a79234f70986
+  git diff phase-1-frozen -- src scripts   EMPTY
+  phase 2 committed to git  False
+  preflight                 28/28 PASS
+  guard tested against      5 forbidden runs, all refused
+  prefix reproduction       exact, both seeds

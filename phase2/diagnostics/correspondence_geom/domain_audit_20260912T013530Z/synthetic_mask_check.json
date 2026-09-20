@@ -1,0 +1,651 @@
+{
+  "domain": {
+    "ext": [
+      15,
+      55
+    ],
+    "cv": [
+      15,
+      44
+    ],
+    "stat": [
+      20,
+      39
+    ],
+    "pixel_band": [
+      325,
+      632
+    ],
+    "rows": [
+      64,
+      208
+    ],
+    "old_pixel_band": [
+      64,
+      864
+    ]
+  },
+  "S1": [
+    {
+      "tau": 1,
+      "clean_zero_cols": [
+        0,
+        69
+      ],
+      "halo_zero_cols": [
+        15,
+        54
+      ],
+      "halo_predicted_zero_cols": [
+        15,
+        54
+      ],
+      "anchor_exact_on_cv_domain": true
+    },
+    {
+      "tau": 2,
+      "clean_zero_cols": [
+        0,
+        68
+      ],
+      "halo_zero_cols": [
+        15,
+        53
+      ],
+      "halo_predicted_zero_cols": [
+        15,
+        53
+      ],
+      "anchor_exact_on_cv_domain": true
+    },
+    {
+      "tau": 3,
+      "clean_zero_cols": [
+        0,
+        67
+      ],
+      "halo_zero_cols": [
+        15,
+        52
+      ],
+      "halo_predicted_zero_cols": [
+        15,
+        52
+      ],
+      "anchor_exact_on_cv_domain": true
+    },
+    {
+      "tau": 4,
+      "clean_zero_cols": [
+        0,
+        66
+      ],
+      "halo_zero_cols": [
+        15,
+        51
+      ],
+      "halo_predicted_zero_cols": [
+        15,
+        51
+      ],
+      "anchor_exact_on_cv_domain": true
+    },
+    {
+      "tau": 5,
+      "clean_zero_cols": [
+        0,
+        65
+      ],
+      "halo_zero_cols": [
+        15,
+        50
+      ],
+      "halo_predicted_zero_cols": [
+        15,
+        50
+      ],
+      "anchor_exact_on_cv_domain": true
+    },
+    {
+      "tau": 6,
+      "clean_zero_cols": [
+        0,
+        64
+      ],
+      "halo_zero_cols": [
+        15,
+        49
+      ],
+      "halo_predicted_zero_cols": [
+        15,
+        49
+      ],
+      "anchor_exact_on_cv_domain": true
+    }
+  ],
+  "S3": [
+    {
+      "tau": 1,
+      "max_abs_residual": 9.5367431640625e-07,
+      "relative": 1.3912639890724562e-07,
+      "region": "ENTIRE tensor, halo and fill included"
+    },
+    {
+      "tau": 2,
+      "max_abs_residual": 9.5367431640625e-07,
+      "relative": 1.3912639890724562e-07,
+      "region": "ENTIRE tensor, halo and fill included"
+    },
+    {
+      "tau": 3,
+      "max_abs_residual": 8.344650268554688e-07,
+      "relative": 1.217355990438399e-07,
+      "region": "ENTIRE tensor, halo and fill included"
+    },
+    {
+      "tau": 4,
+      "max_abs_residual": 8.344650268554688e-07,
+      "relative": 1.217355990438399e-07,
+      "region": "ENTIRE tensor, halo and fill included"
+    },
+    {
+      "tau": 5,
+      "max_abs_residual": 9.5367431640625e-07,
+      "relative": 1.3912639890724562e-07,
+      "region": "ENTIRE tensor, halo and fill included"
+    },
+    {
+      "tau": 6,
+      "max_abs_residual": 9.5367431640625e-07,
+      "relative": 1.3912639890724562e-07,
+      "region": "ENTIRE tensor, halo and fill included"
+    }
+  ],
+  "S4": [
+    {
+      "seed": 0,
+      "tau": 1,
+      "relative_interaction": 1.6302708104431235e-06
+    },
+    {
+      "seed": 0,
+      "tau": 4,
+      "relative_interaction": 2.034759692738435e-06
+    },
+    {
+      "seed": 1,
+      "tau": 1,
+      "relative_interaction": 1.652567703836778e-06
+    },
+    {
+      "seed": 1,
+      "tau": 4,
+      "relative_interaction": 2.211182138936534e-06
+    },
+    {
+      "seed": 2,
+      "tau": 1,
+      "relative_interaction": 1.8080999171890238e-06
+    },
+    {
+      "seed": 2,
+      "tau": 4,
+      "relative_interaction": 1.9526121003285073e-06
+    },
+    {
+      "seed": 3,
+      "tau": 1,
+      "relative_interaction": 1.692882535505321e-06
+    },
+    {
+      "seed": 3,
+      "tau": 4,
+      "relative_interaction": 2.307675312958603e-06
+    }
+  ],
+  "S5": [
+    {
+      "seed": 0,
+      "tau": 1,
+      "relative_interaction": 0.944252373402833
+    },
+    {
+      "seed": 0,
+      "tau": 4,
+      "relative_interaction": 1.0187220823800063
+    },
+    {
+      "seed": 1,
+      "tau": 1,
+      "relative_interaction": 0.8574491236747571
+    },
+    {
+      "seed": 1,
+      "tau": 4,
+      "relative_interaction": 0.8334267020159309
+    },
+    {
+      "seed": 2,
+      "tau": 1,
+      "relative_interaction": 0.7111129284345528
+    },
+    {
+      "seed": 2,
+      "tau": 4,
+      "relative_interaction": 0.8270412676543104
+    },
+    {
+      "seed": 3,
+      "tau": 1,
+      "relative_interaction": 0.990539490486968
+    },
+    {
+      "seed": 3,
+      "tau": 4,
+      "relative_interaction": 0.8602670441258796
+    }
+  ],
+  "S6": [
+    {
+      "seed": 0,
+      "tau": 1,
+      "corrected_mask_bit_identical": true,
+      "corrected_mask_max_abs_diff": 0.0,
+      "corrected_argmin": [
+        1,
+        1
+      ],
+      "geom001_mask_bit_identical": false,
+      "geom001_mask_max_abs_diff": 0.09221294522285461,
+      "geom001_argmin": [
+        1,
+        1
+      ]
+    },
+    {
+      "seed": 0,
+      "tau": 2,
+      "corrected_mask_bit_identical": true,
+      "corrected_mask_max_abs_diff": 0.0,
+      "corrected_argmin": [
+        1,
+        1
+      ],
+      "geom001_mask_bit_identical": false,
+      "geom001_mask_max_abs_diff": 0.10677367448806763,
+      "geom001_argmin": [
+        1,
+        1
+      ]
+    },
+    {
+      "seed": 0,
+      "tau": 3,
+      "corrected_mask_bit_identical": true,
+      "corrected_mask_max_abs_diff": 0.0,
+      "corrected_argmin": [
+        1,
+        1
+      ],
+      "geom001_mask_bit_identical": false,
+      "geom001_mask_max_abs_diff": 0.1063631922006607,
+      "geom001_argmin": [
+        1,
+        1
+      ]
+    },
+    {
+      "seed": 0,
+      "tau": 4,
+      "corrected_mask_bit_identical": true,
+      "corrected_mask_max_abs_diff": 0.0,
+      "corrected_argmin": [
+        4,
+        4
+      ],
+      "geom001_mask_bit_identical": false,
+      "geom001_mask_max_abs_diff": 0.10213814675807953,
+      "geom001_argmin": [
+        2,
+        2
+      ]
+    },
+    {
+      "seed": 0,
+      "tau": 5,
+      "corrected_mask_bit_identical": true,
+      "corrected_mask_max_abs_diff": 0.0,
+      "corrected_argmin": [
+        4,
+        4
+      ],
+      "geom001_mask_bit_identical": false,
+      "geom001_mask_max_abs_diff": 0.09045985341072083,
+      "geom001_argmin": [
+        4,
+        10
+      ]
+    },
+    {
+      "seed": 0,
+      "tau": 6,
+      "corrected_mask_bit_identical": true,
+      "corrected_mask_max_abs_diff": 0.0,
+      "corrected_argmin": [
+        10,
+        10
+      ],
+      "geom001_mask_bit_identical": false,
+      "geom001_mask_max_abs_diff": 0.08226528763771057,
+      "geom001_argmin": [
+        11,
+        10
+      ]
+    },
+    {
+      "seed": 1,
+      "tau": 1,
+      "corrected_mask_bit_identical": true,
+      "corrected_mask_max_abs_diff": 0.0,
+      "corrected_argmin": [
+        2,
+        2
+      ],
+      "geom001_mask_bit_identical": false,
+      "geom001_mask_max_abs_diff": 0.03890591487288475,
+      "geom001_argmin": [
+        3,
+        3
+      ]
+    },
+    {
+      "seed": 1,
+      "tau": 2,
+      "corrected_mask_bit_identical": true,
+      "corrected_mask_max_abs_diff": 0.0,
+      "corrected_argmin": [
+        3,
+        3
+      ],
+      "geom001_mask_bit_identical": false,
+      "geom001_mask_max_abs_diff": 0.04933018982410431,
+      "geom001_argmin": [
+        3,
+        4
+      ]
+    },
+    {
+      "seed": 1,
+      "tau": 3,
+      "corrected_mask_bit_identical": true,
+      "corrected_mask_max_abs_diff": 0.0,
+      "corrected_argmin": [
+        4,
+        4
+      ],
+      "geom001_mask_bit_identical": false,
+      "geom001_mask_max_abs_diff": 0.06411099433898926,
+      "geom001_argmin": [
+        5,
+        5
+      ]
+    },
+    {
+      "seed": 1,
+      "tau": 4,
+      "corrected_mask_bit_identical": true,
+      "corrected_mask_max_abs_diff": 0.0,
+      "corrected_argmin": [
+        5,
+        5
+      ],
+      "geom001_mask_bit_identical": false,
+      "geom001_mask_max_abs_diff": 0.08669683337211609,
+      "geom001_argmin": [
+        6,
+        5
+      ]
+    },
+    {
+      "seed": 1,
+      "tau": 5,
+      "corrected_mask_bit_identical": true,
+      "corrected_mask_max_abs_diff": 0.0,
+      "corrected_argmin": [
+        6,
+        6
+      ],
+      "geom001_mask_bit_identical": false,
+      "geom001_mask_max_abs_diff": 0.11572068929672241,
+      "geom001_argmin": [
+        6,
+        7
+      ]
+    },
+    {
+      "seed": 1,
+      "tau": 6,
+      "corrected_mask_bit_identical": true,
+      "corrected_mask_max_abs_diff": 0.0,
+      "corrected_argmin": [
+        7,
+        7
+      ],
+      "geom001_mask_bit_identical": false,
+      "geom001_mask_max_abs_diff": 0.08792638033628464,
+      "geom001_argmin": [
+        7,
+        7
+      ]
+    },
+    {
+      "seed": 2,
+      "tau": 1,
+      "corrected_mask_bit_identical": true,
+      "corrected_mask_max_abs_diff": 0.0,
+      "corrected_argmin": [
+        3,
+        3
+      ],
+      "geom001_mask_bit_identical": false,
+      "geom001_mask_max_abs_diff": 0.056898072361946106,
+      "geom001_argmin": [
+        9,
+        7
+      ]
+    },
+    {
+      "seed": 2,
+      "tau": 2,
+      "corrected_mask_bit_identical": true,
+      "corrected_mask_max_abs_diff": 0.0,
+      "corrected_argmin": [
+        4,
+        4
+      ],
+      "geom001_mask_bit_identical": false,
+      "geom001_mask_max_abs_diff": 0.05473184585571289,
+      "geom001_argmin": [
+        9,
+        9
+      ]
+    },
+    {
+      "seed": 2,
+      "tau": 3,
+      "corrected_mask_bit_identical": true,
+      "corrected_mask_max_abs_diff": 0.0,
+      "corrected_argmin": [
+        5,
+        5
+      ],
+      "geom001_mask_bit_identical": false,
+      "geom001_mask_max_abs_diff": 0.04690617322921753,
+      "geom001_argmin": [
+        9,
+        5
+      ]
+    },
+    {
+      "seed": 2,
+      "tau": 4,
+      "corrected_mask_bit_identical": true,
+      "corrected_mask_max_abs_diff": 0.0,
+      "corrected_argmin": [
+        6,
+        6
+      ],
+      "geom001_mask_bit_identical": false,
+      "geom001_mask_max_abs_diff": 0.0941215455532074,
+      "geom001_argmin": [
+        6,
+        6
+      ]
+    },
+    {
+      "seed": 2,
+      "tau": 5,
+      "corrected_mask_bit_identical": true,
+      "corrected_mask_max_abs_diff": 0.0,
+      "corrected_argmin": [
+        7,
+        7
+      ],
+      "geom001_mask_bit_identical": false,
+      "geom001_mask_max_abs_diff": 0.09376150369644165,
+      "geom001_argmin": [
+        7,
+        7
+      ]
+    },
+    {
+      "seed": 2,
+      "tau": 6,
+      "corrected_mask_bit_identical": true,
+      "corrected_mask_max_abs_diff": 0.0,
+      "corrected_argmin": [
+        8,
+        8
+      ],
+      "geom001_mask_bit_identical": false,
+      "geom001_mask_max_abs_diff": 0.09807609021663666,
+      "geom001_argmin": [
+        8,
+        8
+      ]
+    },
+    {
+      "seed": 3,
+      "tau": 1,
+      "corrected_mask_bit_identical": true,
+      "corrected_mask_max_abs_diff": 0.0,
+      "corrected_argmin": [
+        2,
+        2
+      ],
+      "geom001_mask_bit_identical": false,
+      "geom001_mask_max_abs_diff": 0.07276110351085663,
+      "geom001_argmin": [
+        2,
+        2
+      ]
+    },
+    {
+      "seed": 3,
+      "tau": 2,
+      "corrected_mask_bit_identical": true,
+      "corrected_mask_max_abs_diff": 0.0,
+      "corrected_argmin": [
+        2,
+        2
+      ],
+      "geom001_mask_bit_identical": false,
+      "geom001_mask_max_abs_diff": 0.06333324313163757,
+      "geom001_argmin": [
+        2,
+        2
+      ]
+    },
+    {
+      "seed": 3,
+      "tau": 3,
+      "corrected_mask_bit_identical": true,
+      "corrected_mask_max_abs_diff": 0.0,
+      "corrected_argmin": [
+        2,
+        2
+      ],
+      "geom001_mask_bit_identical": false,
+      "geom001_mask_max_abs_diff": 0.08094414323568344,
+      "geom001_argmin": [
+        2,
+        2
+      ]
+    },
+    {
+      "seed": 3,
+      "tau": 4,
+      "corrected_mask_bit_identical": true,
+      "corrected_mask_max_abs_diff": 0.0,
+      "corrected_argmin": [
+        2,
+        2
+      ],
+      "geom001_mask_bit_identical": false,
+      "geom001_mask_max_abs_diff": 0.06080706790089607,
+      "geom001_argmin": [
+        2,
+        2
+      ]
+    },
+    {
+      "seed": 3,
+      "tau": 5,
+      "corrected_mask_bit_identical": true,
+      "corrected_mask_max_abs_diff": 0.0,
+      "corrected_argmin": [
+        5,
+        5
+      ],
+      "geom001_mask_bit_identical": false,
+      "geom001_mask_max_abs_diff": 0.07139725983142853,
+      "geom001_argmin": [
+        4,
+        4
+      ]
+    },
+    {
+      "seed": 3,
+      "tau": 6,
+      "corrected_mask_bit_identical": true,
+      "corrected_mask_max_abs_diff": 0.0,
+      "corrected_argmin": [
+        6,
+        6
+      ],
+      "geom001_mask_bit_identical": false,
+      "geom001_mask_max_abs_diff": 0.08812467753887177,
+      "geom001_argmin": [
+        5,
+        11
+      ]
+    }
+  ],
+  "S6_summary": {
+    "corrected_mask_bit_identical": "24/24",
+    "geom001_mask_bit_identical": "0/24",
+    "corrected_max_abs_diff_over_all": 0.0,
+    "geom001_max_abs_diff_over_all": 0.11572068929672241,
+    "geom001_argmin_changed_by_halo": 8,
+    "corrected_argmin_changed_by_halo": 0
+  },
+  "meta": {
+    "kind": "synthetic mask-validity check -- NOT an experiment result",
+    "trained_model_used": false,
+    "real_data_used": false,
+    "training_performed": false,
+    "is_the_experiment_gate": false,
+    "n_random_seeds": 4,
+    "wall_clock_s": 54.753785371780396
+  }
+}

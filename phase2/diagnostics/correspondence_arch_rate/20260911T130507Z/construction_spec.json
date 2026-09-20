@@ -1,0 +1,56 @@
+{
+  "experiment": "EXP-CORRESPONDENCE-ARCH-RATE-001",
+  "construction": "synthetic fronto-parallel self-pair; both images are crops of the SAME source image (scene.left); no fill, no padding, no interpolation",
+  "inherited_from": "phase2/diagnostics/correspondence_geom/20260911T115917Z/construction_spec.json (sha256 a9e8f250...), unchanged",
+  "source_size": {
+    "width": 1232,
+    "height": 368
+  },
+  "crop_size": {
+    "width": 1136,
+    "height": 272
+  },
+  "crop_size_in_feature_samples": {
+    "width": 71,
+    "height": 17
+  },
+  "left_crop": "rows [0, 272), cols [0, 1136)   -- FIXED for every condition",
+  "right_crop_horizontal": "rows [0, 272), cols [t, 1136 + t)",
+  "right_crop_vertical": "rows [t, 272 + t), cols [0, 1136)",
+  "disparity_algebra": "d = a_R - a_L = t, uniform over the crop",
+  "t_levels_px": [
+    0,
+    16,
+    32,
+    48,
+    64,
+    80,
+    96
+  ],
+  "t_fit_levels_px": [
+    16,
+    32,
+    48,
+    64,
+    80,
+    96
+  ],
+  "true_disparity_candidates": {
+    "0": 0,
+    "16": 1,
+    "32": 2,
+    "48": 3,
+    "64": 4,
+    "80": 5,
+    "96": 6
+  },
+  "axes": [
+    "horizontal",
+    "vertical"
+  ],
+  "n_distinct_conditions": 13,
+  "all_t_multiple_of_stride": true,
+  "all_windows_inside_source": true,
+  "ground_truth_used": false,
+  "interpolation": "none -- all crops are integer-aligned"
+}

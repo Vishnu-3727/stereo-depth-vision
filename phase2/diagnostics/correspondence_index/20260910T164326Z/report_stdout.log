@@ -1,0 +1,54 @@
+{
+  "VERDICT": "CANDIDATE-COORDINATE-SENSITIVITY-NOT-DEMONSTRATED",
+  "criteria_summary": {
+    "all_ordered_monotone": true,
+    "all_directions_correct": true,
+    "random_does_not_reproduce_ordered": false
+  },
+  "per_checkpoint_criteria": {
+    "6b_seed0": {
+      "ordered_monotone_d2_gt_d1_gt_id_gt_dm1": true,
+      "plus1_positive": true,
+      "minus1_negative": true,
+      "plus2_larger_than_plus1": true,
+      "random_reproduces_ordered_plus1": true
+    },
+    "6b_seed1": {
+      "ordered_monotone_d2_gt_d1_gt_id_gt_dm1": true,
+      "plus1_positive": true,
+      "minus1_negative": true,
+      "plus2_larger_than_plus1": true,
+      "random_reproduces_ordered_plus1": true
+    },
+    "6b_seed2": {
+      "ordered_monotone_d2_gt_d1_gt_id_gt_dm1": true,
+      "plus1_positive": true,
+      "minus1_negative": true,
+      "plus2_larger_than_plus1": true,
+      "random_reproduces_ordered_plus1": true
+    }
+  },
+  "deltas": {
+    "6b_seed0": {
+      "m_minus_1": -1.7788487672805786,
+      "identity": 0.0,
+      "m_plus_1": 1.9337788820266724,
+      "m_plus_2": 2.8207502961158752,
+      "random": 2.3269041180610657
+    },
+    "6b_seed1": {
+      "m_minus_1": -1.221926599740982,
+      "identity": 0.0,
+      "m_plus_1": 1.125083178281784,
+      "m_plus_2": 1.9216755330562592,
+      "random": 1.5547575652599335
+    },
+    "6b_seed2": {
+      "m_minus_1": -1.4927916824817657,
+      "identity": 0.0,
+      "m_plus_1": 1.4455207586288452,
+      "m_plus_2": 2.4833176136016846,
+      "random": 2.0561464428901672
+    }
+  }
+}

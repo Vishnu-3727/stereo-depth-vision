@@ -1,0 +1,214 @@
+{
+  "experiment_id": "EXP-CORRESPONDENCE-GEOM-002",
+  "record": "phase2/diagnostics/correspondence_geom/20260913T013006Z",
+  "frozen_utc": "2026-09-13",
+  "human_readable": "PREREGISTRATION.md",
+  "design": "design.json",
+
+  "objective": "Determine whether the trained H2 aggregation produces a pairing-dependent response that tracks a known horizontal geometric displacement, beyond what is obtained from randomized aggregation weights under the same complete statistic.",
+  "tests": "geometric pairing sensitivity",
+  "does_not_test": [
+    "full real-scene correspondence",
+    "general disparity search",
+    "correct metric disparity",
+    "causal uniqueness of the learned mechanism"
+  ],
+
+  "prerequisites": {
+    "phase_1_frozen": "verified against git tag phase-1-frozen",
+    "historical_records_byte_identical": "historical.sha256, verified before AND after every stage",
+    "geom001_immutable": "its own frozen.sha256 (5) and historical.sha256 (36) re-verified here",
+    "geom001_status_recorded": "HALTED -- INVALID DOMAIN",
+    "no_old_gate_result_reused": true,
+    "no_architecture_candidate_dilation_refinement_temperature_checkpoint_change": true,
+    "determinism_active": true,
+    "no_optimizer_backward_or_update": true,
+    "on_failure": "HARD STOP"
+  },
+
+  "domain": {
+    "feature_translation": [15, 55],
+    "cost_volume": [15, 44],
+    "aggregation_statistic": [20, 39],
+    "pixel": [325, 632],
+    "mask_rows": [64, 208],
+    "mask_cols": [325, 633],
+    "mask_pixels": 44352,
+    "may_widen": false,
+    "may_change_after_seeing_results": false
+  },
+
+  "geometry": {
+    "taus": [1, 2, 3, 4, 5, 6],
+    "t_px": [16, 32, 48, 64, 80, 96],
+    "left": "frozen left crop rows [0,272) cols [0,1136)",
+    "right_horizontal": "rows [0,272) cols [16*tau, 1136+16*tau)",
+    "right_vertical": "rows [16*tau, 272+16*tau) cols [0,1136)",
+    "required_feature_identity": "R_f[w] == L_f[w + tau] on the validated translation domain",
+    "required_anchor": "V[tau, w] == 0 exactly on the valid cost-volume domain",
+    "on_failure": "HS1 HARD STOP"
+  },
+
+  "cells": {
+    "list": ["AA", "BB", "AB", "BA"],
+    "positive": ["AA", "BB"],
+    "negative": ["AB", "BA"],
+    "invariant": "each source image exactly once as left and exactly once as right; the same tau in all four cells",
+    "independent_random_translations": "PROHIBITED",
+    "on_failure": ["HS2", "HS3"]
+  },
+
+  "statistic": {
+    "formula": "I_tau(k) = 0.5*[z_AA(k) + z_BB(k)] - 0.5*[z_AB(k) + z_BA(k)]",
+    "readout": "exactly the frozen H2 readout",
+    "prohibited": ["additional normalization", "smoothing", "filtering", "temperature", "post-processing"],
+    "estimate": "k_hat_tau = argmin_k I_tau(k)",
+    "tie_rule": "smallest candidate index",
+    "recorded_per_tau": ["tau", "k_hat", "I_min", "I_second", "I_second - I_min"],
+    "margin_role": "DESCRIPTIVE ONLY -- must not alter the verdict",
+    "primary": "h = sum over tau of 1[k_hat_tau == tau], 0 <= h <= 6",
+    "alternate_tolerance_or_shifted_success": "PROHIBITED"
+  },
+
+  "stage_1_gate": {
+    "must_run_before_any_trained_checkpoint_is_loaded": true,
+    "seeds": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+    "randomised": "aggregation parameters only",
+    "frozen": ["feature extractor", "cost-volume construction", "candidate count", "readout", "geometry", "pairing", "mask", "refinement disabled"],
+    "record": "the complete result for every seed",
+    "H_star": "max(h_rand)",
+    "G_STOP_rule": "if H_star == 6 -> verdict STATISTIC-ARCHITECTURALLY-AVAILABLE; do not load trained checkpoints; do not execute stage 2; this does NOT establish correspondence"
+  },
+
+  "stage_2_trained": {
+    "runs_only_if": "H_star < 6",
+    "checkpoints": ["H2_seed0", "H2_seed1", "H2_seed2"],
+    "retraining": false,
+    "fine_tuning": false,
+    "checkpoint_selection": false,
+    "reuses": ["the same six scene pairs", "the same six tau values", "the same AA/BB/AB/BA construction", "the same corrected mask", "the same frozen readout"]
+  },
+
+  "comparison": {
+    "primary": "h_trained > H_star",
+    "strongest_admissible_outcome": "min(h_trained) > H_star across all three trained checkpoints",
+    "if_not_exceeded": "NOT-DEMONSTRATED -- not evidence of correspondence, and NOT evidence that correspondence is absent",
+    "partial": "CASE C -- HETEROGENEOUS; report every checkpoint separately; pooling PROHIBITED"
+  },
+
+  "tracking_with_offset": {
+    "condition": "k_hat_tau != tau for all six tau, and k_hat_tau - tau identical across all six, for one checkpoint and scene pair",
+    "label": "TRACKING-WITH-OFFSET",
+    "role": "DIAGNOSTIC ONLY -- the primary h statistic is NOT redefined to count offset matches"
+  },
+
+  "vertical_control": {
+    "retained": true,
+    "is_a_clean_matched_null": false,
+    "reason": "no halo-clean vertical domain exists",
+    "negative_result": "UNINFORMATIVE",
+    "positive_result": "may downgrade the interpretation",
+    "may_override_horizontal": false
+  },
+
+  "algebraic_validation": {
+    "check": "AA + BB - AB - BA at the RAW COST-VOLUME level is numerically zero",
+    "tolerance": 1e-5,
+    "historical_reference_real_features": 1.8089e-07,
+    "claim_after_the_nonlinear_z_score": "NONE -- the z-score is part of the measured statistic and is calibrated empirically by the random gate"
+  },
+
+  "hard_stops": {
+    "HS1": "feature translation fails on the validated domain (sub-checks A/B/C/D, see design.json)",
+    "HS2": "AA/BB/AB/BA construction is incorrect",
+    "HS3": "tau differs across the four cells",
+    "HS4": "raw cost-volume cancellation fails beyond the frozen tolerance",
+    "HS5": "checkpoint identity, candidate count, or readout parameter count differs from the frozen specification",
+    "HS6": "process-restart determinism fails",
+    "HS7": "a trained aggregation checkpoint is loaded before random G-PASS",
+    "HS8": "any historical record is modified",
+    "HS9": "mask pixel count differs from 44352",
+    "HS10": "any response contains NaN/Inf",
+    "HS11": "optimizer, backward, parameter update, or refinement is invoked",
+    "post_hoc_restart": "PROHIBITED without a new preregistration"
+  },
+
+  "required_outputs": [
+    "design.json", "preregistration.json", "gate.json", "trained.json",
+    "results.json", "metrics.csv", "per_scene.csv", "per_tau.csv",
+    "hard_stop.json", "environment.json", "checkpoint_hashes.json"
+  ],
+  "also_recorded": [
+    "all random seeds", "all tau values", "all scene-pair identifiers",
+    "all argmins", "all candidate-response vectors", "all tie events",
+    "all minimum/second-minimum margins", "all mask dimensions",
+    "all checkpoint SHA256 values"
+  ],
+
+  "claim_ceiling": {
+    "permitted_if_exceeded": "Under the specified synthetic horizontal pairing intervention, the trained nonlinear aggregation-plus-readout response tracks the known geometric pairing displacement more strongly than the preregistered random-aggregation population.",
+    "permitted_if_not_exceeded": "TRUE CORRESPONDENCE -- NOT DEMONSTRATED",
+    "prohibited": [
+      "full stereo correspondence", "general disparity search",
+      "correct disparity on natural scenes", "metric depth recovery",
+      "causal uniqueness", "architectural necessity", "generalization",
+      "absence of correspondence"
+    ]
+  },
+
+  "immutable_rules": [
+    "do not widen the mask", "do not add additional tau values",
+    "do not remove difficult scene pairs", "do not change the argmin rule",
+    "do not introduce an offset tolerance", "do not tune temperature",
+    "do not alter the z-score", "do not change aggregation",
+    "do not add refinement", "do not train new checkpoints",
+    "do not reuse historical random-gate results",
+    "do not use the vertical arm as the primary statistic",
+    "do not select results after execution"
+  ],
+
+  "resolutions": {
+    "note": "points on which the authorisation is silent. Each resolved by inheritance from a named frozen record, fixed here before execution, and argued in PREREGISTRATION.md Part B.",
+    "R1_pixel_reduction": {
+      "resolution": "Ibar_tau(k) = median over the 44352 masked pixels of I_tau(k,y,x)",
+      "authority": "phase2/diagnostics/correspondence_geom/20260912T011452Z/spec.json statistic.profile",
+      "class": "INHERITED, unchanged",
+      "not_done": ["mean", "trimmed mean", "per-candidate re-centering", "cross-tau normalisation", "smoothing along k"]
+    },
+    "R2_unit": {
+      "resolution": "unit = (aggregation instance, scene pair); gate population 3 x 6 x 32 = 576; trained population 3 x 6 = 18; H* = max over 576; primary comparison min over 18 > H*",
+      "authority": "GEOM-001 run_geom.py stage1 unit structure and the 576-unit assertion; domain audit design.json random_gate",
+      "class": "INHERITED, unchanged",
+      "declared_ambiguity": "the strongest of the two readings of 'min(h_trained) across all three checkpoints' is adopted; both the 18 unit values and the three six-vectors are reported so either reading can be applied by a reader"
+    },
+    "R3_gate_axis": {
+      "resolution": "stage 1 horizontal only; vertical appears in stage 2 as a diagnostic and is never compared to H*",
+      "authority": "GEOM-001 run_geom.py stage1/stage2; domain audit design.json vertical_control",
+      "class": "INHERITED, unchanged"
+    },
+    "R4_search_free_control": {
+      "resolution": "NEG_shift_none is NOT run",
+      "authority": "the authorisation, stage 2: 'Load exactly these frozen H2 checkpoints' and 'No checkpoint selection'",
+      "class": "SCOPE REDUCTION imposed by the authorisation",
+      "declared_cost": "this record carries one null only -- the random-aggregation gate -- and no architecture-level null"
+    },
+    "R5_HS1_subchecks": {
+      "resolution": "HS1-A pixel construction (both arms); HS1-B Rf[w]==Lf[w+tau] exact on [15,55-tau] (horizontal); HS1-C |V[:,tau,:,15:45]| == 0.0 exact for AA and BB (horizontal); HS1-D domain non-empty, tau-independent, >= 12 wide",
+      "vertical": "HS1-B and HS1-C recorded INAPPLICABLE, never as passes",
+      "tolerance": 0.0,
+      "authority": "domain_derivation.md sections 2-6",
+      "class": "the corrected form of the single bound that fired in GEOM-001"
+    },
+    "R6_cancellation_tolerance": {
+      "resolution": 1e-5,
+      "authority": "GEOM-001 run_geom.py CANCEL_TOL",
+      "class": "INHERITED, unchanged"
+    },
+    "R7_ties_margins_rows": {
+      "ties": "numpy.argmin smallest index; every exact tie recorded separately in tie_events",
+      "margin": "I_second - I_min, descriptive only",
+      "rows": "y in [64,208) retained unchanged; the derivation permits all 17 feature rows but widening after the halt would be support-shopping",
+      "class": "INHERITED, unchanged"
+    }
+  }
+}

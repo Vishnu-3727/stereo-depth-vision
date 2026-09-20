@@ -1,0 +1,21 @@
+EXP-CORRESPONDENCE-ARCH-RATE-001
+device=cuda torch=2.7.0+cu128 numpy=2.5.1
+freeze verified: construction 7a4e2341fc50 | randomisation e52b5b03c5d4 | classification 273f7562b62d
+scenes [5, 7, 8, 9] ['000165_10.png', '000167_10.png', '000168_10.png', '000169_10.png']  seeds 0..31
+built 32 random aggregations, all tensor hashes distinct
+done POS_6b_seed0   000165_10.png  32 seeds
+done POS_6b_seed0   000167_10.png  32 seeds
+done POS_6b_seed0   000168_10.png  32 seeds
+done POS_6b_seed0   000169_10.png  32 seeds
+done POS_6b_seed1   000165_10.png  32 seeds
+done POS_6b_seed1   000167_10.png  32 seeds
+done POS_6b_seed1   000168_10.png  32 seeds
+done POS_6b_seed1   000169_10.png  32 seeds
+done POS_6b_seed2   000165_10.png  32 seeds
+done POS_6b_seed2   000167_10.png  32 seeds
+done POS_6b_seed2   000168_10.png  32 seeds
+done POS_6b_seed2   000169_10.png  32 seeds
+volumes=156 arms=5376
+QUALIFYING rate = 0/384 = 0.0000
+tally: {"CLIPPED": 0, "FLAT": 378, "ANTI_CORRELATED": 0, "NON_MONOTONE": 6, "NON_SPECIFIC": 0, "QUALIFYING": 0}
+wall_clock_s=56.22

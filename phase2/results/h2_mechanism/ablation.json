@@ -1,0 +1,120 @@
+{
+  "protocol": [
+    "Phase 1 EXP-007 variant set, applied to EXP-H1-*-v2 checkpoints; inference only, 10 hailo_val scenes, pooled over gt > 0 pixels."
+  ],
+  "git_revision": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+  "scenes_used": [
+    0,
+    3,
+    6,
+    9,
+    12,
+    15,
+    18,
+    21,
+    27,
+    31
+  ],
+  "models": {
+    "WORKING": {
+      "baseline": {
+        "epe": 9.92206415843062,
+        "d1": 76.01779718447784,
+        "mean_disparity": 26.110463689366743,
+        "mean_abs_change_vs_baseline_px": 0.0,
+        "correlation_with_baseline": 1.0,
+        "d1_penalty_vs_baseline_points": 0.0
+      },
+      "right_equals_left": {
+        "epe": 9.894413698468954,
+        "d1": 75.91833259020704,
+        "mean_disparity": 26.141955447523614,
+        "mean_abs_change_vs_baseline_px": 0.36888813126403924,
+        "correlation_with_baseline": 0.9965592381231706,
+        "d1_penalty_vs_baseline_points": -0.09946459427079901
+      },
+      "right_from_other_scene": {
+        "epe": 10.05191712708218,
+        "d1": 76.6003924179831,
+        "mean_disparity": 25.821489181136364,
+        "mean_abs_change_vs_baseline_px": 1.065300593443398,
+        "correlation_with_baseline": 0.986846071271171,
+        "d1_penalty_vs_baseline_points": 0.5825952335052591
+      },
+      "right_flipped_horizontally": {
+        "epe": 10.155652829550425,
+        "d1": 76.75449749091395,
+        "mean_disparity": 25.741987125392644,
+        "mean_abs_change_vs_baseline_px": 1.0796333193398981,
+        "correlation_with_baseline": 0.9864249223222756,
+        "d1_penalty_vs_baseline_points": 0.7367003064361057
+      },
+      "right_black": {
+        "epe": 9.763307560239795,
+        "d1": 75.59557530392289,
+        "mean_disparity": 26.456875934075686,
+        "mean_abs_change_vs_baseline_px": 0.8759672552257719,
+        "correlation_with_baseline": 0.9928467108615511,
+        "d1_penalty_vs_baseline_points": -0.42222188055495735
+      },
+      "right_noise": {
+        "epe": 10.254377139562948,
+        "d1": 76.80771873636205,
+        "mean_disparity": 25.450760661254854,
+        "mean_abs_change_vs_baseline_px": 1.2042873750684453,
+        "correlation_with_baseline": 0.9844799252170022,
+        "d1_penalty_vs_baseline_points": 0.7899215518842055
+      }
+    },
+    "H2": {
+      "baseline": {
+        "epe": 1.9855087936402973,
+        "d1": 14.527625965817768,
+        "mean_disparity": 27.610267422130548,
+        "mean_abs_change_vs_baseline_px": 0.0,
+        "correlation_with_baseline": 1.0,
+        "d1_penalty_vs_baseline_points": 0.0
+      },
+      "right_equals_left": {
+        "epe": 25.928490312449668,
+        "d1": 95.3456246814117,
+        "mean_disparity": 10.328945516218326,
+        "mean_abs_change_vs_baseline_px": 18.2809818486016,
+        "correlation_with_baseline": 0.23755732846570043,
+        "d1_penalty_vs_baseline_points": 80.81799871559394
+      },
+      "right_from_other_scene": {
+        "epe": 31.05582587639703,
+        "d1": 97.03806028666145,
+        "mean_disparity": 61.21307877069239,
+        "mean_abs_change_vs_baseline_px": 34.31802676584496,
+        "correlation_with_baseline": 0.2864868829849456,
+        "d1_penalty_vs_baseline_points": 82.51043432084369
+      },
+      "right_flipped_horizontally": {
+        "epe": 30.442597417660192,
+        "d1": 96.76036365485668,
+        "mean_disparity": 60.00207532123412,
+        "mean_abs_change_vs_baseline_px": 33.20842656060111,
+        "correlation_with_baseline": 0.3384685542076876,
+        "d1_penalty_vs_baseline_points": 82.23273768903891
+      },
+      "right_black": {
+        "epe": 35.70808174429823,
+        "d1": 98.88578365918534,
+        "mean_disparity": 66.70658978249992,
+        "mean_abs_change_vs_baseline_px": 39.42931590898224,
+        "correlation_with_baseline": 0.2589456440732201,
+        "d1_penalty_vs_baseline_points": 84.35815769336757
+      },
+      "right_noise": {
+        "epe": 34.15754584253751,
+        "d1": 98.69134870914826,
+        "mean_disparity": 63.42687459085736,
+        "mean_abs_change_vs_baseline_px": 36.134798914851025,
+        "correlation_with_baseline": 0.3883943291668463,
+        "d1_penalty_vs_baseline_points": 84.1637227433305
+      }
+    }
+  }
+}

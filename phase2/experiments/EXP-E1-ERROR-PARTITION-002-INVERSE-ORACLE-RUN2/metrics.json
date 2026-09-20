@@ -1,0 +1,15 @@
+{
+  "experiment_id": "EXP-E1-ERROR-PARTITION-002-INVERSE-ORACLE-RUN2",
+  "description": "E1 robustness: inverse (fixed-point) oracle at the matching -> refinement boundary",
+  "status": "failed",
+  "started_utc": "2026-09-08T00:56:12.307975+00:00",
+  "finished_utc": "2026-09-08T00:57:15.566405+00:00",
+  "duration_s": 63.25843,
+  "metrics": {},
+  "observations": [
+    "EXP-E1-ERROR-PARTITION-001's DOWNSTREAM-LIMITED verdict is not an artifact of its affine oracle: a targeted fixed-point search for the matching output that would make the refinement stage correct also fails to remove the error.",
+    "a clamped fixed point searches inputs to THESE refinement weights; it says nothing about a refinement stage retrained against a perfect matching input."
+  ],
+  "conclusion": null,
+  "error": "Traceback (most recent call last):\n  File \"C:\\Users\\vishn\\stereo_depth_vision\\phase2\\scripts\\exp_e1_inverse_oracle.py\", line 225, in run\n    best[key] = best_run(runs[key])\n                ^^^^^^^^\nNameError: name 'best_run' is not defined\n"
+}

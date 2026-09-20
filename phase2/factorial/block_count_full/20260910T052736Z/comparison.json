@@ -1,0 +1,212 @@
+{
+  "experiment": "EXP-BLOCKCOUNT-FULL-001",
+  "batch": 2,
+  "batch_note": "batch 2 of the sequential campaign: ONE resolution run, 5 blocks / seed 2 / 200 epochs, to bring the 5-block arm to three seeds {0,1,2} against the 6-block arm's three. No other run is authorised -- not 4b/seed1, not 4b/seed2, not another 5b or 6b seed, not seed 0, not a rerun of anything",
+  "new_run": {
+    "id": "EXP-BLOCKCOUNT-FULL-001-ARM-B-SEED2",
+    "blocks": 5,
+    "seed": 2,
+    "epe": 2.637299378667016,
+    "d1": 20.659398858261433,
+    "rmse": 6.443872277360179
+  },
+  "seed_ranges": {
+    "6_blocks": {
+      "seeds": {
+        "0": {
+          "epe": 2.2955181809208267,
+          "d1": 15.6045142562172
+        },
+        "1": {
+          "epe": 2.3982217171269924,
+          "d1": 18.335714475424272
+        },
+        "2": {
+          "epe": 2.3950487882916516,
+          "d1": 17.469904388795932
+        }
+      },
+      "epe": {
+        "n": 3,
+        "mean": 2.3629295621131567,
+        "sd": 0.05840152057131535,
+        "min": 2.2955181809208267,
+        "max": 2.3982217171269924,
+        "range": 0.10270353620616568
+      },
+      "d1": {
+        "n": 3,
+        "mean": 17.1367110401458,
+        "sd": 1.39575320706696,
+        "min": 15.6045142562172,
+        "max": 18.335714475424272,
+        "range": 2.7312002192070715
+      }
+    },
+    "5_blocks": {
+      "seeds": {
+        "0": {
+          "epe": 2.6457595145748534,
+          "d1": 21.37119073145372
+        },
+        "1": {
+          "epe": 2.4729829593541792,
+          "d1": 18.20617824196243
+        },
+        "2": {
+          "epe": 2.637299378667016,
+          "d1": 20.659398858261433
+        }
+      },
+      "epe": {
+        "n": 3,
+        "mean": 2.585347284198683,
+        "sd": 0.09740225663820949,
+        "min": 2.4729829593541792,
+        "max": 2.6457595145748534,
+        "range": 0.17277655522067414
+      },
+      "d1": {
+        "n": 3,
+        "mean": 20.078922610559193,
+        "sd": 1.66043383495664,
+        "min": 18.20617824196243,
+        "max": 21.37119073145372,
+        "range": 3.165012489491289
+      }
+    },
+    "4_blocks_seed0_only": {
+      "epe": 2.3387143497258114,
+      "d1": 16.97973886063337
+    }
+  },
+  "non_overlap": {
+    "min_5b_epe_gt_max_6b_epe": true,
+    "min_5b_epe": 2.4729829593541792,
+    "max_6b_epe": 2.3982217171269924,
+    "epe_margin": 0.07476124222718683,
+    "min_5b_d1_gt_max_6b_d1": false,
+    "min_5b_d1": 18.20617824196243,
+    "max_6b_d1": 18.335714475424272,
+    "d1_margin": -0.12953623346184173
+  },
+  "all_pairings": {
+    "5b_seed0_vs_6b_seed0": {
+      "epe_5b_worse": true,
+      "d1_5b_worse": true,
+      "delta_epe": 0.35024133365402665,
+      "delta_d1": 5.766676475236519
+    },
+    "5b_seed0_vs_6b_seed1": {
+      "epe_5b_worse": true,
+      "d1_5b_worse": true,
+      "delta_epe": 0.24753779744786097,
+      "delta_d1": 3.0354762560294475
+    },
+    "5b_seed0_vs_6b_seed2": {
+      "epe_5b_worse": true,
+      "d1_5b_worse": true,
+      "delta_epe": 0.2507107262832018,
+      "delta_d1": 3.9012863426577873
+    },
+    "5b_seed1_vs_6b_seed0": {
+      "epe_5b_worse": true,
+      "d1_5b_worse": true,
+      "delta_epe": 0.1774647784333525,
+      "delta_d1": 2.6016639857452297
+    },
+    "5b_seed1_vs_6b_seed1": {
+      "epe_5b_worse": true,
+      "d1_5b_worse": false,
+      "delta_epe": 0.07476124222718683,
+      "delta_d1": -0.12953623346184173
+    },
+    "5b_seed1_vs_6b_seed2": {
+      "epe_5b_worse": true,
+      "d1_5b_worse": true,
+      "delta_epe": 0.07793417106252765,
+      "delta_d1": 0.7362738531664981
+    },
+    "5b_seed2_vs_6b_seed0": {
+      "epe_5b_worse": true,
+      "d1_5b_worse": true,
+      "delta_epe": 0.3417811977461893,
+      "delta_d1": 5.054884602044233
+    },
+    "5b_seed2_vs_6b_seed1": {
+      "epe_5b_worse": true,
+      "d1_5b_worse": true,
+      "delta_epe": 0.23907766154002363,
+      "delta_d1": 2.323684382837161
+    },
+    "5b_seed2_vs_6b_seed2": {
+      "epe_5b_worse": true,
+      "d1_5b_worse": true,
+      "delta_epe": 0.24225059037536445,
+      "delta_d1": 3.189494469465501
+    }
+  },
+  "all_nine_pairings_5b_worse_epe": true,
+  "all_nine_pairings_5b_worse_d1": false,
+  "per_scene_paired": {
+    "5b_seed2_vs_6b_seed2": {
+      "scenes": 40,
+      "epe_5b_worse_in": 32,
+      "epe_mean_delta": 0.2334313630952331,
+      "epe_median_delta": 0.13160143315330286,
+      "epe_max_delta": 1.1360774354016172,
+      "epe_min_delta": -0.32664518971892686,
+      "d1_5b_worse_in": 35,
+      "d1_mean_delta": 3.0527315201644196
+    },
+    "5b_seed2_vs_6b_seed1": {
+      "scenes": 40,
+      "epe_5b_worse_in": 31,
+      "epe_mean_delta": 0.22322105788138985,
+      "epe_median_delta": 0.09992127169540699,
+      "epe_max_delta": 2.0875324887900355,
+      "epe_min_delta": -0.4836719017947888,
+      "d1_5b_worse_in": 30,
+      "d1_mean_delta": 2.1989373748149244
+    },
+    "5b_seed2_vs_6b_seed0": {
+      "scenes": 40,
+      "epe_5b_worse_in": 37,
+      "epe_mean_delta": 0.3286298175501147,
+      "epe_median_delta": 0.20355963719575698,
+      "epe_max_delta": 1.7392503119925058,
+      "epe_min_delta": -0.9365189561937708,
+      "d1_5b_worse_in": 38,
+      "d1_mean_delta": 4.829419513819595
+    },
+    "5b_seed1_vs_6b_seed1": {
+      "scenes": 40,
+      "epe_5b_worse_in": 22,
+      "epe_mean_delta": 0.07114406311616213,
+      "epe_median_delta": 0.016546679574158007,
+      "epe_max_delta": 2.151444139410563,
+      "epe_min_delta": -0.6065774875957084,
+      "d1_5b_worse_in": 20,
+      "d1_mean_delta": -0.07202611756287505
+    },
+    "5b_seed0_vs_6b_seed0": {
+      "scenes": 40,
+      "epe_5b_worse_in": 35,
+      "epe_mean_delta": 0.34654437442763564,
+      "epe_median_delta": 0.3310966239581171,
+      "epe_max_delta": 1.442276357095405,
+      "epe_min_delta": -0.9728052718697402,
+      "d1_5b_worse_in": 38,
+      "d1_mean_delta": 5.519015095256087
+    }
+  },
+  "interpretation_limit": "Descriptive non-overlap over three seeds per arm on one dataset, one recipe and one deterministic protocol. Not a statistical test, and not a universal law about refinement capacity. No materiality band is used: the historical E3b/E3c band stays invalidated and no new threshold was invented.",
+  "provenance": {
+    "head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "head_subject": "docs: add the Phase 1 overview",
+    "phase_1_frozen_commit": "b4207e518166f5089731b4d037a4a79234f70986",
+    "phase_1_diff_vs_frozen": "",
+    "status_short": "M .gitignore\n?? phase2/",
+    "phase_2_committed": false
+  }
+}

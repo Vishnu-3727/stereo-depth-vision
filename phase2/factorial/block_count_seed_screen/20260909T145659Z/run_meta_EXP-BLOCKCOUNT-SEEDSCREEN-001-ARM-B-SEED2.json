@@ -1,0 +1,61 @@
+{
+  "arm": "B",
+  "seed": 2,
+  "experiment_id": "EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED2",
+  "controls": {
+    "torch.use_deterministic_algorithms": true,
+    "torch.backends.cudnn.deterministic": true,
+    "torch.backends.cudnn.benchmark": false,
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+  },
+  "blocks": 5,
+  "parameters": 405090,
+  "init_weight_sha": "540d81706f0d4850",
+  "epoch_budget": 30,
+  "schedule_T_max": 200,
+  "changed_variables": {
+    "refinement_blocks": 5,
+    "seed": 2
+  },
+  "initialised_from": "fresh, per the frozen recipe; no checkpoint loaded",
+  "provenance": {
+    "head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "head_subject": "docs: add the Phase 1 overview",
+    "phase_1_frozen_commit": "b4207e518166f5089731b4d037a4a79234f70986",
+    "phase_1_diff_vs_frozen": "",
+    "status_short": "M .gitignore\n?? phase2/",
+    "phase_2_committed": false
+  },
+  "environment": {
+    "command": "phase2/factorial/block_count_seed_screen/exp_blockcount_seed_screen.py train --out phase2/factorial/block_count_seed_screen/20260909T145659Z --arm B --seed 2",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "numpy": "2.5.1",
+    "cuda_version": "12.8",
+    "cudnn_version": 90701,
+    "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "nvidia_driver": "616.64",
+    "flags": {
+      "deterministic_algorithms": true,
+      "cudnn.deterministic": true,
+      "cudnn.benchmark": false
+    },
+    "env": {
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+    }
+  },
+  "started_utc": "2026-09-09T15:55:12Z",
+  "wall_clock_s": 766.4034764766693,
+  "finished_utc": "2026-09-09T16:07:58Z",
+  "schedule_T_max_requested_by_training_code": 30,
+  "schedule_note": "training code requested T_max=30; the frozen 200-epoch schedule was used instead, on purpose",
+  "checkpoint": "phase2\\factorial\\block_count_seed_screen\\20260909T145659Z\\checkpoints\\EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED2_checkpoint.pth",
+  "checkpoint_sha256": "aa3cc9463f7ba28833ebe2759d485ae44c8f7e949ca3dff44e49be86f5bddf59",
+  "final_weight_sha": "4f469f1483b95e2d",
+  "snapshots": [
+    "EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED2_epoch10.pth",
+    "EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED2_epoch20.pth",
+    "EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED2_epoch30.pth"
+  ]
+}

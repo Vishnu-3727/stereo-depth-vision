@@ -1,0 +1,153 @@
+{
+  "experiment": "EXP-BLOCKCOUNT-FULL-001",
+  "batch": 1,
+  "authorised_batch": [
+    [
+      "A",
+      1
+    ],
+    [
+      "A",
+      2
+    ],
+    [
+      "B",
+      1
+    ]
+  ],
+  "batch_2_status": "NOT AUTHORISED, NOT RUN, refused by the harness",
+  "epochs": 200,
+  "scheduler": "CosineAnnealingLR T_max=200 (native, not re-fitted)",
+  "checkpoint_epochs": [
+    1,
+    2,
+    5,
+    10,
+    20,
+    50,
+    100,
+    150,
+    200
+  ],
+  "weight_snapshot_epochs": [
+    10,
+    20,
+    50,
+    100,
+    150,
+    200
+  ],
+  "gates": {
+    "viability": 10,
+    "collapse_check": 100,
+    "stereo_verdict": 200
+  },
+  "changed_variables": [
+    "refinement block count",
+    "seed"
+  ],
+  "runs": {
+    "EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED1": {
+      "arm": "A",
+      "seed": 1,
+      "blocks": 6,
+      "parameters": 423586,
+      "init_weight_sha": "c27a63f9fac30273",
+      "final_weight_sha": "80151d1b2d3dca67",
+      "wall_clock_s": 5010.306891679764
+    },
+    "EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED2": {
+      "arm": "A",
+      "seed": 2,
+      "blocks": 6,
+      "parameters": 423586,
+      "init_weight_sha": "60551302b5834cfc",
+      "final_weight_sha": "18ad97f434a12a87",
+      "wall_clock_s": 5019.150917291641
+    },
+    "EXP-BLOCKCOUNT-FULL-001-ARM-B-SEED1": {
+      "arm": "B",
+      "seed": 1,
+      "blocks": 5,
+      "parameters": 405090,
+      "init_weight_sha": "a469638e5ed79cce",
+      "final_weight_sha": "d948eaf76954abdf",
+      "wall_clock_s": 4835.999161243439
+    }
+  },
+  "frozen_seed0_readonly": {
+    "A": {
+      "blocks": 6,
+      "record": "phase2/diagnostics/determinism/20260909T041500Z_baseline",
+      "experiment": "STAGEB-DETERMINISTIC-BASELINE-ARM-A-RUNA",
+      "frozen_40_scene": {
+        "epe": 2.2955181809208267,
+        "d1": 15.6045142562172
+      }
+    },
+    "B": {
+      "blocks": 5,
+      "record": "phase2/factorial/block_count_deterministic/20260909T131500Z",
+      "experiment": "EXP-BLOCKCOUNT-DETERMINISTIC-001-ARM-B",
+      "frozen_40_scene": {
+        "epe": 2.6458,
+        "d1": 21.3712
+      }
+    },
+    "C": {
+      "blocks": 4,
+      "record": "phase2/factorial/block_count_deterministic/20260909T131500Z",
+      "experiment": "EXP-BLOCKCOUNT-DETERMINISTIC-001-ARM-C",
+      "frozen_40_scene": {
+        "epe": 2.3387,
+        "d1": 16.9797
+      }
+    }
+  },
+  "recipe": {
+    "cost_volume_shift": "left",
+    "num_disparities": 12,
+    "regression": "StandardisedDisparityRegression",
+    "dilations": [
+      1,
+      2,
+      4,
+      8,
+      1,
+      1
+    ]
+  },
+  "deterministic_controls": {
+    "torch.use_deterministic_algorithms": true,
+    "torch.backends.cudnn.deterministic": true,
+    "torch.backends.cudnn.benchmark": false,
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+  },
+  "environment": {
+    "command": "phase2/factorial/block_count_full/exp_blockcount_full.py train --out phase2/factorial/block_count_full/20260910T005550Z --arm A --seed 1",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "numpy": "2.5.1",
+    "cuda_version": "12.8",
+    "cudnn_version": 90701,
+    "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "nvidia_driver": "616.64",
+    "flags": {
+      "deterministic_algorithms": true,
+      "cudnn.deterministic": true,
+      "cudnn.benchmark": false
+    },
+    "env": {
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+    }
+  },
+  "provenance": {
+    "head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "head_subject": "docs: add the Phase 1 overview",
+    "phase_1_frozen_commit": "b4207e518166f5089731b4d037a4a79234f70986",
+    "phase_1_diff_vs_frozen": "",
+    "status_short": "M .gitignore\n?? phase2/",
+    "phase_2_committed": false
+  }
+}

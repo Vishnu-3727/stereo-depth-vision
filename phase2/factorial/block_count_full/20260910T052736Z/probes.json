@@ -1,0 +1,108 @@
+{
+  "probe_epochs": [
+    10,
+    20,
+    50,
+    100,
+    150,
+    200
+  ],
+  "focus_scenes": [
+    27,
+    0,
+    31,
+    6
+  ],
+  "probe_implementation": "exp_h2_seed_replication.stereo_probe and exp_h2_softargmin_scale.validation_stage_stats, imported unchanged -- no new stereo metric was introduced",
+  "caveat": "right-image and matching-map probes establish binocular DEPENDENCE, not correct disparity search: Phase 1 EXP-007 measured +89.7 D1 on the reference weights despite a provably degenerate shift.",
+  "runs": {
+    "EXP-BLOCKCOUNT-FULL-001-ARM-B-SEED2": {
+      "arm": "B",
+      "seed": 2,
+      "blocks": 5,
+      "series": {
+        "10": {
+          "epoch": 10,
+          "right_image_min_d1_penalty": -2.651386587338024,
+          "matching_map_min_d1_penalty": -4.088054194790288,
+          "softmax_entropy": 1.9728091785463306,
+          "final_disparity_std": 8.775506586400677,
+          "disparity_initial_corr_gt": 0.5183274538764103,
+          "final_corr_gt": 0.5308824525940581
+        },
+        "20": {
+          "epoch": 20,
+          "right_image_min_d1_penalty": -0.02594000077820624,
+          "matching_map_min_d1_penalty": 3.5680471070414086,
+          "softmax_entropy": 1.8646387630406884,
+          "final_disparity_std": 10.912397134815107,
+          "disparity_initial_corr_gt": 0.7084907270789707,
+          "final_corr_gt": 0.724682828274421
+        },
+        "50": {
+          "epoch": 50,
+          "right_image_min_d1_penalty": 42.04775173468831,
+          "matching_map_min_d1_penalty": 32.965451929556174,
+          "softmax_entropy": 1.7930160967821245,
+          "final_disparity_std": 16.95383206512068,
+          "disparity_initial_corr_gt": 0.8058262406997567,
+          "final_corr_gt": 0.8143872007345957
+        },
+        "100": {
+          "epoch": 100,
+          "right_image_min_d1_penalty": 61.286856435192774,
+          "matching_map_min_d1_penalty": 52.09437432843433,
+          "softmax_entropy": 1.8204403633919028,
+          "final_disparity_std": 16.99519404680954,
+          "disparity_initial_corr_gt": 0.8821098624977161,
+          "final_corr_gt": 0.8928104629684555
+        },
+        "150": {
+          "epoch": 150,
+          "right_image_min_d1_penalty": 74.08894716713107,
+          "matching_map_min_d1_penalty": 60.94265056730226,
+          "softmax_entropy": 1.8365127962663685,
+          "final_disparity_std": 17.792570252254166,
+          "disparity_initial_corr_gt": 0.8858238407582961,
+          "final_corr_gt": 0.9011725953247922
+        },
+        "200": {
+          "epoch": 200,
+          "right_image_min_d1_penalty": 73.59176091351145,
+          "matching_map_min_d1_penalty": 60.095794860587525,
+          "softmax_entropy": 1.8440971204990475,
+          "final_disparity_std": 18.052973543998725,
+          "disparity_initial_corr_gt": 0.8844067558972452,
+          "final_corr_gt": 0.9029881282236127
+        }
+      }
+    }
+  },
+  "environment": {
+    "command": "phase2/factorial/block_count_full/exp_blockcount_batch2.py probes --out phase2/factorial/block_count_full/20260910T052736Z",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "numpy": "2.5.1",
+    "cuda_version": "12.8",
+    "cudnn_version": 90701,
+    "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "nvidia_driver": "616.64",
+    "flags": {
+      "deterministic_algorithms": true,
+      "cudnn.deterministic": true,
+      "cudnn.benchmark": false
+    },
+    "env": {
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+    }
+  },
+  "provenance": {
+    "head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "head_subject": "docs: add the Phase 1 overview",
+    "phase_1_frozen_commit": "b4207e518166f5089731b4d037a4a79234f70986",
+    "phase_1_diff_vs_frozen": "",
+    "status_short": "M .gitignore\n?? phase2/",
+    "phase_2_committed": false
+  }
+}

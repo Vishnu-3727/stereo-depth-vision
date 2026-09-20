@@ -1,0 +1,112 @@
+==============================================================================
+O1 COUNTEREXAMPLE SUITE -- does O1 give DISTINCT predictions per mechanism?
+==============================================================================
+m reported as median over the frozen band w in [20,39]; E = |m - tau|
+P1 = permute positions, read out in place  (the proposal as written)
+P2 = permute positions, apply pi^-1 to the aggregated cost before readout
+
+------------------------------------------------------------------------------
+PERMUTATION: translate+3 (IN G, forbidden)   pi = [np.int64(9), np.int64(10), np.int64(11), np.int64(0), np.int64(1), np.int64(2), np.int64(3), np.int64(4), np.int64(5), np.int64(6), np.int64(7), np.int64(8)]
+mechanism                       E_orig    E_P1    E_P2     D_P1     D_P2
+M_corr   genuine match           0.890   2.577   0.890   +1.687   +0.000
+M_lag+3  sharp wrong lag         2.662   3.952   2.447   +1.290   -0.215
+M_lag+0  pointwise, centred      0.890   2.577   0.890   +1.687   +0.000
+M_pos    index bias only         2.167   2.167   1.500   +0.000   -0.667
+M_adj    adjacency, no match     5.000   5.083   3.360   +0.084   -1.640
+M_outlier atypical-slice latch   0.816   2.636   0.816   +1.820   +0.000
+M_randconv frozen-arch random    1.982   1.975   2.258   -0.006   +0.277
+------------------------------------------------------------------------------
+PERMUTATION: reverse      (adjacency kept)   pi = [np.int64(11), np.int64(10), np.int64(9), np.int64(8), np.int64(7), np.int64(6), np.int64(5), np.int64(4), np.int64(3), np.int64(2), np.int64(1), np.int64(0)]
+mechanism                       E_orig    E_P1    E_P2     D_P1     D_P2
+M_corr   genuine match           0.890   3.444   0.890   +2.554   +0.000
+M_lag+3  sharp wrong lag         2.662   3.875   2.202   +1.213   -0.460
+M_lag+0  pointwise, centred      0.890   3.444   0.890   +2.554   +0.000
+M_pos    index bias only         2.167   2.167   2.167   +0.000   +0.000
+M_adj    adjacency, no match     5.000   5.101   1.700   +0.101   -3.299
+M_outlier atypical-slice latch   0.816   3.517   0.816   +2.702   -0.000
+M_randconv frozen-arch random    1.982   1.892   2.453   -0.090   +0.471
+------------------------------------------------------------------------------
+PERMUTATION: random A     (adjacency gone)   pi = [np.int64(4), np.int64(6), np.int64(10), np.int64(0), np.int64(1), np.int64(3), np.int64(8), np.int64(7), np.int64(2), np.int64(5), np.int64(9), np.int64(11)]
+mechanism                       E_orig    E_P1    E_P2     D_P1     D_P2
+M_corr   genuine match           0.890   3.010   0.890   +2.121   +0.000
+M_lag+3  sharp wrong lag         2.662   3.345   2.919   +0.683   +0.257
+M_lag+0  pointwise, centred      0.890   3.010   0.890   +2.121   +0.000
+M_pos    index bias only         2.167   2.167   1.688   +0.000   -0.478
+M_adj    adjacency, no match     5.000   5.060   4.974   +0.061   -0.025
+M_outlier atypical-slice latch   0.816   3.134   0.816   +2.318   -0.000
+M_randconv frozen-arch random    1.982   1.965   2.093   -0.016   +0.111
+------------------------------------------------------------------------------
+PERMUTATION: random B     (adjacency gone)   pi = [np.int64(4), np.int64(10), np.int64(6), np.int64(3), np.int64(0), np.int64(11), np.int64(5), np.int64(2), np.int64(8), np.int64(7), np.int64(1), np.int64(9)]
+mechanism                       E_orig    E_P1    E_P2     D_P1     D_P2
+M_corr   genuine match           0.890   2.927   0.890   +2.037   +0.000
+M_lag+3  sharp wrong lag         2.662   3.145   2.219   +0.483   -0.443
+M_lag+0  pointwise, centred      0.890   2.927   0.890   +2.037   +0.000
+M_pos    index bias only         2.167   2.167   1.974   +0.000   -0.193
+M_adj    adjacency, no match     5.000   5.061   3.904   +0.061   -1.096
+M_outlier atypical-slice latch   0.816   3.025   0.816   +2.209   +0.000
+M_randconv frozen-arch random    1.982   1.958   2.224   -0.024   +0.242
+------------------------------------------------------------------------------
+PERMUTATION: fix-taus     (1..6 fixed)   pi = [np.int64(8), np.int64(1), np.int64(2), np.int64(3), np.int64(4), np.int64(5), np.int64(6), np.int64(10), np.int64(0), np.int64(9), np.int64(7), np.int64(11)]
+mechanism                       E_orig    E_P1    E_P2     D_P1     D_P2
+M_corr   genuine match           0.890   0.879   0.890   -0.011   +0.000
+M_lag+3  sharp wrong lag         2.662   2.688   3.050   +0.026   +0.388
+M_lag+0  pointwise, centred      0.890   0.879   0.890   -0.011   +0.000
+M_pos    index bias only         2.167   2.167   1.935   +0.000   -0.232
+M_adj    adjacency, no match     5.000   5.006   4.996   +0.007   -0.003
+M_outlier atypical-slice latch   0.816   0.826   0.816   +0.011   -0.000
+M_randconv frozen-arch random    1.982   1.970   2.120   -0.011   +0.138
+
+=== (a) IS THE READOUT PERMUTATION-EQUIVARIANT?  (A7) ===
+  max |z(c o pi) - z(c) o pi|           = 1.817941665649414e-06
+  max |softmax(-z(c o pi)) - (...) o pi| = 1.1920928955078125e-07
+  -> the z-score and softmax are EXACTLY equivariant; the readout adds no
+     artifact of its own.  It converts pi into a relabelling of the
+     soft-argmin weights:  m(c o pi) = E_{j~p}[pi^-1(j)].
+
+=== (b) A TRANSLATION IS *INSIDE* G AND STILL GIVES A LARGE POSITIVE Delta ===
+  cyclic translation by +1 (IN G):  mean Delta_P1 = +0.507
+  cyclic translation by +2 (IN G):  mean Delta_P1 = +1.098
+  cyclic translation by +3 (IN G):  mean Delta_P1 = +1.687
+  -> Delta_P1 > 0 does NOT certify that the transformation left G.
+
+=== (c) PER-TAU STRUCTURE OF Delta  (readout-centre artifact) ===
+  tau :  m_orig   m_perm   E_orig   E_perm    Delta   pi^-1(tau)
+   1  :   2.858    8.713    1.858    7.713   +5.855         11
+   2  :   3.435    7.590    1.435    5.590   +4.155          9
+   3  :   4.016    5.811    1.016    2.811   +1.795          6
+   4  :   4.610    4.051    0.610    0.051   -0.559          3
+   5  :   5.195    6.370    0.195    1.370   +1.174          7
+   6  :   5.777    8.140    0.223    2.140   +1.917         10
+  -> E_perm tracks |m_perm - tau| with m_perm pulled toward the window
+     centre 5.5, so Delta is systematically SMALLER at tau ~ 5-6.
+     The effect size is set by the tau grid and the readout centre,
+     not by the mechanism.
+
+=== (d) DOES THE POINT PREDICTION m_pi = pi^-1(tau) SURVIVE THE SOFT READOUT? ===
+  random   predicted pi^-1(tau) = [11, 1, 2, 5, 0, 4]
+           observed  m_pi     = ['8.70', '2.88', '3.44', '5.19', '2.31', '4.63']
+           mean |obs - pred|  = 1.459   (a HARD matcher would give 0)
+  reverse  predicted pi^-1(tau) = [10, 9, 8, 7, 6, 5]
+           observed  m_pi     = ['8.14', '7.56', '6.98', '6.39', '5.80', '5.22']
+           mean |obs - pred|  = 0.890   (a HARD matcher would give 0)
+
+=== (e) RANDOM-CONV NULL FOR Delta_P1: is it a control or a flatness artifact? ===
+  median max softmax prob (sharpness) : 0.2885   (uniform would be 0.0833)
+  mean Delta_P1 over 8 random aggregations x 6 tau : +0.0154
+  -> the random-weight null for Delta_P1 sits at ~0 because the softmax is
+     nearly flat and m is pinned near the window centre in BOTH arms.
+     It is a FLATNESS artifact, not a demonstration of geometric blindness.
+
+sharpness sweep: cost scaled by g before the readout (g=1 is the frozen scale)
+  g    E_orig   Delta_P1   mean|m_pi - pi^-1(tau)|   maxprob
+   0.25   0.890     +1.692                  0.965    0.5934
+   1.00   0.890     +1.692                  0.965    0.5934
+   4.00   0.890     +1.692                  0.965    0.5934
+  16.00   0.890     +1.692                  0.965    0.5934
+  64.00   0.890     +1.692                  0.965    0.5934
+
+note: the frozen readout has NO temperature knob -- g is not a free
+parameter of the experiment.  The sweep only shows that BOTH the size of
+Delta and the fidelity of the point prediction are governed by how peaked
+the model's standardised profile happens to be, which is a property of
+the trained weights and is UNKNOWN without loading them.

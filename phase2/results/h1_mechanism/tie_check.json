@@ -1,0 +1,81 @@
+{
+  "protocol": "trained weights, 150 crops of 256x512 from hailo_calib; the regression stage is re-expressed inline so the gradient w.r.t. the upsampled aggregated cost can be counted. Backward only, nothing saved.",
+  "git_revision": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+  "models": {
+    "BASE": {
+      "crops": 150,
+      "crops_with_gradient_into_cost": 0,
+      "crops_with_spike_above_1e4": 0,
+      "spikes_that_also_have_cost_gradient": 0,
+      "detail": []
+    },
+    "WORKING": {
+      "crops": 150,
+      "crops_with_gradient_into_cost": 5,
+      "crops_with_spike_above_1e4": 5,
+      "spikes_that_also_have_cost_gradient": 5,
+      "detail": [
+        {
+          "scene": "000004_10.png",
+          "crop_yx": [
+            65,
+            368
+          ],
+          "total_norm": 11734757.0,
+          "cost_pixels_with_gradient": 1,
+          "cost_pixels_total": 131072,
+          "min_top2_cost_gap": 0.0,
+          "exact_ties": 1
+        },
+        {
+          "scene": "000004_10.png",
+          "crop_yx": [
+            78,
+            642
+          ],
+          "total_norm": 22573708.0,
+          "cost_pixels_with_gradient": 1,
+          "cost_pixels_total": 131072,
+          "min_top2_cost_gap": 0.0,
+          "exact_ties": 1
+        },
+        {
+          "scene": "000020_10.png",
+          "crop_yx": [
+            86,
+            317
+          ],
+          "total_norm": 3978315431936.0,
+          "cost_pixels_with_gradient": 1,
+          "cost_pixels_total": 131072,
+          "min_top2_cost_gap": 0.0,
+          "exact_ties": 1
+        },
+        {
+          "scene": "000022_10.png",
+          "crop_yx": [
+            77,
+            46
+          ],
+          "total_norm": 1631881920512.0,
+          "cost_pixels_with_gradient": 1,
+          "cost_pixels_total": 131072,
+          "min_top2_cost_gap": 0.0,
+          "exact_ties": 1
+        },
+        {
+          "scene": "000026_10.png",
+          "crop_yx": [
+            93,
+            702
+          ],
+          "total_norm": 79890656.0,
+          "cost_pixels_with_gradient": 1,
+          "cost_pixels_total": 131072,
+          "min_top2_cost_gap": 0.0,
+          "exact_ties": 1
+        }
+      ]
+    }
+  }
+}

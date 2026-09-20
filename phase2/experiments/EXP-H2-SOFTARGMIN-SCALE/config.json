@@ -1,0 +1,31 @@
+{
+  "hypothesis": "H2: the matching pathway is untrainable because the soft-argmin is numerically saturated. Standardising the aggregated cost across the disparity axis immediately before the soft-argmin, and changing nothing else, should restore gradient flow to the feature extractor and aggregation.",
+  "control": "EXP-H1-WORKING-v2 (already trained; not retrained for this experiment)",
+  "changed_variable": "regression stage: DisparityRegression -> phase2.models.scaled_regression.StandardisedDisparityRegression (per-pixel z-score across the 12 candidates, eps=1e-5, applied to the upsampled cost the softmax consumes)",
+  "held_fixed": "cost_volume_shift='left', feature extractor, cost volume, aggregation, refinement, loss, optimizer, schedule, seed, data split, crop, augmentation, epochs, batch size, precision -- the H1 recipe imported from phase2/scripts/exp_h1_cost_volume.py",
+  "new_parameters": 0,
+  "dataset": "kitti2015",
+  "split": "hailo_calib (scenes 0-159) train, hailo_val (160-199) validate",
+  "resolution": [
+    256,
+    512
+  ],
+  "crop": "random 256x512",
+  "disparity_range": 176,
+  "batch_size": 2,
+  "precision": "fp32",
+  "seed": 0,
+  "epochs": 200,
+  "optimizer": "Adam betas=(0.9, 0.999)",
+  "learning_rate": 0.001,
+  "schedule": "cosine annealing to 0 over 200 epochs",
+  "loss": "masked smooth L1, beta=1.0, valid = gt > 0 and gt < max_disparity",
+  "augmentation": "random crop, independent per-image gain jitter sigma=0.1; no horizontal flip (it inverts disparity)",
+  "initialisation": "PyTorch defaults, random, seed 0 -- identical to the H1 arms (the changed module holds no parameters)",
+  "validation_protocol": "first 10 scenes of hailo_val, full 368x1232 frames, pooled over gt > 0, every 5 epochs (exp_h1_cost_volume.validate, imported)",
+  "primary_endpoint": "fraction of training batches on which ||grad(feature_extractor)|| + ||grad(aggregation)|| (2-norm combined) exceeds 1e-12",
+  "gradient_present_threshold": 1e-12,
+  "numerical_precheck": "phase2/results/h2_precheck/precheck.json",
+  "device": "cuda",
+  "known_limitation": "one seed, 160 training scenes from random initialisation -- the same budget as both H1 arms. The comparison against EXP-H1-WORKING-v2 is a controlled A/B of the changed variable; neither arm's absolute accuracy is a ceiling."
+}

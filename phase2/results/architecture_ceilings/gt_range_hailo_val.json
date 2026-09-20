@@ -1,0 +1,14 @@
+{
+  "valid_pixels": 3802797,
+  "max_gt_disparity_px": 153.03515625,
+  "percentiles": {
+    "50": 34.8046875,
+    "90": 57.74609375,
+    "99": 93.234375,
+    "99.9": 123.72735937500147
+  },
+  "fraction_above_176px": 0.0,
+  "fraction_above_88px": 0.012631754995073362,
+  "oracle_clip_to_176_epe": 0.0,
+  "oracle_clip_to_176_d1": 0.0
+}

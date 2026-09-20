@@ -1,0 +1,289 @@
+{
+  "task": "Hailo deployment validation of the frozen P2A artifact",
+  "utc": "2026-09-17T15:25:13.467075+00:00",
+  "host": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "onnx": "1.22.0"
+  },
+  "no_research_artifact_modified": true,
+  "source_checkpoint": {
+    "path": "phase2/runs/p2a_scale_coverage/p2a_best.pth",
+    "sha256": "0868ffd137a9985306bf5563685fd2362799bdd630d313e1181c980a7fbb6033",
+    "torch_parameter_count": 397954,
+    "parameter_count_ok": true,
+    "state_dict_tensors": 70,
+    "batchnorm_modules": [],
+    "no_batchnorm_ok": true
+  },
+  "toolchain_probe": {
+    "python_modules": {
+      "hailo_sdk_client": {
+        "importable": false,
+        "error": "ModuleNotFoundError"
+      },
+      "hailo_sdk_common": {
+        "importable": false,
+        "error": "ModuleNotFoundError"
+      },
+      "hailo_platform": {
+        "importable": false,
+        "error": "ModuleNotFoundError"
+      },
+      "hailort": {
+        "importable": false,
+        "error": "ModuleNotFoundError"
+      },
+      "hailo_model_zoo": {
+        "importable": false,
+        "error": "ModuleNotFoundError"
+      },
+      "hailo_tools": {
+        "importable": false,
+        "error": "ModuleNotFoundError"
+      },
+      "hailo_dataflow_compiler": {
+        "importable": false,
+        "error": "ModuleNotFoundError"
+      }
+    },
+    "binaries_on_path": {
+      "hailo": null,
+      "hailortcli": null,
+      "hailo_compiler": null,
+      "hailomz": null,
+      "hailo-dfc": null,
+      "dfc": null
+    },
+    "environment_variables": null,
+    "install_paths": {
+      "C:\\Program Files\\Hailo": false,
+      "C:\\Program Files (x86)\\Hailo": false,
+      "C:\\Hailo": false,
+      "C:\\Users\\vishn\\AppData\\Local\\Hailo": false,
+      "C:\\Users\\vishn\\.hailo": false,
+      "C:\\Users\\vishn\\AppData\\Roaming\\Hailo": false,
+      "/opt/hailo": false,
+      "/usr/local/hailo": false
+    },
+    "docker": {
+      "docker_cli": "C:\\Program Files\\Docker\\Docker\\resources\\bin\\docker.EXE",
+      "daemon_reachable": false,
+      "hailo_images": []
+    },
+    "any_toolchain_found": false
+  },
+  "artifacts": {
+    "original": {
+      "path": "phase2/deploy/p2a_stereonet.onnx",
+      "sha256": "0995a6c5722b46250299653e9edaa69ece17c6b86303122345ebf958768bfca9",
+      "size_bytes": 1701550,
+      "modified_by_this_script": false,
+      "onnx_checker": "PASS",
+      "opset": 13,
+      "opset_ok": true,
+      "ir_version": 7,
+      "producer": "pytorch 2.7.0",
+      "inputs": [
+        {
+          "name": "left",
+          "shape": [
+            1,
+            3,
+            368,
+            1232
+          ],
+          "dtype": "FLOAT"
+        },
+        {
+          "name": "right",
+          "shape": [
+            1,
+            3,
+            368,
+            1232
+          ],
+          "dtype": "FLOAT"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "disparity",
+          "shape": [
+            1,
+            1,
+            368,
+            1232
+          ],
+          "dtype": "FLOAT"
+        }
+      ],
+      "io_names_ok": true,
+      "io_shapes_ok": true,
+      "static_shapes_only": true,
+      "weights": {
+        "state_dict_tensors": 70,
+        "matched_bit_identical_in_onnx": 70,
+        "unmatched_state_dict_tensors": [],
+        "matched_parameter_elements": 397954,
+        "expected_parameter_elements": 397954,
+        "parameter_count_ok": true,
+        "n_initializers_in_graph": 70,
+        "note": "initializer count exceeds the trainable-tensor count because traced constants are stored as initializers too; the check that matters is that every trained tensor appears bit-identical"
+      },
+      "n_nodes": 712,
+      "op_counts": {
+        "Add": 20,
+        "Cast": 25,
+        "Concat": 26,
+        "Constant": 313,
+        "ConstantOfShape": 23,
+        "Conv": 51,
+        "Div": 2,
+        "Gather": 2,
+        "LeakyRelu": 40,
+        "Mul": 3,
+        "Neg": 1,
+        "Pad": 23,
+        "Range": 1,
+        "ReduceMean": 3,
+        "ReduceProd": 1,
+        "ReduceSum": 1,
+        "Relu": 1,
+        "Reshape": 47,
+        "Resize": 1,
+        "Shape": 3,
+        "Slice": 47,
+        "Softmax": 1,
+        "Sqrt": 1,
+        "Squeeze": 1,
+        "Sub": 27,
+        "Transpose": 24,
+        "Unsqueeze": 24
+      },
+      "has_batchnorm": false,
+      "no_batchnorm_ok": true,
+      "tensor_ranks_declared": [
+        4
+      ],
+      "dynamic_shape_ops_present": [
+        "Shape",
+        "Gather",
+        "Range",
+        "ReduceProd"
+      ],
+      "all_ok": true
+    },
+    "static": {
+      "path": "phase2/deploy/p2a_stereonet_static.onnx",
+      "sha256": "0665a9ae7d0455968a4758d2bc49d51ab45b921fbbbb7e548b352b645fc0e737",
+      "size_bytes": 1699043,
+      "modified_by_this_script": false,
+      "onnx_checker": "PASS",
+      "opset": 13,
+      "opset_ok": true,
+      "ir_version": 7,
+      "producer": "pytorch 2.7.0",
+      "inputs": [
+        {
+          "name": "left",
+          "shape": [
+            1,
+            3,
+            368,
+            1232
+          ],
+          "dtype": "FLOAT"
+        },
+        {
+          "name": "right",
+          "shape": [
+            1,
+            3,
+            368,
+            1232
+          ],
+          "dtype": "FLOAT"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "disparity",
+          "shape": [
+            1,
+            1,
+            368,
+            1232
+          ],
+          "dtype": "FLOAT"
+        }
+      ],
+      "io_names_ok": true,
+      "io_shapes_ok": true,
+      "static_shapes_only": true,
+      "weights": {
+        "state_dict_tensors": 70,
+        "matched_bit_identical_in_onnx": 70,
+        "unmatched_state_dict_tensors": [],
+        "matched_parameter_elements": 397954,
+        "expected_parameter_elements": 397954,
+        "parameter_count_ok": true,
+        "n_initializers_in_graph": 70,
+        "note": "initializer count exceeds the trainable-tensor count because traced constants are stored as initializers too; the check that matters is that every trained tensor appears bit-identical"
+      },
+      "n_nodes": 689,
+      "op_counts": {
+        "Add": 20,
+        "Cast": 23,
+        "Concat": 25,
+        "Constant": 306,
+        "ConstantOfShape": 23,
+        "Conv": 51,
+        "Div": 1,
+        "LeakyRelu": 40,
+        "Mul": 3,
+        "Neg": 1,
+        "Pad": 23,
+        "ReduceMean": 1,
+        "ReduceSum": 2,
+        "Relu": 1,
+        "Reshape": 46,
+        "Resize": 1,
+        "Slice": 46,
+        "Softmax": 1,
+        "Sqrt": 1,
+        "Squeeze": 1,
+        "Sub": 25,
+        "Transpose": 24,
+        "Unsqueeze": 24
+      },
+      "has_batchnorm": false,
+      "no_batchnorm_ok": true,
+      "tensor_ranks_declared": [
+        4
+      ],
+      "dynamic_shape_ops_present": [],
+      "all_ok": true
+    }
+  },
+  "cross_artifact": {
+    "both_match_trained_weights": true,
+    "node_delta": -23,
+    "ops_only_in_original": [
+      "Gather",
+      "Range",
+      "ReduceProd",
+      "Shape"
+    ],
+    "ops_only_in_static": []
+  },
+  "layer_status": {
+    "onnx_validated": "PASS",
+    "hailo_parser_validated": "NOT ATTEMPTED \u2014 toolchain absent",
+    "hailo_compiler_validated": "NOT ATTEMPTED \u2014 toolchain absent",
+    "hef_validated": "NOT ATTEMPTED \u2014 no HEF produced",
+    "hailort_runtime_validated": "NOT ATTEMPTED \u2014 HailoRT absent",
+    "physical_hardware_validated": "NOT AVAILABLE \u2014 no Hailo device present"
+  }
+}

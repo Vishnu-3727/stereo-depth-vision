@@ -1,0 +1,2106 @@
+{
+  "BASE": [
+    {
+      "total": 72.11956787109375,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 7820517310464.0
+    },
+    {
+      "total": 119.52621459960938,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4480802226176.0
+    },
+    {
+      "total": 43.91521453857422,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 7631692365824.0
+    },
+    {
+      "total": 75.73492431640625,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 7764770816000.0
+    },
+    {
+      "total": 85.77446746826172,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 6193751785472.0
+    },
+    {
+      "total": 77.73217010498047,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5365377794048.0
+    },
+    {
+      "total": 81.4371337890625,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 12412314976256.0
+    },
+    {
+      "total": 72.66123962402344,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3022033518592.0
+    },
+    {
+      "total": 30.314775466918945,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 6614219227136.0
+    },
+    {
+      "total": 46.005130767822266,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5564348760064.0
+    },
+    {
+      "total": 52.594913482666016,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 10288347742208.0
+    },
+    {
+      "total": 39.390357971191406,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1637178671104.0
+    },
+    {
+      "total": 29.091129302978516,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 7844200972288.0
+    },
+    {
+      "total": 48.196197509765625,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 11057907105792.0
+    },
+    {
+      "total": 46.86546325683594,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 6433389674496.0
+    },
+    {
+      "total": 37.5176887512207,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 7599612231680.0
+    },
+    {
+      "total": 48.04170227050781,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4231793999872.0
+    },
+    {
+      "total": 48.484466552734375,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5271409655808.0
+    },
+    {
+      "total": 52.14769744873047,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 7376306438144.0
+    },
+    {
+      "total": 32.80332565307617,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5591340679168.0
+    },
+    {
+      "total": 35.93265151977539,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5705915432960.0
+    },
+    {
+      "total": 35.29856872558594,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4952041717760.0
+    },
+    {
+      "total": 89.99935150146484,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 11737848872960.0
+    },
+    {
+      "total": 84.20652770996094,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 11688157904896.0
+    },
+    {
+      "total": 60.44326400756836,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5994344611840.0
+    },
+    {
+      "total": 111.84789276123047,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 16848284286976.0
+    },
+    {
+      "total": 39.02018356323242,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 6953124757504.0
+    },
+    {
+      "total": 50.04831314086914,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 7503810134016.0
+    },
+    {
+      "total": 72.49771881103516,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 11297391378432.0
+    },
+    {
+      "total": 111.91419219970703,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 10584141594624.0
+    },
+    {
+      "total": 119.7645034790039,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 11877226643456.0
+    },
+    {
+      "total": 71.18477630615234,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 10042882392064.0
+    },
+    {
+      "total": 44.883148193359375,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 8147167084544.0
+    },
+    {
+      "total": 64.36416625976562,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 8229639159808.0
+    },
+    {
+      "total": 48.05880355834961,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 8922180091904.0
+    },
+    {
+      "total": 65.75364685058594,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3434728914944.0
+    },
+    {
+      "total": 61.11698532104492,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3559909490688.0
+    },
+    {
+      "total": 34.16288757324219,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4929866956800.0
+    },
+    {
+      "total": 77.15203094482422,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2528101269504.0
+    },
+    {
+      "total": 63.71907043457031,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3564297256960.0
+    },
+    {
+      "total": 261.8133239746094,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3048625143808.0
+    },
+    {
+      "total": 70.49655151367188,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3902941167616.0
+    },
+    {
+      "total": 253.20327758789062,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3126087122944.0
+    },
+    {
+      "total": 54.85334396362305,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4029004906496.0
+    },
+    {
+      "total": 150.8910675048828,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3772103000064.0
+    },
+    {
+      "total": 23.857074737548828,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3945783361536.0
+    },
+    {
+      "total": 20.925426483154297,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4394639687680.0
+    },
+    {
+      "total": 34.47035217285156,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3215711797248.0
+    },
+    {
+      "total": 47.312591552734375,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3398203867136.0
+    },
+    {
+      "total": 28.89665412902832,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3507380027392.0
+    },
+    {
+      "total": 37.96622085571289,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4070215778304.0
+    },
+    {
+      "total": 36.166664123535156,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 6719554453504.0
+    },
+    {
+      "total": 58.10669708251953,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4083393757184.0
+    },
+    {
+      "total": 53.53426742553711,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4113463246848.0
+    },
+    {
+      "total": 40.65791702270508,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 6401033764864.0
+    },
+    {
+      "total": 66.2635498046875,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1758059036672.0
+    },
+    {
+      "total": 45.18450927734375,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1695580684288.0
+    },
+    {
+      "total": 35.42276382446289,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2948018208768.0
+    },
+    {
+      "total": 45.811771392822266,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 6755639099392.0
+    },
+    {
+      "total": 25.783653259277344,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 6940903604224.0
+    },
+    {
+      "total": 62.19612121582031,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5643569201152.0
+    },
+    {
+      "total": 35.11185073852539,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5422374191104.0
+    },
+    {
+      "total": 39.310848236083984,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2224132456448.0
+    },
+    {
+      "total": 26.862449645996094,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5146341277696.0
+    },
+    {
+      "total": 32.24907302856445,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5128262778880.0
+    },
+    {
+      "total": 38.87803649902344,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 9341614686208.0
+    },
+    {
+      "total": 43.530845642089844,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5529804472320.0
+    },
+    {
+      "total": 29.615234375,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3484576120832.0
+    },
+    {
+      "total": 25.666141510009766,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3904461078528.0
+    },
+    {
+      "total": 20.77458381652832,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4022696673280.0
+    },
+    {
+      "total": 48.55126190185547,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4818119163904.0
+    },
+    {
+      "total": 29.661951065063477,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2734786084864.0
+    },
+    {
+      "total": 70.24495697021484,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4490924130304.0
+    },
+    {
+      "total": 69.3919448852539,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2822830292992.0
+    },
+    {
+      "total": 76.37692260742188,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4657455300608.0
+    },
+    {
+      "total": 68.08943176269531,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2984049377280.0
+    },
+    {
+      "total": 77.55943298339844,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2394821754880.0
+    },
+    {
+      "total": 43.09861373901367,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4617920315392.0
+    },
+    {
+      "total": 56.21709060668945,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2842644709376.0
+    },
+    {
+      "total": 102.02204132080078,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5521319395328.0
+    },
+    {
+      "total": 36.54366683959961,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3235403005952.0
+    },
+    {
+      "total": 78.1816635131836,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3143891419136.0
+    },
+    {
+      "total": 61.71442413330078,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3344344285184.0
+    },
+    {
+      "total": 57.598785400390625,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3617763622912.0
+    },
+    {
+      "total": 34.080074310302734,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3262735187968.0
+    },
+    {
+      "total": 62.0540885925293,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2899343572992.0
+    },
+    {
+      "total": 43.65877914428711,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5476350689280.0
+    },
+    {
+      "total": 53.867584228515625,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5080577212416.0
+    },
+    {
+      "total": 35.28266906738281,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5639166230528.0
+    },
+    {
+      "total": 50.85035705566406,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 6364593651712.0
+    },
+    {
+      "total": 182.19325256347656,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 20299458281472.0
+    },
+    {
+      "total": 56.570308685302734,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3285276164096.0
+    },
+    {
+      "total": 70.93846130371094,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1367504846848.0
+    },
+    {
+      "total": 55.01406478881836,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3563794464768.0
+    },
+    {
+      "total": 91.03092956542969,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 6492222652416.0
+    },
+    {
+      "total": 69.29357147216797,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 7927349379072.0
+    },
+    {
+      "total": 64.41959381103516,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5862889357312.0
+    },
+    {
+      "total": 150.6865997314453,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3034368704512.0
+    },
+    {
+      "total": 107.9873046875,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5117321412608.0
+    },
+    {
+      "total": 95.2807388305664,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 7201922482176.0
+    },
+    {
+      "total": 60.10971450805664,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 9098375462912.0
+    },
+    {
+      "total": 54.287628173828125,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4543456215040.0
+    },
+    {
+      "total": 94.62275695800781,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 6915960078336.0
+    },
+    {
+      "total": 81.08885955810547,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2722565980160.0
+    },
+    {
+      "total": 163.46124267578125,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 17645858455552.0
+    },
+    {
+      "total": 96.98487854003906,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 7005751214080.0
+    },
+    {
+      "total": 118.734619140625,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3257161482240.0
+    },
+    {
+      "total": 51.910640716552734,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4283779776512.0
+    },
+    {
+      "total": 72.98119354248047,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3078909853696.0
+    },
+    {
+      "total": 90.3079605102539,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3119232057344.0
+    },
+    {
+      "total": 78.05550384521484,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4042512924672.0
+    },
+    {
+      "total": 85.32949829101562,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4243895615488.0
+    },
+    {
+      "total": 26.540443420410156,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2495535644672.0
+    },
+    {
+      "total": 34.39411163330078,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2406818250752.0
+    },
+    {
+      "total": 44.2796630859375,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 7235319627776.0
+    },
+    {
+      "total": 45.06083679199219,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3242676977664.0
+    },
+    {
+      "total": 24.849498748779297,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1730783215616.0
+    },
+    {
+      "total": 49.45643615722656,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 8337564368896.0
+    },
+    {
+      "total": 51.14406967163086,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3416692621312.0
+    },
+    {
+      "total": 42.950897216796875,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1870678982656.0
+    },
+    {
+      "total": 82.85664367675781,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 6106127532032.0
+    },
+    {
+      "total": 37.33095169067383,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2875899248640.0
+    },
+    {
+      "total": 41.58667755126953,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2684442640384.0
+    },
+    {
+      "total": 27.836984634399414,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2378976198656.0
+    },
+    {
+      "total": 29.393150329589844,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2594292105216.0
+    },
+    {
+      "total": 61.73551940917969,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 7087628222464.0
+    },
+    {
+      "total": 84.96600341796875,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5942620979200.0
+    },
+    {
+      "total": 26.312522888183594,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2344901148672.0
+    },
+    {
+      "total": 55.77689743041992,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5881950896128.0
+    },
+    {
+      "total": 20.593441009521484,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2603791941632.0
+    },
+    {
+      "total": 73.37472534179688,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4404488437760.0
+    },
+    {
+      "total": 35.77254104614258,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2865934368768.0
+    },
+    {
+      "total": 67.67693328857422,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1551853551616.0
+    },
+    {
+      "total": 58.38759231567383,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2755776217088.0
+    },
+    {
+      "total": 35.83453369140625,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1344238518272.0
+    },
+    {
+      "total": 39.352088928222656,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1761944666112.0
+    },
+    {
+      "total": 86.30717468261719,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2624550862848.0
+    },
+    {
+      "total": 22.055553436279297,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4607796314112.0
+    },
+    {
+      "total": 32.348087310791016,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1634192588800.0
+    },
+    {
+      "total": 34.375099182128906,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4077000589312.0
+    },
+    {
+      "total": 81.61214447021484,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 6279805272064.0
+    },
+    {
+      "total": 86.74629211425781,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 6174009720832.0
+    },
+    {
+      "total": 64.05915069580078,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3657917792256.0
+    },
+    {
+      "total": 68.47431182861328,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3516470394880.0
+    },
+    {
+      "total": 71.56907653808594,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 6094365130752.0
+    },
+    {
+      "total": 32.908905029296875,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1527514005504.0
+    },
+    {
+      "total": 83.1501693725586,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1622676471808.0
+    },
+    {
+      "total": 61.0000114440918,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1896156495872.0
+    },
+    {
+      "total": 52.95149612426758,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2871559192576.0
+    },
+    {
+      "total": 125.75603485107422,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1684218052608.0
+    }
+  ],
+  "WORKING": [
+    {
+      "total": 79.42245483398438,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2.8446391110983483e+19
+    },
+    {
+      "total": 100.95616912841797,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3.726532978579341e+19
+    },
+    {
+      "total": 49.65635299682617,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2.219117490256583e+19
+    },
+    {
+      "total": 58.27387619018555,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.4393883740587688e+19
+    },
+    {
+      "total": 50.89126205444336,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2.3868383133714874e+19
+    },
+    {
+      "total": 77.57645416259766,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 8.324212868136305e+18
+    },
+    {
+      "total": 70.83091735839844,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.772415712656307e+19
+    },
+    {
+      "total": 62.99407958984375,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 6.701362292841251e+18
+    },
+    {
+      "total": 67.80183410644531,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2.2391028733100163e+19
+    },
+    {
+      "total": 59.74976348876953,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3.2966652737561297e+19
+    },
+    {
+      "total": 43.93043518066406,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.8627313020048507e+18
+    },
+    {
+      "total": 28.19538116455078,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2.187486299944072e+19
+    },
+    {
+      "total": 32.74079132080078,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.5644832204368904e+19
+    },
+    {
+      "total": 47.90431213378906,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4.710904298450452e+18
+    },
+    {
+      "total": 43.62630844116211,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.6397453411139715e+19
+    },
+    {
+      "total": 32.79255294799805,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2.0284247906048803e+19
+    },
+    {
+      "total": 60.37141799926758,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2.6539483905675756e+19
+    },
+    {
+      "total": 55.88093948364258,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3.812145351964492e+19
+    },
+    {
+      "total": 57.534542083740234,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.930543186867703e+19
+    },
+    {
+      "total": 68.00955963134766,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5.912871718237503e+18
+    },
+    {
+      "total": 42.2277946472168,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2.695851658311421e+19
+    },
+    {
+      "total": 11734757.0,
+      "match_grad": 11734757.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.8547586882162655e+19
+    },
+    {
+      "total": 22573708.0,
+      "match_grad": 22573708.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4.512132868394189e+17
+    },
+    {
+      "total": 94.14238739013672,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.5678353015364911e+19
+    },
+    {
+      "total": 40.13740158081055,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.6888412840732393e+19
+    },
+    {
+      "total": 109.51824188232422,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2.693432732730314e+19
+    },
+    {
+      "total": 51.79335021972656,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.7848759281780785e+19
+    },
+    {
+      "total": 58.62051773071289,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.907343271619304e+19
+    },
+    {
+      "total": 51.92858123779297,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.5652654130088903e+19
+    },
+    {
+      "total": 77.1567153930664,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.7256794316014092e+19
+    },
+    {
+      "total": 91.68053436279297,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2.0614015632474636e+19
+    },
+    {
+      "total": 95.48384857177734,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.2163432044667339e+19
+    },
+    {
+      "total": 59.628875732421875,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 7.997802500465885e+18
+    },
+    {
+      "total": 83.81436920166016,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.194150221967052e+19
+    },
+    {
+      "total": 66.23418426513672,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 7.607403304837972e+18
+    },
+    {
+      "total": 46.12440872192383,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.5081291813203476e+19
+    },
+    {
+      "total": 47.220603942871094,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.557586753653991e+19
+    },
+    {
+      "total": 65.06922912597656,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.356925881584871e+19
+    },
+    {
+      "total": 110.32485961914062,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.1217946602779967e+19
+    },
+    {
+      "total": 43.61246109008789,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2.4222267548184347e+19
+    },
+    {
+      "total": 473.7206115722656,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 7.35966079511167e+18
+    },
+    {
+      "total": 68.60417175292969,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 8.566209879851663e+18
+    },
+    {
+      "total": 295.6347961425781,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2.151896427966916e+19
+    },
+    {
+      "total": 45.661399841308594,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.4985910279005536e+19
+    },
+    {
+      "total": 102.19779968261719,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2.0530054725554405e+19
+    },
+    {
+      "total": 23.50071144104004,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.98045177887106e+19
+    },
+    {
+      "total": 25.94239044189453,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 8.759492479142593e+18
+    },
+    {
+      "total": 36.71800231933594,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3.1910332125547594e+19
+    },
+    {
+      "total": 43.50994110107422,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.668229069440811e+19
+    },
+    {
+      "total": 25.231054306030273,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.831557453553913e+19
+    },
+    {
+      "total": 27.52873420715332,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 8.949648617119941e+18
+    },
+    {
+      "total": 21.87720489501953,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 6.862117489891869e+18
+    },
+    {
+      "total": 31.215909957885742,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.0520133851630535e+19
+    },
+    {
+      "total": 24.495376586914062,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 8.856096120514806e+18
+    },
+    {
+      "total": 24.064105987548828,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.0137648940699353e+19
+    },
+    {
+      "total": 106.34575653076172,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 6.576231822286389e+18
+    },
+    {
+      "total": 52.884178161621094,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 6.378836499751764e+18
+    },
+    {
+      "total": 20.34280014038086,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.5938204996403724e+19
+    },
+    {
+      "total": 49.98194122314453,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 6.594885586807423e+18
+    },
+    {
+      "total": 20.987497329711914,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.6127682735706735e+19
+    },
+    {
+      "total": 63.10532760620117,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.3121246310436962e+19
+    },
+    {
+      "total": 41.109771728515625,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.1193835412294468e+19
+    },
+    {
+      "total": 47.19108200073242,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5.085767394777891e+18
+    },
+    {
+      "total": 29.046993255615234,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2.688963877670381e+19
+    },
+    {
+      "total": 32.541133880615234,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2.174737682522335e+19
+    },
+    {
+      "total": 43.590003967285156,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.0968405841786438e+19
+    },
+    {
+      "total": 77.38448333740234,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.1084869411935355e+19
+    },
+    {
+      "total": 32.007347106933594,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3.1091061822435885e+19
+    },
+    {
+      "total": 33.67329406738281,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.386692300176674e+19
+    },
+    {
+      "total": 31.05539321899414,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.4373430625287799e+19
+    },
+    {
+      "total": 50.66923522949219,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 7.986206501083546e+18
+    },
+    {
+      "total": 30.908052444458008,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.2760464659526451e+19
+    },
+    {
+      "total": 108.8707504272461,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.9778250455923032e+19
+    },
+    {
+      "total": 35.850624084472656,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4.395603396267082e+19
+    },
+    {
+      "total": 108.53679656982422,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.415599010626719e+19
+    },
+    {
+      "total": 34.781517028808594,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3.8501369971413615e+19
+    },
+    {
+      "total": 68.07917022705078,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.6783635979675107e+19
+    },
+    {
+      "total": 55.56348419189453,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 8.038102900158759e+18
+    },
+    {
+      "total": 49.484031677246094,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4.268086435724132e+19
+    },
+    {
+      "total": 107.19145202636719,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.0531601757908238e+19
+    },
+    {
+      "total": 27.404386520385742,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2.9958822131547505e+19
+    },
+    {
+      "total": 59.28501510620117,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 6.524862089280881e+18
+    },
+    {
+      "total": 57.32480239868164,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.3685406826160456e+19
+    },
+    {
+      "total": 71.21284484863281,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3.1931178866010227e+19
+    },
+    {
+      "total": 29.392147064208984,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3.1897221548897993e+19
+    },
+    {
+      "total": 57.019466400146484,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5.083269194408421e+19
+    },
+    {
+      "total": 53.71885299682617,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 6.649535712754401e+18
+    },
+    {
+      "total": 41.090972900390625,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.5605271776001524e+19
+    },
+    {
+      "total": 46.785667419433594,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5.10525898715929e+18
+    },
+    {
+      "total": 73.78932189941406,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5.526379637178892e+18
+    },
+    {
+      "total": 252.0074462890625,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2.2797027799702962e+19
+    },
+    {
+      "total": 85.17497253417969,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.8975092396204753e+19
+    },
+    {
+      "total": 97.47148895263672,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.9041709606708445e+19
+    },
+    {
+      "total": 90.18959045410156,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3.0292099396009984e+16
+    },
+    {
+      "total": 100.40457153320312,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5.726704058689913e+18
+    },
+    {
+      "total": 136.20982360839844,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.0527139939722723e+19
+    },
+    {
+      "total": 109.2536849975586,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 9.064138014141186e+18
+    },
+    {
+      "total": 129.86944580078125,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5.236302493809377e+17
+    },
+    {
+      "total": 102.37836456298828,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 7.349016148165263e+17
+    },
+    {
+      "total": 142.25035095214844,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.8852164522318234e+18
+    },
+    {
+      "total": 3978315431936.0,
+      "match_grad": 1000000000.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.5506721449292333e+19
+    },
+    {
+      "total": 73.2238540649414,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.2709989379230138e+19
+    },
+    {
+      "total": 87.65785217285156,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.3167421400757043e+19
+    },
+    {
+      "total": 98.40181732177734,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.7006719192369463e+19
+    },
+    {
+      "total": 158.53424072265625,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.3049698889794322e+19
+    },
+    {
+      "total": 105.3525619506836,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3.148666610610969e+19
+    },
+    {
+      "total": 159.65626525878906,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2.468742906773504e+16
+    },
+    {
+      "total": 132.3843536376953,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3.539008246805168e+18
+    },
+    {
+      "total": 77.86087799072266,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2.731171050428144e+19
+    },
+    {
+      "total": 101.98976135253906,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2.1611010995100058e+19
+    },
+    {
+      "total": 1631881920512.0,
+      "match_grad": 999999936.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 6.902724653328892e+18
+    },
+    {
+      "total": 75.52906036376953,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 8.901107377776886e+18
+    },
+    {
+      "total": 27.818222045898438,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.8546909582999945e+19
+    },
+    {
+      "total": 38.80122375488281,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2.0966829122618655e+19
+    },
+    {
+      "total": 41.88755798339844,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.9836590542892827e+19
+    },
+    {
+      "total": 32.04557418823242,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5.024877540343284e+18
+    },
+    {
+      "total": 32.10165023803711,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 8.457473677422756e+18
+    },
+    {
+      "total": 74.25333404541016,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2.9601373100380783e+19
+    },
+    {
+      "total": 41.24388122558594,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3.151961737008251e+18
+    },
+    {
+      "total": 31.12591552734375,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5.522675382504915e+18
+    },
+    {
+      "total": 72.66473388671875,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5.101485463252763e+18
+    },
+    {
+      "total": 22.214244842529297,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 9.089603802952106e+18
+    },
+    {
+      "total": 53.6375617980957,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 7.152971850543268e+19
+    },
+    {
+      "total": 28.685762405395508,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.0362331942812123e+19
+    },
+    {
+      "total": 27.872602462768555,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 9.756669261186597e+18
+    },
+    {
+      "total": 67.45753479003906,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5.637663957805171e+18
+    },
+    {
+      "total": 81.602783203125,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 6.694425473981612e+18
+    },
+    {
+      "total": 27.5839786529541,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2.9932163372620448e+19
+    },
+    {
+      "total": 60.57020568847656,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5.581639442323472e+18
+    },
+    {
+      "total": 25.00072479248047,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4.15744521944894e+19
+    },
+    {
+      "total": 79890656.0,
+      "match_grad": 79890656.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 8.046202452564771e+18
+    },
+    {
+      "total": 33.21305847167969,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4.3719951224001266e+19
+    },
+    {
+      "total": 63.15478515625,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 8.06612312935891e+17
+    },
+    {
+      "total": 64.1256103515625,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2.4251694877390143e+19
+    },
+    {
+      "total": 43.44723892211914,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5.135245967783625e+18
+    },
+    {
+      "total": 59.4358024597168,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3.5955703684972675e+19
+    },
+    {
+      "total": 133.5537567138672,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3.3323248547704865e+19
+    },
+    {
+      "total": 28.787357330322266,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3.6316396275441336e+19
+    },
+    {
+      "total": 53.56865310668945,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4.125901110457349e+19
+    },
+    {
+      "total": 54.12338638305664,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3.8699682286645805e+19
+    },
+    {
+      "total": 75.72610473632812,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4.610141424492688e+19
+    },
+    {
+      "total": 80.23155212402344,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 3.675275285808703e+19
+    },
+    {
+      "total": 213.91455078125,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 1.3479640612365926e+17
+    },
+    {
+      "total": 128.15423583984375,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 2.309423238976058e+19
+    },
+    {
+      "total": 59.47456741333008,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4.491914897399795e+19
+    },
+    {
+      "total": 21.71944808959961,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4.724939234525525e+19
+    },
+    {
+      "total": 56.687747955322266,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 5.243439891077713e+19
+    },
+    {
+      "total": 125.17277526855469,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 9.112448287322931e+16
+    },
+    {
+      "total": 46.770538330078125,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 4.65939426776124e+19
+    },
+    {
+      "total": 242.0176239013672,
+      "match_grad": 0.0,
+      "mean_max_softmax": 1.0,
+      "frac_unsaturated": 0.0,
+      "max_cost": 6.873188060155085e+16
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "experiment": "EXP-BLOCKCOUNT-SEEDSCREEN-001",
+  "record": "phase2/factorial/block_count_seed_screen/20260909T145659Z",
+  "script": "phase2/factorial/block_count_seed_screen/exp_blockcount_seed_screen.py",
+  "kind": "cheap 30-epoch seed/trajectory screen; NOT the block-count experiment and NOT a capacity measurement",
+  "question": "At seeds 1 and 2, do the 6-, 5- and 4-block configurations already show meaningful trajectory variation or changing architecture ordering within the first 30 epochs?",
+  "matrix": {
+    "block_counts": [
+      6,
+      5,
+      4
+    ],
+    "seeds": [
+      1,
+      2
+    ],
+    "epochs": 30,
+    "runs": 6
+  },
+  "changed_variables": [
+    "refinement block count",
+    "seed"
+  ],
+  "frozen": {
+    "readout": "H2 standardised soft-argmin (phase2.models.scaled_regression)",
+    "cost_volume_shift": "left",
+    "num_disparities": 12,
+    "feature_extractor": "Phase 1 src/models/stereonet, unchanged",
+    "cost_volume": "Phase 1, unchanged",
+    "aggregation": "Phase 1, unchanged",
+    "refinement_implementation": "Phase 1 residual blocks; only the COUNT varies (trailing dilation-1 blocks removed, the 1-2-4-8 ladder kept intact)",
+    "loss": "masked smooth L1, beta=1.0, valid = gt > 0 and gt < max_disparity",
+    "optimizer": "Adam lr=1e-3 betas=(0.9, 0.999)",
+    "lr_schedule": "CosineAnnealingLR T_max=200 -- FROZEN, deliberately not re-fitted to the 30-epoch budget",
+    "dataset": "kitti2015; train hailo_calib (scenes 0-159), validate hailo_val (scenes 160-199)",
+    "crop": [
+      256,
+      512
+    ],
+    "augmentation": "random crop, per-image gain jitter sigma=0.1, no flip",
+    "batch_size": 2,
+    "precision": "fp32",
+    "initialisation": "fresh per the established recipe; no checkpoint loaded"
+  },
+  "arms": {
+    "A": {
+      "blocks": 6,
+      "dilations": [
+        1,
+        2,
+        4,
+        8,
+        1,
+        1
+      ],
+      "parameters": 423586
+    },
+    "B": {
+      "blocks": 5,
+      "dilations": [
+        1,
+        2,
+        4,
+        8,
+        1
+      ],
+      "parameters": 405090
+    },
+    "C": {
+      "blocks": 4,
+      "dilations": [
+        1,
+        2,
+        4,
+        8
+      ],
+      "parameters": 386594
+    }
+  },
+  "deterministic_controls": {
+    "torch.use_deterministic_algorithms": true,
+    "torch.backends.cudnn.deterministic": true,
+    "torch.backends.cudnn.benchmark": false,
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+  },
+  "checkpoint_epochs": [
+    1,
+    2,
+    5,
+    10,
+    20,
+    30
+  ],
+  "weight_snapshot_epochs": [
+    10,
+    20,
+    30
+  ],
+  "probe_epochs": [
+    10,
+    20,
+    30
+  ],
+  "probes": "exp_h2_seed_replication.stereo_probe and exp_h2_softargmin_scale.validation_stage_stats, imported unchanged; no new stereo metric introduced",
+  "validation_protocol": "first 10 scenes of hailo_val, full 368x1232 frames, pooled over gt > 0; every 5 epochs plus epochs 1, 2",
+  "epoch_30_evaluation": "all 40 hailo_val scenes, full frames, pooled over gt > 0 -- the existing evaluator, unchanged",
+  "materiality_band": "NONE. The historical E3b/E3c band is invalidated; none reused, none invented before or after the results.",
+  "seed0": {
+    "retrained": false,
+    "used_for": "read-only context at epochs 10/20/30",
+    "records": {
+      "A": {
+        "blocks": 6,
+        "record": "phase2/diagnostics/determinism/20260909T041500Z_baseline",
+        "experiment": "STAGEB-DETERMINISTIC-BASELINE-ARM-A-RUNA",
+        "frozen_40_scene": {
+          "epe": 2.2955181809208267,
+          "d1": 15.6045142562172
+        }
+      },
+      "B": {
+        "blocks": 5,
+        "record": "phase2/factorial/block_count_deterministic/20260909T131500Z",
+        "experiment": "EXP-BLOCKCOUNT-DETERMINISTIC-001-ARM-B",
+        "frozen_40_scene": {
+          "epe": 2.6458,
+          "d1": 21.3712
+        }
+      },
+      "C": {
+        "blocks": 4,
+        "record": "phase2/factorial/block_count_deterministic/20260909T131500Z",
+        "experiment": "EXP-BLOCKCOUNT-DETERMINISTIC-001-ARM-C",
+        "frozen_40_scene": {
+          "epe": 2.3387,
+          "d1": 16.9797
+        }
+      }
+    }
+  },
+  "claim_ceiling": "This 30-epoch screen does not establish the final 200-epoch capacity ranking.",
+  "preflight_PASS": true
+}

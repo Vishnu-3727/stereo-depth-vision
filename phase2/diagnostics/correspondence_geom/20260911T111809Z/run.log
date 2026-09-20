@@ -1,0 +1,27 @@
+EXP-CORRESPONDENCE-GEOM-001
+device=cuda torch=2.7.0+cu128 numpy=2.5.1
+freeze verified: translation_spec 4f5047404b41ec90 | mask_spec 5a2927a783b1569f
+mask 000187_10.png retained=34245 (frozen 34245) OK
+mask 000160_10.png retained=46199 (frozen 46199) OK
+mask 000191_10.png retained=33250 (frozen 33250) OK
+mask 000166_10.png retained=50747 (frozen 50747) OK
+done NEG_shift_none 000187_10.png S_h=-0.000278 S_v=-0.009186  odd_h=-0.0145 -0.0144 -0.0064
+done NEG_shift_none 000160_10.png S_h=+0.000569 S_v=-0.009459  odd_h=-0.0295 +0.0017 +0.0511
+done NEG_shift_none 000191_10.png S_h=+0.001088 S_v=-0.010590  odd_h=+0.0180 +0.0637 +0.0328
+done NEG_shift_none 000166_10.png S_h=-0.002127 S_v=-0.004574  odd_h=-0.0334 -0.0378 -0.1225
+done POS_6b_seed0   000187_10.png S_h=-0.000714 S_v=+0.003734  odd_h=-1.2330 +0.7450 -0.1390
+done POS_6b_seed0   000160_10.png S_h=-0.007703 S_v=-0.004014  odd_h=-1.1838 +0.1960 -0.3113
+done POS_6b_seed0   000191_10.png S_h=+0.000856 S_v=+0.000684  odd_h=-1.2820 +0.7486 -0.0078
+done POS_6b_seed0   000166_10.png S_h=-0.015893 S_v=-0.005344  odd_h=-1.4916 -0.2183 -0.5440
+done POS_6b_seed1   000187_10.png S_h=-0.002637 S_v=+0.000179  odd_h=-0.8200 +0.4392 -0.2164
+done POS_6b_seed1   000160_10.png S_h=+0.002513 S_v=-0.007440  odd_h=-0.7721 +0.3249 +0.2284
+done POS_6b_seed1   000191_10.png S_h=+0.003684 S_v=-0.003973  odd_h=-0.8283 +0.4788 +0.2319
+done POS_6b_seed1   000166_10.png S_h=-0.007872 S_v=-0.002850  odd_h=-1.0656 -0.0713 -0.1850
+done POS_6b_seed2   000187_10.png S_h=+0.004772 S_v=-0.004130  odd_h=-0.9961 +0.6703 +0.2414
+done POS_6b_seed2   000160_10.png S_h=-0.000503 S_v=-0.007162  odd_h=-0.9728 +0.4893 -0.0395
+done POS_6b_seed2   000191_10.png S_h=-0.001252 S_v=-0.005946  odd_h=-1.0157 +0.3338 +0.0226
+done POS_6b_seed2   000166_10.png S_h=-0.003370 S_v=-0.000823  odd_h=-1.2386 +0.2533 -0.0076
+forwards=208 (expected 208)
+units PASS 0/12  C1=8 C2=0 C3=7 C4=9
+VERDICT: GEOMETRIC-CORRESPONDENCE-NOT-DEMONSTRATED
+wall_clock_s=15.88

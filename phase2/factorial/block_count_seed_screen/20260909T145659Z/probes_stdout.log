@@ -1,0 +1,25 @@
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-A-SEED1 (6 blocks, seed 1):
+    epoch  10  right   -3.576  map   -1.883  entropy 2.0933  std  8.396  init r(GT) +0.6334
+    epoch  20  right  +12.595  map  +10.218  entropy 1.8132  std 12.520  init r(GT) +0.6721
+    epoch  30  right  +31.963  map  +25.077  entropy 1.7830  std 15.044  init r(GT) +0.8226
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED1 (5 blocks, seed 1):
+    epoch  10  right   -2.089  map   +2.168  entropy 2.0847  std  7.944  init r(GT) +0.5870
+    epoch  20  right  +13.473  map  +15.000  entropy 1.9966  std 11.975  init r(GT) +0.6802
+    epoch  30  right  +39.957  map  +28.887  entropy 1.8241  std 16.048  init r(GT) +0.8141
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-C-SEED1 (4 blocks, seed 1):
+    epoch  10  right   -7.462  map   -3.525  entropy 2.0670  std  8.117  init r(GT) +0.4360
+    epoch  20  right   +5.353  map   +7.199  entropy 1.9227  std 12.162  init r(GT) +0.6389
+    epoch  30  right  +37.624  map  +34.821  entropy 1.8206  std 14.438  init r(GT) +0.7730
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-A-SEED2 (6 blocks, seed 2):
+    epoch  10  right   -3.824  map   -4.320  entropy 2.0511  std 10.339  init r(GT) +0.5856
+    epoch  20  right   -4.030  map   +6.875  entropy 1.8765  std 11.036  init r(GT) +0.6871
+    epoch  30  right  +46.388  map  +43.213  entropy 1.8201  std 15.350  init r(GT) +0.7686
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-B-SEED2 (5 blocks, seed 2):
+    epoch  10  right   -2.651  map   -4.088  entropy 1.9728  std  8.776  init r(GT) +0.5183
+    epoch  20  right   -0.026  map   +3.568  entropy 1.8646  std 10.912  init r(GT) +0.7085
+    epoch  30  right  +37.962  map  +34.911  entropy 1.7189  std 16.001  init r(GT) +0.7333
+EXP-BLOCKCOUNT-SEEDSCREEN-001-ARM-C-SEED2 (4 blocks, seed 2):
+    epoch  10  right   -3.864  map   -7.034  entropy 2.0645  std  9.438  init r(GT) +0.4904
+    epoch  20  right   -3.195  map   -1.564  entropy 2.1143  std  9.323  init r(GT) +0.5371
+    epoch  30  right   +5.816  map   +7.784  entropy 1.9588  std 13.129  init r(GT) +0.6890
+wrote C:\Users\vishn\stereo_depth_vision\phase2\factorial\block_count_seed_screen\20260909T145659Z\probes.json

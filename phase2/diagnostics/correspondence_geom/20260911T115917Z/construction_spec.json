@@ -1,0 +1,90 @@
+{
+  "experiment": "EXP-CORRESPONDENCE-GEOM-002",
+  "construction": "synthetic fronto-parallel self-pair; both images are crops of the SAME source left image L; no fill, no padding, no interpolation",
+  "source_image": "scene.left only (the scene's own right image is never used)",
+  "source_size": {
+    "width": 1232,
+    "height": 368
+  },
+  "crop_size": {
+    "width": 1136,
+    "height": 272
+  },
+  "crop_size_in_feature_samples": {
+    "width": 71,
+    "height": 17
+  },
+  "left_crop": "rows [0, 272), cols [0, 1136)   -- FIXED for every condition",
+  "right_crop_horizontal": "rows [0, 272), cols [t, 1136 + t)",
+  "right_crop_vertical": "rows [t, 272 + t), cols [0, 1136)",
+  "t_levels_px": [
+    0,
+    16,
+    32,
+    48,
+    64,
+    80,
+    96
+  ],
+  "axes": [
+    "horizontal",
+    "vertical"
+  ],
+  "n_distinct_conditions": 13,
+  "disparity_algebra": "left[x]=L[a_L+x], right[x]=L[a_R+x]; a point at source col X has x_L=X-a_L, x_R=X-a_R, so d = x_L-x_R = a_R-a_L. With a_L=0 and a_R=t the imposed disparity is EXACTLY t px everywhere.",
+  "sign_check": "matches phase2/viz/core.correspondence: x_R = x_L - d",
+  "sign_correction_note": "an earlier draft (successor_audit_20260911/RECOMMENDATION.md) specified the right crop at cols [96-t, 1136-t), i.e. a_R = a_L - t, which imposes d = -t, a NEGATIVE and unrepresentable disparity. Corrected here to a_R = a_L + t. The draft is preserved unmodified.",
+  "true_disparity_candidates": {
+    "0": 0,
+    "16": 1,
+    "32": 2,
+    "48": 3,
+    "64": 4,
+    "80": 5,
+    "96": 6
+  },
+  "anchor_slope_candidates_per_candidate": 1.0,
+  "all_t_multiple_of_stride": true,
+  "all_windows_inside_source": true,
+  "rail_clearance": {
+    "0": {
+      "candidate": 0,
+      "dist_to_low_rail": 0,
+      "dist_to_high_rail": 11
+    },
+    "16": {
+      "candidate": 1,
+      "dist_to_low_rail": 1,
+      "dist_to_high_rail": 10
+    },
+    "32": {
+      "candidate": 2,
+      "dist_to_low_rail": 2,
+      "dist_to_high_rail": 9
+    },
+    "48": {
+      "candidate": 3,
+      "dist_to_low_rail": 3,
+      "dist_to_high_rail": 8
+    },
+    "64": {
+      "candidate": 4,
+      "dist_to_low_rail": 4,
+      "dist_to_high_rail": 7
+    },
+    "80": {
+      "candidate": 5,
+      "dist_to_low_rail": 5,
+      "dist_to_high_rail": 6
+    },
+    "96": {
+      "candidate": 6,
+      "dist_to_low_rail": 6,
+      "dist_to_high_rail": 5
+    }
+  },
+  "why_t_max_96": "candidate 6 of 0..11 keeps the predicted response clear of both rails while the crop stays stride-aligned at 1136 x 272. Chosen from the candidate axis and crop arithmetic alone.",
+  "ground_truth_used": false,
+  "ground_truth_note": "the true disparity is t by construction and uniform over the crop, so no GT file, no GT band and no scene-disparity selection is needed. This removes the representability defect that ended GEOM-001.",
+  "interpolation": "none -- all crops are integer-aligned"
+}

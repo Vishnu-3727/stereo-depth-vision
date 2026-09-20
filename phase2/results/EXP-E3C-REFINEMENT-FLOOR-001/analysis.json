@@ -1,0 +1,49 @@
+{
+  "late_window": {
+    "control": {
+      "points": 10,
+      "epe_mean": 4.092099686806512,
+      "epe_sd": 0.10000498854517458,
+      "d1_mean": 24.909737750046475,
+      "d1_sd": 1.082096193588822
+    },
+    "arm_D": {
+      "points": 10,
+      "epe_mean": 3.7694673344787275,
+      "epe_sd": 0.0579523248334476,
+      "d1_mean": 26.940184403396664,
+      "d1_sd": 0.6616706028421045
+    }
+  },
+  "comparison": {
+    "delta_epe_vs_control": -0.32263235232778475,
+    "delta_d1_vs_control": 2.0304466533501895,
+    "materially_different": true,
+    "worse": false,
+    "band": {
+      "epe": 0.21380062638697517,
+      "d1": 1.0
+    }
+  },
+  "stereo_verdict_epoch_200": {
+    "threshold_d1_points": 20.0,
+    "right_image_min_d1_penalty": 81.41106193884427,
+    "right_image_dependence": true,
+    "matching_map_min_d1_penalty": 65.78794004625836,
+    "matching_map_dependence": true,
+    "matching_gradient_fraction": 1.0,
+    "matching_gradient": true,
+    "softmax_entropy": 1.7176221336430284,
+    "entropy_ok": true,
+    "final_disparity_std": 18.71849666080227,
+    "not_collapsed": true,
+    "STEREO_FUNCTIONAL": true
+  },
+  "gates": {
+    "arm_completed": true,
+    "control_stereo_functional": true,
+    "phase_1_diff_empty": true,
+    "PASS": true
+  },
+  "verdict": "CAPACITY-REDUCIBLE-TO-3"
+}

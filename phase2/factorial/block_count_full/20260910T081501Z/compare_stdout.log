@@ -1,0 +1,182 @@
+
+| Blocks | Seed |       EPE |        D1 |   RMSE | source |
+|---:|---:|---:|---:|---:|---|
+| 6 | 0 | 2.2955182 | 15.6045143 | 6.0437 | frozen |
+| 6 | 1 | 2.3982217 | 18.3357145 | 5.6772 | frozen |
+| 6 | 2 | 2.3950488 | 17.4699044 | 5.9350 | frozen |
+| 5 | 0 | 2.6457595 | 21.3711907 | 6.0531 | frozen |
+| 5 | 1 | 2.4729830 | 18.2061782 | 6.2149 | frozen |
+| 5 | 2 | 2.6372994 | 20.6593989 | 6.4439 | frozen |
+| 4 | 0 | 2.3387143 | 16.9797389 | 5.8647 | frozen |
+| 4 | 1 | 2.6553489 | 20.0897392 | 6.3510 | this batch |
+| 4 | 2 | 2.5756633 | 20.0793521 | 6.1759 | this batch |
+
+seed ranges:
+{
+  "6_blocks": {
+    "epe": {
+      "n": 3,
+      "mean": 2.3629295621131567,
+      "sd": 0.05840152057131535,
+      "min": 2.2955181809208267,
+      "max": 2.3982217171269924,
+      "range": 0.10270353620616568
+    },
+    "d1": {
+      "n": 3,
+      "mean": 17.1367110401458,
+      "sd": 1.39575320706696,
+      "min": 15.6045142562172,
+      "max": 18.335714475424272,
+      "range": 2.7312002192070715
+    }
+  },
+  "5_blocks": {
+    "epe": {
+      "n": 3,
+      "mean": 2.585347284198683,
+      "sd": 0.09740225663820949,
+      "min": 2.4729829593541792,
+      "max": 2.6457595145748534,
+      "range": 0.17277655522067414
+    },
+    "d1": {
+      "n": 3,
+      "mean": 20.078922610559193,
+      "sd": 1.66043383495664,
+      "min": 18.20617824196243,
+      "max": 21.37119073145372,
+      "range": 3.165012489491289
+    }
+  },
+  "4_blocks": {
+    "epe": {
+      "n": 3,
+      "mean": 2.5232421918081624,
+      "sd": 0.16469772772343028,
+      "min": 2.3387143497258114,
+      "max": 2.6553489056679185,
+      "range": 0.3166345559421071
+    },
+    "d1": {
+      "n": 3,
+      "mean": 19.049610063329702,
+      "sd": 1.7925685676510645,
+      "min": 16.97973886063337,
+      "max": 20.089739210375942,
+      "range": 3.110000349742574
+    }
+  }
+}
+
+decision inputs:
+{
+  "four_block_epe_by_seed": {
+    "0": 2.3387143497258114,
+    "1": 2.6553489056679185,
+    "2": 2.575663320030758
+  },
+  "all_four_block_epe_above_six_block_max": false,
+  "all_four_block_epe_inside_six_block_range": false,
+  "all_four_block_runs_stereo_functional": true
+}
+
+non-overlap:
+{
+  "min_4b_epe": 2.3387143497258114,
+  "max_4b_epe": 2.6553489056679185,
+  "min_6b_epe": 2.2955181809208267,
+  "max_6b_epe": 2.3982217171269924,
+  "min_4b_epe_minus_max_6b_epe": -0.05950736740118101,
+  "epe_ranges_disjoint_4b_above_6b": false,
+  "min_4b_d1": 16.97973886063337,
+  "max_4b_d1": 20.089739210375942,
+  "min_6b_d1": 15.6045142562172,
+  "max_6b_d1": 18.335714475424272,
+  "min_4b_d1_minus_max_6b_d1": -1.3559756147909034,
+  "d1_ranges_disjoint_4b_above_6b": false
+}
+
+mean differences:
+{
+  "epe_4b_minus_6b": 0.1603126296950057,
+  "d1_4b_minus_6b": 1.9128990231839005,
+  "epe_4b_minus_5b": -0.06210509239052042,
+  "d1_4b_minus_5b": -1.029312547229491
+}
+
+per-scene paired:
+{
+  "4b_seed0_vs_6b_seed0": {
+    "pairing": "4b/s0 vs 6b/s0",
+    "scenes": 40,
+    "epe_first_worse_in": 22,
+    "epe_mean_delta": 0.04435158460421463,
+    "epe_median_delta": 0.01931082231302572,
+    "epe_max_delta": 0.7549450209658244,
+    "epe_min_delta": -0.9641636710365882,
+    "d1_first_worse_in": 29,
+    "d1_mean_delta": 1.3584003015335417
+  },
+  "4b_seed0_vs_5b_seed0": {
+    "pairing": "4b/s0 vs 5b/s0",
+    "scenes": 40,
+    "epe_first_worse_in": 3,
+    "epe_mean_delta": -0.302192789823421,
+    "epe_median_delta": -0.2674691883817595,
+    "epe_max_delta": 0.41577506755807114,
+    "epe_min_delta": -1.0735511721519964,
+    "d1_first_worse_in": 4,
+    "d1_mean_delta": -4.160614793722545
+  },
+  "4b_seed1_vs_6b_seed1": {
+    "pairing": "4b/s1 vs 6b/s1",
+    "scenes": 40,
+    "epe_first_worse_in": 32,
+    "epe_mean_delta": 0.24251976647008266,
+    "epe_median_delta": 0.11553639014643058,
+    "epe_max_delta": 1.578883437144615,
+    "epe_min_delta": -0.25812038198687715,
+    "d1_first_worse_in": 30,
+    "d1_mean_delta": 1.610678658365932
+  },
+  "4b_seed1_vs_5b_seed1": {
+    "pairing": "4b/s1 vs 5b/s1",
+    "scenes": 40,
+    "epe_first_worse_in": 28,
+    "epe_mean_delta": 0.17137570335392055,
+    "epe_median_delta": 0.08833538352178705,
+    "epe_max_delta": 1.174286282496527,
+    "epe_min_delta": -0.895882029734155,
+    "d1_first_worse_in": 26,
+    "d1_mean_delta": 1.6827047759288072
+  },
+  "4b_seed2_vs_6b_seed2": {
+    "pairing": "4b/s2 vs 6b/s2",
+    "scenes": 40,
+    "epe_first_worse_in": 34,
+    "epe_mean_delta": 0.18097157866056288,
+    "epe_median_delta": 0.12025104536571452,
+    "epe_max_delta": 0.9411346516980972,
+    "epe_min_delta": -0.1992387584439579,
+    "d1_first_worse_in": 33,
+    "d1_mean_delta": 2.524686834300342
+  },
+  "4b_seed2_vs_5b_seed2": {
+    "pairing": "4b/s2 vs 5b/s2",
+    "scenes": 40,
+    "epe_first_worse_in": 17,
+    "epe_mean_delta": -0.05245978443467023,
+    "epe_median_delta": -0.01849731923315412,
+    "epe_max_delta": 0.530663397247058,
+    "epe_min_delta": -0.834742126983981,
+    "d1_first_worse_in": 15,
+    "d1_mean_delta": -0.5280446858640777
+  }
+}
+
+stereo functional: {"0": true, "1": true, "2": true}
+
+VERDICT: 4-BLOCK-INCONCLUSIVE-AT-SEEDS-0-1-2
+
+Descriptive comparison of three seeds per arm on one dataset, one recipe and one deterministic protocol. Not a statistical test. An empirical block-count effect is not a parameter-count or receptive-field CAUSE. The historical E3b/E3c materiality band stays invalidated; no band was reused and no threshold was invented after seeing the result.

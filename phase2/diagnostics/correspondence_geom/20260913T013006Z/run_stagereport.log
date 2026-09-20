@@ -1,0 +1,2 @@
+verdict: STATISTIC-ARCHITECTURALLY-AVAILABLE   H*=None
+results.json, metrics.csv, per_scene.csv, per_tau.csv written

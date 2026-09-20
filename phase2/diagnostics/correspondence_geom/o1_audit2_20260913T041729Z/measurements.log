@@ -1,0 +1,68 @@
+LeakyReLU negative slope (frozen) = 0.01
+
+=== R1a: do the hand-built operators behave as intended on the clean CV? ===
+operator                                   hard argmin per tau (tau = 1..6)
+HC_match  (hand-built matcher)           ['1', '2', '3', '4', '5', '6']
+HC_contrast (hand-built, NO matching)    ['0', '2', '3', '4', '5', '6']
+  both latch the matched slice -> IDENTICAL observable on clean data
+
+=== R1b: SPIKE TEST -- proof that HC_contrast is NOT matching ===
+inject a large-norm spike at a NON-matched candidate k*; a matcher must
+ignore it (it is not a match), a contrast latch must jump to it.
+  spike at k*= 8, tau=2 :  matcher argmin = 2 (want 2)   contrast argmin = 8 (want 8)
+  spike at k*= 8, tau=3 :  matcher argmin = 3 (want 3)   contrast argmin = 8 (want 8)
+  spike at k*= 9, tau=2 :  matcher argmin = 2 (want 2)   contrast argmin = 9 (want 9)
+  spike at k*= 9, tau=3 :  matcher argmin = 3 (want 3)   contrast argmin = 9 (want 9)
+  spike at k*=10, tau=2 :  matcher argmin = 2 (want 2)   contrast argmin = 10 (want 10)
+  spike at k*=10, tau=3 :  matcher argmin = 3 (want 3)   contrast argmin = 10 (want 10)
+  -> the two operators are DIFFERENT FUNCTIONS; they only agree when the
+     matched slice is the only anomaly, which is exactly the synthetic case.
+
+=== R1c: O1/S8 signature of the hand-built pair ===
+operator                                   E_orig   D_P1 rev    D_P1 rA    D_P1 rB
+HC_match  (hand-built matcher)              0.783      2.768      1.854      2.628
+HC_contrast (hand-built, NO matching)       0.840      2.653      1.787      2.078
+
+============================================================================
+R2  IS THE P2 FALLBACK CLAIM ALREADY TRUE AT RANDOM INITIALISATION?
+============================================================================
+claim under test: 'the aggregation is NOT a pointwise function of each
+candidate slice' -- detected by Delta_P2 != 0 (P2 = permute, then apply
+pi^-1 to the aggregated cost before readout).
+
+random-weight aggregations: 12 seeds x 6 permutations x 6 tau = 432 units
+  |Delta_P2|            : mean 0.644  median 0.461  p95 2.061
+  |m_P2 - m_orig|       : mean 0.694  median 0.510  p95 2.316
+  relative cost deviation max|A(Vopi)opi^-1 - A(V)| / max|A(V)|:
+        mean 0.8735  median 0.7862  min 0.5306
+  units with a NON-ZERO cost deviation: 432 of 432
+
+  -> a RANDOMLY INITIALISED aggregation is already non-pointwise in k, in
+     100%% of units.  The P2 claim is a property of the ARCHITECTURE, not
+     of training.  It cannot separate a trained model from random weights.
+
+============================================================================
+R3  THE k-AXIS ZERO PADDING IS NOT NUISANCE-MATCHED
+============================================================================
+Conv3d pads k with zeros, so k=0 and k=11 are treated differently from the
+interior.  A permutation changes WHICH slice sits there.
+
+  single transposition moving the matched slice to position `dest`
+  (everything else identical).  Random Conv3d aggregation, tau = 3.
+  dest :  m_P1     |cost change|rel   (dest 0 and 11 are the PADDED ends)
+    0  :   5.294           0.5987  <-- padded boundary
+    1  :   5.394           0.5608
+    2  :   5.290           0.5023
+    3  :   5.252           0.0000
+    4  :   5.371           0.5583
+    5  :   5.397           0.7016
+    6  :   5.432           0.6005
+    7  :   5.282           0.5573
+    8  :   5.459           0.5878
+    9  :   5.232           0.6022
+   10  :   5.438           0.6008
+   11  :   5.274           0.5294  <-- padded boundary
+
+  -> the size of the permutation's effect depends on WHERE the matched
+     slice lands, including whether it lands against the zero padding.
+     'same weights, same input' does not make the two arms exchangeable.

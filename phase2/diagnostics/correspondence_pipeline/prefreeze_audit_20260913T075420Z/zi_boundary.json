@@ -1,0 +1,92 @@
+{
+ "design_bounds": {
+  "zone": [
+   0,
+   250
+  ],
+  "comp": [
+   886,
+   1136
+  ]
+ },
+ "per_seed": [
+  {
+   "seed": 11,
+   "rows": [
+    {
+     "delta": 1,
+     "ZI2_last_clean_x": 244,
+     "ZI1_first_clean_x": 908,
+     "ZI2_at_design_bound_x249": 9.5367431640625e-07,
+     "ZI1_at_design_bound_x886": 9.5367431640625e-07
+    },
+    {
+     "delta": 3,
+     "ZI2_last_clean_x": 244,
+     "ZI1_first_clean_x": 908,
+     "ZI2_at_design_bound_x249": 9.5367431640625e-07,
+     "ZI1_at_design_bound_x886": 9.5367431640625e-07
+    },
+    {
+     "delta": 6,
+     "ZI2_last_clean_x": 244,
+     "ZI1_first_clean_x": 908,
+     "ZI2_at_design_bound_x249": 9.5367431640625e-07,
+     "ZI1_at_design_bound_x886": 9.5367431640625e-07
+    }
+   ]
+  },
+  {
+   "seed": 12,
+   "rows": [
+    {
+     "delta": 1,
+     "ZI2_last_clean_x": 245,
+     "ZI1_first_clean_x": 908,
+     "ZI2_at_design_bound_x249": 4.76837158203125e-07,
+     "ZI1_at_design_bound_x886": 4.76837158203125e-07
+    },
+    {
+     "delta": 3,
+     "ZI2_last_clean_x": 243,
+     "ZI1_first_clean_x": 907,
+     "ZI2_at_design_bound_x249": 9.5367431640625e-07,
+     "ZI1_at_design_bound_x886": 9.5367431640625e-07
+    },
+    {
+     "delta": 6,
+     "ZI2_last_clean_x": 243,
+     "ZI1_first_clean_x": 907,
+     "ZI2_at_design_bound_x249": 9.5367431640625e-07,
+     "ZI1_at_design_bound_x886": 9.5367431640625e-07
+    }
+   ]
+  },
+  {
+   "seed": 13,
+   "rows": [
+    {
+     "delta": 1,
+     "ZI2_last_clean_x": 243,
+     "ZI1_first_clean_x": 908,
+     "ZI2_at_design_bound_x249": 4.76837158203125e-07,
+     "ZI1_at_design_bound_x886": 9.5367431640625e-07
+    },
+    {
+     "delta": 3,
+     "ZI2_last_clean_x": 244,
+     "ZI1_first_clean_x": 907,
+     "ZI2_at_design_bound_x249": 4.76837158203125e-07,
+     "ZI1_at_design_bound_x886": 9.5367431640625e-07
+    },
+    {
+     "delta": 6,
+     "ZI2_last_clean_x": 243,
+     "ZI1_first_clean_x": 908,
+     "ZI2_at_design_bound_x249": 4.76837158203125e-07,
+     "ZI1_at_design_bound_x886": 9.5367431640625e-07
+    }
+   ]
+  }
+ ]
+}

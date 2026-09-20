@@ -1,0 +1,82 @@
+[
+  {
+    "epoch": 0,
+    "mean_loss": 10.372830641269683,
+    "lr": 0.0009999383162408303,
+    "median_grad_norm": 47.93923377990723,
+    "median_matching_grad_norm": 19.391149007920266,
+    "matching_present_fraction_this_epoch": 1.0
+  },
+  {
+    "epoch": 1,
+    "mean_loss": 10.122478348016738,
+    "lr": 0.0009997532801828658,
+    "median_grad_norm": 62.502845764160156,
+    "median_matching_grad_norm": 32.6868128308379,
+    "matching_present_fraction_this_epoch": 1.0
+  },
+  {
+    "epoch": 2,
+    "mean_loss": 9.119872525334358,
+    "lr": 0.0009994449374809851,
+    "median_grad_norm": 55.3380069732666,
+    "median_matching_grad_norm": 25.507166015256683,
+    "matching_present_fraction_this_epoch": 1.0
+  },
+  {
+    "epoch": 3,
+    "mean_loss": 9.405028653144836,
+    "lr": 0.0009990133642141358,
+    "median_grad_norm": 54.85662841796875,
+    "median_matching_grad_norm": 25.015248778251,
+    "matching_present_fraction_this_epoch": 1.0
+  },
+  {
+    "epoch": 4,
+    "mean_loss": 8.5327738404274,
+    "lr": 0.000998458666866564,
+    "median_grad_norm": 37.42521667480469,
+    "median_matching_grad_norm": 15.096737001704364,
+    "matching_present_fraction_this_epoch": 1.0
+  },
+  {
+    "epoch": 5,
+    "mean_loss": 8.928738522529603,
+    "lr": 0.00099778098230154,
+    "median_grad_norm": 49.706186294555664,
+    "median_matching_grad_norm": 18.354252017859906,
+    "matching_present_fraction_this_epoch": 1.0
+  },
+  {
+    "epoch": 6,
+    "mean_loss": 8.52668326497078,
+    "lr": 0.0009969804777275899,
+    "median_grad_norm": 37.945730209350586,
+    "median_matching_grad_norm": 15.204244511674872,
+    "matching_present_fraction_this_epoch": 1.0
+  },
+  {
+    "epoch": 7,
+    "mean_loss": 8.448129367828368,
+    "lr": 0.000996057350657239,
+    "median_grad_norm": 39.924224853515625,
+    "median_matching_grad_norm": 15.413108315122694,
+    "matching_present_fraction_this_epoch": 1.0
+  },
+  {
+    "epoch": 8,
+    "mean_loss": 8.512458649277686,
+    "lr": 0.0009950118288582787,
+    "median_grad_norm": 29.943594932556152,
+    "median_matching_grad_norm": 14.309371429650978,
+    "matching_present_fraction_this_epoch": 1.0
+  },
+  {
+    "epoch": 9,
+    "mean_loss": 8.112941139936447,
+    "lr": 0.0009938441702975688,
+    "median_grad_norm": 33.70196723937988,
+    "median_matching_grad_norm": 16.295705511433553,
+    "matching_present_fraction_this_epoch": 1.0
+  }
+]

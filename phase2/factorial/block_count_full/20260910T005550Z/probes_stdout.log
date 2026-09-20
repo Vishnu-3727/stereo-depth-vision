@@ -1,0 +1,22 @@
+EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED1 (6 blocks, seed 1):
+    epoch  10  right   -3.576  map   -1.883  entropy 2.0933  std  8.396  init r(GT) +0.6334
+    epoch  20  right  +12.595  map  +10.218  entropy 1.8132  std 12.520  init r(GT) +0.6721
+    epoch  50  right  +55.755  map  +43.136  entropy 1.7307  std 17.979  init r(GT) +0.8275
+    epoch 100  right  +73.664  map  +59.538  entropy 1.7480  std 18.187  init r(GT) +0.9023
+    epoch 150  right  +72.523  map  +58.414  entropy 1.7730  std 18.324  init r(GT) +0.9087
+    epoch 200  right  +76.376  map  +61.403  entropy 1.7617  std 18.571  init r(GT) +0.9113
+EXP-BLOCKCOUNT-FULL-001-ARM-A-SEED2 (6 blocks, seed 2):
+    epoch  10  right   -3.824  map   -4.320  entropy 2.0511  std 10.339  init r(GT) +0.5856
+    epoch  20  right   -4.030  map   +6.875  entropy 1.8765  std 11.036  init r(GT) +0.6871
+    epoch  50  right  +41.159  map  +32.051  entropy 1.8311  std 17.797  init r(GT) +0.8291
+    epoch 100  right  +71.566  map  +58.056  entropy 1.8375  std 16.913  init r(GT) +0.9001
+    epoch 150  right  +75.846  map  +60.938  entropy 1.8146  std 17.623  init r(GT) +0.9121
+    epoch 200  right  +74.407  map  +59.283  entropy 1.8193  std 17.966  init r(GT) +0.9131
+EXP-BLOCKCOUNT-FULL-001-ARM-B-SEED1 (5 blocks, seed 1):
+    epoch  10  right   -2.089  map   +2.168  entropy 2.0847  std  7.944  init r(GT) +0.5870
+    epoch  20  right  +13.473  map  +15.000  entropy 1.9966  std 11.975  init r(GT) +0.6802
+    epoch  50  right  +53.121  map  +43.818  entropy 1.7692  std 17.288  init r(GT) +0.8581
+    epoch 100  right  +67.245  map  +55.301  entropy 1.7868  std 18.236  init r(GT) +0.8655
+    epoch 150  right  +70.576  map  +58.578  entropy 1.8116  std 17.228  init r(GT) +0.8899
+    epoch 200  right  +75.183  map  +60.659  entropy 1.8116  std 17.618  init r(GT) +0.8972
+wrote C:\Users\vishn\stereo_depth_vision\phase2\factorial\block_count_full\20260910T005550Z\probes.json

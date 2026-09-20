@@ -1,0 +1,42 @@
+{
+  "experiment": "EXP-CORRESPONDENCE-GEOM-A",
+  "mechanism": "crop-based translation: NO fill, NO padding, NO interpolation",
+  "rationale": "a zero-filled shift creates an edge discontinuity whose position differs between +Delta and -Delta, which would contribute to the ODD part and contaminate the primary statistic. Cropping removes the vacated region instead of filling it, so every condition sees only real image content and every condition has identical output size.",
+  "original_size": {
+    "width": 1232,
+    "height": 368
+  },
+  "crop_margin_px": 32,
+  "crop_size": {
+    "width": 1168,
+    "height": 304
+  },
+  "crop_size_in_feature_samples": {
+    "width": 73,
+    "height": 19
+  },
+  "left_crop": "cols [M, W-M), rows [M, H-M)  -- FIXED for every condition",
+  "right_crop_horizontal": "cols [M-dx, W-M-dx), rows [M, H-M)",
+  "right_crop_vertical": "cols [M, W-M), rows [M-dy, H-M-dy)",
+  "deltas_px": [
+    -32,
+    -16,
+    0,
+    16,
+    32
+  ],
+  "axes": [
+    "horizontal",
+    "vertical"
+  ],
+  "n_distinct_conditions": 9,
+  "delta_zero_shared": true,
+  "all_deltas_multiple_of_stride": true,
+  "max_abs_delta_equals_crop_margin": true,
+  "disparity_algebra": "d_crop = (x_L - M) - (x_R - M + dx) = d_orig - dx   [exact, integer]",
+  "predicted_candidate_response": "Delta(disparity_initial) = -dx / 16 candidates",
+  "anchor_slope_candidates_per_pixel": -0.0625,
+  "why_not_48": "at |dx| = 48 px (3 candidates) the symmetric representability band would be [3,8], which reaches >= 50% retention on 0 of 40 hailo_val scenes (AUDIT.md section 3, MEASURED). 32 px keeps the band at [2,9]. The band actually achieved is recorded in mask_spec.json; HS-REPRESENTABILITY re-checks it from the specs in this record before any model is instantiated.",
+  "why_multiples_of_16": "the feature extractor is fully convolutional with total stride 2**4 = 16 (4 x Conv2d(5, stride=2, padding=2), then ResBlocks and Conv2d(3, stride=1); no pooling, no normalisation, no global op), so a 16n px image translation produces EXACTLY an n-sample feature translation in the interior. Non-multiples would introduce an interpolation confound outside the hypothesis.",
+  "interpolation": "none -- all crops are integer-aligned"
+}

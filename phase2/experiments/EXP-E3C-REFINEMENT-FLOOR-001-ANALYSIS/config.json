@@ -1,0 +1,24 @@
+{
+  "experiment": "EXP-E3C-REFINEMENT-FLOOR-001-ANALYSIS",
+  "hypothesis": "Analysis of the three-block arm against E3b's control and band.",
+  "preregistration": "phase2/docs/EXP_E3C_REFINEMENT_FLOOR_001_PREREGISTRATION.md",
+  "measurement_only": true,
+  "training": "none -- reads two existing records",
+  "control": "EXP-E3B-REFINEMENT-CAPACITY-001-ARM-A-RUN2",
+  "band": {
+    "epe": 0.21380062638697517,
+    "d1": 1.0
+  },
+  "dataset": "kitti2015",
+  "split": "hailo_val (first 10 scenes, recorded protocol)",
+  "resolution": "368x1232",
+  "crop": [
+    256,
+    512
+  ],
+  "disparity_range": 12,
+  "batch_size": 2,
+  "precision": "fp32",
+  "seed": 0,
+  "known_limitation": "one seed; the band is E3b's single-sample lower bound on same-seed noise, not a confidence interval; the arm also reduces the receptive field, so a negative result is ambiguous."
+}
