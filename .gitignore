@@ -28,3 +28,50 @@ __pycache__/
 venv/
 .pytest_cache/
 .ipynb_checkpoints/
+
+# phase 2 visualizer output: regenerable from checkpoint + scene id + metadata.json,
+# so the images stay out of git. Keep the ranking JSON, it is small and cited.
+phase2/visualizations/*
+!phase2/visualizations/scene_ranking_*.json
+
+# phase 2 mentor demo: same rule. One command regenerates every PNG from the
+# checkpoint hash recorded in manifest.json; the README and manifest stay in.
+phase2/demo/**/*.png
+
+# ---------------------------------------------------------------------------
+# Publication scope (added 2026-09-20, documentation closure).
+# The repository must let a reader understand the project, replicate it, and
+# run the model. Bulk that is regenerable from the shipped code + the shipped
+# JSON/CSV records stays local.
+# ---------------------------------------------------------------------------
+
+# Raw per-pixel dumps: every number cited from them lives in the JSON records
+# beside them; regenerate with the diagnostic scripts if you need the arrays.
+stage_a_diagnostics/raw/
+stage_b_armp/20260918T105050Z_d3_transfer/raw/
+*.npz
+*.npy
+
+# Repacked KITTI copy made for the Kaggle upload; the dataset itself is a
+# download, and the bundle's integrity JSONs are the evidence.
+stage_b_armp/20260919T035455Z_kaggle_seed2/upload_kitti/
+
+# C1 export-variant and instrumented DEBUG graphs: hashes and results are
+# recorded in C1_SECTION10_EXPORT_INVESTIGATION.md; the graphs re-export.
+stage_c_deploy/diagnostics/c1_export_variants/
+stage_c_deploy/diagnostics/*instrumented_debug.onnx
+stage_c_deploy/dr0_audit/*instrumented_debug.onnx
+
+# Vendor profiler dumps (large HTML)
+*.html
+
+# ---- model artifacts that DO ship (override the binary rules above) ----
+!stage_b_armp/20260918T062146Z_stage1_pretrain/checkpoints/armp_stage1_best.pth
+!stage_b_armp/20260919T012646Z_tier2_seed1/armp/p2a_best.pth
+!stage_b_armp/20260919T012646Z_tier2_seed1/control/p2a_best.pth
+!phase2/runs/p2a_scale_coverage/p2a_best.pth
+!stage_c_deploy/armp_stereonet.onnx
+!stage_c_deploy/armp_stereonet_static.onnx
+!phase2/deploy/p2a_stereonet.onnx
+!reference/onnx/
+!reference/onnx/stereonet.onnx
