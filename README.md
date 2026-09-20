@@ -16,6 +16,27 @@ The original Phase-1 README is preserved below the rule, unchanged, as historica
 > has NOT occurred because the target Hailo device has not been specified and the corresponding
 > target toolchain has therefore not been executed.**
 
+### What it looks like
+
+One KITTI stereo pair through the whole graph — left image, ARM-P disparity, metric depth in
+metres, object edges, and a bird's-eye point cloud — with the numbers underneath. Click any
+panel to measure that point in metres.
+
+![Pipeline demo, city scene](docs/images/demo_city.png)
+
+The same cloud in 3D (`--cloud3d`), rotatable and zoomable: road surface in yellow, the two
+building facades either side, camera at the origin in red.
+
+![3D point cloud](docs/images/demo_city_cloud3d.png)
+
+A highway scene from the same 40-scene validation split:
+
+![Pipeline demo, highway scene](docs/images/demo_highway.png)
+
+Every run prints the two facts a viewer must not miss: **C1 export parity FAIL**
+(1.709e-3 px against the frozen 1e-3 px criterion) and **Hailo target UNSPECIFIED, toolchain
+NOT EXECUTED, no HEF**. Timings shown are development-machine measurements, never Hailo.
+
 ### Current blocker
 
 - **Hailo target device: UNSPECIFIED.** No authoritative company requirement for device, board,

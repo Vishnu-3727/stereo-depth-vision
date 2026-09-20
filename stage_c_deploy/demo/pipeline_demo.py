@@ -200,18 +200,20 @@ def show_cloud3d(r: dict, save: Path | None, show: bool) -> None:
                     c=pts[:, 2], cmap="viridis_r", alpha=0.6, linewidths=0)
     fig.colorbar(sc, ax=ax, fraction=0.025, label="depth Z (m)")
     ax.scatter([0], [0], [0], color="#c33", s=40, marker="^")
-    ax.set_xlabel("X lateral (m)"); ax.set_ylabel("Z forward (m)")
-    ax.set_zlabel("height (m, +up)")
+    ax.set_xlabel("X lateral (m)", labelpad=10)
+    ax.set_ylabel("Z forward (m)", labelpad=10)
+    ax.set_zlabel("height (m, +up)", labelpad=8)
     ax.set_xlim(-20, 20); ax.set_ylim(0, PHYSICAL_MAX_M); ax.set_zlim(-6, 6)
     ax.view_init(elev=18, azim=-78)
-    title = (f"{r['name']}  --  {pts.shape[0]:,} of {r['cloud']['count']:,} points"
-             " inside the display box (|X|<=20 m, Z<=60 m, |height|<=6 m);"
-             " the depth map itself is never filtered"
-             + "\n" + "drag to rotate, scroll to zoom")
-    ax.set_title(title, fontsize=9)
+    title = (f"{r['name']}  --  {pts.shape[0]:,} of {r['cloud']['count']:,} points in"
+             " the display box (|X|<=20 m, Z<=60 m, |height|<=6 m)"
+             + "\n" +
+             "display box only -- the depth map itself is never filtered."
+             "   drag to rotate, scroll to zoom")
+    ax.set_title(title, fontsize=9, pad=26)
     if save:
         save.parent.mkdir(parents=True, exist_ok=True)
-        fig.savefig(save, dpi=110)
+        fig.savefig(save, dpi=110, bbox_inches="tight")
         print(f"saved {save}")
     if not show:
         plt.close(fig)

@@ -15,6 +15,8 @@ the research viewer, and is left untouched.)
 Needs: the frozen ARM-P checkpoint (in this repo) and `data/kitti2015/`
 (download separately — see the README's "Reproducing this work").
 
+![demo](../../docs/images/demo_city.png)
+
 ## What it shows
 
 One real KITTI stereo pair taken all the way through the deployment graph:
