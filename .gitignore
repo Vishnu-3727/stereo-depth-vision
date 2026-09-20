@@ -75,3 +75,10 @@ stage_c_deploy/dr0_audit/*instrumented_debug.onnx
 !phase2/deploy/p2a_stereonet.onnx
 !reference/onnx/
 !reference/onnx/stereonet.onnx
+
+# Checkpoints the documented re-scoring commands need (phase2/scripts/eval_p2a.py
+# scores three P2A seeds; the seed-1 Stage-B run scores best AND final per arm).
+!phase2/runs/p2a_scale_coverage_s1/p2a_best.pth
+!phase2/runs/p2a_scale_coverage_s2/p2a_best.pth
+!stage_b_armp/20260919T012646Z_tier2_seed1/armp/p2a_final.pth
+!stage_b_armp/20260919T012646Z_tier2_seed1/control/p2a_final.pth

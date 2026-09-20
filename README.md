@@ -82,27 +82,42 @@ historical Phase-1 arm table and stops at ARM-V. Use `RESULTS_INDEX.md`.
 **Environment:** Python 3.12, `pip install -r requirements.txt` (torch 2.7.0+cu128, onnx 1.22,
 onnxruntime 1.27, numpy 2.5.1 were used for every frozen number).
 
-**Datasets are not in this repository** (42 GB). Fetch them yourself:
+**Datasets are not in this repository.** `data/` is gitignored, so the download scripts that
+lived there are not shipped either — fetch the data yourself:
 
-- **KITTI 2015 stereo** (`data_scene_flow.zip` + `data_scene_flow_calib.zip`) from the KITTI
-  benchmark site → extract to `data/kitti2015/`. This is all you need to re-score every frozen
-  result: the contract evaluates scenes **160–199** of the *training* split.
-- **SceneFlow** (FlyingThings3D + Driving) only if you want to re-run ARM-P Stage 1 pretraining.
-  `data/sceneflow/*/fetch_*.sh` and `extract_ft3d.sh` are the exact scripts used; note Stage 1
-  used the **A+C subset, 14,460 triplets** (subset B was missing, Monkaa empty) — see
-  `stage_b_armp/20260918T062146Z_stage1_pretrain/README.md`.
+- **KITTI 2015 stereo** (`data_scene_flow.zip` ~1.6 GB + `data_scene_flow_calib.zip`) from the
+  KITTI benchmark site → extract to `data/kitti2015/` so that `training/image_2`,
+  `training/image_3`, `training/disp_occ_0` and `training/calib_cam_to_cam` exist. This is all
+  you need to re-score every frozen result and to run the demo: the contract evaluates scenes
+  **160–199** of the *training* split. Exact layout: `phase0/docs/BASELINE_CONTRACT.md`.
+- **SceneFlow** (FlyingThings3D + Driving, ~160 GB of archives) only if you want to re-run
+  ARM-P Stage 1 pretraining. Acquisition notes: `phase1/docs/SCENEFLOW_ACQUISITION.md`. Stage 1
+  used the **FlyingThings3D A+C subset, 14,460 usable triplets** (subset B was missing, Monkaa
+  empty) — see `stage_b_armp/20260918T062146Z_stage1_pretrain/README.md`.
 
-**Re-score the frozen contract** (40 scenes, 3,802,797 valid pixels, `disp_occ_0`, GT 1/256):
+**Re-score the frozen contract** (40 scenes, 3,802,797 valid pixels, `disp_occ_0`, GT 1/256).
+`phase1/harness/frozen_eval.py` is the contract itself — a library, not a script, and never
+edited to improve a number. The runnable entry points are:
 
 ```
-python phase1/harness/frozen_eval.py      # contract definition — never modify it
-python phase2/scripts/eval_p2a.py         # P2A / ARM-P checkpoints
-python scripts/eval_tier2.py              # Stage-B four-checkpoint scoring
+# ARM-P seed 1 on the full 40-scene contract  -> expect EPE 1.191216765057325
+python stage_c_deploy/dr1_rescale/dr1_eval_40scene.py
+
+# the three P2A checkpoints                   -> expect seed 0 EPE 1.4149796
+python phase2/scripts/eval_p2a.py
+
+# Stage-B four-checkpoint scoring (ARM-P + control, best + final), per run directory
+python stage_b_armp/20260919T012646Z_tier2_seed1/scripts/eval_tier2.py
+
+# the Stage-C device-independent gates        -> expect 135/135, 251/251, 19/19
+python stage_c_deploy/metric_depth/validate_c2.py
+python stage_c_deploy/spatial_perception/validate_spatial.py
+python stage_c_deploy/spatial_perception/validate_discontinuity.py
 ```
 
-Expected: reference ONNX **1.3134471 px**, ARM-P seed 1 **1.1912168 px**, P2A seed 0
-**1.4149796 px**. Any deviation means the contract or the environment differs — investigate
-before trusting the number.
+Reference figures to check against: reference ONNX **1.3134471 px**, ARM-P seed 1
+**1.1912168 px**, P2A seed 0 **1.4149796 px**. Any deviation means the contract or the
+environment differs — investigate before trusting the number.
 
 **Models shipped here** (verify the hash before use — `RESULTS_INDEX.md` §11):
 
@@ -111,17 +126,20 @@ before trusting the number.
 | `stage_b_armp/20260919T012646Z_tier2_seed1/armp/p2a_best.pth` | **the deployment candidate**, ARM-P seed 1, 397,954 params |
 | `…/tier2_seed1/control/p2a_best.pth` | its random-init control arm |
 | `stage_b_armp/20260918T062146Z_stage1_pretrain/checkpoints/armp_stage1_best.pth` | the SceneFlow-pretrained initialization |
-| `phase2/runs/p2a_scale_coverage/p2a_best.pth` | P2A seed 0 (historical candidate / baseline) |
+| `phase2/runs/p2a_scale_coverage{,_s1,_s2}/p2a_best.pth` | P2A seeds 0/1/2 (historical candidate + the 3-seed method mean 1.4409826 px) |
+| `…/tier2_seed1/{armp,control}/p2a_final.pth` | the seed-1 final-epoch checkpoints, so Stage-B scoring reproduces all four targets |
 | `stage_c_deploy/armp_stereonet.onnx`, `…_static.onnx` | ARM-P exports (**note: C1 parity FAIL**) |
 | `phase2/deploy/p2a_stereonet.onnx` | P2A export (parity PASS) |
 | `reference/onnx/stereonet.onnx` | the Hailo reference model the whole project is measured against |
 
-**Not shipped, and why:** per-pixel raw dumps (`stage_a_diagnostics/raw/*.npz`, 774 MB), the
-repacked KITTI upload bundle (348 MB), rendered PNGs, the vendor `upstream/`/`public_repos/`
-clones and profiler HTML, the C1 export-variant and instrumented DEBUG graphs, and the
-historical `stereonet.hef`. All are regenerable from the shipped code, and every number cited
-from them is in the JSON/CSV records that *are* shipped. Vendor artifact hashes:
-`reference/MANIFEST.md`.
+**Not shipped, and why:** the datasets (`data/`), per-pixel raw dumps
+(`stage_a_diagnostics/raw/*.npz`, 774 MB), the repacked KITTI upload bundle (348 MB), the
+rendered scene PNGs under `phase2/visualizations` and `phase2/demo`, the vendor
+`reference/upstream` and `reference/public_repos` clones and profiler HTML, the C1
+export-variant and instrumented DEBUG graphs, and the historical `reference/stereonet.hef`.
+All are regenerable from the shipped code, and every number cited from them is in the JSON/CSV
+records that *are* shipped. Vendor artifact hashes: `reference/MANIFEST.md`. (The figures under
+`docs/images/` are shipped — the demo regenerates them.)
 
 **Rules that are not optional** (see `CLAUDE.md`): the frozen evaluation contract is
 authoritative and is never edited to improve a number; no run directory, checkpoint or record is
