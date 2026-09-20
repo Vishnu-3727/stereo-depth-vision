@@ -321,6 +321,8 @@ def main() -> None:
     ap.add_argument("--no-window", action="store_true", help="print numbers, draw offscreen")
     ap.add_argument("--cloud3d", action="store_true",
                     help="also open a rotatable 3D point-cloud window")
+    ap.add_argument("--fast", action="store_true",
+                    help="use the deterministic fast runtime path (opt-in)")
     args = ap.parse_args()
 
     if args.list:
@@ -329,7 +331,12 @@ def main() -> None:
             print(f"{i:3d}  {n}")
         return
 
-    r = run_scene(args.scene, args.device)
+    if args.fast:
+        sys.path.insert(0, str(REPO / "stage_c_deploy" / "runtime"))
+        from runtime_path import fast_run_scene
+        r = fast_run_scene(args.scene, args.device)
+    else:
+        r = run_scene(args.scene, args.device)
     print()
     for line in summary_lines(r):
         print("  " + line)

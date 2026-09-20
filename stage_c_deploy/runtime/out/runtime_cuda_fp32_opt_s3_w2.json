@@ -1,0 +1,82 @@
+{
+  "torch_version": "2.7.0+cu128",
+  "device": "cuda",
+  "device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "dtype": "fp32",
+  "scenes": 3,
+  "warmup": 2,
+  "scene_names": [
+    "000160_10.png",
+    "000161_10.png",
+    "000162_10.png"
+  ],
+  "checkpoint_sha256": "b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454",
+  "runtime_path": {
+    "with_gt": false,
+    "decode": "par",
+    "norm": "gpu",
+    "gpu_geometry": true,
+    "cudnn_bench": false,
+    "channels_last": false,
+    "compile_requested": false,
+    "compile_status": "not_requested",
+    "compile_time_s": null
+  },
+  "stages_ms": {
+    "load_preprocess": {
+      "median_ms": 27.12690000043949,
+      "min_ms": 26.273700001183897,
+      "max_ms": 27.726100001018494,
+      "samples": [
+        26.273700001183897,
+        27.12690000043949,
+        27.726100001018494
+      ]
+    },
+    "inference": {
+      "median_ms": 51.41850000654813,
+      "min_ms": 49.99110000062501,
+      "max_ms": 57.32720000378322,
+      "samples": [
+        57.32720000378322,
+        49.99110000062501,
+        51.41850000654813
+      ]
+    },
+    "metric_depth": {
+      "median_ms": 1.479400001699105,
+      "min_ms": 1.0814000052050687,
+      "max_ms": 1.5753999978187494,
+      "samples": [
+        1.5753999978187494,
+        1.479400001699105,
+        1.0814000052050687
+      ]
+    },
+    "cloud_spatial_occupancy": {
+      "median_ms": 12.288199999602512,
+      "min_ms": 12.141899998823646,
+      "max_ms": 18.778899997414555,
+      "samples": [
+        18.778899997414555,
+        12.141899998823646,
+        12.288199999602512
+      ]
+    },
+    "discontinuity": {
+      "median_ms": 1.9874999998137355,
+      "min_ms": 1.846599996497389,
+      "max_ms": 4.522399998677429,
+      "samples": [
+        4.522399998677429,
+        1.846599996497389,
+        1.9874999998137355
+      ]
+    }
+  },
+  "total_median_ms": 94.50170001218794,
+  "total_min_ms": 92.58589999808464,
+  "total_max_ms": 108.47759999887785,
+  "fps": 10.58182021985879,
+  "scene0_max_abs_disparity_diff_vs_fp32cpu": 0.22789955139160156
+}
