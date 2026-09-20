@@ -1,0 +1,213 @@
+{
+  "provenance": {
+    "utc": "2026-09-20T02:16:27.711844+00:00",
+    "git_head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "host": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "numpy": "2.5.1",
+    "command": "python stage_c_deploy/dr1_rescale/dr1_rescale_gate.py",
+    "argv": [
+      "stage_c_deploy/dr1_rescale/dr1_rescale_gate.py"
+    ],
+    "checkpoint": "stage_b_armp/20260919T012646Z_tier2_seed1/armp/p2a_best.pth",
+    "checkpoint_sha256_before": "b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454",
+    "scalar_s": 1e+17,
+    "tensor_name": "forward return_stages['aggregated_cost']",
+    "intervention": "aggregated_cost / s -> same regression/refinement (Variant A)",
+    "variant": "A (activation rescale). Variant B NOT performed.",
+    "scenes": [
+      "000160_10.png",
+      "000161_10.png",
+      "000162_10.png",
+      "000163_10.png",
+      "000164_10.png"
+    ],
+    "config": {
+      "downsample_levels": 3,
+      "num_disparities": 24,
+      "cost_volume_shift": "right",
+      "regression_normalize": true,
+      "params": 397954,
+      "tensors": 70
+    },
+    "c1_verdict_unchanged": "FAIL",
+    "dr1_rescale_equivalence_threshold": 0.001,
+    "epe_regression_tolerance": 0.05
+  },
+  "five_scene": {
+    "s": 1e+17,
+    "per_scene": [
+      {
+        "scene": "000160_10.png",
+        "tensor": "forward return_stages['aggregated_cost']",
+        "shape": [
+          1,
+          24,
+          46,
+          154
+        ],
+        "dtype": "torch.float32",
+        "s": 1e+17,
+        "rerun_selfdiff_pathA_vs_forward": 0.0,
+        "max_abs_delta_disparity": 0.003215789794921875,
+        "determinism_rerun_maxdiff": 0.0,
+        "agg_max_abs_original": 2.1330893915249705e+18,
+        "agg_max_abs_rescaled": 21.330894470214844,
+        "postnorm_max_original": 4.553357124328613,
+        "postnorm_max_rescaled": 4.553351879119873,
+        "disparity_initial_max_original": 14.900589942932129,
+        "disparity_initial_max_rescaled": 14.900513648986816,
+        "refinement_residual_max_original": 70.6187744140625,
+        "refinement_residual_max_rescaled": 70.61885833740234,
+        "disparity_final_max_original": 79.99915313720703,
+        "disparity_final_max_rescaled": 79.9992446899414,
+        "nonfinite_counts": {
+          "delta": 0,
+          "dB": 0,
+          "dA": 0
+        }
+      },
+      {
+        "scene": "000161_10.png",
+        "tensor": "forward return_stages['aggregated_cost']",
+        "shape": [
+          1,
+          24,
+          46,
+          154
+        ],
+        "dtype": "torch.float32",
+        "s": 1e+17,
+        "rerun_selfdiff_pathA_vs_forward": 0.0,
+        "max_abs_delta_disparity": 0.0066585540771484375,
+        "determinism_rerun_maxdiff": 0.0,
+        "agg_max_abs_original": 1.5717139387546337e+18,
+        "agg_max_abs_rescaled": 15.71713924407959,
+        "postnorm_max_original": 4.5939717292785645,
+        "postnorm_max_rescaled": 4.593960285186768,
+        "disparity_initial_max_original": 14.295860290527344,
+        "disparity_initial_max_rescaled": 14.295434951782227,
+        "refinement_residual_max_original": 114.9820327758789,
+        "refinement_residual_max_rescaled": 114.98016357421875,
+        "disparity_final_max_original": 126.14948272705078,
+        "disparity_final_max_rescaled": 126.14756774902344,
+        "nonfinite_counts": {
+          "delta": 0,
+          "dB": 0,
+          "dA": 0
+        }
+      },
+      {
+        "scene": "000162_10.png",
+        "tensor": "forward return_stages['aggregated_cost']",
+        "shape": [
+          1,
+          24,
+          46,
+          154
+        ],
+        "dtype": "torch.float32",
+        "s": 1e+17,
+        "rerun_selfdiff_pathA_vs_forward": 0.0,
+        "max_abs_delta_disparity": 0.00559234619140625,
+        "determinism_rerun_maxdiff": 0.0,
+        "agg_max_abs_original": 2.5326005148901704e+18,
+        "agg_max_abs_rescaled": 25.326005935668945,
+        "postnorm_max_original": 4.62178373336792,
+        "postnorm_max_rescaled": 4.621769905090332,
+        "disparity_initial_max_original": 13.134632110595703,
+        "disparity_initial_max_rescaled": 13.134469985961914,
+        "refinement_residual_max_original": 97.51254272460938,
+        "refinement_residual_max_rescaled": 97.51248168945312,
+        "disparity_final_max_original": 105.22799682617188,
+        "disparity_final_max_rescaled": 105.22797393798828,
+        "nonfinite_counts": {
+          "delta": 0,
+          "dB": 0,
+          "dA": 0
+        }
+      },
+      {
+        "scene": "000163_10.png",
+        "tensor": "forward return_stages['aggregated_cost']",
+        "shape": [
+          1,
+          24,
+          46,
+          154
+        ],
+        "dtype": "torch.float32",
+        "s": 1e+17,
+        "rerun_selfdiff_pathA_vs_forward": 0.0,
+        "max_abs_delta_disparity": 0.0037631988525390625,
+        "determinism_rerun_maxdiff": 0.0,
+        "agg_max_abs_original": 2.1125215146989322e+18,
+        "agg_max_abs_rescaled": 21.125215530395508,
+        "postnorm_max_original": 4.606161117553711,
+        "postnorm_max_rescaled": 4.6061530113220215,
+        "disparity_initial_max_original": 11.00969123840332,
+        "disparity_initial_max_rescaled": 11.009685516357422,
+        "refinement_residual_max_original": 63.981475830078125,
+        "refinement_residual_max_rescaled": 63.98155975341797,
+        "disparity_final_max_original": 72.63612365722656,
+        "disparity_final_max_rescaled": 72.63618469238281,
+        "nonfinite_counts": {
+          "delta": 0,
+          "dB": 0,
+          "dA": 0
+        }
+      },
+      {
+        "scene": "000164_10.png",
+        "tensor": "forward return_stages['aggregated_cost']",
+        "shape": [
+          1,
+          24,
+          46,
+          154
+        ],
+        "dtype": "torch.float32",
+        "s": 1e+17,
+        "rerun_selfdiff_pathA_vs_forward": 0.0,
+        "max_abs_delta_disparity": 0.0148162841796875,
+        "determinism_rerun_maxdiff": 0.0,
+        "agg_max_abs_original": 2.018767120271147e+18,
+        "agg_max_abs_rescaled": 20.187671661376953,
+        "postnorm_max_original": 4.607996463775635,
+        "postnorm_max_rescaled": 4.607987880706787,
+        "disparity_initial_max_original": 15.931451797485352,
+        "disparity_initial_max_rescaled": 15.931266784667969,
+        "refinement_residual_max_original": 106.4363021850586,
+        "refinement_residual_max_rescaled": 106.43571472167969,
+        "disparity_final_max_original": 116.34426879882812,
+        "disparity_final_max_rescaled": 116.34363555908203,
+        "nonfinite_counts": {
+          "delta": 0,
+          "dB": 0,
+          "dA": 0
+        }
+      }
+    ],
+    "pooled_max_abs_delta": 0.0148162841796875,
+    "determinism": {
+      "per_scene_pathB_rerun_maxdiff": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bit_identical": true
+    },
+    "probe_a_1e_minus_17": {
+      "a": 1e-17,
+      "equiv_s": 1e+17,
+      "pooled_max_abs_delta_vs_a1": 0.0148162841796875,
+      "note": "Same Variant-A comparison expressed in DR-0 probe units (a = 1/s). DR-0 measurements untouched."
+    },
+    "selfcheck_pathA_vs_forward_max": 0.0,
+    "weights_unchanged": true,
+    "checkpoint_sha256_after": "b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454"
+  }
+}

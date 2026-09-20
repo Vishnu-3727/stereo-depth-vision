@@ -1,0 +1,156 @@
+{
+  "utc": "2026-09-20T06:10:03.783137+00:00",
+  "task": "C2.1.1 depth-discontinuity validation gate (evidence only)",
+  "algorithm_frozen": true,
+  "discontinuity_sha256_before": "2e81e9f2e97dbde196ba2311c68171aa4ce1195430b5c5b260d23b495e1b5743",
+  "discontinuity_sha256_after": "2e81e9f2e97dbde196ba2311c68171aa4ce1195430b5c5b260d23b495e1b5743",
+  "checkpoint_sha256_before": "b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454",
+  "checkpoint_sha256_after": "b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454",
+  "onnx_sha256_before": "4277090deed1cde26ddb2a470d8dc097b26d5ad45a931e0aabf3635dbbcb6989",
+  "onnx_sha256_after": "4277090deed1cde26ddb2a470d8dc097b26d5ad45a931e0aabf3635dbbcb6989",
+  "onnx_prompt_typo": "4277090deed1dce26ddb2a470d8dc097b26d5ad45a931e0aabf3635dbbcb6989",
+  "onnx_note": "prompt carries transposed typo ...deed1dce26...; disk ...deed1cde26... authoritative; fix nothing",
+  "real_scene": "000160_10.png",
+  "real_scene_stats": {
+    "shape": [
+      368,
+      1232
+    ],
+    "num_valid_depth": 453376,
+    "num_valid_mag": 451777,
+    "num_above_threshold": 44243,
+    "fraction_above_threshold": 0.0979310589073813,
+    "threshold_m_per_px": 1.0,
+    "mag_valid_min": 0.00042820645301196614,
+    "mag_valid_max": 34.230391473134596,
+    "mag_valid_mean": 0.3923989799665909,
+    "c2_maxdiff": 0.0
+  },
+  "resource": {
+    "discontinuity_only_s_per_frame": 0.027812529999937396,
+    "discontinuity_tracemalloc_peak_bytes": 23990224,
+    "discontinuity_output_bytes": 4080384,
+    "reps": 20,
+    "note": "DEVELOPMENT-MACHINE MEASUREMENT, never Hailo performance; discontinuity op alone, excl. inference and rest of spatial layer"
+  },
+  "expected_corner_hypot_4_9": 9.848857801796104,
+  "tests": [
+    {
+      "test": "frozen discontinuity.py present (before)",
+      "result": "PASS",
+      "evidence": "sha256(stage_c_deploy/spatial_perception/discontinuity.py)=2e81e9f2e97dbde196ba2311c68171aa4ce1195430b5c5b260d23b495e1b5743",
+      "status": "PASS"
+    },
+    {
+      "test": "frozen checkpoint unchanged (before)",
+      "result": "PASS",
+      "evidence": "sha256=b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454 expected=b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454",
+      "status": "PASS"
+    },
+    {
+      "test": "ONNX hash matches disk spelling (before)",
+      "result": "PASS",
+      "evidence": "sha256(stage_c_deploy/armp_stereonet.onnx)=4277090deed1cde26ddb2a470d8dc097b26d5ad45a931e0aabf3635dbbcb6989 (prompt typo 4277090deed1dce26ddb2a470d8dc097b26d5ad45a931e0aabf3635dbbcb6989 noted; disk authoritative)",
+      "status": "PASS"
+    },
+    {
+      "test": "synthetic vertical boundary (step at col k, magnitude at k-1)",
+      "result": "PASS",
+      "evidence": "A=10.0 B=30.0 k=5: expected mag==20.0 at col 4 (got 20.0), 0.0 at all other valid cols (left_zero=True right_zero=True); mask==[:-1,:-1] exactly: True",
+      "status": "PASS"
+    },
+    {
+      "test": "synthetic horizontal boundary (step at row k, magnitude at k-1)",
+      "result": "PASS",
+      "evidence": "A=10.0 B=30.0 k=5: expected mag==20.0 at row 4 (got 20.0), 0.0 elsewhere valid; mask==[:-1,:-1] exactly: True",
+      "status": "PASS"
+    },
+    {
+      "test": "synthetic constant depth (magnitude 0 where valid)",
+      "result": "PASS",
+      "evidence": "expected 0.0 everywhere mask True, mask True exactly on [:-1,:-1]; got mag[0,0]=0.0, valid_count=24 (expected 24)",
+      "status": "PASS"
+    },
+    {
+      "test": "synthetic multiple regions (corner hypot(step_u, step_v))",
+      "result": "PASS",
+      "evidence": "expected mag[2,3]==hypot(4,9)=9.848857801796104 (got 9.848857801796104, |diff|=0.000e+00 <= 1e-12); mag[0,3]==4.0 (got 4.0); mag[2,0]==9.0 (got 9.0); mag[0,0]==0.0 (got 0.0); mag[2,4]==9.0 (got 9.0); mask==[:-1,:-1]: True",
+      "status": "PASS"
+    },
+    {
+      "test": "synthetic invalid-pixel poisoning (exact false indices)",
+      "result": "PASS",
+      "evidence": "invalid pixel (1,2) -> expected mask False exactly at (0,2),(1,1),(1,2) plus last row/col; full-mask equality: True; spot (000 vs 111/102 False, 000/233 True): True; got mask=\n[[1 1 0 1 0]\n [1 0 0 1 0]\n [1 1 1 1 0]\n [0 0 0 0 0]]",
+      "status": "PASS"
+    },
+    {
+      "test": "disparity twin (same operator, incl. C2-style d>1e-3 mask)",
+      "result": "PASS",
+      "evidence": "step case identical to depth twin: True (mag[0,4]=20.0); C2-mask d[0,0]=0 excluded -> mask[0,0]=False (True), mask[1,1]=True (True), borders False: True",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 output unchanged on sanity scene (max|depth - fB/d| == 0)",
+      "result": "PASS",
+      "evidence": "scene 000160_10.png: max|C2-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "real KITTI sanity: inputs not modified (bitwise-identical)",
+      "result": "PASS",
+      "evidence": "depth and disparity arrays bitwise-identical after call: True",
+      "status": "PASS"
+    },
+    {
+      "test": "real KITTI sanity: shape == input, finite where mask True",
+      "result": "PASS",
+      "evidence": "scene 000160_10.png: in=(368, 1232) out=(368, 1232) shape_ok=True; finite-where-valid=True (valid=451777/453376)",
+      "status": "PASS"
+    },
+    {
+      "test": "real KITTI sanity: deterministic across repeats (bitwise-identical)",
+      "result": "PASS",
+      "evidence": "two calls bitwise-identical (equal_nan): mag=True mask=True",
+      "status": "PASS"
+    },
+    {
+      "test": "real KITTI sanity: map non-empty where real transitions exist (descriptive, not a threshold)",
+      "result": "PASS",
+      "evidence": "DESCRIPTIVE (not correctness): fraction of valid pixels with mag>1.0 m/px = 44243/451777 = 0.097931; mag[valid] min=0.000428 max=34.230391 mean=0.392399",
+      "status": "PASS"
+    },
+    {
+      "test": "resource: discontinuity-only runtime and memory measured",
+      "result": "PASS",
+      "evidence": "DEVELOPMENT-MACHINE MEASUREMENT: 27.813 ms/frame over 20 reps (scene 000160_10.png, (368, 1232)); tracemalloc peak for one call=23990224 bytes; output buffers=4080384 bytes (mag 3627008 + mask 453376)",
+      "status": "PASS"
+    },
+    {
+      "test": "frozen discontinuity.py unchanged (after == before)",
+      "result": "PASS",
+      "evidence": "before=2e81e9f2e97dbde196ba2311c68171aa4ce1195430b5c5b260d23b495e1b5743 after=2e81e9f2e97dbde196ba2311c68171aa4ce1195430b5c5b260d23b495e1b5743",
+      "status": "PASS"
+    },
+    {
+      "test": "frozen checkpoint unchanged (after)",
+      "result": "PASS",
+      "evidence": "sha256=b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454",
+      "status": "PASS"
+    },
+    {
+      "test": "ONNX hash matches disk spelling (after)",
+      "result": "PASS",
+      "evidence": "sha256(stage_c_deploy/armp_stereonet.onnx)=4277090deed1cde26ddb2a470d8dc097b26d5ad45a931e0aabf3635dbbcb6989",
+      "status": "PASS"
+    },
+    {
+      "test": "prior C2/C2.1 artifacts preserved (not overwritten)",
+      "result": "PASS",
+      "evidence": "c2_1_validation.json exists=True; c2_1 PNGs=['000160_10_c2_1_spatial.png', '000162_10_c2_1_spatial.png']",
+      "status": "PASS"
+    }
+  ],
+  "failures": [],
+  "elapsed_s": 6.266082525253296,
+  "overall": "PASS"
+}

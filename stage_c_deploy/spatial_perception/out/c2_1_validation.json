@@ -1,0 +1,4507 @@
+{
+  "utc": "2026-09-20T06:09:50.986950+00:00",
+  "device": "cuda",
+  "torch": "2.7.0+cu128",
+  "numpy": "2.5.1",
+  "checkpoint": "stage_b_armp/20260919T012646Z_tier2_seed1/armp/p2a_best.pth",
+  "checkpoint_sha256_before": "b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454",
+  "checkpoint_sha256_after": "b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454",
+  "onnx_sha256_before": "4277090deed1cde26ddb2a470d8dc097b26d5ad45a931e0aabf3635dbbcb6989",
+  "onnx_sha256_after": "4277090deed1cde26ddb2a470d8dc097b26d5ad45a931e0aabf3635dbbcb6989",
+  "physical_cap_m": 60.0,
+  "physical_note": "separate mask only; never applied by default; stored depth never modified",
+  "coordinate_convention": "metres, camera optical centre at origin, +X right, +Y down, +Z forward, right-handed (reused from C2)",
+  "timing_s": {
+    "per_frame_mean": {
+      "infer": 0.1448085074998744,
+      "depth": 0.0019134125001073698,
+      "xyz": 0.011501415000202542,
+      "spatial": 0.08605466000026354,
+      "viz_per_fig": 1.5028738000000885
+    },
+    "totals": {
+      "infer": 5.792340299994976,
+      "depth": 0.0765365000042948,
+      "xyz": 0.46005660000810167,
+      "spatial": 3.4421864000105415
+    },
+    "viz_total_s": 3.005747600000177
+  },
+  "timing_note": "DEVELOPMENT-MACHINE MEASUREMENT, never Hailo performance",
+  "memory": {
+    "tracemalloc_peak_spatial_bytes": 40770018,
+    "fullres_buffers_bytes": 22215424,
+    "mean_point_nbytes": 12694504.9,
+    "mean_point_count": 453375.175
+  },
+  "scenes": [
+    {
+      "scene": "000160_10.png",
+      "fx": 718.3351,
+      "fy": 718.3351,
+      "baseline_m": 0.5301404873575021,
+      "cx": 600.3891,
+      "cy": 181.5122,
+      "disp_min": 4.149570465087891,
+      "disp_max": 80.00666046142578,
+      "disp_mean": 25.8097160345586,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 6.0529269627817825,
+          "nearest_valid_surface_m": 6.904146616449457,
+          "median_m": 23.10305675248847
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.829391771482013,
+          "nearest_valid_surface_m": 6.71966838201943,
+          "median_m": 24.48029491008809
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 4.759835216264362,
+          "nearest_valid_surface_m": 5.309634447209064,
+          "median_m": 13.867132136155943
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 7.105427357601002e-15,
+      "q_dy": 7.105427357601002e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 20489
+    },
+    {
+      "scene": "000161_10.png",
+      "fx": 718.3351,
+      "fy": 718.3351,
+      "baseline_m": 0.5301404873575021,
+      "cx": 600.3891,
+      "cy": 181.5122,
+      "disp_min": 3.5933237075805664,
+      "disp_max": 126.1539306640625,
+      "disp_mean": 33.25377817610505,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 3.018681368035121,
+          "nearest_valid_surface_m": 3.2995096356698888,
+          "median_m": 18.881647393874104
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.771548100982401,
+          "nearest_valid_surface_m": 6.7290859790770075,
+          "median_m": 22.4194480172895
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.099650010563089,
+          "nearest_valid_surface_m": 5.849699274720035,
+          "median_m": 14.759289782102279
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 7.105427357601002e-15,
+      "q_dy": 7.105427357601002e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 25786
+    },
+    {
+      "scene": "000162_10.png",
+      "fx": 718.3351,
+      "fy": 718.3351,
+      "baseline_m": 0.5301404873575021,
+      "cx": 600.3891,
+      "cy": 181.5122,
+      "disp_min": 3.6264357566833496,
+      "disp_max": 105.2181625366211,
+      "disp_mean": 26.52307247326571,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 5.958843047857377,
+          "nearest_valid_surface_m": 6.842636247136262,
+          "median_m": 20.24106772277736
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.326113255584936,
+          "nearest_valid_surface_m": 6.52528887611687,
+          "median_m": 28.830577247579853
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 3.6193230409954786,
+          "nearest_valid_surface_m": 5.249455367498122,
+          "median_m": 15.890700572299705
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 7.105427357601002e-15,
+      "q_dy": 7.105427357601002e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 21981
+    },
+    {
+      "scene": "000163_10.png",
+      "fx": 718.3351,
+      "fy": 718.3351,
+      "baseline_m": 0.5301404873575021,
+      "cx": 600.3891,
+      "cy": 181.5122,
+      "disp_min": 3.3304708003997803,
+      "disp_max": 72.63359069824219,
+      "disp_mean": 28.20693542299406,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 5.750790219778181,
+          "nearest_valid_surface_m": 5.946819124436773,
+          "median_m": 21.01750016856039
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.492895561000131,
+          "nearest_valid_surface_m": 6.575609153797313,
+          "median_m": 24.966770889465707
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.2430083152865,
+          "nearest_valid_surface_m": 5.945133260143815,
+          "median_m": 15.81486920519841
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 1.4210854715202004e-14,
+      "q_dy": 7.105427357601002e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 27838
+    },
+    {
+      "scene": "000164_10.png",
+      "fx": 718.3351,
+      "fy": 718.3351,
+      "baseline_m": 0.5301404873575021,
+      "cx": 600.3891,
+      "cy": 181.5122,
+      "disp_min": 3.694599151611328,
+      "disp_max": 116.3116455078125,
+      "disp_mean": 36.58727973521299,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 6.118580446567,
+          "nearest_valid_surface_m": 6.50082023424013,
+          "median_m": 17.62934486858344
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.705190709307179,
+          "nearest_valid_surface_m": 6.602563459539494,
+          "median_m": 33.52127361262171
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 3.2741220222391307,
+          "nearest_valid_surface_m": 3.5741000014184965,
+          "median_m": 6.706667350991031
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 1.0658141036401503e-14,
+      "q_dy": 7.105427357601002e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 32341
+    },
+    {
+      "scene": "000165_10.png",
+      "fx": 718.3351,
+      "fy": 718.3351,
+      "baseline_m": 0.5301404873575021,
+      "cx": 600.3891,
+      "cy": 181.5122,
+      "disp_min": 4.633711814880371,
+      "disp_max": 104.17265319824219,
+      "disp_mean": 41.230160257116985,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 4.639634955168157,
+          "nearest_valid_surface_m": 5.4112546227541145,
+          "median_m": 6.925736718774733
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 6.191709804591027,
+          "nearest_valid_surface_m": 7.098550673878346,
+          "median_m": 11.634447569090632
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 3.6556476993563405,
+          "nearest_valid_surface_m": 4.9516819747809935,
+          "median_m": 12.81848860978261
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "NEAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 1.4210854715202004e-14,
+      "q_dy": 7.105427357601002e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 10406
+    },
+    {
+      "scene": "000166_10.png",
+      "fx": 718.3351,
+      "fy": 718.3351,
+      "baseline_m": 0.5301404873575021,
+      "cx": 600.3891,
+      "cy": 181.5122,
+      "disp_min": 2.910060405731201,
+      "disp_max": 74.56179809570312,
+      "disp_mean": 30.57933729499124,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 6.504047393093725,
+          "nearest_valid_surface_m": 7.726237387213754,
+          "median_m": 11.79827606699899
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.107421356861644,
+          "nearest_valid_surface_m": 6.976077562166251,
+          "median_m": 29.67685173339916
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.265261804881079,
+          "nearest_valid_surface_m": 6.06088002749448,
+          "median_m": 9.910512401048532
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 7.105427357601002e-15,
+      "q_dy": 7.105427357601002e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 31298
+    },
+    {
+      "scene": "000167_10.png",
+      "fx": 718.3351,
+      "fy": 718.3351,
+      "baseline_m": 0.5301404873575021,
+      "cx": 600.3891,
+      "cy": 181.5122,
+      "disp_min": 3.788515567779541,
+      "disp_max": 67.2205581665039,
+      "disp_mean": 28.23698330064,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 6.170247385035754,
+          "nearest_valid_surface_m": 7.287270935440203,
+          "median_m": 15.566722484108194
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.908723517649174,
+          "nearest_valid_surface_m": 6.695651008068349,
+          "median_m": 19.92479501360895
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.665209132252674,
+          "nearest_valid_surface_m": 6.3800468312088565,
+          "median_m": 14.903802401189271
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 1.4210854715202004e-14,
+      "q_dy": 3.552713678800501e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 9302
+    },
+    {
+      "scene": "000168_10.png",
+      "fx": 718.3351,
+      "fy": 718.3351,
+      "baseline_m": 0.5301404873575021,
+      "cx": 600.3891,
+      "cy": 181.5122,
+      "disp_min": 3.5311222076416016,
+      "disp_max": 97.18858337402344,
+      "disp_mean": 40.24810974969818,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 5.843698373041457,
+          "nearest_valid_surface_m": 6.625394721728696,
+          "median_m": 10.32222679890582
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.839696819532137,
+          "nearest_valid_surface_m": 6.534740413244988,
+          "median_m": 19.334172891674935
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 3.918346237586843,
+          "nearest_valid_surface_m": 4.115825068124531,
+          "median_m": 6.446787862349772
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 7.105427357601002e-15,
+      "q_dy": 3.552713678800501e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 12345
+    },
+    {
+      "scene": "000169_10.png",
+      "fx": 718.3351,
+      "fy": 718.3351,
+      "baseline_m": 0.5301404873575021,
+      "cx": 600.3891,
+      "cy": 181.5122,
+      "disp_min": 2.9854955673217773,
+      "disp_max": 143.60443115234375,
+      "disp_mean": 35.06589154128557,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 6.344375245669455,
+          "nearest_valid_surface_m": 7.384476420283367,
+          "median_m": 21.307721368161182
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.713475881089719,
+          "nearest_valid_surface_m": 6.104567963476826,
+          "median_m": 18.87246568059459
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 2.651857724334467,
+          "nearest_valid_surface_m": 3.2175728501522234,
+          "median_m": 8.902325166628094
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 1.4210854715202004e-14,
+      "q_dy": 5.329070518200751e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 2576
+    },
+    {
+      "scene": "000170_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.3789310455322266,
+      "disp_max": 70.76705169677734,
+      "disp_mean": 23.45059374410855,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 6.031489969153097,
+          "nearest_valid_surface_m": 6.699526001093045,
+          "median_m": 40.51822291714773
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.996211363942704,
+          "nearest_valid_surface_m": 6.553488832832617,
+          "median_m": 24.025251905380337
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.407459274121862,
+          "nearest_valid_surface_m": 6.6263620479292635,
+          "median_m": 16.47501418308267
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 1.4210854715202004e-14,
+      "q_dy": 7.105427357601002e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 39764
+    },
+    {
+      "scene": "000171_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.2403221130371094,
+      "disp_max": 90.5672378540039,
+      "disp_mean": 21.96140531352487,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 6.449627613907405,
+          "nearest_valid_surface_m": 7.367788185444191,
+          "median_m": 37.5608572878137
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 6.175716375438638,
+          "nearest_valid_surface_m": 7.037098392893441,
+          "median_m": 36.86029912676968
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 4.225258041068572,
+          "nearest_valid_surface_m": 6.440861430477358,
+          "median_m": 19.93357630131586
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 2.842170943040401e-14,
+      "q_dy": 7.105427357601002e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 52719
+    },
+    {
+      "scene": "000172_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 4.089661121368408,
+      "disp_max": 77.93022155761719,
+      "disp_mean": 27.67827197189434,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 6.347009917025106,
+          "nearest_valid_surface_m": 7.326823099722086,
+          "median_m": 23.11448963962471
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.912612856542503,
+          "nearest_valid_surface_m": 6.847004968246236,
+          "median_m": 28.403509664404872
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 4.910417837283774,
+          "nearest_valid_surface_m": 5.685743345727495,
+          "median_m": 10.261474078755406
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 1.4210854715202004e-14,
+      "q_dy": 5.329070518200751e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 27182
+    },
+    {
+      "scene": "000173_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.844404697418213,
+      "disp_max": 80.08618927001953,
+      "disp_mean": 27.673141082558406,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 6.333970092160659,
+          "nearest_valid_surface_m": 7.057839786408863,
+          "median_m": 19.25955078833133
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.667141102688532,
+          "nearest_valid_surface_m": 6.820806913078942,
+          "median_m": 31.218130522559353
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 4.778226476849653,
+          "nearest_valid_surface_m": 5.366742704377283,
+          "median_m": 12.025554765786882
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 1.4210854715202004e-14,
+      "q_dy": 3.552713678800501e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 28530
+    },
+    {
+      "scene": "000174_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 4.019953727722168,
+      "disp_max": 115.7532958984375,
+      "disp_mean": 30.090856013619742,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 5.931299399707604,
+          "nearest_valid_surface_m": 6.9611577919424725,
+          "median_m": 14.140760304325052
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 6.201453894235565,
+          "nearest_valid_surface_m": 6.951770462351188,
+          "median_m": 18.360269264613006
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 3.3059097542739204,
+          "nearest_valid_surface_m": 4.817415530028094,
+          "median_m": 11.325110715353688
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 7.105427357601002e-15,
+      "q_dy": 3.552713678800501e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 5068
+    },
+    {
+      "scene": "000175_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.893409013748169,
+      "disp_max": 114.22074127197266,
+      "disp_mean": 33.18029965462983,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 4.015173596419195,
+          "nearest_valid_surface_m": 4.649171672901901,
+          "median_m": 14.175824161945156
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 6.060028383908361,
+          "nearest_valid_surface_m": 6.803295022835575,
+          "median_m": 21.0048114256229
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 3.350266735608194,
+          "nearest_valid_surface_m": 5.030941235960669,
+          "median_m": 11.478376156882993
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 1.0658141036401503e-14,
+      "q_dy": 3.552713678800501e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 8361
+    },
+    {
+      "scene": "000176_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 0.0,
+      "disp_max": 156.08267211914062,
+      "disp_mean": 25.40723274005782,
+      "num_valid": 453370,
+      "percent_valid": 99.99867659514399,
+      "point_count": 453370,
+      "point_nbytes": 12694360,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 5.995828239782368,
+          "nearest_valid_surface_m": 6.968073244845329,
+          "median_m": 50.39387872642064
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 2.5174891383000655,
+          "nearest_valid_surface_m": 6.412583451609721,
+          "median_m": 27.74460110501024
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151242,
+          "percent_valid": 99.99603300539512,
+          "min_m": 2.4517132158520534,
+          "nearest_valid_surface_m": 4.0248779082314785,
+          "median_m": 19.921126790149383
+        }
+      ],
+      "discontinuity_valid": 451766,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 2.2737367544323206e-13,
+      "q_dy": 5.684341886080802e-14,
+      "q_dz": 1.1368683772161603e-13,
+      "excluded_by_60m_cap": 121864
+    },
+    {
+      "scene": "000177_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 1.5403378009796143,
+      "disp_max": 114.0391845703125,
+      "disp_mean": 30.39901451629869,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 4.432097462444225,
+          "nearest_valid_surface_m": 6.985545158853431,
+          "median_m": 25.783713488565102
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 6.0239317201239135,
+          "nearest_valid_surface_m": 6.963152400169052,
+          "median_m": 27.763290974038068
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 3.355600545916384,
+          "nearest_valid_surface_m": 4.37198243063785,
+          "median_m": 8.031945616592358
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 2.1316282072803006e-14,
+      "q_dy": 7.105427357601002e-15,
+      "q_dz": 2.842170943040401e-14,
+      "excluded_by_60m_cap": 58797
+    },
+    {
+      "scene": "000178_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 2.9017887115478516,
+      "disp_max": 118.12064361572266,
+      "disp_mean": 29.168841817652368,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 6.086193864433938,
+          "nearest_valid_surface_m": 7.072683184314144,
+          "median_m": 41.25412820338744
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.924942423204335,
+          "nearest_valid_surface_m": 6.817349529048652,
+          "median_m": 26.588753643041485
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 3.2396534448705285,
+          "nearest_valid_surface_m": 4.322352415427408,
+          "median_m": 8.962052349519809
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 2.1316282072803006e-14,
+      "q_dy": 7.105427357601002e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 67133
+    },
+    {
+      "scene": "000179_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 4.148601055145264,
+      "disp_max": 93.79924774169922,
+      "disp_mean": 28.414173837800583,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 4.160543156324102,
+          "nearest_valid_surface_m": 6.041948664582067,
+          "median_m": 24.37012390699679
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 4.079669711784702,
+          "nearest_valid_surface_m": 6.92541597637293,
+          "median_m": 28.085968148907668
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.541386983782951,
+          "nearest_valid_surface_m": 6.52889191064608,
+          "median_m": 9.69914614258551
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 7.105427357601002e-15,
+      "q_dy": 7.105427357601002e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 21014
+    },
+    {
+      "scene": "000180_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 2.3908238410949707,
+      "disp_max": 73.48921966552734,
+      "disp_mean": 27.125933804468293,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 5.3028927566178155,
+          "nearest_valid_surface_m": 7.021283341995307,
+          "median_m": 16.376042825320607
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 6.110129737129758,
+          "nearest_valid_surface_m": 6.895319674725546,
+          "median_m": 20.562730163171025
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.2071576176975585,
+          "nearest_valid_surface_m": 6.1404150749647375,
+          "median_m": 10.958145266653698
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 2.1316282072803006e-14,
+      "q_dy": 3.552713678800501e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 36156
+    },
+    {
+      "scene": "000181_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.4150123596191406,
+      "disp_max": 82.5403060913086,
+      "disp_mean": 22.37642080963598,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 6.3193885697611645,
+          "nearest_valid_surface_m": 7.192525468584894,
+          "median_m": 29.53529803538352
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 6.236475497322124,
+          "nearest_valid_surface_m": 7.085155271627935,
+          "median_m": 20.607171990853036
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 4.636158600825623,
+          "nearest_valid_surface_m": 7.000411908418074,
+          "median_m": 20.274320535901072
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 1.4210854715202004e-14,
+      "q_dy": 3.552713678800501e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 57661
+    },
+    {
+      "scene": "000182_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.4348111152648926,
+      "disp_max": 79.10427856445312,
+      "disp_mean": 22.63705311705401,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 6.235269544877415,
+          "nearest_valid_surface_m": 7.114881222420617,
+          "median_m": 32.59076369412371
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 6.014163259505607,
+          "nearest_valid_surface_m": 6.868585497836509,
+          "median_m": 23.718599265812642
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 4.837537955525446,
+          "nearest_valid_surface_m": 6.920825821981492,
+          "median_m": 15.798044981314998
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 2.842170943040401e-14,
+      "q_dy": 5.329070518200751e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 42399
+    },
+    {
+      "scene": "000183_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.019904851913452,
+      "disp_max": 62.62055587768555,
+      "disp_mean": 26.04299035859581,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 6.124205022446546,
+          "nearest_valid_surface_m": 6.901928450395064,
+          "median_m": 13.412062293191658
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 6.140352851245357,
+          "nearest_valid_surface_m": 6.924925709724497,
+          "median_m": 26.135190053838883
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 6.1109318599383755,
+          "nearest_valid_surface_m": 7.952614143004642,
+          "median_m": 14.035844721686662
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "FAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 2.842170943040401e-14,
+      "q_dy": 3.552713678800501e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 22168
+    },
+    {
+      "scene": "000184_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.6583008766174316,
+      "disp_max": 101.599609375,
+      "disp_mean": 28.009621452903012,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 3.7664509967511863,
+          "nearest_valid_surface_m": 5.7731301319857655,
+          "median_m": 13.191207478308243
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 3.8789411475598476,
+          "nearest_valid_surface_m": 6.8014846155367,
+          "median_m": 19.860361518492006
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 6.209095894554103,
+          "nearest_valid_surface_m": 8.165373703826537,
+          "median_m": 11.569262861488898
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "NEAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "FAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 2.1316282072803006e-14,
+      "q_dy": 3.552713678800501e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 48642
+    },
+    {
+      "scene": "000185_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.7270708084106445,
+      "disp_max": 84.54617309570312,
+      "disp_mean": 25.72740567533088,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 4.5261652418830565,
+          "nearest_valid_surface_m": 6.66056713041682,
+          "median_m": 15.914800394539402
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.209241340408697,
+          "nearest_valid_surface_m": 6.819716633995958,
+          "median_m": 21.122384972247374
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.939362411131262,
+          "nearest_valid_surface_m": 6.930316981922196,
+          "median_m": 14.997638198427286
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 2.1316282072803006e-14,
+      "q_dy": 3.552713678800501e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 56372
+    },
+    {
+      "scene": "000186_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 2.8302245140075684,
+      "disp_max": 72.19660186767578,
+      "disp_mean": 28.667639256385588,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 5.896857049925279,
+          "nearest_valid_surface_m": 6.491279291778752,
+          "median_m": 18.909320623956603
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.3003872772484435,
+          "nearest_valid_surface_m": 6.84813657272267,
+          "median_m": 24.91208319944525
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.427376355715604,
+          "nearest_valid_surface_m": 6.271184948793789,
+          "median_m": 11.484075195890679
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 1.4210854715202004e-14,
+      "q_dy": 3.552713678800501e-15,
+      "q_dz": 2.842170943040401e-14,
+      "excluded_by_60m_cap": 19036
+    },
+    {
+      "scene": "000187_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.6638684272766113,
+      "disp_max": 72.71269989013672,
+      "disp_mean": 24.989799097077295,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 5.754659152594857,
+          "nearest_valid_surface_m": 7.111559297444534,
+          "median_m": 19.196754321987335
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 6.311562982715381,
+          "nearest_valid_surface_m": 7.061800281533773,
+          "median_m": 29.53543391162591
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.262766347256871,
+          "nearest_valid_surface_m": 6.3838501544046755,
+          "median_m": 15.317635994155907
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 2.1316282072803006e-14,
+      "q_dy": 3.552713678800501e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 20942
+    },
+    {
+      "scene": "000188_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.499258518218994,
+      "disp_max": 61.92836380004883,
+      "disp_mean": 20.85483108827963,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 6.223271527381253,
+          "nearest_valid_surface_m": 7.077868879659302,
+          "median_m": 38.73902265935433
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 6.25848250833339,
+          "nearest_valid_surface_m": 7.0418819440561435,
+          "median_m": 42.8774507855127
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 6.1792355960759,
+          "nearest_valid_surface_m": 7.052196479239465,
+          "median_m": 29.902793244707247
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 2.842170943040401e-14,
+      "q_dy": 7.105427357601002e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 129238
+    },
+    {
+      "scene": "000189_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 2.964085578918457,
+      "disp_max": 76.14067840576172,
+      "disp_mean": 25.8529101089353,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 5.025827954417628,
+          "nearest_valid_surface_m": 5.701037331910761,
+          "median_m": 32.797895779488464
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 6.216772548505597,
+          "nearest_valid_surface_m": 6.988937517698568,
+          "median_m": 44.03740455005739
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.997683030168667,
+          "nearest_valid_surface_m": 6.742010246586908,
+          "median_m": 14.311490361126838
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 1.4210854715202004e-14,
+      "q_dy": 7.105427357601002e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 83274
+    },
+    {
+      "scene": "000190_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.9099340438842773,
+      "disp_max": 67.4233169555664,
+      "disp_mean": 25.135501991153365,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 5.675632218631258,
+          "nearest_valid_surface_m": 6.803405967574548,
+          "median_m": 15.448723244595062
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 6.043020959706217,
+          "nearest_valid_surface_m": 6.821174959396615,
+          "median_m": 37.38041786038415
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.681316550925544,
+          "nearest_valid_surface_m": 6.468453561894362,
+          "median_m": 12.871854786884022
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 1.4210854715202004e-14,
+      "q_dy": 7.105427357601002e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 88640
+    },
+    {
+      "scene": "000191_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.6718108654022217,
+      "disp_max": 69.12796020507812,
+      "disp_mean": 23.967243449132468,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 6.1326293253673345,
+          "nearest_valid_surface_m": 6.9592433585622535,
+          "median_m": 22.33967292866869
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 6.208944092051778,
+          "nearest_valid_surface_m": 6.920461145030993,
+          "median_m": 40.872376284105
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.535675417945995,
+          "nearest_valid_surface_m": 6.3526162892368845,
+          "median_m": 14.908203290618774
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 1.4210854715202004e-14,
+      "q_dy": 7.105427357601002e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 90499
+    },
+    {
+      "scene": "000192_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.8852453231811523,
+      "disp_max": 67.02520751953125,
+      "disp_mean": 24.354146597293777,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 5.867268829273342,
+          "nearest_valid_surface_m": 6.864564550254916,
+          "median_m": 19.553315067743497
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 6.263752652749425,
+          "nearest_valid_surface_m": 7.037325531016275,
+          "median_m": 38.68995794373015
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.709343755310109,
+          "nearest_valid_surface_m": 6.604536286807254,
+          "median_m": 15.362826276214259
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 1.4210854715202004e-14,
+      "q_dy": 7.105427357601002e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 78299
+    },
+    {
+      "scene": "000193_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.5666987895965576,
+      "disp_max": 118.36479187011719,
+      "disp_mean": 29.116423420775796,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 3.388459710395493,
+          "nearest_valid_surface_m": 4.262427910159281,
+          "median_m": 20.192366410693012
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 3.2329710883951646,
+          "nearest_valid_surface_m": 6.688901321820606,
+          "median_m": 31.081733310325298
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.704685267453278,
+          "nearest_valid_surface_m": 6.397320104695522,
+          "median_m": 12.812891768521744
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 1.4210854715202004e-14,
+      "q_dy": 7.105427357601002e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 76629
+    },
+    {
+      "scene": "000194_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.7545366287231445,
+      "disp_max": 88.2414321899414,
+      "disp_mean": 27.49688028309963,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 4.33662442350545,
+          "nearest_valid_surface_m": 5.061321574569656,
+          "median_m": 21.106277177616313
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.852575543676306,
+          "nearest_valid_surface_m": 6.945764048776995,
+          "median_m": 31.56103008583599
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.840170986256931,
+          "nearest_valid_surface_m": 6.7624136296158275,
+          "median_m": 12.805767317181239
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 1.4210854715202004e-14,
+      "q_dy": 7.105427357601002e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 64863
+    },
+    {
+      "scene": "000195_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.0379106998443604,
+      "disp_max": 107.18218994140625,
+      "disp_mean": 26.272408023207355,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 6.241946706328876,
+          "nearest_valid_surface_m": 7.148735100403226,
+          "median_m": 18.05344188947241
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 3.5702755300035927,
+          "nearest_valid_surface_m": 6.529935040224368,
+          "median_m": 28.86665901159399
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.969532058900153,
+          "nearest_valid_surface_m": 6.676989733443258,
+          "median_m": 13.389503389322812
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 1.4210854715202004e-14,
+      "q_dy": 7.105427357601002e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 66342
+    },
+    {
+      "scene": "000196_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.6405673027038574,
+      "disp_max": 172.42506408691406,
+      "disp_mean": 29.66086816429705,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 2.378687361266637,
+          "nearest_valid_surface_m": 6.729646232852503,
+          "median_m": 12.596291319174654
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 2.2193406279211705,
+          "nearest_valid_surface_m": 4.446909204164866,
+          "median_m": 22.728530618975256
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.3167691654981715,
+          "nearest_valid_surface_m": 6.860996676205122,
+          "median_m": 15.184368583462065
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 1.4210854715202004e-14,
+      "q_dy": 7.105427357601002e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 34670
+    },
+    {
+      "scene": "000197_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 4.303280830383301,
+      "disp_max": 85.7245101928711,
+      "disp_mean": 27.323437857361146,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 5.087570609430462,
+          "nearest_valid_surface_m": 6.391560324558845,
+          "median_m": 34.087180667706434
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 6.172675525028547,
+          "nearest_valid_surface_m": 6.841535826510031,
+          "median_m": 23.450424517697
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 4.463950265087931,
+          "nearest_valid_surface_m": 6.670685122346813,
+          "median_m": 11.20349928989556
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 1.4210854715202004e-14,
+      "q_dy": 7.105427357601002e-15,
+      "q_dz": 1.4210854715202004e-14,
+      "excluded_by_60m_cap": 48700
+    },
+    {
+      "scene": "000198_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 2.1018543243408203,
+      "disp_max": 168.43878173828125,
+      "disp_mean": 30.057989320089334,
+      "num_valid": 453376,
+      "percent_valid": 100.0,
+      "point_count": 453376,
+      "point_nbytes": 12694528,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 4.9125763087927075,
+          "nearest_valid_surface_m": 6.921431768247541,
+          "median_m": 23.106914538873397
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 2.2718636768258587,
+          "nearest_valid_surface_m": 3.659001742608373,
+          "median_m": 21.826218460942755
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 4.7359621803739,
+          "nearest_valid_surface_m": 6.723349036313884,
+          "median_m": 10.471081002100151
+        }
+      ],
+      "discontinuity_valid": 451777,
+      "occupancy": [
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 1.4210854715202004e-14,
+      "q_dy": 7.105427357601002e-15,
+      "q_dz": 2.842170943040401e-14,
+      "excluded_by_60m_cap": 51064
+    },
+    {
+      "scene": "000199_10.png",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 0.0,
+      "disp_max": 175.10543823242188,
+      "disp_mean": 32.17092791796603,
+      "num_valid": 453349,
+      "percent_valid": 99.99404467814794,
+      "point_count": 453349,
+      "point_nbytes": 12693772,
+      "cells": [
+        {
+          "name": "LEFT",
+          "valid_count": 150880,
+          "percent_valid": 100.0,
+          "min_m": 2.1853687347623802,
+          "nearest_valid_surface_m": 4.036775909462652,
+          "median_m": 13.507908885538566
+        },
+        {
+          "name": "CENTER",
+          "valid_count": 151221,
+          "percent_valid": 99.982148524278,
+          "min_m": 3.1452319398089776,
+          "nearest_valid_surface_m": 6.400082951147373,
+          "median_m": 21.006267325088125
+        },
+        {
+          "name": "RIGHT",
+          "valid_count": 151248,
+          "percent_valid": 100.0,
+          "min_m": 5.996534674241083,
+          "nearest_valid_surface_m": 6.921140254221279,
+          "median_m": 9.598255474840546
+        }
+      ],
+      "discontinuity_valid": 451733,
+      "occupancy": [
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "FAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR",
+        "NEAR"
+      ],
+      "c2_maxdiff": 0.0,
+      "q_dx": 4.547473508864641e-13,
+      "q_dy": 5.684341886080802e-14,
+      "q_dz": 4.547473508864641e-13,
+      "excluded_by_60m_cap": 22056
+    }
+  ],
+  "sample": {
+    "scene": "000162_10.png",
+    "u": 616,
+    "v": 184,
+    "fx": 718.3351,
+    "fy": 718.3351,
+    "baseline_m": 0.5301404873575021,
+    "cx": 600.3891,
+    "cy": 181.5122,
+    "pixel": {
+      "u": 616,
+      "v": 184,
+      "disparity_px": 10.807845115661621,
+      "pixel_depth_m": 35.235379108843524,
+      "X_m": 0.7657372996673083,
+      "Y_m": 0.12203020031595374,
+      "valid": true
+    },
+    "region5": {
+      "u": 616,
+      "v": 184,
+      "window": 5,
+      "region_median_disparity_px": 10.774785995483398,
+      "region_median_depth_m": 35.3434880432551,
+      "region_median_X_m": 0.7657372996673083,
+      "region_median_Y_m": 0.12203020031595374,
+      "valid_count": 25,
+      "window_pixels": 25
+    },
+    "center_nearest_valid_surface_m": 6.52528887611687,
+    "center_min_m": 5.326113255584936,
+    "center_median_m": 28.830577247579853
+  },
+  "visualizations": [
+    "C:\\Users\\vishn\\stereo_depth_vision\\stage_c_deploy\\spatial_perception\\out\\000160_10_c2_1_spatial.png",
+    "C:\\Users\\vishn\\stereo_depth_vision\\stage_c_deploy\\spatial_perception\\out\\000162_10_c2_1_spatial.png"
+  ],
+  "tests": [
+    {
+      "test": "frozen checkpoint unchanged (before)",
+      "result": "PASS",
+      "evidence": "sha256(stage_b_armp/20260919T012646Z_tier2_seed1/armp/p2a_best.pth)=b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454 expected=b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454",
+      "status": "PASS"
+    },
+    {
+      "test": "ONNX hash matches disk spelling (before)",
+      "result": "PASS",
+      "evidence": "sha256(stage_c_deploy/armp_stereonet.onnx)=4277090deed1cde26ddb2a470d8dc097b26d5ad45a931e0aabf3635dbbcb6989",
+      "status": "PASS"
+    },
+    {
+      "test": "KITTI hailo_val split has 40 scenes",
+      "result": "PASS",
+      "evidence": "len=40 names[0]=000160_10.png names[-1]=000199_10.png",
+      "status": "PASS"
+    },
+    {
+      "test": "synthetic spatial-map case (near centre band)",
+      "result": "PASS",
+      "evidence": "expected CENTER nearest/min/median=10.0, LEFT=RIGHT=50.0; got CENTER=10.0/10.0/10.0, LEFT=50.0, RIGHT=50.0",
+      "status": "PASS"
+    },
+    {
+      "test": "invalid-depth handling (C2 rules preserved)",
+      "result": "PASS",
+      "evidence": "in=[10,0,-3,NaN,Inf,1e-9,0.03] valid=[[True, False, False, False, False, False, True]]; 0.03px stays C2-valid with Z=12694.0m (geometrically valid, physically unreliable -> separate mask)",
+      "status": "PASS"
+    },
+    {
+      "test": "physical-range filter is a separate mask (never modifies depth)",
+      "result": "PASS",
+      "evidence": "cap=60.0m: 0.03px pixel excluded from mask but kept C2-valid; stored depth array unchanged: True",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000160_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=25.809716",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000160_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000160_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=7.105e-15 dy=7.105e-15 dz=1.421e-14 tol_z=9.177e-05 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000160_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000160_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000160_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "physical mask is a C2-mask subset on real data",
+      "result": "PASS",
+      "evidence": "scene 000160_10.png: C2-valid=453376 excluded-by-60.0 m-cap=20489; stored depth unmodified",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000161_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=33.253778",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000161_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000161_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=7.105e-15 dy=7.105e-15 dz=1.421e-14 tol_z=1.060e-04 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000161_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000161_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000161_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000162_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=26.523072",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000162_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000162_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=7.105e-15 dy=7.105e-15 dz=1.421e-14 tol_z=1.050e-04 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000162_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000162_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000162_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "region measurement vs independent hand calculation",
+      "result": "PASS",
+      "evidence": "scene=000162_10.png (u=616,v=184): hand-median Z=35.343488 X=0.765737 Y=0.122030 d=10.774786 vs module Z=35.343488 X=0.765737 Y=0.122030 d=10.774786; pixel X/Y exact: True",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000163_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=28.206935",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000163_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000163_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=7.105e-15 dz=1.421e-14 tol_z=1.143e-04 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000163_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000163_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000163_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000164_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=36.587280",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000164_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000164_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.066e-14 dy=7.105e-15 dz=1.421e-14 tol_z=1.031e-04 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000164_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000164_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000164_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000165_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=41.230160",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000165_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000165_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=7.105e-15 dz=1.421e-14 tol_z=8.218e-05 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000165_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000165_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000165_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000166_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=30.579337",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000166_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000166_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=7.105e-15 dy=7.105e-15 dz=1.421e-14 tol_z=1.309e-04 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000166_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000166_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000166_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000167_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=28.236983",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000167_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000167_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=3.553e-15 dz=1.421e-14 tol_z=1.005e-04 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000167_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000167_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000167_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000168_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=40.248110",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000168_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000168_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=7.105e-15 dy=3.553e-15 dz=1.421e-14 tol_z=1.078e-04 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000168_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000168_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000168_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000169_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=35.065892",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000169_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000169_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=5.329e-15 dz=1.421e-14 tol_z=1.276e-04 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000169_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000169_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000169_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000170_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=23.450594",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000170_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000170_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=7.105e-15 dz=1.421e-14 tol_z=1.133e-04 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000170_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000170_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000170_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000171_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=21.961405",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000171_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000171_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=2.842e-14 dy=7.105e-15 dz=1.421e-14 tol_z=1.181e-04 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000171_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000171_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000171_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000172_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=27.678272",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000172_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000172_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=5.329e-15 dz=1.421e-14 tol_z=9.357e-05 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000172_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000172_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000172_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000173_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=27.673141",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000173_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000173_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=3.553e-15 dz=1.421e-14 tol_z=9.954e-05 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000173_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000173_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000173_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000174_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=30.090856",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000174_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000174_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=7.105e-15 dy=3.553e-15 dz=1.421e-14 tol_z=9.519e-05 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000174_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000174_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000174_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000175_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=33.180300",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000175_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000175_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.066e-14 dy=3.553e-15 dz=1.421e-14 tol_z=9.829e-05 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000175_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000175_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000175_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000176_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=25.407233",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000176_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000176_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=2.274e-13 dy=5.684e-14 dz=1.137e-13 tol_z=5.045e-03 n=453370",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000176_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000176_10.png",
+      "result": "PASS",
+      "evidence": "count=453370 nbytes=12694360; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000176_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000177_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=30.399015",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000177_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000177_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=2.132e-14 dy=7.105e-15 dz=2.842e-14 tol_z=2.484e-04 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000177_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000177_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000177_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000178_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=29.168842",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000178_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000178_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=2.132e-14 dy=7.105e-15 dz=1.421e-14 tol_z=1.319e-04 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000178_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000178_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000178_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000179_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=28.414174",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000179_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000179_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=7.105e-15 dy=7.105e-15 dz=1.421e-14 tol_z=9.224e-05 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000179_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000179_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000179_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000180_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=27.125934",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000180_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000180_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=2.132e-14 dy=3.553e-15 dz=1.421e-14 tol_z=1.601e-04 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000180_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000180_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000180_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000181_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=22.376421",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000181_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000181_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=3.553e-15 dz=1.421e-14 tol_z=1.121e-04 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000181_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000181_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000181_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000182_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=22.637053",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000182_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000182_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=2.842e-14 dy=5.329e-15 dz=1.421e-14 tol_z=1.114e-04 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000182_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000182_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000182_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000183_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=26.042990",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000183_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000183_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=2.842e-14 dy=3.553e-15 dz=1.421e-14 tol_z=1.267e-04 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000183_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000183_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000183_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000184_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=28.009621",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000184_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000184_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=2.132e-14 dy=3.553e-15 dz=1.421e-14 tol_z=1.046e-04 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000184_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000184_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000184_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000185_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=25.727406",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000185_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000185_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=2.132e-14 dy=3.553e-15 dz=1.421e-14 tol_z=1.027e-04 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000185_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000185_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000185_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000186_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=28.667639",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000186_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000186_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=3.553e-15 dz=2.842e-14 tol_z=1.352e-04 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000186_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000186_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000186_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000187_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=24.989799",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000187_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000187_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=2.132e-14 dy=3.553e-15 dz=1.421e-14 tol_z=1.044e-04 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000187_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000187_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000187_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000188_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=20.854831",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000188_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000188_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=2.842e-14 dy=7.105e-15 dz=1.421e-14 tol_z=1.094e-04 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000188_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000188_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000188_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000189_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=25.852910",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000189_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000189_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=7.105e-15 dz=1.421e-14 tol_z=1.291e-04 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000189_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000189_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000189_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000190_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=25.135502",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000190_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000190_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=7.105e-15 dz=1.421e-14 tol_z=9.787e-05 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000190_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000190_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000190_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000191_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=23.967243",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000191_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000191_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=7.105e-15 dz=1.421e-14 tol_z=1.042e-04 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000191_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000191_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000191_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000192_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=24.354147",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000192_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000192_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=7.105e-15 dz=1.421e-14 tol_z=9.849e-05 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000192_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000192_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000192_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000193_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=29.116423",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000193_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000193_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=7.105e-15 dz=1.421e-14 tol_z=1.073e-04 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000193_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000193_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000193_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000194_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=27.496880",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000194_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000194_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=7.105e-15 dz=1.421e-14 tol_z=1.019e-04 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000194_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000194_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000194_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000195_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=26.272408",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000195_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000195_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=7.105e-15 dz=1.421e-14 tol_z=1.260e-04 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000195_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000195_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000195_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000196_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=29.660868",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000196_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000196_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=7.105e-15 dz=1.421e-14 tol_z=1.051e-04 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000196_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000196_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000196_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000197_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=27.323438",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000197_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000197_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=7.105e-15 dz=1.421e-14 tol_z=8.893e-05 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000197_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000197_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000197_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000198_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=30.057989",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000198_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000198_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=7.105e-15 dz=2.842e-14 tol_z=1.821e-04 n=453376",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000198_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000198_10.png",
+      "result": "PASS",
+      "evidence": "count=453376 nbytes=12694528; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000198_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000199_10.png (inference bitwise-identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=32.170928",
+      "status": "PASS"
+    },
+    {
+      "test": "C2 depth unchanged 000199_10.png (max abs diff == 0)",
+      "result": "PASS",
+      "evidence": "max|C2.1-depth minus fB/d|=0.000e+00 NaN-pattern-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000199_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=4.547e-13 dy=5.684e-14 dz=4.547e-13 tol_z=1.209e-02 n=453349",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000199_10.png (spatial bitwise-identical)",
+      "result": "PASS",
+      "evidence": "points-identical=True cells-identical=True",
+      "status": "PASS"
+    },
+    {
+      "test": "point-cloud coordinates 000199_10.png",
+      "result": "PASS",
+      "evidence": "count=453349 nbytes=12693772; 5 sampled points reproduce X,Y,Z exactly at their (u,v)",
+      "status": "PASS"
+    },
+    {
+      "test": "nearest-surface from real data 000199_10.png",
+      "result": "PASS",
+      "evidence": "min exact member of valid depths; 5th pct within [min,max] with >=5% of samples at/below it: LEFT:min_in_data+5th-def; CENTER:min_in_data+5th-def; RIGHT:min_in_data+5th-def",
+      "status": "PASS"
+    },
+    {
+      "test": "visualization renders (new mode, 2 scenes)",
+      "result": "PASS",
+      "evidence": "wrote ['C:\\\\Users\\\\vishn\\\\stereo_depth_vision\\\\stage_c_deploy\\\\spatial_perception\\\\out\\\\000160_10_c2_1_spatial.png', 'C:\\\\Users\\\\vishn\\\\stereo_depth_vision\\\\stage_c_deploy\\\\spatial_perception\\\\out\\\\000162_10_c2_1_spatial.png'] (display 0.5-60 m / 0-176 px; data unclipped, no smoothing)",
+      "status": "PASS"
+    },
+    {
+      "test": "frozen checkpoint unchanged (after)",
+      "result": "PASS",
+      "evidence": "sha256=b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454",
+      "status": "PASS"
+    },
+    {
+      "test": "ONNX hash matches disk spelling (after)",
+      "result": "PASS",
+      "evidence": "sha256(stage_c_deploy/armp_stereonet.onnx)=4277090deed1cde26ddb2a470d8dc097b26d5ad45a931e0aabf3635dbbcb6989 (prompt typo ...deed1dce26... noted; disk ...deed1cde26... authoritative)",
+      "status": "PASS"
+    }
+  ],
+  "failures": [],
+  "elapsed_s": 25.050997972488403,
+  "overall": "PASS"
+}

@@ -1,0 +1,112 @@
+{
+  "generated_utc": "2026-09-19T15:50:50.301429+00:00",
+  "pairs": [
+    {
+      "original": {
+        "path": "phase2/scripts/export_p2a.py",
+        "sha256": "dc80885829e621ba13f5648cc9717d75c0b91964042d56700a514e07556c4b68"
+      },
+      "mirror": {
+        "path": "stage_c_deploy/export_armp.py",
+        "sha256": "749ee30e73f3340bd812906b545181e614b203af52470744e07e207c85d51198"
+      },
+      "n_hunks": 5,
+      "unified_diff": "--- C:/Users/vishn/stereo_depth_vision/phase2/scripts/export_p2a.py\n+++ C:/Users/vishn/stereo_depth_vision/stage_c_deploy/export_armp.py\n@@ -20,7 +20,8 @@\n from datetime import datetime, timezone\n from pathlib import Path\n \n-REPO = Path(__file__).resolve().parents[2]\n+REPO = Path(__file__).resolve().parents[1]\n+print(\"repo:\", REPO, flush=True)\n sys.path.insert(0, str(REPO))\n \n import numpy as np\n@@ -33,9 +34,9 @@\n from src.datasets.kitti2015 import Kitti2015Stereo, normalize\n from src.models.stereonet import StereoNet, StereoNetConfig\n \n-CKPT = REPO / \"phase2\" / \"runs\" / \"p2a_scale_coverage\" / \"p2a_best.pth\"\n-OUT = REPO / \"phase2\" / \"deploy\"\n-ONNX_PATH = OUT / \"p2a_stereonet.onnx\"\n+CKPT = REPO / \"stage_b_armp\" / \"20260919T012646Z_tier2_seed1\" / \"armp\" / \"p2a_best.pth\"\n+OUT = REPO / \"stage_c_deploy\"\n+ONNX_PATH = OUT / \"armp_stereonet.onnx\"\n H, W = 368, 1232\n CFG = dict(downsample_levels=3, num_disparities=24, cost_volume_shift=\"right\",\n            regression_normalize=True)\n@@ -51,7 +52,7 @@\n \n def main() -> None:\n     OUT.mkdir(parents=True, exist_ok=True)\n-    rec = {\"artifact\": \"P2A seed 0\", \"source_checkpoint\": str(CKPT.relative_to(REPO)).replace(\"\\\\\", \"/\"),\n+    rec = {\"artifact\": \"ARM-P seed 1\", \"source_checkpoint\": str(CKPT.relative_to(REPO)).replace(\"\\\\\", \"/\"),\n            \"source_sha256\": sha256_file(CKPT),\n            \"utc\": datetime.now(timezone.utc).isoformat()}\n     try:\n@@ -94,15 +95,27 @@\n     ds = Kitti2015Stereo(REPO / \"data\" / \"kitti2015\", split=\"hailo_val\",\n                          disparity_scale=256.0, occluded=True)\n     diffs = []\n+    mean_diffs = []\n+    rel_diffs = []\n     for i in range(5):\n         s = ds[i]\n         L, R = normalize(s.left), normalize(s.right)\n         with torch.no_grad():\n             pt = model(torch.from_numpy(L), torch.from_numpy(R))[0, 0].numpy()\n         on = sess.run([oname], {inames[0]: L, inames[1]: R})[0][0, 0]\n-        diffs.append(float(np.abs(pt.astype(np.float64) - on.astype(np.float64)).max()))\n+        ad = np.abs(pt.astype(np.float64) - on.astype(np.float64))\n+        diffs.append(float(ad.max()))\n+        mean_diffs.append(float(ad.mean()))\n+        pt64 = pt.astype(np.float64)\n+        m = pt64 > 1.0\n+        rel_diffs.append(float((ad[m] / pt64[m]).max()) if m.any() else 0.0)\n     rec[\"parity_vs_pytorch\"] = {\"scenes\": 5, \"max_abs_diff_px\": max(diffs),\n                                \"per_scene_max_abs_diff_px\": diffs,\n+                               \"mean_abs_diff_px\": float(np.mean(mean_diffs)),\n+                               \"per_scene_mean_abs_diff_px\": mean_diffs,\n+                               \"max_rel_diff\": max(rel_diffs),\n+                               \"per_scene_max_rel_diff\": rel_diffs,\n+                               \"rel_guard_px\": 1.0,\n                                \"tolerance_px\": 1e-3,\n                                \"pass\": bool(max(diffs) < 1e-3)}\n     print(\"parity max |diff| = %.3e px\" % max(diffs), flush=True)\n@@ -220,8 +233,8 @@\n     print(\"ops not in reference:\", rec[\"deployment_compatibility\"][\"ops_not_in_reference\"],\n           flush=True)\n \n-    (OUT / \"P2A_DEPLOYMENT_VALIDATION.json\").write_text(json.dumps(rec, indent=2))\n-    print(\"wrote\", OUT / \"P2A_DEPLOYMENT_VALIDATION.json\")\n+    (OUT / \"ARMP_DEPLOYMENT_VALIDATION.json\").write_text(json.dumps(rec, indent=2))\n+    print(\"wrote\", OUT / \"ARMP_DEPLOYMENT_VALIDATION.json\")\n \n \n if __name__ == \"__main__\":",
+      "hunks": [
+        {
+          "index": 1,
+          "header": "@@ -20,7 +20,8 @@",
+          "classification": "repo_depth",
+          "summary": "REPO parents[2]->parents[1] plus the required verification print of the resolved repo path; runs at import, before anything else."
+        },
+        {
+          "index": 2,
+          "header": "@@ -33,9 +34,9 @@",
+          "classification": "path_constant",
+          "summary": "CKPT->frozen seed-1 ARM-P path; OUT->stage_c_deploy; ONNX_PATH->armp_stereonet.onnx."
+        },
+        {
+          "index": 3,
+          "header": "@@ -51,7 +52,7 @@",
+          "classification": "label_string",
+          "summary": "artifact \"P2A seed 0\"->\"ARM-P seed 1\"; source_checkpoint is dynamic (CKPT-driven), unchanged code."
+        },
+        {
+          "index": 4,
+          "header": "@@ -94,15 +95,27 @@",
+          "classification": "declared_additive_parity_fields",
+          "summary": "Parity block gains mean_abs_diff_px (per-scene + pooled) and max_rel_diff guarded on PyTorch ref >1.0px (rel_guard_px recorded); pass/fail rule unchanged (max_abs_diff_px < 1e-3)."
+        },
+        {
+          "index": 5,
+          "header": "@@ -220,8 +233,8 @@",
+          "classification": "path_constant",
+          "summary": "Output JSON P2A_DEPLOYMENT_VALIDATION.json->ARMP_DEPLOYMENT_VALIDATION.json (write + print)."
+        }
+      ]
+    },
+    {
+      "original": {
+        "path": "phase2/scripts/export_p2a_static.py",
+        "sha256": "daef51a173012181175fba896b50a2586f918885481730190f42982228e90a7c"
+      },
+      "mirror": {
+        "path": "stage_c_deploy/export_armp_static.py",
+        "sha256": "d019f8a9f3f4b29ee5b554a6e11f604a472d3bd63a18da923702306cedc1038b"
+      },
+      "n_hunks": 8,
+      "unified_diff": "--- C:/Users/vishn/stereo_depth_vision/phase2/scripts/export_p2a_static.py\n+++ C:/Users/vishn/stereo_depth_vision/stage_c_deploy/export_armp_static.py\n@@ -37,7 +37,8 @@\n from datetime import datetime, timezone\n from pathlib import Path\n \n-REPO = Path(__file__).resolve().parents[2]\n+REPO = Path(__file__).resolve().parents[1]\n+print(\"repo:\", REPO, flush=True)\n sys.path.insert(0, str(REPO))\n \n import numpy as np\n@@ -52,10 +53,10 @@\n from src.datasets.kitti2015 import Kitti2015Stereo, normalize\n from src.models.stereonet import StereoNet, StereoNetConfig\n \n-CKPT = REPO / \"phase2\" / \"runs\" / \"p2a_scale_coverage\" / \"p2a_best.pth\"\n-OUT = REPO / \"phase2\" / \"deploy\"\n-ORIG_ONNX = OUT / \"p2a_stereonet.onnx\"\n-STATIC_ONNX = OUT / \"p2a_stereonet_static.onnx\"\n+CKPT = REPO / \"stage_b_armp\" / \"20260919T012646Z_tier2_seed1\" / \"armp\" / \"p2a_best.pth\"\n+OUT = REPO / \"stage_c_deploy\"\n+ORIG_ONNX = OUT / \"armp_stereonet.onnx\"\n+STATIC_ONNX = OUT / \"armp_stereonet_static.onnx\"\n H, W, NDISP = 368, 1232, 24\n CFG = dict(downsample_levels=3, num_disparities=24, cost_volume_shift=\"right\",\n            regression_normalize=True)\n@@ -112,8 +113,8 @@\n \n \n def main() -> None:\n-    rec = {\"artifact\": \"P2A seed 0, static-shape re-export\",\n-           \"source_checkpoint\": \"phase2/runs/p2a_scale_coverage/p2a_best.pth\",\n+    rec = {\"artifact\": \"ARM-P seed 1, static-shape re-export\",\n+           \"source_checkpoint\": \"stage_b_armp/20260919T012646Z_tier2_seed1/armp/p2a_best.pth\",\n            \"source_sha256\": sha256_file(CKPT),\n            \"utc\": datetime.now(timezone.utc).isoformat(),\n            \"weights_touched\": False, \"training_performed\": False}\n@@ -138,15 +139,24 @@\n \n     # ---- parity of the static PyTorch graph against the trained graph ----\n     d = []\n+    dm = []\n+    dr = []\n     for i in range(5):\n         s = ds[i]\n         L, R = torch.from_numpy(normalize(s.left)), torch.from_numpy(normalize(s.right))\n         with torch.no_grad():\n             a = ref_model(L, R)[0, 0].numpy().astype(np.float64)\n             b = st_model(L, R)[0, 0].numpy().astype(np.float64)\n-        d.append(float(np.abs(a - b).max()))\n+        ad = np.abs(a - b)\n+        d.append(float(ad.max()))\n+        dm.append(float(ad.mean()))\n+        m = a > 1.0\n+        dr.append(float((ad[m] / a[m]).max()) if m.any() else 0.0)\n     rec[\"parity_static_vs_trained_pytorch\"] = {\n         \"scenes\": 5, \"max_abs_diff_px\": max(d), \"per_scene\": d,\n+        \"mean_abs_diff_px\": float(np.mean(dm)), \"per_scene_mean_abs_diff_px\": dm,\n+        \"max_rel_diff\": max(dr), \"per_scene_max_rel_diff\": dr,\n+        \"rel_guard_px\": 1.0,\n         \"tolerance_px\": 1e-3, \"pass\": bool(max(d) < 1e-3)}\n     print(\"static PyTorch vs trained PyTorch: max |diff| = %.3e px\" % max(d), flush=True)\n \n@@ -162,7 +172,7 @@\n     orig = onnx.load(str(ORIG_ONNX))\n     orig_ops = sorted({n.op_type for n in orig.graph.node})\n     remaining = [o for o in DYNAMIC_OPS if o in ops]\n-    rec[\"export\"] = {\"path\": \"phase2/deploy/p2a_stereonet_static.onnx\",\n+    rec[\"export\"] = {\"path\": \"stage_c_deploy/armp_stereonet_static.onnx\",\n                      \"sha256\": sha256_file(STATIC_ONNX),\n                      \"size_bytes\": STATIC_ONNX.stat().st_size,\n                      \"opset\": int(g.opset_import[0].version),\n@@ -189,6 +199,8 @@\n \n     # ---- parity: static ONNX vs original ONNX, and vs trained PyTorch ----\n     dv, dp = [], []\n+    dvm, dpm = [], []\n+    dvr, dpr = [], []\n     for i in range(5):\n         s = ds[i]\n         L, R = normalize(s.left), normalize(s.right)\n@@ -196,13 +208,27 @@\n         b = osess.run([oon], {oinn[0]: L, oinn[1]: R})[0][0, 0].astype(np.float64)\n         with torch.no_grad():\n             c = ref_model(torch.from_numpy(L), torch.from_numpy(R))[0, 0].numpy().astype(np.float64)\n-        dv.append(float(np.abs(a - b).max()))\n-        dp.append(float(np.abs(a - c).max()))\n+        adv = np.abs(a - b)\n+        adp = np.abs(a - c)\n+        dv.append(float(adv.max()))\n+        dp.append(float(adp.max()))\n+        dvm.append(float(adv.mean()))\n+        dpm.append(float(adp.mean()))\n+        mv = b > 1.0\n+        mp = c > 1.0\n+        dvr.append(float((adv[mv] / b[mv]).max()) if mv.any() else 0.0)\n+        dpr.append(float((adp[mp] / c[mp]).max()) if mp.any() else 0.0)\n     rec[\"parity_static_onnx_vs_original_onnx\"] = {\n         \"scenes\": 5, \"max_abs_diff_px\": max(dv), \"per_scene\": dv,\n+        \"mean_abs_diff_px\": float(np.mean(dvm)), \"per_scene_mean_abs_diff_px\": dvm,\n+        \"max_rel_diff\": max(dvr), \"per_scene_max_rel_diff\": dvr,\n+        \"rel_guard_px\": 1.0, \"rel_reference\": \"original ONNX output\",\n         \"tolerance_px\": 1e-3, \"pass\": bool(max(dv) < 1e-3)}\n     rec[\"parity_static_onnx_vs_trained_pytorch\"] = {\n         \"scenes\": 5, \"max_abs_diff_px\": max(dp), \"per_scene\": dp,\n+        \"mean_abs_diff_px\": float(np.mean(dpm)), \"per_scene_mean_abs_diff_px\": dpm,\n+        \"max_rel_diff\": max(dpr), \"per_scene_max_rel_diff\": dpr,\n+        \"rel_guard_px\": 1.0, \"rel_reference\": \"trained PyTorch output\",\n         \"tolerance_px\": 1e-3, \"pass\": bool(max(dp) < 1e-3)}\n     print(\"static ONNX vs original ONNX : max |diff| = %.3e px\" % max(dv), flush=True)\n     print(\"static ONNX vs trained torch : max |diff| = %.3e px\" % max(dp), flush=True)\n@@ -238,8 +264,8 @@\n           % (m[\"epe\"], m[\"d1\"],\n              rec[\"deployed_accuracy_static_onnx\"][\"guard\"][\"contract_match\"]), flush=True)\n \n-    (OUT / \"P2A_STATIC_EXPORT_VALIDATION.json\").write_text(json.dumps(rec, indent=2))\n-    print(\"wrote\", OUT / \"P2A_STATIC_EXPORT_VALIDATION.json\")\n+    (OUT / \"ARMP_STATIC_EXPORT_VALIDATION.json\").write_text(json.dumps(rec, indent=2))\n+    print(\"wrote\", OUT / \"ARMP_STATIC_EXPORT_VALIDATION.json\")\n \n \n if __name__ == \"__main__\":",
+      "hunks": [
+        {
+          "index": 1,
+          "header": "@@ -37,7 +37,8 @@",
+          "classification": "repo_depth",
+          "summary": "REPO parents[2]->parents[1] plus the required verification print of the resolved repo path; runs at import, before anything else."
+        },
+        {
+          "index": 2,
+          "header": "@@ -52,10 +53,10 @@",
+          "classification": "path_constant",
+          "summary": "CKPT->frozen seed-1 ARM-P path; OUT->stage_c_deploy; ORIG_ONNX->armp_stereonet.onnx; STATIC_ONNX->armp_stereonet_static.onnx."
+        },
+        {
+          "index": 3,
+          "header": "@@ -112,8 +113,8 @@",
+          "classification": "label_string + path_constant",
+          "summary": "Two adjacent single-line changes, one of each allowed kind: artifact label ->ARM-P seed 1 wording (label_string) and the literal source_checkpoint string ->frozen seed-1 path (path_constant). Both lines are on the allowed-change list; no other edit in this hunk."
+        },
+        {
+          "index": 4,
+          "header": "@@ -138,15 +139,24 @@",
+          "classification": "declared_additive_parity_fields",
+          "summary": "Static-vs-trained-PyTorch parity gains mean_abs_diff_px and max_rel_diff guarded on trained-torch ref >1.0px; pass/fail rule unchanged."
+        },
+        {
+          "index": 5,
+          "header": "@@ -162,7 +172,7 @@",
+          "classification": "path_constant",
+          "summary": "rec[\"export\"][\"path\"] literal ->stage_c_deploy/armp_stereonet_static.onnx."
+        },
+        {
+          "index": 6,
+          "header": "@@ -189,6 +199,8 @@",
+          "classification": "declared_additive_parity_fields",
+          "summary": "Static-ONNX parity block: added mean/rel accumulator initialisation (additive only)."
+        },
+        {
+          "index": 7,
+          "header": "@@ -196,13 +208,27 @@",
+          "classification": "declared_additive_parity_fields",
+          "summary": "Static-ONNX-vs-original-ONNX and static-ONNX-vs-trained-PyTorch parity blocks gain mean_abs_diff_px and max_rel_diff (guarded >1.0px on each comparison's own reference: original-ONNX output / trained-PyTorch output, recorded in rel_reference); pass/fail rules unchanged."
+        },
+        {
+          "index": 8,
+          "header": "@@ -238,8 +264,8 @@",
+          "classification": "path_constant",
+          "summary": "Output JSON P2A_STATIC_EXPORT_VALIDATION.json->ARMP_STATIC_EXPORT_VALIDATION.json (write + print)."
+        }
+      ]
+    }
+  ],
+  "verdict": "NO DEFECT: every hunk is composed solely of allowed change kinds (path_constant, label_string, repo_depth, declared_additive_parity_fields); the pass/fail rule, architecture config, normalize, dataset construction, frozen-contract guard, bins, runtime block and operator comparison are verbatim."
+}

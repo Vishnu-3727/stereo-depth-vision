@@ -1,0 +1,3280 @@
+{
+  "provenance": {
+    "utc": "2026-09-19T16:18:13.008105+00:00",
+    "git_head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "host": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "onnx": "1.22.0",
+    "onnxruntime": "1.27.0",
+    "numpy": "2.5.1",
+    "torch_threads": 1,
+    "ort_intra_threads": 1,
+    "ort_inter_threads": 1,
+    "checkpoint_hashes": {
+      "armp_ckpt": {
+        "path": "stage_b_armp/20260919T012646Z_tier2_seed1/armp/p2a_best.pth",
+        "sha256": "b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454",
+        "expected": "b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454",
+        "match": true
+      },
+      "p2a_ckpt": {
+        "path": "phase2/runs/p2a_scale_coverage/p2a_best.pth",
+        "sha256": "0868ffd137a9985306bf5563685fd2362799bdd630d313e1181c980a7fbb6033",
+        "expected": "0868ffd137a9985306bf5563685fd2362799bdd630d313e1181c980a7fbb6033",
+        "match": true
+      }
+    },
+    "onnx_hashes": {
+      "armp_onnx": {
+        "path": "stage_c_deploy/armp_stereonet.onnx",
+        "sha256": "4277090deed1cde26ddb2a470d8dc097b26d5ad45a931e0aabf3635dbbcb6989",
+        "expected": "4277090deed1cde26ddb2a470d8dc097b26d5ad45a931e0aabf3635dbbcb6989",
+        "match": true
+      },
+      "p2a_onnx": {
+        "path": "phase2/deploy/p2a_stereonet.onnx",
+        "sha256": "0995a6c5722b46250299653e9edaa69ece17c6b86303122345ebf958768bfca9",
+        "expected": "0995a6c5722b46250299653e9edaa69ece17c6b86303122345ebf958768bfca9",
+        "match": true
+      }
+    },
+    "config_both_models": {
+      "downsample_levels": 3,
+      "num_disparities": 24,
+      "cost_volume_shift": "right",
+      "regression_normalize": true
+    },
+    "scenes": [
+      "000160_10.png",
+      "000161_10.png",
+      "000162_10.png",
+      "000163_10.png",
+      "000164_10.png"
+    ],
+    "note": "No existing repo artifact was modified; all outputs are new files under stage_c_deploy/diagnostics/. Instrumented ONNX copies are DEBUG copies, never deployment artifacts."
+  },
+  "materiality_criterion": {
+    "rule": "MATERIAL iff max_abs_diff > 1e-6 AND relative (max_abs_diff / max_abs_value) > 1e-7; first material stage = earliest in forward order meeting both. Stated BEFORE the numbers.",
+    "mat_abs": 1e-06,
+    "mat_rel": 1e-07,
+    "order": [
+      "left_features",
+      "right_features",
+      "cost_volume",
+      "aggregated_cost",
+      "disparity_initial",
+      "refinement_residual",
+      "disparity_final"
+    ]
+  },
+  "models": {
+    "armp": {
+      "magnitude": {
+        "total_pixels": 2266880,
+        "bin_counts": {
+          "0.0001": 19968,
+          "0.0005": 2524,
+          "0.001": 194,
+          "0.0015": 4,
+          "0.0017": 1
+        },
+        "bin_fractions": {
+          "0.0001": 0.0088085827216262,
+          "0.0005": 0.0011134246188594015,
+          "0.001": 8.558018068887634e-05,
+          "0.0015": 1.764539808018069e-06,
+          "0.0017": 4.411349520045172e-07
+        },
+        "max": 0.001708984375,
+        "mean": 7.14189002215694e-06,
+        "median": 2.86102294921875e-06,
+        "percentiles": {
+          "99.0": 8.7738037109375e-05,
+          "99.9": 0.00052642822265625,
+          "99.99": 0.000977753067015641,
+          "99.999": 0.0013275146484375
+        },
+        "per_scene": [
+          {
+            "scene": "000160_10.png",
+            "total_pixels": 453376,
+            "bin_counts": {
+              "0.0001": 1655,
+              "0.0005": 46,
+              "0.001": 0,
+              "0.0015": 0,
+              "0.0017": 0
+            },
+            "bin_fractions": {
+              "0.0001": 0.00365039172783738,
+              "0.0005": 0.00010146103896103897,
+              "0.001": 0.0,
+              "0.0015": 0.0,
+              "0.0017": 0.0
+            },
+            "max": 0.0008344650268554688,
+            "mean": 4.445267331122275e-06,
+            "median": 1.9073486328125e-06,
+            "percentiles": {
+              "99.0": 3.814697265625e-05,
+              "99.9": 0.0002307891845703125,
+              "99.99": 0.0005035161972044566,
+              "99.999": 0.0007933926582336381
+            },
+            "max_off_opt": 0.000629425048828125,
+            "mean_off_opt": 6.899379618688871e-06,
+            "n_above_1e3": 0,
+            "n_above_1e4": 1655,
+            "border_dist_1e3": null,
+            "border_dist_1e4": {
+              "n": 1655,
+              "mean": 25.98489425981873,
+              "median": 24.0,
+              "max": 140.0,
+              "p90": 42.600000000000136
+            },
+            "gt_valid_frac_1e3": null,
+            "gt_at_1e3": null,
+            "dispgrad_at_1e3": null,
+            "texture_at_1e3": null,
+            "occ_frac_1e3": null
+          },
+          {
+            "scene": "000161_10.png",
+            "total_pixels": 453376,
+            "bin_counts": {
+              "0.0001": 1645,
+              "0.0005": 422,
+              "0.001": 28,
+              "0.0015": 0,
+              "0.0017": 0
+            },
+            "bin_fractions": {
+              "0.0001": 0.003628334980237154,
+              "0.0005": 0.0009307947487295314,
+              "0.001": 6.175889328063241e-05,
+              "0.0015": 0.0,
+              "0.0017": 0.0
+            },
+            "max": 0.0014667510986328125,
+            "mean": 6.338634030217171e-06,
+            "median": 3.814697265625e-06,
+            "percentiles": {
+              "99.0": 4.57763671875e-05,
+              "99.9": 0.00046539306640625,
+              "99.99": 0.0009377717971801314,
+              "99.999": 0.0012763965129852228
+            },
+            "max_off_opt": 0.0016231536865234375,
+            "mean_off_opt": 1.0137729670690453e-05,
+            "n_above_1e3": 28,
+            "n_above_1e4": 1645,
+            "border_dist_1e3": {
+              "n": 28,
+              "mean": 12.428571428571429,
+              "median": 12.0,
+              "max": 15.0,
+              "p90": 15.0
+            },
+            "border_dist_1e4": {
+              "n": 1645,
+              "mean": 15.818844984802432,
+              "median": 11.0,
+              "max": 182.0,
+              "p90": 31.600000000000136
+            },
+            "gt_valid_frac_1e3": 0.0,
+            "gt_at_1e3": null,
+            "dispgrad_at_1e3": {
+              "n": 28,
+              "mean": 2.1728069171363544,
+              "median": 2.269645158350963,
+              "max": 2.7367720722169997,
+              "p90": 2.596476862623929
+            },
+            "texture_at_1e3": {
+              "n": 28,
+              "mean": 0.0,
+              "median": 0.0,
+              "max": 0.0,
+              "p90": 0.0
+            },
+            "occ_frac_1e3": 0.0
+          },
+          {
+            "scene": "000162_10.png",
+            "total_pixels": 453376,
+            "bin_counts": {
+              "0.0001": 3152,
+              "0.0005": 215,
+              "0.001": 0,
+              "0.0015": 0,
+              "0.0017": 0
+            },
+            "bin_fractions": {
+              "0.0001": 0.006952286843591191,
+              "0.0005": 0.000474220073404856,
+              "0.001": 0.0,
+              "0.0015": 0.0,
+              "0.0017": 0.0
+            },
+            "max": 0.000896453857421875,
+            "mean": 6.192457404162236e-06,
+            "median": 2.86102294921875e-06,
+            "percentiles": {
+              "99.0": 6.866455078125e-05,
+              "99.9": 0.0003814697265625,
+              "99.99": 0.0006961822509765625,
+              "99.999": 0.0008270168304442826
+            },
+            "max_off_opt": 0.001247406005859375,
+            "mean_off_opt": 1.076914797069527e-05,
+            "n_above_1e3": 0,
+            "n_above_1e4": 3152,
+            "border_dist_1e3": null,
+            "border_dist_1e4": {
+              "n": 3152,
+              "mean": 21.847081218274113,
+              "median": 20.0,
+              "max": 93.0,
+              "p90": 41.0
+            },
+            "gt_valid_frac_1e3": null,
+            "gt_at_1e3": null,
+            "dispgrad_at_1e3": null,
+            "texture_at_1e3": null,
+            "occ_frac_1e3": null
+          },
+          {
+            "scene": "000163_10.png",
+            "total_pixels": 453376,
+            "bin_counts": {
+              "0.0001": 1551,
+              "0.0005": 4,
+              "0.001": 0,
+              "0.0015": 0,
+              "0.0017": 0
+            },
+            "bin_fractions": {
+              "0.0001": 0.003421001552795031,
+              "0.0005": 8.822699040090344e-06,
+              "0.001": 0.0,
+              "0.0015": 0.0,
+              "0.0017": 0.0
+            },
+            "max": 0.000576019287109375,
+            "mean": 4.8269255308698355e-06,
+            "median": 3.337860107421875e-06,
+            "percentiles": {
+              "99.0": 3.4332275390625e-05,
+              "99.9": 0.00020599365234375,
+              "99.99": 0.000354766845703125,
+              "99.999": 0.00047643899917593213
+            },
+            "max_off_opt": 0.0013523101806640625,
+            "mean_off_opt": 8.414789218137926e-06,
+            "n_above_1e3": 0,
+            "n_above_1e4": 1551,
+            "border_dist_1e3": null,
+            "border_dist_1e4": {
+              "n": 1551,
+              "mean": 23.46228239845261,
+              "median": 19.0,
+              "max": 179.0,
+              "p90": 41.0
+            },
+            "gt_valid_frac_1e3": null,
+            "gt_at_1e3": null,
+            "dispgrad_at_1e3": null,
+            "texture_at_1e3": null,
+            "occ_frac_1e3": null
+          },
+          {
+            "scene": "000164_10.png",
+            "total_pixels": 453376,
+            "bin_counts": {
+              "0.0001": 11965,
+              "0.0005": 1837,
+              "0.001": 166,
+              "0.0015": 4,
+              "0.0017": 1
+            },
+            "bin_fractions": {
+              "0.0001": 0.026390898503670244,
+              "0.0005": 0.004051824534161491,
+              "0.001": 0.0003661420101637493,
+              "0.0015": 8.822699040090344e-06,
+              "0.0017": 2.205674760022586e-06
+            },
+            "max": 0.001708984375,
+            "mean": 1.3906165814413182e-05,
+            "median": 3.814697265625e-06,
+            "percentiles": {
+              "99.0": 0.000278472900390625,
+              "99.9": 0.000812530517578125,
+              "99.99": 0.001190185546875,
+              "99.999": 0.001472706794738654
+            },
+            "max_off_opt": 0.00177001953125,
+            "mean_off_opt": 1.9372981998760238e-05,
+            "n_above_1e3": 166,
+            "n_above_1e4": 11965,
+            "border_dist_1e3": {
+              "n": 166,
+              "mean": 25.518072289156628,
+              "median": 29.0,
+              "max": 90.0,
+              "p90": 44.0
+            },
+            "border_dist_1e4": {
+              "n": 11965,
+              "mean": 50.414458838278314,
+              "median": 35.0,
+              "max": 183.0,
+              "p90": 145.0
+            },
+            "gt_valid_frac_1e3": 0.07228915662650602,
+            "gt_at_1e3": {
+              "n": 12,
+              "mean": 103.95572916666667,
+              "median": 103.923828125,
+              "max": 105.015625,
+              "p90": 104.56953125
+            },
+            "dispgrad_at_1e3": {
+              "n": 166,
+              "mean": 4.1463288498911295,
+              "median": 3.652387055445727,
+              "max": 34.92914473347076,
+              "p90": 7.148933004854786
+            },
+            "texture_at_1e3": {
+              "n": 166,
+              "mean": 1.7894476293165786,
+              "median": 0.5161437625416186,
+              "max": 22.936041168867835,
+              "p90": 5.801776535357983
+            },
+            "occ_frac_1e3": 0.0
+          }
+        ],
+        "bins_are_diagnostic_only": true
+      },
+      "spatial": {
+        "n_above_1e3_pooled": 194,
+        "n_above_1e4_pooled": 19968,
+        "border_dist_1e3": {
+          "n": 194,
+          "mean": 23.628865979381445,
+          "median": 28.0,
+          "max": 90.0,
+          "p90": 43.0
+        },
+        "border_dist_1e4": {
+          "n": 19968,
+          "mean": 38.936698717948715,
+          "median": 26.0,
+          "max": 183.0,
+          "p90": 95.0
+        },
+        "dispgrad_disc_1e3": {
+          "n": 194,
+          "mean": 3.861490632792502,
+          "median": 3.1450891691615697,
+          "max": 34.92914473347076,
+          "p90": 7.050897298853307
+        },
+        "dispgrad_all": {
+          "n": 2266880,
+          "mean": 0.3184843344457657,
+          "median": 0.18487271593761032,
+          "max": 35.823630120622646,
+          "p90": 0.4839781072812422
+        },
+        "texture_disc_1e3": {
+          "n": 194,
+          "mean": 1.5311768374564538,
+          "median": 0.2979517356995819,
+          "max": 22.936041168867835,
+          "p90": 5.198802106185715
+        },
+        "texture_all": {
+          "n": 2266880,
+          "mean": 10.796051348632746,
+          "median": 4.249900042941652,
+          "max": 139.2708829915643,
+          "p90": 31.34709445822385
+        },
+        "gt_valid_frac_disc_1e3": 0.061855670103092786,
+        "gt_at_disc_1e3": {
+          "n": 12,
+          "mean": 103.95572916666667,
+          "median": 103.923828125,
+          "max": 105.015625,
+          "p90": 104.56953125
+        },
+        "gt_all_valid": {
+          "n": 478453,
+          "mean": 41.12642340261217,
+          "median": 36.3984375,
+          "max": 129.45703125,
+          "p90": 65.8125
+        },
+        "occ_frac_disc_1e3": 0.0,
+        "occ_frac_all_validgt": 0.0244788934336288
+      },
+      "ties": {
+        "mapping": "cost upsampled with F.interpolate(bilinear, align_corners=True) to (368,1232), then standardised across dim=1 (mean/std + 1e-6, because regression_normalize=True) and softmax(-cost): exact reproduction of src/models/stereonet/regression.py soft_argmin at full resolution, so no approximate low-res cell mapping is used.",
+        "pred_disparity_disc_1e3": {
+          "n": 194,
+          "mean": 46.86333418384041,
+          "median": 51.63717460632324,
+          "max": 84.30485534667969,
+          "p90": 69.3184799194336
+        },
+        "pred_disparity_all": {
+          "n": 2266880,
+          "mean": 30.07605516042693,
+          "median": 20.625760078430176,
+          "max": 126.14948272705078,
+          "p90": 60.74142150878906
+        },
+        "disc": {
+          "t1": {
+            "n": 194,
+            "mean": 0.3032922934855997,
+            "median": 0.2903372347354889,
+            "max": 0.5849946737289429,
+            "p90": 0.5027402579784394
+          },
+          "t2": {
+            "n": 194,
+            "mean": 0.142327104647135,
+            "median": 0.12508803978562355,
+            "max": 0.30356648564338684,
+            "p90": 0.2146205708384514
+          },
+          "gap": {
+            "n": 194,
+            "mean": 0.1609651888384647,
+            "median": 0.14823536947369576,
+            "max": 0.450003907084465,
+            "p90": 0.3477190777659419
+          },
+          "ent": {
+            "n": 194,
+            "mean": 2.468249008213122,
+            "median": 2.552165150642395,
+            "max": 2.8332369327545166,
+            "p90": 2.766728711128235
+          }
+        },
+        "ordinary_sample": {
+          "t1": {
+            "n": 5000,
+            "mean": 0.5284078230813145,
+            "median": 0.5248825550079346,
+            "max": 0.8354027271270752,
+            "p90": 0.7162950217723849
+          },
+          "t2": {
+            "n": 5000,
+            "mean": 0.19104344286173583,
+            "median": 0.17963287979364395,
+            "max": 0.37675151228904724,
+            "p90": 0.31667891442775725
+          },
+          "gap": {
+            "n": 5000,
+            "mean": 0.33736438021957876,
+            "median": 0.34158018976449966,
+            "max": 0.8176957350224257,
+            "p90": 0.6291986525058753
+          },
+          "ent": {
+            "n": 5000,
+            "mean": 1.7901885415434837,
+            "median": 1.845481276512146,
+            "max": 3.020853042602539,
+            "p90": 2.0067859411239626
+          }
+        },
+        "n_disc": 194,
+        "n_ordinary_sample": 5000
+      },
+      "stages": {
+        "left_features": {
+          "onnx_tensor": "/feature_extractor/output_conv/Conv_output_0",
+          "best_max_abs": 14712832.0,
+          "max_abs_value": 41249323089920.0,
+          "relative": 5.084088278075225e-07,
+          "sibling_stage_max_abs": 57758890065920.0,
+          "other_branch_max_abs": 57758896357376.0,
+          "status": "located",
+          "max_abs": 20971520.0,
+          "mean_abs": 1007846.1291925327,
+          "material": true
+        },
+        "right_features": {
+          "onnx_tensor": "/feature_extractor/output_conv_1/Conv_output_0",
+          "best_max_abs": 13893632.0,
+          "max_abs_value": 43538901368832.0,
+          "relative": 3.8232806700805733e-07,
+          "sibling_stage_max_abs": 57758896357376.0,
+          "other_branch_max_abs": 57758890065920.0,
+          "status": "located",
+          "max_abs": 16646144.0,
+          "mean_abs": 997804.9197063806,
+          "material": true
+        },
+        "cost_volume": {
+          "onnx_tensor": "/cost_volume/Transpose_23_output_0",
+          "best_max_abs": 21495808.0,
+          "max_abs_value": 70825940090880.0,
+          "relative": 4.145391923118377e-07,
+          "runner_up_max_abs": 1515831722770432.0,
+          "n_candidates_same_shape": 9,
+          "status": "located",
+          "max_abs": 29360128.0,
+          "mean_abs": 1406134.2753058537,
+          "material": true
+        },
+        "aggregated_cost": {
+          "onnx_tensor": "/aggregation/Squeeze_output_0",
+          "best_max_abs": 1786706395136.0,
+          "max_abs_value": 2.5326005148901704e+18,
+          "relative": 7.597508321170989e-07,
+          "status": "located",
+          "max_abs": 1924145348608.0,
+          "mean_abs": 19814649392.665535,
+          "material": true
+        },
+        "disparity_initial": {
+          "status": "UNKNOWN",
+          "reason": "Resize output shape uninferable ((None,None,None,None)); all downstream regression tensors incl. the ReduceSum_output_0 disparity_initial have unknown shapes under onnx.shape_inference.infer_shapes",
+          "suspected_node": "/regression/ReduceSum_output_0",
+          "max_abs": null,
+          "mean_abs": null,
+          "relative": null,
+          "material": false
+        },
+        "refinement_residual": {
+          "onnx_tensor": "/refinement/output_conv/Conv_output_0",
+          "best_max_abs": 0.000637054443359375,
+          "max_abs_value": 114.9820327758789,
+          "relative": 1.536070281021238e-05,
+          "decoy_final_vs_residual": 14.900580883026123,
+          "status": "located",
+          "max_abs": 0.001766204833984375,
+          "mean_abs": 6.78961657467264e-06,
+          "material": true
+        },
+        "disparity_final": {
+          "onnx_tensor": "disparity",
+          "best_max_abs": 0.0006427764892578125,
+          "max_abs_value": 126.14948272705078,
+          "relative": 1.5225588180951958e-05,
+          "status": "located",
+          "max_abs": 0.0019207000732421875,
+          "mean_abs": 7.1645402499405695e-06,
+          "material": true
+        }
+      },
+      "first_material_stage": "left_features",
+      "localisation_info": {
+        "candidates": {
+          "left_features": [
+            {
+              "name": "/feature_extractor/downsample/downsample.2/Conv_output_0",
+              "node_idx": 2,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/conv1/Conv_output_0",
+              "node_idx": 3,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/act/LeakyRelu_output_0",
+              "node_idx": 4,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/conv2/Conv_output_0",
+              "node_idx": 5,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/Add_output_0",
+              "node_idx": 6,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/act_1/LeakyRelu_output_0",
+              "node_idx": 7,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/conv1/Conv_output_0",
+              "node_idx": 8,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/act/LeakyRelu_output_0",
+              "node_idx": 9,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/conv2/Conv_output_0",
+              "node_idx": 10,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/Add_output_0",
+              "node_idx": 11,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/act_1/LeakyRelu_output_0",
+              "node_idx": 12,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/conv1/Conv_output_0",
+              "node_idx": 13,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/act/LeakyRelu_output_0",
+              "node_idx": 14,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/conv2/Conv_output_0",
+              "node_idx": 15,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/Add_output_0",
+              "node_idx": 16,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/act_1/LeakyRelu_output_0",
+              "node_idx": 17,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/conv1/Conv_output_0",
+              "node_idx": 18,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/act/LeakyRelu_output_0",
+              "node_idx": 19,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/conv2/Conv_output_0",
+              "node_idx": 20,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/Add_output_0",
+              "node_idx": 21,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/act_1/LeakyRelu_output_0",
+              "node_idx": 22,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/conv1/Conv_output_0",
+              "node_idx": 23,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/act/LeakyRelu_output_0",
+              "node_idx": 24,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/conv2/Conv_output_0",
+              "node_idx": 25,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/Add_output_0",
+              "node_idx": 26,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/act_1/LeakyRelu_output_0",
+              "node_idx": 27,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/conv1/Conv_output_0",
+              "node_idx": 28,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/act/LeakyRelu_output_0",
+              "node_idx": 29,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/conv2/Conv_output_0",
+              "node_idx": 30,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/Add_output_0",
+              "node_idx": 31,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/act_1/LeakyRelu_output_0",
+              "node_idx": 32,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/output_conv/Conv_output_0",
+              "node_idx": 33,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/downsample/downsample.2_1/Conv_output_0",
+              "node_idx": 36,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/conv1_1/Conv_output_0",
+              "node_idx": 37,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/act_2/LeakyRelu_output_0",
+              "node_idx": 38,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/conv2_1/Conv_output_0",
+              "node_idx": 39,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0_1/Add_output_0",
+              "node_idx": 40,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/act_3/LeakyRelu_output_0",
+              "node_idx": 41,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/conv1_1/Conv_output_0",
+              "node_idx": 42,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/act_2/LeakyRelu_output_0",
+              "node_idx": 43,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/conv2_1/Conv_output_0",
+              "node_idx": 44,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1_1/Add_output_0",
+              "node_idx": 45,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/act_3/LeakyRelu_output_0",
+              "node_idx": 46,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/conv1_1/Conv_output_0",
+              "node_idx": 47,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/act_2/LeakyRelu_output_0",
+              "node_idx": 48,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/conv2_1/Conv_output_0",
+              "node_idx": 49,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2_1/Add_output_0",
+              "node_idx": 50,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/act_3/LeakyRelu_output_0",
+              "node_idx": 51,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/conv1_1/Conv_output_0",
+              "node_idx": 52,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/act_2/LeakyRelu_output_0",
+              "node_idx": 53,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/conv2_1/Conv_output_0",
+              "node_idx": 54,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3_1/Add_output_0",
+              "node_idx": 55,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/act_3/LeakyRelu_output_0",
+              "node_idx": 56,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/conv1_1/Conv_output_0",
+              "node_idx": 57,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/act_2/LeakyRelu_output_0",
+              "node_idx": 58,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/conv2_1/Conv_output_0",
+              "node_idx": 59,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4_1/Add_output_0",
+              "node_idx": 60,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/act_3/LeakyRelu_output_0",
+              "node_idx": 61,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/conv1_1/Conv_output_0",
+              "node_idx": 62,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/act_2/LeakyRelu_output_0",
+              "node_idx": 63,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/conv2_1/Conv_output_0",
+              "node_idx": 64,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5_1/Add_output_0",
+              "node_idx": 65,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/act_3/LeakyRelu_output_0",
+              "node_idx": 66,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/output_conv_1/Conv_output_0",
+              "node_idx": 67,
+              "op": "Conv"
+            },
+            {
+              "name": "/cost_volume/Sub_output_0",
+              "node_idx": 68,
+              "op": "Sub"
+            }
+          ],
+          "right_features": [
+            {
+              "name": "/feature_extractor/downsample/downsample.2/Conv_output_0",
+              "node_idx": 2,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/conv1/Conv_output_0",
+              "node_idx": 3,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/act/LeakyRelu_output_0",
+              "node_idx": 4,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/conv2/Conv_output_0",
+              "node_idx": 5,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/Add_output_0",
+              "node_idx": 6,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/act_1/LeakyRelu_output_0",
+              "node_idx": 7,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/conv1/Conv_output_0",
+              "node_idx": 8,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/act/LeakyRelu_output_0",
+              "node_idx": 9,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/conv2/Conv_output_0",
+              "node_idx": 10,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/Add_output_0",
+              "node_idx": 11,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/act_1/LeakyRelu_output_0",
+              "node_idx": 12,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/conv1/Conv_output_0",
+              "node_idx": 13,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/act/LeakyRelu_output_0",
+              "node_idx": 14,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/conv2/Conv_output_0",
+              "node_idx": 15,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/Add_output_0",
+              "node_idx": 16,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/act_1/LeakyRelu_output_0",
+              "node_idx": 17,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/conv1/Conv_output_0",
+              "node_idx": 18,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/act/LeakyRelu_output_0",
+              "node_idx": 19,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/conv2/Conv_output_0",
+              "node_idx": 20,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/Add_output_0",
+              "node_idx": 21,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/act_1/LeakyRelu_output_0",
+              "node_idx": 22,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/conv1/Conv_output_0",
+              "node_idx": 23,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/act/LeakyRelu_output_0",
+              "node_idx": 24,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/conv2/Conv_output_0",
+              "node_idx": 25,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/Add_output_0",
+              "node_idx": 26,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/act_1/LeakyRelu_output_0",
+              "node_idx": 27,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/conv1/Conv_output_0",
+              "node_idx": 28,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/act/LeakyRelu_output_0",
+              "node_idx": 29,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/conv2/Conv_output_0",
+              "node_idx": 30,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/Add_output_0",
+              "node_idx": 31,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/act_1/LeakyRelu_output_0",
+              "node_idx": 32,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/output_conv/Conv_output_0",
+              "node_idx": 33,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/downsample/downsample.2_1/Conv_output_0",
+              "node_idx": 36,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/conv1_1/Conv_output_0",
+              "node_idx": 37,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/act_2/LeakyRelu_output_0",
+              "node_idx": 38,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/conv2_1/Conv_output_0",
+              "node_idx": 39,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0_1/Add_output_0",
+              "node_idx": 40,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/act_3/LeakyRelu_output_0",
+              "node_idx": 41,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/conv1_1/Conv_output_0",
+              "node_idx": 42,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/act_2/LeakyRelu_output_0",
+              "node_idx": 43,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/conv2_1/Conv_output_0",
+              "node_idx": 44,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1_1/Add_output_0",
+              "node_idx": 45,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/act_3/LeakyRelu_output_0",
+              "node_idx": 46,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/conv1_1/Conv_output_0",
+              "node_idx": 47,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/act_2/LeakyRelu_output_0",
+              "node_idx": 48,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/conv2_1/Conv_output_0",
+              "node_idx": 49,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2_1/Add_output_0",
+              "node_idx": 50,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/act_3/LeakyRelu_output_0",
+              "node_idx": 51,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/conv1_1/Conv_output_0",
+              "node_idx": 52,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/act_2/LeakyRelu_output_0",
+              "node_idx": 53,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/conv2_1/Conv_output_0",
+              "node_idx": 54,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3_1/Add_output_0",
+              "node_idx": 55,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/act_3/LeakyRelu_output_0",
+              "node_idx": 56,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/conv1_1/Conv_output_0",
+              "node_idx": 57,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/act_2/LeakyRelu_output_0",
+              "node_idx": 58,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/conv2_1/Conv_output_0",
+              "node_idx": 59,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4_1/Add_output_0",
+              "node_idx": 60,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/act_3/LeakyRelu_output_0",
+              "node_idx": 61,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/conv1_1/Conv_output_0",
+              "node_idx": 62,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/act_2/LeakyRelu_output_0",
+              "node_idx": 63,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/conv2_1/Conv_output_0",
+              "node_idx": 64,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5_1/Add_output_0",
+              "node_idx": 65,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/act_3/LeakyRelu_output_0",
+              "node_idx": 66,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/output_conv_1/Conv_output_0",
+              "node_idx": 67,
+              "op": "Conv"
+            },
+            {
+              "name": "/cost_volume/Sub_output_0",
+              "node_idx": 68,
+              "op": "Sub"
+            }
+          ],
+          "cost_volume": [
+            {
+              "name": "/cost_volume/Transpose_23_output_0",
+              "node_idx": 624,
+              "op": "Transpose"
+            },
+            {
+              "name": "/aggregation/filter/filter.0/Conv_output_0",
+              "node_idx": 625,
+              "op": "Conv"
+            },
+            {
+              "name": "/aggregation/filter/filter.1/LeakyRelu_output_0",
+              "node_idx": 626,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/aggregation/filter/filter.2/Conv_output_0",
+              "node_idx": 627,
+              "op": "Conv"
+            },
+            {
+              "name": "/aggregation/filter/filter.3/LeakyRelu_output_0",
+              "node_idx": 628,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/aggregation/filter/filter.4/Conv_output_0",
+              "node_idx": 629,
+              "op": "Conv"
+            },
+            {
+              "name": "/aggregation/filter/filter.5/LeakyRelu_output_0",
+              "node_idx": 630,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/aggregation/filter/filter.6/Conv_output_0",
+              "node_idx": 631,
+              "op": "Conv"
+            },
+            {
+              "name": "/aggregation/filter/filter.7/LeakyRelu_output_0",
+              "node_idx": 632,
+              "op": "LeakyRelu"
+            }
+          ],
+          "aggregated_cost": [
+            {
+              "name": "/aggregation/Squeeze_output_0",
+              "node_idx": 635,
+              "op": "Squeeze"
+            }
+          ],
+          "disparity_initial": [
+            {
+              "name": "/refinement/output_conv/Conv_output_0",
+              "node_idx": 709,
+              "op": "Conv"
+            },
+            {
+              "name": "disparity",
+              "node_idx": 711,
+              "op": "Relu"
+            }
+          ],
+          "refinement_residual": [
+            {
+              "name": "/refinement/output_conv/Conv_output_0",
+              "node_idx": 709,
+              "op": "Conv"
+            },
+            {
+              "name": "disparity",
+              "node_idx": 711,
+              "op": "Relu"
+            }
+          ],
+          "disparity_final": [
+            {
+              "name": "/refinement/output_conv/Conv_output_0",
+              "node_idx": 709,
+              "op": "Conv"
+            },
+            {
+              "name": "disparity",
+              "node_idx": 711,
+              "op": "Relu"
+            }
+          ]
+        },
+        "added_outputs": [
+          "/feature_extractor/downsample/downsample.2/Conv_output_0",
+          "/feature_extractor/residual/residual.0/conv1/Conv_output_0",
+          "/feature_extractor/residual/residual.0/act/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.0/conv2/Conv_output_0",
+          "/feature_extractor/residual/residual.0/Add_output_0",
+          "/feature_extractor/residual/residual.0/act_1/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.1/conv1/Conv_output_0",
+          "/feature_extractor/residual/residual.1/act/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.1/conv2/Conv_output_0",
+          "/feature_extractor/residual/residual.1/Add_output_0",
+          "/feature_extractor/residual/residual.1/act_1/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.2/conv1/Conv_output_0",
+          "/feature_extractor/residual/residual.2/act/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.2/conv2/Conv_output_0",
+          "/feature_extractor/residual/residual.2/Add_output_0",
+          "/feature_extractor/residual/residual.2/act_1/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.3/conv1/Conv_output_0",
+          "/feature_extractor/residual/residual.3/act/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.3/conv2/Conv_output_0",
+          "/feature_extractor/residual/residual.3/Add_output_0",
+          "/feature_extractor/residual/residual.3/act_1/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.4/conv1/Conv_output_0",
+          "/feature_extractor/residual/residual.4/act/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.4/conv2/Conv_output_0",
+          "/feature_extractor/residual/residual.4/Add_output_0",
+          "/feature_extractor/residual/residual.4/act_1/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.5/conv1/Conv_output_0",
+          "/feature_extractor/residual/residual.5/act/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.5/conv2/Conv_output_0",
+          "/feature_extractor/residual/residual.5/Add_output_0",
+          "/feature_extractor/residual/residual.5/act_1/LeakyRelu_output_0",
+          "/feature_extractor/output_conv/Conv_output_0",
+          "/feature_extractor/downsample/downsample.2_1/Conv_output_0",
+          "/feature_extractor/residual/residual.0/conv1_1/Conv_output_0",
+          "/feature_extractor/residual/residual.0/act_2/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.0/conv2_1/Conv_output_0",
+          "/feature_extractor/residual/residual.0_1/Add_output_0",
+          "/feature_extractor/residual/residual.0/act_3/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.1/conv1_1/Conv_output_0",
+          "/feature_extractor/residual/residual.1/act_2/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.1/conv2_1/Conv_output_0",
+          "/feature_extractor/residual/residual.1_1/Add_output_0",
+          "/feature_extractor/residual/residual.1/act_3/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.2/conv1_1/Conv_output_0",
+          "/feature_extractor/residual/residual.2/act_2/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.2/conv2_1/Conv_output_0",
+          "/feature_extractor/residual/residual.2_1/Add_output_0",
+          "/feature_extractor/residual/residual.2/act_3/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.3/conv1_1/Conv_output_0",
+          "/feature_extractor/residual/residual.3/act_2/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.3/conv2_1/Conv_output_0",
+          "/feature_extractor/residual/residual.3_1/Add_output_0",
+          "/feature_extractor/residual/residual.3/act_3/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.4/conv1_1/Conv_output_0",
+          "/feature_extractor/residual/residual.4/act_2/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.4/conv2_1/Conv_output_0",
+          "/feature_extractor/residual/residual.4_1/Add_output_0",
+          "/feature_extractor/residual/residual.4/act_3/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.5/conv1_1/Conv_output_0",
+          "/feature_extractor/residual/residual.5/act_2/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.5/conv2_1/Conv_output_0",
+          "/feature_extractor/residual/residual.5_1/Add_output_0",
+          "/feature_extractor/residual/residual.5/act_3/LeakyRelu_output_0",
+          "/feature_extractor/output_conv_1/Conv_output_0",
+          "/cost_volume/Sub_output_0",
+          "/cost_volume/Transpose_23_output_0",
+          "/aggregation/filter/filter.0/Conv_output_0",
+          "/aggregation/filter/filter.1/LeakyRelu_output_0",
+          "/aggregation/filter/filter.2/Conv_output_0",
+          "/aggregation/filter/filter.3/LeakyRelu_output_0",
+          "/aggregation/filter/filter.4/Conv_output_0",
+          "/aggregation/filter/filter.5/LeakyRelu_output_0",
+          "/aggregation/filter/filter.6/Conv_output_0",
+          "/aggregation/filter/filter.7/LeakyRelu_output_0",
+          "/aggregation/Squeeze_output_0",
+          "/refinement/output_conv/Conv_output_0"
+        ],
+        "debug_copy": "armp_instrumented_debug.onnx"
+      },
+      "ort_optimization": {
+        "per_scene_max_default": [
+          0.0008344650268554688,
+          0.0014667510986328125,
+          0.000896453857421875,
+          0.000576019287109375,
+          0.001708984375
+        ],
+        "per_scene_max_disabled": [
+          0.000629425048828125,
+          0.0016231536865234375,
+          0.001247406005859375,
+          0.0013523101806640625,
+          0.00177001953125
+        ],
+        "pooled_max_default": 0.001708984375,
+        "pooled_max_disabled": 0.00177001953125,
+        "changed": true,
+        "providers_requested": [
+          "CPUExecutionProvider"
+        ],
+        "providers_used": [
+          "CPUExecutionProvider"
+        ]
+      },
+      "determinism": {
+        "pytorch_bit_identical": true,
+        "pytorch_max_abs_self_diff": 0.0,
+        "ort_bit_identical": true,
+        "ort_max_abs_self_diff": 0.0
+      },
+      "top20": [
+        {
+          "scene": "000164_10.png",
+          "y": 44,
+          "x": 1037,
+          "pytorch_pred": 59.271690368652344,
+          "onnx_pred": 59.269981384277344,
+          "abs_diff": 0.001708984375,
+          "rel_diff": 2.883306287319621e-05,
+          "gt_disparity": null,
+          "top1_prob": 0.2426891326904297,
+          "top2_prob": 0.23913899064064026,
+          "top1_minus_top2": 0.0035501420497894287,
+          "entropy": 2.425387382507324
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 43,
+          "x": 1037,
+          "pytorch_pred": 63.21471405029297,
+          "onnx_pred": 63.21307373046875,
+          "abs_diff": 0.00164031982421875,
+          "rel_diff": 2.59483863664036e-05,
+          "gt_disparity": null,
+          "top1_prob": 0.2914305031299591,
+          "top2_prob": 0.19727195799350739,
+          "top1_minus_top2": 0.09415854513645172,
+          "entropy": 2.438758373260498
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 27,
+          "x": 1035,
+          "pytorch_pred": 65.93394470214844,
+          "onnx_pred": 65.93238830566406,
+          "abs_diff": 0.001556396484375,
+          "rel_diff": 2.360539008254214e-05,
+          "gt_disparity": null,
+          "top1_prob": 0.5153587460517883,
+          "top2_prob": 0.14051130414009094,
+          "top1_minus_top2": 0.3748474419116974,
+          "entropy": 1.9953734874725342
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 28,
+          "x": 1035,
+          "pytorch_pred": 65.33787536621094,
+          "onnx_pred": 65.33634948730469,
+          "abs_diff": 0.00152587890625,
+          "rel_diff": 2.3353665813245515e-05,
+          "gt_disparity": null,
+          "top1_prob": 0.5233351588249207,
+          "top2_prob": 0.13659805059432983,
+          "top1_minus_top2": 0.3867371082305908,
+          "entropy": 1.9735267162322998
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 295,
+          "x": 1220,
+          "pytorch_pred": 56.71105194091797,
+          "onnx_pred": 56.70955276489258,
+          "abs_diff": 0.001499176025390625,
+          "rel_diff": 2.6435341508961115e-05,
+          "gt_disparity": null,
+          "top1_prob": 0.2320992648601532,
+          "top2_prob": 0.12888281047344208,
+          "top1_minus_top2": 0.10321645438671112,
+          "entropy": 2.6669576168060303
+        },
+        {
+          "scene": "000161_10.png",
+          "y": 12,
+          "x": 590,
+          "pytorch_pred": 16.56609535217285,
+          "onnx_pred": 16.567562103271484,
+          "abs_diff": 0.0014667510986328125,
+          "rel_diff": 8.853933696816138e-05,
+          "gt_disparity": null,
+          "top1_prob": 0.13441741466522217,
+          "top2_prob": 0.12996166944503784,
+          "top1_minus_top2": 0.004455745220184326,
+          "entropy": 2.776157855987549
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 42,
+          "x": 1037,
+          "pytorch_pred": 67.63833618164062,
+          "onnx_pred": 67.63688659667969,
+          "abs_diff": 0.0014495849609375,
+          "rel_diff": 2.143141068764116e-05,
+          "gt_disparity": null,
+          "top1_prob": 0.3528594374656677,
+          "top2_prob": 0.14626288414001465,
+          "top1_minus_top2": 0.20659655332565308,
+          "entropy": 2.412092924118042
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 31,
+          "x": 621,
+          "pytorch_pred": 31.12444496154785,
+          "onnx_pred": 31.125879287719727,
+          "abs_diff": 0.001434326171875,
+          "rel_diff": 4.6083590362718664e-05,
+          "gt_disparity": null,
+          "top1_prob": 0.3103673756122589,
+          "top2_prob": 0.11462686955928802,
+          "top1_minus_top2": 0.1957405060529709,
+          "entropy": 2.5520336627960205
+        },
+        {
+          "scene": "000161_10.png",
+          "y": 12,
+          "x": 591,
+          "pytorch_pred": 18.428363800048828,
+          "onnx_pred": 18.42979621887207,
+          "abs_diff": 0.0014324188232421875,
+          "rel_diff": 7.772902894603776e-05,
+          "gt_disparity": null,
+          "top1_prob": 0.14027416706085205,
+          "top2_prob": 0.1257849484682083,
+          "top1_minus_top2": 0.014489218592643738,
+          "entropy": 2.7720069885253906
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 296,
+          "x": 1220,
+          "pytorch_pred": 53.895225524902344,
+          "onnx_pred": 53.89380645751953,
+          "abs_diff": 0.0014190673828125,
+          "rel_diff": 2.6330113085004015e-05,
+          "gt_disparity": null,
+          "top1_prob": 0.2622596025466919,
+          "top2_prob": 0.11449993401765823,
+          "top1_minus_top2": 0.14775966852903366,
+          "entropy": 2.6342697143554688
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 42,
+          "x": 1040,
+          "pytorch_pred": 62.71333694458008,
+          "onnx_pred": 62.71192169189453,
+          "abs_diff": 0.001415252685546875,
+          "rel_diff": 2.256701292737005e-05,
+          "gt_disparity": null,
+          "top1_prob": 0.23712031543254852,
+          "top2_prob": 0.1357363909482956,
+          "top1_minus_top2": 0.10138392448425293,
+          "entropy": 2.6320877075195312
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 29,
+          "x": 1035,
+          "pytorch_pred": 65.8935317993164,
+          "onnx_pred": 65.89215087890625,
+          "abs_diff": 0.00138092041015625,
+          "rel_diff": 2.0956843144512633e-05,
+          "gt_disparity": null,
+          "top1_prob": 0.5262119174003601,
+          "top2_prob": 0.1327090710401535,
+          "top1_minus_top2": 0.3935028463602066,
+          "entropy": 1.968570351600647
+        },
+        {
+          "scene": "000161_10.png",
+          "y": 12,
+          "x": 592,
+          "pytorch_pred": 20.142431259155273,
+          "onnx_pred": 20.143808364868164,
+          "abs_diff": 0.001377105712890625,
+          "rel_diff": 6.836839580944954e-05,
+          "gt_disparity": null,
+          "top1_prob": 0.14350460469722748,
+          "top2_prob": 0.1218966394662857,
+          "top1_minus_top2": 0.021607965230941772,
+          "entropy": 2.7659106254577637
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 31,
+          "x": 622,
+          "pytorch_pred": 32.408958435058594,
+          "onnx_pred": 32.410335540771484,
+          "abs_diff": 0.001377105712890625,
+          "rel_diff": 4.249151405621508e-05,
+          "gt_disparity": null,
+          "top1_prob": 0.29282790422439575,
+          "top2_prob": 0.11376133561134338,
+          "top1_minus_top2": 0.17906656861305237,
+          "entropy": 2.5840582847595215
+        },
+        {
+          "scene": "000161_10.png",
+          "y": 13,
+          "x": 590,
+          "pytorch_pred": 13.76114273071289,
+          "onnx_pred": 13.762511253356934,
+          "abs_diff": 0.0013685226440429688,
+          "rel_diff": 9.944832858891316e-05,
+          "gt_disparity": null,
+          "top1_prob": 0.1322471648454666,
+          "top2_prob": 0.1304992288351059,
+          "top1_minus_top2": 0.0017479360103607178,
+          "entropy": 2.7716286182403564
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 32,
+          "x": 1034,
+          "pytorch_pred": 76.18599700927734,
+          "onnx_pred": 76.18463134765625,
+          "abs_diff": 0.00136566162109375,
+          "rel_diff": 1.792536259553619e-05,
+          "gt_disparity": null,
+          "top1_prob": 0.5048173666000366,
+          "top2_prob": 0.17612390220165253,
+          "top1_minus_top2": 0.3286934643983841,
+          "entropy": 1.9500339031219482
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 46,
+          "x": 1034,
+          "pytorch_pred": 62.96626663208008,
+          "onnx_pred": 62.96490478515625,
+          "abs_diff": 0.001361846923828125,
+          "rel_diff": 2.162819866366778e-05,
+          "gt_disparity": null,
+          "top1_prob": 0.32038095593452454,
+          "top2_prob": 0.2971327006816864,
+          "top1_minus_top2": 0.023248255252838135,
+          "entropy": 2.1972668170928955
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 41,
+          "x": 1037,
+          "pytorch_pred": 70.92012786865234,
+          "onnx_pred": 70.91877746582031,
+          "abs_diff": 0.00135040283203125,
+          "rel_diff": 1.9041178754390365e-05,
+          "gt_disparity": null,
+          "top1_prob": 0.4148135781288147,
+          "top2_prob": 0.09634517878293991,
+          "top1_minus_top2": 0.3184683993458748,
+          "entropy": 2.3402633666992188
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 295,
+          "x": 1223,
+          "pytorch_pred": 57.64775848388672,
+          "onnx_pred": 57.64640808105469,
+          "abs_diff": 0.00135040283203125,
+          "rel_diff": 2.3425070940246208e-05,
+          "gt_disparity": null,
+          "top1_prob": 0.27874210476875305,
+          "top2_prob": 0.16235962510108948,
+          "top1_minus_top2": 0.11638247966766357,
+          "entropy": 2.5700337886810303
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 295,
+          "x": 1224,
+          "pytorch_pred": 56.08880615234375,
+          "onnx_pred": 56.087459564208984,
+          "abs_diff": 0.001346588134765625,
+          "rel_diff": 2.400814399771873e-05,
+          "gt_disparity": 104.52734375,
+          "top1_prob": 0.2609866261482239,
+          "top2_prob": 0.1837213635444641,
+          "top1_minus_top2": 0.07726526260375977,
+          "entropy": 2.5746381282806396
+        }
+      ]
+    },
+    "p2a": {
+      "magnitude": {
+        "total_pixels": 2266880,
+        "bin_counts": {
+          "0.0001": 7620,
+          "0.0005": 40,
+          "0.001": 0,
+          "0.0015": 0,
+          "0.0017": 0
+        },
+        "bin_fractions": {
+          "0.0001": 0.003361448334274421,
+          "0.0005": 1.7645398080180688e-05,
+          "0.001": 0.0,
+          "0.0015": 0.0,
+          "0.0017": 0.0
+        },
+        "max": 0.00061798095703125,
+        "mean": 4.433798864021064e-06,
+        "median": 1.9073486328125e-06,
+        "percentiles": {
+          "99.0": 5.340576171875e-05,
+          "99.9": 0.0001678466796875,
+          "99.99": 0.00032806396484375,
+          "99.999": 0.0005200622940062516
+        },
+        "per_scene": [
+          {
+            "scene": "000160_10.png",
+            "total_pixels": 453376,
+            "bin_counts": {
+              "0.0001": 341,
+              "0.0005": 0,
+              "0.001": 0,
+              "0.0015": 0,
+              "0.0017": 0
+            },
+            "bin_fractions": {
+              "0.0001": 0.0007521350931677019,
+              "0.0005": 0.0,
+              "0.001": 0.0,
+              "0.0015": 0.0,
+              "0.0017": 0.0
+            },
+            "max": 0.00022125244140625,
+            "mean": 3.1461559534745996e-06,
+            "median": 1.9073486328125e-06,
+            "percentiles": {
+              "99.0": 2.288818359375e-05,
+              "99.9": 8.7738037109375e-05,
+              "99.99": 0.000152587890625,
+              "99.999": 0.00020599365234375
+            },
+            "max_off_opt": 0.000232696533203125,
+            "mean_off_opt": 5.412589125482461e-06,
+            "n_above_1e3": 0,
+            "n_above_1e4": 341,
+            "border_dist_1e3": null,
+            "border_dist_1e4": {
+              "n": 341,
+              "mean": 10.498533724340176,
+              "median": 7.0,
+              "max": 70.0,
+              "p90": 24.0
+            },
+            "gt_valid_frac_1e3": null,
+            "gt_at_1e3": null,
+            "dispgrad_at_1e3": null,
+            "texture_at_1e3": null,
+            "occ_frac_1e3": null
+          },
+          {
+            "scene": "000161_10.png",
+            "total_pixels": 453376,
+            "bin_counts": {
+              "0.0001": 546,
+              "0.0005": 0,
+              "0.001": 0,
+              "0.0015": 0,
+              "0.0017": 0
+            },
+            "bin_fractions": {
+              "0.0001": 0.001204298418972332,
+              "0.0005": 0.0,
+              "0.001": 0.0,
+              "0.0015": 0.0,
+              "0.0017": 0.0
+            },
+            "max": 0.000415802001953125,
+            "mean": 3.977325854834563e-06,
+            "median": 1.9073486328125e-06,
+            "percentiles": {
+              "99.0": 3.4332275390625e-05,
+              "99.9": 0.0001087188720703125,
+              "99.99": 0.00019772052764888137,
+              "99.999": 0.0003689956665038352
+            },
+            "max_off_opt": 0.000396728515625,
+            "mean_off_opt": 7.419153324363596e-06,
+            "n_above_1e3": 0,
+            "n_above_1e4": 546,
+            "border_dist_1e3": null,
+            "border_dist_1e4": {
+              "n": 546,
+              "mean": 12.075091575091575,
+              "median": 9.0,
+              "max": 54.0,
+              "p90": 25.0
+            },
+            "gt_valid_frac_1e3": null,
+            "gt_at_1e3": null,
+            "dispgrad_at_1e3": null,
+            "texture_at_1e3": null,
+            "occ_frac_1e3": null
+          },
+          {
+            "scene": "000162_10.png",
+            "total_pixels": 453376,
+            "bin_counts": {
+              "0.0001": 1522,
+              "0.0005": 0,
+              "0.001": 0,
+              "0.0015": 0,
+              "0.0017": 0
+            },
+            "bin_fractions": {
+              "0.0001": 0.003357036984754376,
+              "0.0005": 0.0,
+              "0.001": 0.0,
+              "0.0015": 0.0,
+              "0.0017": 0.0
+            },
+            "max": 0.00034332275390625,
+            "mean": 4.3512673818210234e-06,
+            "median": 1.9073486328125e-06,
+            "percentiles": {
+              "99.0": 4.9591064453125e-05,
+              "99.9": 0.000152587890625,
+              "99.99": 0.000213623046875,
+              "99.999": 0.0002817726135253551
+            },
+            "max_off_opt": 0.00028228759765625,
+            "mean_off_opt": 7.198529264335912e-06,
+            "n_above_1e3": 0,
+            "n_above_1e4": 1522,
+            "border_dist_1e3": null,
+            "border_dist_1e4": {
+              "n": 1522,
+              "mean": 28.90341655716163,
+              "median": 20.0,
+              "max": 93.0,
+              "p90": 69.0
+            },
+            "gt_valid_frac_1e3": null,
+            "gt_at_1e3": null,
+            "dispgrad_at_1e3": null,
+            "texture_at_1e3": null,
+            "occ_frac_1e3": null
+          },
+          {
+            "scene": "000163_10.png",
+            "total_pixels": 453376,
+            "bin_counts": {
+              "0.0001": 60,
+              "0.0005": 0,
+              "0.001": 0,
+              "0.0015": 0,
+              "0.0017": 0
+            },
+            "bin_fractions": {
+              "0.0001": 0.00013234048560135516,
+              "0.0005": 0.0,
+              "0.001": 0.0,
+              "0.0015": 0.0,
+              "0.0017": 0.0
+            },
+            "max": 0.0001354217529296875,
+            "mean": 3.3243456755500266e-06,
+            "median": 1.9073486328125e-06,
+            "percentiles": {
+              "99.0": 2.288818359375e-05,
+              "99.9": 6.163120269780942e-05,
+              "99.99": 0.000102996826171875,
+              "99.999": 0.00012575626373290127
+            },
+            "max_off_opt": 0.00014495849609375,
+            "mean_off_opt": 5.9235355128412665e-06,
+            "n_above_1e3": 0,
+            "n_above_1e4": 60,
+            "border_dist_1e3": null,
+            "border_dist_1e4": {
+              "n": 60,
+              "mean": 129.7,
+              "median": 142.5,
+              "max": 166.0,
+              "p90": 159.0
+            },
+            "gt_valid_frac_1e3": null,
+            "gt_at_1e3": null,
+            "dispgrad_at_1e3": null,
+            "texture_at_1e3": null,
+            "occ_frac_1e3": null
+          },
+          {
+            "scene": "000164_10.png",
+            "total_pixels": 453376,
+            "bin_counts": {
+              "0.0001": 5151,
+              "0.0005": 40,
+              "0.001": 0,
+              "0.0015": 0,
+              "0.0017": 0
+            },
+            "bin_fractions": {
+              "0.0001": 0.011361430688876342,
+              "0.0005": 8.822699040090344e-05,
+              "0.001": 0.0,
+              "0.0015": 0.0,
+              "0.0017": 0.0
+            },
+            "max": 0.00061798095703125,
+            "mean": 7.369899454425109e-06,
+            "median": 1.9073486328125e-06,
+            "percentiles": {
+              "99.0": 0.0001068115234375,
+              "99.9": 0.00026702880859375,
+              "99.99": 0.00048699378967276274,
+              "99.999": 0.000579833984375
+            },
+            "max_off_opt": 0.00079345703125,
+            "mean_off_opt": 1.1018194460148598e-05,
+            "n_above_1e3": 0,
+            "n_above_1e4": 5151,
+            "border_dist_1e3": null,
+            "border_dist_1e4": {
+              "n": 5151,
+              "mean": 72.94175888177053,
+              "median": 67.0,
+              "max": 183.0,
+              "p90": 152.0
+            },
+            "gt_valid_frac_1e3": null,
+            "gt_at_1e3": null,
+            "dispgrad_at_1e3": null,
+            "texture_at_1e3": null,
+            "occ_frac_1e3": null
+          }
+        ],
+        "bins_are_diagnostic_only": true
+      },
+      "spatial": {
+        "n_above_1e3_pooled": 0,
+        "n_above_1e4_pooled": 7620,
+        "border_dist_1e3": null,
+        "border_dist_1e4": {
+          "n": 7620,
+          "mean": 57.436876640419946,
+          "median": 36.0,
+          "max": 183.0,
+          "p90": 143.0
+        },
+        "dispgrad_disc_1e3": null,
+        "dispgrad_all": {
+          "n": 2266880,
+          "mean": 0.3067322475936833,
+          "median": 0.19285743977119663,
+          "max": 27.777608931796475,
+          "p90": 0.4864758395911466
+        },
+        "texture_disc_1e3": null,
+        "texture_all": {
+          "n": 2266880,
+          "mean": 10.796051348632746,
+          "median": 4.249900042941652,
+          "max": 139.2708829915643,
+          "p90": 31.34709445822385
+        },
+        "gt_valid_frac_disc_1e3": null,
+        "gt_at_disc_1e3": null,
+        "gt_all_valid": {
+          "n": 478453,
+          "mean": 41.12642340261217,
+          "median": 36.3984375,
+          "max": 129.45703125,
+          "p90": 65.8125
+        },
+        "occ_frac_disc_1e3": null,
+        "occ_frac_all_validgt": 0.0244788934336288
+      },
+      "ties": {
+        "mapping": "cost upsampled with F.interpolate(bilinear, align_corners=True) to (368,1232), then standardised across dim=1 (mean/std + 1e-6, because regression_normalize=True) and softmax(-cost): exact reproduction of src/models/stereonet/regression.py soft_argmin at full resolution, so no approximate low-res cell mapping is used.",
+        "pred_disparity_disc_1e3": null,
+        "pred_disparity_all": {
+          "n": 2266880,
+          "mean": 30.220328749033172,
+          "median": 20.465030670166016,
+          "max": 121.237060546875,
+          "p90": 60.82569961547851
+        },
+        "disc": null,
+        "ordinary_sample": {
+          "t1": {
+            "n": 5000,
+            "mean": 0.5626259248837828,
+            "median": 0.5474385917186737,
+            "max": 0.8511350154876709,
+            "p90": 0.779295575618744
+          },
+          "t2": {
+            "n": 5000,
+            "mean": 0.15785749916192143,
+            "median": 0.14254872500896454,
+            "max": 0.36801978945732117,
+            "p90": 0.2942907065153122
+          },
+          "gap": {
+            "n": 5000,
+            "mean": 0.40476842572186145,
+            "median": 0.39743946492671967,
+            "max": 0.842782293446362,
+            "p90": 0.7367509197443727
+          },
+          "ent": {
+            "n": 5000,
+            "mean": 1.7278803610801696,
+            "median": 1.83104008436203,
+            "max": 2.968012809753418,
+            "p90": 2.021291780471802
+          }
+        },
+        "n_disc": 0,
+        "n_ordinary_sample": 5000
+      },
+      "stages": {
+        "left_features": {
+          "onnx_tensor": "/feature_extractor/output_conv/Conv_output_0",
+          "best_max_abs": 4.515625,
+          "max_abs_value": 15841374.0,
+          "relative": 3.116838223755086e-07,
+          "sibling_stage_max_abs": 18454468.25,
+          "other_branch_max_abs": 18454471.75,
+          "status": "located",
+          "max_abs": 4.9375,
+          "mean_abs": 0.3020557974334249,
+          "material": true
+        },
+        "right_features": {
+          "onnx_tensor": "/feature_extractor/output_conv_1/Conv_output_0",
+          "best_max_abs": 4.4705810546875,
+          "max_abs_value": 16739738.0,
+          "relative": 3.098913495539775e-07,
+          "sibling_stage_max_abs": 18454471.75,
+          "other_branch_max_abs": 18454468.25,
+          "status": "located",
+          "max_abs": 5.1875,
+          "mean_abs": 0.30407686929609196,
+          "material": true
+        },
+        "cost_volume": {
+          "onnx_tensor": "/cost_volume/Transpose_23_output_0",
+          "best_max_abs": 6.875,
+          "max_abs_value": 20632366.0,
+          "relative": 4.1803252230015696e-07,
+          "runner_up_max_abs": 176688202.0,
+          "n_candidates_same_shape": 9,
+          "status": "located",
+          "max_abs": 8.625,
+          "mean_abs": 0.42469198306422606,
+          "material": true
+        },
+        "aggregated_cost": {
+          "onnx_tensor": "/aggregation/Squeeze_output_0",
+          "best_max_abs": 6144.0,
+          "max_abs_value": 6155218944.0,
+          "relative": 9.981773281987092e-07,
+          "status": "located",
+          "max_abs": 6144.0,
+          "mean_abs": 56.193824279759305,
+          "material": true
+        },
+        "disparity_initial": {
+          "status": "UNKNOWN",
+          "reason": "Resize output shape uninferable ((None,None,None,None)); all downstream regression tensors incl. the ReduceSum_output_0 disparity_initial have unknown shapes under onnx.shape_inference.infer_shapes",
+          "suspected_node": "/regression/ReduceSum_output_0",
+          "max_abs": null,
+          "mean_abs": null,
+          "relative": null,
+          "material": false
+        },
+        "refinement_residual": {
+          "onnx_tensor": "/refinement/output_conv/Conv_output_0",
+          "best_max_abs": 0.000164031982421875,
+          "max_abs_value": 109.85455322265625,
+          "relative": 5.417097024930314e-06,
+          "decoy_final_vs_residual": 10.700424194335938,
+          "status": "located",
+          "max_abs": 0.0005950927734375,
+          "mean_abs": 3.860635198610674e-06,
+          "material": true
+        },
+        "disparity_final": {
+          "onnx_tensor": "disparity",
+          "best_max_abs": 0.00022125244140625,
+          "max_abs_value": 121.237060546875,
+          "relative": 5.128758908308111e-06,
+          "status": "located",
+          "max_abs": 0.000621795654296875,
+          "mean_abs": 4.3399029325658085e-06,
+          "material": true
+        }
+      },
+      "first_material_stage": "left_features",
+      "localisation_info": {
+        "candidates": {
+          "left_features": [
+            {
+              "name": "/feature_extractor/downsample/downsample.2/Conv_output_0",
+              "node_idx": 2,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/conv1/Conv_output_0",
+              "node_idx": 3,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/act/LeakyRelu_output_0",
+              "node_idx": 4,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/conv2/Conv_output_0",
+              "node_idx": 5,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/Add_output_0",
+              "node_idx": 6,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/act_1/LeakyRelu_output_0",
+              "node_idx": 7,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/conv1/Conv_output_0",
+              "node_idx": 8,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/act/LeakyRelu_output_0",
+              "node_idx": 9,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/conv2/Conv_output_0",
+              "node_idx": 10,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/Add_output_0",
+              "node_idx": 11,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/act_1/LeakyRelu_output_0",
+              "node_idx": 12,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/conv1/Conv_output_0",
+              "node_idx": 13,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/act/LeakyRelu_output_0",
+              "node_idx": 14,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/conv2/Conv_output_0",
+              "node_idx": 15,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/Add_output_0",
+              "node_idx": 16,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/act_1/LeakyRelu_output_0",
+              "node_idx": 17,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/conv1/Conv_output_0",
+              "node_idx": 18,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/act/LeakyRelu_output_0",
+              "node_idx": 19,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/conv2/Conv_output_0",
+              "node_idx": 20,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/Add_output_0",
+              "node_idx": 21,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/act_1/LeakyRelu_output_0",
+              "node_idx": 22,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/conv1/Conv_output_0",
+              "node_idx": 23,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/act/LeakyRelu_output_0",
+              "node_idx": 24,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/conv2/Conv_output_0",
+              "node_idx": 25,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/Add_output_0",
+              "node_idx": 26,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/act_1/LeakyRelu_output_0",
+              "node_idx": 27,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/conv1/Conv_output_0",
+              "node_idx": 28,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/act/LeakyRelu_output_0",
+              "node_idx": 29,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/conv2/Conv_output_0",
+              "node_idx": 30,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/Add_output_0",
+              "node_idx": 31,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/act_1/LeakyRelu_output_0",
+              "node_idx": 32,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/output_conv/Conv_output_0",
+              "node_idx": 33,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/downsample/downsample.2_1/Conv_output_0",
+              "node_idx": 36,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/conv1_1/Conv_output_0",
+              "node_idx": 37,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/act_2/LeakyRelu_output_0",
+              "node_idx": 38,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/conv2_1/Conv_output_0",
+              "node_idx": 39,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0_1/Add_output_0",
+              "node_idx": 40,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/act_3/LeakyRelu_output_0",
+              "node_idx": 41,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/conv1_1/Conv_output_0",
+              "node_idx": 42,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/act_2/LeakyRelu_output_0",
+              "node_idx": 43,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/conv2_1/Conv_output_0",
+              "node_idx": 44,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1_1/Add_output_0",
+              "node_idx": 45,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/act_3/LeakyRelu_output_0",
+              "node_idx": 46,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/conv1_1/Conv_output_0",
+              "node_idx": 47,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/act_2/LeakyRelu_output_0",
+              "node_idx": 48,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/conv2_1/Conv_output_0",
+              "node_idx": 49,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2_1/Add_output_0",
+              "node_idx": 50,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/act_3/LeakyRelu_output_0",
+              "node_idx": 51,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/conv1_1/Conv_output_0",
+              "node_idx": 52,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/act_2/LeakyRelu_output_0",
+              "node_idx": 53,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/conv2_1/Conv_output_0",
+              "node_idx": 54,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3_1/Add_output_0",
+              "node_idx": 55,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/act_3/LeakyRelu_output_0",
+              "node_idx": 56,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/conv1_1/Conv_output_0",
+              "node_idx": 57,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/act_2/LeakyRelu_output_0",
+              "node_idx": 58,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/conv2_1/Conv_output_0",
+              "node_idx": 59,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4_1/Add_output_0",
+              "node_idx": 60,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/act_3/LeakyRelu_output_0",
+              "node_idx": 61,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/conv1_1/Conv_output_0",
+              "node_idx": 62,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/act_2/LeakyRelu_output_0",
+              "node_idx": 63,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/conv2_1/Conv_output_0",
+              "node_idx": 64,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5_1/Add_output_0",
+              "node_idx": 65,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/act_3/LeakyRelu_output_0",
+              "node_idx": 66,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/output_conv_1/Conv_output_0",
+              "node_idx": 67,
+              "op": "Conv"
+            },
+            {
+              "name": "/cost_volume/Sub_output_0",
+              "node_idx": 68,
+              "op": "Sub"
+            }
+          ],
+          "right_features": [
+            {
+              "name": "/feature_extractor/downsample/downsample.2/Conv_output_0",
+              "node_idx": 2,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/conv1/Conv_output_0",
+              "node_idx": 3,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/act/LeakyRelu_output_0",
+              "node_idx": 4,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/conv2/Conv_output_0",
+              "node_idx": 5,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/Add_output_0",
+              "node_idx": 6,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/act_1/LeakyRelu_output_0",
+              "node_idx": 7,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/conv1/Conv_output_0",
+              "node_idx": 8,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/act/LeakyRelu_output_0",
+              "node_idx": 9,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/conv2/Conv_output_0",
+              "node_idx": 10,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/Add_output_0",
+              "node_idx": 11,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/act_1/LeakyRelu_output_0",
+              "node_idx": 12,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/conv1/Conv_output_0",
+              "node_idx": 13,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/act/LeakyRelu_output_0",
+              "node_idx": 14,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/conv2/Conv_output_0",
+              "node_idx": 15,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/Add_output_0",
+              "node_idx": 16,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/act_1/LeakyRelu_output_0",
+              "node_idx": 17,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/conv1/Conv_output_0",
+              "node_idx": 18,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/act/LeakyRelu_output_0",
+              "node_idx": 19,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/conv2/Conv_output_0",
+              "node_idx": 20,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/Add_output_0",
+              "node_idx": 21,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/act_1/LeakyRelu_output_0",
+              "node_idx": 22,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/conv1/Conv_output_0",
+              "node_idx": 23,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/act/LeakyRelu_output_0",
+              "node_idx": 24,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/conv2/Conv_output_0",
+              "node_idx": 25,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/Add_output_0",
+              "node_idx": 26,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/act_1/LeakyRelu_output_0",
+              "node_idx": 27,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/conv1/Conv_output_0",
+              "node_idx": 28,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/act/LeakyRelu_output_0",
+              "node_idx": 29,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/conv2/Conv_output_0",
+              "node_idx": 30,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/Add_output_0",
+              "node_idx": 31,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/act_1/LeakyRelu_output_0",
+              "node_idx": 32,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/output_conv/Conv_output_0",
+              "node_idx": 33,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/downsample/downsample.2_1/Conv_output_0",
+              "node_idx": 36,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/conv1_1/Conv_output_0",
+              "node_idx": 37,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/act_2/LeakyRelu_output_0",
+              "node_idx": 38,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/conv2_1/Conv_output_0",
+              "node_idx": 39,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0_1/Add_output_0",
+              "node_idx": 40,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.0/act_3/LeakyRelu_output_0",
+              "node_idx": 41,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/conv1_1/Conv_output_0",
+              "node_idx": 42,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/act_2/LeakyRelu_output_0",
+              "node_idx": 43,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/conv2_1/Conv_output_0",
+              "node_idx": 44,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1_1/Add_output_0",
+              "node_idx": 45,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.1/act_3/LeakyRelu_output_0",
+              "node_idx": 46,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/conv1_1/Conv_output_0",
+              "node_idx": 47,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/act_2/LeakyRelu_output_0",
+              "node_idx": 48,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/conv2_1/Conv_output_0",
+              "node_idx": 49,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2_1/Add_output_0",
+              "node_idx": 50,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.2/act_3/LeakyRelu_output_0",
+              "node_idx": 51,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/conv1_1/Conv_output_0",
+              "node_idx": 52,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/act_2/LeakyRelu_output_0",
+              "node_idx": 53,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/conv2_1/Conv_output_0",
+              "node_idx": 54,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3_1/Add_output_0",
+              "node_idx": 55,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.3/act_3/LeakyRelu_output_0",
+              "node_idx": 56,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/conv1_1/Conv_output_0",
+              "node_idx": 57,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/act_2/LeakyRelu_output_0",
+              "node_idx": 58,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/conv2_1/Conv_output_0",
+              "node_idx": 59,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4_1/Add_output_0",
+              "node_idx": 60,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.4/act_3/LeakyRelu_output_0",
+              "node_idx": 61,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/conv1_1/Conv_output_0",
+              "node_idx": 62,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/act_2/LeakyRelu_output_0",
+              "node_idx": 63,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/conv2_1/Conv_output_0",
+              "node_idx": 64,
+              "op": "Conv"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5_1/Add_output_0",
+              "node_idx": 65,
+              "op": "Add"
+            },
+            {
+              "name": "/feature_extractor/residual/residual.5/act_3/LeakyRelu_output_0",
+              "node_idx": 66,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/feature_extractor/output_conv_1/Conv_output_0",
+              "node_idx": 67,
+              "op": "Conv"
+            },
+            {
+              "name": "/cost_volume/Sub_output_0",
+              "node_idx": 68,
+              "op": "Sub"
+            }
+          ],
+          "cost_volume": [
+            {
+              "name": "/cost_volume/Transpose_23_output_0",
+              "node_idx": 624,
+              "op": "Transpose"
+            },
+            {
+              "name": "/aggregation/filter/filter.0/Conv_output_0",
+              "node_idx": 625,
+              "op": "Conv"
+            },
+            {
+              "name": "/aggregation/filter/filter.1/LeakyRelu_output_0",
+              "node_idx": 626,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/aggregation/filter/filter.2/Conv_output_0",
+              "node_idx": 627,
+              "op": "Conv"
+            },
+            {
+              "name": "/aggregation/filter/filter.3/LeakyRelu_output_0",
+              "node_idx": 628,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/aggregation/filter/filter.4/Conv_output_0",
+              "node_idx": 629,
+              "op": "Conv"
+            },
+            {
+              "name": "/aggregation/filter/filter.5/LeakyRelu_output_0",
+              "node_idx": 630,
+              "op": "LeakyRelu"
+            },
+            {
+              "name": "/aggregation/filter/filter.6/Conv_output_0",
+              "node_idx": 631,
+              "op": "Conv"
+            },
+            {
+              "name": "/aggregation/filter/filter.7/LeakyRelu_output_0",
+              "node_idx": 632,
+              "op": "LeakyRelu"
+            }
+          ],
+          "aggregated_cost": [
+            {
+              "name": "/aggregation/Squeeze_output_0",
+              "node_idx": 635,
+              "op": "Squeeze"
+            }
+          ],
+          "disparity_initial": [
+            {
+              "name": "/refinement/output_conv/Conv_output_0",
+              "node_idx": 709,
+              "op": "Conv"
+            },
+            {
+              "name": "disparity",
+              "node_idx": 711,
+              "op": "Relu"
+            }
+          ],
+          "refinement_residual": [
+            {
+              "name": "/refinement/output_conv/Conv_output_0",
+              "node_idx": 709,
+              "op": "Conv"
+            },
+            {
+              "name": "disparity",
+              "node_idx": 711,
+              "op": "Relu"
+            }
+          ],
+          "disparity_final": [
+            {
+              "name": "/refinement/output_conv/Conv_output_0",
+              "node_idx": 709,
+              "op": "Conv"
+            },
+            {
+              "name": "disparity",
+              "node_idx": 711,
+              "op": "Relu"
+            }
+          ]
+        },
+        "added_outputs": [
+          "/feature_extractor/downsample/downsample.2/Conv_output_0",
+          "/feature_extractor/residual/residual.0/conv1/Conv_output_0",
+          "/feature_extractor/residual/residual.0/act/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.0/conv2/Conv_output_0",
+          "/feature_extractor/residual/residual.0/Add_output_0",
+          "/feature_extractor/residual/residual.0/act_1/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.1/conv1/Conv_output_0",
+          "/feature_extractor/residual/residual.1/act/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.1/conv2/Conv_output_0",
+          "/feature_extractor/residual/residual.1/Add_output_0",
+          "/feature_extractor/residual/residual.1/act_1/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.2/conv1/Conv_output_0",
+          "/feature_extractor/residual/residual.2/act/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.2/conv2/Conv_output_0",
+          "/feature_extractor/residual/residual.2/Add_output_0",
+          "/feature_extractor/residual/residual.2/act_1/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.3/conv1/Conv_output_0",
+          "/feature_extractor/residual/residual.3/act/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.3/conv2/Conv_output_0",
+          "/feature_extractor/residual/residual.3/Add_output_0",
+          "/feature_extractor/residual/residual.3/act_1/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.4/conv1/Conv_output_0",
+          "/feature_extractor/residual/residual.4/act/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.4/conv2/Conv_output_0",
+          "/feature_extractor/residual/residual.4/Add_output_0",
+          "/feature_extractor/residual/residual.4/act_1/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.5/conv1/Conv_output_0",
+          "/feature_extractor/residual/residual.5/act/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.5/conv2/Conv_output_0",
+          "/feature_extractor/residual/residual.5/Add_output_0",
+          "/feature_extractor/residual/residual.5/act_1/LeakyRelu_output_0",
+          "/feature_extractor/output_conv/Conv_output_0",
+          "/feature_extractor/downsample/downsample.2_1/Conv_output_0",
+          "/feature_extractor/residual/residual.0/conv1_1/Conv_output_0",
+          "/feature_extractor/residual/residual.0/act_2/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.0/conv2_1/Conv_output_0",
+          "/feature_extractor/residual/residual.0_1/Add_output_0",
+          "/feature_extractor/residual/residual.0/act_3/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.1/conv1_1/Conv_output_0",
+          "/feature_extractor/residual/residual.1/act_2/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.1/conv2_1/Conv_output_0",
+          "/feature_extractor/residual/residual.1_1/Add_output_0",
+          "/feature_extractor/residual/residual.1/act_3/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.2/conv1_1/Conv_output_0",
+          "/feature_extractor/residual/residual.2/act_2/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.2/conv2_1/Conv_output_0",
+          "/feature_extractor/residual/residual.2_1/Add_output_0",
+          "/feature_extractor/residual/residual.2/act_3/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.3/conv1_1/Conv_output_0",
+          "/feature_extractor/residual/residual.3/act_2/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.3/conv2_1/Conv_output_0",
+          "/feature_extractor/residual/residual.3_1/Add_output_0",
+          "/feature_extractor/residual/residual.3/act_3/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.4/conv1_1/Conv_output_0",
+          "/feature_extractor/residual/residual.4/act_2/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.4/conv2_1/Conv_output_0",
+          "/feature_extractor/residual/residual.4_1/Add_output_0",
+          "/feature_extractor/residual/residual.4/act_3/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.5/conv1_1/Conv_output_0",
+          "/feature_extractor/residual/residual.5/act_2/LeakyRelu_output_0",
+          "/feature_extractor/residual/residual.5/conv2_1/Conv_output_0",
+          "/feature_extractor/residual/residual.5_1/Add_output_0",
+          "/feature_extractor/residual/residual.5/act_3/LeakyRelu_output_0",
+          "/feature_extractor/output_conv_1/Conv_output_0",
+          "/cost_volume/Sub_output_0",
+          "/cost_volume/Transpose_23_output_0",
+          "/aggregation/filter/filter.0/Conv_output_0",
+          "/aggregation/filter/filter.1/LeakyRelu_output_0",
+          "/aggregation/filter/filter.2/Conv_output_0",
+          "/aggregation/filter/filter.3/LeakyRelu_output_0",
+          "/aggregation/filter/filter.4/Conv_output_0",
+          "/aggregation/filter/filter.5/LeakyRelu_output_0",
+          "/aggregation/filter/filter.6/Conv_output_0",
+          "/aggregation/filter/filter.7/LeakyRelu_output_0",
+          "/aggregation/Squeeze_output_0",
+          "/refinement/output_conv/Conv_output_0"
+        ],
+        "debug_copy": "p2a_instrumented_debug.onnx"
+      },
+      "ort_optimization": {
+        "per_scene_max_default": [
+          0.00022125244140625,
+          0.000415802001953125,
+          0.00034332275390625,
+          0.0001354217529296875,
+          0.00061798095703125
+        ],
+        "per_scene_max_disabled": [
+          0.000232696533203125,
+          0.000396728515625,
+          0.00028228759765625,
+          0.00014495849609375,
+          0.00079345703125
+        ],
+        "pooled_max_default": 0.00061798095703125,
+        "pooled_max_disabled": 0.00079345703125,
+        "changed": true,
+        "providers_requested": [
+          "CPUExecutionProvider"
+        ],
+        "providers_used": [
+          "CPUExecutionProvider"
+        ]
+      },
+      "determinism": {
+        "pytorch_bit_identical": true,
+        "pytorch_max_abs_self_diff": 0.0,
+        "ort_bit_identical": true,
+        "ort_max_abs_self_diff": 0.0
+      },
+      "top20": [
+        {
+          "scene": "000164_10.png",
+          "y": 99,
+          "x": 1029,
+          "pytorch_pred": 56.665679931640625,
+          "onnx_pred": 56.666297912597656,
+          "abs_diff": 0.00061798095703125,
+          "rel_diff": 1.0905736201820014e-05,
+          "gt_disparity": null,
+          "top1_prob": 0.23971793055534363,
+          "top2_prob": 0.11092672497034073,
+          "top1_minus_top2": 0.1287912055850029,
+          "entropy": 2.7069878578186035
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 100,
+          "x": 1029,
+          "pytorch_pred": 58.56635284423828,
+          "onnx_pred": 58.566959381103516,
+          "abs_diff": 0.000606536865234375,
+          "rel_diff": 1.0356404928397984e-05,
+          "gt_disparity": null,
+          "top1_prob": 0.24124303460121155,
+          "top2_prob": 0.10648403316736221,
+          "top1_minus_top2": 0.13475900143384933,
+          "entropy": 2.7054312229156494
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 98,
+          "x": 1029,
+          "pytorch_pred": 55.247066497802734,
+          "onnx_pred": 55.247657775878906,
+          "abs_diff": 0.000591278076171875,
+          "rel_diff": 1.0702433878464486e-05,
+          "gt_disparity": null,
+          "top1_prob": 0.23721416294574738,
+          "top2_prob": 0.11511192470788956,
+          "top1_minus_top2": 0.12210223823785782,
+          "entropy": 2.709473133087158
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 96,
+          "x": 1030,
+          "pytorch_pred": 61.742942810058594,
+          "onnx_pred": 61.74352264404297,
+          "abs_diff": 0.000579833984375,
+          "rel_diff": 9.391097313886525e-06,
+          "gt_disparity": null,
+          "top1_prob": 0.1768004149198532,
+          "top2_prob": 0.17060719430446625,
+          "top1_minus_top2": 0.006193220615386963,
+          "entropy": 2.7034459114074707
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 97,
+          "x": 1030,
+          "pytorch_pred": 63.088340759277344,
+          "onnx_pred": 63.08892059326172,
+          "abs_diff": 0.000579833984375,
+          "rel_diff": 9.190826345987302e-06,
+          "gt_disparity": null,
+          "top1_prob": 0.20025581121444702,
+          "top2_prob": 0.15309211611747742,
+          "top1_minus_top2": 0.047163695096969604,
+          "entropy": 2.7038660049438477
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 101,
+          "x": 1029,
+          "pytorch_pred": 61.01033020019531,
+          "onnx_pred": 61.01091003417969,
+          "abs_diff": 0.000579833984375,
+          "rel_diff": 9.50386569737225e-06,
+          "gt_disparity": null,
+          "top1_prob": 0.2416919618844986,
+          "top2_prob": 0.10183333605527878,
+          "top1_minus_top2": 0.13985862582921982,
+          "entropy": 2.7049403190612793
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 88,
+          "x": 1031,
+          "pytorch_pred": 57.31578063964844,
+          "onnx_pred": 57.31635284423828,
+          "abs_diff": 0.00057220458984375,
+          "rel_diff": 9.983369038297892e-06,
+          "gt_disparity": null,
+          "top1_prob": 0.2554369568824768,
+          "top2_prob": 0.16328617930412292,
+          "top1_minus_top2": 0.09215077757835388,
+          "entropy": 2.588977575302124
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 89,
+          "x": 1031,
+          "pytorch_pred": 58.22014617919922,
+          "onnx_pred": 58.22071838378906,
+          "abs_diff": 0.00057220458984375,
+          "rel_diff": 9.82829187825324e-06,
+          "gt_disparity": null,
+          "top1_prob": 0.26968497037887573,
+          "top2_prob": 0.1752665787935257,
+          "top1_minus_top2": 0.09441839158535004,
+          "entropy": 2.5598626136779785
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 99,
+          "x": 1030,
+          "pytorch_pred": 65.97096252441406,
+          "onnx_pred": 65.97152709960938,
+          "abs_diff": 0.0005645751953125,
+          "rel_diff": 8.557934789924545e-06,
+          "gt_disparity": null,
+          "top1_prob": 0.22708097100257874,
+          "top2_prob": 0.1328754723072052,
+          "top1_minus_top2": 0.09420549869537354,
+          "entropy": 2.6920418739318848
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 95,
+          "x": 1030,
+          "pytorch_pred": 60.266170501708984,
+          "onnx_pred": 60.2667350769043,
+          "abs_diff": 0.0005645751953125,
+          "rel_diff": 9.368028374998222e-06,
+          "gt_disparity": null,
+          "top1_prob": 0.18870151042938232,
+          "top2_prob": 0.1535365879535675,
+          "top1_minus_top2": 0.03516492247581482,
+          "entropy": 2.69404935836792
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 94,
+          "x": 1030,
+          "pytorch_pred": 58.47267532348633,
+          "onnx_pred": 58.473236083984375,
+          "abs_diff": 0.000560760498046875,
+          "rel_diff": 9.590128978101135e-06,
+          "gt_disparity": null,
+          "top1_prob": 0.2067861706018448,
+          "top2_prob": 0.1522304117679596,
+          "top1_minus_top2": 0.05455575883388519,
+          "entropy": 2.6760122776031494
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 93,
+          "x": 1030,
+          "pytorch_pred": 56.46038818359375,
+          "onnx_pred": 56.4609489440918,
+          "abs_diff": 0.000560760498046875,
+          "rel_diff": 9.931927783128681e-06,
+          "gt_disparity": null,
+          "top1_prob": 0.22421947121620178,
+          "top2_prob": 0.1628955900669098,
+          "top1_minus_top2": 0.06132388114929199,
+          "entropy": 2.650757312774658
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 97,
+          "x": 1029,
+          "pytorch_pred": 53.8787956237793,
+          "onnx_pred": 53.87935256958008,
+          "abs_diff": 0.00055694580078125,
+          "rel_diff": 1.0337012814284823e-05,
+          "gt_disparity": null,
+          "top1_prob": 0.21897387504577637,
+          "top2_prob": 0.1279321163892746,
+          "top1_minus_top2": 0.09104175865650177,
+          "entropy": 2.721451997756958
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 98,
+          "x": 1030,
+          "pytorch_pred": 64.5543212890625,
+          "onnx_pred": 64.55487060546875,
+          "abs_diff": 0.00054931640625,
+          "rel_diff": 8.509366922010576e-06,
+          "gt_disparity": null,
+          "top1_prob": 0.22099533677101135,
+          "top2_prob": 0.13808557391166687,
+          "top1_minus_top2": 0.08290976285934448,
+          "entropy": 2.696808099746704
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 92,
+          "x": 1030,
+          "pytorch_pred": 54.5744743347168,
+          "onnx_pred": 54.57501220703125,
+          "abs_diff": 0.000537872314453125,
+          "rel_diff": 9.855748882787774e-06,
+          "gt_disparity": null,
+          "top1_prob": 0.24038803577423096,
+          "top2_prob": 0.172568216919899,
+          "top1_minus_top2": 0.06781981885433197,
+          "entropy": 2.6205945014953613
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 111,
+          "x": 1029,
+          "pytorch_pred": 64.21935272216797,
+          "onnx_pred": 64.21988677978516,
+          "abs_diff": 0.0005340576171875,
+          "rel_diff": 8.316147618273014e-06,
+          "gt_disparity": null,
+          "top1_prob": 0.18198861181735992,
+          "top2_prob": 0.1070704311132431,
+          "top1_minus_top2": 0.07491818070411682,
+          "entropy": 2.758633852005005
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 90,
+          "x": 1031,
+          "pytorch_pred": 59.19934844970703,
+          "onnx_pred": 59.19988250732422,
+          "abs_diff": 0.0005340576171875,
+          "rel_diff": 9.021342821723807e-06,
+          "gt_disparity": null,
+          "top1_prob": 0.27449357509613037,
+          "top2_prob": 0.18097037076950073,
+          "top1_minus_top2": 0.09352320432662964,
+          "entropy": 2.547558307647705
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 101,
+          "x": 1030,
+          "pytorch_pred": 69.99738311767578,
+          "onnx_pred": 69.99791717529297,
+          "abs_diff": 0.0005340576171875,
+          "rel_diff": 7.629679759451348e-06,
+          "gt_disparity": null,
+          "top1_prob": 0.23708905279636383,
+          "top2_prob": 0.12140929698944092,
+          "top1_minus_top2": 0.11567975580692291,
+          "entropy": 2.6846673488616943
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 96,
+          "x": 1029,
+          "pytorch_pred": 52.65938186645508,
+          "onnx_pred": 52.659912109375,
+          "abs_diff": 0.000530242919921875,
+          "rel_diff": 1.0069296317730586e-05,
+          "gt_disparity": null,
+          "top1_prob": 0.1970244199037552,
+          "top2_prob": 0.14326663315296173,
+          "top1_minus_top2": 0.05375778675079346,
+          "entropy": 2.7286696434020996
+        },
+        {
+          "scene": "000164_10.png",
+          "y": 87,
+          "x": 1031,
+          "pytorch_pred": 56.23487091064453,
+          "onnx_pred": 56.23539733886719,
+          "abs_diff": 0.00052642822265625,
+          "rel_diff": 9.361241772791099e-06,
+          "gt_disparity": null,
+          "top1_prob": 0.23726686835289001,
+          "top2_prob": 0.1496557891368866,
+          "top1_minus_top2": 0.08761107921600342,
+          "entropy": 2.6139516830444336
+        }
+      ]
+    }
+  }
+}

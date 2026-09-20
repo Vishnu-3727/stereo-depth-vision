@@ -1,0 +1,86 @@
+{
+  "provenance": {
+    "utc": "2026-09-20T02:27:40.706895+00:00",
+    "git_head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+    "host": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "numpy": "2.5.1",
+    "device": "cuda",
+    "command": "python stage_c_deploy/dr1_rescale/dr1_eval_40scene.py",
+    "argv": [
+      "stage_c_deploy/dr1_rescale/dr1_eval_40scene.py"
+    ],
+    "checkpoint": "stage_b_armp/20260919T012646Z_tier2_seed1/armp/p2a_best.pth",
+    "checkpoint_sha256": "b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454",
+    "scalar_s": 1e+17,
+    "variant": "A (activation rescale)",
+    "scoring_core": "mirror of eval_tier2.py score() + phase1.harness.frozen_eval; evaluator unmodified",
+    "elapsed_s": 12.262191534042358,
+    "c1_verdict_unchanged": "FAIL"
+  },
+  "s1_path_validation_maxdiff_5scenes": 0.0,
+  "s1_reproduces_forward": true,
+  "frozen_epe_reference": 1.1912168,
+  "original_reproduces_frozen": true,
+  "original": {
+    "epe": 1.191216765057325,
+    "d1": 6.211033615520366,
+    "valid_pixels": 3802797,
+    "guard": {
+      "scenes": 40,
+      "valid_pixels": 3802797,
+      "gt_scale": 256.0,
+      "split": "hailo_val",
+      "gt_source": "disp_occ_0",
+      "contract": {
+        "scenes": 40,
+        "valid_pixels": 3802797,
+        "gt_scale": 256.0,
+        "split": "hailo_val",
+        "gt_source": "disp_occ_0"
+      },
+      "contract_match": true
+    },
+    "full_metrics": {
+      "valid_pixels": 3802797,
+      "epe": 1.191216765057325,
+      "rmse": 3.1369637733547697,
+      "d1": 6.211033615520366,
+      "bad1": 29.221754408662886,
+      "bad2": 11.500876854588872,
+      "bad3": 6.558777657603075
+    }
+  },
+  "rescaled": {
+    "epe": 1.191211971353279,
+    "d1": 6.211033615520366,
+    "valid_pixels": 3802797,
+    "guard": {
+      "scenes": 40,
+      "valid_pixels": 3802797,
+      "gt_scale": 256.0,
+      "split": "hailo_val",
+      "gt_source": "disp_occ_0",
+      "contract": {
+        "scenes": 40,
+        "valid_pixels": 3802797,
+        "gt_scale": 256.0,
+        "split": "hailo_val",
+        "gt_source": "disp_occ_0"
+      },
+      "contract_match": true
+    },
+    "full_metrics": {
+      "valid_pixels": 3802797,
+      "epe": 1.191211971353279,
+      "rmse": 3.1369345930816155,
+      "d1": 6.211033615520366,
+      "bad1": 29.221307369286343,
+      "bad2": 11.500587593815816,
+      "bad3": 6.558646175433504
+    }
+  },
+  "epe_delta_rescaled_minus_original": -4.793704046157643e-06,
+  "d1_delta_rescaled_minus_original": 0.0
+}

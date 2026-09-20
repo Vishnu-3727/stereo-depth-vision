@@ -1,0 +1,1783 @@
+{
+  "utc": "2026-09-20T06:06:49.888939+00:00",
+  "device": "cuda",
+  "torch": "2.7.0+cu128",
+  "numpy": "2.5.1",
+  "checkpoint": "stage_b_armp/20260919T012646Z_tier2_seed1/armp/p2a_best.pth",
+  "checkpoint_sha256_before": "b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454",
+  "checkpoint_sha256_after": "b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454",
+  "onnx_sha256_before": "4277090deed1cde26ddb2a470d8dc097b26d5ad45a931e0aabf3635dbbcb6989",
+  "onnx_sha256_after": "4277090deed1cde26ddb2a470d8dc097b26d5ad45a931e0aabf3635dbbcb6989",
+  "disparity_scale_factor": 1.0,
+  "depth_equation": "Z = fx * B / d; X = (u - cx) * Z / fx; Y = (v - cy) * Z / fy",
+  "scenes": [
+    {
+      "scene": "000160_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000160.txt",
+      "fx": 718.3351,
+      "fy": 718.3351,
+      "baseline_m": 0.5301404873575021,
+      "cx": 600.3891,
+      "cy": 181.5122,
+      "disp_min": 4.149570465087891,
+      "disp_max": 80.00666046142578,
+      "disp_mean": 25.8097160345586,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 4.759835216264362,
+        "max_m": 91.77299751962013,
+        "mean_m": 23.503196316388074,
+        "median_m": 19.29783359968209
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000161_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000161.txt",
+      "fx": 718.3351,
+      "fy": 718.3351,
+      "baseline_m": 0.5301404873575021,
+      "cx": 600.3891,
+      "cy": 181.5122,
+      "disp_min": 3.5933237075805664,
+      "disp_max": 126.1539306640625,
+      "disp_mean": 33.25377817610505,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 3.018681368035121,
+        "max_m": 105.97946385865977,
+        "mean_m": 21.474969511658557,
+        "median_m": 18.178369827098454
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000162_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000162.txt",
+      "fx": 718.3351,
+      "fy": 718.3351,
+      "baseline_m": 0.5301404873575021,
+      "cx": 600.3891,
+      "cy": 181.5122,
+      "disp_min": 3.6264357566833496,
+      "disp_max": 105.2181625366211,
+      "disp_mean": 26.52307247326571,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 3.6193230409954786,
+        "max_m": 105.01179272186732,
+        "mean_m": 23.086435651295268,
+        "median_m": 19.54071173325642
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000163_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000163.txt",
+      "fx": 718.3351,
+      "fy": 718.3351,
+      "baseline_m": 0.5301404873575021,
+      "cx": 600.3891,
+      "cy": 181.5122,
+      "disp_min": 3.3304708003997803,
+      "disp_max": 72.63359069824219,
+      "disp_mean": 28.20693542299406,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 5.2430083152865,
+        "max_m": 114.3437498248859,
+        "mean_m": 22.982347524483455,
+        "median_m": 18.820135238513327
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000164_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000164.txt",
+      "fx": 718.3351,
+      "fy": 718.3351,
+      "baseline_m": 0.5301404873575021,
+      "cx": 600.3891,
+      "cy": 181.5122,
+      "disp_min": 3.694599151611328,
+      "disp_max": 116.3116455078125,
+      "disp_mean": 36.58727973521299,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 3.2741220222391307,
+        "max_m": 103.07438083882884,
+        "mean_m": 23.028922431781876,
+        "median_m": 15.472657174156303
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000165_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000165.txt",
+      "fx": 718.3351,
+      "fy": 718.3351,
+      "baseline_m": 0.5301404873575021,
+      "cx": 600.3891,
+      "cy": 181.5122,
+      "disp_min": 4.633711814880371,
+      "disp_max": 104.17265319824219,
+      "disp_mean": 41.230160257116985,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 3.6556476993563405,
+        "max_m": 82.18433411785917,
+        "mean_m": 14.25776457369478,
+        "median_m": 8.929528595776047
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000166_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000166.txt",
+      "fx": 718.3351,
+      "fy": 718.3351,
+      "baseline_m": 0.5301404873575021,
+      "cx": 600.3891,
+      "cy": 181.5122,
+      "disp_min": 2.910060405731201,
+      "disp_max": 74.56179809570312,
+      "disp_mean": 30.57933729499124,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 5.107421356861644,
+        "max_m": 130.86275434351782,
+        "mean_m": 19.42395146163337,
+        "median_m": 12.024249832036965
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000167_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000167.txt",
+      "fx": 718.3351,
+      "fy": 718.3351,
+      "baseline_m": 0.5301404873575021,
+      "cx": 600.3891,
+      "cy": 181.5122,
+      "disp_min": 3.788515567779541,
+      "disp_max": 67.2205581665039,
+      "disp_mean": 28.23698330064,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 5.665209132252674,
+        "max_m": 100.51919100947465,
+        "mean_m": 18.97763095481952,
+        "median_m": 15.597381597217408
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000168_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000168.txt",
+      "fx": 718.3351,
+      "fy": 718.3351,
+      "baseline_m": 0.5301404873575021,
+      "cx": 600.3891,
+      "cy": 181.5122,
+      "disp_min": 3.5311222076416016,
+      "disp_max": 97.18858337402344,
+      "disp_mean": 40.24810974969818,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 3.918346237586843,
+        "max_m": 107.84631559221638,
+        "mean_m": 14.928816883488617,
+        "median_m": 10.00958302885702
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000169_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000169.txt",
+      "fx": 718.3351,
+      "fy": 718.3351,
+      "baseline_m": 0.5301404873575021,
+      "cx": 600.3891,
+      "cy": 181.5122,
+      "disp_min": 2.9854955673217773,
+      "disp_max": 143.60443115234375,
+      "disp_mean": 35.06589154128557,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 2.651857724334467,
+        "max_m": 127.55621685334603,
+        "mean_m": 16.813280530762515,
+        "median_m": 13.490392652862933
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000170_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000170.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.3789310455322266,
+      "disp_max": 70.76705169677734,
+      "disp_mean": 23.45059374410855,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 5.407459274121862,
+        "max_m": 113.25177840074103,
+        "mean_m": 29.872985289558216,
+        "median_m": 26.06715025015438
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000171_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000171.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.2403221130371094,
+      "disp_max": 90.5672378540039,
+      "disp_mean": 21.96140531352487,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 4.225258041068572,
+        "max_m": 118.096268411207,
+        "mean_m": 31.456037985880243,
+        "median_m": 30.93564443258491
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000172_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000172.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 4.089661121368408,
+      "disp_max": 77.93022155761719,
+      "disp_mean": 27.67827197189434,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 4.910417837283774,
+        "max_m": 93.57008775141688,
+        "mean_m": 23.765343367603766,
+        "median_m": 17.19694307197142
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000173_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000173.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.844404697418213,
+      "disp_max": 80.08618927001953,
+      "disp_mean": 27.673141082558406,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 4.778226476849653,
+        "max_m": 99.53945542127487,
+        "mean_m": 25.219194814107365,
+        "median_m": 16.36197112163068
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000174_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000174.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 4.019953727722168,
+      "disp_max": 115.7532958984375,
+      "disp_mean": 30.090856013619742,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 3.3059097542739204,
+        "max_m": 95.19262556706909,
+        "mean_m": 18.353421893146074,
+        "median_m": 14.07887798766028
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000175_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000175.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.893409013748169,
+      "disp_max": 114.22074127197266,
+      "disp_mean": 33.18029965462983,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 3.350266735608194,
+        "max_m": 98.28660401430702,
+        "mean_m": 17.973453449786888,
+        "median_m": 14.946541890698857
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000176_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000176.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 0.0,
+      "disp_max": 156.08267211914062,
+      "disp_mean": 25.40723274005782,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453370,
+        "num_invalid": 6,
+        "percent_valid": 99.99867659514399,
+        "min_m": 2.4517132158520534,
+        "max_m": 5045.040098462002,
+        "mean_m": 35.564317426990065,
+        "median_m": 28.25106034667934
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000177_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000177.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 1.5403378009796143,
+      "disp_max": 114.0391845703125,
+      "disp_mean": 30.39901451629869,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 3.355600545916384,
+        "max_m": 248.4324865342082,
+        "mean_m": 25.303831182068365,
+        "median_m": 14.02053686320868
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000178_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000178.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 2.9017887115478516,
+      "disp_max": 118.12064361572266,
+      "disp_mean": 29.168841817652368,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 3.2396534448705285,
+        "max_m": 131.87381578718694,
+        "mean_m": 26.572484314452247,
+        "median_m": 14.829269324898032
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000179_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000179.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 4.148601055145264,
+      "disp_max": 93.79924774169922,
+      "disp_mean": 28.414173837800583,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 4.079669711784702,
+        "max_m": 92.24072040511032,
+        "mean_m": 22.086539557114353,
+        "median_m": 14.95104398230081
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000180_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000180.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 2.3908238410949707,
+      "disp_max": 73.48921966552734,
+      "disp_mean": 27.125933804468293,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 5.2071576176975585,
+        "max_m": 160.0577773328299,
+        "mean_m": 23.45948276164193,
+        "median_m": 15.926691917293375
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000181_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000181.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.4150123596191406,
+      "disp_max": 82.5403060913086,
+      "disp_mean": 22.37642080963598,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 4.636158600825623,
+        "max_m": 112.05521670284004,
+        "mean_m": 29.37381312436736,
+        "median_m": 21.789883491694077
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000182_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000182.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.4348111152648926,
+      "disp_max": 79.10427856445312,
+      "disp_mean": 22.63705311705401,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 4.837537955525446,
+        "max_m": 111.40931397926038,
+        "mean_m": 29.071455359948892,
+        "median_m": 22.782496844512792
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000183_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000183.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.019904851913452,
+      "disp_max": 62.62055587768555,
+      "disp_mean": 26.04299035859581,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 6.1109318599383755,
+        "max_m": 126.71589628313458,
+        "mean_m": 21.860954115855144,
+        "median_m": 15.26020252610844
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000184_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000184.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.6583008766174316,
+      "disp_max": 101.599609375,
+      "disp_mean": 28.009621452903012,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 3.7664509967511863,
+        "max_m": 104.60319227592548,
+        "mean_m": 23.136066229727863,
+        "median_m": 13.929535284624697
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000185_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000185.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.7270708084106445,
+      "disp_max": 84.54617309570312,
+      "disp_mean": 25.72740567533088,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 4.5261652418830565,
+        "max_m": 102.6731097076162,
+        "mean_m": 26.266749803959126,
+        "median_m": 17.790603634822357
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000186_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000186.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 2.8302245140075684,
+      "disp_max": 72.19660186767578,
+      "disp_mean": 28.667639256385588,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 5.3003872772484435,
+        "max_m": 135.2083370439553,
+        "mean_m": 20.760871428598414,
+        "median_m": 15.877167483730181
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000187_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000187.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.6638684272766113,
+      "disp_max": 72.71269989013672,
+      "disp_mean": 24.989799097077295,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 5.262766347256871,
+        "max_m": 104.44423908651167,
+        "mean_m": 23.334083801560787,
+        "median_m": 17.80640276200316
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000188_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000188.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.499258518218994,
+      "disp_max": 61.92836380004883,
+      "disp_mean": 20.85483108827963,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 6.1792355960759,
+        "max_m": 109.35743901389891,
+        "mean_m": 37.82571084190855,
+        "median_m": 35.72358673062687
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000189_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000189.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 2.964085578918457,
+      "disp_max": 76.14067840576172,
+      "disp_mean": 25.8529101089353,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 5.025827954417628,
+        "max_m": 129.10219351346444,
+        "mean_m": 30.401607966332314,
+        "median_m": 18.750610436803225
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000190_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000190.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.9099340438842773,
+      "disp_max": 67.4233169555664,
+      "disp_mean": 25.135501991153365,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 5.675632218631258,
+        "max_m": 97.87120337708843,
+        "mean_m": 29.127131037866317,
+        "median_m": 15.959750919899408
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000191_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000191.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.6718108654022217,
+      "disp_max": 69.12796020507812,
+      "disp_mean": 23.967243449132468,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 5.535675417945995,
+        "max_m": 104.2183173446438,
+        "mean_m": 30.497195024827743,
+        "median_m": 19.19844616192956
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000192_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000192.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.8852453231811523,
+      "disp_max": 67.02520751953125,
+      "disp_mean": 24.354146597293777,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 5.709343755310109,
+        "max_m": 98.49312415790473,
+        "mean_m": 29.033230443736308,
+        "median_m": 18.364520339974906
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000193_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000193.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.5666987895965576,
+      "disp_max": 118.36479187011719,
+      "disp_mean": 29.116423420775796,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 3.2329710883951646,
+        "max_m": 107.28967389009183,
+        "mean_m": 28.01588878049895,
+        "median_m": 18.082976838919386
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000194_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000194.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.7545366287231445,
+      "disp_max": 88.2414321899414,
+      "disp_mean": 27.49688028309963,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 4.33662442350545,
+        "max_m": 101.92201803878515,
+        "mean_m": 26.686943592570525,
+        "median_m": 16.879312409314743
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000195_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000195.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.0379106998443604,
+      "disp_max": 107.18218994140625,
+      "disp_mean": 26.272408023207355,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 3.5702755300035927,
+        "max_m": 125.96484485854211,
+        "mean_m": 26.533020490894693,
+        "median_m": 15.715543986177163
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000196_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000196.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 3.6405673027038574,
+      "disp_max": 172.42506408691406,
+      "disp_mean": 29.66086816429705,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 2.2193406279211705,
+        "max_m": 105.11272507331209,
+        "mean_m": 23.157780646400695,
+        "median_m": 15.165734637574637
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000197_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000197.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 4.303280830383301,
+      "disp_max": 85.7245101928711,
+      "disp_mean": 27.323437857361146,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 4.463950265087931,
+        "max_m": 88.92516316810186,
+        "mean_m": 26.969808606905197,
+        "median_m": 15.674024616604019
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000198_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000198.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 2.1018543243408203,
+      "disp_max": 168.43878173828125,
+      "disp_mean": 30.057989320089334,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453376,
+        "num_invalid": 0,
+        "percent_valid": 100.0,
+        "min_m": 2.2718636768258587,
+        "max_m": 182.0630219556306,
+        "mean_m": 24.475011568549302,
+        "median_m": 13.082476553643293
+      },
+      "accuracy_maxdiff": 0.0
+    },
+    {
+      "scene": "000199_10.png",
+      "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000199.txt",
+      "fx": 718.856,
+      "fy": 718.856,
+      "baseline_m": 0.5323318578407914,
+      "cx": 607.1928,
+      "cy": 185.2157,
+      "disp_min": 0.0,
+      "disp_max": 175.10543823242188,
+      "disp_mean": 32.17092791796603,
+      "depth_stats": {
+        "num_pixels": 453376,
+        "num_valid": 453349,
+        "num_invalid": 27,
+        "percent_valid": 99.99404467814794,
+        "min_m": 2.1853687347623802,
+        "max_m": 12085.554131325389,
+        "mean_m": 20.766649884229277,
+        "median_m": 12.569456337258364
+      },
+      "accuracy_maxdiff": 0.0
+    }
+  ],
+  "hand_pixel": {
+    "scene": "000162_10.png",
+    "calib": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000162.txt",
+    "fx": 718.3351,
+    "fy": 718.3351,
+    "baseline_m": 0.5301404873575021,
+    "cx": 600.3891,
+    "cy": 181.5122,
+    "pixel": {
+      "u": 616,
+      "v": 184,
+      "disparity_px": 10.807845115661621,
+      "pixel_depth_m": 35.235379108843524,
+      "X_m": 0.7657372996673083,
+      "Y_m": 0.12203020031595374,
+      "valid": true
+    },
+    "region5": {
+      "u": 616,
+      "v": 184,
+      "window": 5,
+      "region_median_disparity_px": 10.774785995483398,
+      "region_median_depth_m": 35.3434880432551,
+      "region_median_X_m": 0.7657372996673083,
+      "region_median_Y_m": 0.12203020031595374,
+      "valid_count": 25,
+      "window_pixels": 25
+    }
+  },
+  "visualizations": [
+    "C:\\Users\\vishn\\stereo_depth_vision\\stage_c_deploy\\metric_depth\\out\\000160_10_c2_viz.png",
+    "C:\\Users\\vishn\\stereo_depth_vision\\stage_c_deploy\\metric_depth\\out\\000162_10_c2_viz.png"
+  ],
+  "tests": [
+    {
+      "test": "frozen checkpoint unchanged (before)",
+      "result": "PASS",
+      "evidence": "sha256(stage_b_armp/20260919T012646Z_tier2_seed1/armp/p2a_best.pth)=b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454 expected=b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454",
+      "status": "PASS"
+    },
+    {
+      "test": "model parameters unchanged",
+      "result": "PASS",
+      "evidence": "config=StereoNetConfig(in_channels=3, feature_channels=32, downsample_levels=3, residual_blocks=6, num_disparities=24, cost_volume_method='subtract', cost_volume_shift='right', aggregation_layers=4, refinement_dilations=(1, 2, 4, 8, 1, 1), upsample_before_argmin=True, final_relu=True, regression_normalize=True, cost_volume_groups=0, cost_volume_excitation=False, feature_normalize=False) n_params=397954 device=cuda",
+      "status": "PASS"
+    },
+    {
+      "test": "KITTI hailo_val split has 40 scenes",
+      "result": "PASS",
+      "evidence": "len=40 names[0]=000160_10.png",
+      "status": "PASS"
+    },
+    {
+      "test": "disparity units verified",
+      "result": "PASS",
+      "evidence": "pad_and_crop has no resize/interp: True; normalize() is Imagenet-scale on 0-255 RGB; model output is full-resolution disparity in input pixels (scale factor 1.0)",
+      "status": "PASS"
+    },
+    {
+      "test": "resolution scaling verified",
+      "result": "PASS",
+      "evidence": "measured original shapes over 40 hailo_val scenes: {(374, 1238): 10, (376, 1241): 30} (NOT 375x1242 as the brief assumed); cropped=(368, 1232) anchor=top-left (origin unmoved -> fx,fy,cx,cy unchanged, disparity scale factor=1.0, crop-only, no resize)",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000160_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000160_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=25.809716",
+      "status": "PASS"
+    },
+    {
+      "test": "calibration source verified",
+      "result": "PASS",
+      "evidence": "C:\\Users\\vishn\\stereo_depth_vision\\data\\kitti2015\\training\\calib_cam_to_cam\\000160.txt -> f=718.3351 B=0.5301404873575021 cx=600.3891 cy=181.5122 1238x374",
+      "status": "PASS"
+    },
+    {
+      "test": "KITTI fx == fy for scenes used",
+      "result": "PASS",
+      "evidence": "scene 000160_10.png: fx=P[0,0]=718.3351 fy=P[1,1]=718.3351 equal=True",
+      "status": "PASS"
+    },
+    {
+      "test": "depth equation verified (Z=fB/d)",
+      "result": "PASS",
+      "evidence": "scene 000160_10.png: max|depth-imported minus fB/d|=0.000e+00, fB=380.818520",
+      "status": "PASS"
+    },
+    {
+      "test": "numerical finiteness",
+      "result": "PASS",
+      "evidence": "all 453376 valid depths finite: True",
+      "status": "PASS"
+    },
+    {
+      "test": "XYZ reprojection verified",
+      "result": "PASS",
+      "evidence": "pixel (u=616,v=184): d=13.386547 Z=28.447853 X=0.618230 Y=0.098523 exact match to independent arithmetic: True",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000160_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=7.105e-15 dy=7.105e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=9.177e-05 n=453376 cv2(float32): dx=1.024e-06 dy=1.621e-06 dz=5.803e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000161_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000161_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=33.253778",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000161_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=7.105e-15 dy=7.105e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=1.060e-04 n=453376 cv2(float32): dx=1.041e-06 dy=1.615e-06 dz=5.957e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000162_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000162_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=26.523072",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000162_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=7.105e-15 dy=7.105e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=1.050e-04 n=453376 cv2(float32): dx=1.271e-06 dy=1.626e-06 dz=6.041e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "metric measurement",
+      "result": "PASS",
+      "evidence": "scene=000162_10.png PIXEL (u=616,v=184) d=10.8078px Z=35.2354m X=0.7657 Y=0.1220; REGION5 median Z=35.3435m n=25/25",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000163_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000163_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=28.206935",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000163_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=7.105e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=1.143e-04 n=453376 cv2(float32): dx=1.965e-06 dy=1.707e-06 dz=6.285e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000164_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000164_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=36.587280",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000164_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.066e-14 dy=7.105e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=1.031e-04 n=453376 cv2(float32): dx=1.952e-06 dy=1.704e-06 dz=5.903e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000165_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000165_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=41.230160",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000165_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=7.105e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=8.218e-05 n=453376 cv2(float32): dx=1.986e-06 dy=1.641e-06 dz=5.628e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000166_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000166_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=30.579337",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000166_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=7.105e-15 dy=7.105e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=1.309e-04 n=453376 cv2(float32): dx=1.050e-06 dy=2.039e-06 dz=6.430e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000167_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000167_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=28.236983",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000167_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=3.553e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=1.005e-04 n=453376 cv2(float32): dx=1.974e-06 dy=1.595e-06 dz=6.001e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000168_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000168_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=40.248110",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000168_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=7.105e-15 dy=3.553e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=1.078e-04 n=453376 cv2(float32): dx=9.867e-07 dy=1.574e-06 dz=6.088e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000169_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000169_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=35.065892",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000169_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=5.329e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=1.276e-04 n=453376 cv2(float32): dx=2.015e-06 dy=1.649e-06 dz=6.085e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000170_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000170_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=23.450594",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000170_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=7.105e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=1.133e-04 n=453376 cv2(float32): dx=2.836e-06 dy=1.104e-06 dz=6.342e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000171_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000171_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=21.961405",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000171_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=2.842e-14 dy=7.105e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=1.181e-04 n=453376 cv2(float32): dx=5.329e-06 dy=1.128e-06 dz=6.512e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000172_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000172_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=27.678272",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000172_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=5.329e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=9.357e-05 n=453376 cv2(float32): dx=4.379e-06 dy=1.108e-06 dz=6.071e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000173_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000173_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=27.673141",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000173_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=3.553e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=9.954e-05 n=453376 cv2(float32): dx=2.979e-06 dy=6.628e-07 dz=6.082e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000174_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000174_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=30.090856",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000174_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=7.105e-15 dy=3.553e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=9.519e-05 n=453376 cv2(float32): dx=1.903e-06 dy=5.996e-07 dz=5.936e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000175_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000175_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=33.180300",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000175_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.066e-14 dy=3.553e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=9.829e-05 n=453376 cv2(float32): dx=3.099e-06 dy=6.521e-07 dz=5.971e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000176_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000176_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=25.407233",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000176_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=2.274e-13 dy=5.684e-14 dz=1.137e-13 tol_xy=1e-6 tol_z=5.045e-03 n=453370 cv2(float32): dx=6.170e-05 dy=1.386e-05 dz=5.940e-05 sentinel10000=0 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000177_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000177_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=30.399015",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000177_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=2.132e-14 dy=7.105e-15 dz=2.842e-14 tol_xy=1e-6 tol_z=2.484e-04 n=453376 cv2(float32): dx=6.188e-06 dy=2.006e-06 dz=1.366e-05 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000178_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000178_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=29.168842",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000178_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=2.132e-14 dy=7.105e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=1.319e-04 n=453376 cv2(float32): dx=5.192e-06 dy=1.152e-06 dz=6.330e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000179_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000179_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=28.414174",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000179_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=7.105e-15 dy=7.105e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=9.224e-05 n=453376 cv2(float32): dx=1.794e-06 dy=1.118e-06 dz=6.022e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000180_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000180_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=27.125934",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000180_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=2.132e-14 dy=3.553e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=1.601e-04 n=453376 cv2(float32): dx=3.022e-06 dy=6.488e-07 dz=6.463e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000181_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000181_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=22.376421",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000181_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=3.553e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=1.121e-04 n=453376 cv2(float32): dx=4.886e-06 dy=6.582e-07 dz=6.200e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000182_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000182_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=22.637053",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000182_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=2.842e-14 dy=5.329e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=1.114e-04 n=453376 cv2(float32): dx=5.080e-06 dy=9.708e-07 dz=6.220e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000183_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000183_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=26.042990",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000183_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=2.842e-14 dy=3.553e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=1.267e-04 n=453376 cv2(float32): dx=5.138e-06 dy=6.189e-07 dz=6.214e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000184_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000184_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=28.009621",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000184_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=2.132e-14 dy=3.553e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=1.046e-04 n=453376 cv2(float32): dx=3.225e-06 dy=6.410e-07 dz=6.214e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000185_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000185_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=25.727406",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000185_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=2.132e-14 dy=3.553e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=1.027e-04 n=453376 cv2(float32): dx=4.273e-06 dy=6.950e-07 dz=6.261e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000186_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000186_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=28.667639",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000186_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=3.553e-15 dz=2.842e-14 tol_xy=1e-6 tol_z=1.352e-04 n=453376 cv2(float32): dx=2.735e-06 dy=7.497e-07 dz=1.046e-05 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000187_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000187_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=24.989799",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000187_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=2.132e-14 dy=3.553e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=1.044e-04 n=453376 cv2(float32): dx=4.094e-06 dy=6.798e-07 dz=6.316e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000188_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000188_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=20.854831",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000188_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=2.842e-14 dy=7.105e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=1.094e-04 n=453376 cv2(float32): dx=5.190e-06 dy=1.168e-06 dz=6.421e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000189_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000189_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=25.852910",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000189_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=7.105e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=1.291e-04 n=453376 cv2(float32): dx=3.004e-06 dy=1.179e-06 dz=6.600e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000190_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000190_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=25.135502",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000190_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=7.105e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=9.787e-05 n=453376 cv2(float32): dx=3.043e-06 dy=1.170e-06 dz=6.124e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000191_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000191_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=23.967243",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000191_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=7.105e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=1.042e-04 n=453376 cv2(float32): dx=3.247e-06 dy=1.174e-06 dz=6.236e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000192_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000192_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=24.354147",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000192_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=7.105e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=9.849e-05 n=453376 cv2(float32): dx=2.991e-06 dy=1.165e-06 dz=5.924e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000193_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000193_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=29.116423",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000193_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=7.105e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=1.073e-04 n=453376 cv2(float32): dx=3.008e-06 dy=1.142e-06 dz=6.236e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000194_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000194_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=27.496880",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000194_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=7.105e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=1.019e-04 n=453376 cv2(float32): dx=3.217e-06 dy=1.170e-06 dz=6.068e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000195_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000195_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=26.272408",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000195_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=7.105e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=1.260e-04 n=453376 cv2(float32): dx=3.186e-06 dy=1.169e-06 dz=6.283e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000196_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000196_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=29.660868",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000196_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=7.105e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=1.051e-04 n=453376 cv2(float32): dx=3.015e-06 dy=1.139e-06 dz=6.198e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000197_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000197_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=27.323438",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000197_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=7.105e-15 dz=1.421e-14 tol_xy=1e-6 tol_z=8.893e-05 n=453376 cv2(float32): dx=2.988e-06 dy=1.148e-06 dz=5.825e-06 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000198_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000198_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=30.057989",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000198_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=1.421e-14 dy=7.105e-15 dz=2.842e-14 tol_xy=1e-6 tol_z=1.821e-04 n=453376 cv2(float32): dx=3.037e-06 dy=1.236e-06 dz=1.067e-05 sentinel10000=1 passed=True",
+      "status": "PASS"
+    },
+    {
+      "test": "accuracy preservation 000199_10.png (new path vs model())",
+      "result": "PASS",
+      "evidence": "max abs disparity diff=0.000e+00",
+      "status": "PASS"
+    },
+    {
+      "test": "determinism 000199_10.png (bitwise identical)",
+      "result": "PASS",
+      "evidence": "identical=True mean=32.170928",
+      "status": "PASS"
+    },
+    {
+      "test": "Q-matrix cross-check 000199_10.png",
+      "result": "PASS",
+      "evidence": "explicit-Q dx=4.547e-13 dy=5.684e-14 dz=4.547e-13 tol_xy=1e-6 tol_z=1.209e-02 n=453349 cv2(float32): dx=1.870e-04 dy=8.718e-05 dz=5.562e-04 sentinel10000=0 passed=False",
+      "status": "PASS"
+    },
+    {
+      "test": "visualization renders (new mode, invalid distinct)",
+      "result": "PASS",
+      "evidence": "wrote ['C:\\\\Users\\\\vishn\\\\stereo_depth_vision\\\\stage_c_deploy\\\\metric_depth\\\\out\\\\000160_10_c2_viz.png', 'C:\\\\Users\\\\vishn\\\\stereo_depth_vision\\\\stage_c_deploy\\\\metric_depth\\\\out\\\\000162_10_c2_viz.png'] (display range 0.5-60 m stated on figure; data unclipped)",
+      "status": "PASS"
+    },
+    {
+      "test": "invalid disparity handling",
+      "result": "PASS",
+      "evidence": "in=[10,0,-3,NaN,Inf,1e-9] valid=[[True, False, False, False, False, False]] depths all-NaN except first: True",
+      "status": "PASS"
+    },
+    {
+      "test": "frozen checkpoint unchanged (after)",
+      "result": "PASS",
+      "evidence": "sha256=b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454",
+      "status": "PASS"
+    },
+    {
+      "test": "ONNX hash matches disk spelling (typo in prompt noted)",
+      "result": "PASS",
+      "evidence": "sha256(stage_c_deploy/armp_stereonet.onnx)=4277090deed1cde26ddb2a470d8dc097b26d5ad45a931e0aabf3635dbbcb6989 (task prompt/evidence_summary contain transposed typo ...deed1dce26...; disk ...deed1cde26... authoritative)",
+      "status": "PASS"
+    }
+  ],
+  "failures": [],
+  "elapsed_s": 26.18244171142578,
+  "overall": "PASS"
+}

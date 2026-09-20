@@ -1,0 +1,209 @@
+{
+  "artifact": "ARM-P seed 1, static-shape re-export",
+  "source_checkpoint": "stage_b_armp/20260919T012646Z_tier2_seed1/armp/p2a_best.pth",
+  "source_sha256": "b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454",
+  "utc": "2026-09-19T15:53:19.012472+00:00",
+  "weights_touched": false,
+  "training_performed": false,
+  "git_head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+  "software": {
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "onnx": "1.22.0",
+    "onnxruntime": "1.27.0",
+    "numpy": "2.5.1",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "params": 397954,
+  "params_unchanged": true,
+  "state_dict_keys": 70,
+  "parity_static_vs_trained_pytorch": {
+    "scenes": 5,
+    "max_abs_diff_px": 5.340576171875e-05,
+    "per_scene": [
+      3.0517578125e-05,
+      4.57763671875e-05,
+      5.340576171875e-05,
+      2.47955322265625e-05,
+      5.340576171875e-05
+    ],
+    "mean_abs_diff_px": 2.093188662370136e-06,
+    "per_scene_mean_abs_diff_px": [
+      1.7738282125188696e-06,
+      2.3196158454217593e-06,
+      1.8847302729837104e-06,
+      1.9245631130383825e-06,
+      2.563205867887957e-06
+    ],
+    "max_rel_diff": 1.4786694537942905e-06,
+    "per_scene_max_rel_diff": [
+      1.1100959900002554e-06,
+      1.4786694537942905e-06,
+      1.2594211329275258e-06,
+      1.3618758296093594e-06,
+      1.4452294678572192e-06
+    ],
+    "rel_guard_px": 1.0,
+    "tolerance_px": 0.001,
+    "pass": true
+  },
+  "export": {
+    "path": "stage_c_deploy/armp_stereonet_static.onnx",
+    "sha256": "e275e86e4cdb340b64b3ccd065ccd8286b82c3ef1dbbd046acaaa1f0c363a5af",
+    "size_bytes": 1699043,
+    "opset": 13,
+    "n_nodes": 689,
+    "op_types": [
+      "Add",
+      "Cast",
+      "Concat",
+      "Constant",
+      "ConstantOfShape",
+      "Conv",
+      "Div",
+      "LeakyRelu",
+      "Mul",
+      "Neg",
+      "Pad",
+      "ReduceMean",
+      "ReduceSum",
+      "Relu",
+      "Reshape",
+      "Resize",
+      "Slice",
+      "Softmax",
+      "Sqrt",
+      "Squeeze",
+      "Sub",
+      "Transpose",
+      "Unsqueeze"
+    ],
+    "checker": "pass"
+  },
+  "dynamic_op_removal": {
+    "targeted": [
+      "Range",
+      "ReduceProd",
+      "Shape",
+      "Gather",
+      "ConstantOfShape"
+    ],
+    "present_in_original": [
+      "Range",
+      "ReduceProd",
+      "Shape",
+      "Gather",
+      "ConstantOfShape"
+    ],
+    "present_in_static": [
+      "ConstantOfShape"
+    ],
+    "all_removed": false,
+    "original_n_nodes": 712,
+    "static_n_nodes": 689,
+    "ops_dropped": [
+      "Gather",
+      "Range",
+      "ReduceProd",
+      "Shape"
+    ],
+    "ops_added": []
+  },
+  "parity_static_onnx_vs_original_onnx": {
+    "scenes": 5,
+    "max_abs_diff_px": 5.340576171875e-05,
+    "per_scene": [
+      2.288818359375e-05,
+      4.57763671875e-05,
+      3.814697265625e-05,
+      2.6702880859375e-05,
+      5.340576171875e-05
+    ],
+    "mean_abs_diff_px": 1.8751158267007176e-06,
+    "per_scene_mean_abs_diff_px": [
+      1.5619567967215073e-06,
+      2.0961462820336887e-06,
+      1.665581289083523e-06,
+      1.7135472939823523e-06,
+      2.338347471682518e-06
+    ],
+    "max_rel_diff": 1.3488235830473377e-06,
+    "per_scene_max_rel_diff": [
+      9.231833021989765e-07,
+      9.487522011051066e-07,
+      1.0921602697140753e-06,
+      1.2349249622545185e-06,
+      1.3488235830473377e-06
+    ],
+    "rel_guard_px": 1.0,
+    "rel_reference": "original ONNX output",
+    "tolerance_px": 0.001,
+    "pass": true
+  },
+  "parity_static_onnx_vs_trained_pytorch": {
+    "scenes": 5,
+    "max_abs_diff_px": 0.0017242431640625,
+    "per_scene": [
+      0.0008401870727539062,
+      0.0014705657958984375,
+      0.00089263916015625,
+      0.0005741119384765625,
+      0.0017242431640625
+    ],
+    "mean_abs_diff_px": 7.121740324493185e-06,
+    "per_scene_mean_abs_diff_px": [
+      4.4354198175523994e-06,
+      6.350793811071397e-06,
+      6.177487879368897e-06,
+      4.803115015040677e-06,
+      1.384188509943255e-05
+    ],
+    "max_rel_diff": 0.00010576831690743222,
+    "per_scene_max_rel_diff": [
+      7.173455819247331e-05,
+      0.00010576831690743222,
+      4.667305475882284e-05,
+      2.398033771645043e-05,
+      4.614487173288333e-05
+    ],
+    "rel_guard_px": 1.0,
+    "rel_reference": "trained PyTorch output",
+    "tolerance_px": 0.001,
+    "pass": false
+  },
+  "deployed_accuracy_static_onnx": {
+    "protocol": "frozen contract, unchanged; no eval-time augmentation; no multi-scale inference",
+    "scenes": 40,
+    "metrics": {
+      "valid_pixels": 3802797,
+      "epe": 1.1910755399090331,
+      "rmse": 3.136920042908869,
+      "d1": 6.209324347315936,
+      "bad1": 29.21725771846354,
+      "bad2": 11.49719535384087,
+      "bad3": 6.556858017927331
+    },
+    "guard": {
+      "scenes": 40,
+      "valid_pixels": 3802797,
+      "gt_scale": 256.0,
+      "split": "hailo_val",
+      "gt_source": "disp_occ_0",
+      "contract": {
+        "scenes": 40,
+        "valid_pixels": 3802797,
+        "gt_scale": 256.0,
+        "split": "hailo_val",
+        "gt_source": "disp_occ_0"
+      },
+      "contract_match": true
+    },
+    "gt_lt_64_epe": 1.0477180714439729,
+    "gt_ge_64_epe": 4.1545348342695245,
+    "gt_ge_96_epe": 9.972772402851607,
+    "gt_ge_96_signed": -8.694799953390547,
+    "slope_hi": 0.5715325855436428,
+    "max_pred_valid_px": 139.46473693847656,
+    "max_pred_all_px": 182.07078552246094
+  }
+}
