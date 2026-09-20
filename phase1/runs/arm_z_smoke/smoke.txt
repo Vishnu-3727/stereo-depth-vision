@@ -1,0 +1,11 @@
+PASS 1 feature shapes (B,32,H/8,W/8) - left (1, 32, 32, 64) right (1, 32, 32, 64)
+PASS 2 normalization over channels only - max col diff 5.96e-08 min cosine 0.99999982
+PASS 3 nonzero vectors ~unit norm - min 1.000000 max 1.000000 mean 1.000000
+PASS 4 zero vectors safe via max(norm,1e-5) - max abs 0
+PASS 5 cost volume shape (B,32,24,H,W) - got (1, 32, 24, 32, 64)
+PASS 6 cost == Lhat - shift_right(Rhat,k) - max diff 0
+PASS 7 no sign negation - sub 0 add 1.99
+PASS 8 param count unchanged 397954 - arm_v 397954 arm_z 397954
+PASS 9 no BatchNorm anywhere
+PASS 10 gradients reach feature extractor + aggregation - feat 44.2 agg 412 loss 10.220499
+PASS 11 shift liveness (slices differ) - max diff 0.799778

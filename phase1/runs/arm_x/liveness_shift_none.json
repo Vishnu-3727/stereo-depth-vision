@@ -1,0 +1,31 @@
+{
+  "checkpoint": "phase1/runs/arm_x/arm_x_best.pth",
+  "eval_graph": {
+    "cost_volume_shift": "none",
+    "regression_normalize": true
+  },
+  "metrics": {
+    "valid_pixels": 3802797,
+    "epe": 19.87037090732411,
+    "rmse": 22.438236169952503,
+    "d1": 94.44025016323512,
+    "bad1": 98.18914867135953,
+    "bad2": 96.36935655518819,
+    "bad3": 94.55285149325616
+  },
+  "guard": {
+    "scenes": 40,
+    "valid_pixels": 3802797,
+    "gt_scale": 256.0,
+    "split": "hailo_val",
+    "gt_source": "disp_occ_0",
+    "contract": {
+      "scenes": 40,
+      "valid_pixels": 3802797,
+      "gt_scale": 256.0,
+      "split": "hailo_val",
+      "gt_source": "disp_occ_0"
+    },
+    "contract_match": true
+  }
+}

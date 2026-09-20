@@ -1,0 +1,54 @@
+# ARM U-S1 — results (ARM U recipe, seed 1)
+
+## Hypothesis
+
+Seed replication of ARM U: the exact ARM U recipe
+(`StereoNetConfig(cost_volume_shift="right", regression_normalize=True)`) on a
+different seed still beats ARM K (5.5271927) by at least 1.0 px on the frozen
+contract.
+
+## Intervention
+
+None. Identical recipe to ARM U seed 0; only SEED changed (0 → 1). The seed
+feeds `seed_all()`, the DataLoader generator, `worker_init_fn` and the
+`CroppedKitti` crop/jitter RNG exactly as in `train_arm_u.py` — the diff of
+`phase1/scripts/train_arm_u_seed.py` vs `phase1/scripts/train_arm_u.py` is
+exactly two lines (`ARM_U_SEED` / `ARM_U_OUT_DIR` plumbing). Everything else
+frozen: 200 epochs, batch 2, Adam, LR 1e-3, cosine annealing, 256x512 random
+crops, gain jitter sigma 0.1, masked smooth-L1, fp32, train split hailo_calib
+(scenes 0-159) only.
+
+## Training
+
+200 epochs, wall 3669.1 s. Train loss → ~0.97; 10-scene val EPE best 3.9277
+@epoch 175 (seed 0 reached 3.9355 @epoch 199).
+
+## Frozen scores (contract_match true, 3,802,797 px, 40 scenes)
+
+| Snapshot | EPE | D1 | RMSE | sha256 |
+|---|---|---|---|---|
+| best-val (ep 175) | 2.4207853 | 18.4118689% | 5.8970 | 728b5ae3…c6ca2b5f2 |
+| final (ep 199) | 2.4651119 | 18.5166339% | 6.0836 | f9b27626…3cdf64 |
+
+Scored through a line-for-line mirror of `score_checkpoint` with
+`StereoNetConfig(cost_volume_shift="right", regression_normalize=True)`
+(`phase1/runs/arm_u_s1/score_mirror.py`); dataset, GT scale, metrics, and
+contract guard imported unmodified from the unmodified
+`phase1/harness/frozen_eval.py` (`frozen_eval_best.json` /
+`frozen_eval_final.json`, `strict_ok: true`, 72 keys, 423586 params).
+
+## Stereo-path liveness (full 40-scene control, best checkpoint)
+
+Substituting shift=none at eval time (keeping regression_normalize=True, same
+weights) degrades the frozen score from 2.4208 EPE / 18.41% D1 to **21.3743
+EPE / 96.17% D1** (`liveness_shift_none.json`). The disparity search is
+carrying the model, as for seed 0 (2.2866 → 24.7448). The seed-0 result
+replicates structurally.
+
+## Delta vs ARM K + verdict
+
+Signed delta (best-val EPE): 2.4207853 − 5.5271927 = **−3.1064074 px**
+(better).
+
+**Verdict: ACCEPTED vs the ARM K bar (≤ 4.5271927); counts toward the
+three-seed confirmation.** No tuning was done.

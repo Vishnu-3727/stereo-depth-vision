@@ -1,0 +1,169 @@
+{
+  "arm": "arm_d_pretrain",
+  "config": {
+    "arm": "ARM D pretraining: Driving-only synthetic pretraining",
+    "dataset": "sceneflow/driving (frames_cleanpass + disparity PFM)",
+    "samples": 4400,
+    "skipped_triplets": 0,
+    "frames_root": "data\\sceneflow\\driving\\extracted\\frames_cleanpass",
+    "disparity_root": "data\\sceneflow\\driving\\extracted\\disparity",
+    "resolution": [
+      256,
+      512
+    ],
+    "crop": "random 256x512",
+    "batch_size": 4,
+    "precision": "fp32",
+    "seed": 0,
+    "epochs": 20,
+    "optimizer": "RMSprop lr=1e-3 weight_decay=1e-4",
+    "learning_rate": 0.001,
+    "schedule": "ExponentialLR gamma=0.9",
+    "loss": "smooth L1, valid = gt < 160 (upstream mask, no gt>0 floor)",
+    "augmentation": "random crop only; no jitter, no flip (upstream augment=False)",
+    "initialisation": "PyTorch defaults, random",
+    "checkpoint_selection": "lowest mean train-epoch loss",
+    "device": "cuda",
+    "known_deviation": "no batch normalisation (BN-folded exported artifact), carried into all arms",
+    "deviations_from_upstream": [
+      "batch 16 -> 4: upstream batch 16 OOMs 8 GB VRAM at 256x512 (see module docstring)",
+      "num_workers 12 -> 0: frozen determinism recipe, as ARM K",
+      "seed 1 -> 0: frozen seed, as ARM K",
+      "no DataParallel: single-GPU run",
+      "scheduler stepped after each epoch; upstream steps before (LR decays before epoch 0 there)",
+      "checkpoint selection by lowest mean train-epoch loss; upstream reports FlyingThings3D TEST EPE instead",
+      "no checkpoint resume: fresh run, as ARM K",
+      "model is this repo's StereoNet reimplementation, not upstream stereonet()",
+      "no gain jitter / no augmentation: upstream pretrain path applies none (augment=False)"
+    ]
+  },
+  "epochs_run": 20,
+  "wall_clock_s": 9283.425693511963,
+  "git_head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+  "best_mean_loss": 11.256019823334434,
+  "best_epoch": 19,
+  "final_sha256": "d563455f786fc2034c0314d0c8b88c0a52ec36335fd3b62074e65e77f9069c2f",
+  "best_sha256": "247185800faec90f30029c1d0c8cea923ae4f5f05a653cb5578b3efb49b42e12",
+  "history": [
+    {
+      "epoch": 0,
+      "mean_loss": 36.95330935564908,
+      "valid_pixels": 524388200,
+      "lr": 0.0009000000000000001
+    },
+    {
+      "epoch": 1,
+      "mean_loss": 26.338718384829434,
+      "valid_pixels": 524649134,
+      "lr": 0.0008100000000000001
+    },
+    {
+      "epoch": 2,
+      "mean_loss": 21.750044107437134,
+      "valid_pixels": 526708030,
+      "lr": 0.000729
+    },
+    {
+      "epoch": 3,
+      "mean_loss": 20.00589311946522,
+      "valid_pixels": 526865623,
+      "lr": 0.0006561000000000001
+    },
+    {
+      "epoch": 4,
+      "mean_loss": 18.454664041779257,
+      "valid_pixels": 525806135,
+      "lr": 0.00059049
+    },
+    {
+      "epoch": 5,
+      "mean_loss": 17.038787276961585,
+      "valid_pixels": 524482936,
+      "lr": 0.000531441
+    },
+    {
+      "epoch": 6,
+      "mean_loss": 15.789990901947021,
+      "valid_pixels": 524496960,
+      "lr": 0.0004782969
+    },
+    {
+      "epoch": 7,
+      "mean_loss": 15.005178190144626,
+      "valid_pixels": 525252843,
+      "lr": 0.00043046721
+    },
+    {
+      "epoch": 8,
+      "mean_loss": 14.36135775349357,
+      "valid_pixels": 523627841,
+      "lr": 0.000387420489
+    },
+    {
+      "epoch": 9,
+      "mean_loss": 13.833769431114197,
+      "valid_pixels": 525763534,
+      "lr": 0.0003486784401
+    },
+    {
+      "epoch": 10,
+      "mean_loss": 13.13411799734289,
+      "valid_pixels": 527368704,
+      "lr": 0.00031381059609000004
+    },
+    {
+      "epoch": 11,
+      "mean_loss": 13.025648898644882,
+      "valid_pixels": 524337144,
+      "lr": 0.00028242953648100003
+    },
+    {
+      "epoch": 12,
+      "mean_loss": 12.647229929403824,
+      "valid_pixels": 524209923,
+      "lr": 0.00025418658283290005
+    },
+    {
+      "epoch": 13,
+      "mean_loss": 12.41554785121571,
+      "valid_pixels": 523751975,
+      "lr": 0.00022876792454961005
+    },
+    {
+      "epoch": 14,
+      "mean_loss": 12.102430217916316,
+      "valid_pixels": 524464046,
+      "lr": 0.00020589113209464906
+    },
+    {
+      "epoch": 15,
+      "mean_loss": 11.892938403216275,
+      "valid_pixels": 525142522,
+      "lr": 0.00018530201888518417
+    },
+    {
+      "epoch": 16,
+      "mean_loss": 11.78201463916085,
+      "valid_pixels": 525082386,
+      "lr": 0.00016677181699666576
+    },
+    {
+      "epoch": 17,
+      "mean_loss": 11.582187032266097,
+      "valid_pixels": 524907957,
+      "lr": 0.0001500946352969992
+    },
+    {
+      "epoch": 18,
+      "mean_loss": 11.41012538953261,
+      "valid_pixels": 523975087,
+      "lr": 0.0001350851717672993
+    },
+    {
+      "epoch": 19,
+      "mean_loss": 11.256019823334434,
+      "valid_pixels": 524113558,
+      "lr": 0.00012157665459056936
+    }
+  ]
+}

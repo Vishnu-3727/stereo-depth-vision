@@ -1,0 +1,32 @@
+{
+  "best": {
+    "checkpoint": "phase1/runs/arm_v/arm_v_best.pth",
+    "scene": "000160_10.png",
+    "aggregated_cost_absmax": 2802823168.0,
+    "disparity_initial_mean": 6.410894393920898,
+    "disparity_initial_std": 3.4894826412200928,
+    "disparity_initial_min": 2.5808041095733643,
+    "disparity_initial_max": 17.131641387939453,
+    "shift_none_substitution": {
+      "max_abs_diff_vs_trained": 69.23857116699219,
+      "bit_identical": false,
+      "full40_epe_under_shift_none": 39.55498248647787,
+      "full40_d1_under_shift_none": 99.18323276262183
+    }
+  },
+  "final": {
+    "checkpoint": "phase1/runs/arm_v/arm_v_final.pth",
+    "scene": "000160_10.png",
+    "aggregated_cost_absmax": 2758001408.0,
+    "disparity_initial_mean": 6.41240930557251,
+    "disparity_initial_std": 3.4859650135040283,
+    "disparity_initial_min": 2.5809781551361084,
+    "disparity_initial_max": 17.20488166809082,
+    "shift_none_substitution": {
+      "max_abs_diff_vs_trained": 69.20470428466797,
+      "bit_identical": false,
+      "full40_epe_under_shift_none": 38.39601807987154,
+      "full40_d1_under_shift_none": 99.08065037392214
+    }
+  }
+}

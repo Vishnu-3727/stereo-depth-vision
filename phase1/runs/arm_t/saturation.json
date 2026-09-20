@@ -1,0 +1,42 @@
+{
+  "best": {
+    "checkpoint": "phase1/runs/arm_t/arm_t_best.pth",
+    "eval_regression_normalize": true,
+    "scene": "000160_10.png",
+    "aggregated_cost_absmax": 2120380122660864.0,
+    "disparity_initial_mean": 4.237793922424316,
+    "disparity_initial_std": 2.198065757751465,
+    "disparity_initial_min": 1.4848852157592773,
+    "disparity_initial_max": 9.525215148925781
+  },
+  "best_default": {
+    "checkpoint": "phase1/runs/arm_t/arm_t_best.pth",
+    "eval_regression_normalize": false,
+    "scene": "000160_10.png",
+    "aggregated_cost_absmax": 2120380122660864.0,
+    "disparity_initial_mean": 3.02423357963562,
+    "disparity_initial_std": 4.12233304977417,
+    "disparity_initial_min": 0.0,
+    "disparity_initial_max": 11.0
+  },
+  "final": {
+    "checkpoint": "phase1/runs/arm_t/arm_t_final.pth",
+    "eval_regression_normalize": true,
+    "scene": "000160_10.png",
+    "aggregated_cost_absmax": 1711374279376896.0,
+    "disparity_initial_mean": 4.180492401123047,
+    "disparity_initial_std": 2.1761932373046875,
+    "disparity_initial_min": 1.4849045276641846,
+    "disparity_initial_max": 9.526885986328125
+  },
+  "final_default": {
+    "checkpoint": "phase1/runs/arm_t/arm_t_final.pth",
+    "eval_regression_normalize": false,
+    "scene": "000160_10.png",
+    "aggregated_cost_absmax": 1711374279376896.0,
+    "disparity_initial_mean": 2.893187999725342,
+    "disparity_initial_std": 4.081591606140137,
+    "disparity_initial_min": 0.0,
+    "disparity_initial_max": 11.0
+  }
+}

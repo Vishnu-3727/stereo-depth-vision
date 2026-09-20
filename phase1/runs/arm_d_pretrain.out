@@ -1,0 +1,21 @@
+epoch   0 loss  36.9533 lr 9.00e-04
+epoch   1 loss  26.3387 lr 8.10e-04
+epoch   2 loss  21.7500 lr 7.29e-04
+epoch   3 loss  20.0059 lr 6.56e-04
+epoch   4 loss  18.4547 lr 5.90e-04
+epoch   5 loss  17.0388 lr 5.31e-04
+epoch   6 loss  15.7900 lr 4.78e-04
+epoch   7 loss  15.0052 lr 4.30e-04
+epoch   8 loss  14.3614 lr 3.87e-04
+epoch   9 loss  13.8338 lr 3.49e-04
+epoch  10 loss  13.1341 lr 3.14e-04
+epoch  11 loss  13.0256 lr 2.82e-04
+epoch  12 loss  12.6472 lr 2.54e-04
+epoch  13 loss  12.4155 lr 2.29e-04
+epoch  14 loss  12.1024 lr 2.06e-04
+epoch  15 loss  11.8929 lr 1.85e-04
+epoch  16 loss  11.7820 lr 1.67e-04
+epoch  17 loss  11.5822 lr 1.50e-04
+epoch  18 loss  11.4101 lr 1.35e-04
+epoch  19 loss  11.2560 lr 1.22e-04
+ARM D pretrain done: wall 9283.4s best loss 11.2560 @epoch 19

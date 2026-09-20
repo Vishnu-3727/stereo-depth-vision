@@ -1,0 +1,57 @@
+{
+  "arm": "arm_y",
+  "config": {
+    "arm": "ARM Y: random-init + KITTI only, 200 epochs, downsample_levels=3 + num_disparities=24 (stride 1/8, 8px spacing, range 184px) + cost_volume_shift=right + regression_normalize=True + left-image-guided cost-volume excitation",
+    "intervention": "left-image-guided cost-volume excitation: Conv2d(32,16,1,bias=False) -> LeakyReLU(0.01) -> Conv2d(16,32,1) -> sigmoid, broadcast over D, applied between cost volume and aggregation",
+    "preregistration": "phase1/docs/ARM_Y_PREREGISTRATION.md",
+    "param_count_arm_y": 399010,
+    "param_count_baseline": 397954,
+    "param_delta": 1056,
+    "dataset": "kitti2015",
+    "split": "hailo_calib (scenes 0-159) train, hailo_val (160-199) eval; overlap 0",
+    "split_enforcement": "train_base split='hailo_calib' only; no hailo_val sample enters optimizer loop",
+    "resolution": [
+      256,
+      512
+    ],
+    "crop": "random 256x512",
+    "disparity_range": 184,
+    "batch_size": 2,
+    "precision": "fp32",
+    "seed": 0,
+    "epochs": 2,
+    "optimizer": "Adam betas=(0.9, 0.999)",
+    "learning_rate": 0.001,
+    "schedule": "cosine annealing to 0 over 200 epochs",
+    "loss": "masked smooth L1, beta=1.0, valid = gt > 0 and gt < max_disparity",
+    "augmentation": "random crop, independent per-image gain jitter sigma=0.1; no horizontal flip",
+    "initialisation": "PyTorch defaults, random",
+    "device": "cuda",
+    "known_deviation": "no batch normalisation (BN-folded exported artifact), carried into all arms"
+  },
+  "epochs_run": 2,
+  "wall_clock_s": 43.92736291885376,
+  "git_head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+  "best_val_epe_10scene": 17.70134676685203,
+  "best_epoch": 0,
+  "final_sha256": "ebe66bb511c91643789fb0d574250a68eb12325ac24a7f953bbabfe8929b0df6",
+  "best_sha256": "cafc6247062e903e145517521d0fda843753d4fe34fe552581980dfa5166d04d",
+  "history": [
+    {
+      "epoch": 0,
+      "mean_loss": 11.436479204893113,
+      "valid_pixels": 5111621,
+      "lr": 0.0005,
+      "val_epe": 17.70134676685203,
+      "val_d1": 88.53995532284563
+    },
+    {
+      "epoch": 1,
+      "mean_loss": 10.199161583185196,
+      "valid_pixels": 5198724,
+      "lr": 0.0,
+      "val_epe": 19.194264306420045,
+      "val_d1": 88.97598200019985
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "best": {
+    "checkpoint": "phase1/runs/arm_u/arm_u_best.pth",
+    "scene": "000160_10.png",
+    "eval_regression_normalize": true,
+    "aggregated_cost_absmax": 938847936.0,
+    "disparity_initial_mean": 3.396563768386841,
+    "disparity_initial_std": 1.8186609745025635,
+    "disparity_initial_min": 1.4982404708862305,
+    "disparity_initial_max": 8.740171432495117,
+    "shift_none_substitution": {
+      "max_abs_diff_vs_trained": 57.540958404541016,
+      "bit_identical": false
+    }
+  },
+  "final": {
+    "checkpoint": "phase1/runs/arm_u/arm_u_final.pth",
+    "scene": "000160_10.png",
+    "eval_regression_normalize": true,
+    "aggregated_cost_absmax": 938847936.0,
+    "disparity_initial_mean": 3.396563768386841,
+    "disparity_initial_std": 1.8186609745025635,
+    "disparity_initial_min": 1.4982404708862305,
+    "disparity_initial_max": 8.740171432495117,
+    "shift_none_substitution": {
+      "max_abs_diff_vs_trained": 57.540958404541016,
+      "bit_identical": false
+    }
+  }
+}

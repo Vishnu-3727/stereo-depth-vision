@@ -1,0 +1,52 @@
+{
+  "arm": "arm_k600",
+  "config": {
+    "arm": "ARM K600 (budget extension): random-init + KITTI only, 600 epochs",
+    "dataset": "kitti2015",
+    "split": "hailo_calib (scenes 0-159) train, hailo_val (160-199) eval; overlap 0",
+    "split_enforcement": "train_base split='hailo_calib' only; no hailo_val sample enters optimizer loop",
+    "resolution": [
+      256,
+      512
+    ],
+    "crop": "random 256x512",
+    "disparity_range": 176,
+    "batch_size": 2,
+    "precision": "fp32",
+    "seed": 0,
+    "epochs": 2,
+    "optimizer": "Adam betas=(0.9, 0.999)",
+    "learning_rate": 0.001,
+    "schedule": "cosine annealing to 0 over 2 epochs",
+    "loss": "masked smooth L1, beta=1.0, valid = gt > 0 and gt < max_disparity",
+    "augmentation": "random crop, independent per-image gain jitter sigma=0.1; no horizontal flip",
+    "initialisation": "PyTorch defaults, random",
+    "device": "cuda",
+    "known_deviation": "no batch normalisation (BN-folded exported artifact), carried into all arms"
+  },
+  "epochs_run": 2,
+  "wall_clock_s": 40.53199124336243,
+  "git_head": "58e8a19908ddbd35451652c61aef478f56b51ebd",
+  "best_val_epe_10scene": 14.467468338654513,
+  "best_epoch": 1,
+  "final_sha256": "0b4bc82935a8a60ec36d1bb05f0664d51717b8f4d9bf02c12c4ecf86bf69bc6a",
+  "best_sha256": "8ed9a8e31133d6164abebbcdda621313302a99f3394b4723f2d1b1325a475d4d",
+  "history": [
+    {
+      "epoch": 0,
+      "mean_loss": 11.518808907270431,
+      "valid_pixels": 5111621,
+      "lr": 0.0005,
+      "val_epe": 15.372407786220784,
+      "val_d1": 88.33440602915942
+    },
+    {
+      "epoch": 1,
+      "mean_loss": 9.766468012332917,
+      "valid_pixels": 5198724,
+      "lr": 0.0,
+      "val_epe": 14.467468338654513,
+      "val_d1": 84.9082979379527
+    }
+  ]
+}

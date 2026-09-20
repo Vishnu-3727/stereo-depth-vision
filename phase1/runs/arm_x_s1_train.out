@@ -1,0 +1,210 @@
+﻿python : C:\Users\vishn\stereo_depth_vision\phase1\scripts\train_arm_x_seed.py:1: SyntaxWarning: invalid escape 
+sequence '\s'
+At line:4 char:1
++ python phase1\scripts\train_arm_x_seed.py 2>&1 | Tee-Object -FilePath ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\Users\vishn\...e sequence '\s':String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  """ARM X — 200-epoch KITTI from random init with deep supervision on the ARM V recipe.
+epoch   0 loss  17.3788 final  10.7228 aux  13.3120 lr 1.00e-03 val EPE 15.715 D1 85.01%
+epoch   1 loss  10.0858 final   6.5243 aux   7.1230 lr 1.00e-03
+epoch   2 loss   7.5850 final   4.9851 aux   5.1998 lr 9.99e-04
+epoch   3 loss   6.5399 final   4.0850 aux   4.9098 lr 9.99e-04
+epoch   4 loss   6.9355 final   4.3864 aux   5.0980 lr 9.98e-04
+epoch   5 loss   7.0929 final   4.3342 aux   5.5174 lr 9.98e-04 val EPE 5.526 D1 48.40%
+epoch   6 loss   6.3854 final   4.0672 aux   4.6364 lr 9.97e-04
+epoch   7 loss   5.7916 final   3.5463 aux   4.4906 lr 9.96e-04
+epoch   8 loss   5.4285 final   3.2919 aux   4.2732 lr 9.95e-04
+epoch   9 loss   5.2845 final   3.1289 aux   4.3113 lr 9.94e-04
+epoch  10 loss   5.0775 final   2.9934 aux   4.1681 lr 9.93e-04 val EPE 4.417 D1 35.87%
+epoch  11 loss   5.1394 final   3.0532 aux   4.1723 lr 9.91e-04
+epoch  12 loss   4.7859 final   2.7372 aux   4.0974 lr 9.90e-04
+epoch  13 loss   4.6881 final   2.6553 aux   4.0656 lr 9.88e-04
+epoch  14 loss   4.3362 final   2.3684 aux   3.9357 lr 9.86e-04
+epoch  15 loss   4.3316 final   2.3746 aux   3.9140 lr 9.84e-04 val EPE 3.953 D1 31.08%
+epoch  16 loss   4.2195 final   2.3207 aux   3.7974 lr 9.82e-04
+epoch  17 loss   4.0360 final   2.1405 aux   3.7911 lr 9.80e-04
+epoch  18 loss   4.2392 final   2.3246 aux   3.8293 lr 9.78e-04
+epoch  19 loss   4.7353 final   2.6713 aux   4.1279 lr 9.76e-04
+epoch  20 loss   4.4976 final   2.4820 aux   4.0311 lr 9.73e-04 val EPE 5.810 D1 45.81%
+epoch  21 loss   4.5207 final   2.5149 aux   4.0116 lr 9.70e-04
+epoch  22 loss   4.5177 final   2.4605 aux   4.1143 lr 9.68e-04
+epoch  23 loss   4.4224 final   2.3944 aux   4.0559 lr 9.65e-04
+epoch  24 loss   4.3496 final   2.3529 aux   3.9935 lr 9.62e-04
+epoch  25 loss   4.0581 final   2.1246 aux   3.8669 lr 9.59e-04 val EPE 4.374 D1 36.50%
+epoch  26 loss   3.9639 final   2.1019 aux   3.7241 lr 9.56e-04
+epoch  27 loss   3.7049 final   1.9003 aux   3.6092 lr 9.52e-04
+epoch  28 loss   3.8856 final   2.0070 aux   3.7573 lr 9.49e-04
+epoch  29 loss   3.7084 final   1.8821 aux   3.6527 lr 9.46e-04
+epoch  30 loss   4.2974 final   2.3534 aux   3.8880 lr 9.42e-04 val EPE 4.579 D1 34.78%
+epoch  31 loss   3.9897 final   2.0649 aux   3.8497 lr 9.38e-04
+epoch  32 loss   3.8080 final   1.9307 aux   3.7546 lr 9.34e-04
+epoch  33 loss   3.7924 final   1.9857 aux   3.6134 lr 9.30e-04
+epoch  34 loss   3.6525 final   1.8139 aux   3.6772 lr 9.26e-04
+epoch  35 loss   4.0631 final   2.1506 aux   3.8249 lr 9.22e-04 val EPE 4.826 D1 44.53%
+epoch  36 loss   3.3981 final   1.6286 aux   3.5389 lr 9.18e-04
+epoch  37 loss   3.5256 final   1.7553 aux   3.5407 lr 9.14e-04
+epoch  38 loss   3.6041 final   1.7920 aux   3.6241 lr 9.09e-04
+epoch  39 loss   3.7088 final   1.9235 aux   3.5706 lr 9.05e-04
+epoch  40 loss   3.6846 final   1.8811 aux   3.6069 lr 9.00e-04 val EPE 3.703 D1 25.69%
+epoch  41 loss   3.6709 final   1.8168 aux   3.7081 lr 8.95e-04
+epoch  42 loss   3.6458 final   1.8168 aux   3.6581 lr 8.90e-04
+epoch  43 loss   3.3500 final   1.6078 aux   3.4844 lr 8.85e-04
+epoch  44 loss   3.5958 final   1.7719 aux   3.6478 lr 8.80e-04
+epoch  45 loss   3.5641 final   1.7369 aux   3.6543 lr 8.75e-04 val EPE 3.957 D1 32.88%
+epoch  46 loss   3.6208 final   1.8394 aux   3.5627 lr 8.70e-04
+epoch  47 loss   3.7613 final   1.9472 aux   3.6283 lr 8.64e-04
+epoch  48 loss   3.5454 final   1.7481 aux   3.5946 lr 8.59e-04
+epoch  49 loss   3.5672 final   1.7863 aux   3.5618 lr 8.54e-04
+epoch  50 loss   3.6835 final   1.8785 aux   3.6099 lr 8.48e-04 val EPE 3.633 D1 27.94%
+epoch  51 loss   3.4346 final   1.7037 aux   3.4617 lr 8.42e-04
+epoch  52 loss   3.3567 final   1.5950 aux   3.5233 lr 8.37e-04
+epoch  53 loss   3.4439 final   1.6386 aux   3.6106 lr 8.31e-04
+epoch  54 loss   3.1241 final   1.4502 aux   3.3479 lr 8.25e-04
+epoch  55 loss   3.4674 final   1.6679 aux   3.5991 lr 8.19e-04 val EPE 3.861 D1 25.95%
+epoch  56 loss   3.6342 final   1.7687 aux   3.7310 lr 8.13e-04
+epoch  57 loss   3.1681 final   1.4102 aux   3.5157 lr 8.06e-04
+epoch  58 loss   3.2947 final   1.5774 aux   3.4348 lr 8.00e-04
+epoch  59 loss   3.1328 final   1.4138 aux   3.4380 lr 7.94e-04
+epoch  60 loss   3.3171 final   1.5603 aux   3.5136 lr 7.88e-04 val EPE 3.137 D1 21.22%
+epoch  61 loss   3.2036 final   1.4753 aux   3.4567 lr 7.81e-04
+epoch  62 loss   3.2080 final   1.4555 aux   3.5050 lr 7.75e-04
+epoch  63 loss   3.1065 final   1.3999 aux   3.4133 lr 7.68e-04
+epoch  64 loss   3.1488 final   1.4050 aux   3.4876 lr 7.61e-04
+epoch  65 loss   3.1136 final   1.4097 aux   3.4078 lr 7.55e-04 val EPE 3.571 D1 23.72%
+epoch  66 loss   2.9856 final   1.3421 aux   3.2869 lr 7.48e-04
+epoch  67 loss   3.0912 final   1.4164 aux   3.3496 lr 7.41e-04
+epoch  68 loss   3.3400 final   1.6145 aux   3.4510 lr 7.34e-04
+epoch  69 loss   3.1611 final   1.4603 aux   3.4015 lr 7.27e-04
+epoch  70 loss   3.1271 final   1.4198 aux   3.4146 lr 7.20e-04 val EPE 4.095 D1 32.20%
+epoch  71 loss   3.0539 final   1.3488 aux   3.4103 lr 7.13e-04
+epoch  72 loss   2.9820 final   1.2753 aux   3.4135 lr 7.06e-04
+epoch  73 loss   2.9616 final   1.3270 aux   3.2692 lr 6.99e-04
+epoch  74 loss   3.0093 final   1.3414 aux   3.3358 lr 6.91e-04
+epoch  75 loss   3.1487 final   1.4352 aux   3.4270 lr 6.84e-04 val EPE 3.427 D1 24.59%
+epoch  76 loss   3.1249 final   1.3942 aux   3.4614 lr 6.77e-04
+epoch  77 loss   2.9331 final   1.3102 aux   3.2458 lr 6.69e-04
+epoch  78 loss   2.9878 final   1.3176 aux   3.3403 lr 6.62e-04
+epoch  79 loss   2.8711 final   1.2090 aux   3.3243 lr 6.55e-04
+epoch  80 loss   3.0440 final   1.3127 aux   3.4624 lr 6.47e-04 val EPE 3.651 D1 20.88%
+epoch  81 loss   3.0018 final   1.3129 aux   3.3778 lr 6.39e-04
+epoch  82 loss   3.0714 final   1.3360 aux   3.4709 lr 6.32e-04
+epoch  83 loss   3.0611 final   1.3773 aux   3.3677 lr 6.24e-04
+epoch  84 loss   2.9749 final   1.3301 aux   3.2896 lr 6.17e-04
+epoch  85 loss   2.9101 final   1.2897 aux   3.2409 lr 6.09e-04 val EPE 3.238 D1 22.23%
+epoch  86 loss   3.0769 final   1.3345 aux   3.4848 lr 6.01e-04
+epoch  87 loss   2.8607 final   1.2090 aux   3.3035 lr 5.94e-04
+epoch  88 loss   2.8709 final   1.1613 aux   3.4191 lr 5.86e-04
+epoch  89 loss   2.8083 final   1.1774 aux   3.2617 lr 5.78e-04
+epoch  90 loss   2.8444 final   1.1844 aux   3.3200 lr 5.70e-04 val EPE 2.932 D1 18.93%
+epoch  91 loss   3.0453 final   1.3300 aux   3.4307 lr 5.63e-04
+epoch  92 loss   2.8663 final   1.2129 aux   3.3068 lr 5.55e-04
+epoch  93 loss   3.2316 final   1.4525 aux   3.5583 lr 5.47e-04
+epoch  94 loss   2.8704 final   1.2302 aux   3.2804 lr 5.39e-04
+epoch  95 loss   2.6919 final   1.0762 aux   3.2313 lr 5.31e-04 val EPE 3.109 D1 20.39%
+epoch  96 loss   2.9914 final   1.2722 aux   3.4384 lr 5.24e-04
+epoch  97 loss   2.9228 final   1.2473 aux   3.3510 lr 5.16e-04
+epoch  98 loss   2.8486 final   1.1983 aux   3.3006 lr 5.08e-04
+epoch  99 loss   2.6719 final   1.0916 aux   3.1605 lr 5.00e-04
+epoch 100 loss   2.8048 final   1.1732 aux   3.2631 lr 4.92e-04 val EPE 3.066 D1 19.50%
+epoch 101 loss   2.8822 final   1.2037 aux   3.3569 lr 4.84e-04
+epoch 102 loss   2.7462 final   1.1332 aux   3.2260 lr 4.76e-04
+epoch 103 loss   2.6411 final   1.0716 aux   3.1389 lr 4.69e-04
+epoch 104 loss   2.7333 final   1.1326 aux   3.2015 lr 4.61e-04
+epoch 105 loss   2.7238 final   1.1011 aux   3.2454 lr 4.53e-04 val EPE 2.816 D1 17.83%
+epoch 106 loss   2.7061 final   1.1058 aux   3.2008 lr 4.45e-04
+epoch 107 loss   2.5168 final   0.9648 aux   3.1039 lr 4.37e-04
+epoch 108 loss   2.6143 final   1.0302 aux   3.1682 lr 4.30e-04
+epoch 109 loss   2.6485 final   1.0277 aux   3.2416 lr 4.22e-04
+epoch 110 loss   2.6393 final   1.0299 aux   3.2189 lr 4.14e-04 val EPE 3.423 D1 24.57%
+epoch 111 loss   2.8177 final   1.1615 aux   3.3124 lr 4.06e-04
+epoch 112 loss   2.8032 final   1.1442 aux   3.3180 lr 3.99e-04
+epoch 113 loss   2.6646 final   1.0695 aux   3.1901 lr 3.91e-04
+epoch 114 loss   2.5802 final   0.9951 aux   3.1702 lr 3.83e-04
+epoch 115 loss   2.4019 final   0.8552 aux   3.0934 lr 3.76e-04 val EPE 2.799 D1 17.41%
+epoch 116 loss   2.5898 final   0.9898 aux   3.2002 lr 3.68e-04
+epoch 117 loss   2.6389 final   1.0546 aux   3.1686 lr 3.61e-04
+epoch 118 loss   2.6371 final   1.0317 aux   3.2106 lr 3.53e-04
+epoch 119 loss   2.7928 final   1.1423 aux   3.3011 lr 3.45e-04
+epoch 120 loss   2.6477 final   1.0453 aux   3.2048 lr 3.38e-04 val EPE 2.940 D1 18.97%
+epoch 121 loss   2.5585 final   0.9782 aux   3.1606 lr 3.31e-04
+epoch 122 loss   2.4390 final   0.9011 aux   3.0759 lr 3.23e-04
+epoch 123 loss   2.5067 final   0.9447 aux   3.1240 lr 3.16e-04
+epoch 124 loss   2.5114 final   0.9465 aux   3.1298 lr 3.09e-04
+epoch 125 loss   2.5525 final   0.9177 aux   3.2697 lr 3.01e-04 val EPE 2.640 D1 16.79%
+epoch 126 loss   2.4525 final   0.8859 aux   3.1333 lr 2.94e-04
+epoch 127 loss   2.5815 final   0.9592 aux   3.2447 lr 2.87e-04
+epoch 128 loss   2.5411 final   0.9483 aux   3.1855 lr 2.80e-04
+epoch 129 loss   2.5499 final   0.9706 aux   3.1586 lr 2.73e-04
+epoch 130 loss   2.4420 final   0.8623 aux   3.1595 lr 2.66e-04 val EPE 2.925 D1 17.78%
+epoch 131 loss   2.5767 final   0.9891 aux   3.1752 lr 2.59e-04
+epoch 132 loss   2.3288 final   0.8312 aux   2.9952 lr 2.52e-04
+epoch 133 loss   2.4226 final   0.8743 aux   3.0967 lr 2.45e-04
+epoch 134 loss   2.3961 final   0.8351 aux   3.1220 lr 2.39e-04
+epoch 135 loss   2.4258 final   0.9025 aux   3.0466 lr 2.32e-04 val EPE 2.666 D1 16.39%
+epoch 136 loss   2.4359 final   0.8487 aux   3.1745 lr 2.25e-04
+epoch 137 loss   2.4986 final   0.9125 aux   3.1723 lr 2.19e-04
+epoch 138 loss   2.3728 final   0.8327 aux   3.0802 lr 2.12e-04
+epoch 139 loss   2.4401 final   0.8453 aux   3.1896 lr 2.06e-04
+epoch 140 loss   2.2789 final   0.7659 aux   3.0261 lr 2.00e-04 val EPE 2.575 D1 15.60%
+epoch 141 loss   2.4278 final   0.8424 aux   3.1707 lr 1.94e-04
+epoch 142 loss   2.4676 final   0.9038 aux   3.1276 lr 1.87e-04
+epoch 143 loss   2.4162 final   0.8518 aux   3.1288 lr 1.81e-04
+epoch 144 loss   2.4339 final   0.8294 aux   3.2090 lr 1.75e-04
+epoch 145 loss   2.3010 final   0.7804 aux   3.0412 lr 1.69e-04 val EPE 2.674 D1 16.08%
+epoch 146 loss   2.3819 final   0.8205 aux   3.1229 lr 1.63e-04
+epoch 147 loss   2.2710 final   0.7468 aux   3.0485 lr 1.58e-04
+epoch 148 loss   2.4898 final   0.9094 aux   3.1607 lr 1.52e-04
+epoch 149 loss   2.3059 final   0.7472 aux   3.1173 lr 1.46e-04
+epoch 150 loss   2.3951 final   0.8278 aux   3.1345 lr 1.41e-04 val EPE 2.489 D1 15.53%
+epoch 151 loss   2.3415 final   0.7887 aux   3.1058 lr 1.36e-04
+epoch 152 loss   2.3053 final   0.7965 aux   3.0176 lr 1.30e-04
+epoch 153 loss   2.3756 final   0.8156 aux   3.1199 lr 1.25e-04
+epoch 154 loss   2.3235 final   0.7859 aux   3.0753 lr 1.20e-04
+epoch 155 loss   2.1749 final   0.7073 aux   2.9351 lr 1.15e-04 val EPE 2.559 D1 15.70%
+epoch 156 loss   2.3561 final   0.7856 aux   3.1410 lr 1.10e-04
+epoch 157 loss   2.2742 final   0.7470 aux   3.0545 lr 1.05e-04
+epoch 158 loss   2.2263 final   0.7579 aux   2.9368 lr 1.00e-04
+epoch 159 loss   2.3294 final   0.8051 aux   3.0486 lr 9.55e-05
+epoch 160 loss   2.2266 final   0.7398 aux   2.9734 lr 9.09e-05 val EPE 2.505 D1 15.37%
+epoch 161 loss   2.2300 final   0.7454 aux   2.9692 lr 8.65e-05
+epoch 162 loss   2.2537 final   0.7333 aux   3.0408 lr 8.21e-05
+epoch 163 loss   2.2896 final   0.7572 aux   3.0650 lr 7.78e-05
+epoch 164 loss   2.2667 final   0.7652 aux   3.0030 lr 7.37e-05
+epoch 165 loss   2.2644 final   0.7603 aux   3.0083 lr 6.96e-05 val EPE 2.566 D1 15.60%
+epoch 166 loss   2.2995 final   0.7303 aux   3.1384 lr 6.57e-05
+epoch 167 loss   2.2699 final   0.7537 aux   3.0323 lr 6.18e-05
+epoch 168 loss   2.2684 final   0.7458 aux   3.0453 lr 5.81e-05
+epoch 169 loss   2.3039 final   0.7325 aux   3.1429 lr 5.45e-05
+epoch 170 loss   2.2622 final   0.7215 aux   3.0813 lr 5.10e-05 val EPE 2.602 D1 15.73%
+epoch 171 loss   2.2645 final   0.7304 aux   3.0682 lr 4.76e-05
+epoch 172 loss   2.3178 final   0.7853 aux   3.0650 lr 4.43e-05
+epoch 173 loss   2.1746 final   0.6974 aux   2.9543 lr 4.11e-05
+epoch 174 loss   2.2639 final   0.7208 aux   3.0862 lr 3.81e-05
+epoch 175 loss   2.2419 final   0.7020 aux   3.0798 lr 3.51e-05 val EPE 2.420 D1 14.93%
+epoch 176 loss   2.2840 final   0.7627 aux   3.0427 lr 3.23e-05
+epoch 177 loss   2.2931 final   0.7407 aux   3.1049 lr 2.96e-05
+epoch 178 loss   2.1958 final   0.7034 aux   2.9848 lr 2.70e-05
+epoch 179 loss   2.2347 final   0.6878 aux   3.0938 lr 2.45e-05
+epoch 180 loss   2.1915 final   0.6755 aux   3.0319 lr 2.21e-05 val EPE 2.401 D1 14.98%
+epoch 181 loss   2.2032 final   0.7129 aux   2.9807 lr 1.99e-05
+epoch 182 loss   2.1443 final   0.6575 aux   2.9737 lr 1.77e-05
+epoch 183 loss   2.1749 final   0.6632 aux   3.0234 lr 1.57e-05
+epoch 184 loss   2.1560 final   0.6651 aux   2.9818 lr 1.38e-05
+epoch 185 loss   2.1510 final   0.6701 aux   2.9619 lr 1.20e-05 val EPE 2.426 D1 15.02%
+epoch 186 loss   2.2934 final   0.7374 aux   3.1120 lr 1.04e-05
+epoch 187 loss   2.1966 final   0.6729 aux   3.0474 lr 8.86e-06
+epoch 188 loss   2.2106 final   0.7066 aux   3.0080 lr 7.45e-06
+epoch 189 loss   2.1042 final   0.6692 aux   2.8700 lr 6.16e-06
+epoch 190 loss   2.2189 final   0.7303 aux   2.9771 lr 4.99e-06 val EPE 2.377 D1 14.73%
+epoch 191 loss   2.1583 final   0.6908 aux   2.9349 lr 3.94e-06
+epoch 192 loss   2.2687 final   0.7556 aux   3.0261 lr 3.02e-06
+epoch 193 loss   2.1741 final   0.6958 aux   2.9567 lr 2.22e-06
+epoch 194 loss   2.0942 final   0.6447 aux   2.8990 lr 1.54e-06
+epoch 195 loss   2.1364 final   0.6475 aux   2.9777 lr 9.87e-07 val EPE 2.373 D1 14.73%
+epoch 196 loss   2.1808 final   0.6852 aux   2.9912 lr 5.55e-07
+epoch 197 loss   2.2087 final   0.7214 aux   2.9746 lr 2.47e-07
+epoch 198 loss   2.1750 final   0.6878 aux   2.9745 lr 6.17e-08
+epoch 199 loss   2.0650 final   0.6321 aux   2.8657 lr 0.00e+00 val EPE 2.371 D1 14.73%
+ARM X done: wall 3862.8s best10 EPE 2.3712 @epoch 199
