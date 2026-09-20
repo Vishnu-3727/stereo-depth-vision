@@ -42,6 +42,20 @@ def shift_left(x: torch.Tensor, k: int) -> torch.Tensor:
     return F.pad(x, (0, k))[..., k:]
 
 
+def shift_right(x: torch.Tensor, k: int) -> torch.Tensor:
+    """Shift ``x`` right by ``k`` columns, filling the left edge with zeros.
+
+    Pads ``k`` zeros on the left then slices ``[..., :width]``. Applied to the
+    RIGHT features, candidate ``k`` computes ``left(x) - right(x - k)``, i.e.
+    the LEFT-frame matching cost for disparity ``k``.
+    """
+    if k == 0:
+        return x
+    width = x.shape[-1]
+    padded = F.pad(x, (k, 0))          # [zeros | features]
+    return padded[..., :width]         # drop the rightmost k columns
+
+
 def reference_shift(x: torch.Tensor, k: int) -> torch.Tensor:
     """The reference model's shift, reproduced exactly -- a no-op.
 
@@ -71,7 +85,10 @@ def build_cost_volume(
 
     ``shift`` selects the disparity shift. ``"none"`` reproduces the reference
     model, whose shift is a no-op, and is the default. ``"left"`` performs the
-    shift the construction was intended to perform. The two produce very
+    shift the construction was intended to perform (left features shifted left,
+    RIGHT-frame indexing). ``"right"`` shifts the RIGHT features right, giving
+    ``cost_k(x) = left(x) - right(x - k)`` indexed in the LEFT frame, which is
+    what KITTI left-view ground truth requires. The modes produce very
     different volumes; ``"none"`` produces one whose slices are all identical.
     """
     if left.shape != right.shape:
@@ -79,16 +96,21 @@ def build_cost_volume(
             "feature maps must match: " + str(tuple(left.shape))
             + " vs " + str(tuple(right.shape))
         )
-    if shift not in {"none", "left"}:
+    if shift not in {"none", "left", "right"}:
         raise ValueError("unknown shift mode: " + shift)
-    shifter = reference_shift if shift == "none" else shift_left
     levels = []
     for k in range(num_disparities):
-        shifted = shifter(left, k)
+        if shift == "none":
+            shifted_left = reference_shift(left, k)
+            anchor, other = shifted_left, right
+        elif shift == "left":
+            anchor, other = shift_left(left, k), right
+        else:  # shift == "right"
+            anchor, other = left, shift_right(right, k)
         if method == "subtract":
-            levels.append(shifted - right)
+            levels.append(anchor - other)
         elif method == "concat":
-            levels.append(torch.cat([shifted, right], dim=1))
+            levels.append(torch.cat([anchor, other], dim=1))
         else:
             raise ValueError("unknown cost volume method: " + method)
     # stack on a new axis after batch, then move channels back in front so the
@@ -126,18 +148,32 @@ class CostVolume(nn.Module):
         num_disparities: int = 12,
         method: str = "subtract",
         shift: str = "none",
+        channels: int = 32,
+        groups: int = 0,
     ) -> None:
         super().__init__()
         self.num_disparities = num_disparities
         self.method = method
         self.shift = shift
+        self.channels = channels
+        self.groups = groups
+        if groups > 0:
+            assert channels % groups == 0
+            self.reduce = nn.Conv2d(channels, groups, 1, groups=groups, bias=False)
 
     def forward(self, left: torch.Tensor, right: torch.Tensor) -> torch.Tensor:
-        return build_cost_volume(
+        volume = build_cost_volume(
             left, right, self.num_disparities, self.method, self.shift
         )
+        if self.groups > 0:
+            reduced = [self.reduce(volume[:, :, d]) for d in range(volume.shape[2])]
+            return torch.stack(reduced, dim=2)
+        return volume
 
     def memory_bytes(self, batch: int, channels: int, h: int, w: int, dtype_bytes: int = 4) -> int:
         """B x C x D x H x W x bytes, the figure used in the analysis document."""
-        c = channels * (2 if self.method == "concat" else 1)
+        if self.groups > 0:
+            c = self.groups
+        else:
+            c = channels * (2 if self.method == "concat" else 1)
         return batch * c * self.num_disparities * h * w * dtype_bytes

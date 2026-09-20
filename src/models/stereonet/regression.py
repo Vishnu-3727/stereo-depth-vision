@@ -30,7 +30,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 
-def soft_argmin(cost: torch.Tensor, dim: int = 1) -> torch.Tensor:
+def soft_argmin(cost: torch.Tensor, dim: int = 1, normalize: bool = False) -> torch.Tensor:
     """Expected disparity index under softmax(-cost).
 
     ``cost`` is ``(B, D, H, W)``; the result is ``(B, 1, H, W)`` in units of
@@ -38,7 +38,14 @@ def soft_argmin(cost: torch.Tensor, dim: int = 1) -> torch.Tensor:
     the caller's job, and in this architecture the scale factor is folded into
     the upsampling rather than applied here -- see the note in
     :class:`DisparityRegression`.
+
+    With ``normalize=True`` the cost is standardised across the disparity axis
+    (zero mean, unit variance) before the softmax, making the readout invariant
+    to the arbitrary scale the aggregation network happens to produce
+    (ARM T). Default ``False`` preserves the deployed behaviour exactly.
     """
+    if normalize:
+        cost = (cost - cost.mean(dim, keepdim=True)) / (cost.std(dim, keepdim=True) + 1e-6)
     weights = torch.softmax(-cost, dim=dim)
     index = torch.arange(cost.shape[dim], dtype=cost.dtype, device=cost.device)
     shape = [1] * cost.dim()
@@ -49,13 +56,14 @@ def soft_argmin(cost: torch.Tensor, dim: int = 1) -> torch.Tensor:
 class DisparityRegression(nn.Module):
     """Cost tensor at 1/16 resolution to disparity at full resolution."""
 
-    def __init__(self, upsample_first: bool = True) -> None:
+    def __init__(self, upsample_first: bool = True, normalize: bool = False) -> None:
         super().__init__()
         self.upsample_first = upsample_first
+        self.normalize = normalize
 
     def forward(self, cost: torch.Tensor, size: tuple[int, int]) -> torch.Tensor:
         if self.upsample_first:
             cost = F.interpolate(cost, size=size, mode="bilinear", align_corners=True)
-            return soft_argmin(cost, dim=1)
-        disparity = soft_argmin(cost, dim=1)
+            return soft_argmin(cost, dim=1, normalize=self.normalize)
+        disparity = soft_argmin(cost, dim=1, normalize=self.normalize)
         return F.interpolate(disparity, size=size, mode="bilinear", align_corners=True)

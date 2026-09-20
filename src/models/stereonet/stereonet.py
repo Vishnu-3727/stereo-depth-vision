@@ -35,9 +35,22 @@ import torch.nn as nn
 
 from .aggregation import Aggregation
 from .cost_volume import CostVolume
+from .excitation import CostVolumeExcitation
 from .feature_extractor import FeatureExtractor
 from .refinement import Refinement
 from .regression import DisparityRegression
+
+
+def normalize_features_l2(features: torch.Tensor, eps: float = 1e-5) -> torch.Tensor:
+    """Per-pixel L2 unit-normalization over the channel axis (ARM-Z).
+
+    Each 32-dim feature vector (dim=1 of (B, C, H, W)) is divided by
+    ``max(||v||_2, eps)`` with ``eps = 1e-5``. The clamp (never raw
+    ``v / norm``) keeps exactly-zero vectors finite. Differentiable;
+    adds no parameters.
+    """
+    norm = features.norm(p=2, dim=1, keepdim=True).clamp_min(eps)
+    return features / norm
 
 
 @dataclass
@@ -58,6 +71,17 @@ class StereoNetConfig:
     refinement_dilations: tuple[int, ...] = (1, 2, 4, 8, 1, 1)
     upsample_before_argmin: bool = True
     final_relu: bool = True
+    # ARM T: standardise the cost across the disparity axis before the
+    # soft-argmin softmax, making the readout scale-invariant. Default False
+    # so ARM K stays exactly reproducible.
+    regression_normalize: bool = False
+    cost_volume_groups: int = 0
+    # ARM Y: left-image-guided cost-volume excitation. Default False keeps
+    # every earlier arm exactly reproducible.
+    cost_volume_excitation: bool = False
+    # ARM Z: per-pixel L2 unit-normalization of L/R features before the
+    # cost volume. Default False keeps every earlier arm bit-identical.
+    feature_normalize: bool = False   # ARM Z
 
     @property
     def feature_stride(self) -> int:
@@ -82,13 +106,27 @@ class StereoNet(nn.Module):
             residual_blocks=c.residual_blocks,
         )
         self.cost_volume = CostVolume(
-            c.num_disparities, c.cost_volume_method, c.cost_volume_shift
+            c.num_disparities,
+            c.cost_volume_method,
+            c.cost_volume_shift,
+            channels=c.feature_channels,
+            groups=c.cost_volume_groups,
         )
-        agg_in = c.feature_channels * (2 if c.cost_volume_method == "concat" else 1)
+        agg_in = (
+            c.cost_volume_groups
+            if c.cost_volume_groups > 0
+            else c.feature_channels * (2 if c.cost_volume_method == "concat" else 1)
+        )
+        self.excitation = (
+            CostVolumeExcitation(cv_channels=agg_in, im_channels=c.feature_channels)
+            if c.cost_volume_excitation
+            else None
+        )
         self.aggregation = Aggregation(
             in_channels=agg_in, channels=c.feature_channels, num_layers=c.aggregation_layers
         )
-        self.regression = DisparityRegression(upsample_first=c.upsample_before_argmin)
+        self.regression = DisparityRegression(upsample_first=c.upsample_before_argmin,
+                                              normalize=c.regression_normalize)
         self.refinement = Refinement(
             guidance_channels=c.in_channels,
             channels=c.feature_channels,
@@ -102,7 +140,12 @@ class StereoNet(nn.Module):
 
         left_features = self.feature_extractor(left)
         right_features = self.feature_extractor(right)
+        if self.config.feature_normalize:   # ARM-Z: before shifting
+            left_features = normalize_features_l2(left_features)
+            right_features = normalize_features_l2(right_features)
         volume = self.cost_volume(left_features, right_features)
+        if self.excitation is not None:
+            volume = self.excitation(volume, left_features)
         cost = self.aggregation(volume)
         disparity_initial = self.regression(cost, size)
         residual = self.refinement(disparity_initial, left)

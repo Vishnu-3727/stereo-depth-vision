@@ -9,6 +9,7 @@ from .cost_volume import (
     reference_shift,
     shift_left,
 )
+from .excitation import CostVolumeExcitation
 from .feature_extractor import FeatureExtractor
 from .refinement import Refinement
 from .regression import DisparityRegression, soft_argmin
@@ -22,6 +23,7 @@ __all__ = [
     "build_cost_volume_reference",
     "reference_shift",
     "shift_left",
+    "CostVolumeExcitation",
     "FeatureExtractor",
     "Refinement",
     "DisparityRegression",
