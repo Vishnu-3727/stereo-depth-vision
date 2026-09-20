@@ -1,31 +1,34 @@
 # Stereo Depth Vision — Microchip StereoNet
 
-**Current project entry point.** Updated 2026-09-20 by the documentation closure pass.
-The original Phase-1 README is preserved below the rule, unchanged, as historical material.
+A small stereo-depth network for edge silicon, developed against a frozen evaluation contract,
+and the complete record of how it was built, what it achieves, and where it stopped.
 
-## Current project status
+**Status: technical investigation CLOSED. Hailo deployment BLOCKED — the target device has
+never been specified.**
 
 | | |
 |---|---|
-| Technical investigation | **CLOSED** — no further experiments are authorized |
-| Documentation | closure pass complete (this section, `RESULTS_INDEX.md`, `stage_c_deploy/DOCUMENTATION_CLOSURE_RECORD.md`) |
-| Frozen deployment candidate | **ARM-P seed 1** — `stage_b_armp/20260919T012646Z_tier2_seed1/armp/p2a_best.pth` (sha256 `b2f6f5d5…fffeb7454`), 397,954 params, frozen-contract EPE **1.1912168 px** |
-| Hailo deployment | **BLOCKED** |
+| Frozen model | **ARM-P seed 1** — 397,954 parameters |
+| Accuracy | **1.1912168 px** EPE on the frozen 40-scene KITTI contract (reference model: 1.3134471 px) |
+| Perception stack | metric depth, point cloud, occupancy, depth edges — **405 checks, 0 failures** |
+| Known failures | ONNX export parity **FAIL** · activation-rescale **FAIL** (both frozen, unrepaired) |
+| Hailo | target device **UNSPECIFIED** · toolchain **NOT EXECUTED** · **no HEF exists** |
 
-> **ARM-P seed 1 is the frozen deployment candidate selected under C0, but deployment to Hailo
-> has NOT occurred because the target Hailo device has not been specified and the corresponding
-> target toolchain has therefore not been executed.**
+> ARM-P seed 1 is the frozen deployment candidate selected under C0, but deployment to Hailo
+> has **not** occurred because the target Hailo device has not been specified and the
+> corresponding target toolchain has therefore not been executed.
 
-### What it looks like
+---
 
-One KITTI stereo pair through the whole graph — left image, ARM-P disparity, metric depth in
-metres, object edges, and a bird's-eye point cloud — with the numbers underneath. Click any
-panel to measure that point in metres.
+## What it does
+
+One stereo pair in; disparity, metric depth, a point cloud, occupancy and object edges out.
+Click any panel in the demo to measure that point in metres.
 
 ![Pipeline demo, city scene](docs/images/demo_city.png)
 
-The same cloud in 3D (`--cloud3d`), rotatable and zoomable: road surface in yellow, the two
-building facades either side, camera at the origin in red.
+The same point cloud in 3D — rotatable and zoomable. Road surface in yellow, the two building
+facades either side, camera at the origin in red.
 
 ![3D point cloud](docs/images/demo_city_cloud3d.png)
 
@@ -33,315 +36,190 @@ A highway scene from the same 40-scene validation split:
 
 ![Pipeline demo, highway scene](docs/images/demo_highway.png)
 
-Every run prints the two facts a viewer must not miss: **C1 export parity FAIL**
-(1.709e-3 px against the frozen 1e-3 px criterion) and **Hailo target UNSPECIFIED, toolchain
-NOT EXECUTED, no HEF**. Timings shown are development-machine measurements, never Hailo.
+---
 
-### Current blocker
+## Quick start
 
-- **Hailo target device: UNSPECIFIED.** No authoritative company requirement for device, board,
-  SDK/DFC version, resolution, FPS, power or quantization mode exists anywhere in this
-  repository. Historical Hailo-8 / 10H / 15H references in `reference/` are **HISTORICAL** and
-  must not be promoted to "the target".
-- **Hailo toolchain: NOT EXECUTED.** No parse, no quantization, no compile.
-- **ARM-P HEF: DOES NOT EXIST.** The only `.hef` present is the historical
-  `reference/stereonet.hef`.
-- Two known, frozen failures stand unrepaired: **C1 export parity FAIL**
-  (0.001708984375 px vs the frozen 1e-3 px criterion) and **DR-1 H1 FAIL** (1.4816284e-02 px).
-  The device-independent perception stack passes: **C2 135/135, C2.1 251/251, C2.1.1 19/19**.
+```bash
+pip install -r requirements.txt          # Python 3.12; torch 2.7.0+cu128, onnx 1.22, ort 1.27
 
-What is needed to unblock: the 14 company-supplied fields listed in
-`stage_c_deploy/STAGE_C_DEPLOYMENT_READINESS_FINAL.md` §17.
+# KITTI 2015 stereo is NOT in this repo. Download data_scene_flow.zip (~1.6 GB) and
+# data_scene_flow_calib.zip from the KITTI benchmark site and extract to data/kitti2015/
+# so that training/{image_2,image_3,disp_occ_0,calib_cam_to_cam} exist.
 
-## Where to look
-
-**See it run:** `python stage_c_deploy/demo/pipeline_demo.py --cloud3d` — one stereo
-pair through the whole graph (disparity, metric depth, object edges, point cloud),
-click any panel to measure a point in metres. See
-[`stage_c_deploy/demo/README.md`](stage_c_deploy/demo/README.md).
-
-**Start here:** [`RESULTS_INDEX.md`](RESULTS_INDEX.md) — the current index of every phase,
-stage, run and audit, with status, source and purpose for each, plus a reader-hazard list.
-
-| Material | State | Entry point |
-|---|---|---|
-| Phase 0 — baseline lock | **HISTORICAL / CLOSED** | `phase0/docs/PHASE_0_FINAL_REPORT.md` |
-| Phase 1 — reference forensics, arm campaign | **HISTORICAL / CLOSED** | `PHASE_1_FINAL_REPORT.md`, `docs/`, and the original README below |
-| Phase 2 (re-scoped) — P2A optimization + export | **HISTORICAL / CLOSED**; its "Model Deployed" wording is **SUPERSEDED** | `PHASE_2_FINAL_REPORT.md` (carries a supersession notice) |
-| Phase 2 (superseded correspondence line) | **HISTORICAL / CLOSED at Level D** | `phase2/docs/POST_CLOSURE_RESEARCH_AUDIT.md` |
-| Stage A — gap diagnostics | **CLOSED** (architecture gate: NO ARCHITECTURE JUSTIFIED) | `stage_a_diagnostics/DIAGNOSTIC_REPORT.md` |
-| Stage B — ARM-P initialization intervention | **CLOSED** (bounded finding; identifiability limits recorded) | `stage_b_armp/ARMP_CLOSURE_RECORD.md` |
-| Stage C — device-independent deployment work | **CLOSED where device-independent; BLOCKED where target-dependent** | `stage_c_deploy/STAGE_C_DEPLOYMENT_READINESS_FINAL.md` |
-| Whole-system audits | **CLOSED WITH DOCUMENTATION DISCREPANCIES** | `stage_c_deploy/FINAL_WHOLE_SYSTEM_AUDIT.md`, `…_SECOND_PASS.md` |
-
-**Do not read `phase1/results/LEADERBOARD.md` as the current results index** — it is the
-historical Phase-1 arm table and stops at ARM-V. Use `RESULTS_INDEX.md`.
-
-## Reproducing this work
-
-**Environment:** Python 3.12, `pip install -r requirements.txt` (torch 2.7.0+cu128, onnx 1.22,
-onnxruntime 1.27, numpy 2.5.1 were used for every frozen number).
-
-**Datasets are not in this repository.** `data/` is gitignored, so the download scripts that
-lived there are not shipped either — fetch the data yourself:
-
-- **KITTI 2015 stereo** (`data_scene_flow.zip` ~1.6 GB + `data_scene_flow_calib.zip`) from the
-  KITTI benchmark site → extract to `data/kitti2015/` so that `training/image_2`,
-  `training/image_3`, `training/disp_occ_0` and `training/calib_cam_to_cam` exist. This is all
-  you need to re-score every frozen result and to run the demo: the contract evaluates scenes
-  **160–199** of the *training* split. Exact layout: `phase0/docs/BASELINE_CONTRACT.md`.
-- **SceneFlow** (FlyingThings3D + Driving, ~160 GB of archives) only if you want to re-run
-  ARM-P Stage 1 pretraining. Acquisition notes: `phase1/docs/SCENEFLOW_ACQUISITION.md`. Stage 1
-  used the **FlyingThings3D A+C subset, 14,460 usable triplets** (subset B was missing, Monkaa
-  empty) — see `stage_b_armp/20260918T062146Z_stage1_pretrain/README.md`.
-
-**Re-score the frozen contract** (40 scenes, 3,802,797 valid pixels, `disp_occ_0`, GT 1/256).
-`phase1/harness/frozen_eval.py` is the contract itself — a library, not a script, and never
-edited to improve a number. The runnable entry points are:
-
+python stage_c_deploy/demo/pipeline_demo.py --cloud3d        # see it run
+python stage_c_deploy/demo/pipeline_demo.py --list           # the 40 validation scenes
 ```
-# ARM-P seed 1 on the full 40-scene contract  -> expect EPE 1.191216765057325
+
+Demo details: [`stage_c_deploy/demo/README.md`](stage_c_deploy/demo/README.md).
+Exact dataset layout: [`phase0/docs/BASELINE_CONTRACT.md`](phase0/docs/BASELINE_CONTRACT.md).
+
+---
+
+## The pipeline
+
+Input geometry is KITTI 368×1232 throughout. **Exactly one stage is neural.**
+
+| # | Stage | Implementation | Validated by |
+|---|---|---|---|
+| 1 | Load + preprocess stereo pair | `src/datasets/kitti2015.py` | frozen contract |
+| 2 | **ARM-P inference → disparity** | `stage_c_deploy/metric_depth/armp_depth.py` | EPE 1.1912168 px |
+| 3 | Metric depth, `Z = fB/d` | `stage_c_deploy/metric_depth/` | **C2 — 135/135 PASS** |
+| 4 | Point cloud, spatial cells, occupancy | `stage_c_deploy/spatial_perception/` | **C2.1 — 251/251 PASS** |
+| 5 | Depth discontinuities (object edges) | `stage_c_deploy/spatial_perception/discontinuity.py` | **C2.1.1 — 19/19 PASS** |
+
+Stages 3–5 are deterministic host code. They add no neural model, they never modify the stored
+depth, and they say nothing about Hailo hardware.
+
+---
+
+## Results
+
+| Model | Frozen-contract EPE | Note |
+|---|---|---|
+| Hailo reference ONNX | 1.3134471 px | the model this project is measured against |
+| **ARM-P seed 1** | **1.1912168 px** | the frozen deployment candidate |
+| ARM-P seeds 0 / 2 | 1.2057590 / 1.1996447 px | same recipe, other seeds |
+| Random-init control | 1.4440242 px (seed 1) | identical recipe, no pretraining |
+| P2A seed 0 | 1.4149796 px | previous candidate; 3-seed mean 1.4409826 px |
+| Starting PyTorch baseline | 15.3958267 px | where the project began |
+
+The contract: KITTI 2015, `hailo_val` scenes 160–199, `disp_occ_0`, 368×1232, GT 1/256,
+**3,802,797 valid pixels**, pooled. It was never edited to improve a number.
+
+**What this does and does not mean.** ARM-P recorded a lower frozen-contract EPE than the
+random-init control in all six seed×selection cells, and lower than the historical controlled
+reference figure. It does **not** establish universal superiority, statistical significance,
+that SceneFlow pretraining is the causal mechanism, generalization beyond this split, or any
+hardware benefit. Full bounds: [`stage_b_armp/ARMP_CLOSURE_RECORD.md`](stage_b_armp/ARMP_CLOSURE_RECORD.md) §§11–13.
+
+---
+
+## What failed, what is unknown, what is blocked
+
+**Failed** — frozen, preserved, not repaired:
+
+- **C1 export parity: FAIL.** ARM-P ONNX vs PyTorch max abs diff **0.001708984375 px** against
+  the frozen **1e-3 px** criterion. Five export variants (opset 11/13/17 × constant folding)
+  produce bit-identical outputs, so no export-level fix was found in the tested space.
+- **DR-1 activation rescale: H1 FAIL.** Dividing the aggregated cost by 1e17 changes disparity
+  by up to **1.4816284e-02 px**, fifteen times the equivalence threshold. Rejected, not adopted.
+
+**Unknown** — measured, but the outcome cannot be predicted from here:
+
+- ARM-P carries extremely large fp32 intermediates (~1e18 vs the reference's ~1e1–1e2).
+  Whether they survive target-native int8 quantization is **UNKNOWN**; no threshold exists and
+  none was invented. Dynamic range does **not** explain the C1 failure.
+- Coverage-vs-pretraining and true group-wise correlation are **NOT IDENTIFIABLE** on this
+  platform. GWC itself is **OPEN BUT UNSUPPORTED — not refuted**.
+
+**Blocked** — needs an answer from outside this repository:
+
+- The **Hailo target device is unspecified**. No company requirement for device, board,
+  SDK/DFC version, resolution, FPS, power or quantization mode exists anywhere here.
+  Hailo-8 / 10H / 15H references under `reference/` are **historical** and must never be
+  promoted to "the target".
+- Therefore: no parse, no quantization, no compile, **no HEF**, no latency, no power figure.
+  The only `.hef` in the repo is the historical `reference/stereonet.hef`.
+
+To unblock, someone must answer the 14 fields in
+[`stage_c_deploy/STAGE_C_DEPLOYMENT_READINESS_FINAL.md`](stage_c_deploy/STAGE_C_DEPLOYMENT_READINESS_FINAL.md) §17.
+
+---
+
+## Reproducing the numbers
+
+`phase1/harness/frozen_eval.py` is the contract itself — a library, not a script. The runnable
+entry points:
+
+```bash
+# ARM-P seed 1, full 40-scene contract          -> EPE 1.191216765057325
 python stage_c_deploy/dr1_rescale/dr1_eval_40scene.py
 
-# the three P2A checkpoints                   -> expect seed 0 EPE 1.4149796
+# the three P2A checkpoints                     -> seed 0 EPE 1.4149796
 python phase2/scripts/eval_p2a.py
 
-# Stage-B four-checkpoint scoring (ARM-P + control, best + final), per run directory
+# Stage-B scoring, 4 checkpoints (ARM-P + control, best + final)
 python stage_b_armp/20260919T012646Z_tier2_seed1/scripts/eval_tier2.py
 
-# the Stage-C device-independent gates        -> expect 135/135, 251/251, 19/19
+# the device-independent gates                  -> 135/135, 251/251, 19/19
 python stage_c_deploy/metric_depth/validate_c2.py
 python stage_c_deploy/spatial_perception/validate_spatial.py
 python stage_c_deploy/spatial_perception/validate_discontinuity.py
 ```
 
-Reference figures to check against: reference ONNX **1.3134471 px**, ARM-P seed 1
-**1.1912168 px**, P2A seed 0 **1.4149796 px**. Any deviation means the contract or the
-environment differs — investigate before trusting the number.
+Any deviation means the contract or the environment differs — investigate before trusting the
+number. Re-running ARM-P Stage 1 pretraining additionally needs SceneFlow (~160 GB of
+archives); acquisition notes in [`phase1/docs/SCENEFLOW_ACQUISITION.md`](phase1/docs/SCENEFLOW_ACQUISITION.md).
 
-**Models shipped here** (verify the hash before use — `RESULTS_INDEX.md` §11):
+### Models in this repository
+
+Verify the SHA-256 before use — the full table is [`RESULTS_INDEX.md`](RESULTS_INDEX.md) §11.
 
 | File | What |
 |---|---|
-| `stage_b_armp/20260919T012646Z_tier2_seed1/armp/p2a_best.pth` | **the deployment candidate**, ARM-P seed 1, 397,954 params |
-| `…/tier2_seed1/control/p2a_best.pth` | its random-init control arm |
+| `stage_b_armp/20260919T012646Z_tier2_seed1/armp/p2a_best.pth` | **the deployment candidate** (`b2f6f5d5…`) |
+| `…/tier2_seed1/control/p2a_best.pth`, `…/{armp,control}/p2a_final.pth` | control arm and both final-epoch checkpoints |
 | `stage_b_armp/20260918T062146Z_stage1_pretrain/checkpoints/armp_stage1_best.pth` | the SceneFlow-pretrained initialization |
-| `phase2/runs/p2a_scale_coverage{,_s1,_s2}/p2a_best.pth` | P2A seeds 0/1/2 (historical candidate + the 3-seed method mean 1.4409826 px) |
-| `…/tier2_seed1/{armp,control}/p2a_final.pth` | the seed-1 final-epoch checkpoints, so Stage-B scoring reproduces all four targets |
-| `stage_c_deploy/armp_stereonet.onnx`, `…_static.onnx` | ARM-P exports (**note: C1 parity FAIL**) |
-| `phase2/deploy/p2a_stereonet.onnx` | P2A export (parity PASS) |
-| `reference/onnx/stereonet.onnx` | the Hailo reference model the whole project is measured against |
+| `phase2/runs/p2a_scale_coverage{,_s1,_s2}/p2a_best.pth` | P2A seeds 0/1/2 |
+| `stage_c_deploy/armp_stereonet.onnx`, `…_static.onnx` | ARM-P exports — **C1 parity FAIL** |
+| `phase2/deploy/p2a_stereonet.onnx` | P2A export — parity PASS |
+| `reference/onnx/stereonet.onnx` | the Hailo reference model |
 
-**Not shipped, and why:** the datasets (`data/`), per-pixel raw dumps
-(`stage_a_diagnostics/raw/*.npz`, 774 MB), the repacked KITTI upload bundle (348 MB), the
-rendered scene PNGs under `phase2/visualizations` and `phase2/demo`, the vendor
-`reference/upstream` and `reference/public_repos` clones and profiler HTML, the C1
-export-variant and instrumented DEBUG graphs, and the historical `reference/stereonet.hef`.
-All are regenerable from the shipped code, and every number cited from them is in the JSON/CSV
-records that *are* shipped. Vendor artifact hashes: `reference/MANIFEST.md`. (The figures under
-`docs/images/` are shipped — the demo regenerates them.)
-
-**Rules that are not optional** (see `CLAUDE.md`): the frozen evaluation contract is
-authoritative and is never edited to improve a number; no run directory, checkpoint or record is
-ever overwritten; a regression is recorded as a regression.
+**Not shipped:** the datasets, the 774 MB per-pixel raw dumps, the repacked KITTI upload
+bundle, rendered scene PNGs, the vendor `reference/upstream` and `reference/public_repos`
+clones, the profiler HTML, the DEBUG and export-variant graphs, and `reference/stereonet.hef`.
+All are regenerable from the shipped code, and every number cited from them lives in the
+JSON/CSV records that *are* shipped. Vendor hashes: `reference/MANIFEST.md`.
 
 ---
 
-*Everything below is the original Phase-1 README, preserved unchanged as historical material.*
+## Repository map
 
-> **What in it is now out of date** (the text itself is not edited; each item is corrected at
-> the top of this file and in `RESULTS_INDEX.md`):
->
-> - **"Phase 2 — Not started"** at the very bottom. Phase 2 ran and closed, as did Stage A,
->   Stage B and Stage C. Full note there.
-> - **The Layout tree** lists only the Phase-1 directories. The repository also holds
->   `phase0/`, `phase1/`, `phase2/`, `stage_a_diagnostics/`, `stage_b_armp/`,
->   `stage_c_deploy/` and `RESULTS_INDEX.md`.
-> - **"Production metric-depth inference — absent"** in *What this repository is not*. Metric
->   depth, point cloud, occupancy and depth discontinuities now exist under `stage_c_deploy/`
->   and are validated (C2 135/135, C2.1 251/251, C2.1.1 19/19). They remain **deterministic
->   host-side evaluation code, not a deployable depth service**, so the spirit of that row
->   still holds — but the capability is no longer absent.
-> - **"Start here"** in the next table points at the Phase-1 reading order. The current entry
->   point is the top of this file, then `RESULTS_INDEX.md`.
-> - **Test and check counts** in *Verifying*: 75 tests at the `phase-1-frozen` tag, **101**
->   collected today; the 73 `verify_claims.py` checks cover Phase-1 records only and do not
->   cover Phase 2, Stage A, Stage B or Stage C.
->
-> Everything else below — the evidence categories, the known evidence gaps, the reference
-> restoration procedure and the tag table — still stands as written.
-
-# Stereo Depth Vision — Phase 1
-
-Forensics, reproduction and characterisation of the Hailo StereoNet reference
-deployment, for the Microchip stereo depth vision project.
-
-**Start here:**
-
-| Document | For |
+| Path | Contents |
 |---|---|
-| [`docs/phase_1_project_report.md`](docs/phase_1_project_report.md) | What was done, what was found, what it means, what is next — read this first |
-| [`PHASE_1_FINAL_REPORT.md`](PHASE_1_FINAL_REPORT.md) | The charter deliverable: every Phase 1 question answered in order |
-| [`docs/phase_1_closure_audit.md`](docs/phase_1_closure_audit.md) | The release gate: what was verified, and what remains unknown |
-| [`docs/`](docs/) | Twelve knowledge-base documents with the technical detail |
+| **[`RESULTS_INDEX.md`](RESULTS_INDEX.md)** | **start here** — every phase, stage, run and audit with status, source and purpose, plus a reader-hazard list |
+| `phase0/` | baseline lock: the frozen contract and the reference baseline |
+| `phase1/` | reference forensics and the ARM campaign (incumbent ARM-V, 1.7727436 px) |
+| `phase2/` | two lines: the P2A optimization + export, and the superseded correspondence campaign |
+| `stage_a_diagnostics/` | D0–D7 gap diagnosis; architecture gate **NO ARCHITECTURE JUSTIFIED** |
+| `stage_b_armp/` | the ARM-P pretraining intervention, three seeds + environment control, and its closure record |
+| `stage_c_deploy/` | export, C1 parity, dynamic range, DR-1, the C2 family, target/toolchain audit, the demo, and both whole-system audits |
+| `src/`, `scripts/`, `tests/` | model, datasets, geometry, metrics; per-experiment scripts; 101 tests |
+| `docs/` | Phase-1 knowledge base, the demo figures, and the historical Phase-1 README |
+| `reference/` | vendor artifacts, hashed in `reference/MANIFEST.md`, mostly downloaded rather than committed |
+| `experiments/`, `results/` | immutable Phase-1 experiment records and derived tables |
 
 ---
 
-## What this repository is
+## How this project was run
 
-- A **faithful reconstruction** of a specific deployed model — Hailo's Model Zoo
-  StereoNet — rebuilt from its public ONNX and verified against it to a relative
-  1e-7 at every stage (EXP-011).
-- An **evaluation framework** that reproduces Hailo's published accuracy figure
-  exactly (8.2237 against 8.223, EXP-005) after recovering the protocol behind it.
-- A **reverse-engineering record**: what the deployed system does, how it differs
-  from the paper and from its own upstream implementation, and where the
-  published numbers come from.
-- A **profiling and analysis environment** for compute, memory, precision and
-  failure behaviour.
+- The **frozen evaluation contract is authoritative** and is never edited to make a number look
+  better.
+- **No run directory, checkpoint or record is ever overwritten.** A regression is recorded as a
+  regression; a failed gate stays failed.
+- **One primary intervention per experiment**, each with a preregistered hypothesis, frozen
+  variables, and success *and* rejection criteria written before the run.
+- Claims are graded and kept apart: measured / inferred / unknown / not identifiable. "Not
+  identifiable" never becomes "false"; "unsupported" never becomes "refuted".
+- Hailo's published figures are never presented as ours, and our development-machine timings
+  are never presented as Hailo silicon performance.
 
-## What this repository is **not**
+Full operating rules: [`CLAUDE.md`](CLAUDE.md).
 
-**It is not a production stereo-depth system, and does not claim to be.** The
-following are deliberately absent and were never in Phase 1's scope:
+---
 
-| Absent | Note |
+## Closure records
+
+| Document | What it is |
 |---|---|
-| Camera synchronisation | The reference application assumes it; nothing here provides it |
-| Rectification | Assumed by the architecture, never performed or checked |
-| Calibration ingestion from a live rig | KITTI calibration is parsed for evaluation only |
-| Confidence or validity prediction | The reference model has no such output |
-| Production metric-depth inference | `src/geometry/stereo.py` exists to *evaluate* depth, not to serve it |
-| Camera drivers or capture pipeline | Out of scope |
+| [`stage_c_deploy/FINAL_WHOLE_SYSTEM_AUDIT.md`](stage_c_deploy/FINAL_WHOLE_SYSTEM_AUDIT.md) | independent whole-project audit — verdict: closed, with documentation discrepancies |
+| [`stage_c_deploy/FINAL_WHOLE_SYSTEM_AUDIT_SECOND_PASS.md`](stage_c_deploy/FINAL_WHOLE_SYSTEM_AUDIT_SECOND_PASS.md) | a second, independent pass concurring with the first |
+| [`stage_c_deploy/DOCUMENTATION_CLOSURE_RECORD.md`](stage_c_deploy/DOCUMENTATION_CLOSURE_RECORD.md) | what the documentation pass changed, and what it deliberately did not |
+| [`stage_b_armp/ARMP_CLOSURE_RECORD.md`](stage_b_armp/ARMP_CLOSURE_RECORD.md) | the authoritative Stage-B record, including everything ARM-P does **not** establish |
+| [`docs/README_PHASE1_HISTORICAL.md`](docs/README_PHASE1_HISTORICAL.md) | the original Phase-1 README, preserved unedited — it describes the project as of 2026-09-05 and is **not** current |
 
-`src/geometry/stereo.py` implements `Z = fB/d` because the reference application
-does not (see below), and depth accuracy could not otherwise be measured. It is
-an evaluation component, not a deployable depth service.
-
-**The Hailo application studied here outputs disparity, not metric depth.** Its
-entire postprocess casts the network output to an 8-bit image; it contains no
-calibration, baseline, focal length or depth conversion. See
-[`docs/reference_pipeline.md`](docs/reference_pipeline.md).
-
-## Evidence categories
-
-Kept strictly apart throughout, and never merged:
-
-| Tag | Meaning |
-|---|---|
-| `SOURCE` | Published by Hailo or another third party |
-| `MEASUREMENT` | Measured by us, on our hardware, with an experiment ID |
-| `INFERENCE` | Derived, with the derivation stated |
-| `HYPOTHESIS` | Proposed, not established |
-| `UNKNOWN` | Could not be established, and is not guessed |
-
-Our RTX 4060 and CPU timings are **our measurements of our hardware**. They are
-never presented as Hailo silicon performance, and Hailo's published figures are
-never presented as ours.
-
-## Known evidence gaps
-
-Stated here so they are not mistaken for completed work:
-
-- **Scene-class failure analysis: NOT COMPLETED.** Requires Middlebury 2014,
-  which has not been downloaded. Remaining Phase 1 evidence gap.
-- **Hailo silicon behaviour: UNKNOWN.** No physical device. Hailo's profiler
-  report is a **post-placement compiler estimate**, not a measured run — its
-  model-level FPS and latency fields are `N/A`.
-- **Competitor measurement: NOT PERFORMED.** All twelve competitor entries are
-  abstract-level source reading; none was implemented, run or benchmarked.
-- **Full-scale training: NOT PERFORMED.** EXP-016 is a short convergence proof
-  only, and its validation did **not** improve — see
-  [`experiments/EXP-016/CORRECTION.md`](experiments/EXP-016/CORRECTION.md).
-
-## Layout
-
-```
-PHASE_1_FINAL_REPORT.md   the report; read this first
-docs/                     project report, closure audit, and 12 knowledge-base documents
-src/                      independent implementation, geometry, datasets, metrics
-scripts/                  one script per experiment, plus the verifiers
-experiments/EXP-xxx/      one immutable record per run; none deleted
-results/                  derived tables and analyses
-reference/                vendor artifacts, read-only, hashed in MANIFEST.md
-tests/                    unit and regression tests
-```
-
-## Restoring the reference artifacts
-
-`reference/` holds vendor and upstream artifacts that are downloaded rather than
-committed. What *is* committed is `reference/manifest.json`, recording every
-artifact's URL, size and SHA-256. To restore them into a fresh clone:
-
-```
-python scripts/fetch_reference.py            # download and verify (~270 MB)
-python scripts/fetch_reference.py --verify   # check what is present, no download
-```
-
-A mismatch means the upstream artifact changed. Investigate rather than
-overwriting the recorded hash: every result was produced from the bytes the
-manifest describes.
-
-## Verifying
-
-```
-python -m compileall -q src scripts tests
-python -m pytest tests/ -q        # 75 tests at the Phase-1 freeze; 101 today
-python scripts/verify_claims.py   # 73 checks against the experiment records
-```
-
-`verify_claims.py` asserts that the figures quoted in the documents match the
-corresponding `experiments/EXP-xxx/metrics.json`, so a transcription error or a
-conclusion the data does not support cannot reach a release.
-
-**Two counts are expected, and the difference is reported rather than hidden.**
-A bare clone runs **65 of the 73** checks; the other 8 read the Hailo
-application source and need `reference/` restored first. The script names every
-skipped check and prints the full total, so a run performing fewer checks can
-never be mistaken for a clean pass. Run `fetch_reference.py` for all 73.
-
-The KITTI calibration test skips when the dataset is absent; that skip is
-intentional and declared in the test, giving 74 passed + 1 skipped in a bare
-clone against 75 passed with the dataset present.
-
-## Tags
-
-| Tag | Commit | Meaning |
-|---|---|---|
-| `phase-1` | `ba1cf84` | Original archival freeze |
-| `phase-1-final` | `2278c10` | First corrective release: training-conclusion regression |
-| `phase-1-final-r2` | `5dd30c7` | Second corrective release: profiler stage mapping |
-| `phase-1-frozen` | see below | **Closure audit passed. The definitive Phase 1 freeze.** |
-
-Earlier tags are never moved, so each release remains inspectable as it stood.
-
-History is preserved and never rewritten: experiment records reference commit
-hashes, so rewriting would break their traceability.
-
-## Phase 2
-
-Not started. The opening hypothesis is **H1 — what is a working cost volume
-worth?**, since the deployed model performs no disparity search (EXP-010). The
-corrected shift already exists behind a configuration flag that Phase 1 never
-enables, and it must stay that way until Phase 2 begins. See
-[`docs/research_questions.md`](docs/research_questions.md).
-
-> ---
-> ### ⚠ SUPERSEDED — this is the end of the historical Phase-1 README
->
-> **"Phase 2: Not started" was true when this section was written (2026-09-05). It is not
-> true now.** Phase 2 ran and closed, and so did Stage A, Stage B and Stage C. H1 was
-> answered and the whole correspondence campaign around it closed at Level D
-> (`phase2/docs/POST_CLOSURE_RESEARCH_AUDIT.md`). The disparity shift is no longer behind a
-> disabled flag: `cost_volume_shift = right` is part of the frozen architecture.
->
-> **Current state**, in one line: the technical investigation is **CLOSED**; the frozen
-> deployment candidate is **ARM-P seed 1** (1.1912168 px on the frozen contract); **Hailo
-> deployment is BLOCKED** because the target device has not been specified and the toolchain
-> has not been executed. C1 export parity **FAILS** (1.709e-3 px vs 1e-3 px) and DR-1 H1
-> **FAILS**; C2 / C2.1 / C2.1.1 **PASS** (135/135, 251/251, 19/19).
->
-> Go to the top of this file for the current entry point, or straight to
-> [`RESULTS_INDEX.md`](RESULTS_INDEX.md). Nothing in the historical section above was edited,
-> so it still reads exactly as it did at the `phase-1-frozen` tag.
-> ---
+Earlier phase reports (`PHASE_1_FINAL_REPORT.md`, `PHASE_2_FINAL_REPORT.md`) are historical.
+`PHASE_2_FINAL_REPORT.md` still calls P2A "deployed" in its Phase-2 sense and carries a
+supersession notice; the current candidate is ARM-P seed 1 and nothing is deployed.
+`phase1/results/LEADERBOARD.md` is the historical Phase-1 arm table, not a current index.
