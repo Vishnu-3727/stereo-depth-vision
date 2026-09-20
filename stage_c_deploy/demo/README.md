@@ -4,6 +4,7 @@
 python stage_c_deploy/demo/pipeline_demo.py              # scene 12, interactive window
 python stage_c_deploy/demo/pipeline_demo.py --scene 31
 python stage_c_deploy/demo/pipeline_demo.py --list       # the 40 hailo_val scenes
+python stage_c_deploy/demo/pipeline_demo.py --cloud3d           # + rotatable 3D cloud
 python stage_c_deploy/demo/pipeline_demo.py --no-window --save demo.png
 ```
 
@@ -24,10 +25,16 @@ One real KITTI stereo pair taken all the way through the deployment graph:
 | 2 | ARM-P disparity (px) | `stage_c_deploy/metric_depth/armp_depth.py` — **the only neural stage** |
 | 3 | metric depth (m), `Z = fB/d` | `metric_depth/metric_depth.py` (C2, 135/135 PASS) |
 | 4 | depth discontinuities (m/px) | `spatial_perception/discontinuity.py` (C2.1.1, 19/19 PASS) |
+| 5 | bird's-eye point cloud (top-down X-Z, coloured by height) | `spatial_perception/pointcloud.py` (C2.1, 251/251 PASS) |
 
 The text panel adds the spatial layer (C2.1, 251/251 PASS): left/centre/right
 median depth, nearest surface ahead, and how many 4×6 occupancy cells are NEAR
 by cell-median depth.
+
+`--cloud3d` opens a second, rotatable 3D window of the same cloud (drag to
+rotate, scroll to zoom). Both the bird's-eye panel and the 3D window subsample
+for display only (stride 3, plus a display box of |X| <= 20 m, Z <= 60 m,
+|height| <= 6 m); the depth map itself is never subsampled, filtered or clipped.
 
 **Click any image panel** to measure that point — depth in metres plus X/Y/Z in
 the camera frame, via the same `measurement.pixel_measure` the C2 validator uses.
