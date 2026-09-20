@@ -264,7 +264,7 @@ manifest describes.
 
 ```
 python -m compileall -q src scripts tests
-python -m pytest tests/ -q        # 75 tests
+python -m pytest tests/ -q        # 75 tests at the Phase-1 freeze; 101 today
 python scripts/verify_claims.py   # 73 checks against the experiment records
 ```
 
@@ -303,3 +303,23 @@ worth?**, since the deployed model performs no disparity search (EXP-010). The
 corrected shift already exists behind a configuration flag that Phase 1 never
 enables, and it must stay that way until Phase 2 begins. See
 [`docs/research_questions.md`](docs/research_questions.md).
+
+> ---
+> ### ⚠ SUPERSEDED — this is the end of the historical Phase-1 README
+>
+> **"Phase 2: Not started" was true when this section was written (2026-09-05). It is not
+> true now.** Phase 2 ran and closed, and so did Stage A, Stage B and Stage C. H1 was
+> answered and the whole correspondence campaign around it closed at Level D
+> (`phase2/docs/POST_CLOSURE_RESEARCH_AUDIT.md`). The disparity shift is no longer behind a
+> disabled flag: `cost_volume_shift = right` is part of the frozen architecture.
+>
+> **Current state**, in one line: the technical investigation is **CLOSED**; the frozen
+> deployment candidate is **ARM-P seed 1** (1.1912168 px on the frozen contract); **Hailo
+> deployment is BLOCKED** because the target device has not been specified and the toolchain
+> has not been executed. C1 export parity **FAILS** (1.709e-3 px vs 1e-3 px) and DR-1 H1
+> **FAILS**; C2 / C2.1 / C2.1.1 **PASS** (135/135, 251/251, 19/19).
+>
+> Go to the top of this file for the current entry point, or straight to
+> [`RESULTS_INDEX.md`](RESULTS_INDEX.md). Nothing in the historical section above was edited,
+> so it still reads exactly as it did at the `phase-1-frozen` tag.
+> ---
