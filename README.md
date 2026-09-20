@@ -41,7 +41,7 @@ A highway scene from the same 40-scene validation split:
 ## Quick start
 
 ```bash
-pip install -r requirements.txt          # Python 3.12; torch 2.7.0+cu128, onnx 1.22, ort 1.27
+pip install -r requirements.txt          # Python 3.12
 
 # KITTI 2015 stereo is NOT in this repo. Download data_scene_flow.zip (~1.6 GB) and
 # data_scene_flow_calib.zip from the KITTI benchmark site and extract to data/kitti2015/
@@ -50,6 +50,9 @@ pip install -r requirements.txt          # Python 3.12; torch 2.7.0+cu128, onnx 
 python stage_c_deploy/demo/pipeline_demo.py --cloud3d        # see it run
 python stage_c_deploy/demo/pipeline_demo.py --list           # the 40 validation scenes
 ```
+
+Every frozen number in this repository was produced with torch 2.7.0+cu128, onnx 1.22.0,
+onnxruntime 1.27.0 and numpy 2.5.1; `requirements.txt` pins torch and torchvision only.
 
 Demo details: [`stage_c_deploy/demo/README.md`](stage_c_deploy/demo/README.md).
 Exact dataset layout: [`phase0/docs/BASELINE_CONTRACT.md`](phase0/docs/BASELINE_CONTRACT.md).
