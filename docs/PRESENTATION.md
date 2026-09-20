@@ -198,7 +198,7 @@ know until it is run on the real toolchain, and that needs slide 13.
   promote any of them to "the target" — a guessed target produces a scrap HEF.
 - Consequence: **no parse, no quantization, no compile, no HEF, no latency, no power figure.**
 
-*Source: `stage_c_deploy/C1_TARGET_TOOLCHAIN_RESOLUTION.md`, `STAGE_C_DEPLOYMENT_BLOCKER_REPORT.md`.*
+*Source: `stage_c_deploy/C1_TARGET_TOOLCHAIN_RESOLUTION.md`, `stage_c_deploy/STAGE_C_DEPLOYMENT_BLOCKER_REPORT.md`.*
 
 ---
 
