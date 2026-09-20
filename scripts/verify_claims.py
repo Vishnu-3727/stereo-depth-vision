@@ -273,17 +273,18 @@ def main() -> None:
     print("\n13. Scope and evidence gaps are stated, not glossed")
     readme = REPO_ROOT / "README.md"
     check("a README states the repository's scope", readme.exists(), True)
-    if readme.exists():
-        r = readme.read_text(encoding="utf-8")
-        check("declares it is not a production system",
+    hist = REPO_ROOT / "docs" / "README_PHASE1_HISTORICAL.md"
+    if hist.exists():
+        r = hist.read_text(encoding="utf-8")
+        check("historical README declares it is not a production system",
               "not a production stereo-depth system" in r, True)
-        check("Middlebury declared not completed",
+        check("historical README: Middlebury declared not completed",
               "NOT COMPLETED" in r and "Middlebury" in r, True)
-        check("Hailo silicon declared UNKNOWN",
+        check("historical README: Hailo silicon declared UNKNOWN",
               "Hailo silicon behaviour: UNKNOWN" in r, True)
-        check("competitor measurement declared not performed",
+        check("historical README: competitor measurement declared not performed",
               "NOT PERFORMED" in r and "Competitor" in r, True)
-        check("profiler declared a compiler estimate",
+        check("historical README: profiler declared a compiler estimate",
               "post-placement compiler estimate" in r, True)
 
     print("\n14. Superseded experiments are marked, not deleted")
