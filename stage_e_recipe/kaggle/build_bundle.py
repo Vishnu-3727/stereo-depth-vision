@@ -23,8 +23,14 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[1]
-EXPERIMENT = "e1" if "--experiment" in sys.argv and "e1" in sys.argv else "e0"
+EXPERIMENT = "e0"
+if "--experiment" in sys.argv:
+    EXPERIMENT = sys.argv[sys.argv.index("--experiment") + 1]
+assert EXPERIMENT in ("e0", "e1", "e2", "e3"), EXPERIMENT
 BUNDLE = HERE / ("bundle" if EXPERIMENT == "e0" else f"bundle_{EXPERIMENT}")
+# E3 alters only --epochs, passed to run_arm.py, so it reuses E0's recipe
+# file byte-identically and needs no patch module.
+PATCHED = EXPERIMENT in ("e1", "e2")
 
 SEED1 = "stage_b_armp/20260919T012646Z_tier2_seed1/scripts"
 STAGE1_CKPT = ("stage_b_armp/20260918T062146Z_stage1_pretrain/checkpoints/"
@@ -146,26 +152,31 @@ def main() -> None:
     fp_text = fp_src.read_text(encoding="utf-8")
     fp_dst = BUNDLE / "scripts/finetune_pilot.py"
     fp_dst.parent.mkdir(parents=True, exist_ok=True)
-    if EXPERIMENT == "e0":
+    if not PATCHED:
         shutil.copy2(fp_src, fp_dst)
         record["byte_identical_files"]["scripts/finetune_pilot.py"] = {
             "repo_source": f"{SEED1}/finetune_pilot.py",
             "sha256": sha256(fp_dst), "identical": sha256(fp_src) == sha256(fp_dst)}
     else:
-        import e1_patch
-        patched = e1_patch.apply(fp_text)
-        fp_dst.write_text(patched, encoding="utf-8")
+        # Each experiment's intervention lives in its own patch module, so the
+        # diff that defines it is a reviewable file rather than inline logic.
+        patch_mod = __import__(f"{EXPERIMENT}_patch")
+        patched = patch_mod.apply(fp_text)
+        # newline="" keeps LF: the ONLY difference from the repo original must
+        # be the declared edit, not the platform's line endings.
+        fp_dst.write_text(patched, encoding="utf-8", newline="")
         record["declared_deltas"]["scripts/finetune_pilot.py"] = {
             "repo_source": f"{SEED1}/finetune_pilot.py",
             "repo_sha256": sha256(fp_src), "bundle_sha256": sha256(fp_dst),
             "identical": False,
-            "scope": "E1 INTERVENTION - weight EMA, decay 0.999",
+            "scope": f"{EXPERIMENT.upper()} INTERVENTION",
             "edits": [{"why": why, "old": old.strip()[:120], "new": new.strip()[:160]}
-                      for old, new, why in e1_patch.EDITS],
+                      for old, new, why in patch_mod.EDITS],
             "unified_diff": list(difflib.unified_diff(
                 fp_text.splitlines(), patched.splitlines(),
                 fromfile=f"repo/{SEED1}/finetune_pilot.py",
-                tofile="bundle_e1/scripts/finetune_pilot.py", lineterm="", n=2)),
+                tofile=f"bundle_{EXPERIMENT}/scripts/finetune_pilot.py",
+                lineterm="", n=2)),
             "unchanged": "architecture, initialization, data, augmentation, loss, "
                          "optimizer, LR, batch size, epochs, scheduler",
         }
@@ -175,7 +186,7 @@ def main() -> None:
     original = src.read_text(encoding="utf-8")
     patched = patch_run_arm(original)
     dst = BUNDLE / RUN_ARM
-    dst.write_text(patched, encoding="utf-8")
+    dst.write_text(patched, encoding="utf-8", newline="")
     diff = list(difflib.unified_diff(
         original.splitlines(), patched.splitlines(),
         fromfile=f"repo/{RUN_ARM_SRC}", tofile=f"bundle/{RUN_ARM}", lineterm="", n=1))
@@ -209,7 +220,7 @@ def main() -> None:
         sys.exit("BUILD FAIL: EXP_SUBDIR line not found in kaggle_bootstrap.py")
     boot_patched = boot_orig.replace(old_line, new_line, 1)
     bdst = BUNDLE / BOOTSTRAP
-    bdst.write_text(boot_patched, encoding="utf-8")
+    bdst.write_text(boot_patched, encoding="utf-8", newline="")
     record["declared_deltas"][BOOTSTRAP] = {
         "repo_source": BOOTSTRAP_SRC,
         "repo_sha256": sha256(bsrc),

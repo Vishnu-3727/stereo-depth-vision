@@ -1,0 +1,212 @@
+{
+  "bundle": "stage_e_recipe/kaggle/bundle",
+  "purpose": "Stage E Kaggle T4 execution bundle",
+  "byte_identical_files": {
+    "src/__init__.py": {
+      "repo_source": "src/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/datasets/__init__.py": {
+      "repo_source": "src/datasets/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/datasets/kitti2015.py": {
+      "repo_source": "src/datasets/kitti2015.py",
+      "sha256": "9f3369d85c07b35680b928767d7b521fc9110d14a594adf7165fcf36a1bec25e",
+      "identical": true
+    },
+    "src/evaluation/__init__.py": {
+      "repo_source": "src/evaluation/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/evaluation/metrics.py": {
+      "repo_source": "src/evaluation/metrics.py",
+      "sha256": "04d826913bb15301838a257dddac5ddd355786eccad8fe329ff1f2ae4157c9ec",
+      "identical": true
+    },
+    "src/losses/__init__.py": {
+      "repo_source": "src/losses/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/losses/disparity.py": {
+      "repo_source": "src/losses/disparity.py",
+      "sha256": "aa4da7e6c788cb665cf594d2fa37e0e4f10cc5ca22cadf83f136c0ad18fab7eb",
+      "identical": true
+    },
+    "src/models/__init__.py": {
+      "repo_source": "src/models/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/models/stereonet/__init__.py": {
+      "repo_source": "src/models/stereonet/__init__.py",
+      "sha256": "cd46319a865c1613b6db320a22b9e58e245e4f13b39c82895421eb7aa7546469",
+      "identical": true
+    },
+    "src/models/stereonet/aggregation.py": {
+      "repo_source": "src/models/stereonet/aggregation.py",
+      "sha256": "a734782a80256cc6732036fd154706833adb23c64cb03b9c2287b3b7ad7c6702",
+      "identical": true
+    },
+    "src/models/stereonet/blocks.py": {
+      "repo_source": "src/models/stereonet/blocks.py",
+      "sha256": "fcdc9ab0c0f7d337144bd2432cd43d0dce6abd419b4058630d0b5b4ace0eac8a",
+      "identical": true
+    },
+    "src/models/stereonet/cost_volume.py": {
+      "repo_source": "src/models/stereonet/cost_volume.py",
+      "sha256": "aecf80145834ac504c73ced551ad9571cc951a84aa29379e35e25189e46c65f6",
+      "identical": true
+    },
+    "src/models/stereonet/excitation.py": {
+      "repo_source": "src/models/stereonet/excitation.py",
+      "sha256": "fb7103ed4bc719331258441d495444f71c76acdafac59e4141e78beb0f2104fb",
+      "identical": true
+    },
+    "src/models/stereonet/feature_extractor.py": {
+      "repo_source": "src/models/stereonet/feature_extractor.py",
+      "sha256": "0c49f78ed074907afc37dc09f6eb017be0f268df17ab279c91f45976bd2d3d05",
+      "identical": true
+    },
+    "src/models/stereonet/refinement.py": {
+      "repo_source": "src/models/stereonet/refinement.py",
+      "sha256": "185e53c92b615d7e8c2084e3e2bd693c05ab94f98ebd8e95a7af89a0473d7401",
+      "identical": true
+    },
+    "src/models/stereonet/regression.py": {
+      "repo_source": "src/models/stereonet/regression.py",
+      "sha256": "09ba98e0eca8740b91f9d498c4ae6f103ddb9a976adac35714142bca2c8f9a32",
+      "identical": true
+    },
+    "src/models/stereonet/stereonet.py": {
+      "repo_source": "src/models/stereonet/stereonet.py",
+      "sha256": "92f9275786f323d6eca9e19b55f7aa7cdada20885ff38e7876ba6cb234f28c56",
+      "identical": true
+    },
+    "phase1/harness/determinism.py": {
+      "repo_source": "phase1/harness/determinism.py",
+      "sha256": "aa69c0b3303bbc2035378d0091b8d66ae376f8afab6804dd2794a6ca7bd4a415",
+      "identical": true
+    },
+    "phase1/harness/frozen_eval.py": {
+      "repo_source": "phase1/harness/frozen_eval.py",
+      "sha256": "1a123c1219425d7d20cce73afb2e315f05180922eb1daf1f865a16b89a83c7f1",
+      "identical": true
+    },
+    "scripts/eval_tier2.py": {
+      "repo_source": "stage_b_armp/20260919T012646Z_tier2_seed1/scripts/eval_tier2.py",
+      "sha256": "326e9058f4bbdf342234d92eb5d8a9cd96885587eb1d88a44131b41ff58554f6",
+      "identical": true
+    },
+    "checkpoints/armp_stage1_best.pth": {
+      "repo_source": "stage_b_armp/20260918T062146Z_stage1_pretrain/checkpoints/armp_stage1_best.pth",
+      "sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+      "identical": true
+    },
+    "phase1/runs/arm_v/arm_v_best.pth": {
+      "repo_source": "phase1/runs/arm_v/arm_v_best.pth",
+      "sha256": "f2dcf8a22e6f1711b67a70837066f84e68550d53bb4891d3b8d46bd50b452cc4",
+      "identical": true
+    }
+  },
+  "declared_deltas": {
+    "scripts/finetune_pilot.py": {
+      "repo_source": "stage_b_armp/20260919T012646Z_tier2_seed1/scripts/finetune_pilot.py",
+      "repo_sha256": "af6130043c989d83b16da28938e5ce8e7f8c2fbdb15b25d9571eee94720d6d72",
+      "bundle_sha256": "251dfc4340a5c37c0e92d9d6562240e47d557731726620dbaea32c1e19edaa30",
+      "identical": false,
+      "scope": "E2 INTERVENTION",
+      "edits": [
+        {
+          "why": "Physical batch 2 -> 8; LR, epochs, scheduler and everything else unchanged.",
+          "old": "BATCH = 2",
+          "new": "BATCH = 8  # STAGE E / E2 INTERVENTION: native batch 8 (was 2)"
+        }
+      ],
+      "unified_diff": [
+        "--- repo/stage_b_armp/20260919T012646Z_tier2_seed1/scripts/finetune_pilot.py",
+        "+++ bundle_e2/scripts/finetune_pilot.py",
+        "@@ -62,5 +62,5 @@",
+        " CROP_H, CROP_W = 256, 512",
+        " EPOCHS = int(os.environ.get(\"P2A_EPOCHS\", \"200\"))",
+        "-BATCH = 2",
+        "+BATCH = 8  # STAGE E / E2 INTERVENTION: native batch 8 (was 2)",
+        " LR = 1e-3",
+        " SCHEDULER = \"cosine annealing to 0 over 200 epochs\""
+      ],
+      "unchanged": "architecture, initialization, data, augmentation, loss, optimizer, LR, batch size, epochs, scheduler"
+    },
+    "scripts/run_arm.py": {
+      "repo_source": "stage_b_armp/20260919T012646Z_tier2_seed1/scripts/run_arm.py",
+      "repo_sha256": "4cf817a219b58cac3842496e9a18ae4d0107827aad9280539ffc70ba078973a1",
+      "bundle_sha256": "e92d6991cb9c123d1accd089c46380bec9a212a8ea36a07bfeae7dddb1d79133",
+      "identical": false,
+      "scope": "ORCHESTRATION ONLY - no training semantics change",
+      "edits": [
+        {
+          "line_was": "env[\"P2A_SEED\"] = \"1\"",
+          "line_now": "env[\"P2A_SEED\"] = str(args.seed)",
+          "why": "Stage B hardcoded one seed per source copy; Stage E runs seeds 0, 1 and 2 from one file, so the seed becomes a CLI argument."
+        },
+        {
+          "line_was": "env[\"P2A_EPOCHS\"] = \"200\"",
+          "line_now": "env[\"P2A_EPOCHS\"] = str(args.epochs)",
+          "why": "E3 needs 400 epochs; E0/E1/E2 pass 200 explicitly. The default stays 200 so omitting the flag reproduces the frozen recipe."
+        },
+        {
+          "line_was": "ap.add_argument(\"--timeout_s\", type=float, default=7200.0)",
+          "line_now": "ap.add_argument(\"--timeout_s\", ...)  + --seed + --epochs",
+          "why": "Declares the two new arguments."
+        }
+      ],
+      "unified_diff": [
+        "--- repo/stage_b_armp/20260919T012646Z_tier2_seed1/scripts/run_arm.py",
+        "+++ bundle/scripts/run_arm.py",
+        "@@ -73,2 +73,6 @@",
+        "     ap.add_argument(\"--timeout_s\", type=float, default=7200.0)",
+        "+    ap.add_argument(\"--seed\", type=int, required=True,",
+        "+                    help=\"STAGE E: P2A_SEED for this run (0, 1 or 2)\")",
+        "+    ap.add_argument(\"--epochs\", type=int, default=200,",
+        "+                    help=\"STAGE E: P2A_EPOCHS; 200 = frozen recipe, 400 = E3\")",
+        "     args = ap.parse_args()",
+        "@@ -82,5 +86,5 @@",
+        "     env = dict(os.environ)",
+        "-    env[\"P2A_SEED\"] = \"1\"",
+        "+    env[\"P2A_SEED\"] = str(args.seed)",
+        "     env[\"P2A_OUT_DIR\"] = str(outdir)",
+        "-    env[\"P2A_EPOCHS\"] = \"200\"",
+        "+    env[\"P2A_EPOCHS\"] = str(args.epochs)",
+        " "
+      ],
+      "recipe_file_untouched": "scripts/finetune_pilot.py is byte-identical; it alone defines optimizer, loss, schedule, augmentation and the training loop."
+    },
+    "kaggle_bootstrap.py": {
+      "repo_source": "stage_b_armp/20260919T035455Z_kaggle_seed2/bundle/kaggle_bootstrap.py",
+      "repo_sha256": "629813bc5bc02a20b12e8ae02179ea6249218411bcd034886f529e9f57419931",
+      "bundle_sha256": "dbd9f1f6c10c7d29fb60c53e7711a0ae5430ce8f71ecdc7506fc77bbe75dc640",
+      "identical": false,
+      "scope": "PATH NAMING ONLY - no behaviour change",
+      "edits": [
+        {
+          "line_was": "EXP_SUBDIR = Path(\"stage_b_armp\") / \"seed2\"",
+          "line_now": "EXP_SUBDIR = Path(\"stage_e_recipe\") / \"run\"",
+          "why": "Scripts must sit exactly two levels under the assembled root so finetune_pilot.py's parents[3] and run_arm.py's PILOT.parents[1] both resolve to it. Same depth as Stage B's path; renamed so a Stage-E run does not masquerade as a Stage-B one."
+        }
+      ],
+      "not_research_source": "Kaggle portability wrapper (stdlib only). It discovers mounts and copies files; it does not touch the model, data, loss or schedule."
+    }
+  },
+  "verdict": "PASS",
+  "init_checkpoint": {
+    "path": "checkpoints/armp_stage1_best.pth",
+    "sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+    "expected": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+    "match": true
+  },
+  "file_count": 27,
+  "total_bytes": 3349574
+}

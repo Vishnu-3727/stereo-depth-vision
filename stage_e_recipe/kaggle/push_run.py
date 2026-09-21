@@ -25,7 +25,9 @@ DATA_SLUG = f"{USER}/kitti2015-tier2-seed2-subset"
 # Each experiment gets its own immutable bundle: E0 ran against a byte-identical
 # recipe, E1 against the EMA-patched one, and neither may be overwritten.
 BUNDLES = {"e0": f"{USER}/stage-e-recipe-bundle",
-           "e1": f"{USER}/stage-e-e1-bundle"}
+           "e1": f"{USER}/stage-e-e1-bundle",
+           "e2": f"{USER}/stage-e-e2-bundle",
+           "e3": f"{USER}/stage-e-recipe-bundle"}   # E3 reuses E0's recipe
 EPOCHS = {"e0": 200, "e1": 200, "e2": 200, "e3": 400}
 INTERVENTION = {"e0": "NONE (frozen incumbent recipe)",
                 "e1": "weight EMA, decay 0.999",
