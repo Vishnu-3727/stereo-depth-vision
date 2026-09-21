@@ -1,0 +1,63 @@
+{
+  "gate": "Stage E initialization integrity",
+  "not_a_training_run": true,
+  "checks": {
+    "checkpoint_exists": {
+      "pass": true,
+      "detail": "stage_b_armp/20260918T062146Z_stage1_pretrain/checkpoints/armp_stage1_best.pth"
+    },
+    "sha256_matches": {
+      "pass": true,
+      "detail": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7"
+    },
+    "no_optimizer_or_scheduler_state_in_blob": {
+      "pass": true,
+      "detail": "blob keys ['config', 'model']; forbidden present: none"
+    },
+    "tensor_key_count": {
+      "pass": true,
+      "detail": "70/70"
+    },
+    "param_count": {
+      "pass": true,
+      "detail": "397954"
+    },
+    "strict_load_missing_keys": {
+      "pass": true,
+      "detail": []
+    },
+    "strict_load_unexpected_keys": {
+      "pass": true,
+      "detail": []
+    },
+    "contract_downsample_levels": {
+      "pass": true,
+      "detail": "3 (want 3)"
+    },
+    "contract_num_disparities": {
+      "pass": true,
+      "detail": "24 (want 24)"
+    },
+    "contract_cost_volume_shift": {
+      "pass": true,
+      "detail": "'right' (want 'right')"
+    },
+    "contract_regression_normalize": {
+      "pass": true,
+      "detail": "True (want True)"
+    },
+    "optimizer_state_fresh": {
+      "pass": true,
+      "detail": "no accumulated moments"
+    },
+    "scheduler_starts_at_epoch_0": {
+      "pass": true,
+      "detail": "last_epoch=0"
+    },
+    "scheduler_initial_lr": {
+      "pass": true,
+      "detail": "lr=0.001"
+    }
+  },
+  "verdict": "PASS"
+}

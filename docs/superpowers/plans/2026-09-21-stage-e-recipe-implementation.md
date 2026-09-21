@@ -5,7 +5,8 @@ this plan is reviewed and the first run is explicitly authorized in a separate
 instruction. Nothing in this document was executed; it is planning only.
 
 Written 2026-09-21. Amended 2026-09-21 by the pre-run correction pass
-(amendments A1.1–A1.3 in the spec's §0), before any E0/E1/E2/E3 run existed.
+(A1.1–A1.3) and the execution-environment pass (A2.1–A2.4) recorded in the
+spec's §0, both before any E0/E1/E2/E3 run existed.
 
 ---
 
@@ -36,7 +37,7 @@ plan. Where this plan discovers a problem with them, it is raised in §17 and
 
 | Path | Why |
 |---|---|
-| `phase1/harness/frozen_eval.py` | the only scorer |
+| `phase1/harness/frozen_eval.py` | the only scorer (copied into the Kaggle bundle byte-identical, SHA-256 asserted) |
 | `phase1/`, `phase2/`, `stage_a_diagnostics/`, `stage_b_armp/`, `stage_c_deploy/`, `stage_d_hailo8/` | closed records |
 | `src/models/**` | architecture is frozen |
 | `src/losses/disparity.py` | loss is frozen |
@@ -46,79 +47,80 @@ Stage E results live exclusively under `stage_e_recipe/`. No Stage A–D record
 is edited to reflect a Stage E outcome. C1 stays **FAIL**; DR-1 H1 stays
 **FAIL**; Stage D D0 stays **BLOCKED**.
 
-## 4 E0 implementation
+## 4 E0 implementation — three fresh Kaggle runs
 
-E0 produces an environment-matched 3-seed control on **this** machine.
+**Amended by A2.1/A2.2.** E0 is the same-environment ARM-P recipe control:
+**three fresh Kaggle T4 runs, seeds 0, 1 and 2**, Stage-1 pretrained ARM-P
+initialization, frozen incumbent recipe, no intervention.
 
-Source of truth for the recipe: `stage_b_armp/20260919T012646Z_tier2_seed1/scripts/`
-(`run_arm.py` → `finetune_pilot.py`), invoked **unchanged in behaviour**. Stage E
-copies these scripts into `stage_e_recipe/harness/` rather than importing across
-a closed record boundary, and asserts the copies are byte-identical to the
-Stage-B originals (SHA-256 recorded in `stage_e_recipe/harness/HARNESS_HASHES.json`).
-A behaviour change to a copied script is a Stage E intervention and must be
+| seed | source | environment |
+|---|---|---|
+| 0 | fresh run | Kaggle T4 |
+| 1 | fresh run | Kaggle T4 |
+| 2 | fresh run | Kaggle T4 |
+
+No Stage-B run is reused. No local run enters the Stage-E primary comparison.
+Stage B's random-init CONTROL arm is not E0; the initialization question is
+closed and is not reopened.
+
+Recipe source: `stage_b_armp/20260919T012646Z_tier2_seed1/scripts/`
+(`run_arm.py` → `finetune_pilot.py`), behaviour unchanged, copied into the
+Stage-E Kaggle bundle with SHA-256s recorded in `source_integrity.json`. A
+behaviour change to a copied script is a Stage-E intervention and must be
 declared as one.
 
-| seed | source | cost |
-|---|---|---|
-| 0 | reuse Stage-B local ARM-P run — **only if the §5 gate passes** | 0 h |
-| 1 | fresh local reproduction (the gate itself) | ~1 h |
-| 2 | fresh local training | ~1 h |
-
-## 5 E0 step 1 — reproduction gate
-
-**Purpose.** To test whether the Stage E local harness reproduces the Stage-B
-reference run. It does **not** prove that two environments are mathematically
-identical, and it is not used for any other claim.
-
-**Procedure.** Train seed 1 from the frozen Stage-1 init under the exact Stage-2
-recipe; score the best checkpoint through `frozen_eval.py`.
-
-**Criterion.**
-
-```
-| reproduced_best_epe - 1.191216765057325 |  <=  1e-6   -> PASS
-                                            >  1e-6   -> FAIL
-```
-
-**On PASS:** reuse of Stage-B local seed 0 is licensed; proceed to E0 step 2.
-
-**On FAIL, all of the following hold — no exceptions:**
-
-- **STOP.** Do not train E0 seed 2 under the assumption of equivalence.
-- Do not reuse Stage-B seed 0.
-- Do not modify the evaluator.
-- Do not loosen the tolerance.
-- Write `stage_e_recipe/e0_control/REPRODUCTION_DIVERGENCE.md`: the measured
-  value, the delta, the environment diff (torch, driver, CUDA, GPU, OS, git
-  HEAD), and the per-epoch monitor trace against the Stage-B trace to locate
-  where the runs separate.
-- The fallback path — already provided by the spec §4.1 — is that E0 becomes
-  **three fresh local seeds** (seed 0 also trained locally, ~1 h more), and the
-  control mean is built entirely from local runs. Taking that fallback requires
-  authorization, because it is a GPU run this plan does not authorize.
-
-**Honest expectation (see §21, concern A).** `finetune_pilot.py` calls
-`seed_all()` but **never calls `enable_determinism()`**, so
-`torch.use_deterministic_algorithms(True)`, `cudnn.deterministic` and
-`CUBLAS_WORKSPACE_CONFIG` are *not* in force during training. Seeds fix data
-order, initialization and augmentation draws; they do not suppress
-nondeterministic CUDA kernels in the backward pass. A 1e-6 px match after 200
-epochs is therefore **not** guaranteed by construction, and a FAIL is a
-plausible benign outcome rather than proof of a broken harness. The plan does
-not loosen the criterion; it records this expectation in advance so that a FAIL
-is interpreted correctly and the cheap fallback is taken without argument.
-
-## 6 E0 step 2 — local seed 2
-
-Train seed 2 locally under the exact frozen Stage-2 recipe, no changes.
-
-Recorded in `stage_e_recipe/e0_control/seed2/record.json`:
-
-training configuration · seed · checkpoint SHA-256 (best and final) · best epoch
-· best EPE · final EPE · D1 (best and final) · wall-clock runtime · environment
-(OS, GPU, driver, torch, python, git HEAD) · frozen-contract verification
-(`contract_match`, valid-pixel count 3,802,797) · parameter count 397,954 ·
+Recorded per seed in `stage_e_recipe/e0_control/seed<N>/record.json`: training
+configuration · seed · checkpoint SHA-256 (best and final) · best epoch · best
+EPE · final EPE · D1 (best and final) · wall-clock runtime · Kaggle environment
+(python, torch, CUDA, GPU model) · frozen-contract verification
+(`contract_match`, 3,802,797 valid px) · parameter count 397,954 ·
 initialization checkpoint SHA-256.
+
+## 5 Reproduction gate — RETIRED
+
+**Retired by A2.2.** The gate required reproducing local Stage-B seed 1 to
+1e-6 px, and existed solely to license reusing local Stage-B seed 0 inside the
+E0 mean. E0 now consists of three fresh Kaggle runs and reuses nothing, so
+there is nothing to license and no Stage-E claim rests on reproducing a local
+run.
+
+This also retires the concern that made the gate likely to fail: Stage B never
+enabled deterministic algorithms, so a 1e-6 match was never guaranteed. That
+question no longer bears on Stage E.
+
+What replaces it as a sanity anchor — **not a gate, and no verdict depends on
+it** — is the historical ARM-P local mean of 1.1988735 px. A Kaggle E0 mean in
+that neighbourhood is reassuring; a difference of a couple of hundredths of a
+pixel is consistent with the ~0.022 px local-versus-Kaggle shift Stage B's own
+environment control measured, and is **not** a regression.
+
+## 6 Initialization integrity — EXECUTED, PASS
+
+`stage_e_recipe/tests/init_integrity.py`. CPU only, no optimizer step, no
+checkpoint written, no weight persisted. Result:
+`stage_e_recipe/e0_control/init_integrity.json`, verdict **PASS** (14/14).
+
+| Check | Result |
+|---|---|
+| checkpoint exists | PASS |
+| SHA-256 == `3ae6fb3b…a29be7` | PASS |
+| blob carries no optimizer/scheduler state | PASS — blob keys are exactly `['config', 'model']` |
+| tensor/key contract | PASS — 70/70 |
+| parameter count | PASS — 397,954 |
+| strict load, missing keys | PASS — `[]` |
+| strict load, unexpected keys | PASS — `[]` |
+| 3 downsample levels · 24 disparities · shift `right` · `regression_normalize` true | PASS |
+| optimizer state fresh | PASS — no accumulated moments |
+| scheduler starts at epoch 0, LR 1e-3 | PASS |
+
+**Only model weights are inherited from Stage 1.** This is true by construction
+as well as by measurement: the checkpoint contains no optimizer or scheduler
+state to inherit, and the frozen recipe constructs `Adam` and
+`CosineAnnealingLR` *after* `apply_init()` runs
+(`finetune_pilot.py`, init → optimizer → scheduler order).
+
+This gate is re-run inside the Kaggle kernel before E0 training, so the
+assertion holds in the environment that actually trains.
 
 ## 7 E0 step 3 — control statistics
 
@@ -176,7 +178,7 @@ accumulation because ARM-P has **no BatchNorm**, which makes the two
 mathematically identical while native batch 8 avoids introducing accumulation
 semantics as an extra implementation variable.
 
-### 9.1 Memory probe — executed, PASS
+### 9.1 Memory probe — executed LOCALLY, PASS; T4 re-run required (A2.4)
 
 `stage_e_recipe/tests/batch8_memory_probe.py`. **Not a training run:** no
 optimizer is constructed, no optimizer step is taken, no scheduler exists, no
@@ -198,9 +200,15 @@ Measured, RTX 4060 Laptop GPU, 8,188 MiB total
 Headroom **41.3%**; allocation scales 3.86x for a 4x batch, consistent with a
 BatchNorm-free network.
 
-**Decision: `NATIVE_BATCH_8`.** Physical batch 8, one optimizer step per batch,
-LR exactly 1e-3, no LR scaling, no other recipe change. This decision is fixed
-now and is **not** revisited after seeing E2 results.
+**Local decision: `NATIVE_BATCH_8`.** Physical batch 8, one optimizer step per
+batch, LR exactly 1e-3, no LR scaling, no other recipe change.
+
+**Amended by A2.4:** this measurement is local (RTX 4060, 8,188 MiB) and Stage
+E trains on Kaggle T4 (~15 GB). The same probe is re-run unchanged inside the
+Kaggle kernel as a pre-E2 smoke test, and **the T4 result is what decides E2's
+implementation**. Batch 8 is expected to fit with more headroom there; expected
+is not measured. The decision is fixed by that probe *before* E2 trains and is
+**not** revisited after seeing E2 results.
 
 ### 9.2 Accumulation fallback — not on the critical path
 
@@ -382,16 +390,23 @@ silently, reinterpret a regression, or select a threshold after seeing results.
 
 | Item | Per seed | Total |
 |---|---|---|
-| E0 gate (seed 1) + seed 2 | ~1 h | ~2 h |
-| E0 fallback if gate FAILs (seed 0 fresh) | ~1 h | +1 h |
-| E1 | ~1 h | ~3 h |
-| E2 | ~1 h | ~3 h |
-| E3 | ~2 h | ~6 h |
+| E0 (3 fresh Kaggle seeds) | ~1.5–2.5 h | ~5–8 h |
+| E1 | ~1.5–2.5 h | ~5–8 h |
+| E2 | ~1.5–2.5 h | ~5–8 h |
+| E3 (400 epochs) | ~3–5 h | ~9–15 h |
 | INT8 control + 3 candidates | — | ~1–2 h (CPU) |
 
-Roughly **15–17 h** on the RTX 4060 Laptop GPU, plus CPU time for INT8. No
-FlyingThings3D is required; E4 stays **BLOCKED** and no attempt is made to
-recover the 59 GB corpus or mount `D:`.
+**Roughly 24–39 h of Kaggle T4 time**, against a weekly GPU quota of about 30 h
+and a 12-hour cap per session. Per-seed estimates are scaled from the local
+200-epoch run (62 min on an RTX 4060) and are **estimates, not measurements** —
+the first E0 seed measures the real rate and the rest of the budget should be
+re-derived from it.
+
+Two consequences worth planning for rather than discovering: the campaign will
+span **more than one quota week**, and each seed must fit inside a single
+12-hour session (E3 at ~3–5 h/seed does, comfortably, but it is the one to
+watch). No FlyingThings3D is required; E4 stays **BLOCKED** and no attempt is
+made to recover the 59 GB corpus or mount `D:`.
 
 ## 20 Authorization status
 
@@ -459,7 +474,15 @@ three candidates, and calibrating on the 40 `hailo_val` evaluation scenes is
 forbidden. Without this, INT8 numbers across models would not be comparable and
 could leak the evaluation set into quantization.
 
-**Concern A remains open and unresolved by design** — it is an expectation, not
-a defect. The reproduction gate may fail benignly because training determinism
-was never enabled in Stage B; the fallback (three fresh local seeds) is already
-specified and costs ~1 h.
+**Concern A — DISSOLVED by A2.2**, not solved. The reproduction gate it warned
+about no longer exists: E0 is three fresh Kaggle runs reusing nothing. The
+underlying fact is unchanged and still worth knowing — Stage B never enabled
+deterministic algorithms, so its runs are not bit-reproducible — but no Stage-E
+decision now depends on reproducing one.
+
+**Concern E (new, from A2.1) — the campaign is quota-bound, not compute-bound.**
+At ~24–39 h of estimated T4 time against a ~30 h weekly allowance, Stage E
+spans multiple quota weeks and the schedule, not the GPU, is the limiting
+factor. The per-seed figures are scaled from local hardware and unverified on
+T4; the first E0 seed should be used to re-derive the budget before committing
+to E3's 9–15 h.

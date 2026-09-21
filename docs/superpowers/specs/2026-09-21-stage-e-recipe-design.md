@@ -22,19 +22,45 @@ Nothing else changed. The verdict hierarchy, the `S0`-derived bar, the
 three-seed requirement, the primary/secondary statistics, the tie-breaks, the
 INT8 margin of 0.05 px and the E1/E3 hyperparameters are all **unchanged**.
 
+Amendment 2 — 2026-09-21, execution-environment standardization and
+initialization disambiguation, authorized by the project owner **before any
+E0/E1/E2/E3 run existed**.
+
+| # | Section | Was | Now | Reason |
+|---|---|---|---|---|
+| A2.1 | §3, §4 | execution environment unstated (implicitly local) | **Kaggle T4 only.** No Stage-E GPU training runs locally. Same Kaggle environment for E0, E1, E2 and E3 | Environment uniformity across the campaign; environment is not a Stage-E experimental factor. |
+| A2.2 | §4.1, §5.1 | E0 = reproduce local seed 1 (harness gate), reuse local Stage-B seed 0, train seed 2 | **E0 = three fresh Kaggle seeds (0, 1, 2).** No Stage-B run is reused. The reproduction gate is **RETIRED** | The gate existed solely to license reusing a local Stage-B run. With nothing reused there is nothing to license, and mixing local with Kaggle runs inside one control mean is what A2.1 forbids. |
+| A2.3 | §3 | "frozen Stage-1 pretrain checkpoint" | unchanged in substance; restated explicitly as **Stage-1 pretrained ARM-P init, never random init** | The checkpoint in *both* Stage-B arms is named `p2a_best.pth`, so "P2A" alone is ambiguous between the random-init CONTROL arm and the pretrained ARM-P arm. Stage B **closed** the initialization question; Stage E does not reopen it. |
+| A2.4 | §4.3.1 | batch-8 probe measured on the local RTX 4060 | that measurement is **historical local evidence only**; the probe is **re-run on Kaggle T4** before E2 | A1.1's conclusion rests on 8,188 MiB of local VRAM. T4 carries roughly twice that, so batch 8 is very likely to fit — but "very likely" is inference, not measurement. |
+
+Amendment 2 changes **no** acceptance mathematics: the verdict hierarchy, the
+`S0`-derived bar, the three-seed requirement, the E3 best+final requirement,
+the tie-breaks, the INT8 margin and *N* = 32, and the E1/E2/E3 interventions
+are all unchanged.
+
 ## 1 Objective
 
 > **Improve the frozen ARM-P model's mean 3-seed KITTI EPE while preserving the
 > approximately 400k-parameter footprint and passing the pre-registered INT8
 > numerical-survivability gate.**
 
-Current incumbent:
+Current incumbent (**historical reference**, measured on local hardware):
 
 > **1.1988735 px mean across three seeds; 397,954 parameters.**
 
 `1.1912168 px` (seed 1, best checkpoint) is a **historical single-seed
 reference**, not the Stage E acceptance baseline. No Stage E result is ever
 compared against it as if it were the expected ARM-P score.
+
+**The Stage-E acceptance control is the fresh Kaggle E0 3-seed mean
+(`M0_best`), not the 1.1988735 historical figure** (A2.1, A2.2). Every
+candidate is compared mean-to-mean against E0, measured in the same
+environment. The historical figure remains what the campaign is *about* — it is
+what "the ARM-P model" scores — but it was measured on different hardware under
+a different torch version, and Stage B's own environment control observed a
+~0.022 px local-versus-Kaggle shift. **A Kaggle E0 mean that differs from
+1.1988735 is therefore expected, is not a regression, and must never be
+reported as one.**
 
 ### 1.1 Why the baseline was restated
 
@@ -81,13 +107,14 @@ below is held fixed and asserted at run time:
 | Variable | Value | Enforcement |
 |---|---|---|
 | Architecture | ARM-P, unmodified (`src/models/stereonet`) | param count asserted `== 397954` before training; abort otherwise |
-| Initialization | frozen Stage-1 pretrain checkpoint `armp_stage1_best.pth` | SHA-256 asserted `== 3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7` |
+| Initialization (A2.3) | frozen **Stage-1 pretrained ARM-P** checkpoint `armp_stage1_best.pth` — **never random init** | SHA-256 asserted `== 3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7`; strict load, 70/70 keys, missing and unexpected empty; **model weights only** — optimizer and scheduler constructed fresh |
 | Fine-tune data | KITTI `hailo_calib`, 160 scenes | unchanged loader |
 | Evaluation | `phase1/harness/frozen_eval.py`, 40 scenes, 3,802,797 valid px, `gt_scale` 256.0, `disp_occ_0`, 368x1232 top-left crop | contract match asserted in every eval |
 | Precision | fp32 | — |
 | Loss | masked smooth L1, beta 1.0, valid = `gt>0 AND gt<184` | — |
 | Augmentation | scale-aug crop, logUniform(0.7,1.7), gain jitter sigma 0.1, no flip | — |
 | Optimizer family | Adam, betas (0.9, 0.999) | LR/schedule/batch are the levers under test |
+| **Execution environment (A2.1)** | **Kaggle T4**, Python 3.12.13, torch 2.10.0+cu128, CUDA 12.8 | identical for E0/E1/E2/E3; **no Stage-E GPU training runs locally** |
 
 Because no architectural parameter moves, the ≤400k footprint constraint holds
 **by construction** in every experiment, and is additionally asserted.
@@ -106,32 +133,25 @@ Because no architectural parameter moves, the ≤400k footprint constraint holds
 controlled baseline, and any combination is a separate, later experiment with
 its own pre-registration.
 
-### 4.1 E0 — environment-matched control
+### 4.1 E0 — same-environment ARM-P control
 
-Seeds 0 and 1 were trained locally in Stage B; seed 2 was Kaggle-trained, and
-the environment control measured a ~0.022 px shift — larger than the seed
-spread itself. Mixing environments inside one control mean would put an
-uncontrolled term in the baseline.
+**Amended by A2.1/A2.2.** E0 is **three fresh Kaggle T4 runs**, seeds 0, 1 and
+2, using the Stage-1 pretrained ARM-P initialization and the frozen incumbent
+recipe with no intervention: no EMA, batch 2, 200 epochs, `T_max` 200.
 
-E0 therefore:
+No Stage-B run is reused, and no local run enters the Stage-E primary
+comparison. The **reproduction gate is retired**: it existed only to license
+reusing local Stage-B seed 0, and nothing is reused now. The determinism caveat
+that made that gate likely to fail is therefore moot for Stage E.
 
-1. **Reproduces seed 1 locally** from the frozen Stage-1 init under the exact
-   Stage-2 recipe. This is a **harness gate**: if the re-run does not reproduce
-   the Stage-B seed-1 frozen-contract score, the Stage E harness differs from
-   the Stage B harness and **Stage E stops** until the difference is explained.
-   The reproduction tolerance is pre-registered in §5.1.
-2. **Trains control seed 2 locally** (~1 h), replacing the Kaggle seed in the
-   Stage E control mean.
-3. Reuses the existing **local seed 0** Stage-B ARM-P run unmodified.
+Stage B's random-init CONTROL arm is **not** E0 and is not revisited. The
+initialization question — random-init P2A versus Stage-1-pretrained ARM-P — was
+**closed by Stage B**, and Stage E does not reopen it. For the record, Stage-B
+seed 2 measured random-init 1.4932978 px against pretrained ARM-P 1.1996447 px;
+that gap is Stage B's finding, not a Stage-E control.
 
-Step 3 is only legitimate because of step 1: reusing a Stage-B run inside a
-Stage-E control mean assumes the two environments are equivalent, and the
-seed-1 reproduction is exactly the measurement that tests that assumption. If
-the harness gate fails, seed 0 may not be reused either, and E0 becomes three
-fresh local runs (~3 h).
-
-Output: a local 3-seed control distribution (mean, spread, per-seed best and
-final), which instantiates the numbers in the §5 formula.
+Output: a Kaggle 3-seed control distribution (per-seed best and final, mean,
+spread) which instantiates the numbers in the §5 formula.
 
 ### 4.2 E1 — weight EMA
 
@@ -170,6 +190,13 @@ synthetic batch at the frozen 256x512 crop, one forward and one backward only.
 Pre-registered "comfortable" threshold, fixed before the measurement: the
 batch-8 peak reserve must leave **at least 20%** of the card free.
 
+**Amended by A2.4: the measurement below is LOCAL, and Stage E trains on
+Kaggle T4.** It is retained as historical local evidence and as validation that
+the probe works; the same probe is **re-run on Kaggle T4** before E2 is
+authorized, and the T4 result decides E2's implementation. The T4 carries
+roughly twice the local VRAM, so batch 8 is expected to fit with more headroom
+— expected, not measured.
+
 Measured on the RTX 4060 Laptop GPU (8,188 MiB total),
 `stage_e_recipe/e2_batch8/batch8_memory_probe.json`:
 
@@ -181,8 +208,9 @@ Measured on the RTX 4060 Laptop GPU (8,188 MiB total),
 Headroom **41.3%** against the 20% threshold; allocation scales 3.86x for a 4x
 batch, as expected without BatchNorm.
 
-**Verdict: `NATIVE_BATCH_8`.** The accumulation fallback is not used, and its
-correctness gate is therefore not on the critical path.
+**Local verdict: `NATIVE_BATCH_8`.** Pending confirmation on T4 (A2.4). If the
+T4 probe returns `ACCUMULATION_FALLBACK`, the pixel-weighted accumulation path
+and its correctness gate come back onto the critical path.
 
 ### 4.4 E3 — 400 epochs
 
@@ -220,11 +248,10 @@ and for a candidate X over its three seeds: `Mx_best`, `Mx_final`, `Sx_best`.
 Improvement is `Δ_best = M0_best − Mx_best` (positive means the candidate is
 better).
 
-**Harness gate (E0 step 1):** the local seed-1 reproduction must match the
-Stage-B seed-1 best-checkpoint score of 1.191216765057325 px to within
-**1e-6 px**. Outside that, Stage E stops and the divergence is investigated
-before any candidate runs. A bit-exact match is expected but not required,
-because CUDA kernel selection may differ across driver states.
+**Harness gate — RETIRED by A2.2.** The local seed-1 reproduction gate no
+longer exists: E0 is three fresh Kaggle runs and no Stage-B run is reused, so
+there is nothing for a reproduction to license. No Stage-E claim depends on
+reproducing a local run; the Kaggle E0 mean is the control in its own right.
 
 ### 5.2 Primary comparison
 
@@ -352,15 +379,23 @@ run directory, checkpoint or record is ever overwritten.
 
 ## 8 Cost
 
+Amended by A2.1: costs are **Kaggle T4**, not local.
+
 | Experiment | Per seed | 3 seeds |
 |---|---|---|
-| E0 (seed-1 reproduction + seed-2 local) | ~1 h | ~2 h |
-| E1 | ~1 h | ~3 h |
-| E2 | ~1 h | ~3 h |
-| E3 | ~2 h | ~6 h |
+| E0 (three fresh Kaggle seeds) | ~1.5–2.5 h | ~5–8 h |
+| E1 | ~1.5–2.5 h | ~5–8 h |
+| E2 | ~1.5–2.5 h | ~5–8 h |
+| E3 (400 epochs) | ~3–5 h | ~9–15 h |
 
-Roughly 14 h of GPU time on the RTX 4060 Laptop GPU, all runnable without the
-missing FlyingThings3D corpus.
+Roughly **24–39 h of Kaggle T4 time**, plus ~1–2 h of CPU for INT8, against a
+weekly GPU quota of about 30 h and a 12-hour cap per session. The per-seed
+figures are scaled from the local 200-epoch run (62 min on an RTX 4060) and are
+**estimates, not measurements**: T4 is the slower card, the first E0 seed
+measures the real rate, and the remaining budget is re-derived from it before
+E3 is committed to. The campaign is expected to span more than one quota week.
+
+All of it runs without the missing FlyingThings3D corpus.
 
 ## 9 Honest statement of what Stage E can and cannot deliver
 
