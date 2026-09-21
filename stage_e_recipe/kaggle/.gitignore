@@ -1,4 +1,5 @@
 # Assembled from the repository by build_bundle.py; regenerate, never commit.
 bundle/
 kernel/
-gate_output/
+# gate_output/ kept: the gate result JSON + log are evidence
+gate_output/repo/

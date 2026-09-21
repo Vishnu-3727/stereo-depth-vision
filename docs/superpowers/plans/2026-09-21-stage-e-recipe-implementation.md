@@ -390,23 +390,39 @@ silently, reinterpret a regression, or select a threshold after seeing results.
 
 | Item | Per seed | Total |
 |---|---|---|
-| E0 (3 fresh Kaggle seeds) | ~1.5–2.5 h | ~5–8 h |
-| E1 | ~1.5–2.5 h | ~5–8 h |
-| E2 | ~1.5–2.5 h | ~5–8 h |
-| E3 (400 epochs) | ~3–5 h | ~9–15 h |
+**MEASURED on Kaggle T4** by gate G7 (`stage_e_recipe/kaggle/GATE_RESULTS.md`),
+not extrapolated: 0.2276 s/step at batch 2 (80 steps/epoch, 18.21 s/epoch),
+0.7484 s/step at batch 8 (20 steps/epoch, 14.97 s/epoch), monitor pass 1.28 s
+every 5 epochs.
+
+| Experiment | Per seed | 3 seeds |
+|---|---|---|
+| E0 | 1.03 h | 3.08 h |
+| E1 | 1.03 h | 3.08 h |
+| E2 | 0.85 h | 2.54 h |
+| E3 (400 epochs) | 2.05 h | 6.16 h |
 | INT8 control + 3 candidates | — | ~1–2 h (CPU) |
 
-**Roughly 24–39 h of Kaggle T4 time**, against a weekly GPU quota of about 30 h
-and a 12-hour cap per session. Per-seed estimates are scaled from the local
-200-epoch run (62 min on an RTX 4060) and are **estimates, not measurements** —
-the first E0 seed measures the real rate and the rest of the budget should be
-re-derived from it.
+**Campaign total 14.85 h of Kaggle T4 time.**
 
-Two consequences worth planning for rather than discovering: the campaign will
-span **more than one quota week**, and each seed must fit inside a single
-12-hour session (E3 at ~3–5 h/seed does, comfortably, but it is the one to
-watch). No FlyingThings3D is required; E4 stays **BLOCKED** and no attempt is
-made to recover the 59 GB corpus or mount `D:`.
+This **corrects the earlier 24–39 h estimate, which was wrong**: it assumed the
+T4 would be meaningfully slower than the local RTX 4060, and measurement shows
+them near-identical for this model (1.03 h against the local 62 min for the
+same 200 epochs). Therefore:
+
+- The campaign fits inside a **single ~30 h quota week**. The earlier
+  "quota-bound, not compute-bound" warning (concern E) is **withdrawn**.
+- Every run clears the 12-hour session cap with wide margin; E3's 2.05 h/seed
+  is the longest single run.
+- Batch 8 is **18% faster per epoch** than batch 2, so E2 is the cheapest
+  candidate rather than the most expensive.
+
+E1 is costed equal to E0 on the assumption that EMA adds a weight copy per
+step rather than another forward/backward. That is an assumption, not a
+measurement, and E1's first seed will confirm or correct it.
+
+No FlyingThings3D is required; E4 stays **BLOCKED** and no attempt is made to
+recover the 59 GB corpus or mount `D:`.
 
 ## 20 Authorization status
 
@@ -480,9 +496,10 @@ underlying fact is unchanged and still worth knowing — Stage B never enabled
 deterministic algorithms, so its runs are not bit-reproducible — but no Stage-E
 decision now depends on reproducing one.
 
-**Concern E (new, from A2.1) — the campaign is quota-bound, not compute-bound.**
-At ~24–39 h of estimated T4 time against a ~30 h weekly allowance, Stage E
-spans multiple quota weeks and the schedule, not the GPU, is the limiting
-factor. The per-seed figures are scaled from local hardware and unverified on
-T4; the first E0 seed should be used to re-derive the budget before committing
-to E3's 9–15 h.
+**Concern E — WITHDRAWN, measured false.** It claimed the campaign was
+quota-bound at ~24–39 h against a ~30 h weekly allowance. Gate G7 measured the
+T4 directly: 14.85 h for the whole campaign, which fits inside one quota week
+with room to spare. The error was assuming T4 would be much slower than the
+local RTX 4060; for this model they are near-identical. Recorded here rather
+than deleted, because the estimate was stated confidently enough to have
+shaped scheduling.

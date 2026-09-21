@@ -1,0 +1,174 @@
+{
+  "gates": {
+    "G1_environment": {
+      "python": "3.12.13",
+      "platform": "Linux-6.12.90+-x86_64-with-glibc2.35",
+      "torch": "2.10.0+cu128",
+      "cuda_available": true,
+      "cuda_version": "12.8",
+      "cudnn": 91002,
+      "device_count": 2,
+      "gpu": "Tesla T4",
+      "total_memory_MiB": 14911.7,
+      "numpy": "2.0.2",
+      "opencv": "4.13.0",
+      "pass": true,
+      "wall_s": 6.92
+    },
+    "G2_source_integrity": {
+      "pass": true,
+      "files_checked": 25,
+      "mismatches": [],
+      "declared_delta_count": 2,
+      "wall_s": 0.08
+    },
+    "G3_init_integrity": {
+      "checks": {
+        "sha256_matches": true,
+        "no_optimizer_or_scheduler_state": true,
+        "tensor_key_count": true,
+        "param_count": true,
+        "strict_missing_empty": true,
+        "strict_unexpected_empty": true,
+        "contract_downsample_levels": true,
+        "contract_num_disparities": true,
+        "contract_cost_volume_shift": true,
+        "contract_regression_normalize": true,
+        "scheduler_epoch_0": true,
+        "scheduler_lr_1e-3": true
+      },
+      "sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+      "blob_keys": [
+        "config",
+        "model"
+      ],
+      "n_keys": 70,
+      "params": 397954,
+      "pass": true,
+      "wall_s": 5.37
+    },
+    "G4_contract": {
+      "hailo_calib_scenes": 160,
+      "hailo_val_scenes": 40,
+      "calib_first": "000000_10.png",
+      "calib_last": "000159_10.png",
+      "val_first": "000160_10.png",
+      "val_last": "000199_10.png",
+      "overlap": 0,
+      "image_dims": [
+        368,
+        1232,
+        3
+      ],
+      "disparity_dims": [
+        368,
+        1232
+      ],
+      "disparity_scale": 256.0,
+      "valid_pixels_counted": 3802797,
+      "valid_pixels_expected": 3802797,
+      "pass": true,
+      "wall_s": 2.78
+    },
+    "G5_one_batch": {
+      "sample": "000000_10.png",
+      "pred_shape": [
+        1,
+        1,
+        368,
+        1232
+      ],
+      "disp_shape": [
+        1,
+        1,
+        368,
+        1232
+      ],
+      "loss": 5.133922576904297,
+      "valid_pixels_in_batch": 87610,
+      "grads_present": true,
+      "reload_missing": [],
+      "reload_unexpected": [],
+      "params": 397954,
+      "throwaway": "reload-test checkpoint deleted; not a Stage-E artefact",
+      "pass": true,
+      "wall_s": 2.38
+    },
+    "G6_memory": {
+      "total_memory_MiB": 14911.7,
+      "results": [
+        {
+          "batch": 2,
+          "status": "FIT",
+          "peak_allocated_MiB": 1186.7,
+          "peak_reserved_MiB": 1278.0,
+          "error": null
+        },
+        {
+          "batch": 8,
+          "status": "FIT",
+          "peak_allocated_MiB": 4741.7,
+          "peak_reserved_MiB": 5766.0,
+          "error": null
+        }
+      ],
+      "batch8_fits": true,
+      "headroom_frac": 0.613,
+      "threshold_frac": 0.2,
+      "verdict": "NATIVE_BATCH_8",
+      "pass": true,
+      "wall_s": 1.03
+    },
+    "G7_rate": {
+      "steps_timed_per_config": 20,
+      "configs": {
+        "e0_batch2": {
+          "batch": 2,
+          "s_per_step": 0.2276,
+          "steps_per_epoch": 80,
+          "s_per_epoch_est": 18.21
+        },
+        "e2_batch8": {
+          "batch": 8,
+          "s_per_step": 0.7484,
+          "steps_per_epoch": 20,
+          "s_per_epoch_est": 14.97
+        }
+      },
+      "monitor_pass_s": 1.28,
+      "budget_recalculated_h": {
+        "per_seed": {
+          "E0": 1.03,
+          "E1": 1.03,
+          "E2": 0.85,
+          "E3": 2.05
+        },
+        "three_seeds": {
+          "E0": 3.08,
+          "E1": 3.08,
+          "E2": 2.54,
+          "E3": 6.16
+        },
+        "campaign_total_h": 14.85,
+        "basis": "20 timed steps/config + 1 monitor pass, measured on this T4; E1 assumed equal to E0 (EMA adds a weight copy per step, not a forward/backward)"
+      },
+      "note": "Rate probe only. No epoch completed, no checkpoint saved, no record written; weights discarded.",
+      "pass": true,
+      "wall_s": 23.15
+    }
+  },
+  "training_run": false,
+  "e0_started": false,
+  "mounts": {
+    "repo": "/kaggle/working/repo",
+    "bundle": "/kaggle/input/datasets/vishnu3727/stage-e-recipe-bundle",
+    "data": "/kaggle/input/datasets/vishnu3727/kitti2015-tier2-seed2-subset",
+    "data_link": "training-shim",
+    "data_layout": "flat",
+    "scripts": "/kaggle/working/repo/stage_e_recipe/run/scripts"
+  },
+  "bundle_mount": "/kaggle/input/datasets/vishnu3727/stage-e-recipe-bundle",
+  "all_pass": true,
+  "wall_s": 42.99,
+  "utc": "2026-09-21T06:13:31Z"
+}
