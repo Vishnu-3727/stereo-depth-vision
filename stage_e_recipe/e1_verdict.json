@@ -1,0 +1,25 @@
+{
+  "experiment": "e1",
+  "seeds_completed": 3,
+  "per_seed_best": [
+    1.2164890037646816,
+    1.2093646756387457,
+    1.1849985016924498
+  ],
+  "per_seed_final": [
+    1.2185249010632564,
+    1.2043173243469147,
+    1.1904644103530175
+  ],
+  "contract_all": true,
+  "mean_best": 1.2036173936986259,
+  "mean_final": 1.2044355452543962,
+  "spread_best": 0.03149050207223181,
+  "delta_best": 0.0001667063013741643,
+  "delta_final": 0.00810535474560381,
+  "P_candidate": 5.056289089181118,
+  "int8_threshold": 5.6365267999999995,
+  "int8_gate": "PASS",
+  "verdict": "INCONCLUSIVE",
+  "reason": "delta_best +0.0001667 is positive but below S0_best 0.0174488: inside the control's own seed spread, so not distinguishable from noise"
+}

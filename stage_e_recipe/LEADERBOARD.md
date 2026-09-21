@@ -7,7 +7,7 @@ through `phase1/harness/frozen_eval.py` on the 40-scene contract.
 | exp | intervention | seeds | mean best EPE | spread | mean final EPE | verdict |
 |---|---|---|---|---|---|---|
 | **E0** | none (control) | 0,1,2 | **1.2037841** | 0.0174488 | **1.2125409** | control — no verdict |
-| E1 | EMA 0.999 | — | — | — | — | NOT RUN |
+| E1 | EMA 0.999 | 0,1,2 | 1.2036174 | 0.0314905 | 1.2044355 | **INCONCLUSIVE** |
 | E2 | native batch 8 | — | — | — | — | NOT RUN |
 | E3 | 400 epochs | — | — | — | — | NOT RUN |
 | E4 | broader pretraining | — | — | — | — | **BLOCKED** (FT3D absent) |
@@ -35,4 +35,15 @@ expected, and not a regression.
 - **ARM-P does not survive INT8**: int8 D1 80–86 % against 6.4 % fp32, a
   penalty 16.3x the reference model's under the identical procedure. Not a
   Hailo statement; Stage D stays BLOCKED. See `INT8_CONTROL_REPORT.md`.
-- No candidate authorized.
+- **E1 complete — verdict INCONCLUSIVE** (`e1_verdict.json`, computed by
+  `verdict.py`). `Δ_best` = +0.0001667: positive, but ~100x smaller than the
+  `S0_best` bar of 0.0174488, so indistinguishable from the control's own seed
+  noise. Per-seed best: 1.2164890 / 1.2093647 / 1.1849985.
+- E1's INT8 limb passed (P 5.0562891 ≤ 5.6365268) and that decides nothing
+  about survivability — E1 is destroyed by int8 just as the control is. This is
+  the vacuity recorded in `INT8_CONTROL_REPORT.md` §4, now demonstrated.
+- E1 seed spread is 0.0314905, **1.8x the control's 0.0174488**. EMA did not
+  stabilise seed-to-seed variation here; it widened it. E1 produced both the
+  best single run of the campaign so far (seed 2, 1.1849985) and the worst
+  (seed 0, 1.2164890).
+- No further candidate authorized.

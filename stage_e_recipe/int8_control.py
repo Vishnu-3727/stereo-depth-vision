@@ -47,7 +47,8 @@ CFG = dict(downsample_levels=3, num_disparities=24,
 H, W = 368, 1232
 CALIB_N = 32                     # pre-registered (A1.3), EXP-015's own default
 EXPECTED_PARAMS = 397954
-WORK = HERE / "int8_control"
+EXP = sys.argv[1] if len(sys.argv) > 1 else "e0"
+WORK = HERE / f"int8_{EXP}"
 
 
 def sha256(p: Path) -> str:
@@ -164,9 +165,9 @@ def score_torch(ckpt: Path, ds) -> dict:
 def main() -> None:
     targets = sorted(
         (int(p.parent.name.replace("seed", "")), p)
-        for p in (HERE / "kaggle" / "e0_output").glob("seed*/e0_seed*_best.pth"))
+        for p in (HERE / "kaggle" / f"{EXP}_output").glob(f"seed*/{EXP}_seed*_best.pth"))
     if not targets:
-        sys.exit("no E0 best checkpoints found")
+        sys.exit(f"no {EXP.upper()} best checkpoints found")
 
     val = Kitti2015Stereo(REPO / "data" / "kitti2015", split="hailo_val",
                           disparity_scale=256.0, occluded=True)
@@ -174,7 +175,8 @@ def main() -> None:
     WORK.mkdir(parents=True, exist_ok=True)
 
     report: dict = {
-        "gate": "Stage E INT8 numerical-survivability control",
+        "gate": f"Stage E INT8 numerical-survivability - {EXP.upper()}",
+        "experiment": EXP,
         "not_hailo": ("NOT Hailo validation, compatibility, HEF validation or "
                       "hardware validation. Stage D remains blocked."),
         "P_definition": "EPE(int8 ONNX) - EPE(fp32 ONNX), same runtime and graph",
@@ -192,8 +194,8 @@ def main() -> None:
     penalties = []
     for seed, ckpt in targets:
         print(f"--- seed {seed} ---", flush=True)
-        f32 = WORK / f"e0_seed{seed}_best_fp32.onnx"
-        i8 = WORK / f"e0_seed{seed}_best_int8.onnx"
+        f32 = WORK / f"{EXP}_seed{seed}_best_fp32.onnx"
+        i8 = WORK / f"{EXP}_seed{seed}_best_int8.onnx"
         rec: dict = {"checkpoint": str(ckpt.relative_to(REPO)).replace("\\", "/")}
         rec["export"] = export_onnx(ckpt, f32)
         print(f"  exported {rec['export']['n_nodes']} nodes", flush=True)
@@ -211,16 +213,26 @@ def main() -> None:
               f"| nonfinite {rec['int8_onnx']['nonfinite_pixels']}", flush=True)
         report["seeds"][str(seed)] = rec
 
-    report["P_control_per_seed"] = penalties
-    report["P_control"] = float(np.mean(penalties))
-    report["P_control_spread"] = float(max(penalties) - min(penalties))
-    report["gate_for_candidates"] = (
-        f"P_candidate <= P_control + 0.05 = {report['P_control'] + 0.05:.7f} px")
-    out = HERE / "int8_control" / "int8_control.json"
+    key = "P_control" if EXP == "e0" else "P_candidate"
+    report[f"{key}_per_seed"] = penalties
+    report[key] = float(np.mean(penalties))
+    report[f"{key}_spread"] = float(max(penalties) - min(penalties))
+    if EXP == "e0":
+        report["gate_for_candidates"] = (
+            f"P_candidate <= P_control + 0.05 = {report[key] + 0.05:.7f} px")
+    else:
+        P_CONTROL = 5.5865268          # measured; stage_e_recipe/int8_control/
+        report["P_control_reference"] = P_CONTROL
+        report["gate_threshold"] = P_CONTROL + 0.05
+        report["int8_gate"] = "PASS" if report[key] <= P_CONTROL + 0.05 else "FAIL"
+    out = WORK / f"int8_{EXP}.json"
     out.write_text(json.dumps(report, indent=2))
-    print(f"\nP_control = {report['P_control']:.7f} px "
-          f"(spread {report['P_control_spread']:.7f})")
-    print(f"candidate gate: {report['gate_for_candidates']}")
+    print(f"\n{key} = {report[key]:.7f} px (spread {report[f'{key}_spread']:.7f})")
+    if EXP == "e0":
+        print(f"candidate gate: {report['gate_for_candidates']}")
+    else:
+        print(f"gate: {report[key]:.7f} <= {report['gate_threshold']:.7f} -> "
+              f"{report['int8_gate']}")
     print(f"wrote {out}")
 
 
