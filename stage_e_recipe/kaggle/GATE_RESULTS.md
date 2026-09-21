@@ -83,3 +83,26 @@ same 200 epochs). The consequences:
 The estimates assume E1's EMA adds a weight copy per optimizer step rather than
 another forward/backward, so E1 is costed equal to E0. That is an assumption,
 not a measurement; E1's first seed will confirm or correct it.
+
+---
+
+## Addendum — the rate probe underestimated by ~24%
+
+Measured after E0's three seeds ran:
+
+| | predicted by G7 | actual |
+|---|---|---|
+| per seed | 1.03 h | **1.27–1.33 h** (4,647.3 / 4,556.6 / 4,772.2 s) |
+| E0, 3 seeds | 3.08 h | **3.88 h** |
+| campaign | 14.85 h | **~18 h** |
+
+G7 timed 20 steady-state optimizer steps and extrapolated. It did not capture
+kernel startup and bundle assembly, per-epoch data-loading variance, the 41
+monitor passes across 200 epochs, or the final scoring pass over 40 scenes at
+full resolution for two checkpoints.
+
+The conclusions the probe was run to reach are unaffected: the campaign still
+fits inside a single ~30 h quota week, and every run clears the 12-hour session
+cap by a wide margin. But the figure was stated as measured, so the correction
+is recorded here rather than quietly replaced. A rate probe of this shape
+should be read as a **lower bound** on wall time, not an estimate of it.
