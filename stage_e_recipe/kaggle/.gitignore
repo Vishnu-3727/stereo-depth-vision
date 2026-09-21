@@ -1,12 +1,14 @@
 # Assembled from the repository by build_bundle.py; regenerate, never commit.
 bundle/
-bundle_e1/
+bundle_e*/
+# Generated at push time from run_experiment.py; regenerate, never commit.
 kernel/
-kernel_e0_seed*/
-kernel_e1_seed*/
+kernel_e*_seed*/
+autopush_e3_seed2.log
 # gate_output/ and <exp>_output/ hold evidence and ARE committed, except the
 # assembled working tree the kernel ships back.
 gate_output/repo/
 e0_output/*/repo/
 e1_output/*/repo/
-autopush_e3_seed2.log
+e2_output/*/repo/
+e3_output/*/repo/
