@@ -23,7 +23,8 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[1]
-BUNDLE = HERE / "bundle"
+EXPERIMENT = "e1" if "--experiment" in sys.argv and "e1" in sys.argv else "e0"
+BUNDLE = HERE / ("bundle" if EXPERIMENT == "e0" else f"bundle_{EXPERIMENT}")
 
 SEED1 = "stage_b_armp/20260919T012646Z_tier2_seed1/scripts"
 STAGE1_CKPT = ("stage_b_armp/20260918T062146Z_stage1_pretrain/checkpoints/"
@@ -52,8 +53,7 @@ FILES = {
     "src/models/stereonet/stereonet.py": "src/models/stereonet/stereonet.py",
     "phase1/harness/determinism.py": "phase1/harness/determinism.py",
     "phase1/harness/frozen_eval.py": "phase1/harness/frozen_eval.py",
-    # the frozen recipe, byte-identical (E0 must not perturb it)
-    "scripts/finetune_pilot.py": f"{SEED1}/finetune_pilot.py",
+    # the frozen recipe; byte-identical for E0, EMA-patched for E1 (see below)
     "scripts/eval_tier2.py": f"{SEED1}/eval_tier2.py",
     # initialization weights
     "checkpoints/armp_stage1_best.pth": STAGE1_CKPT,
@@ -141,6 +141,35 @@ def main() -> None:
         record["byte_identical_files"][rel] = {
             "repo_source": src_rel, "sha256": h_dst, "identical": same}
 
+    # The recipe: byte-identical for E0, one declared intervention for E1.
+    fp_src = REPO / f"{SEED1}/finetune_pilot.py"
+    fp_text = fp_src.read_text(encoding="utf-8")
+    fp_dst = BUNDLE / "scripts/finetune_pilot.py"
+    fp_dst.parent.mkdir(parents=True, exist_ok=True)
+    if EXPERIMENT == "e0":
+        shutil.copy2(fp_src, fp_dst)
+        record["byte_identical_files"]["scripts/finetune_pilot.py"] = {
+            "repo_source": f"{SEED1}/finetune_pilot.py",
+            "sha256": sha256(fp_dst), "identical": sha256(fp_src) == sha256(fp_dst)}
+    else:
+        import e1_patch
+        patched = e1_patch.apply(fp_text)
+        fp_dst.write_text(patched, encoding="utf-8")
+        record["declared_deltas"]["scripts/finetune_pilot.py"] = {
+            "repo_source": f"{SEED1}/finetune_pilot.py",
+            "repo_sha256": sha256(fp_src), "bundle_sha256": sha256(fp_dst),
+            "identical": False,
+            "scope": "E1 INTERVENTION - weight EMA, decay 0.999",
+            "edits": [{"why": why, "old": old.strip()[:120], "new": new.strip()[:160]}
+                      for old, new, why in e1_patch.EDITS],
+            "unified_diff": list(difflib.unified_diff(
+                fp_text.splitlines(), patched.splitlines(),
+                fromfile=f"repo/{SEED1}/finetune_pilot.py",
+                tofile="bundle_e1/scripts/finetune_pilot.py", lineterm="", n=2)),
+            "unchanged": "architecture, initialization, data, augmentation, loss, "
+                         "optimizer, LR, batch size, epochs, scheduler",
+        }
+
     # The one declared delta.
     src = REPO / RUN_ARM_SRC
     original = src.read_text(encoding="utf-8")
@@ -203,6 +232,7 @@ def main() -> None:
     (BUNDLE / "configs").mkdir(parents=True, exist_ok=True)
     (BUNDLE / "configs" / "stage_e.json").write_text(json.dumps({
         "campaign": "Stage E recipe optimization",
+        "experiment": EXPERIMENT,
         "initialization": "Stage-1 pretrained ARM-P (never random init)",
         "init_sha256": STAGE1_SHA,
         "seeds": [0, 1, 2],
@@ -211,8 +241,9 @@ def main() -> None:
                 "this file is a record, not a source of truth.",
     }, indent=2))
     (BUNDLE / "BUNDLE_MARKER.json").write_text(json.dumps({
-        "bundle": "stage-e-recipe",
+        "bundle": f"stage-e-{EXPERIMENT}",
         "campaign": "Stage E",
+        "experiment": EXPERIMENT,
         "initialization": "Stage-1 pretrained ARM-P",
         "checkpoint_sha256": STAGE1_SHA,
         "recipe_source": SEED1,
@@ -223,13 +254,18 @@ def main() -> None:
     record["total_bytes"] = sum(f.stat().st_size for f in BUNDLE.rglob("*") if f.is_file())
     record["verdict"] = "PASS" if ok else "FAIL"
     manifest = json.dumps(record, indent=2)
-    (HERE / "source_integrity.json").write_text(manifest)
+    # Per-experiment manifest. E0 already ran against its own, and the record
+    # of a completed experiment is never overwritten.
+    name = ("source_integrity.json" if EXPERIMENT == "e0"
+            else f"source_integrity_{EXPERIMENT}.json")
+    (HERE / name).write_text(manifest)
     # The kernel re-verifies every hash on Kaggle (gate G2), so the manifest
     # ships inside the bundle too.
     (BUNDLE / "source_integrity.json").write_text(manifest)
 
     n_ident = sum(1 for v in record["byte_identical_files"].values() if v["identical"])
-    print(f"byte-identical files: {n_ident}/{len(FILES)}")
+    print(f"experiment:           {EXPERIMENT}")
+    print(f"byte-identical files: {n_ident}/{len(record['byte_identical_files'])}")
     print(f"declared deltas:      {len(record['declared_deltas'])} "
           f"({', '.join(sorted(record['declared_deltas']))})")
     print(f"init checkpoint:      {'MATCH' if record['init_checkpoint']['match'] else 'MISMATCH'}")

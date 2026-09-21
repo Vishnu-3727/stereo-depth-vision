@@ -1,5 +1,11 @@
 # Assembled from the repository by build_bundle.py; regenerate, never commit.
 bundle/
+bundle_e1/
 kernel/
-# gate_output/ kept: the gate result JSON + log are evidence
+kernel_e0_seed*/
+kernel_e1_seed*/
+# gate_output/ and <exp>_output/ hold evidence and ARE committed, except the
+# assembled working tree the kernel ships back.
 gate_output/repo/
+e0_output/*/repo/
+e1_output/*/repo/

@@ -28,11 +28,12 @@ import time
 from pathlib import Path
 
 SEED = __SEED__          # templated by push_e0.py
-EPOCHS = 200             # E0 = frozen incumbent recipe
+EXP = "__EXP__"          # e0 | e1 | e2 | e3
+EPOCHS = __EPOCHS__      # 200 for E0/E1/E2, 400 for E3
 TIMEOUT_S = 18000.0      # 5 h; measured rate is ~1.03 h/seed
 EXPECTED_INIT_SHA = "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7"
 EXPECTED_PARAMS = 397954
-OUT = Path(f"/kaggle/working/e0_seed{SEED}.json")
+OUT = Path(f"/kaggle/working/{EXP}_seed{SEED}.json")
 
 
 def sha256(p: Path) -> str:
@@ -61,8 +62,8 @@ def load_bootstrap():
 
 def main() -> None:
     t_all = time.time()
-    rec: dict = {"experiment": "STAGE E - E0 control", "seed": SEED,
-                 "epochs": EPOCHS, "intervention": "NONE (frozen incumbent recipe)",
+    rec: dict = {"experiment": f"STAGE E - {EXP.upper()}", "seed": SEED,
+                 "epochs": EPOCHS, "intervention": "__INTERVENTION__",
                  "initialization": "Stage-1 pretrained ARM-P"}
 
     boot, bundle = load_bootstrap()
@@ -148,13 +149,13 @@ def main() -> None:
 
         # Ship the checkpoint out with the kernel so it is never lost.
         import shutil
-        shutil.copy2(ck, Path("/kaggle/working") / f"e0_seed{SEED}_{tag}.pth")
+        shutil.copy2(ck, Path("/kaggle/working") / f"{EXP}_seed{SEED}_{tag}.pth")
 
     for extra in ("epoch_log.jsonl", "stdout.log", "integrity_guard.json"):
         src = outdir / extra
         if src.is_file():
             import shutil
-            shutil.copy2(src, Path("/kaggle/working") / f"e0_seed{SEED}_{extra}")
+            shutil.copy2(src, Path("/kaggle/working") / f"{EXP}_seed{SEED}_{extra}")
 
     rec["status"] = "COMPLETE"
     rec["wall_s"] = round(time.time() - t_all, 1)
@@ -162,7 +163,7 @@ def main() -> None:
     OUT.write_text(json.dumps(rec, indent=2))
     b = rec["checkpoints"]["best"]["hailo_val"]["metrics"]
     f = rec["checkpoints"]["final"]["hailo_val"]["metrics"]
-    print(f"\nE0 seed {SEED} COMPLETE in {rec['wall_s']}s")
+    print(f"\n{EXP.upper()} seed {SEED} COMPLETE in {rec['wall_s']}s")
     print(f"  best  EPE {b['epe']:.7f}  D1 {b['d1']:.4f}%")
     print(f"  final EPE {f['epe']:.7f}  D1 {f['d1']:.4f}%")
     print(f"wrote {OUT}")

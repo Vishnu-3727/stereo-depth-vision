@@ -1,0 +1,281 @@
+{
+  "bundle": "stage_e_recipe/kaggle/bundle",
+  "purpose": "Stage E Kaggle T4 execution bundle",
+  "byte_identical_files": {
+    "src/__init__.py": {
+      "repo_source": "src/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/datasets/__init__.py": {
+      "repo_source": "src/datasets/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/datasets/kitti2015.py": {
+      "repo_source": "src/datasets/kitti2015.py",
+      "sha256": "9f3369d85c07b35680b928767d7b521fc9110d14a594adf7165fcf36a1bec25e",
+      "identical": true
+    },
+    "src/evaluation/__init__.py": {
+      "repo_source": "src/evaluation/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/evaluation/metrics.py": {
+      "repo_source": "src/evaluation/metrics.py",
+      "sha256": "04d826913bb15301838a257dddac5ddd355786eccad8fe329ff1f2ae4157c9ec",
+      "identical": true
+    },
+    "src/losses/__init__.py": {
+      "repo_source": "src/losses/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/losses/disparity.py": {
+      "repo_source": "src/losses/disparity.py",
+      "sha256": "aa4da7e6c788cb665cf594d2fa37e0e4f10cc5ca22cadf83f136c0ad18fab7eb",
+      "identical": true
+    },
+    "src/models/__init__.py": {
+      "repo_source": "src/models/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/models/stereonet/__init__.py": {
+      "repo_source": "src/models/stereonet/__init__.py",
+      "sha256": "cd46319a865c1613b6db320a22b9e58e245e4f13b39c82895421eb7aa7546469",
+      "identical": true
+    },
+    "src/models/stereonet/aggregation.py": {
+      "repo_source": "src/models/stereonet/aggregation.py",
+      "sha256": "a734782a80256cc6732036fd154706833adb23c64cb03b9c2287b3b7ad7c6702",
+      "identical": true
+    },
+    "src/models/stereonet/blocks.py": {
+      "repo_source": "src/models/stereonet/blocks.py",
+      "sha256": "fcdc9ab0c0f7d337144bd2432cd43d0dce6abd419b4058630d0b5b4ace0eac8a",
+      "identical": true
+    },
+    "src/models/stereonet/cost_volume.py": {
+      "repo_source": "src/models/stereonet/cost_volume.py",
+      "sha256": "aecf80145834ac504c73ced551ad9571cc951a84aa29379e35e25189e46c65f6",
+      "identical": true
+    },
+    "src/models/stereonet/excitation.py": {
+      "repo_source": "src/models/stereonet/excitation.py",
+      "sha256": "fb7103ed4bc719331258441d495444f71c76acdafac59e4141e78beb0f2104fb",
+      "identical": true
+    },
+    "src/models/stereonet/feature_extractor.py": {
+      "repo_source": "src/models/stereonet/feature_extractor.py",
+      "sha256": "0c49f78ed074907afc37dc09f6eb017be0f268df17ab279c91f45976bd2d3d05",
+      "identical": true
+    },
+    "src/models/stereonet/refinement.py": {
+      "repo_source": "src/models/stereonet/refinement.py",
+      "sha256": "185e53c92b615d7e8c2084e3e2bd693c05ab94f98ebd8e95a7af89a0473d7401",
+      "identical": true
+    },
+    "src/models/stereonet/regression.py": {
+      "repo_source": "src/models/stereonet/regression.py",
+      "sha256": "09ba98e0eca8740b91f9d498c4ae6f103ddb9a976adac35714142bca2c8f9a32",
+      "identical": true
+    },
+    "src/models/stereonet/stereonet.py": {
+      "repo_source": "src/models/stereonet/stereonet.py",
+      "sha256": "92f9275786f323d6eca9e19b55f7aa7cdada20885ff38e7876ba6cb234f28c56",
+      "identical": true
+    },
+    "phase1/harness/determinism.py": {
+      "repo_source": "phase1/harness/determinism.py",
+      "sha256": "aa69c0b3303bbc2035378d0091b8d66ae376f8afab6804dd2794a6ca7bd4a415",
+      "identical": true
+    },
+    "phase1/harness/frozen_eval.py": {
+      "repo_source": "phase1/harness/frozen_eval.py",
+      "sha256": "1a123c1219425d7d20cce73afb2e315f05180922eb1daf1f865a16b89a83c7f1",
+      "identical": true
+    },
+    "scripts/eval_tier2.py": {
+      "repo_source": "stage_b_armp/20260919T012646Z_tier2_seed1/scripts/eval_tier2.py",
+      "sha256": "326e9058f4bbdf342234d92eb5d8a9cd96885587eb1d88a44131b41ff58554f6",
+      "identical": true
+    },
+    "checkpoints/armp_stage1_best.pth": {
+      "repo_source": "stage_b_armp/20260918T062146Z_stage1_pretrain/checkpoints/armp_stage1_best.pth",
+      "sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+      "identical": true
+    },
+    "phase1/runs/arm_v/arm_v_best.pth": {
+      "repo_source": "phase1/runs/arm_v/arm_v_best.pth",
+      "sha256": "f2dcf8a22e6f1711b67a70837066f84e68550d53bb4891d3b8d46bd50b452cc4",
+      "identical": true
+    }
+  },
+  "declared_deltas": {
+    "scripts/finetune_pilot.py": {
+      "repo_source": "stage_b_armp/20260919T012646Z_tier2_seed1/scripts/finetune_pilot.py",
+      "repo_sha256": "af6130043c989d83b16da28938e5ce8e7f8c2fbdb15b25d9571eee94720d6d72",
+      "bundle_sha256": "9cd1ee7a3ea31f9b4713a7cd08c9b6151f6abce04258aed10a80366981c77bec",
+      "identical": false,
+      "scope": "E1 INTERVENTION - weight EMA, decay 0.999",
+      "edits": [
+        {
+          "why": "Create the EMA shadow copy from the initialised weights.",
+          "old": "optimizer = torch.optim.Adam(model.parameters(), lr=LR, betas=(0.9, 0.999))\n    scheduler = torch.optim.lr_scheduler.Cos",
+          "new": "optimizer = torch.optim.Adam(model.parameters(), lr=LR, betas=(0.9, 0.999))\n    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=EPOCHS)\n"
+        },
+        {
+          "why": "EMA update every optimizer step, over the full state dict.",
+          "old": "optimizer.step()\n            epoch_loss += float(loss)",
+          "new": "optimizer.step()\n            # E1: EMA update, every optimizer step.\n            with torch.no_grad():\n                _msd = model.state_dict()\n               "
+        },
+        {
+          "why": "Monitor evaluates the EMA weights, so selection and scoring agree.",
+          "old": "m = validate(model, val_base, device, limit=10)",
+          "new": "m = validate(ema_model, val_base, device, limit=10)\n            ema_model.eval()  # validate() leaves its argument in train mode"
+        },
+        {
+          "why": "Best checkpoint stores EMA weights.",
+          "old": "torch.save({\"model\": model.state_dict(), \"config\": exp_config},\n                           OUT_DIR / \"p2a_best.pth\")",
+          "new": "torch.save({\"model\": ema_model.state_dict(), \"config\": exp_config},\n                           OUT_DIR / \"p2a_best.pth\")"
+        },
+        {
+          "why": "Final checkpoint stores EMA weights.",
+          "old": "torch.save({\"model\": model.state_dict(), \"config\": exp_config}, final_ckpt)",
+          "new": "torch.save({\"model\": ema_model.state_dict(), \"config\": exp_config}, final_ckpt)"
+        },
+        {
+          "why": "Import copy for the shadow model.",
+          "old": "import argparse\nimport hashlib",
+          "new": "import argparse\nimport copy\nimport hashlib"
+        }
+      ],
+      "unified_diff": [
+        "--- repo/stage_b_armp/20260919T012646Z_tier2_seed1/scripts/finetune_pilot.py",
+        "+++ bundle_e1/scripts/finetune_pilot.py",
+        "@@ -23,4 +23,5 @@",
+        " ",
+        " import argparse",
+        "+import copy",
+        " import hashlib",
+        " import json",
+        "@@ -240,4 +241,12 @@",
+        "     optimizer = torch.optim.Adam(model.parameters(), lr=LR, betas=(0.9, 0.999))",
+        "     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=EPOCHS)",
+        "+",
+        "+    # STAGE E / E1 INTERVENTION: weight EMA, decay 0.999. Training-time shadow",
+        "+    # copy initialised from the Stage-1 weights; adds no model parameter.",
+        "+    EMA_DECAY = 0.999",
+        "+    ema_model = copy.deepcopy(model)",
+        "+    for _p in ema_model.parameters():",
+        "+        _p.requires_grad_(False)",
+        "+    ema_model.eval()",
+        " ",
+        "     exp_config = {",
+        "@@ -301,4 +310,9 @@",
+        "             loss.backward()",
+        "             optimizer.step()",
+        "+            # E1: EMA update, every optimizer step.",
+        "+            with torch.no_grad():",
+        "+                _msd = model.state_dict()",
+        "+                for _k, _v in ema_model.state_dict().items():",
+        "+                    _v.mul_(EMA_DECAY).add_(_msd[_k], alpha=1.0 - EMA_DECAY)",
+        "             epoch_loss += float(loss)",
+        "             epoch_pixels += n",
+        "@@ -308,5 +322,6 @@",
+        "                \"valid_pixels\": epoch_pixels, \"lr\": float(scheduler.get_last_lr()[0])}",
+        "         if epoch % 5 == 0 or epoch == EPOCHS - 1:",
+        "-            m = validate(model, val_base, device, limit=10)",
+        "+            m = validate(ema_model, val_base, device, limit=10)",
+        "+            ema_model.eval()  # validate() leaves its argument in train mode",
+        "             row[\"val_epe\"] = m.epe",
+        "             row[\"val_d1\"] = m.d1",
+        "@@ -314,5 +329,5 @@",
+        "                 best_val_epe = m.epe",
+        "                 best_epoch = epoch",
+        "-                torch.save({\"model\": model.state_dict(), \"config\": exp_config},",
+        "+                torch.save({\"model\": ema_model.state_dict(), \"config\": exp_config},",
+        "                            OUT_DIR / \"p2a_best.pth\")",
+        "         history.append(row)",
+        "@@ -327,5 +342,5 @@",
+        "     fh.close()",
+        "     final_ckpt = OUT_DIR / \"p2a_final.pth\"",
+        "-    torch.save({\"model\": model.state_dict(), \"config\": exp_config}, final_ckpt)",
+        "+    torch.save({\"model\": ema_model.state_dict(), \"config\": exp_config}, final_ckpt)",
+        " ",
+        "     draws = np.array(train.draws, dtype=np.float64) if train.draws else np.zeros((0, 4))"
+      ],
+      "unchanged": "architecture, initialization, data, augmentation, loss, optimizer, LR, batch size, epochs, scheduler"
+    },
+    "scripts/run_arm.py": {
+      "repo_source": "stage_b_armp/20260919T012646Z_tier2_seed1/scripts/run_arm.py",
+      "repo_sha256": "4cf817a219b58cac3842496e9a18ae4d0107827aad9280539ffc70ba078973a1",
+      "bundle_sha256": "9d0123700d93b44873477ff1f6d29d9bcddfbd5a39c7d22c3a64dc7f3f6620f5",
+      "identical": false,
+      "scope": "ORCHESTRATION ONLY - no training semantics change",
+      "edits": [
+        {
+          "line_was": "env[\"P2A_SEED\"] = \"1\"",
+          "line_now": "env[\"P2A_SEED\"] = str(args.seed)",
+          "why": "Stage B hardcoded one seed per source copy; Stage E runs seeds 0, 1 and 2 from one file, so the seed becomes a CLI argument."
+        },
+        {
+          "line_was": "env[\"P2A_EPOCHS\"] = \"200\"",
+          "line_now": "env[\"P2A_EPOCHS\"] = str(args.epochs)",
+          "why": "E3 needs 400 epochs; E0/E1/E2 pass 200 explicitly. The default stays 200 so omitting the flag reproduces the frozen recipe."
+        },
+        {
+          "line_was": "ap.add_argument(\"--timeout_s\", type=float, default=7200.0)",
+          "line_now": "ap.add_argument(\"--timeout_s\", ...)  + --seed + --epochs",
+          "why": "Declares the two new arguments."
+        }
+      ],
+      "unified_diff": [
+        "--- repo/stage_b_armp/20260919T012646Z_tier2_seed1/scripts/run_arm.py",
+        "+++ bundle/scripts/run_arm.py",
+        "@@ -73,2 +73,6 @@",
+        "     ap.add_argument(\"--timeout_s\", type=float, default=7200.0)",
+        "+    ap.add_argument(\"--seed\", type=int, required=True,",
+        "+                    help=\"STAGE E: P2A_SEED for this run (0, 1 or 2)\")",
+        "+    ap.add_argument(\"--epochs\", type=int, default=200,",
+        "+                    help=\"STAGE E: P2A_EPOCHS; 200 = frozen recipe, 400 = E3\")",
+        "     args = ap.parse_args()",
+        "@@ -82,5 +86,5 @@",
+        "     env = dict(os.environ)",
+        "-    env[\"P2A_SEED\"] = \"1\"",
+        "+    env[\"P2A_SEED\"] = str(args.seed)",
+        "     env[\"P2A_OUT_DIR\"] = str(outdir)",
+        "-    env[\"P2A_EPOCHS\"] = \"200\"",
+        "+    env[\"P2A_EPOCHS\"] = str(args.epochs)",
+        " "
+      ],
+      "recipe_file_untouched": "scripts/finetune_pilot.py is byte-identical; it alone defines optimizer, loss, schedule, augmentation and the training loop."
+    },
+    "kaggle_bootstrap.py": {
+      "repo_source": "stage_b_armp/20260919T035455Z_kaggle_seed2/bundle/kaggle_bootstrap.py",
+      "repo_sha256": "629813bc5bc02a20b12e8ae02179ea6249218411bcd034886f529e9f57419931",
+      "bundle_sha256": "e3afebae2c7a881918f1c8a78caf4baa880afecb4e85b07beb3fc3066e16ba87",
+      "identical": false,
+      "scope": "PATH NAMING ONLY - no behaviour change",
+      "edits": [
+        {
+          "line_was": "EXP_SUBDIR = Path(\"stage_b_armp\") / \"seed2\"",
+          "line_now": "EXP_SUBDIR = Path(\"stage_e_recipe\") / \"run\"",
+          "why": "Scripts must sit exactly two levels under the assembled root so finetune_pilot.py's parents[3] and run_arm.py's PILOT.parents[1] both resolve to it. Same depth as Stage B's path; renamed so a Stage-E run does not masquerade as a Stage-B one."
+        }
+      ],
+      "not_research_source": "Kaggle portability wrapper (stdlib only). It discovers mounts and copies files; it does not touch the model, data, loss or schedule."
+    }
+  },
+  "verdict": "PASS",
+  "init_checkpoint": {
+    "path": "checkpoints/armp_stage1_best.pth",
+    "sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+    "expected": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+    "match": true
+  },
+  "file_count": 27,
+  "total_bytes": 3351049
+}
