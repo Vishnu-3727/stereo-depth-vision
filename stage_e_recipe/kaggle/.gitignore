@@ -1,0 +1,4 @@
+# Assembled from the repository by build_bundle.py; regenerate, never commit.
+bundle/
+kernel/
+gate_output/
