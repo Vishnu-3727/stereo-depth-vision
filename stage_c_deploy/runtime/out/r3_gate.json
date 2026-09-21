@@ -1,0 +1,74 @@
+{
+  "protocol": "10 hailo_val scenes, cuda fp32, cudnn.benchmark=False, 5 warmup frames; four independent processes; median wall clock of the whole sequence",
+  "gate": {
+    "equivalence_px": 0.0,
+    "determinism_px": 0.0,
+    "rule": "ACCEPT only if disparity is bit-identical (0.0 px, 10/10 scenes) against the serial schedule AND across two processes, AND the throughput gain exceeds the measured run-to-run spread"
+  },
+  "equivalence_results": {
+    "prefetch_vs_serial_equivalence": {
+      "scenes": 10,
+      "bit_identical_scenes": 10,
+      "max_abs_disparity_diff_px": 0.0,
+      "worst_scene": null
+    },
+    "prefetch_determinism_two_processes": {
+      "scenes": 10,
+      "bit_identical_scenes": 10,
+      "max_abs_disparity_diff_px": 0.0,
+      "worst_scene": null
+    },
+    "serial_vs_r2_control_dump": {
+      "scenes": 10,
+      "bit_identical_scenes": 10,
+      "max_abs_disparity_diff_px": 0.0,
+      "worst_scene": null
+    }
+  },
+  "per_process_medians": [
+    {
+      "source": "out/r3_stream_s10_r3.json",
+      "repeats": 3,
+      "serial_ms_per_frame": 97.15031999999155,
+      "prefetch_ms_per_frame": 75.26422000000821,
+      "gain_ms_per_frame": 21.886099999983344
+    },
+    {
+      "source": "out/r3_stream_pool1_s10_r5.json",
+      "repeats": 5,
+      "serial_ms_per_frame": 96.99020000002747,
+      "prefetch_ms_per_frame": 76.5469099999791,
+      "gain_ms_per_frame": 20.443290000048364
+    },
+    {
+      "source": "out/r3_stream_pool2_s10_r5.json",
+      "repeats": 5,
+      "serial_ms_per_frame": 96.22737999998208,
+      "prefetch_ms_per_frame": 77.45479999998679,
+      "gain_ms_per_frame": 18.772579999995287
+    },
+    {
+      "source": "out/r3_stream_pool3_s10_r5.json",
+      "repeats": 5,
+      "serial_ms_per_frame": 94.81866999999511,
+      "prefetch_ms_per_frame": 76.85798000002251,
+      "gain_ms_per_frame": 17.9606899999726
+    }
+  ],
+  "serial_median_ms_per_frame_range": [
+    94.81866999999511,
+    97.15031999999155
+  ],
+  "prefetch_median_ms_per_frame_range": [
+    75.26422000000821,
+    77.45479999998679
+  ],
+  "cross_process_median_spread_ms_per_frame": {
+    "serial": 2.3316499999964435,
+    "prefetch": 2.1905799999785813
+  },
+  "gain_ms_per_frame_range": [
+    17.9606899999726,
+    21.886099999983344
+  ]
+}

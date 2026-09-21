@@ -1,0 +1,48 @@
+{
+  "torch_version": "2.7.0+cu128",
+  "device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "dtype": "fp32",
+  "scenes": 10,
+  "scene_names": [
+    "000160_10.png",
+    "000161_10.png",
+    "000162_10.png",
+    "000163_10.png",
+    "000164_10.png",
+    "000165_10.png",
+    "000166_10.png",
+    "000167_10.png",
+    "000168_10.png",
+    "000169_10.png"
+  ],
+  "repeats": 3,
+  "warmup_frames": 5,
+  "queue_depth": 2,
+  "checkpoint_sha256": "b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454",
+  "results": {
+    "serial": {
+      "wall_ms_per_repeat": [
+        1037.988999999925,
+        938.636200000019,
+        971.5031999999155
+      ],
+      "median_wall_ms": 971.5031999999155,
+      "spread_ms": 99.35279999990598,
+      "ms_per_frame": 97.15031999999155,
+      "fps": 10.293326877359611
+    },
+    "prefetch": {
+      "wall_ms_per_repeat": [
+        752.6422000000821,
+        751.2735999998768,
+        819.8225999999522
+      ],
+      "median_wall_ms": 752.6422000000821,
+      "spread_ms": 68.54900000007547,
+      "ms_per_frame": 75.26422000000821,
+      "fps": 13.286525788746511
+    }
+  },
+  "gain_ms_per_frame": 21.886099999983344,
+  "worst_spread_ms": 99.35279999990598
+}

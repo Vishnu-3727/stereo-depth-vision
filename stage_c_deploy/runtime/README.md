@@ -158,3 +158,30 @@ two are not numerically comparable.
 Also established by R2: the recommended path is bit-identical across two separate processes
 on 10/10 scenes (0.0 px) — a second confirmation of the determinism claimed in section 8.
 Measurements: `out/r2_equivalence_determinism.json`, `out/r2_*.json`.
+
+## 13 R3: decode prefetch — accepted, 10.3 to 13.0 FPS on a sequence
+
+Full report: `R3_SEQUENCE_THROUGHPUT.md`.
+
+Sections 3 to 12 all measure one frame at a time, which serialises the CPU-bound PNG decode
+against the GPU-bound inference. Over a sequence they need not be serialised: one background
+thread decoding frame N+1 while the GPU runs frame N overlaps the two.
+
+The per-frame work is unchanged — this is a schedule, not a computation — so the disparity is
+bit-identical, and it passes the same gate that rejected cudnn.benchmark and channels_last:
+
+| check | result |
+|---|---|
+| prefetch vs serial | **0.0 px**, 10/10 scenes bit-identical |
+| prefetch across two processes | **0.0 px**, 10/10 scenes |
+| the R3 loop vs the R2 control dump | **0.0 px**, 10/10 (the loop reproduces the timed path) |
+| serial, 4 independent processes | 94.82 – 97.15 ms/frame (10.29 – 10.55 FPS) |
+| prefetch, 4 independent processes | 75.26 – 77.45 ms/frame (12.91 – 13.29 FPS) |
+| gain | **17.96 – 21.89 ms/frame**, against a cross-process median spread of 2.33 ms |
+
+**ACCEPTED**, but not wired in: prefetch only pays off over a sequence, and the demo is
+single-shot, so `runtime_path.py`, `fast_run_scene` and `pipeline_demo.py` are unchanged.
+This is a throughput result, not a latency result — the first frame still costs full serial
+time — and the decode measured is a KITTI PNG read, not a live camera.
+
+Measurements: `out/r3_gate.json`, `out/r3_stream_*.json`.
