@@ -1,0 +1,28 @@
+{
+  "protocol": "10 hailo_val scenes, cuda fp32, decode=par, norm=gpu, cudnn.benchmark=False; one dump per process, two processes per config",
+  "gate": {
+    "equivalence_vs_control_px": 0.0,
+    "determinism_cross_process_px": 0.0,
+    "rule": "ACCEPT only if both are exactly 0.0 on 10/10 scenes"
+  },
+  "results": {
+    "ctl_determinism_a_vs_b": {
+      "scenes": 10,
+      "bit_identical_scenes": 10,
+      "max_abs_disparity_diff_px": 0.0,
+      "worst_scene": null
+    },
+    "cl_determinism_a_vs_b": {
+      "scenes": 10,
+      "bit_identical_scenes": 10,
+      "max_abs_disparity_diff_px": 0.0,
+      "worst_scene": null
+    },
+    "cl_equivalence_vs_ctl": {
+      "scenes": 10,
+      "bit_identical_scenes": 0,
+      "max_abs_disparity_diff_px": 0.5596160888671875,
+      "worst_scene": "000161_10.npy"
+    }
+  }
+}

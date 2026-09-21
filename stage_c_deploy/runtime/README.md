@@ -136,3 +136,25 @@ python stage_c_deploy/runtime/bench_host.py --device cuda --scenes 10
 python stage_c_deploy/runtime/runtime_path.py --gpu-geometry --scenes 10
 python stage_c_deploy/demo/pipeline_demo.py --scene 31 --fast
 ```
+
+## 12 R2: inference-stage attacks, both rejected or not runnable
+
+Full report: `R2_INFERENCE_SPEED.md`.
+
+The inference stage is the largest single stage of the recommended path, so the two
+unmeasured inference flags already in `runtime_path.py` were measured against a
+pre-registered gate: accept only if the disparity is bit-identical to the control on 10/10
+scenes AND bit-identical across two separate processes. Same standard as section 8.
+
+| config | verdict | basis |
+|---|---|---|
+| `--channels-last` | **REJECTED** | deterministic (0.0 px across processes) but not equivalent: **0.5596160888671875 px** vs the control, 0/10 scenes bit-identical |
+| `--compile` | **NOT RUNNABLE ON THIS HOST** | `TritonMissing` on first run; `runtime_path.py` fell back to the uncompiled net, so those runs timed the control path, not a compiled one |
+
+No configuration was accepted. **The recommended path in section 3 is unchanged**, and no
+row was added to its table: the R2 runs used warmup 5, while section 3 is warmup 2, so the
+two are not numerically comparable.
+
+Also established by R2: the recommended path is bit-identical across two separate processes
+on 10/10 scenes (0.0 px) — a second confirmation of the determinism claimed in section 8.
+Measurements: `out/r2_equivalence_determinism.json`, `out/r2_*.json`.
