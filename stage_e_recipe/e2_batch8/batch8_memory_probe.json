@@ -1,0 +1,39 @@
+{
+  "probe": "E2 native batch-8 memory feasibility",
+  "not_a_training_run": true,
+  "optimizer_step_taken": false,
+  "checkpoint_written": false,
+  "weights_modified": false,
+  "device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "total_memory_MiB": 8187.5,
+  "torch_version": "2.7.0+cu128",
+  "crop": [
+    256,
+    512
+  ],
+  "param_count": 397954,
+  "init_sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+  "results": [
+    {
+      "batch": 2,
+      "status": "FIT",
+      "peak_allocated_MiB": 1112.1,
+      "peak_reserved_MiB": 1254.0,
+      "valid_pixels": 262144,
+      "error": null
+    },
+    {
+      "batch": 8,
+      "status": "FIT",
+      "peak_allocated_MiB": 4295.8,
+      "peak_reserved_MiB": 4806.0,
+      "valid_pixels": 1048576,
+      "error": null
+    }
+  ],
+  "batch8_fits": true,
+  "batch8_headroom_frac": 0.413,
+  "comfortable_threshold_frac": 0.2,
+  "verdict": "NATIVE_BATCH_8",
+  "scaling_vs_batch2": 3.86
+}

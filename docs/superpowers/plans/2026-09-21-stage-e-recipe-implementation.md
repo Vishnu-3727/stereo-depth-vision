@@ -4,7 +4,8 @@
 this plan is reviewed and the first run is explicitly authorized in a separate
 instruction. Nothing in this document was executed; it is planning only.
 
-Written 2026-09-21.
+Written 2026-09-21. Amended 2026-09-21 by the pre-run correction pass
+(amendments A1.1–A1.3 in the spec's §0), before any E0/E1/E2/E3 run existed.
 
 ---
 
@@ -150,11 +151,13 @@ text may describe this gate otherwise.
 2. Quantize with the EXP-015 procedure (`scripts/exp_quantization.py`):
    `quantize_static`, `QuantFormat.QDQ`, `activation_type=QInt8`,
    `weight_type=QInt8`, `per_channel=True`.
-3. **Calibration set — pre-registered here:** the first *N* scenes of
-   `hailo_calib` (training split), with *N* fixed at the first run and reused
-   identically for every model. The 40 `hailo_val` evaluation scenes are
-   **never** used for calibration; doing so would leak the evaluation set into
-   quantization.
+3. **Calibration set — fixed by amendment A1.3: the first `N = 32` scenes of
+   `hailo_calib`** (training split). `N = 32` equals the historical EXP-015
+   default (`--calib`, default 32, same split), so the procedure is inherited
+   rather than invented, and it is fixed here before any candidate result
+   exists. The identical set is used for the E0 control and for E1, E2 and E3.
+   The 40 `hailo_val` evaluation scenes are **never** used for calibration;
+   doing so would leak the evaluation set into quantization.
 4. Score the INT8 model through `frozen_eval.py` on the same 40 scenes.
 5. Record `P = EPE_int8 - EPE_fp32` for that model.
 
@@ -165,42 +168,49 @@ text may describe this gate otherwise.
 for *all* models, accept no candidate on INT8 grounds, and never skip it for one
 model only.
 
-## 9 E2 gradient-accumulation correctness gate
+## 9 E2 implementation choice — RESOLVED to native batch 8
 
-E2 training is not authorized until accumulation is demonstrably correct.
+**Amendment A1.1 (spec §0, §4.3).** The E2 intervention is `batch 2 -> batch 8`
+with everything else frozen. Native batch 8 is preferred over gradient
+accumulation because ARM-P has **no BatchNorm**, which makes the two
+mathematically identical while native batch 8 avoids introducing accumulation
+semantics as an extra implementation variable.
 
-**Definition under test:** physical batch 2, accumulation 4, effective batch 8,
-one optimizer step per four minibatches, LR exactly 1e-3, no LR scaling, no
-other recipe change.
+### 9.1 Memory probe — executed, PASS
 
-**Test** (`stage_e_recipe/tests/test_accumulation.py`, CPU, tiny synthetic
-tensors, no GPU, no training run) must establish:
+`stage_e_recipe/tests/batch8_memory_probe.py`. **Not a training run:** no
+optimizer is constructed, no optimizer step is taken, no scheduler exists, no
+checkpoint is written, no weight is modified or persisted, and the dataset is
+not read (a synthetic batch at the frozen 256x512 crop is used). One forward
+and one backward per batch size, then teardown.
 
-| Property | Assertion |
-|---|---|
-| Optimizer-step count | exactly `ceil(batches_per_epoch / 4)` steps per epoch, **not** one per minibatch |
-| Accumulation count | gradients accumulate across exactly 4 minibatches before `step()` |
-| Gradient equivalence | accumulated gradient equals the gradient of a single true batch-8 forward, to float tolerance |
-| Scheduler behaviour | `scheduler.step()` is called once per **epoch**, exactly as in the frozen recipe — not once per optimizer step |
-| Epoch accounting | one epoch still traverses the same 160-scene dataset exactly once |
-| Zeroing | `zero_grad` occurs once per optimizer step, not once per minibatch |
+Pre-registered threshold, fixed before measuring: batch-8 peak reserve must
+leave **>= 20%** of the card free.
 
-**Loss scaling — must be settled before the test is written (§21, concern B).**
-`masked_smooth_l1` returns `F.smooth_l1_loss(pred[valid], target[valid])`, a
-mean over the *valid pixels of that minibatch*, and the valid count varies per
-minibatch. Two inequivalent accumulations exist:
+Measured, RTX 4060 Laptop GPU, 8,188 MiB total
+(`stage_e_recipe/e2_batch8/batch8_memory_probe.json`):
 
-- **pixel-weighted:** `L = Σ(nᵢ·Lᵢ) / Σnᵢ` — mathematically equal to a true
-  batch-8 forward;
-- **equal-minibatch:** `L = (1/4)·Σ Lᵢ` — simpler, but weights a
-  100-valid-pixel minibatch like a 100,000-pixel one.
+| batch | status | peak allocated | peak reserved |
+|---|---|---|---|
+| 2 | FIT | 1,112.1 MiB | 1,254.0 MiB |
+| 8 | **FIT** | 4,295.8 MiB | 4,806.0 MiB |
 
-Only the pixel-weighted form actually implements "effective batch 8", so the
-plan pre-registers **pixel-weighted**, and the gradient-equivalence assertion
-above is what proves it. ARM-P contains **no BatchNorm**, so no batch-statistic
-term breaks the equivalence.
+Headroom **41.3%**; allocation scales 3.86x for a 4x batch, consistent with a
+BatchNorm-free network.
 
-**If the implementation is not demonstrably correct: STOP E2.** Do not train.
+**Decision: `NATIVE_BATCH_8`.** Physical batch 8, one optimizer step per batch,
+LR exactly 1e-3, no LR scaling, no other recipe change. This decision is fixed
+now and is **not** revisited after seeing E2 results.
+
+### 9.2 Accumulation fallback — not on the critical path
+
+Retained in the spec only for the case the probe had failed. It is **not used**.
+Had it been needed it would have required pixel-weighted aggregation
+`Σ(nᵢ·Lᵢ)/Σnᵢ` rather than `(1/4)ΣLᵢ`, because `masked_smooth_l1` returns a mean
+over each minibatch's valid pixels and those counts vary, plus verification of
+optimizer-step count, accumulation count, loss scaling, scheduler-step count and
+epoch accounting. Since E2 runs native batch 8, one optimizer step per batch,
+none of that machinery exists to be got wrong.
 
 ## 10 E1 implementation
 
@@ -217,13 +227,19 @@ E1 = weight EMA only.
 
 ## 11 E2 implementation
 
-E2 = effective batch 8 by accumulation, gated by §9.
+E2 = **native physical batch 8** (resolved in §9).
 
-Fixed: physical batch 2 · accumulation 4 · effective batch 8 · LR 1e-3.
+Fixed: physical batch 8 · one optimizer step per batch · LR 1e-3 · no LR
+scaling.
 
-Must not change: LR scaling, augmentation, epoch definition, optimizer,
-architecture, initialization, loss. The sole intervention is optimizer-step
-frequency.
+Must not change: augmentation, epoch definition (one pass over the 160 scenes),
+optimizer family, architecture, initialization, loss, scheduler semantics
+(`scheduler.step()` once per epoch, `T_max = 200`). The sole intervention is
+the dataloader batch size.
+
+Note on epoch accounting: at batch 8 an epoch contains 20 optimizer steps
+instead of 80. That is the intended consequence of the intervention, not a
+side change.
 
 ## 12 E3 implementation
 
@@ -234,13 +250,21 @@ frozen recipe. No LR change, no optimizer change, no augmentation change, no
 batch change, no EMA, no initialization change. Expected runtime ~2x the
 200-epoch run (~2 h/seed, ~6 h for three).
 
-**Selection-count confound — see §21, concern C.** The frozen monitor runs at
-`epoch % 5 == 0 or epoch == EPOCHS-1`, giving **41** selection opportunities at
-200 epochs and **81** at 400. Best-of-81 on a noisy 10-scene monitor beats
-best-of-41 even when training quality is identical, which biases E3's *primary*
-statistic upward relative to the control. This plan does not alter the frozen
-acceptance rule to compensate; it raises the issue for decision before E3 is
-authorized.
+**Selection-count confound — RESOLVED by amendment A1.2.** The frozen monitor
+runs at `epoch % 5 == 0 or epoch == EPOCHS-1`, giving **41** selection
+opportunities at 200 epochs and **81** at 400. Best-of-81 on a noisy 10-scene
+monitor beats best-of-41 even when training quality is identical.
+
+E3 therefore requires **both** statistics to clear the bar:
+
+```
+Δ_best >= S0_best   AND   Δ_final >= S0_final   AND   INT8 gate passes
+```
+
+`Δ_best >= S0_best` with `Δ_final < S0_final` is recorded as
+**BEST PASS / FINAL FAIL** and is **NOT** an ACCEPT. The final checkpoint
+carries no selection at all, so it is the honest tie-breaker. **Monitor cadence
+is not changed**, and this requirement was fixed before any E3 run existed.
 
 ## 13 Runtime assertions
 
@@ -315,6 +339,10 @@ Implemented exactly as approved, evaluated in order, first match wins:
 | 4 | `0 < Δ_best < S0_best` | **INCONCLUSIVE** |
 | 5 | `Δ_best >= S0_best` **and** `max(candidate seeds) < min(control seeds)` | **ACCEPT (non-overlapping)** |
 | 6 | `Δ_best >= S0_best` | **ACCEPT** |
+
+**E3 only (A1.2):** acceptance additionally requires `Δ_final >= S0_final`. If
+`Δ_best` clears the bar and `Δ_final` does not, the verdict is **BEST PASS /
+FINAL FAIL**, which is not an acceptance.
 
 where `Δ_best = M0_best - Mx_best`.
 
@@ -396,20 +424,17 @@ run to 1e-6", not as "the harness is broken". The spec's fallback (three fresh
 local seeds, +1 h) already covers this cleanly and costs little. **No rule
 change is requested; this is an expectation-setting note.**
 
-**Concern B — "effective batch 8" is ambiguous under a pixel-masked loss, and
-the two readings are not equivalent.** Detailed in §9. The plan pre-registers
-the pixel-weighted form because it is the one that actually equals a batch-8
-forward. Flagging it because choosing the simpler equal-minibatch form *after*
-seeing a disappointing E2 result would be a silent redefinition of the
-intervention.
-
-**Also worth a decision:** ARM-P has no BatchNorm, so a *native* batch of 8 is
-mathematically identical to correct accumulation, and 8 crops of 256x512 on a
-397,954-parameter network will very likely fit in 8 GB. If it fits, native
-batch 8 removes the entire accumulation-correctness risk surface and the §9
-gate becomes a VRAM check. The spec froze "physical batch 2, accumulation 4",
-so this plan implements that as written — but the simpler equivalent is
-available on request.
+**Concern B — RESOLVED by amendment A1.1.** The ambiguity was real: under a
+pixel-masked loss whose valid count varies per minibatch, pixel-weighted
+accumulation `Σ(nᵢ·Lᵢ)/Σnᵢ` and equal-minibatch `(1/4)ΣLᵢ` are not equivalent,
+and only the former equals a batch-8 forward. It is now moot. The memory probe
+(§9.1) measured batch 8 at 4,806 MiB reserved on an 8,188 MiB card — 41.3%
+headroom against a 20% threshold fixed before the measurement — so E2 runs
+**native batch 8**, one optimizer step per batch. ARM-P has no BatchNorm, so
+this is mathematically identical to correct accumulation while removing the
+accumulation machinery entirely. The ambiguity cannot be resolved in a
+candidate's favour after the fact because there is no longer an aggregation
+choice to make.
 
 **Concern C — E3's primary statistic is structurally biased in its own
 favour.** The frozen monitor fires at `epoch % 5 == 0 or epoch == EPOCHS-1`:
@@ -419,17 +444,22 @@ epochs teaches the network nothing extra. Since the primary statistic is the
 best checkpoint, part of any E3 improvement will be selection luck rather than
 training.
 
-Three mitigations exist, all requiring a decision because each touches frozen
-material: (i) run E3's monitor every 10 epochs, holding selection count at 41 —
-cleanest, but changes the recipe's monitor cadence; (ii) require E3 to clear the
-bar on **both** best and final checkpoints; (iii) accept the bias and state it
-explicitly in the E3 record. **Recommendation: (ii)** — it changes no recipe
-parameter, costs nothing, and the final-checkpoint statistic is immune to
-selection count. This plan implements none of them unilaterally.
+**RESOLVED by amendment A1.2**, adopting mitigation (ii): E3 must clear the bar
+on **both** best and final checkpoints, plus the INT8 gate. `Δ_best` passing
+while `Δ_final` fails is recorded as **BEST PASS / FINAL FAIL** and is not an
+acceptance. No recipe parameter changes and monitor cadence is untouched; the
+final checkpoint carries no selection, so it is immune to the 41-vs-81 count.
+Fixed before any E3 run exists.
 
-**Concern D — the INT8 calibration set was previously unspecified.** EXP-015
-calibrated on a scene count passed at the command line. §8 pins calibration to
-the first *N* scenes of `hailo_calib`, fixed at the first run and reused
-identically, and explicitly forbids calibrating on the 40 `hailo_val`
-evaluation scenes. Without that, INT8 numbers across models would not be
-comparable and could leak the evaluation set.
+**Concern D — RESOLVED by amendment A1.3.** EXP-015 took its calibration scene
+count from the command line, leaving it unpinned. §8 now fixes **`N = 32`
+scenes of `hailo_calib`**, which is EXP-015's own default, so the procedure is
+inherited rather than invented; the same set is used for the control and all
+three candidates, and calibrating on the 40 `hailo_val` evaluation scenes is
+forbidden. Without this, INT8 numbers across models would not be comparable and
+could leak the evaluation set into quantization.
+
+**Concern A remains open and unresolved by design** — it is an expectation, not
+a defect. The reproduction gate may fail benignly because training determinism
+was never enabled in Stage B; the fallback (three fresh local seeds) is already
+specified and costs ~1 h.

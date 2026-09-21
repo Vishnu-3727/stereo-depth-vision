@@ -6,6 +6,22 @@ reviewed and the first GPU run is explicitly authorized.
 
 ---
 
+## 0 Amendments
+
+Amendment 1 — 2026-09-21, pre-run correction pass, authorized by the project
+owner **before any E0/E1/E2/E3 run existed**. No result was visible when these
+changes were made; no threshold was relaxed.
+
+| # | Section | Was | Now | Reason |
+|---|---|---|---|---|
+| A1.1 | §4.3 (E2) | physical batch 2, gradient accumulation x4 | **native physical batch 8**, one optimizer step per batch; accumulation retained only as a fallback if batch 8 does not fit | ARM-P has no BatchNorm, so native batch 8 is mathematically identical to correct accumulation and removes accumulation semantics as an extra implementation variable. Resolved by the memory probe (§4.3.1): batch 8 **FITS**, 41.3% headroom. |
+| A1.2 | §5.3 (verdicts) | E3 judged on `Δ_best` like every other candidate | E3 additionally requires **`Δ_final >= S0_final`**; best-only clearance is recorded as **BEST PASS / FINAL FAIL** and is **not** an ACCEPT | The frozen monitor fires every 5 epochs, so 400 epochs gets 81 selection chances against the control's 41. The final checkpoint is immune to selection count. Monitor cadence is **not** changed. |
+| A1.3 | §6 (INT8) | calibration = "first *N* scenes of `hailo_calib`", *N* unfixed | ***N* = 32**, fixed here | Matches the historical EXP-015 default (`--calib`, default 32, `hailo_calib` split) exactly, so the procedure is inherited rather than invented. |
+
+Nothing else changed. The verdict hierarchy, the `S0`-derived bar, the
+three-seed requirement, the primary/secondary statistics, the tie-breaks, the
+INT8 margin of 0.05 px and the E1/E3 hyperparameters are all **unchanged**.
+
 ## 1 Objective
 
 > **Improve the frozen ARM-P model's mean 3-seed KITTI EPE while preserving the
@@ -82,7 +98,7 @@ Because no architectural parameter moves, the ≤400k footprint constraint holds
 |---|---|---|---|---|
 | E0 | Control (exact ARM-P Stage-2 recipe), environment-matched | frozen ARM-P | 397,954 | first |
 | E1 | Weight EMA during fine-tune | unchanged | 397,954 | after E0 |
-| E2 | Gradient accumulation to effective batch 8 | unchanged | 397,954 | after E0 |
+| E2 | Batch 2 -> batch 8 (native; see A1.1) | unchanged | 397,954 | after E0 |
 | E3 | Schedule 200 → 400 epochs | unchanged | 397,954 | after E0 |
 | E4 | Larger / broader pretraining | unchanged | 397,954 | **BLOCKED** |
 
@@ -125,11 +141,48 @@ pre-registered in §5.4 before the run. No parameter is added to the deployed
 model: EMA is a training-time shadow copy, and the exported model has the same
 397,954 parameters.
 
-### 4.3 E2 — effective batch 8
+### 4.3 E2 — batch 8
 
-Gradient accumulation of 4 steps at batch 2, giving effective batch 8, with a
-pre-registered learning-rate rule (§5.4). The dataloader, crop, augmentation
-and epoch definition are unchanged; only the optimizer step frequency changes.
+**Amended by A1.1.** The intervention is `batch 2 -> batch 8`, everything else
+frozen.
+
+**Preferred implementation: native physical batch 8**, one optimizer step per
+batch, LR exactly 1e-3, no LR scaling. The dataloader batch size is the only
+changed value; crop, augmentation, epoch definition, optimizer, loss,
+architecture and initialization are unchanged.
+
+**Fallback, only if batch 8 does not fit:** physical batch 2 with 4-step
+gradient accumulation, one optimizer step per four minibatches, using
+**pixel-weighted** loss aggregation `Σ(nᵢ·Lᵢ)/Σnᵢ` — not `(1/4)ΣLᵢ` — because
+`masked_smooth_l1` returns a mean over each minibatch's valid pixels and those
+counts vary. ARM-P contains no BatchNorm, so the fallback and the native form
+are mathematically equivalent.
+
+The implementation is chosen by the probe below **before** training, and never
+changed after seeing a result.
+
+#### 4.3.1 Batch-8 memory probe — RESOLVED
+
+`stage_e_recipe/tests/batch8_memory_probe.py`. Not a training run: no
+optimizer, no optimizer step, no scheduler, no checkpoint, no weight change,
+synthetic batch at the frozen 256x512 crop, one forward and one backward only.
+
+Pre-registered "comfortable" threshold, fixed before the measurement: the
+batch-8 peak reserve must leave **at least 20%** of the card free.
+
+Measured on the RTX 4060 Laptop GPU (8,188 MiB total),
+`stage_e_recipe/e2_batch8/batch8_memory_probe.json`:
+
+| batch | status | peak allocated | peak reserved |
+|---|---|---|---|
+| 2 | FIT | 1,112.1 MiB | 1,254.0 MiB |
+| 8 | **FIT** | 4,295.8 MiB | 4,806.0 MiB |
+
+Headroom **41.3%** against the 20% threshold; allocation scales 3.86x for a 4x
+batch, as expected without BatchNorm.
+
+**Verdict: `NATIVE_BATCH_8`.** The accumulation fallback is not used, and its
+correctness gate is therefore not on the critical path.
 
 ### 4.4 E3 — 400 epochs
 
@@ -198,6 +251,23 @@ Evaluated in this order; the first matching verdict is the verdict:
 | `Δ_best >= S0_best` **and** `max(candidate seeds) < min(control seeds)` | **ACCEPT (non-overlapping)** |
 | `Δ_best >= S0_best` | **ACCEPT** |
 
+**E3 additional requirement (A1.2).** E3 is accepted only if it clears the bar
+on **both** statistics:
+
+```
+Δ_best  >= S0_best   AND   Δ_final >= S0_final   AND   INT8 gate passes
+```
+
+If `Δ_best >= S0_best` but `Δ_final < S0_final`, E3 is recorded as
+**BEST PASS / FINAL FAIL** and is **NOT** accepted. The reason is structural,
+not statistical: the frozen monitor fires at `epoch % 5 == 0 or epoch ==
+EPOCHS-1`, giving 41 best-checkpoint selection opportunities at 200 epochs and
+81 at 400, so best-of-81 is expected to beat best-of-41 on a noisy 10-scene
+monitor even when the extra training adds nothing. The final checkpoint carries
+no selection at all and is therefore the honest tie-breaker. Monitor cadence is
+**not** altered to paper over this, and this requirement was fixed before any
+E3 run existed.
+
 The non-overlap tier mirrors the ARM V precedent, where the decisive evidence
 was that the candidate's worst seed beat the incumbent's best seed.
 
@@ -216,7 +286,7 @@ Recorded here so they cannot be tuned against results:
 - **E1 EMA decay = 0.999**, EMA updated every optimizer step, initialized from
   the Stage-1 weights. One value; no sweep. A sweep would be a separate
   experiment with its own pre-registration.
-- **E2 learning rate = 1e-3, unchanged**, with effective batch 8. The frozen
+- **E2 learning rate = 1e-3, unchanged**, with native batch 8. The frozen
   recipe's LR is kept rather than scaled, so that batch size is the single
   lever. (Linear or sqrt LR scaling would confound two changes; if E2 is
   INCONCLUSIVE, an LR-scaled variant is a separate later experiment.)
@@ -244,7 +314,14 @@ blocked.
 
 1. Export the scored checkpoint to ONNX by the existing frozen export path.
 2. Quantize to INT8 with the same ONNX Runtime procedure, settings and
-   calibration data for every model.
+   calibration data for every model: `quantize_static`, `QuantFormat.QDQ`,
+   `activation_type=QInt8`, `weight_type=QInt8`, `per_channel=True`.
+2a. **Calibration set (A1.3): the first `N = 32` scenes of `hailo_calib`.**
+   *N* is fixed here, before any candidate result exists, and equals the
+   historical EXP-015 default so the procedure is inherited rather than
+   invented. The identical set is used for the E0 control and for E1, E2 and
+   E3. The 40 `hailo_val` evaluation scenes are **never** used for
+   calibration — that would leak the evaluation set into quantization.
 3. Score the INT8 model through `frozen_eval.py` on the same 40 scenes.
 4. Record the penalty `P = EPE_int8 − EPE_fp32` for that model.
 
