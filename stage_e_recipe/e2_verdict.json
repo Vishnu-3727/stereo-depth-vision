@@ -1,0 +1,25 @@
+{
+  "experiment": "e2",
+  "seeds_completed": 3,
+  "per_seed_best": [
+    1.241432440053088,
+    1.2380283103732819,
+    1.2376724777739339
+  ],
+  "per_seed_final": [
+    1.2606156698842674,
+    1.2448673620074575,
+    1.2386543265258367
+  ],
+  "contract_all": true,
+  "mean_best": 1.2390444094001012,
+  "mean_final": 1.2480457861391872,
+  "spread_best": 0.0037599622791542053,
+  "delta_best": -0.035260309400101164,
+  "delta_final": -0.03550488613918712,
+  "P_candidate": 5.5653839270376055,
+  "int8_threshold": 5.6365267999999995,
+  "int8_gate": "PASS",
+  "verdict": "REJECT",
+  "reason": "delta_best -0.0352603 <= 0: no improvement over control"
+}

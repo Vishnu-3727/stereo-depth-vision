@@ -8,7 +8,7 @@ through `phase1/harness/frozen_eval.py` on the 40-scene contract.
 |---|---|---|---|---|---|---|
 | **E0** | none (control) | 0,1,2 | **1.2037841** | 0.0174488 | **1.2125409** | control — no verdict |
 | E1 | EMA 0.999 | 0,1,2 | 1.2036174 | 0.0314905 | 1.2044355 | **INCONCLUSIVE** |
-| E2 | native batch 8 | — | — | — | — | NOT RUN |
+| E2 | native batch 8 | 0,1,2 | 1.2390444 | 0.0037600 | 1.2480458 | **REJECT** |
 | E3 | 400 epochs | — | — | — | — | NOT RUN |
 | E4 | broader pretraining | — | — | — | — | **BLOCKED** (FT3D absent) |
 
@@ -46,4 +46,19 @@ expected, and not a regression.
   stabilise seed-to-seed variation here; it widened it. E1 produced both the
   best single run of the campaign so far (seed 2, 1.1849985) and the worst
   (seed 0, 1.2164890).
-- No further candidate authorized.
+- **E2 complete — verdict REJECT** (`e2_verdict.json`). `Δ_best` = −0.0352603,
+  about **2x the control's entire seed spread in the wrong direction**. Every
+  E2 seed is worse than every control seed and every E1 seed. This is not
+  noise. Per-seed best: 1.2414324 / 1.2380283 / 1.2376725.
+- E2's INT8 limb also passed (P 5.5653839 ≤ 5.6365268) while the model is
+  rejected outright — a second demonstration that the gate certifies nothing.
+- **E2's spread is 0.0037600: 4.6x tighter than the control and 8.4x tighter
+  than E1.** Batch 8 made runs highly consistent with each other and
+  consistently worse — the classic large-batch signature at fixed LR, with 20
+  optimizer steps per epoch instead of 80. The pre-registration deliberately
+  held LR at 1e-3 so batch size was the single lever; this is the measured cost
+  of that lever as specified, not a defect. An LR-scaled variant would be a
+  separate experiment with its own pre-registration.
+- E2 was also the fastest (~70 min/seed against E0's ~78), the 18 % per-epoch
+  gain the T4 rate probe predicted. Cheapest and worst.
+- No further candidate authorized. E3 (400 epochs) is the last recipe lever.
