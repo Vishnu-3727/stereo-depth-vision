@@ -30,6 +30,9 @@ expected, and not a regression.
 
 - E0 training: **COMPLETE**, 3/3 seeds, `contract_match` true on all six
   checkpoints.
-- E0 INT8 control (`P_control`): **NOT MEASURED** — required before any
-  candidate can be accepted.
+- E0 INT8 control: **MEASURED** — `P_control` = **5.5865268 px**, candidate
+  gate `P_candidate <= 5.6365268`.
+- **ARM-P does not survive INT8**: int8 D1 80–86 % against 6.4 % fp32, a
+  penalty 16.3x the reference model's under the identical procedure. Not a
+  Hailo statement; Stage D stays BLOCKED. See `INT8_CONTROL_REPORT.md`.
 - No candidate authorized.

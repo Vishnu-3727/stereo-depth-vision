@@ -61,11 +61,25 @@ against the historical local spread of 0.0145422 px — a slightly noisier
 control, so a slightly harder bar. The bar is derived from *this* control, as
 pre-registered, not carried over.
 
-## 5 INT8 control — NOT YET MEASURED
+## 5 INT8 control — MEASURED
 
-`P_control` does not exist yet. Until it is measured by the pre-registered
-procedure (`quantize_static`, QDQ, QInt8 activations and weights, per-channel,
-calibration = first **32** scenes of `hailo_calib`, never `hailo_val`), **no
-candidate can be accepted on INT8 grounds**. A candidate that clears the EPE
-bar while `P_control` is unmeasured is not an ACCEPT; it is an unfinished
-comparison.
+Procedure as pre-registered: `quantize_static`, QDQ, QInt8 activations and
+weights, per-channel, calibration = first **32** scenes of `hailo_calib`,
+`hailo_val` never used. Measured on CPU by `int8_control.py`.
+
+```
+P_control = 5.5865268 px    (per seed 5.7081378 / 5.8933010 / 5.1581416)
+candidate gate: P_candidate <= 5.6365268 px
+```
+
+**ARM-P does not survive INT8.** The control's int8 D1 is 80–86 % against
+6.3–6.4 % in fp32 — destroyed, not degraded. Full analysis, including why this
+is neither an export problem nor a Hailo statement, in
+`INT8_CONTROL_REPORT.md`.
+
+The consequence for this gate is recorded and **not acted on**: at
+`P_control = 5.5865268`, the threshold is cleared by any candidate that is
+merely *equally* destroyed, so the gate can no longer certify survivability. It
+still performs its literal function — forbidding a candidate that makes int8
+worse than the control. The rule was fixed before the measurement and is not
+being rewritten because the measurement was unwelcome.
