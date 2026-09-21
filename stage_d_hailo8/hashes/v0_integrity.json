@@ -1,0 +1,36 @@
+{
+  "gate": "ARM-P-H8-V0 == EXACT FROZEN ARM-P (spec section 7)",
+  "artifacts": {
+    "checkpoint": {
+      "frozen_path": "stage_b_armp/20260919T012646Z_tier2_seed1/armp/p2a_best.pth",
+      "copy_path": "stage_d_hailo8/v0/armp_h8_v0.pth",
+      "frozen_sha256": "b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454",
+      "copy_sha256": "b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454",
+      "copy_matches_frozen": true,
+      "declared_sha256": "b2f6f5d558dbd2676d740ca55a0b60900c89ff2225f0445e98c59d6fffeb7454",
+      "frozen_matches_declared": true,
+      "status": "MATCH"
+    },
+    "onnx": {
+      "frozen_path": "stage_c_deploy/armp_stereonet.onnx",
+      "copy_path": "stage_d_hailo8/v0/armp_h8_v0.onnx",
+      "frozen_sha256": "4277090deed1cde26ddb2a470d8dc097b26d5ad45a931e0aabf3635dbbcb6989",
+      "copy_sha256": "4277090deed1cde26ddb2a470d8dc097b26d5ad45a931e0aabf3635dbbcb6989",
+      "copy_matches_frozen": true,
+      "declared_sha256": "4277090deed1cde26ddb2a470d8dc097b26d5ad45a931e0aabf3635dbbcb6989",
+      "frozen_matches_declared": true,
+      "status": "MATCH"
+    },
+    "onnx_static": {
+      "frozen_path": "stage_c_deploy/armp_stereonet_static.onnx",
+      "copy_path": "stage_d_hailo8/v0/armp_h8_v0_static.onnx",
+      "frozen_sha256": "e275e86e4cdb340b64b3ccd065ccd8286b82c3ef1dbbd046acaaa1f0c363a5af",
+      "copy_sha256": "e275e86e4cdb340b64b3ccd065ccd8286b82c3ef1dbbd046acaaa1f0c363a5af",
+      "copy_matches_frozen": true,
+      "declared_sha256": null,
+      "frozen_matches_declared": null,
+      "status": "MATCH"
+    }
+  },
+  "verdict": "PASS"
+}
