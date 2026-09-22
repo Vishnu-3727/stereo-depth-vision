@@ -314,6 +314,7 @@ def main(argv=None) -> None:
     epoch_losses = []
     global_steps = 0
     truncated = False
+    first_batch_valid_pixels = None
     try:
         git_head = subprocess.run(["git", "rev-parse", "HEAD"], cwd=REPO_ROOT,
                                   capture_output=True, text=True, timeout=15).stdout.strip()
@@ -334,6 +335,12 @@ def main(argv=None) -> None:
             loss.backward()
             optimizer.step()
             global_steps += 1
+            if global_steps == 1:
+                print("E4 first-batch valid pixels: %d" % n, flush=True)
+                first_batch_valid_pixels = n
+                if n == 0:
+                    fh.close()
+                    raise SystemExit("ABORT: zero valid pixels in first batch")
             epoch_loss += float(loss)
             epoch_pixels += n
             batches += 1
@@ -393,6 +400,7 @@ def main(argv=None) -> None:
         "sec_per_epoch": (wall_s / epochs_run) if epochs_run > 0 else None,
         "probe": bool(is_probe),
         "max_steps": MAX_STEPS,
+        "first_batch_valid_pixels": first_batch_valid_pixels,
         "truncated": bool(truncated),
     }
 
