@@ -14,12 +14,23 @@ rather than the whole control, and each run's output is committed separately.
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-USER = "vishnu3727"
+
+
+def resolve_user() -> str:
+    """Kaggle dataset/kernel owner, overridable via STAGE_E_KAGGLE_USER."""
+    u = os.environ.get("STAGE_E_KAGGLE_USER", "")
+    u = u.strip() if u else ""
+    return u if u else "vishnu3727"
+
+
+USER = resolve_user()
+_USER_ANNOUNCED = False
 DATA_SLUG = f"{USER}/kitti2015-tier2-seed2-subset"
 
 # Each experiment gets its own immutable bundle: E0 ran against a byte-identical
@@ -43,6 +54,10 @@ def slug(seed: int, exp: str) -> str:
 
 
 def run(args: list[str]) -> int:
+    global _USER_ANNOUNCED
+    if not _USER_ANNOUNCED:
+        print(f"[kaggle user: {USER}]", flush=True)
+        _USER_ANNOUNCED = True
     print("+", " ".join(args), flush=True)
     p = subprocess.run([sys.executable, "-m", "kaggle"] + args,
                        capture_output=True, text=True, errors="replace")
