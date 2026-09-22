@@ -28,8 +28,10 @@ if "--experiment" in sys.argv:
     EXPERIMENT = sys.argv[sys.argv.index("--experiment") + 1]
 assert EXPERIMENT in ("e0", "e1", "e2", "e3"), EXPERIMENT
 BUNDLE = HERE / ("bundle" if EXPERIMENT == "e0" else f"bundle_{EXPERIMENT}")
-# E3 alters only --epochs, passed to run_arm.py, so it reuses E0's recipe
-# file byte-identically and needs no patch module.
+# E3 alters only the epoch count, passed to run_arm.py as --epochs, so it
+# reuses E0's recipe file byte-identically and needs no finetune patch module.
+# Its patch module (e3_patch) targets run_arm.py's post-hoc epoch guards and
+# is applied in the run_arm delta section below.
 PATCHED = EXPERIMENT in ("e1", "e2")
 
 SEED1 = "stage_b_armp/20260919T012646Z_tier2_seed1/scripts"
@@ -181,10 +183,20 @@ def main() -> None:
                          "optimizer, LR, batch size, epochs, scheduler",
         }
 
-    # The one declared delta.
+    # The one declared delta, plus E3's guard fix when building E3.
     src = REPO / RUN_ARM_SRC
     original = src.read_text(encoding="utf-8")
     patched = patch_run_arm(original)
+    run_arm_edits = list(DECLARED_EDITS)
+    if EXPERIMENT == "e3":
+        # Each experiment's intervention lives in its own patch module, so the
+        # diff that defines it is a reviewable file rather than inline logic.
+        # E3's patch targets run_arm.py (not the recipe): the two post-hoc
+        # epoch guards expect args.epochs instead of the literal 200.
+        patch_mod = __import__(f"{EXPERIMENT}_patch")
+        patched = patch_mod.apply(patched)
+        run_arm_edits += [{"line_was": old.strip()[:120], "line_now": new.strip()[:160],
+                           "why": why} for old, new, why in patch_mod.EDITS]
     dst = BUNDLE / RUN_ARM
     dst.write_text(patched, encoding="utf-8", newline="")
     diff = list(difflib.unified_diff(
@@ -195,8 +207,12 @@ def main() -> None:
         "repo_sha256": sha256(src),
         "bundle_sha256": sha256(dst),
         "identical": False,
-        "scope": "ORCHESTRATION ONLY - no training semantics change",
-        "edits": DECLARED_EDITS,
+        "scope": ("ORCHESTRATION ONLY - no training semantics change"
+                  if EXPERIMENT != "e3" else
+                  "ORCHESTRATION + E3 INTERVENTION - the two post-hoc epoch "
+                  "guards expect args.epochs instead of the literal 200; "
+                  "no training semantics change"),
+        "edits": run_arm_edits,
         "unified_diff": diff,
         "recipe_file_untouched": "scripts/finetune_pilot.py is byte-identical; "
                                  "it alone defines optimizer, loss, schedule, "

@@ -23,11 +23,14 @@ USER = "vishnu3727"
 DATA_SLUG = f"{USER}/kitti2015-tier2-seed2-subset"
 
 # Each experiment gets its own immutable bundle: E0 ran against a byte-identical
-# recipe, E1 against the EMA-patched one, and neither may be overwritten.
+# recipe, E1 against the EMA-patched one, E2 against the batch-8 one — and none
+# may be overwritten. E3 seeds 0/1 ran against E0's bundle, so seed 2 uses it
+# too for input-identical comparability; the patched stage-e-e3-bundle exists
+# for later experiments.
 BUNDLES = {"e0": f"{USER}/stage-e-recipe-bundle",
            "e1": f"{USER}/stage-e-e1-bundle",
            "e2": f"{USER}/stage-e-e2-bundle",
-           "e3": f"{USER}/stage-e-recipe-bundle"}   # E3 reuses E0's recipe
+           "e3": f"{USER}/stage-e-recipe-bundle"}
 EPOCHS = {"e0": 200, "e1": 200, "e2": 200, "e3": 400}
 INTERVENTION = {"e0": "NONE (frozen incumbent recipe)",
                 "e1": "weight EMA, decay 0.999",
