@@ -124,7 +124,7 @@ probe's finder only looked one level deep. The kernel's server-side metadata was
 correct and listed all three dataset sources, so nothing was wrong with the
 attachment itself.
 
-The fix records here for the next reader is that `find_mounts()` in
+The fix recorded here for the next reader is that `find_mounts()` in
 `kernel_e4_probe/stage-e-e4-probe.py` now walks `/kaggle/input` to any depth,
 pruning at any directory named `FlyingThings3D_subset`, and on failure prints
 the listing to depth 2. `find_bundle()` already walked recursively and needed
