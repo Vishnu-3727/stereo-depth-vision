@@ -212,9 +212,22 @@ batch. The trainer was patched to report and to abort on zero, because a
 
 Gate 2, manifest built and counted, is PASS on the counts recorded in the
 section 6 amendment. Gate 3, rate probe, is COMPLETE on the numbers recorded in
-the section 6 amendment. Gate 4, dataset versions pinned, remains outstanding.
-The pinned versions were not supplied to the author of this amendment, and they
-are left open here rather than guessed at.
+the section 6 amendment. Gate 4, dataset versions pinned, is PASS on the pins
+below.
+
+Pinned datasets:
+
+- `arjun12367/sceneflow-flyingthings-images` — Kaggle datasetId 10909017,
+  last updated 2026-06-26 09:26:42.293000, 37,552,805,179 bytes.
+- `arjun12367/sceneflow-flyingthings-disparity` — Kaggle datasetId 10906771,
+  last updated 2026-06-26 06:27:18.393000, 11,816,134,859 bytes.
+- `vishnuvardhanksece/stage-e-e4-bundle` — Kaggle datasetId 12128244.
+
+Kaggle's public API does not expose a per-dataset version number for these,
+so the pin is the dataset id plus the last-updated timestamp plus the
+in-kernel census already recorded (21,818 triplets, 0 incomplete). A silent
+re-upload by the third-party owner would change the corpus without changing
+the id; that risk was already declared as confound 3 in section 3.
 
 ## 8 Stop conditions
 

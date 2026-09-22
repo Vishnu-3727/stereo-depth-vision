@@ -255,6 +255,12 @@ def parse_args(argv=None) -> argparse.Namespace:
                     help="pretrain epoch count (no default by design)")
     ap.add_argument("--max-steps", type=int, default=0,
                     help="rate-probe mode: stop after N optimizer steps (0 = unlimited)")
+    ap.add_argument("--max-wall-s", type=float, default=0.0,
+                    help="wall-clock budget in seconds for this session: after the "
+                         "per-epoch resume.pt has been written, stop cleanly at the "
+                         "epoch boundary if elapsed time has reached the budget and "
+                         "epochs remain (0 = unlimited; a budgeted stop exits 0 and "
+                         "is not an error)")
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--resume", default=None,
                     help="path to a per-epoch resume.pt checkpoint to continue from; "
@@ -269,10 +275,13 @@ def main(argv=None) -> None:
     EPOCHS = int(args.epochs)
     SEED_RUN = int(args.seed)
     MAX_STEPS = int(args.max_steps)
+    MAX_WALL_S = float(args.max_wall_s)
     if EPOCHS <= 0:
         raise SystemExit("--epochs must be positive")
     if MAX_STEPS < 0:
         raise SystemExit("--max-steps must be >= 0")
+    if MAX_WALL_S < 0:
+        raise SystemExit("--max-wall-s must be >= 0")
     is_probe = MAX_STEPS > 0
 
     resume_path = Path(args.resume) if args.resume else None
@@ -391,6 +400,7 @@ def main(argv=None) -> None:
     epoch_losses = list(resume_blob["epoch_losses"]) if resumed else []
     global_steps = int(resume_blob["global_steps"]) if resumed else 0
     truncated = False
+    stopped_for_wall_budget = False
     first_batch_valid_pixels = resume_blob["first_batch_valid_pixels"] if resumed else None
     try:
         git_head = subprocess.run(["git", "rev-parse", "HEAD"], cwd=REPO_ROOT,
@@ -486,6 +496,20 @@ def main(argv=None) -> None:
                 "cumulative_wall_s": prior_wall_s + (time.time() - t0),
                 "session_wall_s": list(prior_sessions),
             })
+            # Wall-clock budget: only ever at an epoch boundary, only after
+            # resume.pt for that epoch exists (written above), and only when
+            # epochs remain. A budgeted stop is not an error and not an
+            # ABORT: break and let the normal record-writing path run.
+            # With --max-wall-s 0 this branch is dead code, so the default
+            # run is byte-identical to before.
+            if (MAX_WALL_S > 0 and (time.time() - t0) >= MAX_WALL_S
+                    and epoch < EPOCHS - 1):
+                stopped_for_wall_budget = True
+                print("wall budget reached after epoch %d (%.1fs >= %.1fs); "
+                      "stopping cleanly with %d epoch(s) remaining" % (
+                          epoch, time.time() - t0, MAX_WALL_S,
+                          EPOCHS - 1 - epoch), flush=True)
+                break
 
     wall_s = time.time() - t0
     total_wall_s = prior_wall_s + wall_s
@@ -493,7 +517,12 @@ def main(argv=None) -> None:
     fh.close()
 
     n_triplets = len(train_base) + len(val_base)
-    epochs_run = len(history) if (is_probe and truncated) else EPOCHS
+    if is_probe and truncated:
+        epochs_run = len(history)
+    elif stopped_for_wall_budget:
+        epochs_run = len(history)
+    else:
+        epochs_run = EPOCHS
     rate = {
         "optimizer_steps": global_steps,
         "triplet_count": n_triplets,
@@ -515,6 +544,8 @@ def main(argv=None) -> None:
                   "note": "FlyingThings3D_subset rate probe: same code path, truncated; NOT a pretrain",
                   "config": exp_config, "epochs_run": epochs_run,
                   "wall_clock_s": wall_s, "git_head": git_head,
+                  "stopped_for_wall_budget": bool(stopped_for_wall_budget),
+                  "max_wall_s": float(MAX_WALL_S),
                   "integrity_guard": guard,
                   "rate": rate,
                   "scale_draw_sample": {
@@ -550,10 +581,12 @@ def main(argv=None) -> None:
     draws = np.array(train.draws, dtype=np.float64) if train.draws else np.zeros((0, 4))
     record = {"arm": ARM, "experiment": "E4-PRETRAIN",
               "note": "FlyingThings3D_subset pretrain, Stage-1 recipe, NOT full SceneFlow",
-              "config": exp_config, "epochs_run": EPOCHS,
+              "config": exp_config, "epochs_run": epochs_run,
               "wall_clock_s": total_wall_s, "git_head": git_head,
               "resumed": bool(resumed),
               "session_wall_s": session_wall_s,
+              "stopped_for_wall_budget": bool(stopped_for_wall_budget),
+              "max_wall_s": float(MAX_WALL_S),
               "integrity_guard": guard,
               "rate": rate,
               "best_pretrain_val_epe": best_val_epe, "best_epoch": best_epoch,
