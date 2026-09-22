@@ -38,6 +38,7 @@ import hashlib
 import json
 import os
 import platform
+import random
 import subprocess
 import sys
 import time
@@ -80,6 +81,7 @@ PROBE_RECORD_NAME = "e4_pretrain_rate_probe.json"
 LOG_NAME = "pretrain_log.jsonl"
 BEST_CKPT_NAME = "e4_pretrain_best.pth"
 FINAL_CKPT_NAME = "e4_pretrain_final.pth"
+RESUME_CKPT_NAME = "resume.pt"
 
 
 class ScaledCroppedFT3D(Dataset):
@@ -201,6 +203,37 @@ def write_atomic(path: Path, text: str) -> None:
     os.replace(tmp, path)
 
 
+def save_atomic_torch(path: Path, payload: dict) -> None:
+    """Atomically persist a torch payload: write to a temp path in the same
+    directory, then os.replace it -- the same discipline as write_atomic.
+    A half-written resume file after a session kill is worse than none."""
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    torch.save(payload, str(tmp))
+    os.replace(tmp, path)
+
+
+def collect_rng_states() -> dict:
+    """Snapshot every RNG stream the run consumes. The determinism module
+    (phase1.harness.determinism) only offers seeding, not snapshots, so the
+    states themselves are read here with the standard torch/numpy/random
+    getters. None of these calls advance the streams."""
+    return {
+        "torch_cpu": torch.get_rng_state(),
+        "torch_cuda": torch.cuda.get_rng_state_all() if torch.cuda.is_available() else None,
+        "numpy": np.random.get_state(),
+        "python": random.getstate(),
+    }
+
+
+def restore_rng_states(blob: dict) -> None:
+    """Restore every stream snapshotted by collect_rng_states."""
+    torch.set_rng_state(blob["torch_cpu"])
+    if blob.get("torch_cuda") is not None and torch.cuda.is_available():
+        torch.cuda.set_rng_state_all(blob["torch_cuda"])
+    np.random.set_state(blob["numpy"])
+    random.setstate(blob["python"])
+
+
 def build_scheduler(optimizer, epochs: int):
     """Cosine annealing to 0 with T_max following the requested epoch count.
 
@@ -223,6 +256,10 @@ def parse_args(argv=None) -> argparse.Namespace:
     ap.add_argument("--max-steps", type=int, default=0,
                     help="rate-probe mode: stop after N optimizer steps (0 = unlimited)")
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--resume", default=None,
+                    help="path to a per-epoch resume.pt checkpoint to continue from; "
+                         "when given, training continues from last_completed_epoch + 1 "
+                         "through --epochs (which must match the checkpoint's epochs)")
     return ap.parse_args(argv)
 
 
@@ -237,6 +274,11 @@ def main(argv=None) -> None:
     if MAX_STEPS < 0:
         raise SystemExit("--max-steps must be >= 0")
     is_probe = MAX_STEPS > 0
+
+    resume_path = Path(args.resume) if args.resume else None
+    if resume_path is not None and not resume_path.is_file():
+        raise SystemExit("ABORT: --resume file not found: %s "
+                         "(refusing to silently start from scratch)" % resume_path)
 
     (OUT_DIR / "checkpoints").mkdir(parents=True, exist_ok=True)
     seed_all(SEED_RUN)
@@ -267,6 +309,41 @@ def main(argv=None) -> None:
 
     optimizer = torch.optim.Adam(model.parameters(), lr=LR, betas=(0.9, 0.999))
     scheduler = build_scheduler(optimizer, EPOCHS)
+
+    # --resume: restore everything needed to continue bit-for-bit. A fresh
+    # run skips this block entirely, so its numerics are untouched.
+    resumed = resume_path is not None
+    prior_wall_s = 0.0
+    prior_sessions: list = []
+    start_epoch = 0
+    resume_blob = None
+    if resumed:
+        assert resume_path is not None
+        resume_blob = torch.load(str(resume_path), map_location="cpu", weights_only=False)
+        if resume_blob.get("epochs") != EPOCHS:
+            raise SystemExit(
+                "ABORT: --resume checkpoint was written with --epochs=%s but this run "
+                "passes --epochs=%s; refusing (a different T_max is a different "
+                "cosine schedule, i.e. a different experiment)"
+                % (resume_blob.get("epochs"), EPOCHS))
+        model.load_state_dict(resume_blob["model"])
+        optimizer.load_state_dict(resume_blob["optimizer"])
+        scheduler.load_state_dict(resume_blob["scheduler"])
+        # NOTE: the augmentation RNG is NOT a torch generator; it is the
+        # np.random.Generator held on the ScaledCroppedFT3D instance.
+        train.rng.bit_generator.state = resume_blob["aug_rng_state"]
+        if (resume_blob.get("loader_generator_state") is not None
+                and loader.generator is not None):
+            loader.generator.set_state(resume_blob["loader_generator_state"])
+        train.draws = [tuple(d) for d in resume_blob.get("aug_draws", [])]
+        restore_rng_states(resume_blob["rng"])
+        start_epoch = int(resume_blob["last_completed_epoch"]) + 1
+        prior_wall_s = float(resume_blob.get("cumulative_wall_s", 0.0))
+        prior_sessions = list(resume_blob.get("session_wall_s", []))
+        print("resumed from %s: last completed epoch %d, continuing from epoch %d "
+              "through %d (prior wall %.1fs over %d session(s))" % (
+                  resume_path, resume_blob["last_completed_epoch"], start_epoch,
+                  EPOCHS, prior_wall_s, len(prior_sessions) + 1), flush=True)
 
     scheduler_desc = "cosine annealing to 0 over {} epochs".format(EPOCHS)
     exp_config = {
@@ -306,22 +383,22 @@ def main(argv=None) -> None:
     }
 
     log_path = OUT_DIR / LOG_NAME
-    fh = open(log_path, "w", encoding="utf-8")
-    history = []
+    fh = open(log_path, "a" if resumed else "w", encoding="utf-8")
+    history = list(resume_blob["history"]) if resumed else []
     t0 = time.time()
-    best_val_epe = float("inf")
-    best_epoch = -1
-    epoch_losses = []
-    global_steps = 0
+    best_val_epe = float(resume_blob["best_val_epe"]) if resumed else float("inf")
+    best_epoch = int(resume_blob["best_epoch"]) if resumed else -1
+    epoch_losses = list(resume_blob["epoch_losses"]) if resumed else []
+    global_steps = int(resume_blob["global_steps"]) if resumed else 0
     truncated = False
-    first_batch_valid_pixels = None
+    first_batch_valid_pixels = resume_blob["first_batch_valid_pixels"] if resumed else None
     try:
         git_head = subprocess.run(["git", "rev-parse", "HEAD"], cwd=REPO_ROOT,
                                   capture_output=True, text=True, timeout=15).stdout.strip()
     except Exception:
         git_head = None
 
-    for epoch in range(EPOCHS):
+    for epoch in range(start_epoch, EPOCHS):
         epoch_loss, epoch_pixels, batches = 0.0, 0, 0
         t_ep = time.time()
         for left, right, disparity in loader:
@@ -384,8 +461,35 @@ def main(argv=None) -> None:
         print("epoch {:>3} loss {:8.4f} lr {:.2e} pretrain-val EPE {:.3f} D1 {:.2f}% wall {:.0f}s".format(
             epoch, row["mean_loss"], row["lr"], row["pretrain_val_epe"],
             row["pretrain_val_d1"], row["epoch_wall_s"]), flush=True)
+        if not is_probe:
+            # Per-epoch resume checkpoint: the epoch above is fully accounted
+            # for (loss guard, validation, best tracking, history, log flush),
+            # so a kill after this point restarts from epoch + 1 with no
+            # repeated or skipped work. Probe mode saves NO checkpoints.
+            save_atomic_torch(OUT_DIR / "checkpoints" / RESUME_CKPT_NAME, {
+                "epochs": EPOCHS,
+                "last_completed_epoch": epoch,
+                "model": model.state_dict(),
+                "optimizer": optimizer.state_dict(),
+                "scheduler": scheduler.state_dict(),
+                "best_val_epe": best_val_epe,
+                "best_epoch": best_epoch,
+                "epoch_losses": list(epoch_losses),
+                "history": list(history),
+                "global_steps": global_steps,
+                "first_batch_valid_pixels": first_batch_valid_pixels,
+                "aug_rng_state": train.rng.bit_generator.state,
+                "loader_generator_state": (loader.generator.get_state()
+                                           if loader.generator is not None else None),
+                "aug_draws": [tuple(d) for d in train.draws],
+                "rng": collect_rng_states(),
+                "cumulative_wall_s": prior_wall_s + (time.time() - t0),
+                "session_wall_s": list(prior_sessions),
+            })
 
     wall_s = time.time() - t0
+    total_wall_s = prior_wall_s + wall_s
+    session_wall_s = list(prior_sessions) + [wall_s]
     fh.close()
 
     n_triplets = len(train_base) + len(val_base)
@@ -395,9 +499,9 @@ def main(argv=None) -> None:
         "triplet_count": n_triplets,
         "n_train": len(train_base),
         "n_holdout": len(val_base),
-        "wall_clock_s": wall_s,
-        "sec_per_step": (wall_s / global_steps) if global_steps > 0 else None,
-        "sec_per_epoch": (wall_s / epochs_run) if epochs_run > 0 else None,
+        "wall_clock_s": total_wall_s,
+        "sec_per_step": (total_wall_s / global_steps) if global_steps > 0 else None,
+        "sec_per_epoch": (total_wall_s / epochs_run) if epochs_run > 0 else None,
         "probe": bool(is_probe),
         "max_steps": MAX_STEPS,
         "first_batch_valid_pixels": first_batch_valid_pixels,
@@ -447,7 +551,9 @@ def main(argv=None) -> None:
     record = {"arm": ARM, "experiment": "E4-PRETRAIN",
               "note": "FlyingThings3D_subset pretrain, Stage-1 recipe, NOT full SceneFlow",
               "config": exp_config, "epochs_run": EPOCHS,
-              "wall_clock_s": wall_s, "git_head": git_head,
+              "wall_clock_s": total_wall_s, "git_head": git_head,
+              "resumed": bool(resumed),
+              "session_wall_s": session_wall_s,
               "integrity_guard": guard,
               "rate": rate,
               "best_pretrain_val_epe": best_val_epe, "best_epoch": best_epoch,
