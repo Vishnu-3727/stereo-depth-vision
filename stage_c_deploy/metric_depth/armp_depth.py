@@ -36,14 +36,34 @@ def sha256_file(path: Path) -> str:
     return h.hexdigest()
 
 
-def load_frozen_net(device: str | None = None) -> tuple[StereoNet, str]:
-    """Load the frozen checkpoint after asserting its SHA256. Returns (net, device)."""
+def load_frozen_net(device: str | None = None,
+                    checkpoint: str | Path | None = None,
+                    expected_sha256: str | None = None,
+                    ) -> tuple[StereoNet, str]:
+    """Load the frozen checkpoint after asserting its SHA256. Returns (net, device).
+
+    Called with neither ``checkpoint`` nor ``expected_sha256`` this behaves
+    EXACTLY as before: it loads ``REPO / ARMP_REL`` and asserts its sha256
+    against the frozen ``ARMP_SHA``. Passed both, it loads the supplied file
+    (absolute, or repo-relative) and asserts its sha256 against the supplied
+    sha instead. Supplying only one of the two is an error.
+    """
+    if (checkpoint is None) != (expected_sha256 is None):
+        raise ValueError("checkpoint and expected_sha256 must be given together")
     if device is None:
         device = "cuda" if torch.cuda.is_available() else "cpu"
-    ckpt = REPO / ARMP_REL
+    if checkpoint is None:
+        ckpt = REPO / ARMP_REL
+        want = ARMP_SHA
+    else:
+        ckpt = Path(checkpoint)
+        if not ckpt.is_absolute():
+            ckpt = REPO / ckpt
+        want = expected_sha256
+        assert want is not None  # narrowed by the ValueError above
     digest = sha256_file(ckpt)
-    assert digest == ARMP_SHA, (
-        f"checkpoint hash changed: {digest} != {ARMP_SHA} -> STOP")
+    assert digest == want, (
+        f"checkpoint hash changed: {digest} != {want} -> STOP")
     blob = torch.load(ckpt, map_location="cpu", weights_only=False)
     net = StereoNet(StereoNetConfig(**CFG))
     net.load_state_dict(blob["model"], strict=True)

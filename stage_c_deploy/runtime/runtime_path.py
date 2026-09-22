@@ -43,6 +43,11 @@ Usage:
     python stage_c_deploy/runtime/runtime_path.py --verify-gpunorm --device cuda
     python stage_c_deploy/runtime/runtime_path.py --with-gt   # bench accuracy only
     python stage_c_deploy/runtime/runtime_path.py --profile   # step-5 cProfile probe
+
+Opt-in checkpoint override (R4): --checkpoint <repo-relative|absolute path>
+loads that .pth instead of the frozen one, asserting its measured sha256 at
+load and recording path + measured sha in the JSON. Absent, the frozen
+checkpoint is used exactly as before.
 """
 
 from __future__ import annotations
@@ -91,6 +96,41 @@ CLOUD_STRIDE = 3
 
 STAGES = ("load_preprocess", "inference", "metric_depth",
           "cloud_spatial_occupancy", "discontinuity")
+
+
+def resolve_checkpoint(arg: str | None) -> tuple[Path, str]:
+    """Resolve --checkpoint to (absolute path, JSON label).
+
+    None (flag absent) -> the frozen checkpoint (REPO / AD.ARMP_REL,
+    label AD.ARMP_REL): behaviour is exactly as before. Otherwise the
+    value may be repo-relative or absolute; the label is the repo-relative
+    posix path when the file sits under REPO, else the path as given.
+    """
+    if arg is None:
+        return REPO / AD.ARMP_REL, AD.ARMP_REL
+    p = Path(arg)
+    if not p.is_absolute():
+        p = REPO / p
+    try:
+        label = p.resolve().relative_to(REPO.resolve()).as_posix()
+    except ValueError:
+        label = str(p)
+    return p, label
+
+
+def load_net(device: str, ckpt: Path, ckpt_sha: str, override: bool):
+    """Load the net, asserting the checkpoint sha without a vacuous check.
+
+    override=False (no --checkpoint flag) -> AD.load_frozen_net(device) with
+    no checkpoint arguments, so the frozen ARMP_SHA is asserted exactly as
+    before. override=True -> the measured sha of the override file is
+    asserted at load. The measured sha is always recorded in the JSON by the
+    caller; this helper only chooses which assert runs.
+    """
+    if override:
+        return AD.load_frozen_net(device, checkpoint=ckpt,
+                                  expected_sha256=ckpt_sha)
+    return AD.load_frozen_net(device)
 
 
 def _cv2_read_rgb(path: Path) -> np.ndarray:
@@ -797,6 +837,11 @@ def parse_args() -> argparse.Namespace:
                          "fallback if compilation fails")
     ap.add_argument("--profile", action="store_true",
                     help="step-5 probe: cProfile the host-numpy stages on one scene")
+    ap.add_argument("--checkpoint", default=None,
+                    help="opt-in checkpoint override: repo-relative or absolute "
+                         "path to a .pth file. Absent = the frozen checkpoint "
+                         "(default behaviour unchanged). The file's measured "
+                         "sha256 is asserted at load and recorded in the JSON.")
     return ap.parse_args()
 
 
@@ -854,10 +899,11 @@ def main() -> None:
         sys.exit(2)
 
     kitti_root = REPO / "data" / "kitti2015"
-    ckpt = REPO / AD.ARMP_REL
+    ckpt, ckpt_label = resolve_checkpoint(args.checkpoint)
     if not ckpt.exists():
         print(f"checkpoint missing: {ckpt}", file=sys.stderr)
         sys.exit(2)
+    ckpt_sha = AD.sha256_file(ckpt)
     try:
         ds = Kitti2015Stereo(kitti_root, split="hailo_val")
     except FileNotFoundError as e:
@@ -874,7 +920,8 @@ def main() -> None:
             # decode-only check requested; still continue to timed run
             pass
 
-    net, dev = AD.load_frozen_net(device)
+    net, dev = load_net(device, ckpt, ckpt_sha,
+                      override=args.checkpoint is not None)
     net.eval()
     is_cuda = dev == "cuda"
 
@@ -1049,7 +1096,8 @@ def main() -> None:
         except Exception as e:
             print(f"torch.compile first run failed ({type(e).__name__}: {e}); "
                   f"falling back to uncompiled net", file=sys.stderr)
-            net, _ = AD.load_frozen_net(device)
+            net, _ = load_net(device, ckpt, ckpt_sha,
+                              override=args.checkpoint is not None)
             net.eval()
             if use_cl and is_cuda:
                 net = apply_channels_last(net)
@@ -1101,7 +1149,8 @@ def main() -> None:
     payload = {
         "torch_version": torch.__version__, "device": dev, "device_name": device_name,
         "dtype": "fp32", "scenes": n, "warmup": args.warmup,
-        "scene_names": names, "checkpoint_sha256": AD.ARMP_SHA,
+        "scene_names": names, "checkpoint": ckpt_label,
+        "checkpoint_sha256": ckpt_sha,
         "runtime_path": {"with_gt": bool(args.with_gt), "decode": args.decode,
                           "norm": args.norm, "gpu_geometry": bool(gpu_geom),
                           "cudnn_bench": bool(args.cudnn_bench),
@@ -1127,7 +1176,7 @@ def main() -> None:
     if compile_time_s is not None:
         print(f"torch.compile first-run (compile+run) time: {compile_time_s:.2f} s "
               f"(excluded from steady-state medians)")
-    print(f"checkpoint sha256: {AD.ARMP_SHA}")
+    print(f"checkpoint: {ckpt_label} sha256: {ckpt_sha}")
     print(f"{'stage':<{w}} {'median_ms':>10} {'min_ms':>10} {'max_ms':>10}")
     for k in STAGES:
         s_ = stats[k]

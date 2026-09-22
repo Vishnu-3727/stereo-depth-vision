@@ -219,9 +219,14 @@ What was tried and rejected, with the reason worth remembering:
 
 Listed as options, not a recommendation, and none is authorized.
 
-1. **Bank the win and re-validate downstream.** Re-run the Stage C runtime path
-   and the demo against E3 seed 0's final checkpoint, so the fast path and the
-   best model are the same artefact. Cheap, and right now the two disagree.
+1. **Bank the win and re-validate downstream.** Half done — R4
+   (`stage_c_deploy/runtime/R4_E3_CHECKPOINT.md`) has now scored E3 seed 0's
+   final checkpoint through the recommended runtime path: EPE
+   1.1628882757801255, better on all seven contract metrics, `contract_match`
+   true, and the frozen control reproduces bit-identically. What remains is the
+   decision to make it the default — `pipeline_demo.py` and the `armp_depth`
+   constants still point at the frozen `p2a_best.pth`, so the demo and the best
+   model are still different artefacts. R4 measured; it changed no default.
 2. **Epoch-count sweep.** 400 worked; 300 and 600 would say whether the gain is
    monotone or whether 400 is near a plateau. Same harness, one lever, needs
    its own pre-registration.

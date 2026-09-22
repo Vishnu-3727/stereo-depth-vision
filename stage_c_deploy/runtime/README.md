@@ -185,3 +185,29 @@ This is a throughput result, not a latency result — the first frame still cost
 time — and the decode measured is a KITTI PNG read, not a live camera.
 
 Measurements: `out/r3_gate.json`, `out/r3_stream_*.json`.
+
+## 14 R4: E3 seed-0 final through the recommended path — measurement only
+
+Full report: `R4_E3_CHECKPOINT.md`.
+
+One foreign checkpoint — Stage-E E3 seed-0 final
+(`stage_e_recipe/kaggle/e3_output/seed0/e3_seed0_final.pth`) — scored through
+the recommended deterministic path via an opt-in `--checkpoint` override
+(`r4_contract.py` for the 40-scene contract, `runtime_path.py` for timing).
+Absent the flag, both scripts verify the frozen checkpoint against `ARMP_SHA`
+exactly as before; no default changed, and the demo is untouched.
+
+| check | result |
+|---|---|
+| control contract vs frozen record | **bit-identical on all seven metrics** (EPE 1.191216765057325, D1 6.211033615520366, RMSE 3.1369637733547697, valid 3802797, contract_match true) |
+| E3 seed-0 final contract | **EPE 1.1628882757801255**, down on all seven metrics at unchanged valid pixels, contract_match true |
+| vs Stage E's independent figure | **agreement**: 1.1628882757801255 here vs 1.1628883 via `complete_e3.py` — two scripts, same number |
+| timing, within-session pair | frozen **99.12 ms / 10.09 FPS** vs E3 **108.06 ms / 9.25 FPS** — **no speed-up claimed**; same-checkpoint session spread measures 6.56–7.76 ms with the sign flipping, so the residual is session noise |
+
+**Measurement only.** The recommended path in section 3 is unchanged, no frozen
+record is touched, and nothing here is an acceptance of E3 anywhere — one seed
+on `hailo_val`, no Hailo, no INT8, no statistical test.
+
+Measurements: `out/r4_control_40scene_cuda.json`,
+`out/r4_e3s0final_40scene_cuda.json`, `out/r4_control_cuda_fp32_det_s10_w2.json`,
+`out/r4_e3s0final_cuda_fp32_det_s10_w2_same_session.json`.
