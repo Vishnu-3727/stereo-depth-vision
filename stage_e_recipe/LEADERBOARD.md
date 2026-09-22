@@ -9,10 +9,15 @@ through `phase1/harness/frozen_eval.py` on the 40-scene contract.
 | **E0** | none (control) | 0,1,2 | **1.2037841** | 0.0174488 | **1.2125409** | control — no verdict |
 | E1 | EMA 0.999 | 0,1,2 | 1.2036174 | 0.0314905 | 1.2044355 | **INCONCLUSIVE** |
 | E2 | native batch 8 | 0,1,2 | 1.2390444 | 0.0037600 | 1.2480458 | **REJECT** |
-| E3 | 400 epochs | — | — | — | — | NOT RUN |
+| **E3** | 400 epochs | 0,1,2 | **1.1787445** | 0.0147367 | **1.1675765** | **ACCEPT (non-overlapping)** \* |
 | E4 | broader pretraining | — | — | — | — | **BLOCKED** (FT3D absent) |
 
 Acceptance thresholds instantiated from E0: `PREREGISTRATION.md`.
+
+\* E3's contract scoring ran on the development box (RTX 4060 Laptop, torch
+2.7.0+cu128, fp32), not on Kaggle — see the E3 status entries below for why and
+for the device calibration that makes it comparable. Training was on Kaggle T4
+like every other row.
 
 ## Reference figures — not the acceptance baseline
 
@@ -61,4 +66,60 @@ expected, and not a regression.
   separate experiment with its own pre-registration.
 - E2 was also the fastest (~70 min/seed against E0's ~78), the 18 % per-epoch
   gain the T4 rate probe predicted. Cheapest and worst.
-- No further candidate authorized. E3 (400 epochs) is the last recipe lever.
+- **E3 complete — verdict ACCEPT (non-overlapping)** (`e3_verdict.json`,
+  computed by `verdict.py` with the pre-registered constants untouched).
+  `Δ_best` = +0.0250396 against the `S0_best` bar of 0.0174488, and
+  `Δ_final` = +0.0449644 against the E3-only `S0_final` bar of 0.0090235, so
+  both limbs clear. The worst E3 seed (1.1860654) beats the best control seed
+  (1.1962889): the two seed sets do not overlap. Per-seed best: 1.1860654 /
+  1.1788394 / 1.1713288. Per-seed final: 1.1628883 / 1.1728822 / 1.1669590.
+  This is the campaign's first acceptance.
+- **E3 is also the campaign's first run to beat the historical local reference.**
+  Its mean best 1.1787445 sits below the ARM-P local 3-seed mean 1.1988735 and
+  below the single best historical seed 1.1912168, and its mean final
+  1.1675765 is lower still. The acceptance itself is against the E0 control, as
+  pre-registered; those two figures remain reference-only.
+- **Every E3 seed scores better on the final checkpoint than on the best
+  checkpoint** (mean final 1.1675765 vs mean best 1.1787445). The 10-scene
+  training monitor's selection does not transfer to the 40-scene contract.
+  A1.2 anticipated exactly this — 400 epochs gives the monitor 81 selection
+  opportunities against the control's 41 — which is why the pre-registration
+  required `Δ_final` as well, and why clearing best alone would have been
+  recorded as BEST PASS / FINAL FAIL rather than an acceptance. It clears both.
+- **The acceptance cost 2x the compute.** E3 wall time was 9250 / 9163 / 9267 s
+  per seed against E0's 4647 / 4557 / 4772 s — 1.98x for a 2.1 % mean-best
+  improvement. Doubling epochs is the most expensive lever in the campaign and
+  the only one that worked.
+- E3's spread is 0.0147367, slightly tighter than the control's 0.0174488 —
+  unlike E1, the gain did not come with extra seed-to-seed variance.
+- E3's INT8 limb passed (P 4.3230999 ≤ 5.6365268) and, for the third time,
+  that certifies nothing: per-seed int8 EPE is 5.2489414 / 5.3849188 /
+  5.8715627 against fp32 ONNX 1.1859853 / 1.1788213 / 1.1713167. E3 is
+  destroyed by int8 just as the control is, only slightly less so. The Stage-D
+  blocker is untouched; see `INT8_CONTROL_REPORT.md` §4.
+- **E3's Kaggle runs all ended in status ERROR, and that was a false alarm, not
+  a training failure.** `run_arm.py`'s two post-hoc guards hardcoded the
+  literal 200, so all three seeds trained their full 400 epochs and were then
+  failed by a read-only check with `epochs_incomplete {"rows": 400}`,
+  returncode 3. `kaggle/e3_patch.py` fixes both guards to compare against
+  `args.epochs`; `kaggle/recover_e3.py` re-runs the identical guard block
+  offline and records 8/8 guards passing with 400 rows on every seed
+  (`e3_recovery.json`). Seed 2 was deliberately run against E0's unpatched
+  bundle so all three seeds had byte-identical inputs, which is why it ERRORed
+  too. No seed was retrained.
+- **E3's contract scoring had to happen off-Kaggle, and the device gap was
+  measured rather than assumed.** `run_experiment.py` exits as soon as
+  `STOP.json` exists, so the false STOP aborted the scoring stage for all three
+  seeds — no `hailo_val` numbers came back from the T4. The checkpoints did,
+  so `kaggle/complete_e3.py` scores them locally through the same
+  `frozen_eval` / `eval_tier2.score` path. To bound the comparability risk,
+  E0's own checkpoints were re-scored locally and diffed against their recorded
+  T4 values: max |local − T4| = **0.000129 px** across all six, i.e. 135x
+  smaller than `S0_best`, with `contract_match` still true and every
+  `weight_sha16` matching (`e0_device_recheck.json`). `eval_tier2.py` is
+  byte-identical in `bundle/`, `bundle_e3/` and the code that ran on Kaggle.
+  The original STOPPED Kaggle records are preserved at
+  `e3_output/seed<N>/kaggle_stopped_seed<N>.json`.
+- The recipe campaign is finished: E0 control, E1 INCONCLUSIVE, E2 REJECT,
+  E3 ACCEPT. E4 stays BLOCKED (FlyingThings3D absent from disk). No new
+  candidate is authorized.

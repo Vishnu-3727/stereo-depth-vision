@@ -1,0 +1,28 @@
+{
+  "experiment": "STAGE E - E3",
+  "seed": 1,
+  "epochs": 400,
+  "intervention": "400 epochs",
+  "initialization": "Stage-1 pretrained ARM-P",
+  "init_sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+  "environment": {
+    "python": "3.12.13",
+    "torch": "2.10.0+cu128",
+    "cuda": "12.8",
+    "cudnn": 91002,
+    "gpu": "Tesla T4",
+    "device_count": 2
+  },
+  "train_wall_s": 9162.6,
+  "run_arm_returncode": 3,
+  "STOP": {
+    "arm": "armp",
+    "status": "STOPPED",
+    "reason": "epochs_incomplete",
+    "detail": {
+      "rows": 400
+    },
+    "utc": "2026-09-21T18:59:17Z"
+  },
+  "status": "STOPPED"
+}

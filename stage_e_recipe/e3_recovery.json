@@ -1,0 +1,90 @@
+{
+  "experiment": "stage-e-e3",
+  "method": "verbatim run_arm.py post-hoc guard block (canonical source + e3_patch, as bundle_e3 ships it), exec'd with args.epochs=400; write side-effects captured in memory, evidence dirs untouched",
+  "seeds": {
+    "0": {
+      "seed": 0,
+      "expected_epochs": 400,
+      "guards": {
+        "rows_count": "pass",
+        "nan_inf_loss_in_log": "pass",
+        "zero_valid_pixels": "pass",
+        "nan_inf_val_metric": "pass",
+        "param_or_architecture_changed": "pass",
+        "epochs_run": "pass",
+        "wrong_checkpoint_resume": "pass",
+        "checkpoint_sha_mismatch": "pass"
+      },
+      "row_count": 400,
+      "scored_rows": 81,
+      "best10_epe": 1.5475103577638942,
+      "best10_epoch": 260,
+      "record_best10_epe": 1.5475103577638942,
+      "record_best_epoch": 260,
+      "kaggle_stop": {
+        "reason": "epochs_incomplete",
+        "detail": {
+          "rows": 400
+        }
+      },
+      "verdict": "RECOVERED",
+      "stop": null
+    },
+    "1": {
+      "seed": 1,
+      "expected_epochs": 400,
+      "guards": {
+        "rows_count": "pass",
+        "nan_inf_loss_in_log": "pass",
+        "zero_valid_pixels": "pass",
+        "nan_inf_val_metric": "pass",
+        "param_or_architecture_changed": "pass",
+        "epochs_run": "pass",
+        "wrong_checkpoint_resume": "pass",
+        "checkpoint_sha_mismatch": "pass"
+      },
+      "row_count": 400,
+      "scored_rows": 81,
+      "best10_epe": 1.555660406224229,
+      "best10_epoch": 290,
+      "record_best10_epe": 1.555660406224229,
+      "record_best_epoch": 290,
+      "kaggle_stop": {
+        "reason": "epochs_incomplete",
+        "detail": {
+          "rows": 400
+        }
+      },
+      "verdict": "RECOVERED",
+      "stop": null
+    },
+    "2": {
+      "seed": 2,
+      "expected_epochs": 400,
+      "guards": {
+        "rows_count": "pass",
+        "nan_inf_loss_in_log": "pass",
+        "zero_valid_pixels": "pass",
+        "nan_inf_val_metric": "pass",
+        "param_or_architecture_changed": "pass",
+        "epochs_run": "pass",
+        "wrong_checkpoint_resume": "pass",
+        "checkpoint_sha_mismatch": "pass"
+      },
+      "row_count": 400,
+      "scored_rows": 81,
+      "best10_epe": 1.527850291134275,
+      "best10_epoch": 270,
+      "record_best10_epe": 1.527850291134275,
+      "record_best_epoch": 270,
+      "kaggle_stop": {
+        "reason": "epochs_incomplete",
+        "detail": {
+          "rows": 400
+        }
+      },
+      "verdict": "RECOVERED",
+      "stop": null
+    }
+  }
+}

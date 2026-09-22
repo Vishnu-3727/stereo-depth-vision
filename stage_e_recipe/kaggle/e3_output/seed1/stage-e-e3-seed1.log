@@ -1,0 +1,418 @@
+[{"stream_name":"stdout","time":8.061890106,"data":"{\"python\": \"3.12.13\", \"torch\": \"2.10.0+cu128\", \"cuda\": \"12.8\", \"cudnn\": 91002, \"gpu\": \"Tesla T4\", \"device_count\": 2}\n"}
+,{"stream_name":"stdout","time":8.061979468,"data":"+ /usr/bin/python3 /kaggle/working/repo/stage_e_recipe/run/scripts/run_arm.py --arm armp --init /kaggle/working/repo/checkpoints/armp_stage1_best.pth --outdir /kaggle/working/repo/stage_e_recipe/run/armp --seed 1 --epochs 400 --timeout_s 18000.0\n"}
+,{"stream_name":"stdout","time":8.155049135,"data":"RUN arm=armp init=/kaggle/working/repo/checkpoints/armp_stage1_best.pth pid=20 cmd=['/usr/bin/python3', '/kaggle/working/repo/stage_e_recipe/run/scripts/finetune_pilot.py', '--init', '/kaggle/working/repo/checkpoints/armp_stage1_best.pth', '--arm', 'armp']\n"}
+,{"stream_name":"stdout","time":10.518513925,"data":"integrity guard: {\"param_count\": 397954, \"param_count_ok\": true, \"all_ok\": true}\n"}
+,{"stream_name":"stdout","time":10.530558892,"data":"init: {\"source\": \"/kaggle/working/repo/checkpoints/armp_stage1_best.pth\", \"strict\": true, \"sha256\": \"3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7\", \"n_keys\": 70, \"param_count\": 397954}\n"}
+,{"stream_name":"stdout","time":17.723922352,"data":"/kaggle/working/repo/stage_e_recipe/run/scripts/finetune_pilot.py:303: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.\n"}
+,{"stream_name":"stdout","time":17.723954114,"data":"Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)\n"}
+,{"stream_name":"stdout","time":17.723960155,"data":"  epoch_loss += float(loss)\n"}
+,{"stream_name":"stdout","time":44.634715593,"data":"epoch   0 loss   2.4498 lr 1.00e-03 val EPE 4.492 D1 46.54%\n"}
+,{"stream_name":"stdout","time":67.151420008,"data":"epoch   1 loss   2.1902 lr 1.00e-03\n"}
+,{"stream_name":"stdout","time":90.016439646,"data":"epoch   2 loss   1.6379 lr 1.00e-03\n"}
+,{"stream_name":"stdout","time":113.105236824,"data":"epoch   3 loss   1.7769 lr 1.00e-03\n"}
+,{"stream_name":"stdout","time":135.647904732,"data":"epoch   4 loss   1.4411 lr 1.00e-03\n"}
+,{"stream_name":"stdout","time":159.417185634,"data":"epoch   5 loss   1.3425 lr 9.99e-04 val EPE 2.122 D1 13.59%\n"}
+,{"stream_name":"stdout","time":182.114531189,"data":"epoch   6 loss   1.4946 lr 9.99e-04\n"}
+,{"stream_name":"stdout","time":204.706889909,"data":"epoch   7 loss   1.5179 lr 9.99e-04\n"}
+,{"stream_name":"stdout","time":227.136845372,"data":"epoch   8 loss   1.7574 lr 9.99e-04\n"}
+,{"stream_name":"stdout","time":249.627486383,"data":"epoch   9 loss   1.6026 lr 9.98e-04\n"}
+,{"stream_name":"stdout","time":273.489376607,"data":"epoch  10 loss   1.2935 lr 9.98e-04 val EPE 2.398 D1 15.14%\n"}
+,{"stream_name":"stdout","time":296.054275706,"data":"epoch  11 loss   1.2815 lr 9.98e-04\n"}
+,{"stream_name":"stdout","time":318.633881795,"data":"epoch  12 loss   1.4800 lr 9.97e-04\n"}
+,{"stream_name":"stdout","time":341.079896364,"data":"epoch  13 loss   1.3559 lr 9.97e-04\n"}
+,{"stream_name":"stdout","time":363.59559709,"data":"epoch  14 loss   1.2130 lr 9.97e-04\n"}
+,{"stream_name":"stdout","time":387.578962378,"data":"epoch  15 loss   1.1665 lr 9.96e-04 val EPE 1.905 D1 12.01%\n"}
+,{"stream_name":"stdout","time":410.144497919,"data":"epoch  16 loss   1.2013 lr 9.96e-04\n"}
+,{"stream_name":"stdout","time":432.770455529,"data":"epoch  17 loss   1.1871 lr 9.95e-04\n"}
+,{"stream_name":"stdout","time":455.168773823,"data":"epoch  18 loss   1.1991 lr 9.94e-04\n"}
+,{"stream_name":"stdout","time":477.818887567,"data":"epoch  19 loss   1.0431 lr 9.94e-04\n"}
+,{"stream_name":"stdout","time":501.665204305,"data":"epoch  20 loss   1.1064 lr 9.93e-04 val EPE 1.838 D1 11.04%\n"}
+,{"stream_name":"stdout","time":524.163415466,"data":"epoch  21 loss   1.3670 lr 9.93e-04\n"}
+,{"stream_name":"stdout","time":546.600948844,"data":"epoch  22 loss   1.3045 lr 9.92e-04\n"}
+,{"stream_name":"stdout","time":569.093978049,"data":"epoch  23 loss   1.2817 lr 9.91e-04\n"}
+,{"stream_name":"stdout","time":591.589649009,"data":"epoch  24 loss   1.3045 lr 9.90e-04\n"}
+,{"stream_name":"stdout","time":615.482376433,"data":"epoch  25 loss   1.2718 lr 9.90e-04 val EPE 2.114 D1 13.05%\n"}
+,{"stream_name":"stdout","time":638.095399188,"data":"epoch  26 loss   1.1134 lr 9.89e-04\n"}
+,{"stream_name":"stdout","time":660.714305771,"data":"epoch  27 loss   1.2376 lr 9.88e-04\n"}
+,{"stream_name":"stdout","time":683.265543789,"data":"epoch  28 loss   1.2308 lr 9.87e-04\n"}
+,{"stream_name":"stdout","time":705.711244723,"data":"epoch  29 loss   1.2902 lr 9.86e-04\n"}
+,{"stream_name":"stdout","time":729.315142205,"data":"epoch  30 loss   1.1206 lr 9.85e-04 val EPE 2.016 D1 12.43%\n"}
+,{"stream_name":"stdout","time":752.141923355,"data":"epoch  31 loss   1.1794 lr 9.84e-04\n"}
+,{"stream_name":"stdout","time":774.82418693,"data":"epoch  32 loss   0.9975 lr 9.83e-04\n"}
+,{"stream_name":"stdout","time":797.552559718,"data":"epoch  33 loss   0.9646 lr 9.82e-04\n"}
+,{"stream_name":"stdout","time":820.332972947,"data":"epoch  34 loss   1.1335 lr 9.81e-04\n"}
+,{"stream_name":"stdout","time":844.107776031,"data":"epoch  35 loss   1.0451 lr 9.80e-04 val EPE 2.114 D1 13.06%\n"}
+,{"stream_name":"stdout","time":866.733464755,"data":"epoch  36 loss   1.1637 lr 9.79e-04\n"}
+,{"stream_name":"stdout","time":889.243136965,"data":"epoch  37 loss   1.1086 lr 9.78e-04\n"}
+,{"stream_name":"stdout","time":911.795283261,"data":"epoch  38 loss   1.3020 lr 9.77e-04\n"}
+,{"stream_name":"stdout","time":934.282137785,"data":"epoch  39 loss   1.2598 lr 9.76e-04\n"}
+,{"stream_name":"stdout","time":958.031734539,"data":"epoch  40 loss   1.1038 lr 9.74e-04 val EPE 1.861 D1 11.20%\n"}
+,{"stream_name":"stdout","time":980.660632101,"data":"epoch  41 loss   0.9860 lr 9.73e-04\n"}
+,{"stream_name":"stdout","time":1003.18556723,"data":"epoch  42 loss   1.2086 lr 9.72e-04\n"}
+,{"stream_name":"stdout","time":1025.718390937,"data":"epoch  43 loss   1.0631 lr 9.70e-04\n"}
+,{"stream_name":"stdout","time":1048.313231052,"data":"epoch  44 loss   0.9476 lr 9.69e-04\n"}
+,{"stream_name":"stdout","time":1072.043558567,"data":"epoch  45 loss   1.1483 lr 9.68e-04 val EPE 2.757 D1 17.04%\n"}
+,{"stream_name":"stdout","time":1094.655911556,"data":"epoch  46 loss   1.3703 lr 9.66e-04\n"}
+,{"stream_name":"stdout","time":1117.309853011,"data":"epoch  47 loss   1.3813 lr 9.65e-04\n"}
+,{"stream_name":"stdout","time":1139.90322503,"data":"epoch  48 loss   1.3181 lr 9.63e-04\n"}
+,{"stream_name":"stdout","time":1162.374958478,"data":"epoch  49 loss   1.1766 lr 9.62e-04\n"}
+,{"stream_name":"stdout","time":1186.137946523,"data":"epoch  50 loss   1.0392 lr 9.60e-04 val EPE 1.933 D1 11.80%\n"}
+,{"stream_name":"stdout","time":1208.608356909,"data":"epoch  51 loss   1.0221 lr 9.59e-04\n"}
+,{"stream_name":"stdout","time":1231.191964795,"data":"epoch  52 loss   0.9295 lr 9.57e-04\n"}
+,{"stream_name":"stdout","time":1253.939251441,"data":"epoch  53 loss   0.9240 lr 9.56e-04\n"}
+,{"stream_name":"stdout","time":1276.554375552,"data":"epoch  54 loss   1.0732 lr 9.54e-04\n"}
+,{"stream_name":"stdout","time":1300.427297349,"data":"epoch  55 loss   1.0040 lr 9.52e-04 val EPE 2.069 D1 12.63%\n"}
+,{"stream_name":"stdout","time":1322.925669983,"data":"epoch  56 loss   1.3756 lr 9.51e-04\n"}
+,{"stream_name":"stdout","time":1345.365115584,"data":"epoch  57 loss   0.9991 lr 9.49e-04\n"}
+,{"stream_name":"stdout","time":1368.028644838,"data":"epoch  58 loss   1.1038 lr 9.47e-04\n"}
+,{"stream_name":"stdout","time":1390.563513788,"data":"epoch  59 loss   1.1844 lr 9.46e-04\n"}
+,{"stream_name":"stdout","time":1414.431966484,"data":"epoch  60 loss   1.0196 lr 9.44e-04 val EPE 1.864 D1 11.12%\n"}
+,{"stream_name":"stdout","time":1436.988441831,"data":"epoch  61 loss   1.1479 lr 9.42e-04\n"}
+,{"stream_name":"stdout","time":1459.407517619,"data":"epoch  62 loss   0.9982 lr 9.40e-04\n"}
+,{"stream_name":"stdout","time":1482.201152222,"data":"epoch  63 loss   1.0392 lr 9.38e-04\n"}
+,{"stream_name":"stdout","time":1504.696799129,"data":"epoch  64 loss   1.1358 lr 9.36e-04\n"}
+,{"stream_name":"stdout","time":1528.732771783,"data":"epoch  65 loss   1.0720 lr 9.34e-04 val EPE 1.811 D1 10.55%\n"}
+,{"stream_name":"stdout","time":1551.382065984,"data":"epoch  66 loss   1.0492 lr 9.32e-04\n"}
+,{"stream_name":"stdout","time":1574.221413613,"data":"epoch  67 loss   1.0969 lr 9.30e-04\n"}
+,{"stream_name":"stdout","time":1596.771875313,"data":"epoch  68 loss   1.1070 lr 9.28e-04\n"}
+,{"stream_name":"stdout","time":1619.499393272,"data":"epoch  69 loss   1.3755 lr 9.26e-04\n"}
+,{"stream_name":"stdout","time":1643.747784647,"data":"epoch  70 loss   1.1360 lr 9.24e-04 val EPE 2.011 D1 12.22%\n"}
+,{"stream_name":"stdout","time":1666.387781457,"data":"epoch  71 loss   1.5737 lr 9.22e-04\n"}
+,{"stream_name":"stdout","time":1688.959494359,"data":"epoch  72 loss   1.0127 lr 9.20e-04\n"}
+,{"stream_name":"stdout","time":1711.577295926,"data":"epoch  73 loss   1.1572 lr 9.18e-04\n"}
+,{"stream_name":"stdout","time":1734.120679489,"data":"epoch  74 loss   1.0491 lr 9.16e-04\n"}
+,{"stream_name":"stdout","time":1758.179391551,"data":"epoch  75 loss   1.3240 lr 9.14e-04 val EPE 2.026 D1 11.24%\n"}
+,{"stream_name":"stdout","time":1780.993746393,"data":"epoch  76 loss   1.1361 lr 9.11e-04\n"}
+,{"stream_name":"stdout","time":1803.934759833,"data":"epoch  77 loss   1.1133 lr 9.09e-04\n"}
+,{"stream_name":"stdout","time":1826.680420965,"data":"epoch  78 loss   0.8469 lr 9.07e-04\n"}
+,{"stream_name":"stdout","time":1849.321014673,"data":"epoch  79 loss   1.1270 lr 9.05e-04\n"}
+,{"stream_name":"stdout","time":1873.355009054,"data":"epoch  80 loss   1.2065 lr 9.02e-04 val EPE 1.961 D1 11.13%\n"}
+,{"stream_name":"stdout","time":1895.940099815,"data":"epoch  81 loss   1.0302 lr 9.00e-04\n"}
+,{"stream_name":"stdout","time":1918.409008617,"data":"epoch  82 loss   1.0002 lr 8.97e-04\n"}
+,{"stream_name":"stdout","time":1940.83061547,"data":"epoch  83 loss   1.2052 lr 8.95e-04\n"}
+,{"stream_name":"stdout","time":1963.473766878,"data":"epoch  84 loss   1.2235 lr 8.93e-04\n"}
+,{"stream_name":"stdout","time":1987.659032191,"data":"epoch  85 loss   1.0273 lr 8.90e-04 val EPE 2.147 D1 13.35%\n"}
+,{"stream_name":"stdout","time":2010.630053982,"data":"epoch  86 loss   1.1028 lr 8.88e-04\n"}
+,{"stream_name":"stdout","time":2033.896771361,"data":"epoch  87 loss   1.1195 lr 8.85e-04\n"}
+,{"stream_name":"stdout","time":2056.821887286,"data":"epoch  88 loss   0.9303 lr 8.83e-04\n"}
+,{"stream_name":"stdout","time":2079.673413994,"data":"epoch  89 loss   1.0236 lr 8.80e-04\n"}
+,{"stream_name":"stdout","time":2103.725618127,"data":"epoch  90 loss   1.1972 lr 8.78e-04 val EPE 2.401 D1 15.39%\n"}
+,{"stream_name":"stdout","time":2126.385857577,"data":"epoch  91 loss   1.1676 lr 8.75e-04\n"}
+,{"stream_name":"stdout","time":2148.900377106,"data":"epoch  92 loss   1.0056 lr 8.72e-04\n"}
+,{"stream_name":"stdout","time":2171.319157985,"data":"epoch  93 loss   0.8466 lr 8.70e-04\n"}
+,{"stream_name":"stdout","time":2193.834023776,"data":"epoch  94 loss   0.8557 lr 8.67e-04\n"}
+,{"stream_name":"stdout","time":2217.642848971,"data":"epoch  95 loss   1.0195 lr 8.64e-04 val EPE 1.888 D1 11.52%\n"}
+,{"stream_name":"stdout","time":2240.222159809,"data":"epoch  96 loss   1.0196 lr 8.62e-04\n"}
+,{"stream_name":"stdout","time":2262.731060169,"data":"epoch  97 loss   1.1431 lr 8.59e-04\n"}
+,{"stream_name":"stdout","time":2285.297890681,"data":"epoch  98 loss   1.0656 lr 8.56e-04\n"}
+,{"stream_name":"stdout","time":2307.791631513,"data":"epoch  99 loss   0.8806 lr 8.54e-04\n"}
+,{"stream_name":"stdout","time":2331.554123239,"data":"epoch 100 loss   1.2724 lr 8.51e-04 val EPE 1.994 D1 12.58%\n"}
+,{"stream_name":"stdout","time":2354.027696715,"data":"epoch 101 loss   0.9208 lr 8.48e-04\n"}
+,{"stream_name":"stdout","time":2376.477239693,"data":"epoch 102 loss   0.7184 lr 8.45e-04\n"}
+,{"stream_name":"stdout","time":2398.995360926,"data":"epoch 103 loss   0.9243 lr 8.42e-04\n"}
+,{"stream_name":"stdout","time":2421.416434074,"data":"epoch 104 loss   0.8442 lr 8.39e-04\n"}
+,{"stream_name":"stdout","time":2445.236809249,"data":"epoch 105 loss   0.9133 lr 8.37e-04 val EPE 1.857 D1 11.13%\n"}
+,{"stream_name":"stdout","time":2467.644003777,"data":"epoch 106 loss   0.9356 lr 8.34e-04\n"}
+,{"stream_name":"stdout","time":2490.145336534,"data":"epoch 107 loss   0.8497 lr 8.31e-04\n"}
+,{"stream_name":"stdout","time":2512.701703016,"data":"epoch 108 loss   0.9887 lr 8.28e-04\n"}
+,{"stream_name":"stdout","time":2535.250214379,"data":"epoch 109 loss   1.0439 lr 8.25e-04\n"}
+,{"stream_name":"stdout","time":2559.128361745,"data":"epoch 110 loss   1.0172 lr 8.22e-04 val EPE 1.798 D1 9.94%\n"}
+,{"stream_name":"stdout","time":2581.656469979,"data":"epoch 111 loss   1.0162 lr 8.19e-04\n"}
+,{"stream_name":"stdout","time":2604.156184063,"data":"epoch 112 loss   1.0825 lr 8.16e-04\n"}
+,{"stream_name":"stdout","time":2626.518841026,"data":"epoch 113 loss   1.1656 lr 8.13e-04\n"}
+,{"stream_name":"stdout","time":2648.975575993,"data":"epoch 114 loss   1.0580 lr 8.10e-04\n"}
+,{"stream_name":"stdout","time":2672.726006081,"data":"epoch 115 loss   1.2899 lr 8.06e-04 val EPE 2.099 D1 11.16%\n"}
+,{"stream_name":"stdout","time":2695.237675943,"data":"epoch 116 loss   0.8586 lr 8.03e-04\n"}
+,{"stream_name":"stdout","time":2717.762053829,"data":"epoch 117 loss   1.2675 lr 8.00e-04\n"}
+,{"stream_name":"stdout","time":2740.270249281,"data":"epoch 118 loss   1.1270 lr 7.97e-04\n"}
+,{"stream_name":"stdout","time":2762.834509562,"data":"epoch 119 loss   1.0438 lr 7.94e-04\n"}
+,{"stream_name":"stdout","time":2786.588871749,"data":"epoch 120 loss   1.0646 lr 7.91e-04 val EPE 1.889 D1 10.77%\n"}
+,{"stream_name":"stdout","time":2809.019930307,"data":"epoch 121 loss   0.8657 lr 7.88e-04\n"}
+,{"stream_name":"stdout","time":2831.533838371,"data":"epoch 122 loss   1.0297 lr 7.84e-04\n"}
+,{"stream_name":"stdout","time":2854.104939467,"data":"epoch 123 loss   0.9667 lr 7.81e-04\n"}
+,{"stream_name":"stdout","time":2876.676467464,"data":"epoch 124 loss   0.9537 lr 7.78e-04\n"}
+,{"stream_name":"stdout","time":2900.425019931,"data":"epoch 125 loss   1.1597 lr 7.75e-04 val EPE 1.862 D1 10.22%\n"}
+,{"stream_name":"stdout","time":2922.887614124,"data":"epoch 126 loss   1.2893 lr 7.71e-04\n"}
+,{"stream_name":"stdout","time":2945.331292268,"data":"epoch 127 loss   1.0394 lr 7.68e-04\n"}
+,{"stream_name":"stdout","time":2967.896513282,"data":"epoch 128 loss   0.8969 lr 7.65e-04\n"}
+,{"stream_name":"stdout","time":2990.240024399,"data":"epoch 129 loss   0.9715 lr 7.61e-04\n"}
+,{"stream_name":"stdout","time":3013.946928321,"data":"epoch 130 loss   1.0987 lr 7.58e-04 val EPE 1.962 D1 11.43%\n"}
+,{"stream_name":"stdout","time":3036.374910492,"data":"epoch 131 loss   0.7619 lr 7.55e-04\n"}
+,{"stream_name":"stdout","time":3058.743504174,"data":"epoch 132 loss   0.8049 lr 7.51e-04\n"}
+,{"stream_name":"stdout","time":3081.028636428,"data":"epoch 133 loss   0.8556 lr 7.48e-04\n"}
+,{"stream_name":"stdout","time":3103.370581373,"data":"epoch 134 loss   1.0989 lr 7.44e-04\n"}
+,{"stream_name":"stdout","time":3127.181027843,"data":"epoch 135 loss   0.8964 lr 7.41e-04 val EPE 1.924 D1 10.58%\n"}
+,{"stream_name":"stdout","time":3149.762716751,"data":"epoch 136 loss   0.9270 lr 7.37e-04\n"}
+,{"stream_name":"stdout","time":3172.209621549,"data":"epoch 137 loss   0.9241 lr 7.34e-04\n"}
+,{"stream_name":"stdout","time":3194.640650331,"data":"epoch 138 loss   0.9899 lr 7.30e-04\n"}
+,{"stream_name":"stdout","time":3216.991388405,"data":"epoch 139 loss   0.9548 lr 7.27e-04\n"}
+,{"stream_name":"stdout","time":3240.656664437,"data":"epoch 140 loss   0.9281 lr 7.23e-04 val EPE 1.716 D1 9.29%\n"}
+,{"stream_name":"stdout","time":3263.001073874,"data":"epoch 141 loss   0.8129 lr 7.20e-04\n"}
+,{"stream_name":"stdout","time":3285.412370525,"data":"epoch 142 loss   0.9314 lr 7.16e-04\n"}
+,{"stream_name":"stdout","time":3307.738774005,"data":"epoch 143 loss   0.9789 lr 7.13e-04\n"}
+,{"stream_name":"stdout","time":3330.098193484,"data":"epoch 144 loss   0.9208 lr 7.09e-04\n"}
+,{"stream_name":"stdout","time":3353.813000663,"data":"epoch 145 loss   0.9820 lr 7.06e-04 val EPE 1.774 D1 9.47%\n"}
+,{"stream_name":"stdout","time":3376.259962117,"data":"epoch 146 loss   1.0914 lr 7.02e-04\n"}
+,{"stream_name":"stdout","time":3398.705275085,"data":"epoch 147 loss   0.9452 lr 6.99e-04\n"}
+,{"stream_name":"stdout","time":3421.056022005,"data":"epoch 148 loss   0.9157 lr 6.95e-04\n"}
+,{"stream_name":"stdout","time":3443.434106657,"data":"epoch 149 loss   0.8469 lr 6.91e-04\n"}
+,{"stream_name":"stdout","time":3467.06378026,"data":"epoch 150 loss   0.8163 lr 6.88e-04 val EPE 1.862 D1 10.31%\n"}
+,{"stream_name":"stdout","time":3489.393393709,"data":"epoch 151 loss   1.0228 lr 6.84e-04\n"}
+,{"stream_name":"stdout","time":3511.770345916,"data":"epoch 152 loss   0.9494 lr 6.80e-04\n"}
+,{"stream_name":"stdout","time":3534.325761684,"data":"epoch 153 loss   0.9383 lr 6.77e-04\n"}
+,{"stream_name":"stdout","time":3556.875908698,"data":"epoch 154 loss   0.8535 lr 6.73e-04\n"}
+,{"stream_name":"stdout","time":3580.810275286,"data":"epoch 155 loss   0.9713 lr 6.69e-04 val EPE 2.034 D1 11.94%\n"}
+,{"stream_name":"stdout","time":3603.407268452,"data":"epoch 156 loss   0.8662 lr 6.66e-04\n"}
+,{"stream_name":"stdout","time":3626.085120174,"data":"epoch 157 loss   0.8999 lr 6.62e-04\n"}
+,{"stream_name":"stdout","time":3648.717543145,"data":"epoch 158 loss   0.9180 lr 6.58e-04\n"}
+,{"stream_name":"stdout","time":3671.216636263,"data":"epoch 159 loss   0.8343 lr 6.55e-04\n"}
+,{"stream_name":"stdout","time":3695.013429709,"data":"epoch 160 loss   0.7690 lr 6.51e-04 val EPE 1.773 D1 10.47%\n"}
+,{"stream_name":"stdout","time":3717.33717236,"data":"epoch 161 loss   0.9425 lr 6.47e-04\n"}
+,{"stream_name":"stdout","time":3739.655726768,"data":"epoch 162 loss   0.8521 lr 6.43e-04\n"}
+,{"stream_name":"stdout","time":3762.136788625,"data":"epoch 163 loss   0.8970 lr 6.39e-04\n"}
+,{"stream_name":"stdout","time":3784.6524724,"data":"epoch 164 loss   1.0135 lr 6.36e-04\n"}
+,{"stream_name":"stdout","time":3808.437476446,"data":"epoch 165 loss   0.8159 lr 6.32e-04 val EPE 1.809 D1 10.01%\n"}
+,{"stream_name":"stdout","time":3830.817457991,"data":"epoch 166 loss   0.9385 lr 6.28e-04\n"}
+,{"stream_name":"stdout","time":3853.187115079,"data":"epoch 167 loss   1.1035 lr 6.24e-04\n"}
+,{"stream_name":"stdout","time":3875.673863116,"data":"epoch 168 loss   0.8687 lr 6.21e-04\n"}
+,{"stream_name":"stdout","time":3898.291515913,"data":"epoch 169 loss   0.7191 lr 6.17e-04\n"}
+,{"stream_name":"stdout","time":3922.135888282,"data":"epoch 170 loss   0.8270 lr 6.13e-04 val EPE 2.076 D1 11.31%\n"}
+,{"stream_name":"stdout","time":3944.613211768,"data":"epoch 171 loss   0.9197 lr 6.09e-04\n"}
+,{"stream_name":"stdout","time":3967.124009092,"data":"epoch 172 loss   0.8891 lr 6.05e-04\n"}
+,{"stream_name":"stdout","time":3989.556938454,"data":"epoch 173 loss   0.8240 lr 6.01e-04\n"}
+,{"stream_name":"stdout","time":4012.055995423,"data":"epoch 174 loss   0.8295 lr 5.98e-04\n"}
+,{"stream_name":"stdout","time":4035.878374341,"data":"epoch 175 loss   0.8501 lr 5.94e-04 val EPE 1.764 D1 9.83%\n"}
+,{"stream_name":"stdout","time":4058.384292421,"data":"epoch 176 loss   1.0476 lr 5.90e-04\n"}
+,{"stream_name":"stdout","time":4080.959595566,"data":"epoch 177 loss   1.0671 lr 5.86e-04\n"}
+,{"stream_name":"stdout","time":4103.498011806,"data":"epoch 178 loss   1.1380 lr 5.82e-04\n"}
+,{"stream_name":"stdout","time":4125.952623254,"data":"epoch 179 loss   0.7801 lr 5.78e-04\n"}
+,{"stream_name":"stdout","time":4149.700604043,"data":"epoch 180 loss   0.8403 lr 5.74e-04 val EPE 1.899 D1 10.61%\n"}
+,{"stream_name":"stdout","time":4172.183579769,"data":"epoch 181 loss   0.9122 lr 5.70e-04\n"}
+,{"stream_name":"stdout","time":4194.724487661,"data":"epoch 182 loss   0.7265 lr 5.67e-04\n"}
+,{"stream_name":"stdout","time":4217.166515997,"data":"epoch 183 loss   0.8198 lr 5.63e-04\n"}
+,{"stream_name":"stdout","time":4239.58015581,"data":"epoch 184 loss   0.7894 lr 5.59e-04\n"}
+,{"stream_name":"stdout","time":4263.434158047,"data":"epoch 185 loss   0.7740 lr 5.55e-04 val EPE 1.790 D1 9.24%\n"}
+,{"stream_name":"stdout","time":4286.046234057,"data":"epoch 186 loss   0.8722 lr 5.51e-04\n"}
+,{"stream_name":"stdout","time":4308.609203019,"data":"epoch 187 loss   0.6727 lr 5.47e-04\n"}
+,{"stream_name":"stdout","time":4331.089859147,"data":"epoch 188 loss   0.8077 lr 5.43e-04\n"}
+,{"stream_name":"stdout","time":4353.646276965,"data":"epoch 189 loss   1.0506 lr 5.39e-04\n"}
+,{"stream_name":"stdout","time":4377.518087917,"data":"epoch 190 loss   0.9570 lr 5.35e-04 val EPE 2.325 D1 13.17%\n"}
+,{"stream_name":"stdout","time":4399.964156714,"data":"epoch 191 loss   0.8530 lr 5.31e-04\n"}
+,{"stream_name":"stdout","time":4422.537011144,"data":"epoch 192 loss   0.9284 lr 5.27e-04\n"}
+,{"stream_name":"stdout","time":4445.085753276,"data":"epoch 193 loss   0.8332 lr 5.24e-04\n"}
+,{"stream_name":"stdout","time":4467.506679846,"data":"epoch 194 loss   0.8113 lr 5.20e-04\n"}
+,{"stream_name":"stdout","time":4491.287810315,"data":"epoch 195 loss   0.8218 lr 5.16e-04 val EPE 1.938 D1 9.97%\n"}
+,{"stream_name":"stdout","time":4513.820847091,"data":"epoch 196 loss   1.0175 lr 5.12e-04\n"}
+,{"stream_name":"stdout","time":4536.440530876,"data":"epoch 197 loss   0.8395 lr 5.08e-04\n"}
+,{"stream_name":"stdout","time":4558.991352908,"data":"epoch 198 loss   0.8642 lr 5.04e-04\n"}
+,{"stream_name":"stdout","time":4581.412684078,"data":"epoch 199 loss   0.8316 lr 5.00e-04\n"}
+,{"stream_name":"stdout","time":4605.243635178,"data":"epoch 200 loss   0.8967 lr 4.96e-04 val EPE 1.828 D1 9.88%\n"}
+,{"stream_name":"stdout","time":4627.869189648,"data":"epoch 201 loss   0.9530 lr 4.92e-04\n"}
+,{"stream_name":"stdout","time":4650.386032074,"data":"epoch 202 loss   0.8983 lr 4.88e-04\n"}
+,{"stream_name":"stdout","time":4672.912754852,"data":"epoch 203 loss   0.8467 lr 4.84e-04\n"}
+,{"stream_name":"stdout","time":4695.395788586,"data":"epoch 204 loss   0.7169 lr 4.80e-04\n"}
+,{"stream_name":"stdout","time":4719.15228341,"data":"epoch 205 loss   0.7538 lr 4.76e-04 val EPE 1.725 D1 9.70%\n"}
+,{"stream_name":"stdout","time":4741.714473025,"data":"epoch 206 loss   0.7228 lr 4.73e-04\n"}
+,{"stream_name":"stdout","time":4764.201653903,"data":"epoch 207 loss   0.8117 lr 4.69e-04\n"}
+,{"stream_name":"stdout","time":4786.774886577,"data":"epoch 208 loss   0.8188 lr 4.65e-04\n"}
+,{"stream_name":"stdout","time":4809.280253996,"data":"epoch 209 loss   0.8162 lr 4.61e-04\n"}
+,{"stream_name":"stdout","time":4833.176940015,"data":"epoch 210 loss   0.9650 lr 4.57e-04 val EPE 2.002 D1 11.17%\n"}
+,{"stream_name":"stdout","time":4855.771773696,"data":"epoch 211 loss   0.7345 lr 4.53e-04\n"}
+,{"stream_name":"stdout","time":4878.345518066,"data":"epoch 212 loss   0.7175 lr 4.49e-04\n"}
+,{"stream_name":"stdout","time":4900.91717939,"data":"epoch 213 loss   0.7129 lr 4.45e-04\n"}
+,{"stream_name":"stdout","time":4923.628211448,"data":"epoch 214 loss   0.8225 lr 4.41e-04\n"}
+,{"stream_name":"stdout","time":4947.615339774,"data":"epoch 215 loss   0.9454 lr 4.37e-04 val EPE 1.689 D1 9.84%\n"}
+,{"stream_name":"stdout","time":4970.240776474,"data":"epoch 216 loss   0.8763 lr 4.33e-04\n"}
+,{"stream_name":"stdout","time":4993.053862942,"data":"epoch 217 loss   0.7040 lr 4.30e-04\n"}
+,{"stream_name":"stdout","time":5015.796031054,"data":"epoch 218 loss   0.8342 lr 4.26e-04\n"}
+,{"stream_name":"stdout","time":5038.585737376,"data":"epoch 219 loss   0.8707 lr 4.22e-04\n"}
+,{"stream_name":"stdout","time":5062.736056273,"data":"epoch 220 loss   0.7380 lr 4.18e-04 val EPE 1.605 D1 8.49%\n"}
+,{"stream_name":"stdout","time":5085.493165274,"data":"epoch 221 loss   0.7167 lr 4.14e-04\n"}
+,{"stream_name":"stdout","time":5108.144241106,"data":"epoch 222 loss   0.7640 lr 4.10e-04\n"}
+,{"stream_name":"stdout","time":5130.660940539,"data":"epoch 223 loss   0.7265 lr 4.06e-04\n"}
+,{"stream_name":"stdout","time":5153.219031785,"data":"epoch 224 loss   0.6619 lr 4.02e-04\n"}
+,{"stream_name":"stdout","time":5177.061400288,"data":"epoch 225 loss   0.9454 lr 3.99e-04 val EPE 1.667 D1 9.39%\n"}
+,{"stream_name":"stdout","time":5199.564998049,"data":"epoch 226 loss   0.7517 lr 3.95e-04\n"}
+,{"stream_name":"stdout","time":5222.09339585,"data":"epoch 227 loss   0.8270 lr 3.91e-04\n"}
+,{"stream_name":"stdout","time":5244.527568308,"data":"epoch 228 loss   0.7640 lr 3.87e-04\n"}
+,{"stream_name":"stdout","time":5266.966565597,"data":"epoch 229 loss   0.6415 lr 3.83e-04\n"}
+,{"stream_name":"stdout","time":5290.85020863,"data":"epoch 230 loss   0.8195 lr 3.79e-04 val EPE 1.776 D1 8.98%\n"}
+,{"stream_name":"stdout","time":5313.28434251,"data":"epoch 231 loss   0.6476 lr 3.76e-04\n"}
+,{"stream_name":"stdout","time":5335.793728715,"data":"epoch 232 loss   0.7583 lr 3.72e-04\n"}
+,{"stream_name":"stdout","time":5358.347608552,"data":"epoch 233 loss   0.9525 lr 3.68e-04\n"}
+,{"stream_name":"stdout","time":5380.894861741,"data":"epoch 234 loss   1.0111 lr 3.64e-04\n"}
+,{"stream_name":"stdout","time":5404.904796583,"data":"epoch 235 loss   0.9256 lr 3.61e-04 val EPE 1.636 D1 8.72%\n"}
+,{"stream_name":"stdout","time":5427.348668209,"data":"epoch 236 loss   0.6876 lr 3.57e-04\n"}
+,{"stream_name":"stdout","time":5449.877790858,"data":"epoch 237 loss   0.8269 lr 3.53e-04\n"}
+,{"stream_name":"stdout","time":5472.349572183,"data":"epoch 238 loss   0.8909 lr 3.49e-04\n"}
+,{"stream_name":"stdout","time":5494.878970002,"data":"epoch 239 loss   0.8626 lr 3.45e-04\n"}
+,{"stream_name":"stdout","time":5518.677057394,"data":"epoch 240 loss   0.7425 lr 3.42e-04 val EPE 1.741 D1 9.37%\n"}
+,{"stream_name":"stdout","time":5541.225104615,"data":"epoch 241 loss   0.7883 lr 3.38e-04\n"}
+,{"stream_name":"stdout","time":5563.707658255,"data":"epoch 242 loss   0.6989 lr 3.34e-04\n"}
+,{"stream_name":"stdout","time":5586.312437655,"data":"epoch 243 loss   0.7103 lr 3.31e-04\n"}
+,{"stream_name":"stdout","time":5608.87338669,"data":"epoch 244 loss   0.7583 lr 3.27e-04\n"}
+,{"stream_name":"stdout","time":5632.908444035,"data":"epoch 245 loss   0.7702 lr 3.23e-04 val EPE 1.633 D1 8.62%\n"}
+,{"stream_name":"stdout","time":5655.519846916,"data":"epoch 246 loss   0.8161 lr 3.20e-04\n"}
+,{"stream_name":"stdout","time":5678.328583669,"data":"epoch 247 loss   0.7582 lr 3.16e-04\n"}
+,{"stream_name":"stdout","time":5701.241071048,"data":"epoch 248 loss   0.8073 lr 3.12e-04\n"}
+,{"stream_name":"stdout","time":5724.198038624,"data":"epoch 249 loss   0.7317 lr 3.09e-04\n"}
+,{"stream_name":"stdout","time":5748.669092563,"data":"epoch 250 loss   0.7419 lr 3.05e-04 val EPE 1.872 D1 9.97%\n"}
+,{"stream_name":"stdout","time":5771.69339986,"data":"epoch 251 loss   0.7861 lr 3.01e-04\n"}
+,{"stream_name":"stdout","time":5794.549699238,"data":"epoch 252 loss   0.6969 lr 2.98e-04\n"}
+,{"stream_name":"stdout","time":5817.2737691,"data":"epoch 253 loss   0.8395 lr 2.94e-04\n"}
+,{"stream_name":"stdout","time":5839.858766164,"data":"epoch 254 loss   0.6786 lr 2.91e-04\n"}
+,{"stream_name":"stdout","time":5863.89749769,"data":"epoch 255 loss   0.9474 lr 2.87e-04 val EPE 1.907 D1 10.39%\n"}
+,{"stream_name":"stdout","time":5886.503600343,"data":"epoch 256 loss   0.8046 lr 2.84e-04\n"}
+,{"stream_name":"stdout","time":5909.080087625,"data":"epoch 257 loss   1.0107 lr 2.80e-04\n"}
+,{"stream_name":"stdout","time":5931.489086311,"data":"epoch 258 loss   0.7697 lr 2.77e-04\n"}
+,{"stream_name":"stdout","time":5954.098987178,"data":"epoch 259 loss   0.8542 lr 2.73e-04\n"}
+,{"stream_name":"stdout","time":5977.994008252,"data":"epoch 260 loss   0.7378 lr 2.70e-04 val EPE 1.664 D1 8.92%\n"}
+,{"stream_name":"stdout","time":6000.575978823,"data":"epoch 261 loss   0.7419 lr 2.66e-04\n"}
+,{"stream_name":"stdout","time":6023.218532439,"data":"epoch 262 loss   0.7524 lr 2.63e-04\n"}
+,{"stream_name":"stdout","time":6045.826203844,"data":"epoch 263 loss   0.6843 lr 2.59e-04\n"}
+,{"stream_name":"stdout","time":6068.366078969,"data":"epoch 264 loss   0.7810 lr 2.56e-04\n"}
+,{"stream_name":"stdout","time":6092.468421837,"data":"epoch 265 loss   0.7911 lr 2.52e-04 val EPE 1.589 D1 8.88%\n"}
+,{"stream_name":"stdout","time":6115.27208883,"data":"epoch 266 loss   0.7434 lr 2.49e-04\n"}
+,{"stream_name":"stdout","time":6138.448079212,"data":"epoch 267 loss   0.8235 lr 2.45e-04\n"}
+,{"stream_name":"stdout","time":6161.647472665,"data":"epoch 268 loss   0.6927 lr 2.42e-04\n"}
+,{"stream_name":"stdout","time":6184.620088305,"data":"epoch 269 loss   0.6960 lr 2.39e-04\n"}
+,{"stream_name":"stdout","time":6208.847243215,"data":"epoch 270 loss   0.7411 lr 2.35e-04 val EPE 1.641 D1 8.36%\n"}
+,{"stream_name":"stdout","time":6231.661245335,"data":"epoch 271 loss   0.7002 lr 2.32e-04\n"}
+,{"stream_name":"stdout","time":6254.497542683,"data":"epoch 272 loss   0.7132 lr 2.29e-04\n"}
+,{"stream_name":"stdout","time":6277.558114685,"data":"epoch 273 loss   0.7351 lr 2.25e-04\n"}
+,{"stream_name":"stdout","time":6300.374138955,"data":"epoch 274 loss   0.7914 lr 2.22e-04\n"}
+,{"stream_name":"stdout","time":6324.609285769,"data":"epoch 275 loss   0.6795 lr 2.19e-04 val EPE 1.594 D1 8.36%\n"}
+,{"stream_name":"stdout","time":6347.606055878,"data":"epoch 276 loss   0.6603 lr 2.16e-04\n"}
+,{"stream_name":"stdout","time":6370.507616607,"data":"epoch 277 loss   0.6921 lr 2.12e-04\n"}
+,{"stream_name":"stdout","time":6393.245703632,"data":"epoch 278 loss   0.8741 lr 2.09e-04\n"}
+,{"stream_name":"stdout","time":6416.046087863,"data":"epoch 279 loss   0.7124 lr 2.06e-04\n"}
+,{"stream_name":"stdout","time":6440.168264158,"data":"epoch 280 loss   0.7897 lr 2.03e-04 val EPE 1.556 D1 8.35%\n"}
+,{"stream_name":"stdout","time":6462.899923961,"data":"epoch 281 loss   0.8128 lr 2.00e-04\n"}
+,{"stream_name":"stdout","time":6485.803881068,"data":"epoch 282 loss   0.6591 lr 1.97e-04\n"}
+,{"stream_name":"stdout","time":6508.58382894,"data":"epoch 283 loss   0.7006 lr 1.94e-04\n"}
+,{"stream_name":"stdout","time":6531.396614934,"data":"epoch 284 loss   0.7448 lr 1.90e-04\n"}
+,{"stream_name":"stdout","time":6555.528123318,"data":"epoch 285 loss   0.6573 lr 1.87e-04 val EPE 1.697 D1 9.00%\n"}
+,{"stream_name":"stdout","time":6578.35555034,"data":"epoch 286 loss   0.7307 lr 1.84e-04\n"}
+,{"stream_name":"stdout","time":6601.05243103,"data":"epoch 287 loss   0.6000 lr 1.81e-04\n"}
+,{"stream_name":"stdout","time":6623.640767836,"data":"epoch 288 loss   0.6209 lr 1.78e-04\n"}
+,{"stream_name":"stdout","time":6646.42505305,"data":"epoch 289 loss   0.6320 lr 1.75e-04\n"}
+,{"stream_name":"stdout","time":6670.82989308,"data":"epoch 290 loss   0.7393 lr 1.72e-04 val EPE 1.556 D1 7.92%\n"}
+,{"stream_name":"stdout","time":6693.662468613,"data":"epoch 291 loss   0.7251 lr 1.69e-04\n"}
+,{"stream_name":"stdout","time":6716.382883824,"data":"epoch 292 loss   0.8334 lr 1.66e-04\n"}
+,{"stream_name":"stdout","time":6739.143996549,"data":"epoch 293 loss   0.6473 lr 1.63e-04\n"}
+,{"stream_name":"stdout","time":6761.79438271,"data":"epoch 294 loss   0.5901 lr 1.61e-04\n"}
+,{"stream_name":"stdout","time":6785.726603983,"data":"epoch 295 loss   0.6462 lr 1.58e-04 val EPE 1.597 D1 8.01%\n"}
+,{"stream_name":"stdout","time":6808.360971387,"data":"epoch 296 loss   0.7612 lr 1.55e-04\n"}
+,{"stream_name":"stdout","time":6830.994052007,"data":"epoch 297 loss   0.7092 lr 1.52e-04\n"}
+,{"stream_name":"stdout","time":6853.616031395,"data":"epoch 298 loss   0.6496 lr 1.49e-04\n"}
+,{"stream_name":"stdout","time":6876.1919821,"data":"epoch 299 loss   0.6160 lr 1.46e-04\n"}
+,{"stream_name":"stdout","time":6900.117625202,"data":"epoch 300 loss   0.6619 lr 1.44e-04 val EPE 1.685 D1 8.96%\n"}
+,{"stream_name":"stdout","time":6922.658946384,"data":"epoch 301 loss   0.6607 lr 1.41e-04\n"}
+,{"stream_name":"stdout","time":6945.213157246,"data":"epoch 302 loss   0.8636 lr 1.38e-04\n"}
+,{"stream_name":"stdout","time":6967.808608662,"data":"epoch 303 loss   0.5542 lr 1.36e-04\n"}
+,{"stream_name":"stdout","time":6990.392671572,"data":"epoch 304 loss   0.6065 lr 1.33e-04\n"}
+,{"stream_name":"stdout","time":7014.288515311,"data":"epoch 305 loss   0.7067 lr 1.30e-04 val EPE 1.696 D1 8.89%\n"}
+,{"stream_name":"stdout","time":7036.79038822,"data":"epoch 306 loss   0.6849 lr 1.28e-04\n"}
+,{"stream_name":"stdout","time":7059.401258588,"data":"epoch 307 loss   0.6923 lr 1.25e-04\n"}
+,{"stream_name":"stdout","time":7081.993647532,"data":"epoch 308 loss   0.6007 lr 1.22e-04\n"}
+,{"stream_name":"stdout","time":7104.568062418,"data":"epoch 309 loss   0.6888 lr 1.20e-04\n"}
+,{"stream_name":"stdout","time":7128.411249139,"data":"epoch 310 loss   0.6131 lr 1.17e-04 val EPE 1.562 D1 8.20%\n"}
+,{"stream_name":"stdout","time":7150.992654484,"data":"epoch 311 loss   0.7605 lr 1.15e-04\n"}
+,{"stream_name":"stdout","time":7173.726737888,"data":"epoch 312 loss   0.6672 lr 1.12e-04\n"}
+,{"stream_name":"stdout","time":7196.486192251,"data":"epoch 313 loss   0.7151 lr 1.10e-04\n"}
+,{"stream_name":"stdout","time":7219.044105349,"data":"epoch 314 loss   0.6089 lr 1.07e-04\n"}
+,{"stream_name":"stdout","time":7242.912083266,"data":"epoch 315 loss   0.6142 lr 1.05e-04 val EPE 1.617 D1 8.85%\n"}
+,{"stream_name":"stdout","time":7265.663537319,"data":"epoch 316 loss   0.6992 lr 1.03e-04\n"}
+,{"stream_name":"stdout","time":7288.524574751,"data":"epoch 317 loss   0.7524 lr 1.00e-04\n"}
+,{"stream_name":"stdout","time":7311.258978818,"data":"epoch 318 loss   0.6291 lr 9.78e-05\n"}
+,{"stream_name":"stdout","time":7333.875735265,"data":"epoch 319 loss   0.6059 lr 9.55e-05\n"}
+,{"stream_name":"stdout","time":7357.80467699,"data":"epoch 320 loss   0.6989 lr 9.32e-05 val EPE 1.603 D1 8.56%\n"}
+,{"stream_name":"stdout","time":7380.577106953,"data":"epoch 321 loss   0.5761 lr 9.09e-05\n"}
+,{"stream_name":"stdout","time":7403.233468369,"data":"epoch 322 loss   0.6763 lr 8.87e-05\n"}
+,{"stream_name":"stdout","time":7426.08491354,"data":"epoch 323 loss   0.7441 lr 8.65e-05\n"}
+,{"stream_name":"stdout","time":7448.665032963,"data":"epoch 324 loss   0.7029 lr 8.43e-05\n"}
+,{"stream_name":"stdout","time":7472.731286734,"data":"epoch 325 loss   0.6465 lr 8.21e-05 val EPE 1.591 D1 8.11%\n"}
+,{"stream_name":"stdout","time":7495.411055044,"data":"epoch 326 loss   0.7050 lr 8.00e-05\n"}
+,{"stream_name":"stdout","time":7518.054638392,"data":"epoch 327 loss   0.6304 lr 7.78e-05\n"}
+,{"stream_name":"stdout","time":7540.655372688,"data":"epoch 328 loss   0.7849 lr 7.57e-05\n"}
+,{"stream_name":"stdout","time":7563.178009248,"data":"epoch 329 loss   0.6330 lr 7.37e-05\n"}
+,{"stream_name":"stdout","time":7587.111002794,"data":"epoch 330 loss   0.7221 lr 7.16e-05 val EPE 1.633 D1 8.46%\n"}
+,{"stream_name":"stdout","time":7609.555968886,"data":"epoch 331 loss   0.6001 lr 6.96e-05\n"}
+,{"stream_name":"stdout","time":7632.166694387,"data":"epoch 332 loss   0.6838 lr 6.76e-05\n"}
+,{"stream_name":"stdout","time":7654.610262249,"data":"epoch 333 loss   0.6648 lr 6.57e-05\n"}
+,{"stream_name":"stdout","time":7677.070177744,"data":"epoch 334 loss   0.6493 lr 6.38e-05\n"}
+,{"stream_name":"stdout","time":7700.86311117,"data":"epoch 335 loss   0.6990 lr 6.18e-05 val EPE 1.752 D1 9.48%\n"}
+,{"stream_name":"stdout","time":7723.478908331,"data":"epoch 336 loss   0.6373 lr 6.00e-05\n"}
+,{"stream_name":"stdout","time":7746.196008781,"data":"epoch 337 loss   0.6283 lr 5.81e-05\n"}
+,{"stream_name":"stdout","time":7768.869204477,"data":"epoch 338 loss   0.6992 lr 5.63e-05\n"}
+,{"stream_name":"stdout","time":7791.505548592,"data":"epoch 339 loss   0.6053 lr 5.45e-05\n"}
+,{"stream_name":"stdout","time":7815.458087482,"data":"epoch 340 loss   0.6339 lr 5.27e-05 val EPE 1.613 D1 8.39%\n"}
+,{"stream_name":"stdout","time":7838.066425485,"data":"epoch 341 loss   0.6838 lr 5.10e-05\n"}
+,{"stream_name":"stdout","time":7860.670877071,"data":"epoch 342 loss   0.6586 lr 4.93e-05\n"}
+,{"stream_name":"stdout","time":7883.387356943,"data":"epoch 343 loss   0.6373 lr 4.76e-05\n"}
+,{"stream_name":"stdout","time":7906.142909557,"data":"epoch 344 loss   0.6092 lr 4.59e-05\n"}
+,{"stream_name":"stdout","time":7930.123374215,"data":"epoch 345 loss   0.6222 lr 4.43e-05 val EPE 1.620 D1 8.32%\n"}
+,{"stream_name":"stdout","time":7952.64755261,"data":"epoch 346 loss   0.7293 lr 4.27e-05\n"}
+,{"stream_name":"stdout","time":7975.2774941,"data":"epoch 347 loss   0.6326 lr 4.11e-05\n"}
+,{"stream_name":"stdout","time":7997.822737341,"data":"epoch 348 loss   0.6681 lr 3.96e-05\n"}
+,{"stream_name":"stdout","time":8020.345956015,"data":"epoch 349 loss   0.6315 lr 3.81e-05\n"}
+,{"stream_name":"stdout","time":8044.173885775,"data":"epoch 350 loss   0.6110 lr 3.66e-05 val EPE 1.605 D1 8.50%\n"}
+,{"stream_name":"stdout","time":8066.667497192,"data":"epoch 351 loss   0.7019 lr 3.51e-05\n"}
+,{"stream_name":"stdout","time":8089.160465783,"data":"epoch 352 loss   0.6459 lr 3.37e-05\n"}
+,{"stream_name":"stdout","time":8111.767020886,"data":"epoch 353 loss   0.7606 lr 3.23e-05\n"}
+,{"stream_name":"stdout","time":8134.338733743,"data":"epoch 354 loss   0.5789 lr 3.09e-05\n"}
+,{"stream_name":"stdout","time":8158.222133679,"data":"epoch 355 loss   0.6973 lr 2.96e-05 val EPE 1.647 D1 8.76%\n"}
+,{"stream_name":"stdout","time":8180.857655462,"data":"epoch 356 loss   0.5438 lr 2.82e-05\n"}
+,{"stream_name":"stdout","time":8203.414292177,"data":"epoch 357 loss   0.6905 lr 2.70e-05\n"}
+,{"stream_name":"stdout","time":8226.083679377,"data":"epoch 358 loss   0.6667 lr 2.57e-05\n"}
+,{"stream_name":"stdout","time":8248.694843689,"data":"epoch 359 loss   0.6354 lr 2.45e-05\n"}
+,{"stream_name":"stdout","time":8272.49968842,"data":"epoch 360 loss   0.7016 lr 2.33e-05 val EPE 1.617 D1 8.52%\n"}
+,{"stream_name":"stdout","time":8295.088295873,"data":"epoch 361 loss   0.7094 lr 2.21e-05\n"}
+,{"stream_name":"stdout","time":8317.749283338,"data":"epoch 362 loss   0.7226 lr 2.10e-05\n"}
+,{"stream_name":"stdout","time":8340.762803592,"data":"epoch 363 loss   0.6629 lr 1.99e-05\n"}
+,{"stream_name":"stdout","time":8363.75979001,"data":"epoch 364 loss   0.5792 lr 1.88e-05\n"}
+,{"stream_name":"stdout","time":8388.104958759,"data":"epoch 365 loss   0.6324 lr 1.77e-05 val EPE 1.563 D1 8.00%\n"}
+,{"stream_name":"stdout","time":8411.219742108,"data":"epoch 366 loss   0.6576 lr 1.67e-05\n"}
+,{"stream_name":"stdout","time":8434.269993028,"data":"epoch 367 loss   0.6850 lr 1.57e-05\n"}
+,{"stream_name":"stdout","time":8457.096557933,"data":"epoch 368 loss   0.7046 lr 1.47e-05\n"}
+,{"stream_name":"stdout","time":8479.733200588,"data":"epoch 369 loss   0.6772 lr 1.38e-05\n"}
+,{"stream_name":"stdout","time":8503.725133524,"data":"epoch 370 loss   0.5755 lr 1.29e-05 val EPE 1.602 D1 8.36%\n"}
+,{"stream_name":"stdout","time":8526.337688253,"data":"epoch 371 loss   0.5705 lr 1.20e-05\n"}
+,{"stream_name":"stdout","time":8549.074100172,"data":"epoch 372 loss   0.5909 lr 1.12e-05\n"}
+,{"stream_name":"stdout","time":8571.764562886,"data":"epoch 373 loss   0.6012 lr 1.04e-05\n"}
+,{"stream_name":"stdout","time":8595.078716973,"data":"epoch 374 loss   0.5282 lr 9.61e-06\n"}
+,{"stream_name":"stdout","time":8619.044253159,"data":"epoch 375 loss   0.5678 lr 8.86e-06 val EPE 1.577 D1 8.17%\n"}
+,{"stream_name":"stdout","time":8641.901388998,"data":"epoch 376 loss   0.7347 lr 8.14e-06\n"}
+,{"stream_name":"stdout","time":8664.570028392,"data":"epoch 377 loss   0.6515 lr 7.45e-06\n"}
+,{"stream_name":"stdout","time":8687.124428981,"data":"epoch 378 loss   0.7565 lr 6.79e-06\n"}
+,{"stream_name":"stdout","time":8709.637408831,"data":"epoch 379 loss   0.6711 lr 6.16e-06\n"}
+,{"stream_name":"stdout","time":8733.469635355,"data":"epoch 380 loss   0.6877 lr 5.56e-06 val EPE 1.604 D1 8.36%\n"}
+,{"stream_name":"stdout","time":8755.985243027,"data":"epoch 381 loss   0.6428 lr 4.99e-06\n"}
+,{"stream_name":"stdout","time":8778.644089571,"data":"epoch 382 loss   0.7079 lr 4.45e-06\n"}
+,{"stream_name":"stdout","time":8801.169071926,"data":"epoch 383 loss   0.7395 lr 3.94e-06\n"}
+,{"stream_name":"stdout","time":8823.737083839,"data":"epoch 384 loss   0.7170 lr 3.47e-06\n"}
+,{"stream_name":"stdout","time":8847.674672137,"data":"epoch 385 loss   0.6596 lr 3.02e-06 val EPE 1.586 D1 8.23%\n"}
+,{"stream_name":"stdout","time":8870.454087233,"data":"epoch 386 loss   0.6475 lr 2.60e-06\n"}
+,{"stream_name":"stdout","time":8893.195608015,"data":"epoch 387 loss   0.6288 lr 2.22e-06\n"}
+,{"stream_name":"stdout","time":8915.913897986,"data":"epoch 388 loss   0.6522 lr 1.86e-06\n"}
+,{"stream_name":"stdout","time":8938.459183937,"data":"epoch 389 loss   0.6651 lr 1.54e-06\n"}
+,{"stream_name":"stdout","time":8962.37886274,"data":"epoch 390 loss   0.6129 lr 1.25e-06 val EPE 1.594 D1 8.31%\n"}
+,{"stream_name":"stdout","time":8984.963927091,"data":"epoch 391 loss   0.6277 lr 9.87e-07\n"}
+,{"stream_name":"stdout","time":9007.605568909,"data":"epoch 392 loss   0.6408 lr 7.55e-07\n"}
+,{"stream_name":"stdout","time":9030.138463666,"data":"epoch 393 loss   0.5785 lr 5.55e-07\n"}
+,{"stream_name":"stdout","time":9052.62365406,"data":"epoch 394 loss   0.6835 lr 3.85e-07\n"}
+,{"stream_name":"stdout","time":9076.417852341,"data":"epoch 395 loss   0.6869 lr 2.47e-07 val EPE 1.599 D1 8.34%\n"}
+,{"stream_name":"stdout","time":9099.007778095,"data":"epoch 396 loss   0.5810 lr 1.39e-07\n"}
+,{"stream_name":"stdout","time":9121.501055451,"data":"epoch 397 loss   0.6040 lr 6.17e-08\n"}
+,{"stream_name":"stdout","time":9143.964841421,"data":"epoch 398 loss   0.6956 lr 1.54e-08\n"}
+,{"stream_name":"stdout","time":9167.948054233,"data":"epoch 399 loss   0.6916 lr 0.00e+00 val EPE 1.599 D1 8.34%\n"}
+,{"stream_name":"stdout","time":9167.981216483,"data":"P2A seed 1 done: wall 9152.2s best10 EPE 1.5557 @epoch 290\n"}
+,{"stream_name":"stdout","time":9170.611895318,"data":"STOP[armp]: epochs_incomplete {\"rows\": 400}\n"}
+,{"stream_name":"stderr","time":9170.627385789,"data":"E0 STOPPED: {\"arm\": \"armp\", \"status\": \"STOPPED\", \"reason\": \"epochs_incomplete\", \"detail\": {\"rows\": 400}, \"utc\": \"2026-09-21T18:59:17Z\"}\n"}
+,{"stream_name":"stderr","time":9173.323922968,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":9173.323958742,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":9173.634440569,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":9173.634480065,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":9174.336552425,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":9175.640961717,"data":"[NbConvertApp] Writing 308962 bytes to __results__.html\n"}
+]

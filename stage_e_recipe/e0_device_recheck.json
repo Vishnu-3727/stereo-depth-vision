@@ -1,0 +1,81 @@
+{
+  "experiment": "stage-e E0 device comparability calibration (T4 vs local)",
+  "note": "E0 pulled checkpoints re-scored LOCALLY on the frozen 40-scene contract via run_experiment.py's scoring path (eval_tier2.score + strict_load_report/weight_sha); E3 NOT scored",
+  "local_device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "local_torch": "2.7.0+cu128",
+  "seeds": {
+    "0": {
+      "best": {
+        "checkpoint": "stage_e_recipe/kaggle/e0_output/seed0/e0_seed0_best.pth",
+        "t4_epe": 1.2137376978006678,
+        "strict_load_ok": true,
+        "weight_sha16_match": true,
+        "local_epe": 1.2137449641741622,
+        "local_minus_t4": 7.266373494463352e-06,
+        "contract_match_local": true,
+        "local_valid_pixels": 3802797,
+        "local_scenes": 40
+      },
+      "final": {
+        "checkpoint": "stage_e_recipe/kaggle/e0_output/seed0/e0_seed0_final.pth",
+        "t4_epe": 1.2152820811062441,
+        "strict_load_ok": true,
+        "weight_sha16_match": true,
+        "local_epe": 1.2152655521568734,
+        "local_minus_t4": -1.6528949370764323e-05,
+        "contract_match_local": true,
+        "local_valid_pixels": 3802797,
+        "local_scenes": 40
+      }
+    },
+    "1": {
+      "best": {
+        "checkpoint": "stage_e_recipe/kaggle/e0_output/seed1/e0_seed1_best.pth",
+        "t4_epe": 1.1962888661150484,
+        "strict_load_ok": true,
+        "weight_sha16_match": true,
+        "local_epe": 1.1964179306198257,
+        "local_minus_t4": 0.0001290645047773431,
+        "contract_match_local": true,
+        "local_valid_pixels": 3802797,
+        "local_scenes": 40
+      },
+      "final": {
+        "checkpoint": "stage_e_recipe/kaggle/e0_output/seed1/e0_seed1_final.pth",
+        "t4_epe": 1.2066585633654616,
+        "strict_load_ok": true,
+        "weight_sha16_match": true,
+        "local_epe": 1.206619768885791,
+        "local_minus_t4": -3.879447967070071e-05,
+        "contract_match_local": true,
+        "local_valid_pixels": 3802797,
+        "local_scenes": 40
+      }
+    },
+    "2": {
+      "best": {
+        "checkpoint": "stage_e_recipe/kaggle/e0_output/seed2/e0_seed2_best.pth",
+        "t4_epe": 1.2013258479999012,
+        "strict_load_ok": true,
+        "weight_sha16_match": true,
+        "local_epe": 1.2012906087538902,
+        "local_minus_t4": -3.5239246011009584e-05,
+        "contract_match_local": true,
+        "local_valid_pixels": 3802797,
+        "local_scenes": 40
+      },
+      "final": {
+        "checkpoint": "stage_e_recipe/kaggle/e0_output/seed2/e0_seed2_final.pth",
+        "t4_epe": 1.2156821021667996,
+        "strict_load_ok": true,
+        "weight_sha16_match": true,
+        "local_epe": 1.2158001959564555,
+        "local_minus_t4": 0.00011809378965588202,
+        "contract_match_local": true,
+        "local_valid_pixels": 3802797,
+        "local_scenes": 40
+      }
+    }
+  },
+  "utc": "2026-09-22T02:56:43Z"
+}

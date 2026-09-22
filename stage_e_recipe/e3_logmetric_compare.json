@@ -1,0 +1,49 @@
+{
+  "experiment": "stage-e E0-vs-E3 training-log metric comparison",
+  "definition": "min over per-epoch log rows carrying non-null val_epe (identical to recover_e3.py; null-safe for E0 logs)",
+  "note": "training-log 10-scene monitor metric, NOT frozen-contract EPE; no verdict, no interpretation",
+  "seeds": {
+    "E0_seed0": {
+      "log_file": "stage_e_recipe/kaggle/e0_output/seed0/e0_seed0_epoch_log.jsonl",
+      "row_count": 200,
+      "scored_rows": 41,
+      "best10_epe": 1.6347025965593243,
+      "best10_epoch": 185
+    },
+    "E0_seed1": {
+      "log_file": "stage_e_recipe/kaggle/e0_output/seed1/e0_seed1_epoch_log.jsonl",
+      "row_count": 200,
+      "scored_rows": 41,
+      "best10_epe": 1.6020022664326363,
+      "best10_epoch": 185
+    },
+    "E0_seed2": {
+      "log_file": "stage_e_recipe/kaggle/e0_output/seed2/e0_seed2_epoch_log.jsonl",
+      "row_count": 200,
+      "scored_rows": 41,
+      "best10_epe": 1.5627101178116103,
+      "best10_epoch": 160
+    },
+    "E3_seed0": {
+      "log_file": "stage_e_recipe/kaggle/e3_output/seed0/repo/stage_e_recipe/run/armp/training_log.jsonl",
+      "row_count": 400,
+      "scored_rows": 81,
+      "best10_epe": 1.5475103577638942,
+      "best10_epoch": 260
+    },
+    "E3_seed1": {
+      "log_file": "stage_e_recipe/kaggle/e3_output/seed1/repo/stage_e_recipe/run/armp/training_log.jsonl",
+      "row_count": 400,
+      "scored_rows": 81,
+      "best10_epe": 1.555660406224229,
+      "best10_epoch": 290
+    },
+    "E3_seed2": {
+      "log_file": "stage_e_recipe/kaggle/e3_output/seed2/repo/stage_e_recipe/run/armp/training_log.jsonl",
+      "row_count": 400,
+      "scored_rows": 81,
+      "best10_epe": 1.527850291134275,
+      "best10_epoch": 270
+    }
+  }
+}
