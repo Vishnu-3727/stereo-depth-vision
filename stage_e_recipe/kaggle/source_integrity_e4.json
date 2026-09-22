@@ -1,0 +1,120 @@
+{
+  "bundle": "stage_e_recipe/kaggle/bundle_e4",
+  "purpose": "Stage E E4 pretrain Kaggle bundle (from-scratch, subset corpus)",
+  "byte_identical_files": {
+    "src/__init__.py": {
+      "repo_source": "src/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/models/__init__.py": {
+      "repo_source": "src/models/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/models/stereonet/__init__.py": {
+      "repo_source": "src/models/stereonet/__init__.py",
+      "sha256": "cd46319a865c1613b6db320a22b9e58e245e4f13b39c82895421eb7aa7546469",
+      "identical": true
+    },
+    "src/models/stereonet/aggregation.py": {
+      "repo_source": "src/models/stereonet/aggregation.py",
+      "sha256": "a734782a80256cc6732036fd154706833adb23c64cb03b9c2287b3b7ad7c6702",
+      "identical": true
+    },
+    "src/models/stereonet/blocks.py": {
+      "repo_source": "src/models/stereonet/blocks.py",
+      "sha256": "fcdc9ab0c0f7d337144bd2432cd43d0dce6abd419b4058630d0b5b4ace0eac8a",
+      "identical": true
+    },
+    "src/models/stereonet/cost_volume.py": {
+      "repo_source": "src/models/stereonet/cost_volume.py",
+      "sha256": "aecf80145834ac504c73ced551ad9571cc951a84aa29379e35e25189e46c65f6",
+      "identical": true
+    },
+    "src/models/stereonet/excitation.py": {
+      "repo_source": "src/models/stereonet/excitation.py",
+      "sha256": "fb7103ed4bc719331258441d495444f71c76acdafac59e4141e78beb0f2104fb",
+      "identical": true
+    },
+    "src/models/stereonet/feature_extractor.py": {
+      "repo_source": "src/models/stereonet/feature_extractor.py",
+      "sha256": "0c49f78ed074907afc37dc09f6eb017be0f268df17ab279c91f45976bd2d3d05",
+      "identical": true
+    },
+    "src/models/stereonet/refinement.py": {
+      "repo_source": "src/models/stereonet/refinement.py",
+      "sha256": "185e53c92b615d7e8c2084e3e2bd693c05ab94f98ebd8e95a7af89a0473d7401",
+      "identical": true
+    },
+    "src/models/stereonet/regression.py": {
+      "repo_source": "src/models/stereonet/regression.py",
+      "sha256": "09ba98e0eca8740b91f9d498c4ae6f103ddb9a976adac35714142bca2c8f9a32",
+      "identical": true
+    },
+    "src/models/stereonet/stereonet.py": {
+      "repo_source": "src/models/stereonet/stereonet.py",
+      "sha256": "92f9275786f323d6eca9e19b55f7aa7cdada20885ff38e7876ba6cb234f28c56",
+      "identical": true
+    },
+    "src/losses/__init__.py": {
+      "repo_source": "src/losses/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/losses/disparity.py": {
+      "repo_source": "src/losses/disparity.py",
+      "sha256": "aa4da7e6c788cb665cf594d2fa37e0e4f10cc5ca22cadf83f136c0ad18fab7eb",
+      "identical": true
+    },
+    "src/evaluation/__init__.py": {
+      "repo_source": "src/evaluation/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/evaluation/metrics.py": {
+      "repo_source": "src/evaluation/metrics.py",
+      "sha256": "04d826913bb15301838a257dddac5ddd355786eccad8fe329ff1f2ae4157c9ec",
+      "identical": true
+    },
+    "src/datasets/__init__.py": {
+      "repo_source": "src/datasets/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/datasets/kitti2015.py": {
+      "repo_source": "src/datasets/kitti2015.py",
+      "sha256": "9f3369d85c07b35680b928767d7b521fc9110d14a594adf7165fcf36a1bec25e",
+      "identical": true
+    },
+    "src/datasets/pfm.py": {
+      "repo_source": "src/datasets/pfm.py",
+      "sha256": "8a2573f35643a48cbb56190a1045ce3f1d48247f9c1a4da697c4e565046665e6",
+      "identical": true
+    },
+    "phase1/harness/determinism.py": {
+      "repo_source": "phase1/harness/determinism.py",
+      "sha256": "aa69c0b3303bbc2035378d0091b8d66ae376f8afab6804dd2794a6ca7bd4a415",
+      "identical": true
+    },
+    "stage_e_recipe/e4_pretrain/scripts/enumerate_subset_triplets.py": {
+      "repo_source": "stage_e_recipe/e4_pretrain/scripts/enumerate_subset_triplets.py",
+      "sha256": "673bb00641548331cfc7626aa81184bec91fe6d80b3978dd020a29ff0c234d45",
+      "identical": true
+    },
+    "stage_e_recipe/e4_pretrain/scripts/ft3d_subset.py": {
+      "repo_source": "stage_e_recipe/e4_pretrain/scripts/ft3d_subset.py",
+      "sha256": "a25d5fda5e75200a7ad1dcaee878f8be59ccb0ab77195019b14018e9d55843e8",
+      "identical": true
+    },
+    "stage_e_recipe/e4_pretrain/scripts/train_e4_pretrain.py": {
+      "repo_source": "stage_e_recipe/e4_pretrain/scripts/train_e4_pretrain.py",
+      "sha256": "3b668e710f2a846cc306a3180483277d316248cfab9fdf029df5a5c25dcf2919",
+      "identical": true
+    }
+  },
+  "declared_deltas": {},
+  "verdict": "PASS",
+  "file_count": 23,
+  "total_bytes": 93460
+}
