@@ -1,0 +1,16 @@
+{
+  "id": "vishnuvardhanksece/stage-e-e4-probe",
+  "title": "Stage E E4 probe",
+  "code_file": "stage-e-e4-probe.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": false,
+  "dataset_sources": [
+    "arjun12367/sceneflow-flyingthings-images",
+    "arjun12367/sceneflow-flyingthings-disparity",
+    "vishnuvardhanksece/stage-e-e4-bundle"
+  ],
+  "kernel_sources": []
+}

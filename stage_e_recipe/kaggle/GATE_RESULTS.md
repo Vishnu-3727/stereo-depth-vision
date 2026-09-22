@@ -106,3 +106,44 @@ fits inside a single ~30 h quota week, and every run clears the 12-hour session
 cap by a wide margin. But the figure was stated as measured, so the correction
 is recorded here rather than quietly replaced. A rate probe of this shape
 should be read as a **lower bound** on wall time, not an estimate of it.
+
+## Addendum — E4 rate probe: two attempts, no rate number yet
+
+The E4 rate probe runs under a different Kaggle account from the earlier
+Stage-E work, which used `vishnu3727`. The E4 account is `vishnuvardhanksece`
+and the probe kernel slug is `vishnuvardhanksece/stage-e-e4-probe`. It has so
+far made two attempts and produced no rate number.
+
+The first attempt, kernel version 1, aborted in `find_mounts()`. It could not
+resolve either FlyingThings3D_subset mount, reporting images None and disparity
+None, while the `/kaggle/input` listing showed only `['/kaggle/input/datasets']`.
+The cause was a changed mount layout rather than a bad attachment. Kaggle's
+runtime now mounts attached datasets nested, at
+`/kaggle/input/datasets/<owner>/<slug>`, not at `/kaggle/input/<slug>`, and the
+probe's finder only looked one level deep. The kernel's server-side metadata was
+correct and listed all three dataset sources, so nothing was wrong with the
+attachment itself.
+
+The fix records here for the next reader is that `find_mounts()` in
+`kernel_e4_probe/stage-e-e4-probe.py` now walks `/kaggle/input` to any depth,
+pruning at any directory named `FlyingThings3D_subset`, and on failure prints
+the listing to depth 2. `find_bundle()` already walked recursively and needed
+no change.
+
+The second attempt, kernel version 2, resolved both mounts, with images at
+`/kaggle/input/datasets/arjun12367/sceneflow-flyingthings-images` and disparity
+at `/kaggle/input/datasets/arjun12367/sceneflow-flyingthings-disparity`. It
+then aborted at the device gate with `E4 PROBE ABORT: no GPU (rate numbers need
+the T4)`. The environment record it printed was Python 3.12.13, torch
+2.10.0+cpu, CUDA null, cuDNN null, GPU null, device count 0, numpy 2.0.2, and
+OpenCV 4.13.0, which is a CPU-only torch build on a machine with zero visible
+devices. This happened although the kernel metadata requests `enable_gpu: true`
+and `machine_shape: NvidiaTeslaT4`. Kaggle accepted the push and ran the
+session on CPU.
+
+The consequence is plain. The probe has produced no rate number yet, so gate 3
+of the E4 pre-run gates is still open and no epoch count is committed. Why the
+GPU was not granted is not measured from inside the kernel, so it remains an
+open question whether the cause is an exhausted weekly GPU quota or an
+unverified account, and that has to be checked on the Kaggle website rather
+than from the API.

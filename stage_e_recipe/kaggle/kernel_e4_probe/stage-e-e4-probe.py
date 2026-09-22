@@ -38,6 +38,7 @@ PROBE_DIR = WORKING / "e4probe"
 
 IMAGE_SENTINEL = Path("FlyingThings3D_subset/train/image_clean/left")
 DISP_SENTINEL = Path("FlyingThings3D_subset/train/disparity/left")
+KAGGLE_INPUT = Path("/kaggle/input")
 
 
 def sha256(p: Path) -> str:
@@ -48,25 +49,49 @@ def sha256(p: Path) -> str:
     return h.hexdigest()
 
 
-def find_mounts() -> tuple[Path, Path]:
+def find_mounts(base: Path = KAGGLE_INPUT) -> tuple[Path, Path]:
     """Resolve the images mount and the disparity mount.
 
-    Searches /kaggle/input/* for a FlyingThings3D_subset tree containing
-    train/image_clean/left (images) and one containing
-    train/disparity/left (disparity). Fails loudly with the directory
-    listing if either is missing: a silent wrong mount is the failure mode
-    this guards against.
+    Walks base at any depth for a directory R such that R/IMAGE_SENTINEL
+    is a directory (images) or R/DISP_SENTINEL is a directory
+    (disparity). Prunes the walk at any FlyingThings3D_subset directory
+    so it never descends into the thousands of frame directories. Fails
+    loudly with a depth-2 listing if either root is missing: a silent
+    wrong mount is the failure mode this guards against.
     """
-    base = Path("/kaggle/input")
-    listing = sorted(str(p) for p in base.iterdir()) if base.is_dir() else []
+    base = Path(base)
     images_root = disp_root = None
     if base.is_dir():
-        for child in sorted(base.iterdir()):
-            if (child / IMAGE_SENTINEL).is_dir() and images_root is None:
-                images_root = child
-            if (child / DISP_SENTINEL).is_dir() and disp_root is None:
-                disp_root = child
+        for dp, dn, _fn in os.walk(base):
+            dn.sort()
+            if "FlyingThings3D_subset" in dn:
+                dn.remove("FlyingThings3D_subset")
+                candidate = Path(dp)
+                if images_root is None and (candidate / IMAGE_SENTINEL).is_dir():
+                    images_root = candidate
+                if disp_root is None and (candidate / DISP_SENTINEL).is_dir():
+                    disp_root = candidate
+                if images_root is not None and disp_root is not None:
+                    break
+                continue
+            candidate = Path(dp)
+            if images_root is None and (candidate / IMAGE_SENTINEL).is_dir():
+                images_root = candidate
+            if disp_root is None and (candidate / DISP_SENTINEL).is_dir():
+                disp_root = candidate
+            if images_root is not None and disp_root is not None:
+                break
     if images_root is None or disp_root is None:
+        listing: list[str] = []
+        if base.is_dir():
+            for child in sorted(base.iterdir()):
+                listing.append(str(child))
+                if child.is_dir():
+                    try:
+                        for grand in sorted(child.iterdir()):
+                            listing.append(str(grand))
+                    except OSError:
+                        continue
         raise FileNotFoundError(
             "E4 PROBE ABORT: could not resolve both FlyingThings3D_subset mounts "
             f"(images={images_root}, disparity={disp_root}); "
@@ -207,5 +232,22 @@ def main() -> None:
     print(f"wrote {OUT}")
 
 
+def _demo_find_mounts() -> None:
+    """Self-check: roots nested two levels deep resolve via find_mounts()."""
+    import tempfile
+    with tempfile.TemporaryDirectory() as td:
+        base = Path(td)
+        exp_images = base / "datasets" / "images-ds"
+        exp_disp = base / "datasets" / "disp-ds"
+        (exp_images / IMAGE_SENTINEL).mkdir(parents=True)
+        (exp_disp / DISP_SENTINEL).mkdir(parents=True)
+        got_images, got_disp = find_mounts(base)
+        assert got_images == exp_images, f"{got_images} != {exp_images}"
+        assert got_disp == exp_disp, f"{got_disp} != {exp_disp}"
+
+
 if __name__ == "__main__":
-    main()
+    if os.environ.get("E4_PROBE_SELF_CHECK") == "1" and not Path("/kaggle/input").exists():
+        _demo_find_mounts()
+    else:
+        main()
