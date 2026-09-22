@@ -147,6 +147,44 @@ If no useful epoch count fits one session, the options are resume-chaining
 across sessions or a corpus subsample, and either one is an amendment here, not
 an improvisation at run time.
 
+### Amendment recorded 2026-09-22 — rate probe complete, 8 epochs committed as a resume-chained run
+
+Three rate probes have completed, all on a Tesla T4, all 200 optimizer steps,
+batch 2, crop 256x512, corpus FlyingThings3D_subset: probe version 1, account
+vishnu3727: 0.38109 s/step, session wall 594.8 s; probe version 4, account
+vishnuvardhanksece: 0.34610 s/step, session wall 483.6 s; probe version 5,
+account vishnuvardhanksece: 0.57646 s/step, session wall 1387.1 s. The corpus
+measured identically in all three probes: 21,818 triplets, 0 incomplete, 20,727
+train and 1,091 pretrain-validation holdout.
+
+Steps per epoch is 20,727 / 2 = 10,364. At that divisor the three draws give
+0.34610 s/step -> 0.996 h/epoch raw -> 1.24 h/epoch corrected, 0.38109 s/step
+-> 1.097 h/epoch raw -> 1.36 h/epoch corrected, and 0.57646 s/step -> 1.660
+h/epoch raw -> 2.06 h/epoch corrected, where the second column applies the +24%
+correction the earlier E0 addendum established for probes of this shape.
+Kaggle's session cap is about 12 hours. At the corrected slow rate an 8-epoch
+pretrain needs about 16.5 h and cannot complete in one session; at the
+corrected fast rate it needs about 9.9 h and can.
+
+In probe 5 the manifest enumeration — pure file listing, no GPU — was also
+about 3x slower than in probes 1 and 4. Training rate and file listing moved
+together. The inference drawn from that co-movement, stated here as an
+inference and not as a measurement, is that the spread is host I/O contention
+on the Kaggle mount rather than anything about the model or the code. That
+cause was not measured directly; the host is not visible from inside a kernel.
+
+The epoch count is therefore committed at 8, and it is not committed as what
+fits one session, because the measured spread means no single number fits every
+draw. The run is instead made resume-chained, which this section already named
+as an allowed alternative: the trainer now writes an atomic per-epoch resume.pt
+and accepts --resume, so a session kill costs the remainder of that session and
+not the run, with that behaviour recorded in commits 1af076d and a94d7c8.
+Eight epochs completes in one session on a fast draw and across two on a slow
+one.
+
+This count is a budget decision and carries no claim that 8 is the right amount
+of pretraining. Nothing about the acceptance rule in section 5 changes.
+
 ## 7 Pre-run gates
 
 All must pass, and all are read-only or cheap, before the pretrain is authorized:
@@ -164,6 +202,19 @@ All must pass, and all are read-only or cheap, before the pretrain is authorized
    the intended account before any push.
 6. **KITTI subset and bundle present under the active account**, since the
    finetune stage needs them.
+
+### Gate status at this amendment
+
+Gate 1, non-zero valid pixels, is PASS. Probe 5 reported
+first_batch_valid_pixels = 262,144, which is 2 x 256 x 512, every pixel of the
+batch. The trainer was patched to report and to abort on zero, because a
+200-step probe truncates mid-epoch and the per-epoch guard never ran.
+
+Gate 2, manifest built and counted, is PASS on the counts recorded in the
+section 6 amendment. Gate 3, rate probe, is COMPLETE on the numbers recorded in
+the section 6 amendment. Gate 4, dataset versions pinned, remains outstanding.
+The pinned versions were not supplied to the author of this amendment, and they
+are left open here rather than guessed at.
 
 ## 8 Stop conditions
 

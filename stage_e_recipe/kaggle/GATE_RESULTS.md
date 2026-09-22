@@ -147,3 +147,41 @@ GPU was not granted is not measured from inside the kernel, so it remains an
 open question whether the cause is an exhausted weekly GPU quota or an
 unverified account, and that has to be checked on the Kaggle website rather
 than from the API.
+
+## Addendum — E4 rate probe: three completions and a rate spread
+
+Three probes have since completed on the Tesla T4, each 200 optimizer steps,
+batch 2, crop 256x512, corpus FlyingThings3D_subset. Probe version 1, account
+vishnu3727: 0.38109 s/step, session wall 594.8 s. Probe version 4, account
+vishnuvardhanksece: 0.34610 s/step, session wall 483.6 s. Probe version 5,
+account vishnuvardhanksece: 0.57646 s/step, session wall 1387.1 s. The corpus
+counted identically each time: 21,818 triplets, 0 incomplete, 20,727 train and
+1,091 pretrain-validation holdout, so steps per epoch is 20,727 / 2 = 10,364.
+That divisor gives 0.34610 s/step -> 0.996 h/epoch raw -> 1.24 h/epoch
+corrected, 0.38109 s/step -> 1.097 h/epoch raw -> 1.36 h/epoch corrected, and
+0.57646 s/step -> 1.660 h/epoch raw -> 2.06 h/epoch corrected, where the second
+column applies the +24% correction the earlier addendum established for probes
+of this shape. Against the session cap of about 12 hours, an 8-epoch pretrain
+needs about 9.9 h on the fast draw and about 16.5 h on the slow one, which is
+why the epoch count is committed as a resume-chained run rather than as what
+fits one session.
+
+The spread itself is the finding. In probe 5 the manifest enumeration, which is
+pure file listing with no GPU involved, was also about 3x slower than in probes
+1 and 4, and training rate and file listing moved together. The inference
+recorded here, as inference rather than measurement, is host I/O contention on
+the Kaggle mount rather than anything about the model or the code, and that
+cause was not measured directly because the host is not visible from inside a
+kernel.
+
+On the gates, probe 5 reported first_batch_valid_pixels = 262,144, which is
+2 x 256 x 512, every pixel of the batch, so gate 1 passes on a full-valid
+batch, with the trainer patched to report and to abort on zero because a
+200-step probe ends mid-epoch before the per-epoch guard runs. Gate 2 passes on
+the counts above, and gate 3 is complete on the numbers above. Gate 4 remains
+without pinned versions in the record available here.
+
+A probe of this shape remains a lower bound, as the earlier addendum recorded,
+and the spread now gives that caution a second reason: the draw varies from
+session to session, so any single rate number understates both the overhead and
+the range.
