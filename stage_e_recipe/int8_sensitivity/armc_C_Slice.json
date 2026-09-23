@@ -1,0 +1,38 @@
+{
+  "config": "C_Slice",
+  "label": "keep Slice fp32 (exclude all Slice nodes)",
+  "n_excluded": 47,
+  "artifact_sha256": "3ab80227429a24aff0c7f301d67519beae962b60a71d08e995404719c95c7273",
+  "epe": 5.248941413313285,
+  "delta_vs_fp32": 4.062956070598755,
+  "delta_vs_int8": 0.0,
+  "recovered_fraction_R": 0.0,
+  "d1": 67.79404738144056,
+  "metrics": {
+    "valid_pixels": 3802797,
+    "epe": 5.248941413313285,
+    "rmse": 7.266354245453155,
+    "d1": 67.79404738144056,
+    "bad1": 89.4216283435587,
+    "bad2": 79.096833199353,
+    "bad3": 68.33956690299271
+  },
+  "guard": {
+    "scenes": 40,
+    "valid_pixels": 3802797,
+    "gt_scale": 256.0,
+    "split": "hailo_val",
+    "gt_source": "disp_occ_0",
+    "contract": {
+      "scenes": 40,
+      "valid_pixels": 3802797,
+      "gt_scale": 256.0,
+      "split": "hailo_val",
+      "gt_source": "disp_occ_0"
+    },
+    "contract_match": true
+  },
+  "nonfinite_pixels": 0,
+  "score_s": 40.7,
+  "quantize_s": 37.0
+}

@@ -1,0 +1,38 @@
+{
+  "config": "C0_conv_only_int8",
+  "label": "conv-only int8 (exclude every non-Conv node)",
+  "n_excluded": 661,
+  "artifact_sha256": "511fac965dd0be7cc39aaf929a4ea27c2dc8107281df28fecb188583443b6adf",
+  "epe": 1.49634554527325,
+  "delta_vs_fp32": 0.31036020255872,
+  "delta_vs_int8": -3.7525958680400353,
+  "recovered_fraction_R": 0.9236122180092924,
+  "d1": 7.655365248263318,
+  "metrics": {
+    "valid_pixels": 3802797,
+    "epe": 1.49634554527325,
+    "rmse": 3.509436203845396,
+    "d1": 7.655365248263318,
+    "bad1": 44.817091209444,
+    "bad2": 17.051659607388984,
+    "bad3": 8.173036846300237
+  },
+  "guard": {
+    "scenes": 40,
+    "valid_pixels": 3802797,
+    "gt_scale": 256.0,
+    "split": "hailo_val",
+    "gt_source": "disp_occ_0",
+    "contract": {
+      "scenes": 40,
+      "valid_pixels": 3802797,
+      "gt_scale": 256.0,
+      "split": "hailo_val",
+      "gt_source": "disp_occ_0"
+    },
+    "contract_match": true
+  },
+  "nonfinite_pixels": 0,
+  "score_s": 42.2,
+  "quantize_s": 42.7
+}

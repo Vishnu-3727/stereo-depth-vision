@@ -1,0 +1,38 @@
+{
+  "config": "C_Concat",
+  "label": "keep Concat fp32 (exclude all Concat nodes)",
+  "n_excluded": 26,
+  "artifact_sha256": "f2c561328e21a1c4aabe4c54f2060012392abd45ad17dda269585a2420900899",
+  "epe": 5.1944019987836105,
+  "delta_vs_fp32": 4.00841665606908,
+  "delta_vs_int8": -0.0545394145296747,
+  "recovered_fraction_R": 0.013423579674991973,
+  "d1": 67.51827667898128,
+  "metrics": {
+    "valid_pixels": 3802797,
+    "epe": 5.1944019987836105,
+    "rmse": 7.156797648453039,
+    "d1": 67.51827667898128,
+    "bad1": 89.29814028989715,
+    "bad2": 78.87278758240316,
+    "bad3": 68.05619653113222
+  },
+  "guard": {
+    "scenes": 40,
+    "valid_pixels": 3802797,
+    "gt_scale": 256.0,
+    "split": "hailo_val",
+    "gt_source": "disp_occ_0",
+    "contract": {
+      "scenes": 40,
+      "valid_pixels": 3802797,
+      "gt_scale": 256.0,
+      "split": "hailo_val",
+      "gt_source": "disp_occ_0"
+    },
+    "contract_match": true
+  },
+  "nonfinite_pixels": 0,
+  "score_s": 41.5,
+  "quantize_s": 41.9
+}

@@ -1,0 +1,49 @@
+{
+  "arm": "leave-one-out",
+  "index": 13,
+  "group": "/feature_extractor/residual/residual.0/conv1/Conv",
+  "artifact": "stage_e_recipe/int8_sensitivity/loo_13_feature_extractor__residual__residual_0__conv1__Conv.onnx",
+  "quantize": {
+    "path": "stage_e_recipe/int8_sensitivity/loo_13_feature_extractor__residual__residual_0__conv1__Conv.onnx",
+    "sha256": "499cd4b81c2731faa9b3d98c39e359cbf1f7f8bd5f456d3bef2ecc21ba39136d",
+    "bytes": 763624,
+    "parent_onnx_sha256": "7453b2be2be420d45e6a9d18104a23a8e25f02ec29312646886e380ff32b9645",
+    "procedure": "quantize_static, QDQ, QInt8 act, QInt8 weight, per_channel",
+    "calibration": "first 32 scenes of hailo_calib",
+    "nodes_to_exclude": [
+      "/feature_extractor/residual/residual.0/conv1/Conv"
+    ],
+    "quantize_s": 39.1
+  },
+  "epe": 5.248960210794968,
+  "delta_vs_fp32": 4.062974868080438,
+  "delta_vs_int8": 1.879748168320816e-05,
+  "recovered_fraction_R": -4.6265530211450184e-06,
+  "d1": 67.7941262707423,
+  "metrics": {
+    "valid_pixels": 3802797,
+    "epe": 5.248960210794968,
+    "rmse": 7.266563475741932,
+    "d1": 67.7941262707423,
+    "bad1": 89.41794684281071,
+    "bad2": 79.09357244154764,
+    "bad3": 68.33996134950144
+  },
+  "guard": {
+    "scenes": 40,
+    "valid_pixels": 3802797,
+    "gt_scale": 256.0,
+    "split": "hailo_val",
+    "gt_source": "disp_occ_0",
+    "contract": {
+      "scenes": 40,
+      "valid_pixels": 3802797,
+      "gt_scale": 256.0,
+      "split": "hailo_val",
+      "gt_source": "disp_occ_0"
+    },
+    "contract_match": true
+  },
+  "nonfinite_pixels": 0,
+  "score_s": 42.5
+}

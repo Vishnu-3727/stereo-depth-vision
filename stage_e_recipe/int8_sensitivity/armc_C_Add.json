@@ -1,0 +1,38 @@
+{
+  "config": "C_Add",
+  "label": "keep Add fp32 (exclude all Add nodes)",
+  "n_excluded": 20,
+  "artifact_sha256": "d3ccd3ead9963cdc7922047f5cc238c4de030fa7fcb8a49ace2b63c85b1e2dcb",
+  "epe": 5.293241740367141,
+  "delta_vs_fp32": 4.107256397652611,
+  "delta_vs_int8": 0.04430032705385578,
+  "recovered_fraction_R": -0.010903471827921406,
+  "d1": 68.58604337807147,
+  "metrics": {
+    "valid_pixels": 3802797,
+    "epe": 5.293241740367141,
+    "rmse": 7.293805595265354,
+    "d1": 68.58604337807147,
+    "bad1": 89.83448235601323,
+    "bad2": 79.75374441496615,
+    "bad3": 69.13813700810219
+  },
+  "guard": {
+    "scenes": 40,
+    "valid_pixels": 3802797,
+    "gt_scale": 256.0,
+    "split": "hailo_val",
+    "gt_source": "disp_occ_0",
+    "contract": {
+      "scenes": 40,
+      "valid_pixels": 3802797,
+      "gt_scale": 256.0,
+      "split": "hailo_val",
+      "gt_source": "disp_occ_0"
+    },
+    "contract_match": true
+  },
+  "nonfinite_pixels": 0,
+  "score_s": 41.5,
+  "quantize_s": 38.2
+}

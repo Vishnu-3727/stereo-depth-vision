@@ -1,0 +1,38 @@
+{
+  "config": "C_Mul",
+  "label": "keep Mul fp32 (exclude all Mul nodes)",
+  "n_excluded": 3,
+  "artifact_sha256": "2f09546fb40b7e32bab047cc8ed77e3ae885034f75ef0e49782f685431bdb11c",
+  "epe": 2.9240765011969065,
+  "delta_vs_fp32": 1.7380911584823766,
+  "delta_vs_int8": -2.3248649121163787,
+  "recovered_fraction_R": 0.5722102015672951,
+  "d1": 38.90728324441194,
+  "metrics": {
+    "valid_pixels": 3802797,
+    "epe": 2.9240765011969065,
+    "rmse": 4.571122383711981,
+    "d1": 38.90728324441194,
+    "bad1": 81.61469045021336,
+    "bad2": 61.02655492785968,
+    "bad3": 39.492431491872956
+  },
+  "guard": {
+    "scenes": 40,
+    "valid_pixels": 3802797,
+    "gt_scale": 256.0,
+    "split": "hailo_val",
+    "gt_source": "disp_occ_0",
+    "contract": {
+      "scenes": 40,
+      "valid_pixels": 3802797,
+      "gt_scale": 256.0,
+      "split": "hailo_val",
+      "gt_source": "disp_occ_0"
+    },
+    "contract_match": true
+  },
+  "nonfinite_pixels": 0,
+  "score_s": 40.7,
+  "quantize_s": 37.2
+}

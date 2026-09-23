@@ -1,0 +1,38 @@
+{
+  "config": "C_Softmax",
+  "label": "keep Softmax fp32 (exclude all Softmax nodes)",
+  "n_excluded": 1,
+  "artifact_sha256": "7f1f7f84a40a8044c3e4132a16d8bf13a05a9921e666e298da2c377d403d7037",
+  "epe": 6.661685912117354,
+  "delta_vs_fp32": 5.475700569402824,
+  "delta_vs_int8": 1.4127444988040692,
+  "recovered_fraction_R": -0.34771345647256136,
+  "d1": 34.78778909313329,
+  "metrics": {
+    "valid_pixels": 3802797,
+    "epe": 6.661685912117354,
+    "rmse": 15.80797213464702,
+    "d1": 34.78778909313329,
+    "bad1": 76.97392208945153,
+    "bad2": 53.78412258135262,
+    "bad3": 35.00612838392373
+  },
+  "guard": {
+    "scenes": 40,
+    "valid_pixels": 3802797,
+    "gt_scale": 256.0,
+    "split": "hailo_val",
+    "gt_source": "disp_occ_0",
+    "contract": {
+      "scenes": 40,
+      "valid_pixels": 3802797,
+      "gt_scale": 256.0,
+      "split": "hailo_val",
+      "gt_source": "disp_occ_0"
+    },
+    "contract_match": true
+  },
+  "nonfinite_pixels": 0,
+  "score_s": 45.2,
+  "quantize_s": 38.0
+}

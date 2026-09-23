@@ -1,0 +1,38 @@
+{
+  "config": "C_Squeeze",
+  "label": "keep Squeeze fp32 (exclude all Squeeze nodes)",
+  "n_excluded": 1,
+  "artifact_sha256": "ac6b06598ea562e7eb1cf4d79731f1ea69f9da05bd4cb4aaaa2d2e0a860f5058",
+  "epe": 5.256760392548062,
+  "delta_vs_fp32": 4.070775049833532,
+  "delta_vs_int8": 0.007818979234777146,
+  "recovered_fraction_R": -0.0019244557654360434,
+  "d1": 67.67718602912541,
+  "metrics": {
+    "valid_pixels": 3802797,
+    "epe": 5.256760392548062,
+    "rmse": 7.277944044891423,
+    "d1": 67.67718602912541,
+    "bad1": 89.36080469191494,
+    "bad2": 78.99572341095251,
+    "bad3": 68.20637546521678
+  },
+  "guard": {
+    "scenes": 40,
+    "valid_pixels": 3802797,
+    "gt_scale": 256.0,
+    "split": "hailo_val",
+    "gt_source": "disp_occ_0",
+    "contract": {
+      "scenes": 40,
+      "valid_pixels": 3802797,
+      "gt_scale": 256.0,
+      "split": "hailo_val",
+      "gt_source": "disp_occ_0"
+    },
+    "contract_match": true
+  },
+  "nonfinite_pixels": 0,
+  "score_s": 40.4,
+  "quantize_s": 42.5
+}
