@@ -30,6 +30,12 @@ M0_FINAL, S0_FINAL = 1.2125409, 0.0090235
 CONTROL_BEST = [1.2137377, 1.1962889, 1.2013258]
 P_CONTROL, INT8_MARGIN = 5.5865268, 0.05
 
+# E4 (broader-pretrain init, E0 recipe) is scored on this same ladder: E0
+# remains the control, its instantiated constants apply unchanged, and the
+# E3-only delta_final requirement does NOT apply to E4 (spec 2026-09-22
+# stage-e-e4-pretrain-design §5). delta_final is still RECORDED for E4.
+SUPPORTED_EXPS = ("e0", "e1", "e2", "e3", "e4")
+
 
 def load(exp: str) -> tuple[list, dict | None]:
     seeds = []
@@ -97,7 +103,8 @@ def decide(exp: str, seeds: list, int8: dict | None) -> dict:
                          f"{S0_BEST:.7f}: inside the control's own seed spread, "
                          f"so not distinguishable from noise")
         return out
-    # E3 only: the final checkpoint must clear its bar too
+    # E3 only: the final checkpoint must clear its bar too. E4 records
+    # delta_final (in out above) but is never gated on it.
     if exp == "e3":
         out["delta_final_required"] = S0_FINAL
         if d_f < S0_FINAL:
@@ -108,6 +115,8 @@ def decide(exp: str, seeds: list, int8: dict | None) -> dict:
                              f"control's 41, so best alone is not sufficient")
             return out
     # 5/6
+    if exp == "e4":
+        out["delta_final_required"] = None  # recorded, not required (§5)
     if max(bests) < min(CONTROL_BEST):
         out["verdict"] = "ACCEPT (non-overlapping)"
         out["reason"] = (f"delta_best {d_b:+.7f} >= {S0_BEST:.7f} and worst "
@@ -121,6 +130,8 @@ def decide(exp: str, seeds: list, int8: dict | None) -> dict:
 
 def main() -> None:
     exp = sys.argv[1] if len(sys.argv) > 1 else "e1"
+    if exp not in SUPPORTED_EXPS:
+        sys.exit(f"unknown experiment {exp!r}; expected one of {SUPPORTED_EXPS}")
     seeds, int8 = load(exp)
     out = decide(exp, seeds, int8)
     dst = HERE / f"{exp}_verdict.json"

@@ -50,6 +50,11 @@ EXPECTED_PARAMS = 397954
 EXP = sys.argv[1] if len(sys.argv) > 1 else "e0"
 WORK = HERE / f"int8_{EXP}"
 
+# The gate is experiment-agnostic: every candidate (E1, E2, E3, and E4 with
+# its broader-pretrain init) is measured by this same script against the
+# P_control reference below. Only e0 establishes P_control.
+SUPPORTED_EXPS = ("e0", "e1", "e2", "e3", "e4")
+
 
 def sha256(p: Path) -> str:
     h = hashlib.sha256()
@@ -163,6 +168,8 @@ def score_torch(ckpt: Path, ds) -> dict:
 
 
 def main() -> None:
+    if EXP not in SUPPORTED_EXPS:
+        sys.exit(f"unknown experiment {EXP!r}; expected one of {SUPPORTED_EXPS}")
     targets = sorted(
         (int(p.parent.name.replace("seed", "")), p)
         for p in (HERE / "kaggle" / f"{EXP}_output").glob(f"seed*/{EXP}_seed*_best.pth"))
