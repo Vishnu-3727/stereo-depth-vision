@@ -86,13 +86,24 @@ MODELS = {
                 "config": {"downsample_levels": 3, "num_disparities": 24,
                            "cost_volume_shift": "right",
                            "regression_normalize": True}},
+    # E3 seed-0 final: the Stage-E E3 recipe (EXP-P2A-SCALE-COVERAGE-001, seed
+    # 0, 400 epochs) at the same ARM-P architecture as ARMP_S1 above, hence
+    # the same explicit config. The checkpoint is a byte copy of the frozen
+    # stage_e_recipe/kaggle/e3_output/seed0/e3_seed0_final.pth (sha256
+    # 82e58bc441a4...ea79c6d), renamed to the _checkpoint.pth convention so
+    # checkpoint_path() keeps working. Scored at 40-scene contract EPE
+    # 1.1628882757801255 through the Stage-C runtime path (R4).
+    "E3": {"experiment": "EXP-E3-SEED0-FINAL", "cost_volume_shift": "right",
+           "config": {"downsample_levels": 3, "num_disparities": 24,
+                      "cost_volume_shift": "right",
+                      "regression_normalize": True}},
 }
 # The model the mentor demo and the desktop shortcut show. THIS IS THE ONE
 # KNOB: when a better model supersedes the current demo model, add its
 # checkpoint to MODELS above and repoint this at the new key. Nothing else --
 # not the demo builder, not the desktop shortcut, not the launcher -- names a
 # model directly.
-DEMO_MODEL = "ARMP_S1"
+DEMO_MODEL = "E3"
 
 DATA_ROOT = REPO_ROOT / "data" / "kitti2015"
 CHECKPOINT_DIR = PHASE2_ROOT / "results" / "training"
