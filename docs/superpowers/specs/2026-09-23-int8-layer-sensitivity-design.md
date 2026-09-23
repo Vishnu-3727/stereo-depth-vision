@@ -144,3 +144,113 @@ per sweep arm by passing through to `quantize_static`:
 - Do not push any Kaggle kernel or dataset. Do not touch the running Kaggle
   kernel `vishnuvardhanksece/stage-e-e4-pretrain`.
 - New work goes in the files listed in §9 plus this spec only.
+
+---
+
+## 11 Amendment 2026-09-23 — QDQ coverage correction and Arm C (pre-registered before any Arm C measurement)
+
+This section is APPENDED on 2026-09-23 after Arms A/B were measured. The
+original text above (§1–§10) is not edited. Measured / inferred / unknown are
+kept separate. Nothing in this amendment re-claims an Arm A/B number; all Arm
+A/B numbers live in `stage_e_recipe/int8_sensitivity/REPORT.md` and
+`int8_sensitivity.json`.
+
+### 11.1 False premise in §3 (measured correction)
+
+§3 rationale (line ~49) states Conv nodes are the quantized compute in this
+graph under the default `op_types_to_quantize`. That premise is MEASURED
+FALSE. Reproduction script `stage_e_recipe/int8_qdq_coverage.py` (read-only
+audit of the already-quantized artifacts; no training, no quantization)
+records into `stage_e_recipe/int8_sensitivity/qdq_coverage.json`:
+
+- `baseline_int8.onnx`: 200 QuantizeLinear nodes, 286 DequantizeLinear nodes
+  (1197 graph nodes total). DequantizeLinear outputs are consumed through 374
+  input-slot edges by 201 distinct nodes across 16 op types (edges /
+  distinct nodes): Conv 153 / 51, Add 40 / 20, LeakyRelu 40 / 40, Sub 51 /
+  27, Concat 26 / 2, Pad 23 / 23, Slice 23 / 23, Mul 6 / 3, ReduceMean 3 / 3,
+  Div 2 / 2, Shape 2 / 2, Softmax 1 / 1, ReduceSum 1 / 1, Resize 1 / 1,
+  Squeeze 1 / 1, Transpose 1 / 1. Zero dangling DequantizeLinear outputs.
+- `only_00_*.onnx` (Arm B config for the first Conv group): still 191
+  QuantizeLinear nodes, 193 DequantizeLinear nodes, with the non-Conv
+  activation QDQ fully retained (e.g. Add 40/40, LeakyRelu 40/40, Concat
+  26/26, Pad 23/23, Slice 23/23 edges — identical to baseline).
+- One-edge bookkeeping note (measured, not a gate): the Mul edge count is 6
+  here (3 distinct Mul nodes); the review brief quoted 5. All other edge
+  counts reproduce the brief exactly.
+
+### 11.2 What Arms A/B therefore do and do not show (inference, stated as one)
+
+- Arm A (leave-one-out) rows keep exactly one Conv in fp32; every other
+  Conv AND every quantizable non-Conv node stays int8. Arm A therefore
+  measures "how much does restoring one Conv to fp32 recover", NOT "how much
+  damage does quantizing one Conv cause".
+- Arm B (only-one) rows are mislabelled by the original spec: with
+  `nodes_to_exclude=[all Conv except L]`, every non-Conv activation stays
+  quantized (191 of 200 QuantizeLinear nodes retained in `only_00`). Arm B
+  therefore does NOT isolate single-layer int8; it measures "single Conv
+  int8 on top of full non-Conv int8".
+- Valid reading of the measured Arms A/B data (inference): excluding or
+  isolating any single Conv changes EPE by < 0.06 px of the 4.06 px gap, so
+  the damage is not attributable to any single Conv; it must sit in non-Conv
+  QDQ and/or be distributed. Arm C below tests the non-Conv half of that
+  inference directly.
+
+### 11.3 Arm C — pre-registered op-type follow-up (frozen on commit of this amendment)
+
+Same subject (§1, same sha/n_nodes assertions, STOP on mismatch), same
+quantizer and calibration (§2, first 32 `hailo_calib` scenes), same 40-scene
+contract scoring with `contract_match` guard (§5; STOP on mismatch — every
+Arm C row must be contract numbers, no monitor branch), same
+`frozen_eval.py` prohibition. Baselines: reuse the §4 fp32 file and the
+already-produced `baseline_int8.onnx` (assert it exists; re-score both on
+the contract; require the §6 reproduction gate within 1e-6 px and both
+guards true, else STOP). R is computed against the same measured fp32/int8
+baselines (`R = (EPE_int8 − EPE_config) / G`); the dominant rule is unchanged
+(any config with R >= 0.50 is labelled dominant, diagnostic only).
+
+Configs (each written under `stage_e_recipe/int8_sensitivity/`, scored, then
+its `.onnx` DELETED immediately after scoring; sha256 recorded before
+deletion):
+
+- C0 "conv-only int8": `nodes_to_exclude` = every named non-Conv node of the
+  fp32 graph (only Conv quantizes; all non-Conv fp32).
+- C1 "non-conv-only int8": `nodes_to_exclude` = every Conv node (all Conv
+  fp32; all quantizable non-Conv int8).
+- C-type, one config per op type T: for each op type T that consumes a
+  DequantizeLinear output in `baseline_int8.onnx` per `qdq_coverage.json`
+  (Add, LeakyRelu, Sub, Concat, Pad, Slice, Mul, ReduceMean, Div, Shape,
+  Softmax, ReduceSum, Resize, Squeeze, Transpose — i.e. every measured
+  consumer type EXCLUDING Conv),
+  `nodes_to_exclude` = all fp32-graph nodes with `op_type == T`
+  (T stays fp32, everything else quantizes as in §2).
+- Total: 2 + 15 = 17 configs.
+- Preconditions (STOP and report if violated): every fp32-graph node has a
+  non-empty name (exclude lists are name-based); every listed T has at least
+  one node in the fp32 graph.
+
+Budget rule: time the first Arm C config end-to-end (quantize + score wall
+seconds S1); estimate `T_est = 17 × S1`. If `T_est > 2 h` (7200 s): STOP,
+write the partial JSON, delete any unscored `.onnx`, and report without
+further configs.
+
+### 11.4 Arm C readout (pre-registered)
+
+One ranked table (sorted by EPE ascending) with the same columns as Arms
+A/B: EPE, Δ vs fp32 baseline, Δ vs int8 baseline, R, D1, nonfinite count,
+contract_match. REPORT.md gains a correction section plus this table;
+Arms A/B tables are kept. Pre-registered interpretations (to be confirmed or
+rejected by measurement): C1 EPE near the int8 baseline implicates non-Conv
+QDQ as carrying the gap; C0 EPE near the fp32 baseline says the same from
+the other side; a C-type config with R >= 0.50 names a dominant op type
+(diagnostic label only, no fix claim, no Hailo implication).
+
+### 11.5 Outputs and prohibitions (extends §9–§10)
+
+- New: `stage_e_recipe/int8_armc.py` (or a sibling; must reuse the §2
+  quantizer and §5 scoring functions verbatim in behavior),
+  `stage_e_recipe/int8_sensitivity/armc.json` (+ small per-config jsons),
+  `qdq_coverage.json` (already written by `int8_qdq_coverage.py`), updated
+  `REPORT.md`. No `.onnx` file may remain in `int8_sensitivity/` afterwards.
+- All §10 prohibitions still bind (frozen records, bundles, checkpoints,
+  no push, no Kaggle contact, no > 5 MB ONNX commits, no environment
+  changes).
