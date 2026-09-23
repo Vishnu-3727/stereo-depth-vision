@@ -191,9 +191,42 @@ Dominant configs (R >= 0.50): `C0_conv_only_int8` (R=0.924),
   (0.31 px residual above fp32 remains; measured, mechanism unknown).
 - C_Mul is the only dominant op type (R=0.572, 3 Mul nodes kept fp32).
 - Measured anomaly (no interpretation claimed): keeping the single Softmax
-  node in fp32 WORSENS EPE to 6.6617 (R=-0.348, D1 34.79 vs 67.79),
+  node in fp32 moves EPE and D1 in opposite directions — EPE WORSENS to
+  6.6617 (R=-0.348) while D1 IMPROVES to 34.79 (vs int8 baseline 67.79),
   contract_match=True, nonfinite=0. Mechanism unknown.
 - No fix claim, no Hailo implication. Full rows: `armc.json`.
+
+## Review corrections (2026-09-23, post-review — docs only, no sweep re-run)
+
+1. No-op interventions (measured): six configs produced artifacts
+   byte-identical to `baseline_int8.onnx` (sha256
+   `8b31f94921878f7f08ae122e00a1e36983fc2fb19dae5af3c07566589598c68a`
+   in both `armc.json` and `qdq_coverage.json`): `C_Div`, `C_LeakyRelu`,
+   `C_ReduceMean`, `C_ReduceSum`, `C_Shape`, `C_Sub`. Excluding those op
+   types changed nothing in the quantized graph, so their R=0 is NOT
+   evidence those ops are harmless; it is evidence the exclusion was a
+   no-op under this quantizer. This is the only artifact-sharing group in
+   Arm C (verified: every other config has a distinct sha256).
+   `C_Resize` (`3a7b414d…`) and `C_Squeeze` (`ac6b0659…`) do NOT share an
+   artifact — distinct shas — but score identically (measured EPE
+   5.256760392548062, D1 67.67718602912541 on both rows). Distinct-sha
+   configs with baseline-identical EPE (`C_Pad`, `C_Slice`, `C_Transpose`)
+   did re-quantize to a different graph with no score change; only the six
+   listed above are no-ops.
+2. Location of the dominant non-Conv damage (measured from
+   `stage_e_recipe/int8_e3/e3_seed0_best_fp32.onnx` node names): the 3 Mul
+   nodes are `/regression/Mul`, `/regression/Mul_1`, `/regression/Mul_2`,
+   and the single Softmax is `/regression/Softmax` — all four sit in the
+   disparity-regression readout, not in the feature extractor or the cost
+   volume / aggregation. Inference (labelled, not measured): consistent
+   with damage entering at the readout that consumes the known ~1e18-scale
+   aggregation outputs (see `stage_c_deploy/DYNAMIC_RANGE_AUDIT.md` §5);
+   mechanism unknown.
+3. The Softmax row moves the two metrics in opposite directions
+   (measured): EPE worsens 5.2489 → 6.6617 while D1 improves
+   67.79 → 34.79 (baseline D1 67.79404738144056, `C_Softmax` D1
+   34.78778909313329, `armc.json`). The readout bullet above is corrected
+   to state both directions; no interpretation claimed.
 
 ## Provenance
 
