@@ -1,0 +1,17 @@
+{
+  "slug": "vishnuvardhanksece/kitti2015-tier2-seed2-subset",
+  "status": "ready",
+  "file_count": 600,
+  "prefix_counts": {
+    "disp_occ_0": 200,
+    "image_2": 200,
+    "image_3": 200
+  },
+  "training_prefix_present": false,
+  "duplicate_names": [],
+  "non_matching_names": [],
+  "size_mismatches": [],
+  "extra_remote_files": [],
+  "upload_source": "stage_b_armp/20260919T035455Z_kaggle_seed2/upload_kitti",
+  "timestamp": "2026-09-23T03:53:54Z"
+}

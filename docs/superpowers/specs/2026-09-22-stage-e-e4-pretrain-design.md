@@ -229,6 +229,43 @@ in-kernel census already recorded (21,818 triplets, 0 incomplete). A silent
 re-upload by the third-party owner would change the corpus without changing
 the id; that risk was already declared as confound 3 in section 3.
 
+Gate 5, account correct, is PASS. `kaggle config view` resolves username
+vishnuvardhanksece, and the username field of the local kaggle.json is the
+same. The pretrain kernel metadata id is
+`vishnuvardhanksece/stage-e-e4-pretrain` and the pinned bundle owner is
+`vishnuvardhanksece`; all three match. Only the username was printed; the
+key was never printed or written.
+
+Gate 6, KITTI subset and bundle present under the active account, is FAIL.
+`kaggle datasets list --mine` under vishnuvardhanksece returns exactly one
+dataset, `vishnuvardhanksece/stage-e-e4-bundle`, size 43468, last updated
+2026-09-22 12:54:30.607000 (the list output carries no datasetId, so the
+pinned id 12128244 stands as recorded). The bundle's status is ready, and
+`datasets files --page-size 200` lists 24 files totalling 106,639 bytes;
+all 22 source names in `source_integrity_e4.json` are present and their
+remote sizes equal the local repo file sizes byte for byte. The KITTI
+subset is absent: the same list shows no KITTI dataset, and `datasets
+files`, `metadata` and `status` on
+`vishnuvardhanksece/kitti2015-tier2-seed2-subset` all return 403 Forbidden.
+The copy the finetune kernels used lives under the other account
+(`vishnu3727/kitti2015-tier2-seed2-subset`, per the recorded kernel input
+path in `stage_e_recipe/kaggle/gate_output/stage_e_gates.json`), and from
+this account that slug also returns 403, so its continued existence was not
+verified. The finetune stage cannot run under the active account until a
+KITTI subset is present under it.
+
+Gate 6, re-checked 2026-09-23, is PASS. The subset was re-uploaded as a
+private dataset under the active account from the local copy at
+`stage_b_armp/20260919T035455Z_kaggle_seed2/upload_kitti/`, staged flat so
+the remote layout reproduces the original one exactly. `datasets status` on
+`vishnuvardhanksece/kitti2015-tier2-seed2-subset` returns ready, and
+`datasets files --page-size 700` (three pages) lists exactly 600 files with
+prefixes exactly `{disp_occ_0: 200, image_2: 200, image_3: 200}`, no
+`training/` prefix, no duplicates and no extra files; every remote size
+equals the local file size, zero mismatches. The evidence is recorded in
+`stage_e_recipe/kaggle/gate6_kitti_verify.json`. The finetune stage can now
+run under the active account.
+
 ## 8 Stop conditions
 
 Beyond the existing `run_arm.py` guards, E4 stops and reports rather than
