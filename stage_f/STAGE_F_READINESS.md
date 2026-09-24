@@ -239,3 +239,15 @@ CLI: `--limit N`, `--device cpu|cuda`, `--subjects final|all`.
  R-WARP: Spearman rho(|I_L warp(I_R, d_final)| summed over RGB, |d_final GT|) >= 0.20 on GT<64 valid pixels on 3/3 seeds.
  R-GAP: train-split (hailo_calib 0-159, same metric code, NOT the contract) GT<64 EPE <= 0.70 x contract GT<64 EPE on 3/3 seeds.
  Selection: M1 (distribution supervision, 0 params) iff R-ORACLE and R-READOUT. M2 (warp-error channel into refinement, ~+300 params) iff NOT R-ORACLE and R-WARP. If neither: data/regularisation candidate only if R-GAP and a leakage-free data source exists on disk; otherwise STOP the campaign before training (SUB-1.0 NOT ACHIEVED; E3 frozen). GWC is considered only if the audit shows matching (cost-volume winner-take-all accuracy) is the dominant error source, and must then be pre-registered separately. High-disparity coverage is rejected by arithmetic (GT>=64 contributes ~0.187 px, target gap 0.168 cannot be met from it alone without also fixing the "bulk).
+
+## Amendment A1 (2026-09-24, before the full F1 run; authorised by the user)
+
+Disclosure: a 1-scene smoke run (scene 000160, three E3 final checkpoints, CPU) of the first audit script (e041f2b) was seen before this amendment. On that scene the GT-index oracle of R-ORACLE made pooled EPE WORSE than the unmodified model by ~4.2-4.4 px. KITTI GT is sparse, so substituting GT/8 only at valid pixels feeds the refinement an input far from its training distribution. No other smoke quantity is used to motivate this amendment.
+
+A1.1 Probe validity gate (project lesson: a diverging probe must never produce a confirmation, EXP-E1 record). A ceiling probe counts only if it improves on the unmodified model. If the R-ORACLE oracle EPE is >= the model's pooled EPE on a seed, R-ORACLE on that seed is INCONCLUSIVE (off-manifold), not FAIL. R-ORACLE is INCONCLUSIVE overall if any seed is INCONCLUSIVE.
+
+A1.2 R-READOUT correction (implementation fault, not a rule change): the dominant-mode and top-k readouts replace disparity_initial for the whole image and are passed through the model's own refinement (final_alt = relu(init_alt + refinement(init_alt, left))). Their pooled contract EPE is compared with the model's pooled contract EPE. Coarse pre-refinement readout EPEs are reported as secondary only. The bimodality limb is unchanged.
+
+A1.3 Selection when R-ORACLE is INCONCLUSIVE: M1 iff an alternative readout (A1.2) lowers pooled contract EPE on 3/3 seeds (the bimodality limb alone is not sufficient in this branch); else M2 iff R-WARP; else the data/regularisation branch as frozen (R-GAP + leakage-free source on disk); else STOP. When R-ORACLE is PASS or FAIL, the frozen selection applies unchanged.
+
+A1.4 Unchanged: all thresholds (0.168, 2.0, 0.20, 0.70), 3/3-seed requirements, subjects, contract gate, stop criteria, campaign cap.
