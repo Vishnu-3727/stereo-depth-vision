@@ -1,0 +1,255 @@
+[32m
+[QUARK-INFO]: Checking custom ops library ...[0m
+[33m
+[QUARK-WARNING]: The custom ops library C:\Users\vishn\anaconda3\envs\ryzen-ai-1.8.0-quark\Lib\site-packages\quark\onnx\operators\custom_ops\lib\custom_ops.dll does NOT exist.[0m
+[32m
+[QUARK-INFO]: Start compiling CPU version of custom ops library.[0m
+C:\Users\vishn\anaconda3\envs\ryzen-ai-1.8.0-quark\Lib\site-packages\torch\utils\cpp_extension.py:380: UserWarning: Error checking compiler version for cl: [WinError 2] The system cannot find the file specified
+  warnings.warn(f'Error checking compiler version for {compiler}: {error}')
+INFO: Could not find files for the given pattern(s).
+[31m
+[QUARK-ERROR]: CPU version of custom ops library compilation failed:Command '['where', 'cl']' returned non-zero exit status 1.[0m
+[33m
+[QUARK-WARNING]: Custom ops library compilation failed: CPU version of custom ops library compilation failed:Command '['where', 'cl']' returned non-zero exit status 1..[0m
+Traceback (most recent call last):
+  File "C:\Users\vishn\anaconda3\envs\ryzen-ai-1.8.0-quark\Lib\site-packages\quark\onnx\operators\custom_ops\build_custom_ops.py", line 58, in compile_custom_op_cpu
+    load(
+  File "C:\Users\vishn\anaconda3\envs\ryzen-ai-1.8.0-quark\Lib\site-packages\torch\utils\cpp_extension.py", line 1312, in load
+    return _jit_compile(
+           ^^^^^^^^^^^^^
+  File "C:\Users\vishn\anaconda3\envs\ryzen-ai-1.8.0-quark\Lib\site-packages\torch\utils\cpp_extension.py", line 1722, in _jit_compile
+    _write_ninja_file_and_build_library(
+  File "C:\Users\vishn\anaconda3\envs\ryzen-ai-1.8.0-quark\Lib\site-packages\torch\utils\cpp_extension.py", line 1821, in _write_ninja_file_and_build_library
+    _write_ninja_file_to_build_library(
+  File "C:\Users\vishn\anaconda3\envs\ryzen-ai-1.8.0-quark\Lib\site-packages\torch\utils\cpp_extension.py", line 2246, in _write_ninja_file_to_build_library
+    _write_ninja_file(
+  File "C:\Users\vishn\anaconda3\envs\ryzen-ai-1.8.0-quark\Lib\site-packages\torch\utils\cpp_extension.py", line 2382, in _write_ninja_file
+    cl_paths = subprocess.check_output(['where',
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vishn\anaconda3\envs\ryzen-ai-1.8.0-quark\Lib\subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vishn\anaconda3\envs\ryzen-ai-1.8.0-quark\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['where', 'cl']' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\vishn\anaconda3\envs\ryzen-ai-1.8.0-quark\Lib\site-packages\quark\onnx\operators\custom_ops\build_custom_ops.py", line 291, in compile_library
+    compile_library_core("CPU", extra_cuda_cflags, extra_cflags)
+  File "C:\Users\vishn\anaconda3\envs\ryzen-ai-1.8.0-quark\Lib\site-packages\quark\onnx\operators\custom_ops\build_custom_ops.py", line 257, in compile_library_core
+    compile_custom_op_cpu(file_name, build_directory, extra_cuda_cflags, extra_cflags)
+  File "C:\Users\vishn\anaconda3\envs\ryzen-ai-1.8.0-quark\Lib\site-packages\quark\shares\utils\log.py", line 136, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\vishn\anaconda3\envs\ryzen-ai-1.8.0-quark\Lib\site-packages\quark\onnx\operators\custom_ops\build_custom_ops.py", line 72, in compile_custom_op_cpu
+    raise RuntimeError("CPU version of custom ops library compilation failed:" + str(e))
+RuntimeError: CPU version of custom ops library compilation failed:Command '['where', 'cl']' returned non-zero exit status 1.
+[32m
+[QUARK-INFO]: Checked custom ops library.[0m
+[33m
+[QUARK-WARNING]: The custom ops library C:\Users\vishn\anaconda3\envs\ryzen-ai-1.8.0-quark\Lib\site-packages\quark\onnx\operators\custom_ops\lib\custom_ops.dll does NOT exist.[0m
+[33m
+[QUARK-WARNING]: Config has been replaced by QConfig. The old API will be removed in the next release.[0m
+[33m
+[QUARK-WARNING]: The algorithm API is algo_config in QConfig. The old API will be removed in the next release.[0m
+[32m
+[QUARK-INFO]: The input ONNX model can create InferenceSession successfully[0m
+[32m
+[QUARK-INFO]: The parameter AlignEltwiseQuantType takes effect, the weights of nodes will be quantized with the activation quant type if the operation type is in [Mul, Div, Add, Sub, Min, Max].[0m
+[32m
+[QUARK-INFO]: Folding or fusing operators for better accuracy and performance.[0m
+[33m
+[QUARK-WARNING]: The opset version is 13 < 17. Skipping fusing layer normalization.[0m
+[33m
+[QUARK-WARNING]: The opset version is 13 < 20. Skipping fusing Gelu.[0m
+[32m
+[QUARK-INFO]: Optimizing the model for a better hardware compatibility.[0m
+[32m
+[QUARK-INFO]: The input ONNX model can run inference successfully[0m
+[32m
+[QUARK-INFO]: Start running calibration on 8 samples with extra options {}...[0m
+[32m
+[QUARK-INFO]: Data collection of CalibrationMethod.MinMax in progress. Runtime will depend on your model and data size.[0m
+[QUARK_INFO]: Time information:
+2026-09-24 13:12:00.055545
+[QUARK_INFO]: OS and CPU information:
+                                        system --- Windows
+                                          node --- Vishnu
+                                       release --- 11
+                                       version --- 10.0.26200
+                                       machine --- AMD64
+                                     processor --- AMD64 Family 26 Model 36 Stepping 0, AuthenticAMD
+[QUARK_INFO]: Tools version information:
+                                        python --- 3.12.11
+                                          onnx --- 1.19.0
+                                   onnxruntime --- 1.27.0
+                                    quark.onnx --- 0.11.2
+[QUARK_INFO]: Quantized Configuration information:
+                                   model_input --- C:\Users\vishn\stereo_depth_vision\stage_e_recipe\int8_e3\e3_seed0_best_fp32.onnx
+                                  model_output --- C:\Users\vishn\stereo_depth_vision\stage_e_recipe\npu_quark\Q2_a16w8.onnx
+                       calibration_data_reader --- <__main__.quark_reader.<locals>.Reader object at 0x000001E564D77140>
+                         calibration_data_path --- None
+                                  quant_format --- QDQ
+                                   input_nodes --- []
+                                  output_nodes --- []
+                          op_types_to_quantize --- []
+                    extra_op_types_to_quantize --- []
+                                   per_channel --- False
+                                  reduce_range --- False
+                               activation_type --- QInt16
+                                   weight_type --- QInt8
+                             nodes_to_quantize --- []
+                              nodes_to_exclude --- []
+                          subgraphs_to_exclude --- []
+                                optimize_model --- True
+                      use_external_data_format --- True
+                              calibrate_method --- CalibrationMethod.MinMax
+                           execution_providers --- ['CPUExecutionProvider']
+                                enable_npu_cnn --- False
+                        enable_npu_transformer --- False
+                     specific_tensor_precision --- False
+                                    debug_mode --- False
+                          convert_fp16_to_fp32 --- False
+                          convert_nchw_to_nhwc --- False
+                                   include_cle --- False
+                                    include_sq --- False
+                              include_rotation --- False
+                               include_fast_ft --- False
+                                 extra_options --- {'ActivationSymmetric': True, 'AlignSlice': False, 'FoldRelu': True, 'AlignConcat': True, 'AlignEltwiseQuantType': True}
+  0%|          | 0/8 [00:00<?, ?it/s] 12%|#2        | 1/8 [00:01<00:09,  1.41s/it] 25%|##5       | 2/8 [00:02<00:08,  1.39s/it] 38%|###7      | 3/8 [00:04<00:06,  1.38s/it] 50%|#####     | 4/8 [00:05<00:05,  1.43s/it] 62%|######2   | 5/8 [00:06<00:04,  1.39s/it] 75%|#######5  | 6/8 [00:08<00:02,  1.41s/it] 88%|########7 | 7/8 [00:09<00:01,  1.41s/it]100%|##########| 8/8 [00:11<00:00,  1.42s/it]100%|##########| 8/8 [00:11<00:00,  1.41s/it]
+[32m
+[QUARK-INFO]: The calibration has been finished. It took 12.0s to complete.[0m
+WARNING:root:ONNX QuantizeLinear and DequantizeLinear operators do not support 16-bit/4-bit integer quantization types prior to opset 21. The domain of QuantizeLinear and DequantizeLinear operators will be set to 'com.microsoft' to enable support.
+[33m
+[QUARK-WARNING]: rmax is set to inf, replacing with a very large value.[0m
+[33m
+[QUARK-WARNING]: ONNX QuantizeLinear and DequantizeLinear operators do not support 16-bit/4-bit integer quantization types prior to opset 21. The domain of QuantizeLinear and DequantizeLinear operators will be set to 'com.microsoft' to enable support.[0m
+[33m
+[QUARK-WARNING]: rmax is set to inf, replacing with a very large value.[0m
+[33m
+[QUARK-WARNING]: failed to infer the type of tensor: . Skip to quantize it. Please check if it is expected.[0m
+[33m
+[QUARK-WARNING]: failed to infer the type of tensor: . Skip to quantize it. Please check if it is expected.[0m
+[33m
+[QUARK-WARNING]: failed to infer the type of tensor: . Skip to quantize it. Please check if it is expected.[0m
+[33m
+[QUARK-WARNING]: failed to infer the type of tensor: . Skip to quantize it. Please check if it is expected.[0m
+[33m
+[QUARK-WARNING]: failed to infer the type of tensor: . Skip to quantize it. Please check if it is expected.[0m
+[33m
+[QUARK-WARNING]: failed to infer the type of tensor: . Skip to quantize it. Please check if it is expected.[0m
+[33m
+[QUARK-WARNING]: failed to infer the type of tensor: . Skip to quantize it. Please check if it is expected.[0m
+[33m
+[QUARK-WARNING]: failed to infer the type of tensor: . Skip to quantize it. Please check if it is expected.[0m
+[33m
+[QUARK-WARNING]: failed to infer the type of tensor: . Skip to quantize it. Please check if it is expected.[0m
+[33m
+[QUARK-WARNING]: failed to infer the type of tensor: . Skip to quantize it. Please check if it is expected.[0m
+[33m
+[QUARK-WARNING]: failed to infer the type of tensor: . Skip to quantize it. Please check if it is expected.[0m
+[33m
+[QUARK-WARNING]: failed to infer the type of tensor: . Skip to quantize it. Please check if it is expected.[0m
+[33m
+[QUARK-WARNING]: failed to infer the type of tensor: . Skip to quantize it. Please check if it is expected.[0m
+[33m
+[QUARK-WARNING]: failed to infer the type of tensor: . Skip to quantize it. Please check if it is expected.[0m
+[33m
+[QUARK-WARNING]: failed to infer the type of tensor: . Skip to quantize it. Please check if it is expected.[0m
+[33m
+[QUARK-WARNING]: failed to infer the type of tensor: . Skip to quantize it. Please check if it is expected.[0m
+[33m
+[QUARK-WARNING]: failed to infer the type of tensor: . Skip to quantize it. Please check if it is expected.[0m
+[33m
+[QUARK-WARNING]: failed to infer the type of tensor: . Skip to quantize it. Please check if it is expected.[0m
+[33m
+[QUARK-WARNING]: failed to infer the type of tensor: . Skip to quantize it. Please check if it is expected.[0m
+[33m
+[QUARK-WARNING]: failed to infer the type of tensor: . Skip to quantize it. Please check if it is expected.[0m
+[33m
+[QUARK-WARNING]: failed to infer the type of tensor: . Skip to quantize it. Please check if it is expected.[0m
+[33m
+[QUARK-WARNING]: failed to infer the type of tensor: . Skip to quantize it. Please check if it is expected.[0m
+[33m
+[QUARK-WARNING]: failed to infer the type of tensor: . Skip to quantize it. Please check if it is expected.[0m
+[32m
+[QUARK-INFO]: Remove QuantizeLinear & DequantizeLinear on certain operations(such as conv-relu).[0m
+[32m
+[QUARK-INFO]: Adjust the quantize info to meet the compiler constraints[0m
+[32m
+[QUARK-INFO]: Have aligned Concat node /cost_volume/Concat_23 inputs[0m
+[32m
+[QUARK-INFO]: Have aligned Concat node /refinement/Concat inputs[0m
+[32m
+[QUARK-INFO]: Have adjusted bias scale == activation scale * weights scale in QDQ of /feature_extractor/downsample/downsample.0/Conv.[0m
+[32m
+[QUARK-INFO]: Adjust the quantize info to meet the compiler constraints[0m
+[32m
+[QUARK-INFO]: Converted 458 custom QDQs to MS contributed QDQs[0m
+[32m
+[QUARK-INFO]: Quark_latency_profiler: e2e quantization time consumed:18.011754[0m
+[32m
+[QUARK-INFO]: The operation types and their corresponding quantities of the input float model is shown in the table below.[0m
++-----------------------------------------------------------------------------+
+| Op Type              | Float Model                                          |
+|----------------------+------------------------------------------------------|
+| Conv                 | 51                                                   |
+| LeakyRelu            | 40                                                   |
+| Add                  | 20                                                   |
+| Sub                  | 27                                                   |
+| Constant             | 313                                                  |
+| ConstantOfShape      | 23                                                   |
+| Concat               | 26                                                   |
+| Reshape              | 47                                                   |
+| Slice                | 47                                                   |
+| Transpose            | 24                                                   |
+| Cast                 | 25                                                   |
+| Pad                  | 23                                                   |
+| Unsqueeze            | 24                                                   |
+| Squeeze              | 1                                                    |
+| Shape                | 3                                                    |
+| Resize               | 1                                                    |
+| ReduceMean           | 3                                                    |
+| Gather               | 2                                                    |
+| ReduceProd           | 1                                                    |
+| Mul                  | 3                                                    |
+| Div                  | 2                                                    |
+| Sqrt                 | 1                                                    |
+| Neg                  | 1                                                    |
+| Softmax              | 1                                                    |
+| Range                | 1                                                    |
+| ReduceSum            | 1                                                    |
+| Relu                 | 1                                                    |
+|----------------------+------------------------------------------------------|
+| Quantized model path | C:\Users\vishn\stereo_depth_vision\stage_e_recipe\n… |
++-----------------------------------------------------------------------------+
+[32m
+[QUARK-INFO]: The quantized information for all operation types is shown in the table below.[0m
+[32m
+[QUARK-INFO]: The discrepancy between the operation types in the quantized model and the float model is due to the application of graph optimization.[0m
++------------------------------------------------+
+| Op Type    | Activation | Weights  | Bias      |
+|------------+------------+----------+-----------|
+| Conv       | INT16(51)  | INT8(51) | INT32(51) |
+| Add        | INT16(20)  |          |           |
+| Sub        | INT16(25)  |          |           |
+| Pad        | INT16(23)  |          |           |
+| Unsqueeze  | INT16(24)  |          |           |
+| Slice      | INT16(23)  |          |           |
+| Concat     | INT16(2)   |          |           |
+| Transpose  | INT16(1)   |          |           |
+| Squeeze    | INT16(1)   |          |           |
+| Resize     | INT16(1)   |          |           |
+| ReduceMean | INT16(2)   |          |           |
+| Mul        | INT16(3)   |          |           |
+| Div        | INT16(2)   |          |           |
+| Sqrt       | INT16(1)   |          |           |
+| Neg        | INT16(1)   |          |           |
+| Softmax    | INT16(1)   |          |           |
+| ReduceSum  | INT16(1)   |          |           |
++------------------------------------------------+
+FULL Q2: quantized 272472 bytes (+395744 sidecar) sha 77ba7197c848 in 18.9s
+FULL Q2: CPU EPE 1.3683450 contract=True
+FULL Q2: NPU worker exit 3221225477

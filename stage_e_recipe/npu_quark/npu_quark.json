@@ -1,0 +1,560 @@
+{
+  "spec": "docs/superpowers/specs/2026-09-24-npu-quark-int8-design.md",
+  "protocol_commit": "6397508",
+  "protocol_commit_time": "2026-09-24 12:20:23 +0530",
+  "utc_start": "2026-09-24T07:39:03.356835+00:00",
+  "git_head": "497b55c41069205ef0412da53c10efbaf084d00e",
+  "environment": {
+    "python": "3.12.11",
+    "quark": "0.11.2",
+    "onnxruntime": "1.27.0",
+    "available_providers": [
+      "VitisAIExecutionProvider",
+      "DmlExecutionProvider",
+      "CPUExecutionProvider"
+    ],
+    "cpu_count": 24,
+    "RYZEN_AI_INSTALLATION_PATH": "C:/Program Files/RyzenAI/1.8.0"
+  },
+  "aianalyzer": {
+    "version": "1.8.0",
+    "help_exit": 1,
+    "help_head": "C:\\Users\\vishn\\anaconda3\\envs\\ryzen-ai-1.8.0-quark\\python.exe: No module named aianalyzer\n"
+  },
+  "amendment_commit": "497b55c",
+  "amendment": "Amendment A1 (2026-09-24): include_cle=False; CalibrationMethod.MinMax (no running-range name exists in Quark 0.11.2 \u2014 MinMax IS the min/max running-range method); first 8 hailo_calib scenes batch-1; use_external_data_format=True (no streaming flag exists); one child process per arm, Q1 first, Q2/Q3 only if Q1 finishes within the 2 GB memory guard; XINT8 power-of-two scale type kept for Q1",
+  "prior_attempts": {
+    "attempt1": "2026-09-24T07:00:52Z, 18.5 s: all 3 arms ValueError: axes don't match array in the default CLE pre-pass (5 Conv3d 5-D weights)",
+    "attempt2": "include_cle=False reached calibration (quantized_info.csv: pre process 2.26 s, collect data 208.52 s), then committed memory ~10.5 GB, free RAM 0 on the 15 GB laptop; killed by the manager on user instruction; no model produced"
+  },
+  "deviation": {
+    "spec_text": "spec \u00a72 said default configs only (no AdaRound / AdaQuant / CLE / fast-finetune), 32 calib scenes",
+    "what_changed": "include_cle=False; calibrate_method=CalibrationMethod.MinMax (XINT8 default was PowerOfTwoMethod.MinMSE); use_external_data_format=True; calib scenes 32 -> first 8; one guarded child process per arm",
+    "why": "attempt 1: untouched defaults failed all 3 arms (ValueError: axes don't match array, CLE 4-D assumption vs 5 Conv3d); attempt 2: 32-scene calibration exhausted RAM (10.5 GB committed, free 0)",
+    "effect": "CLE is an accuracy pre-pass; MinMax keeps XINT8 power-of-two scales (QUInt8/QInt8, symmetric) with a different threshold rule; 8 scenes + external data + guard keep the run inside 15 GB RAM"
+  },
+  "budgets": {
+    "total_box_s": 7200,
+    "per_arm_npu_timeout_s": 1500
+  },
+  "measured": {
+    "subject_assert": {
+      "sha256": "7453b2be2be420d45e6a9d18104a23a8e25f02ec29312646886e380ff32b9645",
+      "bytes": 1701550,
+      "match": true
+    },
+    "node_sets": {
+      "n_nodes": 712,
+      "n_head": 40,
+      "n_refinement": 33,
+      "n_combined": 73,
+      "head": [
+        "/regression/Add",
+        "/regression/Cast",
+        "/regression/Cast_1",
+        "/regression/Concat",
+        "/regression/Constant",
+        "/regression/Constant_1",
+        "/regression/Constant_10",
+        "/regression/Constant_2",
+        "/regression/Constant_3",
+        "/regression/Constant_4",
+        "/regression/Constant_5",
+        "/regression/Constant_6",
+        "/regression/Constant_7",
+        "/regression/Constant_8",
+        "/regression/Constant_9",
+        "/regression/Div",
+        "/regression/Div_1",
+        "/regression/Gather",
+        "/regression/Gather_1",
+        "/regression/Mul",
+        "/regression/Mul_1",
+        "/regression/Mul_2",
+        "/regression/Neg",
+        "/regression/Range",
+        "/regression/ReduceMean",
+        "/regression/ReduceMean_1",
+        "/regression/ReduceMean_2",
+        "/regression/ReduceProd",
+        "/regression/ReduceSum",
+        "/regression/Reshape",
+        "/regression/Resize",
+        "/regression/Shape",
+        "/regression/Shape_1",
+        "/regression/Shape_2",
+        "/regression/Slice",
+        "/regression/Softmax",
+        "/regression/Sqrt",
+        "/regression/Sub",
+        "/regression/Sub_1",
+        "/regression/Sub_2"
+      ],
+      "refinement": [
+        "/refinement/Concat",
+        "/refinement/blocks/blocks.0/Add",
+        "/refinement/blocks/blocks.0/act/LeakyRelu",
+        "/refinement/blocks/blocks.0/act_1/LeakyRelu",
+        "/refinement/blocks/blocks.0/conv1/Conv",
+        "/refinement/blocks/blocks.0/conv2/Conv",
+        "/refinement/blocks/blocks.1/Add",
+        "/refinement/blocks/blocks.1/act/LeakyRelu",
+        "/refinement/blocks/blocks.1/act_1/LeakyRelu",
+        "/refinement/blocks/blocks.1/conv1/Conv",
+        "/refinement/blocks/blocks.1/conv2/Conv",
+        "/refinement/blocks/blocks.2/Add",
+        "/refinement/blocks/blocks.2/act/LeakyRelu",
+        "/refinement/blocks/blocks.2/act_1/LeakyRelu",
+        "/refinement/blocks/blocks.2/conv1/Conv",
+        "/refinement/blocks/blocks.2/conv2/Conv",
+        "/refinement/blocks/blocks.3/Add",
+        "/refinement/blocks/blocks.3/act/LeakyRelu",
+        "/refinement/blocks/blocks.3/act_1/LeakyRelu",
+        "/refinement/blocks/blocks.3/conv1/Conv",
+        "/refinement/blocks/blocks.3/conv2/Conv",
+        "/refinement/blocks/blocks.4/Add",
+        "/refinement/blocks/blocks.4/act/LeakyRelu",
+        "/refinement/blocks/blocks.4/act_1/LeakyRelu",
+        "/refinement/blocks/blocks.4/conv1/Conv",
+        "/refinement/blocks/blocks.4/conv2/Conv",
+        "/refinement/blocks/blocks.5/Add",
+        "/refinement/blocks/blocks.5/act/LeakyRelu",
+        "/refinement/blocks/blocks.5/act_1/LeakyRelu",
+        "/refinement/blocks/blocks.5/conv1/Conv",
+        "/refinement/blocks/blocks.5/conv2/Conv",
+        "/refinement/input_conv/Conv",
+        "/refinement/output_conv/Conv"
+      ]
+    },
+    "first_quantize_utc": "2026-09-24T07:39:03.692914+00:00",
+    "rows": {
+      "Q1": {
+        "arm": "Q1",
+        "wall_s": 169.1,
+        "peak_rss_gb": 2.42,
+        "min_free_gb": 3.43,
+        "memory_guard_gb": 2.0,
+        "child_exit": 0,
+        "quantize": {
+          "config": {
+            "name": "XINT8",
+            "calibrate_method": "PowerOfTwoMethod.MinMSE",
+            "activation_type": "QUInt8",
+            "weight_type": "QInt8",
+            "quant_format": "QDQ",
+            "enable_npu_cnn": true,
+            "extra_options": {
+              "ActivationSymmetric": true
+            },
+            "include_cle": false,
+            "calibrate_method_override": "CalibrationMethod.MinMax",
+            "use_external_data_format": true,
+            "calib_scenes": 8,
+            "deviation": "Amendment A1: include_cle=False (CLE crashes on Conv3d 5-D weights); MinMax calibration (no running-range name exists in Quark 0.11.2); 8 calib scenes; external-data format (no streaming flag exists); XINT8 power-of-two scale type kept",
+            "nodes_to_exclude_n": 0
+          },
+          "quantize_s": 19.1,
+          "sha256": "d2772ef5a89bd0fb06bd67b29bccd36f5380fb0fdf4b0a1f9460850acabc22bb",
+          "bytes": 305380,
+          "sidecar_files": [
+            {
+              "name": "Q1_xint8.onnx.data",
+              "bytes": 395744
+            }
+          ],
+          "total_bytes_incl_sidecars": 701124,
+          "path": "stage_e_recipe/npu_quark/Q1_xint8.onnx"
+        },
+        "cpu_40scene": {
+          "epe": 7.096798722827518,
+          "d1": 80.34567714237704,
+          "rmse": 12.448818341044527,
+          "valid_pixels": 3802797,
+          "nonfinite_pixels": 0,
+          "contract_match": true,
+          "score_s": 41.6
+        },
+        "npu": {
+          "arm": "Q1",
+          "model": "stage_e_recipe/npu_quark/Q1_xint8.onnx",
+          "size_bytes": 305380,
+          "providers_requested": [
+            "VitisAIExecutionProvider",
+            "CPUExecutionProvider"
+          ],
+          "provider_options": [
+            {
+              "cacheDir": "stage_e_recipe/npu_quark/cache_q1",
+              "cacheKey": "npu-quark-q1"
+            },
+            {}
+          ],
+          "RyzenAI_installation_path": "C:/Program Files/RyzenAI/1.8.0",
+          "session_providers": [
+            "VitisAIExecutionProvider",
+            "CPUExecutionProvider"
+          ],
+          "compile_s": 57.0,
+          "compile_log": "stage_e_recipe/npu_quark/Q1_npu_compile.log",
+          "partition_lines": [],
+          "partition_parse_rule": "lines containing '[Vitis AI EP]' or any of ('subgraph', 'partition', 'npu', 'vitisai', 'xclbin', 'fuse')",
+          "kernel_counts": {
+            "rule": "distinct alphanumeric tokens containing int8/int16/uint8 (INT8-family) vs bf16 (Bf16-family) vs fp16/fp32 (other), case-insensitive; counts are distinct-token counts with total substring hits alongside",
+            "int8_family": {
+              "distinct": 0,
+              "examples": []
+            },
+            "bf16_family": {
+              "distinct": 0,
+              "examples": []
+            },
+            "other_float": {
+              "distinct": 0,
+              "examples": []
+            },
+            "total_token_hits": 0
+          },
+          "ep_emitted_files": [],
+          "latency": {
+            "n_samples": 50,
+            "median_ms": 359.1794999992999,
+            "p90_ms": 375.4232999999658,
+            "min_ms": 350.1851999972132,
+            "max_ms": 417.43160000260104,
+            "fps_from_median": 2.7841232587103364,
+            "per_scene_median_ms": [
+              356.08659999707015,
+              358.212299997831,
+              359.23729999922216,
+              356.3800000010815,
+              358.23750000054133,
+              360.68580000210204,
+              386.2885999988066,
+              365.4655999998795,
+              359.9705999986327,
+              358.563800000411
+            ],
+            "raw_samples_ms": [
+              356.7320000001928,
+              350.1851999972132,
+              351.62920000220765,
+              356.08659999707015,
+              358.5321999998996,
+              367.8777999994054,
+              364.044300000387,
+              354.2516000015894,
+              358.212299997831,
+              357.4848000025668,
+              359.23729999922216,
+              354.68330000003334,
+              359.1216999993776,
+              359.5296000021335,
+              360.11430000144173,
+              353.55210000125226,
+              357.07779999938793,
+              351.5438000031281,
+              356.3800000010815,
+              360.99880000256235,
+              361.00179999994,
+              361.15570000038133,
+              356.3943000008294,
+              352.69500000140397,
+              358.23750000054133,
+              358.3594000010635,
+              352.5764000005438,
+              360.68580000210204,
+              361.03000000002794,
+              413.6465000010503,
+              399.0997000000789,
+              371.7207000008784,
+              386.2885999988066,
+              417.43160000260104,
+              381.03720000071917,
+              364.78210000132094,
+              366.12109999987297,
+              365.4655999998795,
+              355.2488999994239,
+              366.6302000019641,
+              359.9705999986327,
+              353.3415999991121,
+              365.7253000019409,
+              357.70550000233925,
+              375.4232999999658,
+              358.563800000411,
+              360.7324000004155,
+              352.98129999864614,
+              356.30159999709576,
+              359.612999996898
+            ]
+          },
+          "thread_settings": {
+            "cpu_count": 24,
+            "intra_op_num_threads": 0,
+            "inter_op_num_threads": 0,
+            "note": "defaults, no explicit values set"
+          },
+          "npu_40scene": {
+            "epe": 35.863437616134455,
+            "d1": 94.98945118553527,
+            "rmse": 43.1990340196379,
+            "valid_pixels": 3802797,
+            "nonfinite_pixels": 0,
+            "contract_match": true,
+            "score_s": 18.2
+          },
+          "part_elapsed_s": 97.4,
+          "worker_tail": "WORKER Q1 DONE median 359.18ms EPE 35.8634376 compile 57.0s\n",
+          "delta_vs_own_cpu": 28.766638893306936
+        },
+        "child_log_tail": "    |           |\n| Sub        | UINT8(25)  |          |           |\n| Pad        | UINT8(23)  |          |           |\n| Unsqueeze  | UINT8(24)  |          |           |\n| Slice      | UINT8(23)  |          |           |\n| Concat     | UINT8(2)   |          |           |\n| Transpose  | UINT8(1)   |          |           |\n| Squeeze    | UINT8(1)   |          |           |\n| Resize     | UINT8(1)   |          |           |\n| ReduceMean | UINT8(2)   |          |           |\n| Mul        | UINT8(3)   |          |           |\n| Div        | UINT8(2)   |          |           |\n| Sqrt       | UINT8(1)   |          |           |\n| Neg        | UINT8(1)   |          |           |\n| Softmax    | UINT8(1)   |          |           |\n| ReduceSum  | UINT8(1)   |          |           |\n+------------------------------------------------+\nFULL Q1: quantized 305380 bytes (+395744 sidecar) sha d2772ef5a89b in 19.1s\nFULL Q1: CPU EPE 7.0967987 contract=True\nFULL Q1: NPU OK EPE 35.8634376 delta +28.7666389\n"
+      },
+      "Q2": {
+        "arm": "Q2",
+        "wall_s": 114.7,
+        "peak_rss_gb": 2.87,
+        "min_free_gb": 3.65,
+        "memory_guard_gb": 2.0,
+        "child_exit": 0,
+        "quantize": {
+          "config": {
+            "name": "A16W8",
+            "calibrate_method": "CalibrationMethod.MinMax",
+            "activation_type": "QInt16",
+            "weight_type": "QInt8",
+            "quant_format": "QDQ",
+            "enable_npu_cnn": false,
+            "extra_options": {
+              "ActivationSymmetric": true,
+              "AlignSlice": false,
+              "FoldRelu": true,
+              "AlignConcat": true,
+              "AlignEltwiseQuantType": true
+            },
+            "include_cle": false,
+            "calibrate_method_override": "CalibrationMethod.MinMax",
+            "use_external_data_format": true,
+            "calib_scenes": 8,
+            "deviation": "Amendment A1: include_cle=False (CLE crashes on Conv3d 5-D weights); MinMax calibration (no running-range name exists in Quark 0.11.2); 8 calib scenes; external-data format (no streaming flag exists); XINT8 power-of-two scale type kept",
+            "nodes_to_exclude_n": 0
+          },
+          "quantize_s": 18.9,
+          "sha256": "77ba7197c84869061afe3f1d1aaafe1718c84d7d1a83670f779cb3e36f7e5500",
+          "bytes": 272472,
+          "sidecar_files": [
+            {
+              "name": "Q2_a16w8.onnx.data",
+              "bytes": 395744
+            }
+          ],
+          "total_bytes_incl_sidecars": 668216,
+          "path": "stage_e_recipe/npu_quark/Q2_a16w8.onnx"
+        },
+        "cpu_40scene": {
+          "epe": 1.3683449860080044,
+          "d1": 7.604981280883519,
+          "rmse": 3.3845283500669323,
+          "valid_pixels": 3802797,
+          "nonfinite_pixels": 0,
+          "contract_match": true,
+          "score_s": 43.2
+        },
+        "npu": {
+          "failed": true,
+          "error": "worker exit 3221225477: "
+        },
+        "child_log_tail": "(20)  |          |           |\n| Sub        | INT16(25)  |          |           |\n| Pad        | INT16(23)  |          |           |\n| Unsqueeze  | INT16(24)  |          |           |\n| Slice      | INT16(23)  |          |           |\n| Concat     | INT16(2)   |          |           |\n| Transpose  | INT16(1)   |          |           |\n| Squeeze    | INT16(1)   |          |           |\n| Resize     | INT16(1)   |          |           |\n| ReduceMean | INT16(2)   |          |           |\n| Mul        | INT16(3)   |          |           |\n| Div        | INT16(2)   |          |           |\n| Sqrt       | INT16(1)   |          |           |\n| Neg        | INT16(1)   |          |           |\n| Softmax    | INT16(1)   |          |           |\n| ReduceSum  | INT16(1)   |          |           |\n+------------------------------------------------+\nFULL Q2: quantized 272472 bytes (+395744 sidecar) sha 77ba7197c848 in 18.9s\nFULL Q2: CPU EPE 1.3683450 contract=True\nFULL Q2: NPU worker exit 3221225477\n"
+      },
+      "Q3": {
+        "arm": "Q3",
+        "wall_s": 169.1,
+        "peak_rss_gb": 1.92,
+        "min_free_gb": 5.56,
+        "memory_guard_gb": 2.0,
+        "child_exit": 0,
+        "quantize": {
+          "config": {
+            "name": "XINT8",
+            "calibrate_method": "PowerOfTwoMethod.MinMSE",
+            "activation_type": "QUInt8",
+            "weight_type": "QInt8",
+            "quant_format": "QDQ",
+            "enable_npu_cnn": true,
+            "extra_options": {
+              "ActivationSymmetric": true
+            },
+            "include_cle": false,
+            "calibrate_method_override": "CalibrationMethod.MinMax",
+            "use_external_data_format": true,
+            "calib_scenes": 8,
+            "deviation": "Amendment A1: include_cle=False (CLE crashes on Conv3d 5-D weights); MinMax calibration (no running-range name exists in Quark 0.11.2); 8 calib scenes; external-data format (no streaming flag exists); XINT8 power-of-two scale type kept",
+            "nodes_to_exclude_n": 73
+          },
+          "quantize_s": 18.0,
+          "sha256": "d6f1d32e86c3791549616ca2f417f65fae7fbe580b22bd82cecaf40bb971f4ac",
+          "bytes": 260722,
+          "sidecar_files": [
+            {
+              "name": "Q3_xint8.onnx.data",
+              "bytes": 732128
+            }
+          ],
+          "total_bytes_incl_sidecars": 992850,
+          "path": "stage_e_recipe/npu_quark/Q3_xint8.onnx"
+        },
+        "cpu_40scene": {
+          "epe": 1.331943820193943,
+          "d1": 7.027669370728966,
+          "rmse": 3.4399520923408917,
+          "valid_pixels": 3802797,
+          "nonfinite_pixels": 0,
+          "contract_match": true,
+          "score_s": 41.5
+        },
+        "npu": {
+          "arm": "Q3",
+          "model": "stage_e_recipe/npu_quark/Q3_xint8.onnx",
+          "size_bytes": 260722,
+          "providers_requested": [
+            "VitisAIExecutionProvider",
+            "CPUExecutionProvider"
+          ],
+          "provider_options": [
+            {
+              "cacheDir": "stage_e_recipe/npu_quark/cache_q3",
+              "cacheKey": "npu-quark-q3"
+            },
+            {}
+          ],
+          "RyzenAI_installation_path": "C:/Program Files/RyzenAI/1.8.0",
+          "session_providers": [
+            "VitisAIExecutionProvider",
+            "CPUExecutionProvider"
+          ],
+          "compile_s": 31.9,
+          "compile_log": "stage_e_recipe/npu_quark/Q3_npu_compile.log",
+          "partition_lines": [],
+          "partition_parse_rule": "lines containing '[Vitis AI EP]' or any of ('subgraph', 'partition', 'npu', 'vitisai', 'xclbin', 'fuse')",
+          "kernel_counts": {
+            "rule": "distinct alphanumeric tokens containing int8/int16/uint8 (INT8-family) vs bf16 (Bf16-family) vs fp16/fp32 (other), case-insensitive; counts are distinct-token counts with total substring hits alongside",
+            "int8_family": {
+              "distinct": 0,
+              "examples": []
+            },
+            "bf16_family": {
+              "distinct": 0,
+              "examples": []
+            },
+            "other_float": {
+              "distinct": 0,
+              "examples": []
+            },
+            "total_token_hits": 0
+          },
+          "ep_emitted_files": [],
+          "latency": {
+            "n_samples": 50,
+            "median_ms": 642.4371499979316,
+            "p90_ms": 657.9037999981665,
+            "min_ms": 623.4675000014249,
+            "max_ms": 682.0798000007926,
+            "fps_from_median": 1.5565724989646375,
+            "per_scene_median_ms": [
+              658.4341999987373,
+              646.2886999979673,
+              648.5093000010238,
+              633.7457999979961,
+              637.4998999999661,
+              646.8047000016668,
+              640.798000000359,
+              644.5937999997113,
+              638.5052000005089,
+              640.2496000009705
+            ],
+            "raw_samples_ms": [
+              658.4341999987373,
+              682.0798000007926,
+              666.4103000002797,
+              653.392399999575,
+              630.5624999986321,
+              646.2886999979673,
+              635.8274999984133,
+              648.347799997282,
+              658.456400000432,
+              645.8344999991823,
+              648.5093000010238,
+              642.3445999971591,
+              649.0506999980425,
+              642.006100002618,
+              651.0475000031875,
+              629.7130000020843,
+              638.9879999987897,
+              633.7457999979961,
+              645.6897999996727,
+              623.4675000014249,
+              638.6000999991666,
+              642.529699998704,
+              635.2105000005395,
+              637.4998999999661,
+              631.6111000014644,
+              655.2447000030952,
+              656.6110999992816,
+              646.8047000016668,
+              643.995399997948,
+              643.133300000045,
+              657.6153000023623,
+              640.798000000359,
+              626.1763000002247,
+              628.1341000030807,
+              640.8123999972304,
+              638.3076000020083,
+              657.9037999981665,
+              644.5937999997113,
+              627.6748000018415,
+              651.3522000022931,
+              670.9818000017549,
+              628.629999999248,
+              640.1062000004458,
+              638.0282999998599,
+              638.5052000005089,
+              640.2496000009705,
+              636.9071000008262,
+              648.7324999980046,
+              642.5397999992128,
+              636.1437999985355
+            ]
+          },
+          "thread_settings": {
+            "cpu_count": 24,
+            "intra_op_num_threads": 0,
+            "inter_op_num_threads": 0,
+            "note": "defaults, no explicit values set"
+          },
+          "npu_40scene": {
+            "epe": 27.31785965654481,
+            "d1": 69.1868905965793,
+            "rmse": 38.70962999863222,
+            "valid_pixels": 3802797,
+            "nonfinite_pixels": 0,
+            "contract_match": true,
+            "score_s": 29.5
+          },
+          "part_elapsed_s": 100.3,
+          "worker_tail": "WORKER Q3 DONE median 642.44ms EPE 27.3178597 compile 31.9s\n",
+          "delta_vs_own_cpu": 25.98591583635087
+        },
+        "child_log_tail": "screpancy between the operation types in the quantized model and the float model is due to the application of graph optimization.\u001b[0m\n+-----------------------------------------------+\n| Op Type   | Activation | Weights  | Bias      |\n|-----------+------------+----------+-----------|\n| Conv      | UINT8(37)  | INT8(37) | INT32(37) |\n| Add       | UINT8(13)  |          |           |\n| Sub       | UINT8(24)  |          |           |\n| Pad       | UINT8(23)  |          |           |\n| Unsqueeze | UINT8(24)  |          |           |\n| Slice     | UINT8(23)  |          |           |\n| Concat    | UINT8(2)   |          |           |\n| Transpose | UINT8(1)   |          |           |\n| Squeeze   | UINT8(1)   |          |           |\n| Resize    | UINT8(1)   |          |           |\n+-----------------------------------------------+\nFULL Q3: quantized 260722 bytes (+732128 sidecar) sha d6f1d32e86c3 in 18.0s\nFULL Q3: CPU EPE 1.3319438 contract=True\nFULL Q3: NPU OK EPE 27.3178597 delta +25.9859158\n"
+      }
+    },
+    "total_elapsed_s": 453.1
+  },
+  "inferred": {
+    "note": "Rows describe Quark-quantized graphs and VitisAI EP behaviour on THIS machine/installation; CPU fallback of unsupported ops is recorded, not worked around."
+  },
+  "unknown": {
+    "items": [
+      "Per-op NPU/CPU assignment beyond what the compile log and EP-emitted files reveal (not exposed via the ORT API)."
+    ]
+  },
+  "status": "PARTIAL: failed arms/rows ['Q2']",
+  "utc_end": "2026-09-24T07:46:36.811519+00:00"
+}

@@ -1,0 +1,6 @@
+subject OK: sha match, 1701550 bytes
+node sets OK: 712 nodes, 40 /regression/*, 33 /refinement/*, 73 combined
+Q1: child exit 0 wall 169.1s peakRSS 2.42GB minFree 3.43GB
+Q2: child exit 0 wall 114.7s peakRSS 2.87GB minFree 3.65GB
+Q3: child exit 0 wall 169.1s peakRSS 1.92GB minFree 5.56GB
+PARTIAL: failed arms/rows ['Q2'] wrote C:\Users\vishn\stereo_depth_vision\stage_e_recipe\npu_quark\npu_quark.json

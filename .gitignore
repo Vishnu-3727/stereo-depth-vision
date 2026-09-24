@@ -89,3 +89,13 @@ stage_e_recipe/mixed_precision_cost/*_npu_compile.log
 stage_e_recipe/mixed_precision_cost/original-*-signature.txt
 stage_e_recipe/mixed_precision_cost/npu_*_partial.json
 stage_e_recipe/mixed_precision_cost/npu_driver.log
+# Stage-E Quark NPU: EP compile artefacts, Quark sidecars/caches and worker
+# partials (regenerable; the merged JSON + REPORT.md + small logs are the
+# committed record).
+stage_e_recipe/npu_quark/cache_*/
+stage_e_recipe/npu_quark/*.data
+stage_e_recipe/npu_quark/*_stage.txt
+stage_e_recipe/npu_quark/npu_*_partial.json
+stage_e_recipe/npu_quark/attempt3_*_partial.json
+stage_e_recipe/npu_quark/attempt3_combined.json
+stage_e_recipe/npu_quark/quantized_info.csv

@@ -1,0 +1,6 @@
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+I20260924 13:13:02.945013 15764 register_dynamicdispatch.cpp:49] Running DynamicDispatchOpRegister::register_ops
+I20260924 13:13:02.945013 15764 register_castavx.cpp:48] Running CastAvxOpRegister::register_ops
+ERROR: [aiecompiler 77-5379] Access pattern for shared buffer port model.layers[11].single_layer.ofm_half0[0].out[0] is not specified or empty.
+Compilation Failed
+(WARNING:0, CRITICAL-WARNING:0, ERROR:1)

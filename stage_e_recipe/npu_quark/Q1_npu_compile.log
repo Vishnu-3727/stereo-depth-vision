@@ -1,0 +1,3 @@
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+I20260924 13:10:14.614771 20548 register_dynamicdispatch.cpp:49] Running DynamicDispatchOpRegister::register_ops
+I20260924 13:10:14.614771 20548 register_castavx.cpp:48] Running CastAvxOpRegister::register_ops
