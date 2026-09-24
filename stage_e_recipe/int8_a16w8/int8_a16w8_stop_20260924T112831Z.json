@@ -1,0 +1,20 @@
+{
+  "provenance": {
+    "utc": "2026-09-24T11:28:31.369960+00:00",
+    "git_head": "b1e950668b0745743fd3399965edaf092d6e810f",
+    "python": "3.12.9 (tags/v3.12.9:fdb8142, Feb  4 2025, 15:27:58) [MSC v.1942 64 bit (AMD64)]",
+    "torch": "2.7.0+cu128",
+    "numpy": "2.5.1",
+    "onnxruntime": "1.27.0"
+  },
+  "thresholds": {
+    "R_ACCEPT": 0.5,
+    "N_SEEDS_REQUIRED": 3,
+    "RESID_MAX_PX": 0.5,
+    "note": "inherited from 6a6cf6b, frozen"
+  },
+  "measured": {},
+  "inferred": {},
+  "unknown": {},
+  "status": "STOP: Memory guard tripped during R0: {'error': 'MEMORY_GUARD_TRIPPED', 'free_gb': 0.00048065185546875, 'peak_child_mem_gb': 4.9892578125, 'peak_child_mem': 4.9892578125, 'min_free_gb': 0.00048065185546875, 'peak_seen': True}"
+}

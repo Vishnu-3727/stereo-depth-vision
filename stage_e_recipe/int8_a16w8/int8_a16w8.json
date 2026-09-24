@@ -1,0 +1,182 @@
+{
+  "provenance": {
+    "utc": "2026-09-24T11:36:16.881689+00:00",
+    "git_head": "b1e950668b0745743fd3399965edaf092d6e810f",
+    "python": "3.12.9 (tags/v3.12.9:fdb8142, Feb  4 2025, 15:27:58) [MSC v.1942 64 bit (AMD64)]",
+    "torch": "2.7.0+cu128",
+    "numpy": "2.5.1",
+    "onnxruntime": "1.27.0"
+  },
+  "thresholds": {
+    "R_ACCEPT": 0.5,
+    "N_SEEDS_REQUIRED": 3,
+    "RESID_MAX_PX": 0.5,
+    "note": "inherited from 6a6cf6b, frozen"
+  },
+  "measured": {
+    "S1_s": 127.56552648544312,
+    "T_est_s": 1148.089738368988,
+    "baseline_gate_per_seed": {
+      "0": {
+        "fp32_ok": true,
+        "R0_ok": true,
+        "guards_ok": true
+      },
+      "1": {
+        "fp32_ok": true,
+        "R0_ok": true,
+        "guards_ok": true
+      },
+      "2": {
+        "fp32_ok": true,
+        "R0_ok": true,
+        "guards_ok": true
+      }
+    },
+    "rows": [
+      {
+        "seed": 0,
+        "e_fp32": 1.18598534271453,
+        "e_R0": 5.248941413313285,
+        "e_A16": 1.2603345881778643,
+        "G_seed": 4.062956070598755,
+        "R_A16": 0.9817007016144339,
+        "resid_A16": 0.07434924546333432,
+        "size_fp32": 1701550,
+        "size_R0": 764520,
+        "size_A16": 764752,
+        "d1_A16": 6.744377888170207,
+        "nonfinite_A16": 0,
+        "contract_match": {
+          "fp32": true,
+          "R0": true,
+          "A16": true
+        },
+        "metrics_A16": {
+          "valid_pixels": 3802797,
+          "epe": 1.2603345881778643,
+          "rmse": 3.2924205926925056,
+          "d1": 6.744377888170207,
+          "bad1": 30.93943747194499,
+          "bad2": 12.218401350374474,
+          "bad3": 7.174377175536849
+        },
+        "A16_quantize": {
+          "path": "stage_e_recipe/int8_a16w8/seed0_A16.onnx",
+          "sha256": "8dd30bca2d0b7ce272a1635cbfdf6aa500fe897c0b6df46e78ed0a3528465988",
+          "bytes": 764752,
+          "parent_onnx_sha256": "7453b2be2be420d45e6a9d18104a23a8e25f02ec29312646886e380ff32b9645",
+          "procedure": "quantize_static, QDQ, QInt8 act, QInt8 weight, per_channel",
+          "calibration": "first 32 scenes of hailo_calib",
+          "nodes_to_exclude": [],
+          "quantize_s": 40.9,
+          "peak_child_mem_gb": 5.6057281494140625,
+          "peak_child_mem": 5.6057281494140625,
+          "min_free_gb": 2.9447555541992188,
+          "peak_seen": true
+        },
+        "A16_artifact_sha256": "8dd30bca2d0b7ce272a1635cbfdf6aa500fe897c0b6df46e78ed0a3528465988",
+        "pass_A16_R": true,
+        "pass_A16_resid": true,
+        "pass_A16_seed": true
+      },
+      {
+        "seed": 1,
+        "e_fp32": 1.178821279341308,
+        "e_R0": 5.3849187722115985,
+        "e_A16": 1.2678008248981807,
+        "G_seed": 4.20609749287029,
+        "R_A16": 0.9788451062516499,
+        "resid_A16": 0.08897954555687271,
+        "size_fp32": 1701550,
+        "size_R0": 764529,
+        "size_A16": 764758,
+        "d1_A16": 6.943205224996234,
+        "nonfinite_A16": 0,
+        "contract_match": {
+          "fp32": true,
+          "R0": true,
+          "A16": true
+        },
+        "metrics_A16": {
+          "valid_pixels": 3802797,
+          "epe": 1.2678008248981807,
+          "rmse": 3.3930599930057297,
+          "d1": 6.943205224996234,
+          "bad1": 30.214497381795557,
+          "bad2": 12.095754782598176,
+          "bad3": 7.382381967798965
+        },
+        "A16_quantize": {
+          "path": "stage_e_recipe/int8_a16w8/seed1_A16.onnx",
+          "sha256": "8cf509e905c2069f04bd26f2b03b662480f2a95993d7a11f2606dfa26bdfa522",
+          "bytes": 764758,
+          "parent_onnx_sha256": "9b4922c91367a2c41254795e0c7160dcb05313f7fb948e2c0d56f05d9ebe9ac2",
+          "procedure": "quantize_static, QDQ, QInt8 act, QInt8 weight, per_channel",
+          "calibration": "first 32 scenes of hailo_calib",
+          "nodes_to_exclude": [],
+          "quantize_s": 40.7,
+          "peak_child_mem_gb": 5.6041412353515625,
+          "peak_child_mem": 5.6041412353515625,
+          "min_free_gb": 2.935638427734375,
+          "peak_seen": true
+        },
+        "A16_artifact_sha256": "8cf509e905c2069f04bd26f2b03b662480f2a95993d7a11f2606dfa26bdfa522",
+        "pass_A16_R": true,
+        "pass_A16_resid": true,
+        "pass_A16_seed": true
+      },
+      {
+        "seed": 2,
+        "e_fp32": 1.1713166599983933,
+        "e_R0": 5.87156272118187,
+        "e_A16": 1.245819769957704,
+        "G_seed": 4.700246061183476,
+        "R_A16": 0.9841491043257103,
+        "resid_A16": 0.07450310995931075,
+        "size_fp32": 1701550,
+        "size_R0": 764538,
+        "size_A16": 764768,
+        "d1_A16": 6.908467635795443,
+        "nonfinite_A16": 0,
+        "contract_match": {
+          "fp32": true,
+          "R0": true,
+          "A16": true
+        },
+        "metrics_A16": {
+          "valid_pixels": 3802797,
+          "epe": 1.245819769957704,
+          "rmse": 3.215440492498058,
+          "d1": 6.908467635795443,
+          "bad1": 29.456923417158475,
+          "bad2": 12.018048820381418,
+          "bad3": 7.2704117521918725
+        },
+        "A16_quantize": {
+          "path": "stage_e_recipe/int8_a16w8/seed2_A16.onnx",
+          "sha256": "56416e4d19b7ad84d29eb4c266bffb609bf966d549726b40dece2408526cb0c8",
+          "bytes": 764768,
+          "parent_onnx_sha256": "7c0c16e4cf66a7ca14e59f5be31801f19815ae1ba6ca72014cb7dd3e99e50418",
+          "procedure": "quantize_static, QDQ, QInt8 act, QInt8 weight, per_channel",
+          "calibration": "first 32 scenes of hailo_calib",
+          "nodes_to_exclude": [],
+          "quantize_s": 40.4,
+          "peak_child_mem_gb": 5.604438781738281,
+          "peak_child_mem": 5.604438781738281,
+          "min_free_gb": 2.8898544311523438,
+          "peak_seen": true
+        },
+        "A16_artifact_sha256": "56416e4d19b7ad84d29eb4c266bffb609bf966d549726b40dece2408526cb0c8",
+        "pass_A16_R": true,
+        "pass_A16_resid": true,
+        "pass_A16_seed": true
+      }
+    ],
+    "n_pass_A16": 3,
+    "verdict": "SUPPORTED: R_A16 >= 0.5 and residual <= 0.5px on 3/3 seeds (required 3)"
+  },
+  "inferred": {},
+  "unknown": {},
+  "status": "COMPLETE"
+}
