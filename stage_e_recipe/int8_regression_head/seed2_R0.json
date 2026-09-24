@@ -1,0 +1,64 @@
+{
+  "seed": 2,
+  "e_fp32": 1.1713166599983933,
+  "e_R0": 5.87156272118187,
+  "G_seed": 4.700246061183476,
+  "metrics_fp32": {
+    "valid_pixels": 3802797,
+    "epe": 1.1713166599983933,
+    "rmse": 3.0030217793451515,
+    "d1": 6.130461342006949,
+    "bad1": 28.671291157534835,
+    "bad2": 11.172513284301003,
+    "bad3": 6.486593946508321
+  },
+  "metrics_R0": {
+    "valid_pixels": 3802797,
+    "epe": 5.87156272118187,
+    "rmse": 7.951694619080413,
+    "d1": 76.20806474813145,
+    "bad1": 93.36911752060392,
+    "bad2": 85.92115224662268,
+    "bad3": 76.73191600813823
+  },
+  "guard_fp32": {
+    "scenes": 40,
+    "valid_pixels": 3802797,
+    "gt_scale": 256.0,
+    "split": "hailo_val",
+    "gt_source": "disp_occ_0",
+    "contract": {
+      "scenes": 40,
+      "valid_pixels": 3802797,
+      "gt_scale": 256.0,
+      "split": "hailo_val",
+      "gt_source": "disp_occ_0"
+    },
+    "contract_match": true
+  },
+  "guard_R0": {
+    "scenes": 40,
+    "valid_pixels": 3802797,
+    "gt_scale": 256.0,
+    "split": "hailo_val",
+    "gt_source": "disp_occ_0",
+    "contract": {
+      "scenes": 40,
+      "valid_pixels": 3802797,
+      "gt_scale": 256.0,
+      "split": "hailo_val",
+      "gt_source": "disp_occ_0"
+    },
+    "contract_match": true
+  },
+  "R0_quantize": {
+    "path": "stage_e_recipe/int8_regression_head/seed2_R0_all_int8.onnx",
+    "sha256": "07b28a15154e513f604094c9841841de078b74a90e557d69929eaee711fac510",
+    "bytes": 764538,
+    "parent_onnx_sha256": "7c0c16e4cf66a7ca14e59f5be31801f19815ae1ba6ca72014cb7dd3e99e50418",
+    "procedure": "quantize_static, QDQ, QInt8 act, QInt8 weight, per_channel",
+    "calibration": "first 32 scenes of hailo_calib",
+    "nodes_to_exclude": [],
+    "quantize_s": 43.6
+  }
+}

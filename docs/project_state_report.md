@@ -5,7 +5,7 @@ closed. Every number below is measured and cited to the file that holds it.
 Claims that are not measured are labelled as such.
 
 Repository: `C:\Users\vishn\stereo_depth_vision`, branch `master`, pushed to
-`origin/main` at `3000331`. Local and remote are in sync as of this report.
+`origin/main` at `8c52999`. Local and remote are in sync as of this report.
 
 ---
 
@@ -237,11 +237,15 @@ What was tried and rejected, with the reason worth remembering:
    no export-level mitigation was found within the tested representation space.
    The residual term of the refinement stage carries the failure, not the
    initial regression.
-4. **E4 (broader pretraining) is blocked by missing data.** FlyingThings3D is
-   gone from disk — `data/sceneflow/flyingthings3d` holds 5 KB of leftovers and
-   `monkaa` is empty. Only `data/sceneflow/driving` (39 GB) and
-   `data/kitti2015` (3.2 GB) are present. The Stage-1 pretrain checkpoint is on
-   disk and hash-verified, so fine-tune-only work runs today.
+4. **E4 (broader pretraining) — RESOLVED (superseded 2026-09-24).** E4 has
+   since run via the Kaggle corpus datasets and is REJECT (see §2 E4
+   verdict above). Original blocker text retained below as superseded, not
+   deleted: ~~E4 (broader pretraining) is blocked by missing data.
+   FlyingThings3D is gone from disk — `data/sceneflow/flyingthings3d` holds
+   5 KB of leftovers and `monkaa` is empty. Only `data/sceneflow/driving`
+   (39 GB) and `data/kitti2015` (3.2 GB) are present. The Stage-1 pretrain
+   checkpoint is on disk and hash-verified, so fine-tune-only work runs
+   today.~~
 
 ---
 
