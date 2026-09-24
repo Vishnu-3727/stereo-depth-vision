@@ -233,3 +233,53 @@ for any failed/NOT IMPLEMENTABLE arm.
 - No training. No Kaggle. No `--force` anywhere.
 - This spec's commit and the implementation/report commit stay LOCAL — do
   NOT push them.
+
+## Amendment A1 (2026-09-24, after the attempt-1/2 failures, before attempt 3)
+
+Prior failures recorded here; §§0–10 above stay frozen.
+
+- Attempt 1 (2026-09-24T07:00:52.578915Z start, first quantize
+  2026-09-24T07:00:52.883547Z, end 2026-09-24T07:01:11.403659Z, 18.5 s):
+  all 3 arms failed in quantization with the exact per-arm error
+  `ValueError: axes don't match array` (recorded in the run's
+  `npu_quark.json` rows Q1/Q2/Q3). Likely cause: the default flow's CLE
+  pre-pass (`quark/onnx/algorithm/cle/equalization.py`
+  `_cross_layer_equalize`: `tail_w_data.transpose(1, 0, 2, 3)` assumes 4-D
+  conv weights; the model has 5 Conv3d ops with 5-D weights among 51 Convs).
+- Attempt 2 (same fp32 subject, `include_cle=False` deviation already in
+  `stage_e_recipe/npu_quark.py`): reached calibration —
+  `stage_e_recipe/npu_quark/quantized_info.csv` records `pre process,2.26`
+  and `calibration: collect data (onnx inference + numpy statistics),208.52`
+  — then committed memory grew to ~10.5 GB and free physical RAM on this
+  ~15 GB laptop fell to 0; no quantized model was produced and no CPU/NPU
+  rows completed. The manager killed the run on the user's instruction.
+  No NPU compile/latency/EPE was reached in attempt 1 or 2.
+
+Attempt-3 deviations (all recorded in code + JSON + REPORT):
+
+- `include_cle=False` on all arms (carried over from attempt 2; default
+  flow crashes on Conv3d 5-D weights per attempt 1).
+- Calibration method: `onnxruntime.quantization.calibrate.CalibrationMethod.MinMax`
+  on all arms (explicitly set, replacing the XINT8 default
+  `PowerOfTwoMethod.MinMSE`). Installed `amd-quark==0.11.2` /
+  `onnxruntime==1.27.0` expose `CalibrationMethod.{MinMax, Entropy,
+  Percentile, Distribution}` and `PowerOfTwoMethod.{NonOverflow, MinMSE}`;
+  there is no separate "running-range" method name — MinMax IS the
+  min/max running-range method and is named exactly as above.
+- Calibration set: first 8 scenes of `hailo_calib` (cut from 32),
+  `normalize()` preprocessing, both inputs, reader yields one scene at a
+  time (batch 1, same pixels as before).
+- Low-memory calibration option: inspected all `QuantizationConfig`
+  fields in installed amd-quark 0.11.2 — there is NO dedicated
+  per-batch / streaming / low-memory calibration flag. The only
+  memory-relevant option is `use_external_data_format` (default False);
+  attempt 3 sets `use_external_data_format=True` so quantized tensors go
+  to an external data file instead of being held inline. Recorded
+  verbatim in per-arm config; stated here as "no streaming flag exists".
+- Execution: arms run strictly one at a time, each in its own separate
+  child process, Q1 first; Q2 and Q3 run only if Q1 finishes within the
+  memory guard. Parent watchdog polls free physical RAM every 2 s and
+  kills the child if free < 2.0 GB.
+- Q1 keeps the power-of-two XINT8 scale type: activation `QUInt8`,
+  weight `QInt8`, `ActivationSymmetric=True`, `QDQ` format — only the
+  calibration threshold method changes to MinMax.
