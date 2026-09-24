@@ -1,0 +1,1965 @@
+{
+  "provenance": {
+    "utc": "2026-09-24T16:03:47.710454+00:00",
+    "git_head": "670ca67e9551de09918bdbe96af64a28d298fc55",
+    "device": "cuda",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "torch": "2.7.0+cu128",
+    "cuda_build": "12.8",
+    "adam_eps_actual": 1e-08,
+    "adam_spec": "torch.optim.Adam(lr=1e-3, betas=(0.9, 0.999)), no eps arg in finetune_pilot.py -> default 1e-8",
+    "config": {
+      "downsample_levels": 3,
+      "num_disparities": 24,
+      "cost_volume_shift": "right",
+      "regression_normalize": true
+    },
+    "data": {
+      "class": "ScaledCroppedKitti",
+      "module_file": "C:\\Users\\vishn\\stereo_depth_vision\\stage_f\\followup\\kaggle\\bundle_f1m\\scripts\\finetune_pilot.py",
+      "seed": 0,
+      "crop": [
+        256,
+        512
+      ],
+      "batch": 2,
+      "scale": [
+        0.7,
+        1.7
+      ],
+      "shuffle": true,
+      "num_workers": 0,
+      "generator": "make_generator(0)"
+    },
+    "n_batches": 8,
+    "determinism": {
+      "deterministic_algorithms": false,
+      "cudnn.deterministic": false,
+      "cudnn.benchmark": false,
+      "cudnn.allow_tf32": true,
+      "cuda.matmul.allow_tf32": false,
+      "CUBLAS_WORKSPACE_CONFIG": null
+    },
+    "subjects": {
+      "A_armp_stage1": {
+        "ckpt": "C:\\Users\\vishn\\stereo_depth_vision\\stage_f\\followup\\kaggle\\bundle_f1m\\checkpoints\\armp_stage1_best.pth",
+        "sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7"
+      },
+      "B_e3seed0_final": {
+        "ckpt": "C:\\Users\\vishn\\stereo_depth_vision\\stage_e_recipe\\kaggle\\e3_output\\seed0\\e3_seed0_final.pth",
+        "sha256": "82e58bc441a4382ec449479fe26bf479f6b45e9ace4d79b530abeeb40ea79c6d"
+      }
+    }
+  },
+  "subjects": {
+    "A_armp_stage1": {
+      "ckpt": "C:\\Users\\vishn\\stereo_depth_vision\\stage_f\\followup\\kaggle\\bundle_f1m\\checkpoints\\armp_stage1_best.pth",
+      "sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+      "n_params": 397954,
+      "seconds": 2.6212990283966064,
+      "ce_mean": 3.006105810403824,
+      "sl1_mean": 4.682227075099945,
+      "cost_std_med_mean": 1296957708435456.0,
+      "groups": {
+        "feature_extractor": {
+          "n_params": 173920,
+          "sl1": {
+            "l2_mean": 6.4536903034794495,
+            "max_mean": 0.3488867301493883,
+            "median_mean": 0.0023447462735930458,
+            "frac_below_eps_mean": 0.0016861200565472245,
+            "adam_eff_mean": 0.9999948740005493
+          },
+          "m1": {
+            "l2_mean": 0.035621019813670406,
+            "max_mean": 0.002234831379610114,
+            "median_mean": 1.40084974873389e-05,
+            "frac_below_eps_mean": 0.0027965443732682616,
+            "adam_eff_mean": 0.9992680698633194
+          },
+          "ratio_m1_over_sl1": 0.005519480814638046
+        },
+        "aggregation": {
+          "n_params": 111585,
+          "sl1": {
+            "l2_mean": 6.749283322173218,
+            "max_mean": 0.6796255111694336,
+            "median_mean": 0.0032296660356223583,
+            "frac_below_eps_mean": 0.0011605502222664654,
+            "adam_eff_mean": 0.999996542930603
+          },
+          "m1": {
+            "l2_mean": 0.18662649616295104,
+            "max_mean": 0.02708810893818736,
+            "median_mean": 3.874973981510266e-05,
+            "frac_below_eps_mean": 0.0013812340330332518,
+            "adam_eff_mean": 0.9997408241033554
+          },
+          "ratio_m1_over_sl1": 0.027651305665274507
+        },
+        "refinement": {
+          "n_params": 112449,
+          "sl1": {
+            "l2_mean": 63.057015704100685,
+            "max_mean": 9.6837877035141,
+            "median_mean": 0.010450601170305163,
+            "frac_below_eps_mean": 5.5580750313311e-06,
+            "adam_eff_mean": 0.999998927116394
+          },
+          "m1": {
+            "l2_mean": null,
+            "max_mean": null,
+            "median_mean": null,
+            "frac_below_eps_mean": null,
+            "adam_eff_mean": null
+          },
+          "ratio_m1_over_sl1": null,
+          "note_m1_none": "M1 loss is upstream of this group (not an ancestor of aggregated_cost), so no gradient path exists"
+        },
+        "cost_volume": {
+          "n_params": 0,
+          "sl1": {
+            "l2_mean": null,
+            "max_mean": null,
+            "median_mean": null,
+            "frac_below_eps_mean": null,
+            "adam_eff_mean": null
+          },
+          "m1": {
+            "l2_mean": null,
+            "max_mean": null,
+            "median_mean": null,
+            "frac_below_eps_mean": null,
+            "adam_eff_mean": null
+          },
+          "ratio_m1_over_sl1": null,
+          "note_m1_none": "group has no parameters"
+        },
+        "excitation": {
+          "n_params": 0,
+          "sl1": {
+            "l2_mean": null,
+            "max_mean": null,
+            "median_mean": null,
+            "frac_below_eps_mean": null,
+            "adam_eff_mean": null
+          },
+          "m1": {
+            "l2_mean": null,
+            "max_mean": null,
+            "median_mean": null,
+            "frac_below_eps_mean": null,
+            "adam_eff_mean": null
+          },
+          "ratio_m1_over_sl1": null,
+          "note_m1_none": "group has no parameters"
+        }
+      },
+      "per_batch": [
+        {
+          "batch": 0,
+          "valid_pixels": 74726,
+          "sl1": 5.611876964569092,
+          "ce": 3.125932216644287,
+          "L_m1": 0.3125932216644287,
+          "cost_std_med": 1119374106689536.0,
+          "sl1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 9.957576925244256,
+              "max_abs": 0.41133809089660645,
+              "median_abs": 0.003639490343630314,
+              "frac_below_eps": 0.0016616835491731763,
+              "adam_eff_median": 0.9999972581863403
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 7.422983508398398,
+              "max_abs": 0.7568536400794983,
+              "median_abs": 0.003904416225850582,
+              "frac_below_eps": 0.0011560693383216858,
+              "adam_eff_median": 0.9999974370002747
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 112449,
+              "l2": 67.41873715617199,
+              "max_abs": 11.384650230407715,
+              "median_abs": 0.011951823718845844,
+              "frac_below_eps": 0.0,
+              "adam_eff_median": 0.9999991655349731
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          },
+          "m1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 0.03370403987855462,
+              "max_abs": 0.002172271255403757,
+              "median_abs": 1.4497798474621959e-05,
+              "frac_below_eps": 0.0028806347399950027,
+              "adam_eff_median": 0.9993107318878174
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 0.16001882686777735,
+              "max_abs": 0.02369709685444832,
+              "median_abs": 3.553891656338237e-05,
+              "frac_below_eps": 0.0013263431610539556,
+              "adam_eff_median": 0.9997186660766602
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          }
+        },
+        {
+          "batch": 1,
+          "valid_pixels": 57017,
+          "sl1": 4.287827014923096,
+          "ce": 2.9684081077575684,
+          "L_m1": 0.2968408167362213,
+          "cost_std_med": 1767173823397888.0,
+          "sl1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 5.461823090383718,
+              "max_abs": 0.2471712976694107,
+              "median_abs": 0.0018847885075956583,
+              "frac_below_eps": 0.001713431440293789,
+              "adam_eff_median": 0.999994695186615
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 5.9661720860299265,
+              "max_abs": 0.5165866017341614,
+              "median_abs": 0.002985886298120022,
+              "frac_below_eps": 0.0011739928741008043,
+              "adam_eff_median": 0.9999966621398926
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 112449,
+              "l2": 66.5883069332378,
+              "max_abs": 13.036234855651855,
+              "median_abs": 0.00814043078571558,
+              "frac_below_eps": 0.0,
+              "adam_eff_median": 0.9999987483024597
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          },
+          "m1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 0.03340640129014715,
+              "max_abs": 0.002239020075649023,
+              "median_abs": 1.3606793800136074e-05,
+              "frac_below_eps": 0.0028116374742239714,
+              "adam_eff_median": 0.9992656111717224
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 0.18972425866346912,
+              "max_abs": 0.028330156579613686,
+              "median_abs": 3.846598701784387e-05,
+              "frac_below_eps": 0.001308419625274837,
+              "adam_eff_median": 0.9997400641441345
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          }
+        },
+        {
+          "batch": 2,
+          "valid_pixels": 37050,
+          "sl1": 2.8532304763793945,
+          "ce": 3.082437753677368,
+          "L_m1": 0.3082437813282013,
+          "cost_std_med": 1145730576154624.0,
+          "sl1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 3.110896512017952,
+              "max_abs": 0.14617206156253815,
+              "median_abs": 0.0012362172128632665,
+              "frac_below_eps": 0.0017709292005747557,
+              "adam_eff_median": 0.9999918937683105
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 5.749140348650217,
+              "max_abs": 0.6452743411064148,
+              "median_abs": 0.0019856432918459177,
+              "frac_below_eps": 0.001165031106211245,
+              "adam_eff_median": 0.9999949336051941
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 112449,
+              "l2": 92.05058481661685,
+              "max_abs": 18.434837341308594,
+              "median_abs": 0.00800011120736599,
+              "frac_below_eps": 1.778584010025952e-05,
+              "adam_eff_median": 0.9999987483024597
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          },
+          "m1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 0.048431479893177865,
+              "max_abs": 0.0024726074188947678,
+              "median_abs": 1.8887432815972716e-05,
+              "frac_below_eps": 0.0025528979022055864,
+              "adam_eff_median": 0.9994707703590393
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 0.19297953930191122,
+              "max_abs": 0.025018956512212753,
+              "median_abs": 3.972505874116905e-05,
+              "frac_below_eps": 0.001371152000501752,
+              "adam_eff_median": 0.9997482895851135
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          }
+        },
+        {
+          "batch": 3,
+          "valid_pixels": 41666,
+          "sl1": 5.508929252624512,
+          "ce": 2.9717459678649902,
+          "L_m1": 0.2971746027469635,
+          "cost_std_med": 856883288080384.0,
+          "sl1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 4.936956889358378,
+              "max_abs": 0.23399367928504944,
+              "median_abs": 0.001726487884297967,
+              "frac_below_eps": 0.0017191811930388212,
+              "adam_eff_median": 0.9999942183494568
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 4.609940083666701,
+              "max_abs": 0.6123597025871277,
+              "median_abs": 0.0024306667037308216,
+              "frac_below_eps": 0.0011560693383216858,
+              "adam_eff_median": 0.9999958872795105
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 112449,
+              "l2": 33.871220429959735,
+              "max_abs": 2.853168487548828,
+              "median_abs": 0.009063596837222576,
+              "frac_below_eps": 8.89292005012976e-06,
+              "adam_eff_median": 0.9999988675117493
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          },
+          "m1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 0.03963163320367412,
+              "max_abs": 0.0024004774168133736,
+              "median_abs": 1.4576909052266274e-05,
+              "frac_below_eps": 0.0027311407029628754,
+              "adam_eff_median": 0.9993144869804382
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 0.1995845966014978,
+              "max_abs": 0.029258791357278824,
+              "median_abs": 4.370955139165744e-05,
+              "frac_below_eps": 0.00141596095636487,
+              "adam_eff_median": 0.999771237373352
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          }
+        },
+        {
+          "batch": 4,
+          "valid_pixels": 56029,
+          "sl1": 3.2727861404418945,
+          "ce": 2.8368093967437744,
+          "L_m1": 0.2836809456348419,
+          "cost_std_med": 2090253074563072.0,
+          "sl1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 5.39422130412627,
+              "max_abs": 0.24552962183952332,
+              "median_abs": 0.0019719910342246294,
+              "frac_below_eps": 0.0016616835491731763,
+              "adam_eff_median": 0.9999949336051941
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 4.997555826742639,
+              "max_abs": 0.5884218811988831,
+              "median_abs": 0.002560163615271449,
+              "frac_below_eps": 0.0011560693383216858,
+              "adam_eff_median": 0.9999960660934448
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 112449,
+              "l2": 24.617523783136544,
+              "max_abs": 2.3476452827453613,
+              "median_abs": 0.00720559386536479,
+              "frac_below_eps": 8.89292005012976e-06,
+              "adam_eff_median": 0.9999986290931702
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          },
+          "m1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 0.022478909947025262,
+              "max_abs": 0.001135262311436236,
+              "median_abs": 1.0740042853285559e-05,
+              "frac_below_eps": 0.0030761270318180323,
+              "adam_eff_median": 0.9990698099136353
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 0.1862177039622253,
+              "max_abs": 0.026485228911042213,
+              "median_abs": 3.683370596263558e-05,
+              "frac_below_eps": 0.001371152000501752,
+              "adam_eff_median": 0.9997285604476929
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          }
+        },
+        {
+          "batch": 5,
+          "valid_pixels": 44692,
+          "sl1": 2.8575968742370605,
+          "ce": 3.029552459716797,
+          "L_m1": 0.3029552400112152,
+          "cost_std_med": 1405899696504832.0,
+          "sl1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 3.3845168944647646,
+              "max_abs": 0.16778968274593353,
+              "median_abs": 0.0012105712667107582,
+              "frac_below_eps": 0.0017479300731793046,
+              "adam_eff_median": 0.9999917149543762
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 5.468261816850974,
+              "max_abs": 0.6593835353851318,
+              "median_abs": 0.002143826801329851,
+              "frac_below_eps": 0.0011560693383216858,
+              "adam_eff_median": 0.9999953508377075
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 112449,
+              "l2": 69.33403043692495,
+              "max_abs": 9.689057350158691,
+              "median_abs": 0.006955411285161972,
+              "frac_below_eps": 0.0,
+              "adam_eff_median": 0.9999985694885254
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          },
+          "m1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 0.03278837469758999,
+              "max_abs": 0.0030137307476252317,
+              "median_abs": 1.3548040442401543e-05,
+              "frac_below_eps": 0.0027368904557079077,
+              "adam_eff_median": 0.9992624521255493
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 0.18580825490084796,
+              "max_abs": 0.027075475081801414,
+              "median_abs": 3.5440367355477065e-05,
+              "frac_below_eps": 0.00141596095636487,
+              "adam_eff_median": 0.9997178912162781
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          }
+        },
+        {
+          "batch": 6,
+          "valid_pixels": 41928,
+          "sl1": 5.251717567443848,
+          "ce": 2.964212656021118,
+          "L_m1": 0.29642125964164734,
+          "cost_std_med": 912362185949184.0,
+          "sl1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 9.232273513686064,
+              "max_abs": 0.7525956630706787,
+              "median_abs": 0.0030645516235381365,
+              "frac_below_eps": 0.0016271849162876606,
+              "adam_eff_median": 0.9999967217445374
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 10.299887001010328,
+              "max_abs": 0.8991385698318481,
+              "median_abs": 0.00466605369001627,
+              "frac_below_eps": 0.001165031106211245,
+              "adam_eff_median": 0.9999979138374329
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 112449,
+              "l2": 69.79549165814448,
+              "max_abs": 13.538147926330566,
+              "median_abs": 0.012537209317088127,
+              "frac_below_eps": 0.0,
+              "adam_eff_median": 0.9999991655349731
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          },
+          "m1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 0.04369690263505676,
+              "max_abs": 0.0022148219868540764,
+              "median_abs": 1.4750054106116295e-05,
+              "frac_below_eps": 0.002725390950217843,
+              "adam_eff_median": 0.9993224740028381
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 0.1912887273118849,
+              "max_abs": 0.029450593516230583,
+              "median_abs": 4.0280803659697995e-05,
+              "frac_below_eps": 0.0013801137683913112,
+              "adam_eff_median": 0.9997518062591553
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          }
+        },
+        {
+          "batch": 7,
+          "valid_pixels": 59060,
+          "sl1": 7.813852310180664,
+          "ce": 3.0697479248046875,
+          "L_m1": 0.3069747984409332,
+          "cost_std_med": 1077984916144128.0,
+          "sl1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 10.15125729855419,
+              "max_abs": 0.5865037441253662,
+              "median_abs": 0.0040238723158836365,
+              "frac_below_eps": 0.0015869365306571126,
+              "adam_eff_median": 0.9999975562095642
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 9.480325906036562,
+              "max_abs": 0.7589858174324036,
+              "median_abs": 0.005160671658813953,
+              "frac_below_eps": 0.0011560693383216858,
+              "adam_eff_median": 0.9999980926513672
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 112449,
+              "l2": 80.78023041861313,
+              "max_abs": 6.186560153961182,
+              "median_abs": 0.019750632345676422,
+              "frac_below_eps": 8.89292005012976e-06,
+              "adam_eff_median": 0.9999995231628418
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          },
+          "m1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 0.03083041696413748,
+              "max_abs": 0.002230459824204445,
+              "median_abs": 1.1460908353910781e-05,
+              "frac_below_eps": 0.0028576357290148735,
+              "adam_eff_median": 0.9991282224655151
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 0.1873900616939947,
+              "max_abs": 0.027388572692871094,
+              "median_abs": 4.0003527828957886e-05,
+              "frac_below_eps": 0.0014607697958126664,
+              "adam_eff_median": 0.9997500777244568
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          }
+        }
+      ]
+    },
+    "B_e3seed0_final": {
+      "ckpt": "C:\\Users\\vishn\\stereo_depth_vision\\stage_e_recipe\\kaggle\\e3_output\\seed0\\e3_seed0_final.pth",
+      "sha256": "82e58bc441a4382ec449479fe26bf479f6b45e9ace4d79b530abeeb40ea79c6d",
+      "n_params": 397954,
+      "seconds": 1.72220778465271,
+      "ce_mean": 2.9349045157432556,
+      "sl1_mean": 0.5776342637836933,
+      "cost_std_med_mean": 3.848512961773568e+17,
+      "groups": {
+        "feature_extractor": {
+          "n_params": 173920,
+          "sl1": {
+            "l2_mean": 0.40580748052222076,
+            "max_mean": 0.02033710095565766,
+            "median_mean": 0.00022969207202550024,
+            "frac_below_eps_mean": 0.002148976578610018,
+            "adam_eff_mean": 0.999950498342514
+          },
+          "m1": {
+            "l2_mean": 0.015066892773319034,
+            "max_mean": 0.0006638093618676066,
+            "median_mean": 8.985553677121061e-06,
+            "frac_below_eps_mean": 0.0032284958579111844,
+            "adam_eff_mean": 0.9988775104284286
+          },
+          "ratio_m1_over_sl1": 0.037128178992486605
+        },
+        "aggregation": {
+          "n_params": 111585,
+          "sl1": {
+            "l2_mean": 1.152366245417512,
+            "max_mean": 0.14801636431366205,
+            "median_mean": 0.0003578686919354368,
+            "frac_below_eps_mean": 0.001188555805128999,
+            "adam_eff_mean": 0.9999687597155571
+          },
+          "m1": {
+            "l2_mean": 0.13157795070898087,
+            "max_mean": 0.01872070273384452,
+            "median_mean": 2.859473420357972e-05,
+            "frac_below_eps_mean": 0.0015683111705584452,
+            "adam_eff_mean": 0.9996458068490028
+          },
+          "ratio_m1_over_sl1": 0.11418067062638498
+        },
+        "refinement": {
+          "n_params": 112449,
+          "sl1": {
+            "l2_mean": 20.836338920900978,
+            "max_mean": 5.015569388866425,
+            "median_mean": 0.0010529564024182037,
+            "frac_below_eps_mean": 1.0004535170082818e-05,
+            "adam_eff_mean": 0.9999900460243225
+          },
+          "m1": {
+            "l2_mean": null,
+            "max_mean": null,
+            "median_mean": null,
+            "frac_below_eps_mean": null,
+            "adam_eff_mean": null
+          },
+          "ratio_m1_over_sl1": null,
+          "note_m1_none": "M1 loss is upstream of this group (not an ancestor of aggregated_cost), so no gradient path exists"
+        },
+        "cost_volume": {
+          "n_params": 0,
+          "sl1": {
+            "l2_mean": null,
+            "max_mean": null,
+            "median_mean": null,
+            "frac_below_eps_mean": null,
+            "adam_eff_mean": null
+          },
+          "m1": {
+            "l2_mean": null,
+            "max_mean": null,
+            "median_mean": null,
+            "frac_below_eps_mean": null,
+            "adam_eff_mean": null
+          },
+          "ratio_m1_over_sl1": null,
+          "note_m1_none": "group has no parameters"
+        },
+        "excitation": {
+          "n_params": 0,
+          "sl1": {
+            "l2_mean": null,
+            "max_mean": null,
+            "median_mean": null,
+            "frac_below_eps_mean": null,
+            "adam_eff_mean": null
+          },
+          "m1": {
+            "l2_mean": null,
+            "max_mean": null,
+            "median_mean": null,
+            "frac_below_eps_mean": null,
+            "adam_eff_mean": null
+          },
+          "ratio_m1_over_sl1": null,
+          "note_m1_none": "group has no parameters"
+        }
+      },
+      "per_batch": [
+        {
+          "batch": 0,
+          "valid_pixels": 74726,
+          "sl1": 0.785060465335846,
+          "ce": 3.049377202987671,
+          "L_m1": 0.3049377202987671,
+          "cost_std_med": 3.447970883048571e+17,
+          "sl1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 0.5442633773854569,
+              "max_abs": 0.028083065524697304,
+              "median_abs": 0.000331810733769089,
+              "frac_below_eps": 0.002081416780129075,
+              "adam_eff_median": 0.9999698400497437
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 2.196371724026359,
+              "max_abs": 0.29719284176826477,
+              "median_abs": 0.000491398386657238,
+              "frac_below_eps": 0.001165031106211245,
+              "adam_eff_median": 0.9999796152114868
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 112449,
+              "l2": 52.9763571648443,
+              "max_abs": 13.176484107971191,
+              "median_abs": 0.0014130970230326056,
+              "frac_below_eps": 8.89292005012976e-06,
+              "adam_eff_median": 0.9999929070472717
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          },
+          "m1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 0.018125342800913446,
+              "max_abs": 0.0007310776272788644,
+              "median_abs": 1.1307536624372005e-05,
+              "frac_below_eps": 0.0030013800133019686,
+              "adam_eff_median": 0.9991164207458496
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 0.1295349765227053,
+              "max_abs": 0.01845766231417656,
+              "median_abs": 2.9840208298992366e-05,
+              "frac_below_eps": 0.0015593493590131402,
+              "adam_eff_median": 0.9996649622917175
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          }
+        },
+        {
+          "batch": 1,
+          "valid_pixels": 57017,
+          "sl1": 0.8376025557518005,
+          "ce": 2.9285688400268555,
+          "L_m1": 0.292856901884079,
+          "cost_std_med": 4.013004754601902e+17,
+          "sl1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 0.33180118581033485,
+              "max_abs": 0.017650973051786423,
+              "median_abs": 0.00020845734979957342,
+              "frac_below_eps": 0.0021734130568802357,
+              "adam_eff_median": 0.9999520182609558
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 0.5840828957588752,
+              "max_abs": 0.0648316815495491,
+              "median_abs": 0.00033282270305790007,
+              "frac_below_eps": 0.001200878294184804,
+              "adam_eff_median": 0.9999698996543884
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 112449,
+              "l2": 8.870077729770651,
+              "max_abs": 1.4851242303848267,
+              "median_abs": 0.0010723565937951207,
+              "frac_below_eps": 8.89292005012976e-06,
+              "adam_eff_median": 0.9999906420707703
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          },
+          "m1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 0.016037333404062784,
+              "max_abs": 0.0006907813949510455,
+              "median_abs": 8.757437171880156e-06,
+              "frac_below_eps": 0.0031623735558241606,
+              "adam_eff_median": 0.9988594055175781
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 0.1392510189638717,
+              "max_abs": 0.020820574834942818,
+              "median_abs": 3.52066672348883e-05,
+              "frac_below_eps": 0.0015235022874549031,
+              "adam_eff_median": 0.99971604347229
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          }
+        },
+        {
+          "batch": 2,
+          "valid_pixels": 37050,
+          "sl1": 0.47624605894088745,
+          "ce": 3.0055034160614014,
+          "L_m1": 0.30055034160614014,
+          "cost_std_med": 2.5803479755574477e+17,
+          "sl1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 0.5164870564466092,
+              "max_abs": 0.03818052262067795,
+              "median_abs": 0.0002691014378797263,
+              "frac_below_eps": 0.0021044157911092043,
+              "adam_eff_median": 0.9999628067016602
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 1.44847059667298,
+              "max_abs": 0.20532339811325073,
+              "median_abs": 0.0003707919968292117,
+              "frac_below_eps": 0.0011739928741008043,
+              "adam_eff_median": 0.9999729990959167
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 112449,
+              "l2": 28.277752303648583,
+              "max_abs": 7.324070453643799,
+              "median_abs": 0.0013029220281168818,
+              "frac_below_eps": 0.0,
+              "adam_eff_median": 0.999992311000824
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          },
+          "m1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 0.016183049070726888,
+              "max_abs": 0.0008210840751416981,
+              "median_abs": 9.26914162846515e-06,
+              "frac_below_eps": 0.0032026218250393867,
+              "adam_eff_median": 0.9989223480224609
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 0.12893902957218717,
+              "max_abs": 0.017561759799718857,
+              "median_abs": 2.849763768608682e-05,
+              "frac_below_eps": 0.0015055787516757846,
+              "adam_eff_median": 0.999649167060852
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          }
+        },
+        {
+          "batch": 3,
+          "valid_pixels": 41666,
+          "sl1": 0.5837496519088745,
+          "ce": 2.8846986293792725,
+          "L_m1": 0.2884698808193207,
+          "cost_std_med": 5.1227098859595366e+17,
+          "sl1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 0.6219675058192489,
+              "max_abs": 0.025080814957618713,
+              "median_abs": 0.00030544932815246284,
+              "frac_below_eps": 0.002144664293155074,
+              "adam_eff_median": 0.9999672174453735
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 1.2815919222148393,
+              "max_abs": 0.11523205786943436,
+              "median_abs": 0.0005639811861328781,
+              "frac_below_eps": 0.0011919165262952447,
+              "adam_eff_median": 0.9999822378158569
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 112449,
+              "l2": 6.470158155188773,
+              "max_abs": 0.904535174369812,
+              "median_abs": 0.001062645809724927,
+              "frac_below_eps": 2.6678761059883982e-05,
+              "adam_eff_median": 0.9999905824661255
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          },
+          "m1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 0.014022405522624362,
+              "max_abs": 0.0006808985490351915,
+              "median_abs": 8.288916433230042e-06,
+              "frac_below_eps": 0.0032773688435554504,
+              "adam_eff_median": 0.9987950325012207
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 0.13048707978630164,
+              "max_abs": 0.01800333708524704,
+              "median_abs": 2.4459050109726377e-05,
+              "frac_below_eps": 0.001657928922213614,
+              "adam_eff_median": 0.9995912909507751
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          }
+        },
+        {
+          "batch": 4,
+          "valid_pixels": 56029,
+          "sl1": 0.699389636516571,
+          "ce": 2.8312971591949463,
+          "L_m1": 0.2831297218799591,
+          "cost_std_med": 4.867994273489879e+17,
+          "sl1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 0.37515428773260606,
+              "max_abs": 0.014069520868360996,
+              "median_abs": 0.00023621163563802838,
+              "frac_below_eps": 0.002138914540410042,
+              "adam_eff_median": 0.9999576807022095
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 0.7254031324566519,
+              "max_abs": 0.10565207898616791,
+              "median_abs": 0.000271069526206702,
+              "frac_below_eps": 0.0011739928741008043,
+              "adam_eff_median": 0.9999630451202393
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 112449,
+              "l2": 17.080264179149207,
+              "max_abs": 3.985353469848633,
+              "median_abs": 0.001101951813325286,
+              "frac_below_eps": 8.89292005012976e-06,
+              "adam_eff_median": 0.9999909400939941
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          },
+          "m1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 0.013740628102058304,
+              "max_abs": 0.0005294060101732612,
+              "median_abs": 8.700935723027214e-06,
+              "frac_below_eps": 0.0033578656148165464,
+              "adam_eff_median": 0.998852014541626
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 0.12940135914741177,
+              "max_abs": 0.0190274678170681,
+              "median_abs": 2.651972863532137e-05,
+              "frac_below_eps": 0.0016310436185449362,
+              "adam_eff_median": 0.9996230602264404
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          }
+        },
+        {
+          "batch": 5,
+          "valid_pixels": 44692,
+          "sl1": 0.3539537787437439,
+          "ce": 2.972780704498291,
+          "L_m1": 0.2972780764102936,
+          "cost_std_med": 2.806293148299428e+17,
+          "sl1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 0.28202791961624607,
+              "max_abs": 0.01390428002923727,
+              "median_abs": 0.0001690735516604036,
+              "frac_below_eps": 0.0021849125623703003,
+              "adam_eff_median": 0.9999408721923828
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 0.8262538271810305,
+              "max_abs": 0.11372790485620499,
+              "median_abs": 0.00024285700055770576,
+              "frac_below_eps": 0.001200878294184804,
+              "adam_eff_median": 0.9999588131904602
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 112449,
+              "l2": 11.685940463142947,
+              "max_abs": 3.070089340209961,
+              "median_abs": 0.0008442596881650388,
+              "frac_below_eps": 8.89292005012976e-06,
+              "adam_eff_median": 0.9999881386756897
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          },
+          "m1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 0.012968336096405363,
+              "max_abs": 0.0005913480999879539,
+              "median_abs": 7.982512215676252e-06,
+              "frac_below_eps": 0.0033808648586273193,
+              "adam_eff_median": 0.9987488389015198
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 0.13117747284220257,
+              "max_abs": 0.019177358597517014,
+              "median_abs": 2.7547956051421352e-05,
+              "frac_below_eps": 0.0015414258232340217,
+              "adam_eff_median": 0.9996371269226074
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          }
+        },
+        {
+          "batch": 6,
+          "valid_pixels": 41928,
+          "sl1": 0.6213147640228271,
+          "ce": 2.987072467803955,
+          "L_m1": 0.2987072467803955,
+          "cost_std_med": 3.538193027652649e+17,
+          "sl1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 0.40996780663956317,
+              "max_abs": 0.0192323736846447,
+              "median_abs": 0.00021806979202665389,
+              "frac_below_eps": 0.002144664293155074,
+              "adam_eff_median": 0.9999541640281677
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 0.967565732660198,
+              "max_abs": 0.11043117940425873,
+              "median_abs": 0.0003948721569031477,
+              "frac_below_eps": 0.0011739928741008043,
+              "adam_eff_median": 0.9999746680259705
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 112449,
+              "l2": 17.556805206743345,
+              "max_abs": 4.06099796295166,
+              "median_abs": 0.0009327259613201022,
+              "frac_below_eps": 0.0,
+              "adam_eff_median": 0.9999892711639404
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          },
+          "m1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 0.015692194174258746,
+              "max_abs": 0.0006332227494567633,
+              "median_abs": 8.971456736617256e-06,
+              "frac_below_eps": 0.00318537256680429,
+              "adam_eff_median": 0.9988865852355957
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 0.13088319611890925,
+              "max_abs": 0.01765560917556286,
+              "median_abs": 3.165757516399026e-05,
+              "frac_below_eps": 0.0014966169837862253,
+              "adam_eff_median": 0.99968421459198
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          }
+        },
+        {
+          "batch": 7,
+          "valid_pixels": 59060,
+          "sl1": 0.26375719904899597,
+          "ce": 2.8199377059936523,
+          "L_m1": 0.2819937765598297,
+          "cost_std_med": 4.411589745579131e+17,
+          "sl1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 0.164790704727701,
+              "max_abs": 0.006495256908237934,
+              "median_abs": 9.936274727806449e-05,
+              "frac_below_eps": 0.002219411311671138,
+              "adam_eff_median": 0.9998993873596191
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 1.1891901323691627,
+              "max_abs": 0.17173977196216583,
+              "median_abs": 0.0001951565791387111,
+              "frac_below_eps": 0.0012277635978534818,
+              "adam_eff_median": 0.9999487996101379
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 112449,
+              "l2": 23.773356164720017,
+              "max_abs": 6.117900371551514,
+              "median_abs": 0.0006936923018656671,
+              "frac_below_eps": 1.778584010025952e-05,
+              "adam_eff_median": 0.9999855756759644
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          },
+          "m1_groups": {
+            "feature_extractor": {
+              "n_params": 173920,
+              "n_with_grad": 173920,
+              "l2": 0.013765853015502379,
+              "max_abs": 0.0006326563889160752,
+              "median_abs": 8.606492883700412e-06,
+              "frac_below_eps": 0.0032601195853203535,
+              "adam_eff_median": 0.9988394379615784
+            },
+            "aggregation": {
+              "n_params": 111585,
+              "n_with_grad": 111585,
+              "l2": 0.13294947271825755,
+              "max_abs": 0.019061852246522903,
+              "median_abs": 2.502905044821091e-05,
+              "frac_below_eps": 0.0016310436185449362,
+              "adam_eff_median": 0.9996005892753601
+            },
+            "refinement": {
+              "n_params": 112449,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null
+            },
+            "cost_volume": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters"
+            },
+            "excitation": {
+              "n_params": 0,
+              "n_with_grad": 0,
+              "l2": null,
+              "max_abs": null,
+              "median_abs": null,
+              "frac_below_eps": null,
+              "adam_eff_median": null,
+              "note": "no parameters (module None: cost_volume_excitation=False)"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "seconds_total": 13.700002431869507
+}

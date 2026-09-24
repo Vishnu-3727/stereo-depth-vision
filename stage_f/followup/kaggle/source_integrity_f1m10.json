@@ -1,0 +1,264 @@
+{
+  "bundle": "stage_f/followup/kaggle/bundle_f1m10",
+  "purpose": "Stage F follow-up M1 pilot Kaggle T4 execution bundle (lambda=1.0)",
+  "source_bundle": "stage_e_recipe/kaggle/bundle (frozen E0)",
+  "m1_lambda": 1.0,
+  "files": {
+    "BUNDLE_MARKER.json": {
+      "sha256": "69e8a0b8c5c4fee468b712bcc01561deaad3e36cc0057a2d775c19734959b089",
+      "e0_sha256": "27c7ebdbf8e09c1216dcc0cf10f2a259959fca6210db64ca365d9a0cb9966b75",
+      "identical": false
+    },
+    "checkpoints/armp_stage1_best.pth": {
+      "sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+      "e0_sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+      "identical": true
+    },
+    "configs/stage_e.json": {
+      "sha256": "2f0add653c0f95b8c05c450aeb07bb8a3970e24b1b6a1886844fa962a8a9257c",
+      "e0_sha256": "2f0add653c0f95b8c05c450aeb07bb8a3970e24b1b6a1886844fa962a8a9257c",
+      "identical": true
+    },
+    "dataset-metadata.json": {
+      "sha256": null,
+      "e0_sha256": "1741f381af1c9f32d556063d8e0e12dae3cccc7e7f013a635719b9b57afa7efd",
+      "identical": false,
+      "note": "removed from E0 bundle copy"
+    },
+    "kaggle_bootstrap.py": {
+      "sha256": "e3afebae2c7a881918f1c8a78caf4baa880afecb4e85b07beb3fc3066e16ba87",
+      "e0_sha256": "e3afebae2c7a881918f1c8a78caf4baa880afecb4e85b07beb3fc3066e16ba87",
+      "identical": true
+    },
+    "phase1/harness/determinism.py": {
+      "sha256": "aa69c0b3303bbc2035378d0091b8d66ae376f8afab6804dd2794a6ca7bd4a415",
+      "e0_sha256": "aa69c0b3303bbc2035378d0091b8d66ae376f8afab6804dd2794a6ca7bd4a415",
+      "identical": true
+    },
+    "phase1/harness/frozen_eval.py": {
+      "sha256": "1a123c1219425d7d20cce73afb2e315f05180922eb1daf1f865a16b89a83c7f1",
+      "e0_sha256": "1a123c1219425d7d20cce73afb2e315f05180922eb1daf1f865a16b89a83c7f1",
+      "identical": true
+    },
+    "phase1/runs/arm_v/arm_v_best.pth": {
+      "sha256": "f2dcf8a22e6f1711b67a70837066f84e68550d53bb4891d3b8d46bd50b452cc4",
+      "e0_sha256": "f2dcf8a22e6f1711b67a70837066f84e68550d53bb4891d3b8d46bd50b452cc4",
+      "identical": true
+    },
+    "scripts/eval_tier2.py": {
+      "sha256": "326e9058f4bbdf342234d92eb5d8a9cd96885587eb1d88a44131b41ff58554f6",
+      "e0_sha256": "326e9058f4bbdf342234d92eb5d8a9cd96885587eb1d88a44131b41ff58554f6",
+      "identical": true
+    },
+    "scripts/finetune_pilot.py": {
+      "sha256": "519adacca398bedae780aaa1cb2fd1cd9769c4c389103e1b64bf23e8233d7fb4",
+      "e0_sha256": "af6130043c989d83b16da28938e5ce8e7f8c2fbdb15b25d9571eee94720d6d72",
+      "identical": false
+    },
+    "scripts/run_arm.py": {
+      "sha256": "9d0123700d93b44873477ff1f6d29d9bcddfbd5a39c7d22c3a64dc7f3f6620f5",
+      "e0_sha256": "9d0123700d93b44873477ff1f6d29d9bcddfbd5a39c7d22c3a64dc7f3f6620f5",
+      "identical": true
+    },
+    "source_integrity.json": {
+      "sha256": "f522f23d1902ac2e156cb7d5a8e6016c5c8a32101d830bb2167fe24e209043fa",
+      "e0_sha256": "f522f23d1902ac2e156cb7d5a8e6016c5c8a32101d830bb2167fe24e209043fa",
+      "identical": true
+    },
+    "src/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "e0_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/datasets/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "e0_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/datasets/kitti2015.py": {
+      "sha256": "9f3369d85c07b35680b928767d7b521fc9110d14a594adf7165fcf36a1bec25e",
+      "e0_sha256": "9f3369d85c07b35680b928767d7b521fc9110d14a594adf7165fcf36a1bec25e",
+      "identical": true
+    },
+    "src/evaluation/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "e0_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/evaluation/metrics.py": {
+      "sha256": "04d826913bb15301838a257dddac5ddd355786eccad8fe329ff1f2ae4157c9ec",
+      "e0_sha256": "04d826913bb15301838a257dddac5ddd355786eccad8fe329ff1f2ae4157c9ec",
+      "identical": true
+    },
+    "src/losses/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "e0_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/losses/disparity.py": {
+      "sha256": "aa4da7e6c788cb665cf594d2fa37e0e4f10cc5ca22cadf83f136c0ad18fab7eb",
+      "e0_sha256": "aa4da7e6c788cb665cf594d2fa37e0e4f10cc5ca22cadf83f136c0ad18fab7eb",
+      "identical": true
+    },
+    "src/models/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "e0_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/models/stereonet/__init__.py": {
+      "sha256": "cd46319a865c1613b6db320a22b9e58e245e4f13b39c82895421eb7aa7546469",
+      "e0_sha256": "cd46319a865c1613b6db320a22b9e58e245e4f13b39c82895421eb7aa7546469",
+      "identical": true
+    },
+    "src/models/stereonet/aggregation.py": {
+      "sha256": "a734782a80256cc6732036fd154706833adb23c64cb03b9c2287b3b7ad7c6702",
+      "e0_sha256": "a734782a80256cc6732036fd154706833adb23c64cb03b9c2287b3b7ad7c6702",
+      "identical": true
+    },
+    "src/models/stereonet/blocks.py": {
+      "sha256": "fcdc9ab0c0f7d337144bd2432cd43d0dce6abd419b4058630d0b5b4ace0eac8a",
+      "e0_sha256": "fcdc9ab0c0f7d337144bd2432cd43d0dce6abd419b4058630d0b5b4ace0eac8a",
+      "identical": true
+    },
+    "src/models/stereonet/cost_volume.py": {
+      "sha256": "aecf80145834ac504c73ced551ad9571cc951a84aa29379e35e25189e46c65f6",
+      "e0_sha256": "aecf80145834ac504c73ced551ad9571cc951a84aa29379e35e25189e46c65f6",
+      "identical": true
+    },
+    "src/models/stereonet/excitation.py": {
+      "sha256": "fb7103ed4bc719331258441d495444f71c76acdafac59e4141e78beb0f2104fb",
+      "e0_sha256": "fb7103ed4bc719331258441d495444f71c76acdafac59e4141e78beb0f2104fb",
+      "identical": true
+    },
+    "src/models/stereonet/feature_extractor.py": {
+      "sha256": "0c49f78ed074907afc37dc09f6eb017be0f268df17ab279c91f45976bd2d3d05",
+      "e0_sha256": "0c49f78ed074907afc37dc09f6eb017be0f268df17ab279c91f45976bd2d3d05",
+      "identical": true
+    },
+    "src/models/stereonet/refinement.py": {
+      "sha256": "185e53c92b615d7e8c2084e3e2bd693c05ab94f98ebd8e95a7af89a0473d7401",
+      "e0_sha256": "185e53c92b615d7e8c2084e3e2bd693c05ab94f98ebd8e95a7af89a0473d7401",
+      "identical": true
+    },
+    "src/models/stereonet/regression.py": {
+      "sha256": "09ba98e0eca8740b91f9d498c4ae6f103ddb9a976adac35714142bca2c8f9a32",
+      "e0_sha256": "09ba98e0eca8740b91f9d498c4ae6f103ddb9a976adac35714142bca2c8f9a32",
+      "identical": true
+    },
+    "src/models/stereonet/stereonet.py": {
+      "sha256": "92f9275786f323d6eca9e19b55f7aa7cdada20885ff38e7876ba6cb234f28c56",
+      "e0_sha256": "92f9275786f323d6eca9e19b55f7aa7cdada20885ff38e7876ba6cb234f28c56",
+      "identical": true
+    }
+  },
+  "declared_deltas": {
+    "scripts/finetune_pilot.py": {
+      "scope": "M1 INTERVENTION ONLY - training loss gains the Laplacian CE term (lambda=1.0); optimizer, scheduler, data, aug, validation, checkpointing, init, seed, determinism unchanged",
+      "edits": [
+        {
+          "why": "M1 needs torch.nn.functional (interpolate / log_softmax); nothing else uses it, so it is added on its own line.",
+          "old": "import torch\nfrom torch.utils.data import DataLoader, Dataset",
+          "new": "import torch\nimport torch.nn.functional as F\nfrom torch.utils.data import DataLoader, Dataset"
+        },
+        {
+          "why": "M1 training term: forward with return_stages, upsample the aggregated cost, standardise exactly as soft_argmin(normalize=True), Laplacian (b=0.5) target over the config's candidates, lambda=0.1.",
+          "old": "out = model(left, right)\n            loss, n = masked_smooth_l1(out, disparity, max_disparity=float(config.max_disparity",
+          "new": "out, _st = model(left, right, return_stages=True)\n            loss, n = masked_smooth_l1(out, disparity, max_disparity=float(config.max_disparity_px))\n         "
+        },
+        {
+          "why": "Accumulate the per-batch M1 CE so the epoch mean can be logged.",
+          "old": "epoch_loss, epoch_pixels, batches = 0.0, 0, 0",
+          "new": "epoch_loss, epoch_pixels, batches = 0.0, 0, 0\n        epoch_ce = 0.0"
+        },
+        {
+          "why": "Add this batch's M1 CE to the epoch accumulator.",
+          "old": "epoch_loss += float(loss)",
+          "new": "epoch_loss += float(loss)\n            epoch_ce += float(_m1_ce.detach())"
+        },
+        {
+          "why": "Log row carries m1_ce (epoch mean of the CE term).",
+          "old": "row = {\"epoch\": epoch, \"mean_loss\": epoch_loss / max(batches, 1),\n               \"valid_pixels\": epoch_pixels, \"lr\": flo",
+          "new": "row = {\"epoch\": epoch, \"mean_loss\": epoch_loss / max(batches, 1),\n               \"m1_ce\": epoch_ce / max(batches, 1),\n               \"valid_pixels\": epoch_pixel"
+        },
+        {
+          "why": "Printed line shows the epoch-mean M1 CE next to the loss.",
+          "old": "print(\"epoch {:>3} loss {:8.4f} lr {:.2e}{}\".format(\n            epoch, row[\"mean_loss\"], row[\"lr\"],",
+          "new": "print(\"epoch {:>3} loss {:8.4f} ce {:8.4f} lr {:.2e}{}\".format(\n            epoch, row[\"mean_loss\"], row[\"m1_ce\"], row[\"lr\"],"
+        }
+      ],
+      "m1_lambda": 1.0,
+      "unified_diff": [
+        "--- bundle/scripts/finetune_pilot.py",
+        "+++ bundle_f1m10/scripts/finetune_pilot.py",
+        "@@ -35,4 +35,5 @@",
+        " import numpy as np",
+        " import torch",
+        "+import torch.nn.functional as F",
+        " from torch.utils.data import DataLoader, Dataset",
+        " ",
+        "@@ -294,16 +295,32 @@",
+        "     for epoch in range(EPOCHS):",
+        "         epoch_loss, epoch_pixels, batches = 0.0, 0, 0",
+        "+        epoch_ce = 0.0",
+        "         for left, right, disparity in loader:",
+        "             left, right, disparity = left.to(device), right.to(device), disparity.to(device)",
+        "-            out = model(left, right)",
+        "+            out, _st = model(left, right, return_stages=True)",
+        "             loss, n = masked_smooth_l1(out, disparity, max_disparity=float(config.max_disparity_px))",
+        "+            # M1 distribution supervision: CE between the full-res cost softmax",
+        "+            # and a normalised Laplacian target, same valid mask as above.",
+        "+            _m1_cost = _st[\"aggregated_cost\"]",
+        "+            _m1_up = F.interpolate(_m1_cost, size=disparity.shape[-2:], mode=\"bilinear\", align_corners=True)",
+        "+            _m1_norm = (_m1_up - _m1_up.mean(1, keepdim=True)) / (_m1_up.std(1, keepdim=True) + 1e-6)",
+        "+            _m1_logp = F.log_softmax(-_m1_norm, dim=1)",
+        "+            _m1_valid = (disparity > 0) & (disparity < float(config.max_disparity_px))",
+        "+            _m1_t = disparity / float(config.feature_stride)",
+        "+            _m1_k = torch.arange(config.num_disparities, dtype=_m1_up.dtype, device=_m1_up.device).view(1, -1, 1, 1)",
+        "+            _m1_q = torch.softmax(-torch.abs(_m1_k - _m1_t) / 0.5, dim=1)",
+        "+            _m1_ce_map = -(_m1_q * _m1_logp).sum(1, keepdim=True)",
+        "+            _m1_ce = _m1_ce_map[_m1_valid].mean() if int(_m1_valid.sum()) > 0 else _m1_up.sum() * 0.0",
+        "+            loss = loss + 1.0 * _m1_ce",
+        "             optimizer.zero_grad(set_to_none=True)",
+        "             loss.backward()",
+        "             optimizer.step()",
+        "             epoch_loss += float(loss)",
+        "+            epoch_ce += float(_m1_ce.detach())",
+        "             epoch_pixels += n",
+        "             batches += 1",
+        "         scheduler.step()",
+        "         row = {\"epoch\": epoch, \"mean_loss\": epoch_loss / max(batches, 1),",
+        "+               \"m1_ce\": epoch_ce / max(batches, 1),",
+        "                \"valid_pixels\": epoch_pixels, \"lr\": float(scheduler.get_last_lr()[0])}",
+        "         if epoch % 5 == 0 or epoch == EPOCHS - 1:",
+        "@@ -319,6 +336,6 @@",
+        "         fh.write(json.dumps(row) + \"\\n\")",
+        "         fh.flush()",
+        "-        print(\"epoch {:>3} loss {:8.4f} lr {:.2e}{}\".format(",
+        "-            epoch, row[\"mean_loss\"], row[\"lr\"],",
+        "+        print(\"epoch {:>3} loss {:8.4f} ce {:8.4f} lr {:.2e}{}\".format(",
+        "+            epoch, row[\"mean_loss\"], row[\"m1_ce\"], row[\"lr\"],",
+        "             \" val EPE {:.3f} D1 {:.2f}%\".format(row[\"val_epe\"], row[\"val_d1\"])",
+        "             if \"val_epe\" in row else \"\"), flush=True)"
+      ]
+    },
+    "BUNDLE_MARKER.json": {
+      "scope": "MARKER ONLY - bundle stage-f-m1-lam1, campaign Stage F follow-up M1 pilot, same checkpoint_sha256, m1_lambda=1.0"
+    },
+    "dataset-metadata.json": {
+      "scope": "UPLOAD-TIME ONLY - stale copy removed; push_f1.py dataset regenerates it"
+    }
+  },
+  "verdict": "PASS",
+  "init_checkpoint": {
+    "path": "checkpoints/armp_stage1_best.pth",
+    "sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+    "expected": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+    "match": true
+  },
+  "changed_files": [
+    "BUNDLE_MARKER.json",
+    "dataset-metadata.json",
+    "scripts/finetune_pilot.py"
+  ],
+  "unexpected_diffs": []
+}
