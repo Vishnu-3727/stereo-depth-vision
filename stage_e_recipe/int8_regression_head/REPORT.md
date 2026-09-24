@@ -104,3 +104,10 @@ No reinterpretation. Mechanism unknown.
   Coverage audits: JSON → `measured.coverage_audit_seed<N>`.
 - Recorded Arm C numbers cited in the spec (§0) are recorded references,
   not results of this run.
+
+## Claim status (added 2026-09-24, after the verdict)
+
+- FALSIFIED: fp32 regression-head retention as a complete INT8 solution (1/3 seeds pass the pre-registered R>=0.50 AND residual<=0.50 px criterion).
+- SUPPORTED: the regression head accounts for most of the observed INT8 degradation (R_R1 0.873 / 0.909 / 0.887 on all three seeds).
+- OPEN: the source of the remaining ~0.38-0.53 px residual.
+- HYPOTHESIS: the refinement stage contributes materially to that remainder (motivated by the C1 export investigation localizing the export mismatch to the refinement residual; correlation, not a causal result).
