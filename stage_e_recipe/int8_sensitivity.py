@@ -2,7 +2,7 @@
 """INT8 per-layer sensitivity for E3 seed-0 — diagnostic sweep (no training).
 
 Implements docs/superpowers/specs/2026-09-23-int8-layer-sensitivity-design.md
-exactly. Pre-registered BEFORE measurement (commit d250032 scope).
+exactly. Pre-registered BEFORE measurement (commit c53ebe7 scope).
 
 Subject: reuse stage_e_recipe/int8_e3/e3_seed0_best_fp32.onnx (provenance
 asserted against int8_e3.json). Quantizer: exact int8_control.py procedure

@@ -148,7 +148,7 @@ be distributed. Arm C below tests the non-Conv half directly.
 
 Dominant layers (R >= 0.50): none measured.
 
-## Arm C — op-type follow-up (pre-registered in spec §11, amendment e437f51)
+## Arm C — op-type follow-up (pre-registered in spec §11, amendment 14b7f91)
 
 - Script: `stage_e_recipe/int8_armc.py` → `armc.json` (+ per-config json).
   Same §2 quantizer / calibration, 40-scene contract, `contract_match`
@@ -230,11 +230,11 @@ Dominant configs (R >= 0.50): `C0_conv_only_int8` (R=0.924),
 
 ## Provenance
 
-- UTC: 2026-09-23T04:09:28.386159+00:00; git HEAD: d2500322d364827bec67cd1bdd3d82a471312097.
+- UTC: 2026-09-23T04:09:28.386159+00:00; git HEAD: c53ebe718077489219474f93da321f3d4e53191b.
 - Env: {'python': '3.12.9', 'torch': '2.7.0+cu128', 'numpy': '2.5.1', 'onnxruntime': '1.27.0'}.
 - Subject sha256 asserted: `7453b2be2be420d45e6a9d18104a23a8e25f02ec29312646886e380ff32b9645`; Conv groups: 51.
 - Full rows: `int8_sensitivity.json` (+ per-layer json).
-- Arm C provenance: UTC 2026-09-23T07:33:03Z; git HEAD e437f51a6aff79ed5ae5b1612d839deb6a6af6e8;
+- Arm C provenance: UTC 2026-09-23T07:33:03Z; git HEAD 14b7f91d174a5a1dc1582223870cf996a3460bb6;
   env (measured, same machine): python 3.12.9, torch 2.7.0+cu128, numpy 2.5.1,
   onnxruntime 1.27.0. No `.onnx` remains in this directory (all Arm C
   artifacts deleted after scoring; Arms A/B artifacts deleted per Brief 5).

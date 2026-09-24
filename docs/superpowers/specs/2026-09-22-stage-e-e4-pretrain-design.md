@@ -178,7 +178,7 @@ fits one session, because the measured spread means no single number fits every
 draw. The run is instead made resume-chained, which this section already named
 as an allowed alternative: the trainer now writes an atomic per-epoch resume.pt
 and accepts --resume, so a session kill costs the remainder of that session and
-not the run, with that behaviour recorded in commits 1af076d and a94d7c8.
+not the run, with that behaviour recorded in commits 4729c30 and 6398ba9.
 Eight epochs completes in one session on a fast draw and across two on a slow
 one.
 

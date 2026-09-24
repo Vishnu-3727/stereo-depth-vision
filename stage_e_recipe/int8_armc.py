@@ -109,7 +109,7 @@ def main() -> None:
 
     report: dict = {
         "spec": ("docs/superpowers/specs/2026-09-23-int8-layer-sensitivity-design.md "
-                 "§11 (amendment e437f51, pre-registered before Arm C ran)"),
+                 "§11 (amendment 14b7f91, pre-registered before Arm C ran)"),
         "diagnostic_only": True,
         "not_hailo": ("NOT Hailo validation, compatibility, HEF validation or "
                        "hardware validation. Stage D remains blocked."),

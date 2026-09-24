@@ -3,7 +3,7 @@
   "model": "E3",
   "experiment": "EXP-E3-SEED0-FINAL",
   "split": "hailo_val",
-  "git_revision": "d2500322d364827bec67cd1bdd3d82a471312097",
+  "git_revision": "c53ebe718077489219474f93da321f3d4e53191b",
   "probe_boxes": {
     "road ahead": [
       560,
