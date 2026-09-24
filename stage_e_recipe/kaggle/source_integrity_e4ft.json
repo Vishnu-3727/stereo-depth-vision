@@ -117,9 +117,9 @@
     "scripts/run_arm.py": {
       "repo_source": "stage_b_armp/20260919T012646Z_tier2_seed1/scripts/run_arm.py",
       "repo_sha256": "4cf817a219b58cac3842496e9a18ae4d0107827aad9280539ffc70ba078973a1",
-      "bundle_sha256": "f1191e343aa80f572b5c6778edbbca4e5a0e376d69db6ac159ab231417ba0309",
+      "bundle_sha256": "86935c096ce9b0e57ae7d10446d61d77abea34e8a6e4fe83d151be18315df00d",
       "identical": false,
-      "scope": "ORCHESTRATION + E3 GUARD FIX - the seed/epochs CLI forwarding plus the two post-hoc epoch guards comparing against args.epochs instead of the literal 200; no training semantics change",
+      "scope": "ORCHESTRATION + E3 GUARD FIX + E4 INIT-SHA RETARGET - the seed/epochs CLI forwarding, the two post-hoc epoch guards comparing against args.epochs instead of the literal 200, and the post-hoc init-sha guard comparing against the E4 pretrain checkpoint sha instead of the E0 Stage-1 constant; no training semantics change",
       "edits": [
         {
           "line_was": "env[\"P2A_SEED\"] = \"1\"",
@@ -145,6 +145,11 @@
           "line_was": "if rec.get(\"epochs_run\") != 200:\n        return stop(outdir, \"epochs_incomplete\", {\"epochs_run\": rec.get(\"epochs_run\")})",
           "line_now": "if rec.get(\"epochs_run\") != args.epochs:\n        return stop(outdir, \"epochs_incomplete\", {\"epochs_run\": rec.get(\"epochs_run\")})",
           "why": "Record epochs_run guard compares against the arm's --epochs argument, not the literal 200."
+        },
+        {
+          "line_was": "if init_rec.get(\"sha256\") != EXPECTED_SHA_ARMP_STAGE1:",
+          "line_now": "if init_rec.get(\"sha256\") != \"4c16fbe32724d0c1157aa91b0503f67e7e1576faf597325d62c87510aa6b829f\":",
+          "why": "Init-sha guard compares against the E4 pretrain checkpoint sha the finetune kernel asserts before training, not the E0 Stage-1 constant, so a completed E4 finetune arm passes."
         }
       ],
       "unified_diff": [
@@ -174,7 +179,12 @@
         "     rec = json.loads((outdir / \"p2a_record.json\").read_text(encoding=\"utf-8\"))",
         "-    if rec.get(\"epochs_run\") != 200:",
         "+    if rec.get(\"epochs_run\") != args.epochs:",
-        "         return stop(outdir, \"epochs_incomplete\", {\"epochs_run\": rec.get(\"epochs_run\")})"
+        "         return stop(outdir, \"epochs_incomplete\", {\"epochs_run\": rec.get(\"epochs_run\")})",
+        "@@ -165,3 +169,3 @@",
+        "     else:",
+        "-        if init_rec.get(\"sha256\") != EXPECTED_SHA_ARMP_STAGE1:",
+        "+        if init_rec.get(\"sha256\") != \"4c16fbe32724d0c1157aa91b0503f67e7e1576faf597325d62c87510aa6b829f\":",
+        "             return stop(outdir, \"wrong_checkpoint_resume\", {\"init_record\": init_rec})"
       ],
       "recipe_file_untouched": "scripts/finetune_pilot.py is byte-identical; it alone defines optimizer, loss, schedule, augmentation and the training loop."
     },
@@ -198,10 +208,10 @@
     "in_bundle": false,
     "dataset": "vishnuvardhanksece/stage-e-e4-init",
     "file": "e4_pretrain_best.pth",
-    "expected_sha256": "fbbab289f7f94b25736c58be46a994c441fd02552cc6022352e3d86d2fab7c83",
+    "expected_sha256": "4c16fbe32724d0c1157aa91b0503f67e7e1576faf597325d62c87510aa6b829f",
     "note": "Init is external: the finetune kernel resolves it by file name under /kaggle/input and asserts this sha before training. Rebuild this bundle with the real sha once the pretrain checkpoint is pulled."
   },
   "verdict": "PASS",
   "file_count": 27,
-  "total_bytes": 1728597
+  "total_bytes": 1728639
 }

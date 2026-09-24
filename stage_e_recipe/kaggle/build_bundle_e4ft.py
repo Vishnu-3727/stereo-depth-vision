@@ -20,9 +20,11 @@ Not a training run and not a Kaggle upload.
 
 run_arm.py ships E3's corrected guards (comparisons against args.epochs,
 via e3_patch): with EPOCHS=200 they accept exactly what E0's literals
-accepted, and they stay correct for any future epoch count. That is the only
-recipe-adjacent delta versus the E0 bundle; finetune_pilot.py is
-byte-identical to E0's.
+accepted, and they stay correct for any future epoch count. It also ships
+the E4 init-sha retarget (via e4ft_patch): the post-hoc wrong_checkpoint_resume
+guard compares against the E4 pretrain checkpoint sha passed as --init-sha
+instead of the E0 Stage-1 constant. Those are the only recipe-adjacent
+deltas versus the E0 bundle; finetune_pilot.py is byte-identical to E0's.
 """
 from __future__ import annotations
 
@@ -41,6 +43,7 @@ INIT_FILE_NAME = "e4_pretrain_best.pth"
 
 sys.path.insert(0, str(HERE))
 import e3_patch  # noqa: E402  (E3's corrected epoch guards, reused verbatim)
+import e4ft_patch  # noqa: E402  (E4 init-sha guard retarget)
 
 SEED1 = "stage_b_armp/20260919T012646Z_tier2_seed1/scripts"
 
@@ -181,14 +184,19 @@ def main() -> None:
         "sha256": sha256(fp_dst),
         "identical": sha256(fp_src) == sha256(fp_dst)}
 
-    # run_arm.py: orchestration edits PLUS E3's corrected epoch guards.
+    # run_arm.py: orchestration edits PLUS E3's corrected epoch guards PLUS
+    # the E4 init-sha guard retarget.
     src = REPO / RUN_ARM_SRC
     original = src.read_text(encoding="utf-8")
     patched = patch_run_arm(original)
     patched = e3_patch.apply(patched)
+    patched = e4ft_patch.apply(patched, init_sha)
     run_arm_edits = list(DECLARED_EDITS) + [
         {"line_was": old.strip()[:120], "line_now": new.strip()[:160],
-         "why": why} for old, new, why in e3_patch.EDITS]
+         "why": why} for old, new, why in e3_patch.EDITS] + [
+        {"line_was": old.strip()[:120],
+         "line_now": new.format(init_sha=init_sha).strip()[:160],
+         "why": why} for old, new, why in e4ft_patch.EDITS]
     dst = BUNDLE / RUN_ARM
     dst.write_text(patched, encoding="utf-8", newline="")
     diff = list(difflib.unified_diff(
@@ -200,10 +208,12 @@ def main() -> None:
         "repo_sha256": sha256(src),
         "bundle_sha256": sha256(dst),
         "identical": False,
-        "scope": ("ORCHESTRATION + E3 GUARD FIX - the seed/epochs CLI "
-                  "forwarding plus the two post-hoc epoch guards comparing "
-                  "against args.epochs instead of the literal 200; no "
-                  "training semantics change"),
+        "scope": ("ORCHESTRATION + E3 GUARD FIX + E4 INIT-SHA RETARGET - the "
+                  "seed/epochs CLI forwarding, the two post-hoc epoch guards "
+                  "comparing against args.epochs instead of the literal 200, "
+                  "and the post-hoc init-sha guard comparing against the E4 "
+                  "pretrain checkpoint sha instead of the E0 Stage-1 "
+                  "constant; no training semantics change"),
         "edits": run_arm_edits,
         "unified_diff": diff,
         "recipe_file_untouched": "scripts/finetune_pilot.py is byte-identical; "

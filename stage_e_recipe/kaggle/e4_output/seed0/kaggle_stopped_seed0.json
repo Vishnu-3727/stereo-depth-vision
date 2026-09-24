@@ -1,0 +1,35 @@
+{
+  "experiment": "STAGE E - E4 FINETUNE",
+  "seed": 0,
+  "epochs": 200,
+  "intervention": "E4 broader-pretrain init; E0 recipe",
+  "initialization": "E4 pretrain best-by-pretrain-val",
+  "init_sha256": "4c16fbe32724d0c1157aa91b0503f67e7e1576faf597325d62c87510aa6b829f",
+  "init_source": "/kaggle/input/datasets/vishnuvardhanksece/stage-e-e4-init/e4_pretrain_best.pth",
+  "environment": {
+    "python": "3.12.13",
+    "torch": "2.10.0+cu128",
+    "cuda": "12.8",
+    "cudnn": 91002,
+    "gpu": "Tesla T4",
+    "device_count": 2
+  },
+  "train_wall_s": 4436.7,
+  "run_arm_returncode": 3,
+  "STOP": {
+    "arm": "armp",
+    "status": "STOPPED",
+    "reason": "wrong_checkpoint_resume",
+    "detail": {
+      "init_record": {
+        "source": "/kaggle/input/datasets/vishnuvardhanksece/stage-e-e4-init/e4_pretrain_best.pth",
+        "strict": true,
+        "sha256": "4c16fbe32724d0c1157aa91b0503f67e7e1576faf597325d62c87510aa6b829f",
+        "n_keys": 70,
+        "param_count": 397954
+      }
+    },
+    "utc": "2026-09-23T17:18:56Z"
+  },
+  "status": "STOPPED"
+}

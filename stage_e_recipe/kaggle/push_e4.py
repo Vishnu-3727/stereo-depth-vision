@@ -88,7 +88,8 @@ FT_INTERVENTION = "E4 broader-pretrain init; E0 recipe"
 
 
 def ft_slug(seed: int) -> str:
-    return f"{FT_USER}/stage-e-e4ft-seed{seed}"
+    # Kaggle derives the slug from the title "Stage E E4 finetune seed<N>".
+    return f"{FT_USER}/stage-e-e4-finetune-seed{seed}"
 
 
 def check_init_sha(value: str) -> str:

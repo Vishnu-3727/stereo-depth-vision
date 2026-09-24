@@ -1,0 +1,76 @@
+{
+  "experiment": "stage-e-e4",
+  "method": "verbatim run_arm.py post-hoc guard block from the rebuilt bundle_e4ft (canonical source + e3_patch epoch guards + e4ft_patch init-sha retarget, as the fixed bundle ships it), exec'd with args.epochs=200; write side-effects captured in memory, evidence dirs untouched",
+  "seeds": {
+    "0": {
+      "seed": 0,
+      "expected_epochs": 200,
+      "expected_init_sha": "4c16fbe32724d0c1157aa91b0503f67e7e1576faf597325d62c87510aa6b829f",
+      "guards": {
+        "rows_count": "pass",
+        "nan_inf_loss_in_log": "pass",
+        "zero_valid_pixels": "pass",
+        "nan_inf_val_metric": "pass",
+        "param_or_architecture_changed": "pass",
+        "epochs_run": "pass",
+        "wrong_checkpoint_resume": "pass",
+        "checkpoint_sha_mismatch": "pass"
+      },
+      "row_count": 200,
+      "scored_rows": 41,
+      "best10_epe": 1.5983563882678342,
+      "best10_epoch": 155,
+      "record_best10_epe": 1.5983563882678342,
+      "record_best_epoch": 155,
+      "kaggle_stop": {
+        "reason": "wrong_checkpoint_resume",
+        "detail": {
+          "init_record": {
+            "source": "/kaggle/input/datasets/vishnuvardhanksece/stage-e-e4-init/e4_pretrain_best.pth",
+            "strict": true,
+            "sha256": "4c16fbe32724d0c1157aa91b0503f67e7e1576faf597325d62c87510aa6b829f",
+            "n_keys": 70,
+            "param_count": 397954
+          }
+        }
+      },
+      "verdict": "RECOVERED",
+      "stop": null
+    },
+    "1": {
+      "seed": 1,
+      "expected_epochs": 200,
+      "expected_init_sha": "4c16fbe32724d0c1157aa91b0503f67e7e1576faf597325d62c87510aa6b829f",
+      "guards": {
+        "rows_count": "pass",
+        "nan_inf_loss_in_log": "pass",
+        "zero_valid_pixels": "pass",
+        "nan_inf_val_metric": "pass",
+        "param_or_architecture_changed": "pass",
+        "epochs_run": "pass",
+        "wrong_checkpoint_resume": "pass",
+        "checkpoint_sha_mismatch": "pass"
+      },
+      "row_count": 200,
+      "scored_rows": 41,
+      "best10_epe": 1.5938573750431464,
+      "best10_epoch": 185,
+      "record_best10_epe": 1.5938573750431464,
+      "record_best_epoch": 185,
+      "kaggle_stop": {
+        "reason": "wrong_checkpoint_resume",
+        "detail": {
+          "init_record": {
+            "source": "/kaggle/input/datasets/vishnuvardhanksece/stage-e-e4-init/e4_pretrain_best.pth",
+            "strict": true,
+            "sha256": "4c16fbe32724d0c1157aa91b0503f67e7e1576faf597325d62c87510aa6b829f",
+            "n_keys": 70,
+            "param_count": 397954
+          }
+        }
+      },
+      "verdict": "RECOVERED",
+      "stop": null
+    }
+  }
+}
