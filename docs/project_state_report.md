@@ -40,7 +40,7 @@ by `stage_e_recipe/verdict.py` and never by hand.
 | E1 | EMA 0.999 | 1.2036174 | INCONCLUSIVE |
 | E2 | native batch 8 | 1.2390444 | REJECT |
 | **E3** | **400 epochs** | **1.1787445** | **ACCEPT (non-overlapping)** |
-| E4 | broader pretraining | — | BLOCKED |
+| E4 | broader pretraining | 0,1 (+2 pending) | **PENDING** (seed 2 RUNNING) |
 
 E3's verdict in full (`stage_e_recipe/e3_verdict.json`):
 
@@ -121,6 +121,35 @@ lower than every single prior number.
 - The training-log best10 metric sits about 0.4 px above contract EPE on both
   E0 and E3 (`stage_e_recipe/e3_logmetric_compare.json`). Never compare one
   against the other.
+
+### E4 interim — verdict PENDING (needs 3 seeds)
+
+- Seeds 0 and 1 are recovered and scored locally on the development box (RTX
+  4060 Laptop, torch 2.7.0+cu128, fp32), not on Kaggle — the same off-Kaggle
+  scoring as E3, under the same device calibration
+  (`stage_e_recipe/e0_device_recheck.json`, max |local − T4| = 0.000129 px).
+  Seed 2 is RUNNING on Kaggle
+  (`vishnuvardhanksece/stage-e-e4-finetune-seed2`) and no number is reported
+  for it.
+- Per-seed local best/final EPE
+  (`stage_e_recipe/kaggle/e4_output/seed<N>/e4_seed<N>.json`,
+  `contract_match` true on all four checkpoints): seed 0 **1.2168361** /
+  1.1886448, seed 1 **1.1877218** / 1.1974885. No mean and no verdict until
+  seed 2 lands.
+- The false STOP was the same pattern as E3 with a different guard: the
+  post-hoc init-sha guard compared the E4 finetune init against E0's Stage-1
+  constant, so both seeds trained all 200 epochs and were then failed by a
+  read-only check (`wrong_checkpoint_resume`, returncode 3). Training was
+  unaffected. `kaggle/e4ft_patch.py` retargets the guard to the E4 pretrain
+  init sha (`4c16fbe3...`); `kaggle/recover_e4.py` re-runs the identical guard
+  block offline and records RECOVERED on both seeds
+  (`stage_e_recipe/e4_recovery.json`). No seed was retrained, and the original
+  STOPPED Kaggle records are preserved as
+  `e4_output/seed<N>/kaggle_stopped_seed<N>.json`.
+- INT8 on seeds 0–1 passes so far (`stage_e_recipe/int8_e4/int8_e4.json`):
+  P 4.3342419 ≤ 5.6365268, per-seed int8 EPE 5.1429776 / 5.9300031 against
+  fp32 ONNX 1.2168925 / 1.1876045 — destroyed by int8 like the control, only
+  slightly less so. The gate must be re-run after seed 2 lands.
 
 ---
 

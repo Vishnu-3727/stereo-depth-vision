@@ -10,7 +10,7 @@ through `phase1/harness/frozen_eval.py` on the 40-scene contract.
 | E1 | EMA 0.999 | 0,1,2 | 1.2036174 | 0.0314905 | 1.2044355 | **INCONCLUSIVE** |
 | E2 | native batch 8 | 0,1,2 | 1.2390444 | 0.0037600 | 1.2480458 | **REJECT** |
 | **E3** | 400 epochs | 0,1,2 | **1.1787445** | 0.0147367 | **1.1675765** | **ACCEPT (non-overlapping)** \* |
-| E4 | broader pretraining | — | — | — | — | **BLOCKED** (FT3D absent) |
+| E4 | broader pretraining | 0,1 (+2 pending) | — † | — | — | **PENDING** (seed 2 RUNNING on Kaggle) † |
 
 Acceptance thresholds instantiated from E0: `PREREGISTRATION.md`.
 
@@ -18,6 +18,11 @@ Acceptance thresholds instantiated from E0: `PREREGISTRATION.md`.
 2.7.0+cu128, fp32), not on Kaggle — see the E3 status entries below for why and
 for the device calibration that makes it comparable. Training was on Kaggle T4
 like every other row.
+
+† E4 seeds 0 and 1 were scored on the development box (RTX 4060 Laptop, torch
+2.7.0+cu128, fp32), not on Kaggle — see the E4 status entries below. Training
+was on Kaggle T4 like every other row. Seed 2 is still RUNNING on Kaggle, so
+the E4 row carries no mean and no verdict yet.
 
 ## Reference figures — not the acceptance baseline
 
@@ -123,3 +128,32 @@ expected, and not a regression.
 - The recipe campaign is finished: E0 control, E1 INCONCLUSIVE, E2 REJECT,
   E3 ACCEPT. E4 stays BLOCKED (FlyingThings3D absent from disk). No new
   candidate is authorized.
+- **E4 interim — verdict PENDING (needs 3 seeds).** Seeds 0 and 1 are recovered
+  and scored locally (`kaggle/e4_output/seed0/e4_seed0.json`,
+  `kaggle/e4_output/seed1/e4_seed1.json`); seed 2 is RUNNING on Kaggle and no
+  number is reported for it. Per-seed best: 1.2168361 / 1.1877218. Per-seed
+  final: 1.1886448 / 1.1974885. No mean and no verdict until seed 2 lands.
+- **E4 seeds 0 and 1 false-STOPPED on Kaggle, the same pattern as E3 with a
+  different guard.** `run_arm.py`'s post-hoc `wrong_checkpoint_resume` guard
+  compared the finetune init sha against the E0 Stage-1 constant, so both seeds
+  trained their full 200 epochs and were then failed by a read-only check with
+  `wrong_checkpoint_resume`, returncode 3. `kaggle/e4ft_patch.py` retargets the
+  guard to the E4 pretrain init sha (`4c16fbe3...`); `kaggle/recover_e4.py`
+  re-runs the identical guard block offline and records RECOVERED on both seeds
+  (`e4_recovery.json`). Training was unaffected; no seed was retrained.
+- **E4's contract scoring had to happen off-Kaggle, same as E3.**
+  `run_experiment_e4ft.py` exits as soon as `STOP.json` exists, so the false
+  STOP aborted the scoring stage for both seeds — no `hailo_val` numbers came
+  back from the T4. The checkpoints did, so `kaggle/complete_e4.py` scores them
+  locally through the same `frozen_eval` / `eval_tier2.score` path, with
+  `contract_match` true on all four checkpoints. The comparability calibration
+  is E3's (`e0_device_recheck.json`: max |local − T4| = 0.000129 px). The
+  original STOPPED Kaggle records are preserved at
+  `e4_output/seed<N>/kaggle_stopped_seed<N>.json`.
+- E4's INT8 limb passes on the two seeds so far (P 4.3342419 ≤ 5.6365268) and,
+  for the fourth time, that certifies nothing: per-seed int8 EPE is 5.1429776 /
+  5.9300031 against fp32 ONNX 1.2168925 / 1.1876045 (`int8_e4/int8_e4.json`).
+  E4 is destroyed by int8 just as the control is, only slightly less so. The
+  Stage-D blocker is untouched; see `INT8_CONTROL_REPORT.md` §4. The gate must
+  be re-run after seed 2 lands — re-running `int8_control.py e4` overwrites
+  `int8_e4.json` in place and adds the seed-2 graphs, nothing special needed.
