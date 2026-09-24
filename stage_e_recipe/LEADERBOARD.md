@@ -162,5 +162,9 @@ expected, and not a regression.
   for the fourth time, that certifies nothing: per-seed int8 EPE is 5.1429776 /
   5.9300031 / 4.8835996 against fp32 ONNX 1.2168925 / 1.1876045 / 1.2111492
   (`int8_e4/int8_e4.json`). E4 is destroyed by int8 just as the control is,
-  only slightly less so. The Stage-D blocker is untouched; see
-  `INT8_CONTROL_REPORT.md` §4.
+   only slightly less so. The Stage-D blocker is untouched; see
+   `INT8_CONTROL_REPORT.md` §4.
+
+## Stage F (2026-09-24)
+
+Stage F final push closed at F2 with no training; verdict SUB-1.0 NOT ACHIEVED; E3 remains the incumbent; see `stage_f/STAGE_F_FINAL_REPORT.md`.
