@@ -40,7 +40,7 @@ by `stage_e_recipe/verdict.py` and never by hand.
 | E1 | EMA 0.999 | 1.2036174 | INCONCLUSIVE |
 | E2 | native batch 8 | 1.2390444 | REJECT |
 | **E3** | **400 epochs** | **1.1787445** | **ACCEPT (non-overlapping)** |
-| E4 | broader pretraining | 0,1 (+2 pending) | **PENDING** (seed 2 RUNNING) |
+| E4 | broader pretraining | 1.2052327 | **REJECT** |
 
 E3's verdict in full (`stage_e_recipe/e3_verdict.json`):
 
@@ -122,21 +122,37 @@ lower than every single prior number.
   E0 and E3 (`stage_e_recipe/e3_logmetric_compare.json`). Never compare one
   against the other.
 
-### E4 interim — verdict PENDING (needs 3 seeds)
+### E4 — verdict REJECT (3 seeds)
 
-- Seeds 0 and 1 are recovered and scored locally on the development box (RTX
+- All three seeds are recovered and scored locally on the development box (RTX
   4060 Laptop, torch 2.7.0+cu128, fp32), not on Kaggle — the same off-Kaggle
   scoring as E3, under the same device calibration
   (`stage_e_recipe/e0_device_recheck.json`, max |local − T4| = 0.000129 px).
-  Seed 2 is RUNNING on Kaggle
-  (`vishnuvardhanksece/stage-e-e4-finetune-seed2`) and no number is reported
-  for it.
 - Per-seed local best/final EPE
   (`stage_e_recipe/kaggle/e4_output/seed<N>/e4_seed<N>.json`,
-  `contract_match` true on all four checkpoints): seed 0 **1.2168361** /
-  1.1886448, seed 1 **1.1877218** / 1.1974885. No mean and no verdict until
-  seed 2 lands.
-- The false STOP was the same pattern as E3 with a different guard: the
+  `contract_match` true on all six checkpoints): seed 0 **1.2168361** /
+  1.1886448, seed 1 **1.1877218** / 1.1974885, seed 2 **1.2111401** /
+  1.1988524. Mean best 1.2052327, mean final 1.1949952, spread 0.0291143.
+- E4's verdict in full (`stage_e_recipe/e4_verdict.json`):
+
+```
+mean best  1.2052327  (control 1.2037841)  delta -0.0014486  bar 0.0174488
+mean final 1.1949952  (control 1.2125409)  delta +0.0175457  bar 0.0090235
+spread     0.0291143
+INT8       P 4.1136447 <= 5.6365268  PASS
+VERDICT: REJECT
+delta_best -0.0014486 <= 0: no improvement over control
+```
+
+- Seed 2's Kaggle COMPLETE record passed its guards on the T4 (best 1.2111491
+  / final 1.1987598, preserved as
+  `e4_output/seed2/kaggle_record_seed2.json`); the canonical numbers above are
+  the same-device local scores, differing by −0.0000090 / +0.0000925 px.
+  Seed 2's pulled epoch log is Kaggle's own export of the armp training log
+  (same 200 epochs/values plus `epoch_wall_s`); it is kept as pulled, with
+  both shas in the canonical record's `kaggle_exports` provenance.
+- Seeds 0 and 1 false-STOPPED on Kaggle, the same pattern as E3 with a
+  different guard: the
   post-hoc init-sha guard compared the E4 finetune init against E0's Stage-1
   constant, so both seeds trained all 200 epochs and were then failed by a
   read-only check (`wrong_checkpoint_resume`, returncode 3). Training was
@@ -146,10 +162,10 @@ lower than every single prior number.
   (`stage_e_recipe/e4_recovery.json`). No seed was retrained, and the original
   STOPPED Kaggle records are preserved as
   `e4_output/seed<N>/kaggle_stopped_seed<N>.json`.
-- INT8 on seeds 0–1 passes so far (`stage_e_recipe/int8_e4/int8_e4.json`):
-  P 4.3342419 ≤ 5.6365268, per-seed int8 EPE 5.1429776 / 5.9300031 against
-  fp32 ONNX 1.2168925 / 1.1876045 — destroyed by int8 like the control, only
-  slightly less so. The gate must be re-run after seed 2 lands.
+- INT8 on all three seeds passes (`stage_e_recipe/int8_e4/int8_e4.json`):
+  P 4.1136447 ≤ 5.6365268, per-seed int8 EPE 5.1429776 / 5.9300031 /
+  4.8835996 against fp32 ONNX 1.2168925 / 1.1876045 / 1.2111492 — destroyed
+  by int8 like the control, only slightly less so.
 
 ---
 
@@ -164,7 +180,7 @@ lower than every single prior number.
 | Stage C (deployment validation) | complete, C1 FAIL preserved | export parity fails at 1e-3; no export-level mitigation identified |
 | Stage C runtime (new work) | complete | 4.51 to 9.46 FPS on CUDA, contract EPE unchanged |
 | Stage D (Hailo-8) | **BLOCKED** | no Hailo toolchain reachable from this machine |
-| Stage E (recipe) | **CLOSED** | E3 ACCEPT; E4 blocked |
+| Stage E (recipe) | **CLOSED** | E3 ACCEPT; E4 REJECT |
 
 ---
 
@@ -281,6 +297,10 @@ Listed as options, not a recommendation, and none is authorized.
 | device calibration | `stage_e_recipe/e0_device_recheck.json` |
 | log-metric comparison | `stage_e_recipe/e3_logmetric_compare.json` |
 | E3 INT8 gate | `stage_e_recipe/int8_e3/int8_e3.json` |
+| E4 verdict | `stage_e_recipe/e4_verdict.json` |
+| E4 guard recovery | `stage_e_recipe/e4_recovery.json` |
+| E4 INT8 gate | `stage_e_recipe/int8_e4/int8_e4.json` |
+| E4 per-seed evidence | `stage_e_recipe/kaggle/e4_output/seed<N>/` |
 | E3 per-seed evidence | `stage_e_recipe/kaggle/e3_output/seed<N>/` |
 | host runtime | `stage_c_deploy/runtime/README.md` |
 | INT8 vacuity | `stage_e_recipe/INT8_CONTROL_REPORT.md` |

@@ -10,7 +10,7 @@ through `phase1/harness/frozen_eval.py` on the 40-scene contract.
 | E1 | EMA 0.999 | 0,1,2 | 1.2036174 | 0.0314905 | 1.2044355 | **INCONCLUSIVE** |
 | E2 | native batch 8 | 0,1,2 | 1.2390444 | 0.0037600 | 1.2480458 | **REJECT** |
 | **E3** | 400 epochs | 0,1,2 | **1.1787445** | 0.0147367 | **1.1675765** | **ACCEPT (non-overlapping)** \* |
-| E4 | broader pretraining | 0,1 (+2 pending) | — † | — | — | **PENDING** (seed 2 RUNNING on Kaggle) † |
+| E4 | broader pretraining | 0,1,2 | 1.2052327 | 0.0291143 | 1.1949952 | **REJECT** † |
 
 Acceptance thresholds instantiated from E0: `PREREGISTRATION.md`.
 
@@ -19,10 +19,12 @@ Acceptance thresholds instantiated from E0: `PREREGISTRATION.md`.
 for the device calibration that makes it comparable. Training was on Kaggle T4
 like every other row.
 
-† E4 seeds 0 and 1 were scored on the development box (RTX 4060 Laptop, torch
+† All three E4 seeds were scored on the development box (RTX 4060 Laptop, torch
 2.7.0+cu128, fp32), not on Kaggle — see the E4 status entries below. Training
-was on Kaggle T4 like every other row. Seed 2 is still RUNNING on Kaggle, so
-the E4 row carries no mean and no verdict yet.
+was on Kaggle T4 like every other row. Seed 2's Kaggle COMPLETE record passed
+its guards on the T4 (best 1.2111491 / final 1.1987598, preserved in
+`e4_output/seed2/kaggle_record_seed2.json`); the canonical row uses the
+same-device local scores (best 1.2111401 / final 1.1988524).
 
 ## Reference figures — not the acceptance baseline
 
@@ -126,13 +128,19 @@ expected, and not a regression.
   The original STOPPED Kaggle records are preserved at
   `e3_output/seed<N>/kaggle_stopped_seed<N>.json`.
 - The recipe campaign is finished: E0 control, E1 INCONCLUSIVE, E2 REJECT,
-  E3 ACCEPT. E4 stays BLOCKED (FlyingThings3D absent from disk). No new
-  candidate is authorized.
-- **E4 interim — verdict PENDING (needs 3 seeds).** Seeds 0 and 1 are recovered
-  and scored locally (`kaggle/e4_output/seed0/e4_seed0.json`,
-  `kaggle/e4_output/seed1/e4_seed1.json`); seed 2 is RUNNING on Kaggle and no
-  number is reported for it. Per-seed best: 1.2168361 / 1.1877218. Per-seed
-  final: 1.1886448 / 1.1974885. No mean and no verdict until seed 2 lands.
+  E3 ACCEPT, E4 REJECT. No new candidate is authorized.
+- **E4 complete — verdict REJECT** (`e4_verdict.json`, computed by
+  `verdict.py`). `Δ_best` = −0.0014486: the 3-seed mean best 1.2052327 sits
+  above the control 1.2037841 — no improvement over control. Per-seed best:
+  1.2168361 / 1.1877218 / 1.2111401. Per-seed final: 1.1886448 / 1.1974885 /
+  1.1988524 (mean final 1.1949952, `Δ_final` = +0.0175457, recorded but not
+  required for E4). Spread 0.0291143, 1.7x the control's. Seed 2 was scored
+  locally like seeds 0/1 (`kaggle/e4_output/seed2/e4_seed2.json`); its Kaggle
+  T4 numbers (best 1.2111491 / final 1.1987598, in `kaggle_record_seed2.json`)
+  differ from the local scores by −0.0000090 / +0.0000925 px. Seed 2's pulled
+  epoch log is Kaggle's own export of the armp training log (same 200
+  epochs/values plus `epoch_wall_s`); it is kept as pulled, with both shas in
+  the canonical record's `kaggle_exports` provenance.
 - **E4 seeds 0 and 1 false-STOPPED on Kaggle, the same pattern as E3 with a
   different guard.** `run_arm.py`'s post-hoc `wrong_checkpoint_resume` guard
   compared the finetune init sha against the E0 Stage-1 constant, so both seeds
@@ -150,10 +158,9 @@ expected, and not a regression.
   is E3's (`e0_device_recheck.json`: max |local − T4| = 0.000129 px). The
   original STOPPED Kaggle records are preserved at
   `e4_output/seed<N>/kaggle_stopped_seed<N>.json`.
-- E4's INT8 limb passes on the two seeds so far (P 4.3342419 ≤ 5.6365268) and,
+- E4's INT8 limb passes on all three seeds (P 4.1136447 ≤ 5.6365268) and,
   for the fourth time, that certifies nothing: per-seed int8 EPE is 5.1429776 /
-  5.9300031 against fp32 ONNX 1.2168925 / 1.1876045 (`int8_e4/int8_e4.json`).
-  E4 is destroyed by int8 just as the control is, only slightly less so. The
-  Stage-D blocker is untouched; see `INT8_CONTROL_REPORT.md` §4. The gate must
-  be re-run after seed 2 lands — re-running `int8_control.py e4` overwrites
-  `int8_e4.json` in place and adds the seed-2 graphs, nothing special needed.
+  5.9300031 / 4.8835996 against fp32 ONNX 1.2168925 / 1.1876045 / 1.2111492
+  (`int8_e4/int8_e4.json`). E4 is destroyed by int8 just as the control is,
+  only slightly less so. The Stage-D blocker is untouched; see
+  `INT8_CONTROL_REPORT.md` §4.

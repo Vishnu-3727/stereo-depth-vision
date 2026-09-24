@@ -14,7 +14,14 @@ Kaggle output's training dir
 into <output-root>/seed<N>/ (created if missing; the probe files already in
 e4_output/ are left untouched). Never moves, deletes, or overwrites: a
 destination that already exists is left untouched (its sha256 is verified
-against the source and reported). When the pull already landed directly in
+against the source and reported). COMPLETE-branch exception: for a Kaggle
+COMPLETE seed, run_experiment_e4ft.py already exported the flat-layout
+epoch_log/stdout/integrity_guard itself (a re-serialisation of the armp
+tree), so a pulled copy of one of those three is Kaggle's own export — it
+is kept, both shas plus a note are recorded in the canonical record's
+kaggle_exports provenance, and it is never overwritten. .pth files stay
+strict in every branch: a pulled copy must be sha-identical to the armp
+source, else FAIL. When the pull already landed directly in
 the destination (seed 2's pull-finetune lands in e4_output/seed2/), the
 files are already in place and are verified, not copied.
 
@@ -96,6 +103,15 @@ COPY_MAP = (
     ("stdout.log", "e4_seed{N}_stdout.log"),
 )
 
+# Source names Kaggle's run_experiment_e4ft.py exports itself in the flat
+# layout for a COMPLETE seed (a re-serialisation of the armp tree: same
+# epochs/values, different key order, plus epoch_wall_s). COMPLETE branch
+# only: a pulled copy of one of these is Kaggle's own export — keep it and
+# record provenance instead of failing. .pth files stay strict in every
+# branch: a pulled copy must be sha-identical to the armp source, else FAIL.
+KAGGLE_EXPORT_SRC = {"training_log.jsonl", "integrity_guard.json",
+                     "stdout.log"}
+
 
 def parse_seeds(value: str) -> tuple[int, ...]:
     seeds = []
@@ -170,8 +186,20 @@ def rel_for_record(path: Path) -> str:
         return str(path)
 
 
+def kaggle_status_for(seed: int, evidence_dir: Path) -> str | None:
+    """Read the pulled Kaggle record's status for one seed, if present."""
+    orig_path = orig_path_for(seed, evidence_dir)
+    if not orig_path.is_file():
+        return None
+    try:
+        return json.loads(orig_path.read_text(encoding="utf-8")).get("status")
+    except (json.JSONDecodeError, OSError):
+        return None
+
+
 def step1_copy(seed: int, srcdir: Path, dstdir: Path,
-               dry_run: bool = False) -> dict:
+               dry_run: bool = False,
+               kaggle_status: str | None = None) -> dict:
     """Additive copy of the canonical layout for one seed. Returns a report."""
     if not dry_run:
         dstdir.mkdir(parents=True, exist_ok=True)
@@ -193,7 +221,24 @@ def step1_copy(seed: int, srcdir: Path, dstdir: Path,
             raise SystemExit(f"COMPLETE_E4 FAIL: seed{seed} source missing {src}")
         if dst.is_file():
             # Never overwrite: verify the existing file matches the source.
-            same = sha256_of(src) == sha256_of(dst)
+            src_sha, dst_sha = sha256_of(src), sha256_of(dst)
+            same = src_sha == dst_sha
+            if not same and kaggle_status == "COMPLETE" \
+                    and src_name in KAGGLE_EXPORT_SRC:
+                # Kaggle's own export for a COMPLETE seed: keep the pulled
+                # copy, record both shas in the report (and in the
+                # canonical record's kaggle_exports provenance in
+                # step2_score); do not overwrite it.
+                report["files"][dst.name] = {
+                    "action": "kept-pulled-kaggle-export",
+                    "sha_match_source": False,
+                    "pulled_sha256": dst_sha,
+                    "armp_source_sha256": src_sha,
+                    "note": ("pulled file is Kaggle's own export of the "
+                             "armp source; kept, not overwritten"),
+                    "bytes": dst.stat().st_size,
+                }
+                continue
             report["files"][dst.name] = {
                 "action": "kept-existing",
                 "sha_match_source": same,
@@ -331,6 +376,29 @@ def kaggle_t4_provenance(seed: int, orig: dict, backup: Path) -> dict:
     return prov
 
 
+def kaggle_export_provenance(seed: int, srcdir: Path,
+                             dstdir: Path) -> dict:
+    """Record pulled-vs-armp shas for Kaggle's own COMPLETE-branch exports."""
+    prov: dict = {}
+    for src_name, dst_tmpl in COPY_MAP:
+        if src_name not in KAGGLE_EXPORT_SRC:
+            continue
+        src = srcdir / src_name
+        dst = dstdir / dst_tmpl.format(N=seed)
+        if not dst.is_file():
+            continue
+        pulled = sha256_of(dst)
+        source = sha256_of(src) if src.is_file() else None
+        prov[dst.name] = {
+            "pulled_sha256": pulled,
+            "armp_source_sha256": source,
+            "sha_match_source": (pulled == source),
+            "note": ("pulled file is Kaggle's own export of the armp "
+                     "source; kept, not overwritten"),
+        }
+    return prov
+
+
 def recovery_ref_for(seed: int) -> str:
     recovery_file = REPO / "stage_e_recipe" / "e4_recovery.json"
     if recovery_file.is_file():
@@ -393,6 +461,8 @@ def step2_score(seed: int, ev, device: str, scoring_device: str,
     if branch == "COMPLETE":
         rec["kaggle_record"] = rel_for_record(backup)
         rec["kaggle_t4"] = kaggle_t4_provenance(seed, orig, backup)
+        rec["kaggle_exports"] = kaggle_export_provenance(
+            seed, srcdir_for(evidence_dir), dstdir_for(seed, output_root))
     rec["checkpoints"] = checkpoints
     rec["status"] = "COMPLETE"
     rec["scored_locally"] = True
@@ -440,9 +510,12 @@ def main(argv: list[str] | None = None) -> None:
 
     layouts = [(s, evidence_dir_for(s, args.evidence_root),
                 dstdir_for(s, output_root)) for s in seeds]
+    statuses = {s: kaggle_status_for(s, ev_dir)
+                for s, ev_dir, _ in layouts}
     for seed, evidence_dir, dstdir in layouts:
         rep = step1_copy(seed, srcdir_for(evidence_dir), dstdir,
-                         dry_run=args.dry_run)
+                         dry_run=args.dry_run,
+                         kaggle_status=statuses[seed])
         for name, info in rep["files"].items():
             print(f"seed{seed} {name}: {info['action']} "
                   f"sha_match={info['sha_match_source']} "

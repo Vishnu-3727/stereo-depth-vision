@@ -71,6 +71,30 @@
       },
       "verdict": "RECOVERED",
       "stop": null
+    },
+    "2": {
+      "seed": 2,
+      "expected_epochs": 200,
+      "expected_init_sha": "4c16fbe32724d0c1157aa91b0503f67e7e1576faf597325d62c87510aa6b829f",
+      "guards": {
+        "rows_count": "pass",
+        "nan_inf_loss_in_log": "pass",
+        "zero_valid_pixels": "pass",
+        "nan_inf_val_metric": "pass",
+        "param_or_architecture_changed": "pass",
+        "epochs_run": "pass",
+        "wrong_checkpoint_resume": "pass",
+        "checkpoint_sha_mismatch": "pass"
+      },
+      "row_count": 200,
+      "scored_rows": 41,
+      "best10_epe": 1.5989414837638343,
+      "best10_epoch": 145,
+      "record_best10_epe": 1.5989414837638343,
+      "record_best_epoch": 145,
+      "kaggle_stop": null,
+      "verdict": "RECOVERED",
+      "stop": null
     }
   }
 }
