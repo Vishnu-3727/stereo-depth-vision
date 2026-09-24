@@ -184,6 +184,30 @@ delta_best -0.0014486 <= 0: no improvement over control
 
 ---
 
+## Ryzen AI NPU - PARKED (2026-09-24)
+
+The Ryzen AI NPU track is parked. NPU compiles this model but its outputs are
+numerically wrong on every artefact that compiled:
+
+| artefact | NPU EPE | CPU EPE (same artefact) |
+|---|---|---|
+| R0 all-int8 (mixed-precision cost) | 70.86 | 5.25 |
+| R2 head+refinement fp32 (mixed-precision cost) | 11.15 | 1.29 |
+| Q1 XINT8 full-graph (npu_quark) | 35.86 | 7.10 |
+| Q3 XINT8 73 head+refinement fp32 (npu_quark) | 27.32 | 1.33 |
+
+Sources:
+- `stage_e_recipe/mixed_precision_cost/REPORT.md` (commit `65ac304`, protocol `6218e6b`)
+- `stage_e_recipe/npu_quark/REPORT.md` (protocol commit `6397508`, amendment `497b55c`)
+
+Failures:
+- **A16W8 (Q2) crashes the NPU compiler**: `aiecompiler 77-5379` — "Access pattern for shared buffer port ... is not specified or empty. Compilation Failed."
+- **fp32 compile timed out** at 25 min per-artefact cap; kernel compilation (Conv2DBf16, AddBf16, LeakyReluBf16, SubBf16) was still in progress with zero errors.
+
+Cause: UNKNOWN. Reopen condition: an AMD fix/issue or a subgraph-bisection study. Measured vs hypothesis kept apart.
+
+---
+
 ## 4 Host runtime — where the speed stands
 
 Measured on RTX 4060 Laptop, torch 2.7.0+cu128, fp32, 368x1232, 10 scenes from
