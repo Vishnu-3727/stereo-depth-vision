@@ -183,3 +183,17 @@ descriptive only — no claim that one procedure beats the other.
 - Full rows: `int8_a16w8.json` → `measured.rows`. R2 numbers cited are
   recorded references from `int8_head_refinement.json` → `measured.rows`,
   not results of this run.
+
+## Addendum (2026-09-24)
+
+Fault (a) resolved by `stage_e_recipe/a16w8_latency/` (protocol
+`docs/superpowers/specs/2026-09-24-a16w8-latency-design.md`, record
+`a16w8_latency.json`, report `stage_e_recipe/a16w8_latency/REPORT.md`):
+the regenerated seed-0 A16 is byte-identical to this study's seed-0 A16
+(sha256 `8dd30bca…` match true) and its kept graph shows opset 21 with
+INT16 zero-points on all 200 QuantizeLinear nodes — so this study's
+activations were 16-bit (measured, no longer UNKNOWN). The `QInt8 act`
+procedure label stays wrong. Same run: A16W8 is the slowest config on ORT
+CPU EP (median 1178.9456500000597 ms vs fp32 817.9047999999511 / R2
+870.315150000124 / R0 981.9808499998999 ms, one process) while keeping the
+best quantized EPE (1.2603345881778643 px) — descriptive only.
