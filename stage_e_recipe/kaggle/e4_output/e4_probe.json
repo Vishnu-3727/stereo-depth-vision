@@ -1,0 +1,43 @@
+{
+  "experiment": "STAGE E - E4 RATE PROBE",
+  "seed": 0,
+  "max_steps": 200,
+  "epochs": 1,
+  "note": "measurement only: probe mode saves no checkpoints",
+  "images_mount": "/kaggle/input/datasets/arjun12367/sceneflow-flyingthings-images",
+  "disparity_mount": "/kaggle/input/datasets/arjun12367/sceneflow-flyingthings-disparity",
+  "bundle_files_verified": 22,
+  "environment": {
+    "python": "3.12.13",
+    "torch": "2.10.0+cu128",
+    "cuda": "12.8",
+    "cudnn": 91002,
+    "gpu": "Tesla T4",
+    "device_count": 2,
+    "numpy": "2.0.2",
+    "opencv": "4.13.0"
+  },
+  "n_triplets": 21818,
+  "n_incomplete": 0,
+  "n_train": 20727,
+  "n_holdout": 1091,
+  "probe_wall_s": 86.7,
+  "trainer_returncode": 0,
+  "rate": {
+    "optimizer_steps": 200,
+    "triplet_count": 21818,
+    "n_train": 20727,
+    "n_holdout": 1091,
+    "wall_clock_s": 76.2184751033783,
+    "sec_per_step": 0.38109237551689146,
+    "sec_per_epoch": null,
+    "probe": true,
+    "max_steps": 200,
+    "truncated": true
+  },
+  "gpu": "Tesla T4",
+  "probe_record_sha256": "da346ae68863ac208ce0c95c0e022615cec42979fbb012598b775536eaf87674",
+  "status": "COMPLETE",
+  "wall_s": 594.8,
+  "utc": "2026-09-22T06:33:05Z"
+}

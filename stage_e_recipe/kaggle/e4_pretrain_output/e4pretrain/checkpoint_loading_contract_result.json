@@ -1,0 +1,11 @@
+{
+  "checkpoint_path": "/kaggle/working/e4pretrain/checkpoints/e4_pretrain_final.pth",
+  "checkpoint_sha256": "a3817f07b4ea40b8467f5b3edddc3a6cadc1adbbeca237b6ae06e1adb8e1c2f6",
+  "architecture_match": true,
+  "missing_keys": [],
+  "unexpected_keys": [],
+  "shape_mismatches": [],
+  "loaded_parameter_count": 397954,
+  "total_parameter_count": 397954,
+  "strict_load_result": true
+}

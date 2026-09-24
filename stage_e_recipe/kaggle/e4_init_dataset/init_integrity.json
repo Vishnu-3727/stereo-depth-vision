@@ -1,0 +1,8 @@
+{
+  "dataset": "vishnuvardhanksece/stage-e-e4-init",
+  "purpose": "Stage E E4 finetune init: best-by-pretrain-val checkpoint of the 8-epoch resume-chained pretrain",
+  "file": "e4_pretrain_best.pth",
+  "sha256": "4c16fbe32724d0c1157aa91b0503f67e7e1576faf597325d62c87510aa6b829f",
+  "bytes": 1621629,
+  "source": "stage_e_recipe\\kaggle\\e4_pretrain_output\\e4_pretrain_best.pth"
+}

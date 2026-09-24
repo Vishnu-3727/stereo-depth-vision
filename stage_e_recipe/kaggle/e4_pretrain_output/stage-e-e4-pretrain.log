@@ -1,0 +1,39 @@
+[{"stream_name":"stdout","time":0.829248515,"data":"images mount:     /kaggle/input/datasets/arjun12367/sceneflow-flyingthings-images\n"}
+,{"stream_name":"stdout","time":0.829306117,"data":"disparity mount:  /kaggle/input/datasets/arjun12367/sceneflow-flyingthings-disparity\n"}
+,{"stream_name":"stdout","time":204.390571294,"data":"{\"python\": \"3.12.13\", \"torch\": \"2.10.0+cu128\", \"cuda\": \"12.8\", \"cudnn\": 91002, \"gpu\": \"Tesla T4\", \"device_count\": 2, \"numpy\": \"2.0.2\", \"opencv\": \"4.13.0\"}\n"}
+,{"stream_name":"stdout","time":251.314661279,"data":"E4 PRETRAIN: no resume.pt under /kaggle/input; fresh run\n"}
+,{"stream_name":"stdout","time":251.314945281,"data":"+ /usr/bin/python3 /kaggle/working/e4tree/stage_e_recipe/e4_pretrain/scripts/enumerate_subset_triplets.py --images-root /kaggle/input/datasets/arjun12367/sceneflow-flyingthings-images --disparity-root /kaggle/input/datasets/arjun12367/sceneflow-flyingthings-disparity --output /kaggle/working/e4_subset_manifest.json\n"}
+,{"stream_name":"stdout","time":357.71993124,"data":"triplets=21818 incomplete=0 train=20727 holdout=1091 -\u003e /kaggle/working/e4_subset_manifest.json\n"}
+,{"stream_name":"stdout","time":357.807905796,"data":"triplets=21818 incomplete=0 train=20727 holdout=1091\n"}
+,{"stream_name":"stdout","time":357.808263802,"data":"+ /usr/bin/python3 /kaggle/working/e4tree/stage_e_recipe/e4_pretrain/scripts/train_e4_pretrain.py --manifest /kaggle/working/e4_subset_manifest.json --out-dir /kaggle/working/e4pretrain --epochs 8 --max-wall-s 37800.0 --seed 0\n"}
+,{"stream_name":"stdout","time":360.0836372,"data":"integrity guard: {\"param_count\": 397954, \"param_count_ok\": true, \"n_keys_ok\": true, \"all_ok\": true}\n"}
+,{"stream_name":"stdout","time":366.787166035,"data":"E4 first-batch valid pixels: 262144\n"}
+,{"stream_name":"stderr","time":366.787341036,"data":"/kaggle/working/e4tree/stage_e_recipe/e4_pretrain/scripts/train_e4_pretrain.py:431: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.\n"}
+,{"stream_name":"stderr","time":366.787376233,"data":"Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)\n"}
+,{"stream_name":"stderr","time":366.787382827,"data":"  epoch_loss += float(loss)\n"}
+,{"stream_name":"stdout","time":4566.395193058,"data":"epoch   0 loss  10.4571 lr 9.62e-04 pretrain-val EPE 5.787 D1 24.94% wall 4201s\n"}
+,{"stream_name":"stdout","time":8552.628036318,"data":"epoch   1 loss   6.7174 lr 8.54e-04 pretrain-val EPE 4.356 D1 19.33% wall 3986s\n"}
+,{"stream_name":"stdout","time":12638.720167761,"data":"epoch   2 loss   5.7486 lr 6.91e-04 pretrain-val EPE 4.200 D1 17.17% wall 4086s\n"}
+,{"stream_name":"stdout","time":16644.076993943,"data":"epoch   3 loss   5.1565 lr 5.00e-04 pretrain-val EPE 3.337 D1 15.93% wall 4005s\n"}
+,{"stream_name":"stdout","time":20636.11365307,"data":"epoch   4 loss   4.5599 lr 3.09e-04 pretrain-val EPE 3.139 D1 13.13% wall 3992s\n"}
+,{"stream_name":"stdout","time":24666.136025328,"data":"epoch   5 loss   4.1347 lr 1.46e-04 pretrain-val EPE 2.597 D1 11.77% wall 4030s\n"}
+,{"stream_name":"stdout","time":28600.360392217,"data":"epoch   6 loss   3.8480 lr 3.81e-05 pretrain-val EPE 2.512 D1 10.88% wall 3934s\n"}
+,{"stream_name":"stdout","time":32575.318954069,"data":"epoch   7 loss   3.5785 lr 0.00e+00 pretrain-val EPE 2.368 D1 10.31% wall 3975s\n"}
+,{"stream_name":"stdout","time":32575.488889865,"data":"E4 PRETRAIN done: wall 32210.4s best pretrain-val EPE 2.3681 @epoch 7\n"}
+,{"stream_name":"stdout","time":32575.48935921,"data":"checkpoint contract: strict=True loaded=397954/397954\n"}
+,{"stream_name":"stdout","time":32578.605934126,"data":"best checkpoint sha256:   4c16fbe32724d0c1157aa91b0503f67e7e1576faf597325d62c87510aa6b829f\n"}
+,{"stream_name":"stdout","time":32578.605999855,"data":"resume checkpoint sha256: 6a35fd6379a6c80295602d5f511cf1b796f0a6bf9ccca5743933842b0a8786c0\n"}
+,{"stream_name":"stdout","time":32578.608027303,"data":"copied /kaggle/working/e4pretrain/checkpoints/e4_pretrain_best.pth -\u003e /kaggle/working/e4_pretrain_best.pth\n"}
+,{"stream_name":"stdout","time":32578.611746168,"data":"copied /kaggle/working/e4pretrain/checkpoints/resume.pt -\u003e /kaggle/working/resume.pt\n"}
+,{"stream_name":"stdout","time":32578.611898179,"data":"copied /kaggle/working/e4pretrain/pretrain_log.jsonl -\u003e /kaggle/working/pretrain_log.jsonl\n"}
+,{"stream_name":"stdout","time":32578.612064401,"data":"copied /kaggle/working/e4pretrain/e4_pretrain_record.json -\u003e /kaggle/working/e4_pretrain_record.json\n"}
+,{"stream_name":"stdout","time":32578.613414315,"data":"\n"}
+,{"stream_name":"stdout","time":32578.613428392,"data":"E4 PRETRAIN COMPLETE in 32577.8s: finished all 8 epochs; no further session needed\n"}
+,{"stream_name":"stdout","time":32578.61343277,"data":"wrote /kaggle/working/e4_pretrain.json\n"}
+,{"stream_name":"stderr","time":32581.465427379,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":32581.465465411,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":32581.758047537,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":32581.758096458,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":32582.558581514,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":32583.792175403,"data":"[NbConvertApp] Writing 334794 bytes to __results__.html\n"}
+]

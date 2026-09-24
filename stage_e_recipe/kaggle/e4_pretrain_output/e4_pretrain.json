@@ -1,0 +1,43 @@
+{
+  "experiment": "STAGE E - E4 PRETRAIN",
+  "seed": 0,
+  "epochs": 8,
+  "max_wall_s": 37800.0,
+  "note": "real run: checkpoints saved; resume-chained via resume.pt",
+  "images_mount": "/kaggle/input/datasets/arjun12367/sceneflow-flyingthings-images",
+  "disparity_mount": "/kaggle/input/datasets/arjun12367/sceneflow-flyingthings-disparity",
+  "bundle_files_verified": 22,
+  "environment": {
+    "python": "3.12.13",
+    "torch": "2.10.0+cu128",
+    "cuda": "12.8",
+    "cudnn": 91002,
+    "gpu": "Tesla T4",
+    "device_count": 2,
+    "numpy": "2.0.2",
+    "opencv": "4.13.0"
+  },
+  "resumed": false,
+  "resume_src": null,
+  "n_triplets": 21818,
+  "n_incomplete": 0,
+  "n_train": 20727,
+  "n_holdout": 1091,
+  "pretrain_wall_s": 32220.8,
+  "trainer_returncode": 0,
+  "stopped_for_wall_budget": false,
+  "epochs_run": 8,
+  "best_epoch": 7,
+  "best_pretrain_val_epe": 2.3681485794407453,
+  "best_sha256": "4c16fbe32724d0c1157aa91b0503f67e7e1576faf597325d62c87510aa6b829f",
+  "resume_sha256": "6a35fd6379a6c80295602d5f511cf1b796f0a6bf9ccca5743933842b0a8786c0",
+  "copied_to_working": [
+    "e4_pretrain_best.pth",
+    "resume.pt",
+    "pretrain_log.jsonl",
+    "e4_pretrain_record.json"
+  ],
+  "status": "COMPLETE",
+  "wall_s": 32577.8,
+  "utc": "2026-09-23T11:14:55Z"
+}

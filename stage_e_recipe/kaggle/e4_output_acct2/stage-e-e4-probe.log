@@ -1,0 +1,22 @@
+[{"stream_name":"stdout","time":0.887228792,"data":"images mount:     /kaggle/input/datasets/arjun12367/sceneflow-flyingthings-images\n"}
+,{"stream_name":"stdout","time":0.888503086,"data":"disparity mount:  /kaggle/input/datasets/arjun12367/sceneflow-flyingthings-disparity\n"}
+,{"stream_name":"stdout","time":41.327372998,"data":"{\"python\": \"3.12.13\", \"torch\": \"2.10.0+cu128\", \"cuda\": \"12.8\", \"cudnn\": 91002, \"gpu\": \"Tesla T4\", \"device_count\": 2, \"numpy\": \"2.0.2\", \"opencv\": \"4.13.0\"}\n"}
+,{"stream_name":"stdout","time":41.327411538,"data":"+ /usr/bin/python3 /kaggle/working/e4tree/stage_e_recipe/e4_pretrain/scripts/enumerate_subset_triplets.py --images-root /kaggle/input/datasets/arjun12367/sceneflow-flyingthings-images --disparity-root /kaggle/input/datasets/arjun12367/sceneflow-flyingthings-disparity --output /kaggle/working/e4_subset_manifest.json\n"}
+,{"stream_name":"stdout","time":405.430063919,"data":"triplets=21818 incomplete=0 train=20727 holdout=1091 -\u003e /kaggle/working/e4_subset_manifest.json\n"}
+,{"stream_name":"stdout","time":405.522147909,"data":"triplets=21818 incomplete=0 train=20727 holdout=1091\n"}
+,{"stream_name":"stdout","time":405.522315426,"data":"+ /usr/bin/python3 /kaggle/working/e4tree/stage_e_recipe/e4_pretrain/scripts/train_e4_pretrain.py --manifest /kaggle/working/e4_subset_manifest.json --out-dir /kaggle/working/e4probe --epochs 1 --max-steps 200 --seed 0\n"}
+,{"stream_name":"stdout","time":407.882375728,"data":"integrity guard: {\"param_count\": 397954, \"param_count_ok\": true, \"n_keys_ok\": true, \"all_ok\": true}\n"}
+,{"stream_name":"stderr","time":414.860547098,"data":"/kaggle/working/e4tree/stage_e_recipe/e4_pretrain/scripts/train_e4_pretrain.py:337: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.\n"}
+,{"stream_name":"stderr","time":414.860620973,"data":"Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)\n"}
+,{"stream_name":"stderr","time":414.86062612,"data":"  epoch_loss += float(loss)\n"}
+,{"stream_name":"stdout","time":482.153218617,"data":"E4 RATE PROBE done: 200 steps in 69.2s (0.346 s/step)\n"}
+,{"stream_name":"stdout","time":484.439191051,"data":"\n"}
+,{"stream_name":"stdout","time":484.439235071,"data":"E4 PROBE COMPLETE in 483.6s: 200 steps, 0.346 s/step (Tesla T4)\n"}
+,{"stream_name":"stdout","time":484.439240324,"data":"wrote /kaggle/working/e4_probe.json\n"}
+,{"stream_name":"stderr","time":486.94356624,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":486.943594713,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":487.186329517,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":487.186367135,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":487.803089145,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":489.011911549,"data":"[NbConvertApp] Writing 321774 bytes to __results__.html\n"}
+]

@@ -1,0 +1,105 @@
+{
+  "arm": "e4_pretrain",
+  "experiment": "E4-PRETRAIN-RATE-PROBE",
+  "note": "FlyingThings3D_subset rate probe: same code path, truncated; NOT a pretrain",
+  "config": {
+    "experiment": "E4-PRETRAIN (FlyingThings3D_subset, Stage-1 recipe)",
+    "arm": "Stage-1 recipe mirrored line-for-line; ONLY the dataset is the FlyingThings3D_subset corpus (|d| sign fix) instead of TRAIN A+C; loss mask gt>0 and gt<184 (P2A's ceiling, same formula).",
+    "intervention": {
+      "scale_distribution": "logUniform(0.7, 1.7), one draw per sample",
+      "window": "w = round(512/s), h = round(256/s), uniform top-left",
+      "image_resize": "cv2.INTER_LINEAR -> 256x512",
+      "disparity_resize": "cv2.INTER_NEAREST -> 256x512 (sparse GT; 0 = no GT)",
+      "disparity_scaling": "d[d>0] *= sx with sx = 512/w (realised, not sampled s)",
+      "op_order": "crop -> resize -> ImageNet normalise -> gain jitter (P2A order)",
+      "source_frame": "FT3D 540x960 frame"
+    },
+    "dataset": "flyingthings3d_subset TRAIN (official subset slice, NOT Stage-1 TRAIN A+C)",
+    "split": "manifest-driven train / pretrain-val holdout (fixed random 5%, rng seed 0); pretrain monitoring ONLY",
+    "split_enforcement": "train split only enters the optimizer loop; holdout is forward-only",
+    "resolution": [
+      256,
+      512
+    ],
+    "crop": "random scale-augmented 256x512",
+    "disparity_range": 184,
+    "batch_size": 2,
+    "precision": "fp32",
+    "seed": 0,
+    "epochs": 1,
+    "optimizer": "Adam betas=(0.9, 0.999)",
+    "learning_rate": 0.001,
+    "schedule": "cosine annealing to 0 over 1 epochs",
+    "loss": "masked smooth L1, beta=1.0, valid = gt > 0 and gt < 184",
+    "augmentation": "scale-augmented random crop (the intervention), independent per-image gain jitter sigma=0.1; no horizontal flip",
+    "initialisation": "PyTorch defaults, random",
+    "device": "cuda",
+    "known_deviation": "no batch normalisation (BN-folded exported artifact), carried into all arms",
+    "forbidden": "no fine-tuning, no KITTI training, no hailo_val evaluation in E4 pretrain"
+  },
+  "epochs_run": 0,
+  "wall_clock_s": 69.21959280967712,
+  "git_head": "",
+  "integrity_guard": {
+    "param_count": 397954,
+    "param_count_expected": 397954,
+    "param_count_ok": true,
+    "n_keys": 70,
+    "n_keys_expected": 70,
+    "n_keys_ok": true,
+    "batchnorm_modules": [],
+    "no_batchnorm": true,
+    "config_matches_p2a": true,
+    "config": {
+      "downsample_levels": 3,
+      "num_disparities": 24,
+      "cost_volume_shift": "right",
+      "regression_normalize": true
+    },
+    "max_disparity_px": 184,
+    "feature_stride": 8,
+    "refinement_dilations": [
+      1,
+      2,
+      4,
+      8,
+      1,
+      1
+    ],
+    "all_ok": true
+  },
+  "rate": {
+    "optimizer_steps": 200,
+    "triplet_count": 21818,
+    "n_train": 20727,
+    "n_holdout": 1091,
+    "wall_clock_s": 69.21959280967712,
+    "sec_per_step": 0.3460979640483856,
+    "sec_per_epoch": null,
+    "probe": true,
+    "max_steps": 200,
+    "truncated": true
+  },
+  "scale_draw_sample": {
+    "n": 400,
+    "s_min": 0.7018509579164783,
+    "s_max": 1.692350511533158,
+    "s_mean": 1.1454993702452247,
+    "sx_min": 0.7023319615912208,
+    "sx_max": 1.6897689768976898,
+    "h_min": 151,
+    "h_max": 365,
+    "w_min": 303,
+    "w_max": 729
+  },
+  "software": {
+    "python": "3.12.13",
+    "torch": "2.10.0+cu128",
+    "numpy": "2.0.2",
+    "opencv": "4.13.0",
+    "platform": "Linux-6.12.90+-x86_64-with-glibc2.35",
+    "cuda": "12.8",
+    "gpu": "Tesla T4"
+  },
+  "history": []
+}
