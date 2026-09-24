@@ -1,0 +1,204 @@
+{
+  "gate": "Stage E INT8 numerical-survivability - E4",
+  "experiment": "e4",
+  "not_hailo": "NOT Hailo validation, compatibility, HEF validation or hardware validation. Stage D remains blocked.",
+  "P_definition": "EPE(int8 ONNX) - EPE(fp32 ONNX), same runtime and graph",
+  "calibration": "first 32 scenes of hailo_calib; hailo_val never used",
+  "environment": {
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "numpy": "2.5.1",
+    "onnxruntime": "1.27.0"
+  },
+  "seeds": {
+    "0": {
+      "checkpoint": "stage_e_recipe/kaggle/e4_output/seed0/e4_seed0_best.pth",
+      "export": {
+        "path": "stage_e_recipe/int8_e4/e4_seed0_best_fp32.onnx",
+        "sha256": "64790fa16fa4173b340afa3d73a4ff087e9956fde05c3df41d59c094d893246f",
+        "bytes": 1701550,
+        "opset": 13,
+        "n_nodes": 712,
+        "parent_checkpoint_sha256": "d06a28e41d1fefcdbce6d27d306758607e1023d40f6d5c8e448d0abd07cee0ca",
+        "params": 397954
+      },
+      "quantize": {
+        "path": "stage_e_recipe/int8_e4/e4_seed0_best_int8.onnx",
+        "sha256": "426b06fe50750c2e9f474111196ed3f01e85a13e6a217a18c7aaf95276ea6c2b",
+        "bytes": 764574,
+        "parent_onnx_sha256": "64790fa16fa4173b340afa3d73a4ff087e9956fde05c3df41d59c094d893246f",
+        "procedure": "quantize_static, QDQ, QInt8 act, QInt8 weight, per_channel",
+        "calibration": "first 32 scenes of hailo_calib",
+        "quantize_s": 43.8
+      },
+      "fp32_onnx": {
+        "metrics": {
+          "valid_pixels": 3802797,
+          "epe": 1.2168925068315832,
+          "rmse": 3.164900606959661,
+          "d1": 6.4613230735166765,
+          "bad1": 30.485745097621564,
+          "bad2": 12.191789359253203,
+          "bad3": 6.88864012462406
+        },
+        "guard": {
+          "scenes": 40,
+          "valid_pixels": 3802797,
+          "gt_scale": 256.0,
+          "split": "hailo_val",
+          "gt_source": "disp_occ_0",
+          "contract": {
+            "scenes": 40,
+            "valid_pixels": 3802797,
+            "gt_scale": 256.0,
+            "split": "hailo_val",
+            "gt_source": "disp_occ_0"
+          },
+          "contract_match": true
+        },
+        "nonfinite_pixels": 0,
+        "score_s": 36.9
+      },
+      "int8_onnx": {
+        "metrics": {
+          "valid_pixels": 3802797,
+          "epe": 5.142977636792445,
+          "rmse": 6.900653274246487,
+          "d1": 70.06298258886814,
+          "bad1": 90.44498036576762,
+          "bad2": 80.82834818687404,
+          "bad3": 70.59653723298929
+        },
+        "guard": {
+          "scenes": 40,
+          "valid_pixels": 3802797,
+          "gt_scale": 256.0,
+          "split": "hailo_val",
+          "gt_source": "disp_occ_0",
+          "contract": {
+            "scenes": 40,
+            "valid_pixels": 3802797,
+            "gt_scale": 256.0,
+            "split": "hailo_val",
+            "gt_source": "disp_occ_0"
+          },
+          "contract_match": true
+        },
+        "nonfinite_pixels": 0,
+        "score_s": 41.7
+      },
+      "fp32_torch": {
+        "metrics": {
+          "valid_pixels": 3802797,
+          "epe": 1.2168924410680535,
+          "rmse": 3.1649004314185634,
+          "d1": 6.461296777082763,
+          "bad1": 30.485692504753736,
+          "bad2": 12.191815655687115,
+          "bad3": 6.888613828190144
+        }
+      },
+      "P": 3.9260851299608612,
+      "export_parity_delta": 6.576352973297617e-08
+    },
+    "1": {
+      "checkpoint": "stage_e_recipe/kaggle/e4_output/seed1/e4_seed1_best.pth",
+      "export": {
+        "path": "stage_e_recipe/int8_e4/e4_seed1_best_fp32.onnx",
+        "sha256": "d26e24203486de0206f1c696bb7c24cae5d13a3a86f7370b1df36641611b9545",
+        "bytes": 1701550,
+        "opset": 13,
+        "n_nodes": 712,
+        "parent_checkpoint_sha256": "90e6de84ed2c3741aaddc789e747ab65c9ec70a6ab96fd143c133a3855ad05d8",
+        "params": 397954
+      },
+      "quantize": {
+        "path": "stage_e_recipe/int8_e4/e4_seed1_best_int8.onnx",
+        "sha256": "2f05fa2b6bd046941acb098d883e2f9122fc189f0d493080f14e18bbf1bff8f5",
+        "bytes": 764574,
+        "parent_onnx_sha256": "d26e24203486de0206f1c696bb7c24cae5d13a3a86f7370b1df36641611b9545",
+        "procedure": "quantize_static, QDQ, QInt8 act, QInt8 weight, per_channel",
+        "calibration": "first 32 scenes of hailo_calib",
+        "quantize_s": 38.4
+      },
+      "fp32_onnx": {
+        "metrics": {
+          "valid_pixels": 3802797,
+          "epe": 1.187604508665982,
+          "rmse": 3.2117658566541025,
+          "d1": 5.967896787548744,
+          "bad1": 29.22114959068286,
+          "bad2": 11.322560736216001,
+          "bad3": 6.336940941102036
+        },
+        "guard": {
+          "scenes": 40,
+          "valid_pixels": 3802797,
+          "gt_scale": 256.0,
+          "split": "hailo_val",
+          "gt_source": "disp_occ_0",
+          "contract": {
+            "scenes": 40,
+            "valid_pixels": 3802797,
+            "gt_scale": 256.0,
+            "split": "hailo_val",
+            "gt_source": "disp_occ_0"
+          },
+          "contract_match": true
+        },
+        "nonfinite_pixels": 0,
+        "score_s": 34.7
+      },
+      "int8_onnx": {
+        "metrics": {
+          "valid_pixels": 3802797,
+          "epe": 5.930003127544395,
+          "rmse": 7.722940917466122,
+          "d1": 75.2385415261451,
+          "bad1": 92.51085451050898,
+          "bad2": 84.57469594090877,
+          "bad3": 75.74745641168855
+        },
+        "guard": {
+          "scenes": 40,
+          "valid_pixels": 3802797,
+          "gt_scale": 256.0,
+          "split": "hailo_val",
+          "gt_source": "disp_occ_0",
+          "contract": {
+            "scenes": 40,
+            "valid_pixels": 3802797,
+            "gt_scale": 256.0,
+            "split": "hailo_val",
+            "gt_source": "disp_occ_0"
+          },
+          "contract_match": true
+        },
+        "nonfinite_pixels": 0,
+        "score_s": 43.1
+      },
+      "fp32_torch": {
+        "metrics": {
+          "valid_pixels": 3802797,
+          "epe": 1.1876045044740926,
+          "rmse": 3.2117658889266583,
+          "d1": 5.967896787548744,
+          "bad1": 29.221175887116775,
+          "bad2": 11.322560736216001,
+          "bad3": 6.336914644668122
+        }
+      },
+      "P": 4.742398618878413,
+      "export_parity_delta": 4.191889502180857e-09
+    }
+  },
+  "P_candidate_per_seed": [
+    3.9260851299608612,
+    4.742398618878413
+  ],
+  "P_candidate": 4.334241874419638,
+  "P_candidate_spread": 0.8163134889175518,
+  "P_control_reference": 5.5865268,
+  "gate_threshold": 5.6365267999999995,
+  "int8_gate": "PASS"
+}
