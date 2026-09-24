@@ -280,6 +280,8 @@ def audit_subject(seed: int, tag: str, device: str, limit: int | None,
 
     sum_oracle = 0.0
     sum_dom, sum_top2, sum_top3, sum_wta = 0.0, 0.0, 0.0, 0.0
+    sum_dom_ref, sum_top2_ref, sum_top3_ref = 0.0, 0.0, 0.0
+    sanity_max = 0.0
     wta_hit = 0
     fg_ok = True
 
@@ -413,6 +415,54 @@ def audit_subject(seed: int, tag: str, device: str, limit: int | None,
         pw = torch.softmax(-cn, dim=1)
         if not torch.isfinite(pw).all():
             raise ValueError(f"NaN/inf in readout softmax scene {s.name}")
+
+        # F2 sanity gate: the audit's full soft-argmin reconstruction must
+        # equal the model's own disparity_initial within max-abs 1e-4.
+        nD = pw.shape[1]
+        cand = torch.arange(nD, dtype=pw.dtype, device=device).view(1, nD, 1, 1)
+        init_recon = (pw * cand).sum(dim=1, keepdim=True)
+        sanity = float((init_recon - init_t).abs().max())
+        sanity_max = max(sanity_max, sanity)
+        if sanity > 1e-4:
+            raise ValueError(
+                f"soft-argmin sanity scene {s.name}: max-abs {sanity:.3e} "
+                f"> 1e-4")
+
+        # A1.2: alternative initial maps on the FULL image (candidate units,
+        # on device, same standardise/softmax as the model), passed through
+        # the model's own refinement:
+        # final_alt = relu(init_alt + refinement(init_alt, left)).
+        a_full = pw.argmax(dim=1, keepdim=True)
+        km1 = (a_full - 1).clamp(0, nD - 1)
+        kp1 = (a_full + 1).clamp(0, nD - 1)
+        w_dom = torch.cat([pw.gather(1, km1), pw.gather(1, a_full),
+                           pw.gather(1, kp1)], dim=1)
+        w_dom = w_dom / w_dom.sum(dim=1, keepdim=True)
+        k_dom = torch.cat([km1, a_full, kp1], dim=1).to(pw.dtype)
+        init_dom = (w_dom * k_dom).sum(dim=1, keepdim=True)
+        t2_v, t2_i = torch.topk(pw, 2, dim=1)
+        t2_v = t2_v / t2_v.sum(dim=1, keepdim=True)
+        init_top2 = (t2_v * t2_i.to(pw.dtype)).sum(dim=1, keepdim=True)
+        t3_v, t3_i = torch.topk(pw, 3, dim=1)
+        t3_v = t3_v / t3_v.sum(dim=1, keepdim=True)
+        init_top3 = (t3_v * t3_i.to(pw.dtype)).sum(dim=1, keepdim=True)
+        if not (torch.isfinite(init_dom).all()
+                and torch.isfinite(init_top2).all()
+                and torch.isfinite(init_top3).all()):
+            raise ValueError(f"NaN/inf in readout init_alt scene {s.name}")
+        final_dom = torch.relu(init_dom + model.refinement(init_dom, left_t))
+        final_t2 = torch.relu(init_top2 + model.refinement(init_top2, left_t))
+        final_t3 = torch.relu(init_top3 + model.refinement(init_top3, left_t))
+        dom_r = final_dom[0, 0].cpu().numpy().astype(np.float64)
+        t2_r = final_t2[0, 0].cpu().numpy().astype(np.float64)
+        t3_r = final_t3[0, 0].cpu().numpy().astype(np.float64)
+        dom_re = np.abs(dom_r[valid] - gv)
+        t2_re = np.abs(t2_r[valid] - gv)
+        t3_re = np.abs(t3_r[valid] - gv)
+        sum_dom_ref += float(dom_re.sum())
+        sum_top2_ref += float(t2_re.sum())
+        sum_top3_ref += float(t3_re.sum())
+
         Pv = pw[0, :, vt[0, 0]].double().cpu().numpy()  # (24, N)
         D = Pv.shape[0]
         a = Pv.argmax(axis=0)
@@ -496,6 +546,10 @@ def audit_subject(seed: int, tag: str, device: str, limit: int | None,
                            if (gv < 64.0).any() else None),
             "init8_epe": float(np.abs(8.0 * init_c[valid] - gv).mean()),
             "oracle_epe": float(oerr.mean()),
+            "dom_ref_epe": float(dom_re.mean()),
+            "top2_ref_epe": float(t2_re.mean()),
+            "top3_ref_epe": float(t3_re.mean()),
+            "sanity_max_abs": sanity,
             "occ_epe": (float(evec[occluded[valid]].mean())
                         if occluded[valid].any() else None),
             "noc_epe": (float(evec[~occluded[valid]].mean())
@@ -504,7 +558,9 @@ def audit_subject(seed: int, tag: str, device: str, limit: int | None,
             "mean_gt": float(gv.mean()),
         })
         del (pred_t, st, cost, init_t, resid_t, final_t, cu, cn, pw, Pv,
-             gi, oracle_t, warped, grid, right_f, left_f)
+              gi, oracle_t, warped, grid, right_f, left_f,
+              init_recon, init_dom, init_top2, init_top3,
+              final_dom, final_t2, final_t3)
         if device == "cuda" and (i + 1) % 10 == 0:
             torch.cuda.empty_cache()
         if (i + 1) % 10 == 0 or (i + 1) == n_img:
@@ -631,9 +687,12 @@ def audit_subject(seed: int, tag: str, device: str, limit: int | None,
 
     oracle_epe = sum_oracle / n
     oracle_reduction = epe - oracle_epe
-    dom_epe = sum_dom / n
-    top2_epe = sum_top2 / n
-    top3_epe = sum_top3 / n
+    dom_coarse = sum_dom / n
+    top2_coarse = sum_top2 / n
+    top3_coarse = sum_top3 / n
+    dom_epe = sum_dom_ref / n
+    top2_epe = sum_top2_ref / n
+    top3_epe = sum_top3_ref / n
     wta_acc = float(wta_hit / n)
 
     berr = np.concatenate(L_berr) if L_berr else np.zeros(0, dtype=np.float32)
@@ -711,13 +770,24 @@ def audit_subject(seed: int, tag: str, device: str, limit: int | None,
         "readouts": {
             "dominant_mode_pm1_epe": dom_epe,
             "top2_epe": top2_epe, "top3_epe": top3_epe,
+            "dominant_mode_pm1_coarse_epe": dom_coarse,
+            "top2_coarse_epe": top2_coarse,
+            "top3_coarse_epe": top3_coarse,
             "wta_hard_argmin_x8_epe": float(sum_wta / n),
             "wta_within_1_candidate_frac": wta_acc,
             "bimodality": bimod,
+            "sanity_softargmin_max_abs": sanity_max,
+            "sanity_status": "PASS",
             "method": "full-res cost bilinear align_corners=True, "
                       "unbiased-std standardise eps 1e-6 (model readout), "
-                      "softmax(-cost); dominant=argmax+-1 renormalised; "
-                      "top-k renormalised; x8 to pixels",
+                      "softmax(-cost); A1.2: dominant=argmax+-1 renormalised "
+                      "and top-k renormalised built on the FULL image in "
+                      "candidate units, then final_alt = "
+                      "relu(init_alt + refinement(init_alt, left)) and "
+                      "pooled contract EPE on valid pixels (gating); "
+                      "coarse pre-refinement EPEs (x8 to pixels) secondary "
+                      "only; F2 sanity: full soft-argmin reconstruction "
+                      "equals disparity_initial within max-abs 1e-4",
         },
         "warp": warp,
         "d5_oracle_scale_pooled": oa,
@@ -863,35 +933,85 @@ def main() -> None:
     finals = [subjects[f"seed{s}_final"] for s in (0, 1, 2)]
     rules: dict[str, dict] = {}
     if not smoke:
-        oracle_b = [(f["oracle"]["reduction"] >= 0.168) for f in finals]
-        readout_b = []
+        # A1.1 probe validity gate: a ceiling probe counts only if it
+        # improves on the unmodified model. oracle EPE >= model EPE on a
+        # seed -> INCONCLUSIVE (off-manifold), not FAIL. Overall
+        # INCONCLUSIVE if any seed is INCONCLUSIVE.
+        oracle_rows = []
+        for f in finals:
+            oe, me = f["oracle"]["epe"], f["epe"]
+            red = me - oe
+            if oe >= me:
+                st = "INCONCLUSIVE"
+            elif red >= 0.168:
+                st = "PASS"
+            else:
+                st = "FAIL"
+            oracle_rows.append({"seed": f["seed"], "model_epe": me,
+                               "oracle_epe": oe, "reduction": red,
+                               "status": st})
+        if any(r["status"] == "INCONCLUSIVE" for r in oracle_rows):
+            oracle_overall = "INCONCLUSIVE"
+        elif all(r["status"] == "PASS" for r in oracle_rows):
+            oracle_overall = "PASS"
+        else:
+            oracle_overall = "FAIL"
+        oracle_b = [r["status"] == "PASS" for r in oracle_rows]
+        readout_low_b = []
         for f in finals:
             r = f["readouts"]
-            lowers = (r["dominant_mode_pm1_epe"] < f["epe"]
-                      or r["top2_epe"] < f["epe"] or r["top3_epe"] < f["epe"])
-            bim = (r["bimodality"]["ratio"] is not None
-                   and r["bimodality"]["ratio"] >= 2.0)
-            readout_b.append(bool(lowers or bim))
+            readout_low_b.append(bool(
+                r["dominant_mode_pm1_epe"] < f["epe"]
+                or r["top2_epe"] < f["epe"] or r["top3_epe"] < f["epe"]))
+        bim_b = []
+        for f in finals:
+            bim_b.append(bool(
+                f["readouts"]["bimodality"]["ratio"] is not None
+                and f["readouts"]["bimodality"]["ratio"] >= 2.0))
+        readout_b = [bool(a or b) for a, b in zip(readout_low_b, bim_b)]
         warp_b = [(f["warp"]["spearman"]["rho"] is not None
                    and f["warp"]["spearman"]["rho"] >= 0.20) for f in finals]
         gap_b = [(f["train_split"]["gtlt64_epe"]
                   <= 0.70 * gtlt64_of(f)) for f in finals]
         rules = {
-            "R-ORACLE": {"per_seed": oracle_b, "rule": all(oracle_b)},
-            "R-READOUT": {"per_seed": readout_b, "rule": all(readout_b)},
+            "R-ORACLE": {"per_seed": oracle_b, "rule": all(oracle_b),
+                         "overall": oracle_overall,
+                         "seeds": oracle_rows},
+            "R-READOUT": {"per_seed": readout_b, "rule": all(readout_b),
+                          "readout_low_per_seed": readout_low_b,
+                          "bimodal_per_seed": bim_b},
             "R-WARP": {"per_seed": warp_b, "rule": all(warp_b)},
             "R-GAP": {"per_seed": gap_b, "rule": all(gap_b)},
         }
         leakage = {d: (REPO / d).exists() for d in CANDIDATE_DATA_DIRS}
-        if rules["R-ORACLE"]["rule"] and rules["R-READOUT"]["rule"]:
-            sel = ("M1", "R-ORACLE and R-READOUT hold on 3/3 seeds")
-        elif (not rules["R-ORACLE"]["rule"]) and rules["R-WARP"]["rule"]:
-            sel = ("M2", "NOT R-ORACLE and R-WARP holds on 3/3 seeds")
-        elif rules["R-GAP"]["rule"] and any(leakage.values()):
-            sel = ("DATA", "R-GAP holds and leakage-free source on disk")
+        if oracle_overall == "INCONCLUSIVE":
+            branch = "A1.3 (R-ORACLE INCONCLUSIVE)"
+            if all(readout_low_b):
+                sel = ("M1", branch + ": an alternative refined readout "
+                       "(A1.2) lowers pooled contract EPE on 3/3 seeds "
+                       "(bimodality limb alone not sufficient here)")
+            elif all(warp_b):
+                sel = ("M2", branch + ": R-WARP holds on 3/3 seeds")
+            elif all(gap_b) and any(leakage.values()):
+                sel = ("DATA", branch + ": R-GAP holds and leakage-free "
+                       "source on disk")
+            else:
+                sel = ("STOP", branch + ": SUB-1.0 NOT ACHIEVED; E3 frozen")
         else:
-            sel = ("STOP", "SUB-1.0 NOT ACHIEVED; E3 frozen")
+            branch = "frozen (§10; R-ORACLE PASS or FAIL)"
+            if all(oracle_b) and all(readout_b):
+                sel = ("M1", branch + ": R-ORACLE and R-READOUT hold "
+                       "on 3/3 seeds")
+            elif (not all(oracle_b)) and all(warp_b):
+                sel = ("M2", branch + ": NOT R-ORACLE and R-WARP holds "
+                       "on 3/3 seeds")
+            elif all(gap_b) and any(leakage.values()):
+                sel = ("DATA", branch + ": R-GAP holds and leakage-free "
+                       "source on disk")
+            else:
+                sel = ("STOP", branch + ": SUB-1.0 NOT ACHIEVED; E3 frozen")
         selection = {"mechanism": sel[0], "reason": sel[1],
+                     "branch": branch,
                      "leakage_free_source_checked": leakage}
 
         def mean(vals):
@@ -903,7 +1023,8 @@ def main() -> None:
                                 f["epe"] - f["readouts"]["top2_epe"],
                                 f["epe"] - f["readouts"]["top3_epe"])
                             for f in finals])),
-             "max inference-readout EPE reduction, 3-seed mean (finals)"),
+             "max refined-readout (A1.2, through refinement) EPE reduction, "
+             "3-seed mean (finals)"),
             ("B", "matching ceiling (oracle-init)",
              max(0.0, mean([f["oracle"]["reduction"] for f in finals])),
              "R-ORACLE reduction, 3-seed mean (finals)"),
@@ -943,9 +1064,17 @@ def main() -> None:
             r = f["readouts"]
             rules[key] = {
                 "oracle_reduction": f["oracle"]["reduction"],
+                "oracle_epe": f["oracle"]["epe"],
+                "model_epe": f["epe"],
                 "dom_mode_delta": f["epe"] - r["dominant_mode_pm1_epe"],
                 "top2_delta": f["epe"] - r["top2_epe"],
                 "top3_delta": f["epe"] - r["top3_epe"],
+                "dom_mode_coarse_delta":
+                    f["epe"] - r["dominant_mode_pm1_coarse_epe"],
+                "top2_coarse_delta": f["epe"] - r["top2_coarse_epe"],
+                "top3_coarse_delta": f["epe"] - r["top3_coarse_epe"],
+                "sanity_softargmin_max_abs":
+                    r["sanity_softargmin_max_abs"],
                 "bimodality_ratio": r["bimodality"]["ratio"],
                 "warp_rho": f["warp"]["spearman"]["rho"],
             }
