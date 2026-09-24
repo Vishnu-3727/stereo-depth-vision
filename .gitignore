@@ -82,3 +82,10 @@ stage_c_deploy/dr0_audit/*instrumented_debug.onnx
 !phase2/runs/p2a_scale_coverage_s2/p2a_best.pth
 !stage_b_armp/20260919T012646Z_tier2_seed1/armp/p2a_final.pth
 !stage_b_armp/20260919T012646Z_tier2_seed1/control/p2a_final.pth
+
+# Stage-E mixed-precision cost: EP compile artefacts, logs and worker partials
+# (regenerable; the merged JSONs + REPORT.md are the committed record).
+stage_e_recipe/mixed_precision_cost/*_npu_compile.log
+stage_e_recipe/mixed_precision_cost/original-*-signature.txt
+stage_e_recipe/mixed_precision_cost/npu_*_partial.json
+stage_e_recipe/mixed_precision_cost/npu_driver.log

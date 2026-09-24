@@ -1,0 +1,266 @@
+{
+  "spec": "docs/superpowers/specs/2026-09-24-mixed-precision-cost-design.md",
+  "part": "npu",
+  "utc_start": "2026-09-24T06:11:39.155537+00:00",
+  "environment": {
+    "python": "3.12.11",
+    "onnxruntime": "1.27.0",
+    "available_providers": [
+      "VitisAIExecutionProvider",
+      "DmlExecutionProvider",
+      "CPUExecutionProvider"
+    ],
+    "cpu_count": 24,
+    "RYZEN_AI_INSTALLATION_PATH": "C:\\Program Files\\RyzenAI\\1.8.0",
+    "npu_type_detected": "STX"
+  },
+  "budgets": {
+    "per_artefact_timeout_s": 1500,
+    "total_budget_s": 5400
+  },
+  "measured": {
+    "rows": {
+      "fp32": {
+        "failed": true,
+        "error": "timeout after 1500s (25-min per-artefact cap): Command '['C:\\\\Users\\\\vishn\\\\anaconda3\\\\envs\\\\ryzen-ai-1.8.0\\\\python.exe', 'C:\\\\Users\\\\vishn\\\\stereo_depth_vision\\\\stage_e_recipe\\\\mixed_precision_cost_npu.py', '--worker', 'fp32']' timed out after 1500 seconds"
+      },
+      "R0": {
+        "tag": "R0",
+        "model": "stage_e_recipe/int8_e3/e3_seed0_best_int8.onnx",
+        "size_bytes": 764520,
+        "npu_type_detected": "STX",
+        "providers_requested": [
+          "VitisAIExecutionProvider",
+          "CPUExecutionProvider"
+        ],
+        "provider_options": [
+          {},
+          {}
+        ],
+        "RyzenAI_installation_path": "C:\\Program Files\\RyzenAI\\1.8.0",
+        "session_providers": [
+          "VitisAIExecutionProvider",
+          "CPUExecutionProvider"
+        ],
+        "compile_s": 65.1,
+        "compile_log": "stage_e_recipe/mixed_precision_cost/R0_npu_compile.log",
+        "partition_lines": [],
+        "partition_parse_rule": "lines containing any of ('subgraph', 'partition', 'npu', 'vitisai', 'xclbin', 'fuse')",
+        "ep_emitted_files": [],
+        "latency": {
+          "n_samples": 50,
+          "median_ms": 652.5903000001563,
+          "p90_ms": 668.4375000004366,
+          "min_ms": 631.1410999987856,
+          "max_ms": 682.6446000013675,
+          "fps_from_median": 1.5323549859686245,
+          "per_scene_median_ms": [
+            641.2541999998211,
+            638.9208000000508,
+            652.1924000007857,
+            655.8375999993586,
+            651.5927000000374,
+            654.7146999982942,
+            651.7561000000569,
+            656.6324000013992,
+            649.8989000028814,
+            655.2139000013995
+          ],
+          "raw_samples_ms": [
+            653.200900000229,
+            636.567900000955,
+            640.8377999978256,
+            641.2541999998211,
+            667.323599998781,
+            644.6471999988717,
+            638.9208000000508,
+            634.1642000006686,
+            631.1410999987856,
+            659.8553000003449,
+            635.2154999985942,
+            662.4637999993865,
+            657.4731000000611,
+            652.1924000007857,
+            641.189599999052,
+            650.0919000027352,
+            678.4373000009509,
+            655.8375999993586,
+            656.6223999980139,
+            634.3691000001854,
+            645.1913999990211,
+            657.5139999986277,
+            651.5927000000374,
+            645.8780000029947,
+            659.859299998061,
+            670.2234000003955,
+            654.7146999982942,
+            647.0373999982257,
+            652.9881999995268,
+            660.3869999999006,
+            662.9576999985147,
+            670.7688000024064,
+            649.825199998304,
+            644.9912999996741,
+            651.7561000000569,
+            657.654900001944,
+            656.6324000013992,
+            656.2666999998328,
+            648.9861000009114,
+            668.4375000004366,
+            660.7476999997743,
+            649.8989000028814,
+            635.7988999989175,
+            646.0020000013174,
+            682.6446000013675,
+            645.0754999968922,
+            657.9306999992696,
+            674.0489000003436,
+            655.2139000013995,
+            649.0530999981274
+          ]
+        },
+        "thread_settings": {
+          "cpu_count": 24,
+          "intra_op_num_threads": 0,
+          "inter_op_num_threads": 0,
+          "note": "defaults, no explicit values set"
+        },
+        "npu_40scene": {
+          "epe": 70.85625512190461,
+          "d1": 99.59705974313118,
+          "rmse": 72.92818279620414,
+          "valid_pixels": 3802797,
+          "nonfinite_pixels": 0,
+          "contract_match": true,
+          "score_s": 30.2
+        },
+        "part_elapsed_s": 134.6,
+        "worker_tail": "WORKER R0 DONE median 652.59ms EPE 70.8562551 compile 65.1s\n"
+      },
+      "R2": {
+        "tag": "R2",
+        "model": "stage_e_recipe/mixed_precision_cost/r2_regen/seed0_R2_head_refinement_fp32.onnx",
+        "size_bytes": 1050225,
+        "npu_type_detected": "STX",
+        "providers_requested": [
+          "VitisAIExecutionProvider",
+          "CPUExecutionProvider"
+        ],
+        "provider_options": [
+          {},
+          {}
+        ],
+        "RyzenAI_installation_path": "C:\\Program Files\\RyzenAI\\1.8.0",
+        "session_providers": [
+          "VitisAIExecutionProvider",
+          "CPUExecutionProvider"
+        ],
+        "compile_s": 30.4,
+        "compile_log": "stage_e_recipe/mixed_precision_cost/R2_npu_compile.log",
+        "partition_lines": [],
+        "partition_parse_rule": "lines containing any of ('subgraph', 'partition', 'npu', 'vitisai', 'xclbin', 'fuse')",
+        "ep_emitted_files": [],
+        "latency": {
+          "n_samples": 50,
+          "median_ms": 771.640800001478,
+          "p90_ms": 789.1949000004388,
+          "min_ms": 759.2403999988164,
+          "max_ms": 799.2889999986801,
+          "fps_from_median": 1.295939768864068,
+          "per_scene_median_ms": [
+            769.2641000030562,
+            772.7338000004238,
+            771.5519000012137,
+            767.0414999993227,
+            774.867299998732,
+            778.697400000965,
+            768.0297000006249,
+            771.3085000032152,
+            774.6493000013288,
+            775.9808999981033
+          ],
+          "raw_samples_ms": [
+            770.0690999990911,
+            768.6576999985846,
+            799.2889999986801,
+            764.1436999983853,
+            769.2641000030562,
+            797.0725999985007,
+            772.7338000004238,
+            771.0508999989543,
+            789.1949000004388,
+            771.9663999996556,
+            790.0361000029079,
+            771.7297000017425,
+            766.2870999993174,
+            769.0746000007493,
+            771.5519000012137,
+            768.5185000009369,
+            766.0009000028367,
+            759.8756000006688,
+            767.0414999993227,
+            772.6007999990543,
+            774.867299998732,
+            763.7759999997797,
+            766.3342000014381,
+            776.1305999993056,
+            786.2131000001682,
+            787.9304999987653,
+            780.7619999985036,
+            770.5544000018563,
+            778.697400000965,
+            769.4704999994428,
+            767.6988000021083,
+            776.9747999991523,
+            768.0297000006249,
+            767.9599000002781,
+            775.722999998834,
+            767.3614000013913,
+            773.063299999194,
+            780.2989000010712,
+            771.3085000032152,
+            765.4781000019284,
+            776.3463000010233,
+            789.3842000012228,
+            768.5176999984833,
+            774.6493000013288,
+            759.2403999988164,
+            774.6330000009038,
+            770.6346000013582,
+            793.042900000728,
+            775.9808999981033,
+            782.5005999984569
+          ]
+        },
+        "thread_settings": {
+          "cpu_count": 24,
+          "intra_op_num_threads": 0,
+          "inter_op_num_threads": 0,
+          "note": "defaults, no explicit values set"
+        },
+        "npu_40scene": {
+          "epe": 11.145662553725586,
+          "d1": 46.07463927209367,
+          "rmse": 21.733803864776434,
+          "valid_pixels": 3802797,
+          "nonfinite_pixels": 0,
+          "contract_match": true,
+          "score_s": 34.9
+        },
+        "part_elapsed_s": 112.0,
+        "worker_tail": "WORKER R2 DONE median 771.64ms EPE 11.1456626 compile 30.4s\n"
+      }
+    },
+    "total_elapsed_s": 1749.0
+  },
+  "inferred": {
+    "note": "Rows describe VitisAI EP behaviour on THIS machine/installation; CPU fallback of unsupported ops is recorded, not worked around."
+  },
+  "unknown": {
+    "items": [
+      "Per-op NPU/CPU assignment beyond what the EP's compile log and emitted files reveal (not exposed via the ORT API)."
+    ]
+  },
+  "status": "PARTIAL: NPU part, failed artefacts ['fp32']",
+  "utc_end": "2026-09-24T06:40:48.344909+00:00"
+}
