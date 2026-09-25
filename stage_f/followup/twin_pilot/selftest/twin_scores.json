@@ -1,0 +1,147 @@
+{
+  "experiment": "stage-f capacity-twin selftest (f1c FINAL for both arms)",
+  "provenance": {
+    "git_head": "f4d082bd61bd2d6a70d3566447593a5aed08024c",
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "torch_cuda": "12.8",
+    "cuda_available": true,
+    "numpy": "2.5.1",
+    "device": "cuda",
+    "env_difference": "Declared environment sameness (per amendment A2 section 3): t48 and t48c both run on Kaggle account vishnuvardhanksece \u2014 same account, no cross-account difference. Same GPU type (T4), same E0 recipe/seed/epochs; the arms differ ONLY in the single width knob and its init (twin48 embed vs ARM-P Stage-1).",
+    "selftest": true,
+    "utc": "2026-09-25T02:36:58Z"
+  },
+  "sanity": {
+    "ckpt": "C:\\Users\\vishn\\stereo_depth_vision\\stage_e_recipe\\kaggle\\e3_output\\seed0\\e3_seed0_final.pth",
+    "sha256": "82e58bc441a4382ec449479fe26bf479f6b45e9ace4d79b530abeeb40ea79c6d",
+    "recomputed_contract_final_epe": 1.1628882757801255,
+    "reference_contract_final_epe": 1.1628882757801255,
+    "reference_source": "stage_f/followup/audit2/audit2.json seed0_final.epe (== e3_verdict.json per_seed_final[0]; via score_f1)",
+    "diff_contract": 0.0,
+    "recomputed_train_gtlt64_epe": 0.8620391636463651,
+    "reference_train_gtlt64_epe": 0.8620391636463651,
+    "reference_train_source": "stage_f/audit/audit_e3.json seed0_final.train_split.gtlt64_epe (via score_f1)",
+    "diff_train_gtlt64": 0.0,
+    "recomputed_train_epe": 0.9170082187690973,
+    "reference_train_epe": 0.9170082187690973,
+    "diff_train_epe": 0.0,
+    "tolerance": 0.0001,
+    "status": "PASS"
+  },
+  "arms": {
+    "t48": {
+      "ckpt": "C:\\Users\\vishn\\stereo_depth_vision\\stage_f\\followup\\kaggle\\f1c_output\\seed0\\f1c_seed0_final.pth",
+      "feature_channels": 32,
+      "sha256": "9c89b5649f498ae67f8d9220a2f491093719dfb552cfd6ca67fb09d7543de9ad",
+      "strict_load": true,
+      "strict_error": null,
+      "params": 397954,
+      "expected_params": 397954,
+      "params_match": true,
+      "contract": {
+        "split": "hailo_val",
+        "scenes": 40,
+        "valid_pixels": 3802797,
+        "final_epe": 1.202031191783228,
+        "d1": 6.2382767210555805,
+        "gtlt64_epe": 1.0606045083661197,
+        "gtlt64_px": 3627325,
+        "guard": {
+          "scenes": 40,
+          "valid_pixels": 3802797,
+          "gt_scale": 256.0,
+          "split": "hailo_val",
+          "gt_source": "disp_occ_0",
+          "contract": {
+            "scenes": 40,
+            "valid_pixels": 3802797,
+            "gt_scale": 256.0,
+            "split": "hailo_val",
+            "gt_source": "disp_occ_0"
+          },
+          "contract_match": true
+        }
+      },
+      "train": {
+        "split": "hailo_calib",
+        "scenes": 160,
+        "contract": false,
+        "note": "NOT the frozen contract; same metric code",
+        "valid_pixels": 14216313,
+        "epe": 0.975522301394307,
+        "gtlt64_px": 13656950,
+        "gtlt64_epe": 0.9115145428796365
+      },
+      "timing": {
+        "epoch_log": "C:\\Users\\vishn\\stereo_depth_vision\\stage_f\\followup\\kaggle\\f1c_output\\seed0\\f1c_seed0_epoch_log.jsonl",
+        "present": true,
+        "n_epochs": 200,
+        "secs_per_epoch": 24.15121881365776,
+        "secs_timed": 200
+      },
+      "stand_in": "f1c_seed0_final.pth (width 32) stands in for the not-yet-pulled twin checkpoint",
+      "owner_account": "vishnu3727 (stand-in source)",
+      "label": "capacity twin (width 48) [SELFTEST STAND-IN]"
+    },
+    "t48c": {
+      "ckpt": "C:\\Users\\vishn\\stereo_depth_vision\\stage_f\\followup\\kaggle\\f1c_output\\seed0\\f1c_seed0_final.pth",
+      "feature_channels": 32,
+      "sha256": "9c89b5649f498ae67f8d9220a2f491093719dfb552cfd6ca67fb09d7543de9ad",
+      "strict_load": true,
+      "strict_error": null,
+      "params": 397954,
+      "expected_params": 397954,
+      "params_match": true,
+      "contract": {
+        "split": "hailo_val",
+        "scenes": 40,
+        "valid_pixels": 3802797,
+        "final_epe": 1.202031191783228,
+        "d1": 6.2382767210555805,
+        "gtlt64_epe": 1.0606045083661197,
+        "gtlt64_px": 3627325,
+        "guard": {
+          "scenes": 40,
+          "valid_pixels": 3802797,
+          "gt_scale": 256.0,
+          "split": "hailo_val",
+          "gt_source": "disp_occ_0",
+          "contract": {
+            "scenes": 40,
+            "valid_pixels": 3802797,
+            "gt_scale": 256.0,
+            "split": "hailo_val",
+            "gt_source": "disp_occ_0"
+          },
+          "contract_match": true
+        }
+      },
+      "train": {
+        "split": "hailo_calib",
+        "scenes": 160,
+        "contract": false,
+        "note": "NOT the frozen contract; same metric code",
+        "valid_pixels": 14216313,
+        "epe": 0.975522301394307,
+        "gtlt64_px": 13656950,
+        "gtlt64_epe": 0.9115145428796365
+      },
+      "timing": {
+        "epoch_log": "C:\\Users\\vishn\\stereo_depth_vision\\stage_f\\followup\\kaggle\\f1c_output\\seed0\\f1c_seed0_epoch_log.jsonl",
+        "present": true,
+        "n_epochs": 200,
+        "secs_per_epoch": 24.15121881365776,
+        "secs_timed": 200
+      },
+      "stand_in": "f1c_seed0_final.pth (width 32) stands in for the not-yet-pulled twin checkpoint",
+      "owner_account": "vishnu3727 (stand-in source)",
+      "label": "fresh concurrent control (width 32, E0 recipe) [SELFTEST STAND-IN]"
+    }
+  },
+  "thresholds": {
+    "SUPPORTED_D": -0.05,
+    "WEAKENED_ABS": 0.02,
+    "SANITY_TOL": 0.0001
+  }
+}

@@ -1,0 +1,326 @@
+{
+  "bundle": "stage_f/followup/kaggle/bundle_l1m",
+  "purpose": "Stage F follow-up L1 continuation l1m Kaggle T4 execution bundle (\u00a78)",
+  "source_bundle": "stage_e_recipe/kaggle/bundle (frozen E0)",
+  "init_checkpoint": {
+    "path": "checkpoints/e3_seed0_final.pth",
+    "sha256": "82e58bc441a4382ec449479fe26bf479f6b45e9ace4d79b530abeeb40ea79c6d"
+  },
+  "loss": "masked L1 (same valid mask/max-disparity, plain L1 instead of Smooth-L1)",
+  "files": {
+    "BUNDLE_MARKER.json": {
+      "sha256": "99b6871e448b1feb7ebbae02dc0922238f7063804f87a61355ac5b51d3c15b3a",
+      "e0_sha256": "27c7ebdbf8e09c1216dcc0cf10f2a259959fca6210db64ca365d9a0cb9966b75",
+      "identical": false
+    },
+    "checkpoints/armp_stage1_best.pth": {
+      "sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+      "e0_sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+      "identical": true
+    },
+    "checkpoints/e3_seed0_final.pth": {
+      "sha256": "82e58bc441a4382ec449479fe26bf479f6b45e9ace4d79b530abeeb40ea79c6d",
+      "e0_sha256": null,
+      "identical": false,
+      "note": "added (not in E0 bundle)"
+    },
+    "configs/stage_e.json": {
+      "sha256": "2f0add653c0f95b8c05c450aeb07bb8a3970e24b1b6a1886844fa962a8a9257c",
+      "e0_sha256": "2f0add653c0f95b8c05c450aeb07bb8a3970e24b1b6a1886844fa962a8a9257c",
+      "identical": true
+    },
+    "dataset-metadata.json": {
+      "sha256": null,
+      "e0_sha256": "1741f381af1c9f32d556063d8e0e12dae3cccc7e7f013a635719b9b57afa7efd",
+      "identical": false,
+      "note": "removed from E0 bundle copy"
+    },
+    "kaggle_bootstrap.py": {
+      "sha256": "e3afebae2c7a881918f1c8a78caf4baa880afecb4e85b07beb3fc3066e16ba87",
+      "e0_sha256": "e3afebae2c7a881918f1c8a78caf4baa880afecb4e85b07beb3fc3066e16ba87",
+      "identical": true
+    },
+    "phase1/harness/determinism.py": {
+      "sha256": "aa69c0b3303bbc2035378d0091b8d66ae376f8afab6804dd2794a6ca7bd4a415",
+      "e0_sha256": "aa69c0b3303bbc2035378d0091b8d66ae376f8afab6804dd2794a6ca7bd4a415",
+      "identical": true
+    },
+    "phase1/harness/frozen_eval.py": {
+      "sha256": "1a123c1219425d7d20cce73afb2e315f05180922eb1daf1f865a16b89a83c7f1",
+      "e0_sha256": "1a123c1219425d7d20cce73afb2e315f05180922eb1daf1f865a16b89a83c7f1",
+      "identical": true
+    },
+    "phase1/runs/arm_v/arm_v_best.pth": {
+      "sha256": "f2dcf8a22e6f1711b67a70837066f84e68550d53bb4891d3b8d46bd50b452cc4",
+      "e0_sha256": "f2dcf8a22e6f1711b67a70837066f84e68550d53bb4891d3b8d46bd50b452cc4",
+      "identical": true
+    },
+    "scripts/eval_tier2.py": {
+      "sha256": "326e9058f4bbdf342234d92eb5d8a9cd96885587eb1d88a44131b41ff58554f6",
+      "e0_sha256": "326e9058f4bbdf342234d92eb5d8a9cd96885587eb1d88a44131b41ff58554f6",
+      "identical": true
+    },
+    "scripts/finetune_pilot.py": {
+      "sha256": "8e1c53f33b8bb3aaf0c2f747303b80d0ce555156c05ec675a22e568fdd0754ed",
+      "e0_sha256": "af6130043c989d83b16da28938e5ce8e7f8c2fbdb15b25d9571eee94720d6d72",
+      "identical": false
+    },
+    "scripts/run_arm.py": {
+      "sha256": "665f68cc5c54b14ddf34ffc83f9d0c380bc9605c4954a7123ea93a9a88731b79",
+      "e0_sha256": "9d0123700d93b44873477ff1f6d29d9bcddfbd5a39c7d22c3a64dc7f3f6620f5",
+      "identical": false
+    },
+    "source_integrity.json": {
+      "sha256": "f522f23d1902ac2e156cb7d5a8e6016c5c8a32101d830bb2167fe24e209043fa",
+      "e0_sha256": "f522f23d1902ac2e156cb7d5a8e6016c5c8a32101d830bb2167fe24e209043fa",
+      "identical": true
+    },
+    "src/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "e0_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/datasets/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "e0_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/datasets/kitti2015.py": {
+      "sha256": "9f3369d85c07b35680b928767d7b521fc9110d14a594adf7165fcf36a1bec25e",
+      "e0_sha256": "9f3369d85c07b35680b928767d7b521fc9110d14a594adf7165fcf36a1bec25e",
+      "identical": true
+    },
+    "src/evaluation/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "e0_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/evaluation/metrics.py": {
+      "sha256": "04d826913bb15301838a257dddac5ddd355786eccad8fe329ff1f2ae4157c9ec",
+      "e0_sha256": "04d826913bb15301838a257dddac5ddd355786eccad8fe329ff1f2ae4157c9ec",
+      "identical": true
+    },
+    "src/losses/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "e0_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/losses/disparity.py": {
+      "sha256": "aa4da7e6c788cb665cf594d2fa37e0e4f10cc5ca22cadf83f136c0ad18fab7eb",
+      "e0_sha256": "aa4da7e6c788cb665cf594d2fa37e0e4f10cc5ca22cadf83f136c0ad18fab7eb",
+      "identical": true
+    },
+    "src/models/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "e0_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/models/stereonet/__init__.py": {
+      "sha256": "cd46319a865c1613b6db320a22b9e58e245e4f13b39c82895421eb7aa7546469",
+      "e0_sha256": "cd46319a865c1613b6db320a22b9e58e245e4f13b39c82895421eb7aa7546469",
+      "identical": true
+    },
+    "src/models/stereonet/aggregation.py": {
+      "sha256": "a734782a80256cc6732036fd154706833adb23c64cb03b9c2287b3b7ad7c6702",
+      "e0_sha256": "a734782a80256cc6732036fd154706833adb23c64cb03b9c2287b3b7ad7c6702",
+      "identical": true
+    },
+    "src/models/stereonet/blocks.py": {
+      "sha256": "fcdc9ab0c0f7d337144bd2432cd43d0dce6abd419b4058630d0b5b4ace0eac8a",
+      "e0_sha256": "fcdc9ab0c0f7d337144bd2432cd43d0dce6abd419b4058630d0b5b4ace0eac8a",
+      "identical": true
+    },
+    "src/models/stereonet/cost_volume.py": {
+      "sha256": "aecf80145834ac504c73ced551ad9571cc951a84aa29379e35e25189e46c65f6",
+      "e0_sha256": "aecf80145834ac504c73ced551ad9571cc951a84aa29379e35e25189e46c65f6",
+      "identical": true
+    },
+    "src/models/stereonet/excitation.py": {
+      "sha256": "fb7103ed4bc719331258441d495444f71c76acdafac59e4141e78beb0f2104fb",
+      "e0_sha256": "fb7103ed4bc719331258441d495444f71c76acdafac59e4141e78beb0f2104fb",
+      "identical": true
+    },
+    "src/models/stereonet/feature_extractor.py": {
+      "sha256": "0c49f78ed074907afc37dc09f6eb017be0f268df17ab279c91f45976bd2d3d05",
+      "e0_sha256": "0c49f78ed074907afc37dc09f6eb017be0f268df17ab279c91f45976bd2d3d05",
+      "identical": true
+    },
+    "src/models/stereonet/refinement.py": {
+      "sha256": "185e53c92b615d7e8c2084e3e2bd693c05ab94f98ebd8e95a7af89a0473d7401",
+      "e0_sha256": "185e53c92b615d7e8c2084e3e2bd693c05ab94f98ebd8e95a7af89a0473d7401",
+      "identical": true
+    },
+    "src/models/stereonet/regression.py": {
+      "sha256": "09ba98e0eca8740b91f9d498c4ae6f103ddb9a976adac35714142bca2c8f9a32",
+      "e0_sha256": "09ba98e0eca8740b91f9d498c4ae6f103ddb9a976adac35714142bca2c8f9a32",
+      "identical": true
+    },
+    "src/models/stereonet/stereonet.py": {
+      "sha256": "92f9275786f323d6eca9e19b55f7aa7cdada20885ff38e7876ba6cb234f28c56",
+      "e0_sha256": "92f9275786f323d6eca9e19b55f7aa7cdada20885ff38e7876ba6cb234f28c56",
+      "identical": true
+    }
+  },
+  "declared_deltas": {
+    "checkpoints/e3_seed0_final.pth": {
+      "scope": "ADDED INIT ONLY - E3 seed0 final continuation init (sha 82e58bc441a4..., 397954 params, same architecture); the ARM-P Stage-1 checkpoint stays byte-identical alongside"
+    },
+    "scripts/finetune_pilot.py": {
+      "scope": "L1 CONTINUATION ONLY - LR 1e-3->1e-4 (fresh Adam), 200->40 epochs (default + schedule string; T_max follows EPOCHS) + the single loss knob (F import, bundle-local masked_l1, one call line, record string); data, aug, batch, crop, seed, determinism, init path, validation, checkpointing unchanged",
+      "unified_diff": [
+        "--- bundle/scripts/finetune_pilot.py",
+        "+++ bundle_l1m/scripts/finetune_pilot.py",
+        "@@ -35,4 +35,5 @@",
+        " import numpy as np",
+        " import torch",
+        "+import torch.nn.functional as F",
+        " from torch.utils.data import DataLoader, Dataset",
+        " ",
+        "@@ -45,4 +46,24 @@",
+        " from src.losses.disparity import masked_smooth_l1  # noqa: E402",
+        " from src.models.stereonet import StereoNet, StereoNetConfig  # noqa: E402",
+        "+",
+        "+",
+        "+def masked_l1(",
+        "+    prediction: torch.Tensor,",
+        "+    target: torch.Tensor,",
+        "+    max_disparity: float | None = None,",
+        "+) -> tuple[torch.Tensor, int]:",
+        "+    \"\"\"Plain masked L1 (mean absolute error) over valid GT pixels only.",
+        "+",
+        "+    L1-pilot intervention, bundle-local only (repo src/ untouched): the SAME",
+        "+    valid mask as masked_smooth_l1 (target > 0 and target < max_disparity)",
+        "+    with a plain L1 instead of Smooth-L1. Returns (loss, valid_pixel_count).",
+        "+    \"\"\"",
+        "+    valid = target > 0",
+        "+    if max_disparity is not None:",
+        "+        valid = valid & (target < max_disparity)",
+        "+    count = int(valid.sum())",
+        "+    if count == 0:",
+        "+        return (prediction.sum() * 0.0), 0",
+        "+    return F.l1_loss(prediction[valid], target[valid]), count",
+        " ",
+        " # DELTA-1 vs P2A: two CLI flags only. Defaults reproduce P2A exactly",
+        "@@ -61,8 +82,8 @@",
+        " OUT_DIR = Path(os.environ.get(\"P2A_OUT_DIR\", str(DEFAULT_DIR)))",
+        " CROP_H, CROP_W = 256, 512",
+        "-EPOCHS = int(os.environ.get(\"P2A_EPOCHS\", \"200\"))",
+        "+EPOCHS = int(os.environ.get(\"P2A_EPOCHS\", \"40\"))",
+        " BATCH = 2",
+        "-LR = 1e-3",
+        "-SCHEDULER = \"cosine annealing to 0 over 200 epochs\"",
+        "+LR = 1e-4",
+        "+SCHEDULER = \"cosine annealing to 0 over 40 epochs\"",
+        " ",
+        " # the single intervention, frozen by preregistration -- never swept",
+        "@@ -270,5 +291,5 @@",
+        "         \"learning_rate\": LR,",
+        "         \"schedule\": SCHEDULER,",
+        "-        \"loss\": \"masked smooth L1, beta=1.0, valid = gt > 0 and gt < max_disparity\",",
+        "+        \"loss\": \"masked L1 (mean absolute error), valid = gt > 0 and gt < max_disparity (same mask/max-disparity; plain L1 instead of Smooth-L1)\",",
+        "         \"augmentation\": (\"scale-augmented random crop (the intervention), \"",
+        "                          \"independent per-image gain jitter sigma=0.1; no horizontal flip\"),",
+        "@@ -297,5 +318,5 @@",
+        "             left, right, disparity = left.to(device), right.to(device), disparity.to(device)",
+        "             out = model(left, right)",
+        "-            loss, n = masked_smooth_l1(out, disparity, max_disparity=float(config.max_disparity_px))",
+        "+            loss, n = masked_l1(out, disparity, max_disparity=float(config.max_disparity_px))",
+        "             optimizer.zero_grad(set_to_none=True)",
+        "             loss.backward()"
+      ]
+    },
+    "scripts/run_arm.py": {
+      "scope": "L1 GATES ONLY - init-sha gate is the E3 seed0 final sha (renamed EXPECTED_SHA_E3_SEED0_FINAL); epoch-count guards 200->40; EXPECTED_PARAMS 397954 UNCHANGED; STOP/complete logic otherwise unchanged",
+      "unified_diff": [
+        "--- bundle/scripts/run_arm.py",
+        "+++ bundle_l1m/scripts/run_arm.py",
+        "@@ -11,4 +11,7 @@",
+        "   NaN/Inf loss | zero valid pixels | param count != 397954 | strict-load",
+        "   failure | wrong-checkpoint resume | wall > timeout | projected wall > timeout.",
+        "+L1 bundle: EXPECTED_PARAMS stays 397954 (same architecture); the init sha",
+        "+is the E3 seed0 FINAL (40-epoch continuation, \u00a78), not ARM-P Stage-1;",
+        "+epoch-count guards are 40, not 200.",
+        " \"\"\"",
+        " from __future__ import annotations",
+        "@@ -29,5 +32,5 @@",
+        " SCRIPT = PILOT / \"scripts\" / \"finetune_pilot.py\"",
+        " EXPECTED_PARAMS = 397954",
+        "-EXPECTED_SHA_ARMP_STAGE1 = \"3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7\"",
+        "+EXPECTED_SHA_E3_SEED0_FINAL = \"82e58bc441a4382ec449479fe26bf479f6b45e9ace4d79b530abeeb40ea79c6d\"",
+        " ",
+        " EPOCH_RE = re.compile(r\"^epoch\\s+(\\d+)\\s+loss\\s+([0-9eE+\\-.,infINFnanNAN]+)\")",
+        "@@ -74,6 +77,6 @@",
+        "     ap.add_argument(\"--seed\", type=int, required=True,",
+        "                     help=\"STAGE E: P2A_SEED for this run (0, 1 or 2)\")",
+        "-    ap.add_argument(\"--epochs\", type=int, default=200,",
+        "-                    help=\"STAGE E: P2A_EPOCHS; 200 = frozen recipe, 400 = E3\")",
+        "+    ap.add_argument(\"--epochs\", type=int, default=40,",
+        "+                    help=\"L1 continuation (\u00a78): P2A_EPOCHS; 40 = frozen L1 recipe\")",
+        "     args = ap.parse_args()",
+        " ",
+        "@@ -119,5 +122,5 @@",
+        "                 done = len(epoch_times)",
+        "                 if done >= 5:",
+        "-                    proj = (now - arm_start) / done * 200.0",
+        "+                    proj = (now - arm_start) / done * 40.0",
+        "                     if proj > args.timeout_s:",
+        "                         proc.wait(timeout=60)",
+        "@@ -144,5 +147,5 @@",
+        "     log_path = outdir / \"training_log.jsonl\"",
+        "     rows = [json.loads(x) for x in log_path.read_text(encoding=\"utf-8\").splitlines() if x.strip()]",
+        "-    if len(rows) != 200:",
+        "+    if len(rows) != 40:",
+        "         return stop(outdir, \"epochs_incomplete\", {\"rows\": len(rows)})",
+        "     for r in rows:",
+        "@@ -160,5 +163,5 @@",
+        " ",
+        "     rec = json.loads((outdir / \"p2a_record.json\").read_text(encoding=\"utf-8\"))",
+        "-    if rec.get(\"epochs_run\") != 200:",
+        "+    if rec.get(\"epochs_run\") != 40:",
+        "         return stop(outdir, \"epochs_incomplete\", {\"epochs_run\": rec.get(\"epochs_run\")})",
+        "     init_rec = rec.get(\"config\", {}).get(\"init_record\", {})",
+        "@@ -168,5 +171,5 @@",
+        "         init_sha = \"random\"",
+        "     else:",
+        "-        if init_rec.get(\"sha256\") != EXPECTED_SHA_ARMP_STAGE1:",
+        "+        if init_rec.get(\"sha256\") != EXPECTED_SHA_E3_SEED0_FINAL:",
+        "             return stop(outdir, \"wrong_checkpoint_resume\", {\"init_record\": init_rec})",
+        "         init_sha = init_rec[\"sha256\"]",
+        "@@ -203,5 +206,5 @@",
+        "     record = {\"arm\": args.arm, \"status\": \"COMPLETE\", \"seed\": 0,",
+        "               \"init\": args.init, \"init_sha256\": init_sha,",
+        "-              \"epochs_completed\": 200, \"training_duration_s\": wall_s,",
+        "+              \"epochs_completed\": 40, \"training_duration_s\": wall_s,",
+        "               \"train_monitor_best_epe_10scene\": rec.get(\"best_val_epe_10scene\"),",
+        "               \"train_monitor_best_epoch\": rec.get(\"best_epoch\"),"
+      ]
+    },
+    "BUNDLE_MARKER.json": {
+      "scope": "MARKER ONLY - bundle stage-f-l1m, E3-final init sha, masked L1 (same valid mask/max-disparity, plain L1 instead of Smooth-L1)"
+    },
+    "dataset-metadata.json": {
+      "scope": "UPLOAD-TIME ONLY - stale copy removed; push_l1.py dataset regenerates it"
+    }
+  },
+  "verdict": "PASS",
+  "init_checkpoints": {
+    "armp_stage1_best.pth": {
+      "sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+      "expected": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+      "match": true
+    },
+    "e3_seed0_final.pth": {
+      "sha256": "82e58bc441a4382ec449479fe26bf479f6b45e9ace4d79b530abeeb40ea79c6d",
+      "expected": "82e58bc441a4382ec449479fe26bf479f6b45e9ace4d79b530abeeb40ea79c6d",
+      "match": true
+    }
+  },
+  "changed_files": [
+    "BUNDLE_MARKER.json",
+    "checkpoints/e3_seed0_final.pth",
+    "dataset-metadata.json",
+    "scripts/finetune_pilot.py",
+    "scripts/run_arm.py"
+  ],
+  "unexpected_diffs": []
+}

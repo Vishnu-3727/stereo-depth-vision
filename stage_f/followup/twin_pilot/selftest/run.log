@@ -1,0 +1,35 @@
+plan: stage-f capacity-twin scoring; SELFTEST (f1c FINAL stands in for both arms); device=cuda
+=== sanity: E3 seed0 FINAL C:\Users\vishn\stereo_depth_vision\stage_e_recipe\kaggle\e3_output\seed0\e3_seed0_final.pth ===
+=== arm e3_sanity: C:\Users\vishn\stereo_depth_vision\stage_e_recipe\kaggle\e3_output\seed0\e3_seed0_final.pth ===
+arm e3_sanity contract EPE=1.1628882758 D1=6.015099 GT<64=1.0240653661961097
+train [40/160]
+train [80/160]
+train [120/160]
+train [160/160]
+arm e3_sanity train EPE=0.9170082188 GT<64=0.8620391636
+seed 0/final hailo_val [10/40] epe_sofar=1.5817
+seed 0/final hailo_val [20/40] epe_sofar=1.4063
+seed 0/final hailo_val [30/40] epe_sofar=1.2139
+seed 0/final hailo_val [40/40] epe_sofar=1.1629
+arm e3_sanity entropy_mean=1.848468 rank_median=3.0 modes_mean=1.012779
+sanity contract EPE=1.1628882758 ref=1.1628882758 diff=0.000e+00
+sanity train GT<64=0.8620391636 ref=0.8620391636 diff=0.000e+00
+sanity status: PASS
+=== arm t48 (width 32): C:\Users\vishn\stereo_depth_vision\stage_f\followup\kaggle\f1c_output\seed0\f1c_seed0_final.pth ===
+arm t48 contract EPE=1.2020311918 D1=6.238277 GT<64=1.0606045083661197
+train [40/160]
+train [80/160]
+train [120/160]
+train [160/160]
+arm t48 train EPE=0.9755223014 GT<64=0.9115145429
+arm t48 s/epoch=24.15121881365776 (n_epochs=200)
+=== arm t48c (width 32): C:\Users\vishn\stereo_depth_vision\stage_f\followup\kaggle\f1c_output\seed0\f1c_seed0_final.pth ===
+arm t48c contract EPE=1.2020311918 D1=6.238277 GT<64=1.0606045083661197
+train [40/160]
+train [80/160]
+train [120/160]
+train [160/160]
+arm t48c train EPE=0.9755223014 GT<64=0.9115145429
+arm t48c s/epoch=24.15121881365776 (n_epochs=200)
+wrote C:\Users\vishn\stereo_depth_vision\stage_f\followup\twin_pilot\selftest\twin_scores.json + twin_verdict.json + TWIN_PILOT_REPORT.md status=OK result=CAPACITY WEAKENED
+SELFTEST PASS: d == 0.0 exactly (same checkpoint both arms)

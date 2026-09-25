@@ -1,0 +1,15 @@
+{
+  "id": "vishnuvardhanksks/stage-f-l1c-seed0",
+  "title": "Stage F L1C seed0",
+  "code_file": "stage-f-l1c-seed0.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": false,
+  "dataset_sources": [
+    "vishnuvardhanksks/kitti2015-tier2-seed2-subset",
+    "vishnuvardhanksks/stage-f-l1c-bundle"
+  ],
+  "kernel_sources": []
+}

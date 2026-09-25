@@ -1,0 +1,27 @@
+{
+  "experiment": "L1 bundle smoke (local only, synthetic batch, 1 step/arm)",
+  "utc": "2026-09-25T02:43:04Z",
+  "e3_init_sha256": "82e58bc441a4382ec449479fe26bf479f6b45e9ace4d79b530abeeb40ea79c6d",
+  "src_identical_across_arms": true,
+  "arms": {
+    "l1c": {
+      "loss": 48.814144134521484,
+      "valid_pixels": 209512,
+      "grad_norm": 42.87371748663703,
+      "lr_start": 0.0001,
+      "param_count": 397954,
+      "init_sha256": "82e58bc441a4382ec449479fe26bf479f6b45e9ace4d79b530abeeb40ea79c6d",
+      "guard_all_ok": true
+    },
+    "l1m": {
+      "loss": 49.26673126220703,
+      "valid_pixels": 209875,
+      "grad_norm": 40.59945065552665,
+      "lr_start": 0.0001,
+      "param_count": 397954,
+      "init_sha256": "82e58bc441a4382ec449479fe26bf479f6b45e9ace4d79b530abeeb40ea79c6d",
+      "guard_all_ok": true
+    }
+  },
+  "verdict": "SMOKE PASS"
+}

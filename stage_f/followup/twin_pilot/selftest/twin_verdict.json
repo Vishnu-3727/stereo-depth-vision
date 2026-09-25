@@ -1,0 +1,32 @@
+{
+  "status": "OK",
+  "experiment": "stage-f capacity-twin frozen \u00a76 verdict (selftest stand-in)",
+  "gates": {
+    "CAPACITY SUPPORTED": "d <= -0.050",
+    "CAPACITY WEAKENED": "|d| < 0.020",
+    "INCONCLUSIVE": "otherwise (neither is proof)",
+    "KILL": "NaN/Inf, zero valid px, strict-load fail",
+    "note": "contract dfinal recorded for information only"
+  },
+  "d": 0.0,
+  "dfinal_contract": 0.0,
+  "result": "CAPACITY WEAKENED",
+  "reasons": [
+    "d=train_GT<64(t48)-train_GT<64(t48c)=0.000000 (t48 0.911515 vs t48c 0.911515)",
+    "contract dfinal for information: 0.000000 (t48 1.202031 vs t48c 1.202031)",
+    "|d| < 0.020"
+  ],
+  "env_difference": "Declared environment sameness (per amendment A2 section 3): t48 and t48c both run on Kaggle account vishnuvardhanksece \u2014 same account, no cross-account difference. Same GPU type (T4), same E0 recipe/seed/epochs; the arms differ ONLY in the single width knob and its init (twin48 embed vs ARM-P Stage-1).",
+  "provenance": {
+    "git_head": "f4d082bd61bd2d6a70d3566447593a5aed08024c",
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "torch_cuda": "12.8",
+    "cuda_available": true,
+    "numpy": "2.5.1",
+    "device": "cuda",
+    "env_difference": "Declared environment sameness (per amendment A2 section 3): t48 and t48c both run on Kaggle account vishnuvardhanksece \u2014 same account, no cross-account difference. Same GPU type (T4), same E0 recipe/seed/epochs; the arms differ ONLY in the single width knob and its init (twin48 embed vs ARM-P Stage-1).",
+    "selftest": true,
+    "utc": "2026-09-25T02:36:58Z"
+  }
+}
