@@ -1,0 +1,13 @@
+g1 diagnosis (LOCAL ONLY, no gate change); gpu_avail=True torch=2.7.0+cu128
+source: C:\Users\vishn\stereo_depth_vision\stage_f\followup\kaggle\bundle_f1m\checkpoints\armp_stage1_best.pth keys=70
+noise scene 000160_10.png: gpu2x=left_features=0.000e+00 cost_volume=0.000e+00 aggregated_cost=0.000e+00 disparity_initial=0.000e+00 disparity_final=0.000e+00
+noise scene 000160_10.png: gpu/cpu=left_features=2.594e+09 cost_volume=3.838e+09 aggregated_cost=1.776e+14 disparity_initial=2.939e-01 disparity_final=2.159e+00
+noise scene 000161_10.png: gpu2x=left_features=0.000e+00 cost_volume=0.000e+00 aggregated_cost=0.000e+00 disparity_initial=0.000e+00 disparity_final=0.000e+00
+noise scene 000161_10.png: gpu/cpu=left_features=3.573e+09 cost_volume=4.341e+09 aggregated_cost=1.747e+14 disparity_initial=3.280e-01 disparity_final=6.974e+00
+noise scene 000162_10.png: gpu2x=left_features=0.000e+00 cost_volume=0.000e+00 aggregated_cost=0.000e+00 disparity_initial=0.000e+00 disparity_final=0.000e+00
+noise scene 000162_10.png: gpu/cpu=left_features=3.794e+09 cost_volume=5.672e+09 aggregated_cost=2.839e+14 disparity_initial=2.522e-01 disparity_final=2.913e+00
+fp64 scene 000160_10.png: left_features=0.000e+00(rel 0.000e+00) cost_volume=0.000e+00(rel 0.000e+00) aggregated_cost=0.000e+00(rel 0.000e+00) disparity_initial=0.000e+00(rel 0.000e+00) disparity_final=0.000e+00(rel 0.000e+00) newfeat=2.547e+11 newcv=4.073e+11
+fp64 scene 000161_10.png: left_features=0.000e+00(rel 0.000e+00) cost_volume=0.000e+00(rel 0.000e+00) aggregated_cost=0.000e+00(rel 0.000e+00) disparity_initial=0.000e+00(rel 0.000e+00) disparity_final=0.000e+00(rel 0.000e+00) newfeat=2.906e+11 newcv=4.027e+11
+fp64 scene 000162_10.png: left_features=0.000e+00(rel 0.000e+00) cost_volume=0.000e+00(rel 0.000e+00) aggregated_cost=0.000e+00(rel 0.000e+00) disparity_initial=0.000e+00(rel 0.000e+00) disparity_final=0.000e+00(rel 0.000e+00) newfeat=2.506e+11 newcv=4.444e+11
+CONCLUSION: EMBED CORRECT (fp64 matches) (worst fp64 final diff=0.000e+00, tol=1e-05)
+wrote C:\Users\vishn\stereo_depth_vision\stage_f\followup\twin\g1_diagnosis.json

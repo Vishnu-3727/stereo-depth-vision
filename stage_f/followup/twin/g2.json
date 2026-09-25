@@ -1,0 +1,1562 @@
+{
+  "experiment": "twin G2 gradient probe only (local only, no optimizer step)",
+  "spec": "docs/superpowers/specs/2026-09-24-stage-f-followup-design.md section 6",
+  "provenance": {
+    "utc": "2026-09-25T00:41:10Z",
+    "device": "cuda",
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "torch_cuda": "12.8",
+    "source_path": "C:\\Users\\vishn\\stereo_depth_vision\\stage_f\\followup\\kaggle\\bundle_f1m\\checkpoints\\armp_stage1_best.pth",
+    "source_sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+    "f1_cfg": {
+      "downsample_levels": 3,
+      "num_disparities": 24,
+      "cost_volume_shift": "right",
+      "regression_normalize": true
+    },
+    "old_channels": 32,
+    "twin_channels": 48,
+    "twin_seed": 0,
+    "batch": 2,
+    "crop_hw": [
+      256,
+      512
+    ],
+    "crop_seed": 0,
+    "dtype": "float32",
+    "mode": "train"
+  },
+  "param_count": 891074,
+  "g2": {
+    "loss": 5.1455793380737305,
+    "loss_finite": true,
+    "valid_pixels": 89012,
+    "per_layer": {
+      "feature_extractor.downsample.0.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          3,
+          5,
+          5
+        ],
+        "new_slices": {
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 2.7212934494018555
+      },
+      "feature_extractor.downsample.0.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 0.06047990173101425,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "feature_extractor.downsample.1.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          5,
+          5
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 0.08822192251682281,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 0.3000694811344147
+      },
+      "feature_extractor.downsample.1.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 0.001939165173098445,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "feature_extractor.downsample.2.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          5,
+          5
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 0.004149782005697489,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 0.4984048306941986
+      },
+      "feature_extractor.downsample.2.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 0.0001366242067888379,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "feature_extractor.residual.0.conv1.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 0.026114050298929214,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 1.6098599433898926
+      },
+      "feature_extractor.residual.0.conv1.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 5.100823182146996e-05,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "feature_extractor.residual.0.conv2.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 0.044418856501579285,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 1.310001015663147
+      },
+      "feature_extractor.residual.0.conv2.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 3.7569204778264975e-06,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "feature_extractor.residual.1.conv1.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 0.07282309234142303,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 1.0796324014663696
+      },
+      "feature_extractor.residual.1.conv1.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 8.783589464655961e-07,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "feature_extractor.residual.1.conv2.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 0.06559331715106964,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 0.8466327786445618
+      },
+      "feature_extractor.residual.1.conv2.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 1.609612070296862e-07,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "feature_extractor.residual.2.conv1.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 0.042057156562805176,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 0.9799256920814514
+      },
+      "feature_extractor.residual.2.conv1.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 4.06729974145037e-08,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "feature_extractor.residual.2.conv2.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 0.05035989731550217,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 0.9042297601699829
+      },
+      "feature_extractor.residual.2.conv2.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 1.0848597575829899e-08,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "feature_extractor.residual.3.conv1.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 0.04210762307047844,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 0.9499180912971497
+      },
+      "feature_extractor.residual.3.conv1.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 2.5359156996529464e-09,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "feature_extractor.residual.3.conv2.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 0.054973699152469635,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 0.9958993792533875
+      },
+      "feature_extractor.residual.3.conv2.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 5.802989755387955e-10,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "feature_extractor.residual.4.conv1.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 0.07275912165641785,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 1.4296324253082275
+      },
+      "feature_extractor.residual.4.conv1.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 1.184251169350503e-10,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "feature_extractor.residual.4.conv2.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 0.14236852526664734,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 1.296959400177002
+      },
+      "feature_extractor.residual.4.conv2.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 6.03982419633553e-11,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "feature_extractor.residual.5.conv1.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 0.08143169432878494,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 1.2298728227615356
+      },
+      "feature_extractor.residual.5.conv1.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 1.4670842665709394e-11,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "feature_extractor.residual.5.conv2.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 0.06943291425704956,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 1.209975004196167
+      },
+      "feature_extractor.residual.5.conv2.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 3.1450664555315866e-12,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "feature_extractor.output_conv.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 0.06136500835418701,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 1.0589367151260376
+      },
+      "feature_extractor.output_conv.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 2.9885824175644726e-13,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "aggregation.filter.0.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 0.07518918812274933,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 1.5062016248703003
+      },
+      "aggregation.filter.0.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 2.9071187189304293e-13,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "aggregation.filter.2.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 0.08016455918550491,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 4.4498491287231445
+      },
+      "aggregation.filter.2.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 4.216157655748294e-14,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "aggregation.filter.4.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 0.4528118669986725,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 3.5539848804473877
+      },
+      "aggregation.filter.4.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 1.0351339773675364e-14,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "aggregation.filter.6.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 0.15123127400875092,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 1.718479037284851
+      },
+      "aggregation.filter.6.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 2.045035266752841e-15,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "aggregation.to_cost.weight": {
+        "kind": "conv_split",
+        "shape": [
+          1,
+          48,
+          3,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 0.25291380286216736,
+            "nonzero": true
+          }
+        },
+        "old_norm": 3.197732448577881
+      },
+      "aggregation.to_cost.bias": {
+        "kind": "unwidened_bias",
+        "shape": [
+          1
+        ],
+        "new_slices": {},
+        "grad_norm_all": 3.538451367586953e-25
+      },
+      "refinement.input_conv.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          4,
+          3,
+          3
+        ],
+        "new_slices": {
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 23.385269165039062
+      },
+      "refinement.input_conv.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 2.0278141498565674,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "refinement.blocks.0.conv1.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 6.10488748550415,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 5.622370719909668
+      },
+      "refinement.blocks.0.conv1.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 0.1613275706768036,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "refinement.blocks.0.conv2.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 9.210105895996094,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 20.0438289642334
+      },
+      "refinement.blocks.0.conv2.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 1.9957365989685059,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "refinement.blocks.1.conv1.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 5.124361038208008,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 5.2038469314575195
+      },
+      "refinement.blocks.1.conv1.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 0.19895917177200317,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "refinement.blocks.1.conv2.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 13.529333114624023,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 23.1269588470459
+      },
+      "refinement.blocks.1.conv2.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 2.043992042541504,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "refinement.blocks.2.conv1.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 10.802085876464844,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 9.111278533935547
+      },
+      "refinement.blocks.2.conv1.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 0.5214989185333252,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "refinement.blocks.2.conv2.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 11.687368392944336,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 13.928075790405273
+      },
+      "refinement.blocks.2.conv2.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 1.9627642631530762,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "refinement.blocks.3.conv1.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 11.875628471374512,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 8.828293800354004
+      },
+      "refinement.blocks.3.conv1.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 0.4964776337146759,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "refinement.blocks.3.conv2.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 7.586343765258789,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 14.027981758117676
+      },
+      "refinement.blocks.3.conv2.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 1.8166722059249878,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "refinement.blocks.4.conv1.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 4.7202019691467285,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 3.9133355617523193
+      },
+      "refinement.blocks.4.conv1.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 0.1930881142616272,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "refinement.blocks.4.conv2.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 6.250974178314209,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 8.42674446105957
+      },
+      "refinement.blocks.4.conv2.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 1.7797057628631592,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "refinement.blocks.5.conv1.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 7.904232501983643,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 4.401267051696777
+      },
+      "refinement.blocks.5.conv1.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 0.5364718437194824,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "refinement.blocks.5.conv2.weight": {
+        "kind": "conv_split",
+        "shape": [
+          48,
+          48,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 1.2209964990615845,
+            "nonzero": true
+          },
+          "new_out_rows": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        },
+        "old_norm": 4.341784477233887
+      },
+      "refinement.blocks.5.conv2.bias": {
+        "kind": "bias_split",
+        "shape": [
+          48
+        ],
+        "old_norm": 0.25127434730529785,
+        "new_slices": {
+          "bias_new_out": {
+            "norm": 0.0,
+            "nonzero": false
+          }
+        }
+      },
+      "refinement.output_conv.weight": {
+        "kind": "conv_split",
+        "shape": [
+          1,
+          48,
+          3,
+          3
+        ],
+        "new_slices": {
+          "cross_old_out_new_in": {
+            "norm": 4.016397476196289,
+            "nonzero": true
+          }
+        },
+        "old_norm": 6.287318706512451
+      },
+      "refinement.output_conv.bias": {
+        "kind": "unwidened_bias",
+        "shape": [
+          1
+        ],
+        "new_slices": {},
+        "grad_norm_all": 0.23260360956192017
+      }
+    },
+    "n_layers_with_new_slices": 68,
+    "n_new_slices": 99,
+    "n_cross_slices": 33,
+    "zero_list": [
+      {
+        "param": "feature_extractor.downsample.0.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.downsample.0.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.downsample.1.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.downsample.1.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.downsample.2.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.downsample.2.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.residual.0.conv1.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.residual.0.conv1.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.residual.0.conv2.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.residual.0.conv2.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.residual.1.conv1.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.residual.1.conv1.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.residual.1.conv2.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.residual.1.conv2.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.residual.2.conv1.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.residual.2.conv1.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.residual.2.conv2.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.residual.2.conv2.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.residual.3.conv1.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.residual.3.conv1.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.residual.3.conv2.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.residual.3.conv2.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.residual.4.conv1.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.residual.4.conv1.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.residual.4.conv2.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.residual.4.conv2.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.residual.5.conv1.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.residual.5.conv1.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.residual.5.conv2.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.residual.5.conv2.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.output_conv.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "feature_extractor.output_conv.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "aggregation.filter.0.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "aggregation.filter.0.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "aggregation.filter.2.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "aggregation.filter.2.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "aggregation.filter.4.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "aggregation.filter.4.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "aggregation.filter.6.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "aggregation.filter.6.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "refinement.input_conv.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "refinement.input_conv.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "refinement.blocks.0.conv1.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "refinement.blocks.0.conv1.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "refinement.blocks.0.conv2.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "refinement.blocks.0.conv2.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "refinement.blocks.1.conv1.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "refinement.blocks.1.conv1.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "refinement.blocks.1.conv2.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "refinement.blocks.1.conv2.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "refinement.blocks.2.conv1.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "refinement.blocks.2.conv1.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "refinement.blocks.2.conv2.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "refinement.blocks.2.conv2.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "refinement.blocks.3.conv1.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "refinement.blocks.3.conv1.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "refinement.blocks.3.conv2.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "refinement.blocks.3.conv2.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "refinement.blocks.4.conv1.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "refinement.blocks.4.conv1.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "refinement.blocks.4.conv2.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "refinement.blocks.4.conv2.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "refinement.blocks.5.conv1.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "refinement.blocks.5.conv1.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      },
+      {
+        "param": "refinement.blocks.5.conv2.weight",
+        "slice": "new_out_rows",
+        "norm": 0.0
+      },
+      {
+        "param": "refinement.blocks.5.conv2.bias",
+        "slice": "bias_new_out",
+        "norm": 0.0
+      }
+    ],
+    "pass_strict_all_new_nonzero": false,
+    "pass_cross_nonzero": true,
+    "batch": {
+      "size": 2,
+      "crop_hw": [
+        256,
+        512
+      ],
+      "crop_seed": 0,
+      "samples": [
+        {
+          "scene": "000000_10.png",
+          "split": "hailo_calib",
+          "index": 0,
+          "scale_draw_s": 1.2318328673802252,
+          "crop_hw": [
+            208,
+            416
+          ],
+          "crop_yx": [
+            82,
+            220
+          ],
+          "realised_sx": 1.2307692307692308,
+          "crop_out": [
+            256,
+            512
+          ],
+          "jitter_sigma": 0.1
+        },
+        {
+          "scene": "000001_10.png",
+          "split": "hailo_calib",
+          "index": 1,
+          "scale_draw_s": 1.4404309471971495,
+          "crop_hw": [
+            178,
+            355
+          ],
+          "crop_yx": [
+            124,
+            801
+          ],
+          "realised_sx": 1.4422535211267606,
+          "crop_out": [
+            256,
+            512
+          ],
+          "jitter_sigma": 0.1
+        }
+      ]
+    }
+  },
+  "verdict": "G2_FAIL",
+  "structural_note": "Net2Net-style zeroing implies the incoming weights/biases of the NEW output units get exactly-zero gradient on step 1: every path from the loss to a new-channel activation passes through a zeroed from-new-to-old cross weight (exactly 0 at the final 1-channel layers), while the zeroed cross slices themselves see nonzero activations and nonzero old-output grads, hence nonzero grads.",
+  "scope": "G2 only; G1 stays FAILED as recorded in preflight.json / g1_diagnosis.json; no twin48_init.pth written; no optimizer step taken."
+}

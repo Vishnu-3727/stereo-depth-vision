@@ -1,0 +1,278 @@
+{
+  "bundle": "stage_f/followup/kaggle/bundle_twin",
+  "purpose": "Stage F follow-up capacity-twin (width-48) Kaggle T4 execution bundle",
+  "source_bundle": "stage_e_recipe/kaggle/bundle (frozen E0)",
+  "twin_init_sha256": "9ab4e32104a7df846159e4fd159625445a5e59cf147789e9dbef083896877c59",
+  "twin_param_count": 891074,
+  "files": {
+    "BUNDLE_MARKER.json": {
+      "sha256": "3272fb6efda5060b8467ebbd83f5d4774b39369d78e23834bdefc72a635bd430",
+      "e0_sha256": "27c7ebdbf8e09c1216dcc0cf10f2a259959fca6210db64ca365d9a0cb9966b75",
+      "identical": false
+    },
+    "checkpoints/armp_stage1_best.pth": {
+      "sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+      "e0_sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+      "identical": true
+    },
+    "checkpoints/twin48_init.pth": {
+      "sha256": "9ab4e32104a7df846159e4fd159625445a5e59cf147789e9dbef083896877c59",
+      "e0_sha256": null,
+      "identical": false,
+      "note": "added (not in E0 bundle)"
+    },
+    "configs/stage_e.json": {
+      "sha256": "2f0add653c0f95b8c05c450aeb07bb8a3970e24b1b6a1886844fa962a8a9257c",
+      "e0_sha256": "2f0add653c0f95b8c05c450aeb07bb8a3970e24b1b6a1886844fa962a8a9257c",
+      "identical": true
+    },
+    "dataset-metadata.json": {
+      "sha256": null,
+      "e0_sha256": "1741f381af1c9f32d556063d8e0e12dae3cccc7e7f013a635719b9b57afa7efd",
+      "identical": false,
+      "note": "removed from E0 bundle copy"
+    },
+    "kaggle_bootstrap.py": {
+      "sha256": "e3afebae2c7a881918f1c8a78caf4baa880afecb4e85b07beb3fc3066e16ba87",
+      "e0_sha256": "e3afebae2c7a881918f1c8a78caf4baa880afecb4e85b07beb3fc3066e16ba87",
+      "identical": true
+    },
+    "phase1/harness/determinism.py": {
+      "sha256": "aa69c0b3303bbc2035378d0091b8d66ae376f8afab6804dd2794a6ca7bd4a415",
+      "e0_sha256": "aa69c0b3303bbc2035378d0091b8d66ae376f8afab6804dd2794a6ca7bd4a415",
+      "identical": true
+    },
+    "phase1/harness/frozen_eval.py": {
+      "sha256": "1a123c1219425d7d20cce73afb2e315f05180922eb1daf1f865a16b89a83c7f1",
+      "e0_sha256": "1a123c1219425d7d20cce73afb2e315f05180922eb1daf1f865a16b89a83c7f1",
+      "identical": true
+    },
+    "phase1/runs/arm_v/arm_v_best.pth": {
+      "sha256": "f2dcf8a22e6f1711b67a70837066f84e68550d53bb4891d3b8d46bd50b452cc4",
+      "e0_sha256": "f2dcf8a22e6f1711b67a70837066f84e68550d53bb4891d3b8d46bd50b452cc4",
+      "identical": true
+    },
+    "scripts/eval_tier2.py": {
+      "sha256": "e347b704a89860b031c7de0772d8f443251f5cb29dc794f76ea1d6637481a906",
+      "e0_sha256": "326e9058f4bbdf342234d92eb5d8a9cd96885587eb1d88a44131b41ff58554f6",
+      "identical": false
+    },
+    "scripts/finetune_pilot.py": {
+      "sha256": "5283cd86bf95dea6b752a699fcd5893d81e50c1866c93ef5e5d255f36017b821",
+      "e0_sha256": "af6130043c989d83b16da28938e5ce8e7f8c2fbdb15b25d9571eee94720d6d72",
+      "identical": false
+    },
+    "scripts/run_arm.py": {
+      "sha256": "62792338d61e9081d15c09fea04e424c8b066bf04fcc240e36535ce27564ea55",
+      "e0_sha256": "9d0123700d93b44873477ff1f6d29d9bcddfbd5a39c7d22c3a64dc7f3f6620f5",
+      "identical": false
+    },
+    "source_integrity.json": {
+      "sha256": "f522f23d1902ac2e156cb7d5a8e6016c5c8a32101d830bb2167fe24e209043fa",
+      "e0_sha256": "f522f23d1902ac2e156cb7d5a8e6016c5c8a32101d830bb2167fe24e209043fa",
+      "identical": true
+    },
+    "src/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "e0_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/datasets/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "e0_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/datasets/kitti2015.py": {
+      "sha256": "9f3369d85c07b35680b928767d7b521fc9110d14a594adf7165fcf36a1bec25e",
+      "e0_sha256": "9f3369d85c07b35680b928767d7b521fc9110d14a594adf7165fcf36a1bec25e",
+      "identical": true
+    },
+    "src/evaluation/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "e0_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/evaluation/metrics.py": {
+      "sha256": "04d826913bb15301838a257dddac5ddd355786eccad8fe329ff1f2ae4157c9ec",
+      "e0_sha256": "04d826913bb15301838a257dddac5ddd355786eccad8fe329ff1f2ae4157c9ec",
+      "identical": true
+    },
+    "src/losses/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "e0_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/losses/disparity.py": {
+      "sha256": "aa4da7e6c788cb665cf594d2fa37e0e4f10cc5ca22cadf83f136c0ad18fab7eb",
+      "e0_sha256": "aa4da7e6c788cb665cf594d2fa37e0e4f10cc5ca22cadf83f136c0ad18fab7eb",
+      "identical": true
+    },
+    "src/models/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "e0_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "identical": true
+    },
+    "src/models/stereonet/__init__.py": {
+      "sha256": "cd46319a865c1613b6db320a22b9e58e245e4f13b39c82895421eb7aa7546469",
+      "e0_sha256": "cd46319a865c1613b6db320a22b9e58e245e4f13b39c82895421eb7aa7546469",
+      "identical": true
+    },
+    "src/models/stereonet/aggregation.py": {
+      "sha256": "a734782a80256cc6732036fd154706833adb23c64cb03b9c2287b3b7ad7c6702",
+      "e0_sha256": "a734782a80256cc6732036fd154706833adb23c64cb03b9c2287b3b7ad7c6702",
+      "identical": true
+    },
+    "src/models/stereonet/blocks.py": {
+      "sha256": "fcdc9ab0c0f7d337144bd2432cd43d0dce6abd419b4058630d0b5b4ace0eac8a",
+      "e0_sha256": "fcdc9ab0c0f7d337144bd2432cd43d0dce6abd419b4058630d0b5b4ace0eac8a",
+      "identical": true
+    },
+    "src/models/stereonet/cost_volume.py": {
+      "sha256": "aecf80145834ac504c73ced551ad9571cc951a84aa29379e35e25189e46c65f6",
+      "e0_sha256": "aecf80145834ac504c73ced551ad9571cc951a84aa29379e35e25189e46c65f6",
+      "identical": true
+    },
+    "src/models/stereonet/excitation.py": {
+      "sha256": "fb7103ed4bc719331258441d495444f71c76acdafac59e4141e78beb0f2104fb",
+      "e0_sha256": "fb7103ed4bc719331258441d495444f71c76acdafac59e4141e78beb0f2104fb",
+      "identical": true
+    },
+    "src/models/stereonet/feature_extractor.py": {
+      "sha256": "0c49f78ed074907afc37dc09f6eb017be0f268df17ab279c91f45976bd2d3d05",
+      "e0_sha256": "0c49f78ed074907afc37dc09f6eb017be0f268df17ab279c91f45976bd2d3d05",
+      "identical": true
+    },
+    "src/models/stereonet/refinement.py": {
+      "sha256": "185e53c92b615d7e8c2084e3e2bd693c05ab94f98ebd8e95a7af89a0473d7401",
+      "e0_sha256": "185e53c92b615d7e8c2084e3e2bd693c05ab94f98ebd8e95a7af89a0473d7401",
+      "identical": true
+    },
+    "src/models/stereonet/regression.py": {
+      "sha256": "09ba98e0eca8740b91f9d498c4ae6f103ddb9a976adac35714142bca2c8f9a32",
+      "e0_sha256": "09ba98e0eca8740b91f9d498c4ae6f103ddb9a976adac35714142bca2c8f9a32",
+      "identical": true
+    },
+    "src/models/stereonet/stereonet.py": {
+      "sha256": "92f9275786f323d6eca9e19b55f7aa7cdada20885ff38e7876ba6cb234f28c56",
+      "e0_sha256": "92f9275786f323d6eca9e19b55f7aa7cdada20885ff38e7876ba6cb234f28c56",
+      "identical": true
+    }
+  },
+  "declared_deltas": {
+    "checkpoints/twin48_init.pth": {
+      "scope": "ADDED INIT ONLY - A2-finalized width-48 embed (sha 9ab4e32104a7..., 891074 params); the ARM-P Stage-1 checkpoint stays byte-identical alongside"
+    },
+    "scripts/finetune_pilot.py": {
+      "scope": "TWIN WIDTH + GUARD ONLY - ARM_V_CONFIG gains feature_channels=48; ARM_V_PARAMS 397954->891074; integrity_guard reference is the bundle twin48_init (48-channel shapes) instead of arm_v_best (32-channel shapes, unmatchable by construction); optimizer, scheduler, data, aug, loss, validation, checkpointing, init path, seed, determinism unchanged",
+      "unified_diff": [
+        "--- bundle/scripts/finetune_pilot.py",
+        "+++ bundle_twin/scripts/finetune_pilot.py",
+        "@@ -70,6 +70,7 @@",
+        " ",
+        " ARM_V_CONFIG = dict(downsample_levels=3, num_disparities=24,",
+        "-                    cost_volume_shift=\"right\", regression_normalize=True)",
+        "-ARM_V_PARAMS = 397954",
+        "+                    cost_volume_shift=\"right\", regression_normalize=True,",
+        "+                    feature_channels=48)",
+        "+ARM_V_PARAMS = 891074",
+        " ",
+        " ",
+        "@@ -152,7 +153,8 @@",
+        " def integrity_guard(model, config) -> dict:",
+        "     \"\"\"Preregistered pre-training guard. Raises before any optimizer step.\"\"\"",
+        "-    ref_blob = torch.load(REPO_ROOT / \"phase1\" / \"runs\" / \"arm_v\" / \"arm_v_best.pth\",",
+        "+    ref_blob = torch.load(REPO_ROOT / \"checkpoints\" / \"twin48_init.pth\",",
+        "                           map_location=\"cpu\", weights_only=False)",
+        "-    ref_keys = sorted(ref_blob[\"model\"].keys())",
+        "+    ref_state = ref_blob[\"model\"] if isinstance(ref_blob, dict) and \"model\" in ref_blob else ref_blob",
+        "+    ref_keys = sorted(ref_state.keys())",
+        "     keys = sorted(model.state_dict().keys())",
+        "     params = sum(p.numel() for p in model.parameters())",
+        "@@ -161,5 +163,5 @@",
+        "                             torch.nn.BatchNorm3d, torch.nn.SyncBatchNorm))]",
+        "     cfg_ok = all(getattr(config, k) == v for k, v in ARM_V_CONFIG.items())",
+        "-    shapes_ok = all(tuple(model.state_dict()[k].shape) == tuple(ref_blob[\"model\"][k].shape)",
+        "+    shapes_ok = all(tuple(model.state_dict()[k].shape) == tuple(ref_state[k].shape)",
+        "                     for k in keys) if keys == ref_keys else False",
+        "     rep = {\"param_count\": params, \"param_count_expected\": ARM_V_PARAMS,"
+      ]
+    },
+    "scripts/run_arm.py": {
+      "scope": "TWIN GATES ONLY - EXPECTED_PARAMS 397954->891074; init-sha gate is the twin48 sha (renamed EXPECTED_SHA_TWIN48_INIT); STOP/complete logic otherwise unchanged",
+      "unified_diff": [
+        "--- bundle/scripts/run_arm.py",
+        "+++ bundle_twin/scripts/run_arm.py",
+        "@@ -9,6 +9,8 @@",
+        " ",
+        " STOP conditions (halt arm, write STOP.json, exit 3; never silently repair):",
+        "-  NaN/Inf loss | zero valid pixels | param count != 397954 | strict-load",
+        "+  NaN/Inf loss | zero valid pixels | param count != 891074 | strict-load",
+        "   failure | wrong-checkpoint resume | wall > timeout | projected wall > timeout.",
+        "+Twin bundle: EXPECTED_PARAMS is the 48-channel count and the init sha",
+        "+is the A2-finalized twin48 init (not the ARM-P Stage-1 sha).",
+        " \"\"\"",
+        " from __future__ import annotations",
+        "@@ -28,6 +30,6 @@",
+        " REPO = PILOT.parents[1]",
+        " SCRIPT = PILOT / \"scripts\" / \"finetune_pilot.py\"",
+        "-EXPECTED_PARAMS = 397954",
+        "-EXPECTED_SHA_ARMP_STAGE1 = \"3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7\"",
+        "+EXPECTED_PARAMS = 891074",
+        "+EXPECTED_SHA_TWIN48_INIT = \"9ab4e32104a7df846159e4fd159625445a5e59cf147789e9dbef083896877c59\"",
+        " ",
+        " EPOCH_RE = re.compile(r\"^epoch\\s+(\\d+)\\s+loss\\s+([0-9eE+\\-.,infINFnanNAN]+)\")",
+        "@@ -168,5 +170,5 @@",
+        "         init_sha = \"random\"",
+        "     else:",
+        "-        if init_rec.get(\"sha256\") != EXPECTED_SHA_ARMP_STAGE1:",
+        "+        if init_rec.get(\"sha256\") != EXPECTED_SHA_TWIN48_INIT:",
+        "             return stop(outdir, \"wrong_checkpoint_resume\", {\"init_record\": init_rec})",
+        "         init_sha = init_rec[\"sha256\"]"
+      ]
+    },
+    "scripts/eval_tier2.py": {
+      "scope": "TWIN SCORING ONLY - CFG gains feature_channels=48 so the kernel scoring model matches the trained twin; EXPECTED_PARAMS 397954->891074; metrics/contract code unchanged",
+      "unified_diff": [
+        "--- bundle/scripts/eval_tier2.py",
+        "+++ bundle_twin/scripts/eval_tier2.py",
+        "@@ -35,6 +35,6 @@",
+        " MIN_BIN = 1000",
+        " CFG = dict(downsample_levels=3, num_disparities=24, cost_volume_shift=\"right\",",
+        "-           regression_normalize=True)",
+        "-EXPECTED_PARAMS = 397954",
+        "+           regression_normalize=True, feature_channels=48)",
+        "+EXPECTED_PARAMS = 891074",
+        " ",
+        " TARGETS = [(\"control\", \"best\"), (\"control\", \"final\"),"
+      ]
+    },
+    "BUNDLE_MARKER.json": {
+      "scope": "MARKER ONLY - bundle stage-f-twin48, twin checkpoint sha, feature_channels 48, param_count 891074"
+    },
+    "dataset-metadata.json": {
+      "scope": "UPLOAD-TIME ONLY - stale copy removed; push_twin.py dataset regenerates it"
+    }
+  },
+  "verdict": "PASS",
+  "init_checkpoints": {
+    "armp_stage1_best.pth": {
+      "sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+      "expected": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+      "match": true
+    },
+    "twin48_init.pth": {
+      "sha256": "9ab4e32104a7df846159e4fd159625445a5e59cf147789e9dbef083896877c59",
+      "expected": "9ab4e32104a7df846159e4fd159625445a5e59cf147789e9dbef083896877c59",
+      "match": true
+    }
+  },
+  "changed_files": [
+    "BUNDLE_MARKER.json",
+    "checkpoints/twin48_init.pth",
+    "dataset-metadata.json",
+    "scripts/eval_tier2.py",
+    "scripts/finetune_pilot.py",
+    "scripts/run_arm.py"
+  ],
+  "unexpected_diffs": []
+}

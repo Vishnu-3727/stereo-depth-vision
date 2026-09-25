@@ -1,0 +1,191 @@
+{
+  "experiment": "twin G1 failure diagnosis (local only, diagnosis only)",
+  "provenance": {
+    "utc": "2026-09-25T00:36:20Z",
+    "device_noise": "cuda",
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "source_sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+    "twin_seed": 0
+  },
+  "fp32_noise_floor": [
+    {
+      "scene": "000160_10.png",
+      "index": 0,
+      "gpu_twice_max_abs": {
+        "left_features": 0.0,
+        "cost_volume": 0.0,
+        "aggregated_cost": 0.0,
+        "disparity_initial": 0.0,
+        "disparity_final": 0.0
+      },
+      "gpu_vs_cpu_max_abs": {
+        "left_features": 2594275328.0,
+        "cost_volume": 3837788160.0,
+        "aggregated_cost": 177601192656896.0,
+        "disparity_initial": 0.29388427734375,
+        "disparity_final": 2.159027099609375
+      },
+      "magnitude_fp32": {
+        "left_features": 4438124134400.0,
+        "cost_volume": 7274775969792.0,
+        "aggregated_cost": 1.0543033174143795e+17,
+        "disparity_initial": 18.070301055908203,
+        "disparity_final": 147.48597717285156
+      }
+    },
+    {
+      "scene": "000161_10.png",
+      "index": 1,
+      "gpu_twice_max_abs": {
+        "left_features": 0.0,
+        "cost_volume": 0.0,
+        "aggregated_cost": 0.0,
+        "disparity_initial": 0.0,
+        "disparity_final": 0.0
+      },
+      "gpu_vs_cpu_max_abs": {
+        "left_features": 3573415936.0,
+        "cost_volume": 4340981760.0,
+        "aggregated_cost": 174719269601280.0,
+        "disparity_initial": 0.3279762268066406,
+        "disparity_final": 6.973751068115234
+      },
+      "magnitude_fp32": {
+        "left_features": 4687744991232.0,
+        "cost_volume": 8931954917376.0,
+        "aggregated_cost": 1.181896659655721e+17,
+        "disparity_initial": 16.653125762939453,
+        "disparity_final": 164.20596313476562
+      }
+    },
+    {
+      "scene": "000162_10.png",
+      "index": 2,
+      "gpu_twice_max_abs": {
+        "left_features": 0.0,
+        "cost_volume": 0.0,
+        "aggregated_cost": 0.0,
+        "disparity_initial": 0.0,
+        "disparity_final": 0.0
+      },
+      "gpu_vs_cpu_max_abs": {
+        "left_features": 3793551360.0,
+        "cost_volume": 5671616512.0,
+        "aggregated_cost": 283920960585728.0,
+        "disparity_initial": 0.25218868255615234,
+        "disparity_final": 2.9128952026367188
+      },
+      "magnitude_fp32": {
+        "left_features": 4797152362496.0,
+        "cost_volume": 6777922912256.0,
+        "aggregated_cost": 1.0186946025567027e+17,
+        "disparity_initial": 16.85004997253418,
+        "disparity_final": 145.7117156982422
+      }
+    }
+  ],
+  "fp64_twin_vs_armp_cpu": [
+    {
+      "scene": "000160_10.png",
+      "index": 0,
+      "stages": {
+        "left_features": {
+          "max_abs_diff": 0.0,
+          "arm_magnitude": 4438919031594.066,
+          "rel": 0.0
+        },
+        "cost_volume": {
+          "max_abs_diff": 0.0,
+          "arm_magnitude": 7275606324820.895,
+          "rel": 0.0
+        },
+        "aggregated_cost": {
+          "max_abs_diff": 0.0,
+          "arm_magnitude": 1.055296894174094e+17,
+          "rel": 0.0
+        },
+        "disparity_initial": {
+          "max_abs_diff": 0.0,
+          "arm_magnitude": 18.07247572860104,
+          "rel": 0.0
+        },
+        "disparity_final": {
+          "max_abs_diff": 0.0,
+          "arm_magnitude": 147.77056294685048,
+          "rel": 0.0
+        },
+        "twin_new_left_features_max_abs": 254651591201.37494,
+        "twin_new_cost_volume_max_abs": 407291489592.30615
+      }
+    },
+    {
+      "scene": "000161_10.png",
+      "index": 1,
+      "stages": {
+        "left_features": {
+          "max_abs_diff": 0.0,
+          "arm_magnitude": 4688472168817.357,
+          "rel": 0.0
+        },
+        "cost_volume": {
+          "max_abs_diff": 0.0,
+          "arm_magnitude": 8933011227438.715,
+          "rel": 0.0
+        },
+        "aggregated_cost": {
+          "max_abs_diff": 0.0,
+          "arm_magnitude": 1.1824971286599037e+17,
+          "rel": 0.0
+        },
+        "disparity_initial": {
+          "max_abs_diff": 0.0,
+          "arm_magnitude": 16.682677477873366,
+          "rel": 0.0
+        },
+        "disparity_final": {
+          "max_abs_diff": 0.0,
+          "arm_magnitude": 164.1957081551372,
+          "rel": 0.0
+        },
+        "twin_new_left_features_max_abs": 290640420505.0774,
+        "twin_new_cost_volume_max_abs": 402735199740.1545
+      }
+    },
+    {
+      "scene": "000162_10.png",
+      "index": 2,
+      "stages": {
+        "left_features": {
+          "max_abs_diff": 0.0,
+          "arm_magnitude": 4797504099547.259,
+          "rel": 0.0
+        },
+        "cost_volume": {
+          "max_abs_diff": 0.0,
+          "arm_magnitude": 6778203409613.396,
+          "rel": 0.0
+        },
+        "aggregated_cost": {
+          "max_abs_diff": 0.0,
+          "arm_magnitude": 1.020048748230447e+17,
+          "rel": 0.0
+        },
+        "disparity_initial": {
+          "max_abs_diff": 0.0,
+          "arm_magnitude": 16.838248036304588,
+          "rel": 0.0
+        },
+        "disparity_final": {
+          "max_abs_diff": 0.0,
+          "arm_magnitude": 145.8306546569279,
+          "rel": 0.0
+        },
+        "twin_new_left_features_max_abs": 250626816729.69104,
+        "twin_new_cost_volume_max_abs": 444393355661.96924
+      }
+    }
+  ],
+  "first_divergence_fp64": null,
+  "conclusion": "EMBED CORRECT (fp64 matches)"
+}

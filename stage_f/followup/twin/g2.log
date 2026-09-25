@@ -1,0 +1,148 @@
+twin G2 probe ONLY (LOCAL ONLY, no optimizer step); device=cuda
+torch=2.7.0+cu128 cuda=12.8 gpu=NVIDIA GeForce RTX 4060 Laptop GPU
+source init: C:\Users\vishn\stereo_depth_vision\stage_f\followup\kaggle\bundle_f1m\checkpoints\armp_stage1_best.pth sha MATCH 3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7 keys=70
+twin params=891074 (record only; range gate belongs to preflight)
+embed: 70 tensors; conv layers with zeroed cross slice=33
+batch: B=2 crop=256x512 seed=0 scenes=['000000_10.png', '000001_10.png']
+G2 loss=5.145579 finite=True valid_px=89012 layers_with_new=68 new_slices=99 strict_all_new_nonzero=False cross_nonzero=True
+per-layer new/old grad norms:
+  G2 aggregation.filter.0.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=2.907e-13
+  G2 aggregation.filter.0.weight [conv_split [48, 48, 3, 3, 3]]: new: cross_old_out_new_in=7.519e-02(nonzero), new_out_rows=0.000e+00(ZERO); old=1.506e+00
+  G2 aggregation.filter.2.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=4.216e-14
+  G2 aggregation.filter.2.weight [conv_split [48, 48, 3, 3, 3]]: new: cross_old_out_new_in=8.016e-02(nonzero), new_out_rows=0.000e+00(ZERO); old=4.450e+00
+  G2 aggregation.filter.4.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=1.035e-14
+  G2 aggregation.filter.4.weight [conv_split [48, 48, 3, 3, 3]]: new: cross_old_out_new_in=4.528e-01(nonzero), new_out_rows=0.000e+00(ZERO); old=3.554e+00
+  G2 aggregation.filter.6.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=2.045e-15
+  G2 aggregation.filter.6.weight [conv_split [48, 48, 3, 3, 3]]: new: cross_old_out_new_in=1.512e-01(nonzero), new_out_rows=0.000e+00(ZERO); old=1.718e+00
+  G2 aggregation.to_cost.bias [unwidened_bias [1]]: new: ; all=3.538e-25
+  G2 aggregation.to_cost.weight [conv_split [1, 48, 3, 3, 3]]: new: cross_old_out_new_in=2.529e-01(nonzero); old=3.198e+00
+  G2 feature_extractor.downsample.0.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=6.048e-02
+  G2 feature_extractor.downsample.0.weight [conv_split [48, 3, 5, 5]]: new: new_out_rows=0.000e+00(ZERO); old=2.721e+00
+  G2 feature_extractor.downsample.1.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=1.939e-03
+  G2 feature_extractor.downsample.1.weight [conv_split [48, 48, 5, 5]]: new: cross_old_out_new_in=8.822e-02(nonzero), new_out_rows=0.000e+00(ZERO); old=3.001e-01
+  G2 feature_extractor.downsample.2.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=1.366e-04
+  G2 feature_extractor.downsample.2.weight [conv_split [48, 48, 5, 5]]: new: cross_old_out_new_in=4.150e-03(nonzero), new_out_rows=0.000e+00(ZERO); old=4.984e-01
+  G2 feature_extractor.output_conv.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=2.989e-13
+  G2 feature_extractor.output_conv.weight [conv_split [48, 48, 3, 3]]: new: cross_old_out_new_in=6.137e-02(nonzero), new_out_rows=0.000e+00(ZERO); old=1.059e+00
+  G2 feature_extractor.residual.0.conv1.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=5.101e-05
+  G2 feature_extractor.residual.0.conv1.weight [conv_split [48, 48, 3, 3]]: new: cross_old_out_new_in=2.611e-02(nonzero), new_out_rows=0.000e+00(ZERO); old=1.610e+00
+  G2 feature_extractor.residual.0.conv2.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=3.757e-06
+  G2 feature_extractor.residual.0.conv2.weight [conv_split [48, 48, 3, 3]]: new: cross_old_out_new_in=4.442e-02(nonzero), new_out_rows=0.000e+00(ZERO); old=1.310e+00
+  G2 feature_extractor.residual.1.conv1.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=8.784e-07
+  G2 feature_extractor.residual.1.conv1.weight [conv_split [48, 48, 3, 3]]: new: cross_old_out_new_in=7.282e-02(nonzero), new_out_rows=0.000e+00(ZERO); old=1.080e+00
+  G2 feature_extractor.residual.1.conv2.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=1.610e-07
+  G2 feature_extractor.residual.1.conv2.weight [conv_split [48, 48, 3, 3]]: new: cross_old_out_new_in=6.559e-02(nonzero), new_out_rows=0.000e+00(ZERO); old=8.466e-01
+  G2 feature_extractor.residual.2.conv1.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=4.067e-08
+  G2 feature_extractor.residual.2.conv1.weight [conv_split [48, 48, 3, 3]]: new: cross_old_out_new_in=4.206e-02(nonzero), new_out_rows=0.000e+00(ZERO); old=9.799e-01
+  G2 feature_extractor.residual.2.conv2.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=1.085e-08
+  G2 feature_extractor.residual.2.conv2.weight [conv_split [48, 48, 3, 3]]: new: cross_old_out_new_in=5.036e-02(nonzero), new_out_rows=0.000e+00(ZERO); old=9.042e-01
+  G2 feature_extractor.residual.3.conv1.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=2.536e-09
+  G2 feature_extractor.residual.3.conv1.weight [conv_split [48, 48, 3, 3]]: new: cross_old_out_new_in=4.211e-02(nonzero), new_out_rows=0.000e+00(ZERO); old=9.499e-01
+  G2 feature_extractor.residual.3.conv2.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=5.803e-10
+  G2 feature_extractor.residual.3.conv2.weight [conv_split [48, 48, 3, 3]]: new: cross_old_out_new_in=5.497e-02(nonzero), new_out_rows=0.000e+00(ZERO); old=9.959e-01
+  G2 feature_extractor.residual.4.conv1.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=1.184e-10
+  G2 feature_extractor.residual.4.conv1.weight [conv_split [48, 48, 3, 3]]: new: cross_old_out_new_in=7.276e-02(nonzero), new_out_rows=0.000e+00(ZERO); old=1.430e+00
+  G2 feature_extractor.residual.4.conv2.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=6.040e-11
+  G2 feature_extractor.residual.4.conv2.weight [conv_split [48, 48, 3, 3]]: new: cross_old_out_new_in=1.424e-01(nonzero), new_out_rows=0.000e+00(ZERO); old=1.297e+00
+  G2 feature_extractor.residual.5.conv1.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=1.467e-11
+  G2 feature_extractor.residual.5.conv1.weight [conv_split [48, 48, 3, 3]]: new: cross_old_out_new_in=8.143e-02(nonzero), new_out_rows=0.000e+00(ZERO); old=1.230e+00
+  G2 feature_extractor.residual.5.conv2.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=3.145e-12
+  G2 feature_extractor.residual.5.conv2.weight [conv_split [48, 48, 3, 3]]: new: cross_old_out_new_in=6.943e-02(nonzero), new_out_rows=0.000e+00(ZERO); old=1.210e+00
+  G2 refinement.blocks.0.conv1.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=1.613e-01
+  G2 refinement.blocks.0.conv1.weight [conv_split [48, 48, 3, 3]]: new: cross_old_out_new_in=6.105e+00(nonzero), new_out_rows=0.000e+00(ZERO); old=5.622e+00
+  G2 refinement.blocks.0.conv2.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=1.996e+00
+  G2 refinement.blocks.0.conv2.weight [conv_split [48, 48, 3, 3]]: new: cross_old_out_new_in=9.210e+00(nonzero), new_out_rows=0.000e+00(ZERO); old=2.004e+01
+  G2 refinement.blocks.1.conv1.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=1.990e-01
+  G2 refinement.blocks.1.conv1.weight [conv_split [48, 48, 3, 3]]: new: cross_old_out_new_in=5.124e+00(nonzero), new_out_rows=0.000e+00(ZERO); old=5.204e+00
+  G2 refinement.blocks.1.conv2.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=2.044e+00
+  G2 refinement.blocks.1.conv2.weight [conv_split [48, 48, 3, 3]]: new: cross_old_out_new_in=1.353e+01(nonzero), new_out_rows=0.000e+00(ZERO); old=2.313e+01
+  G2 refinement.blocks.2.conv1.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=5.215e-01
+  G2 refinement.blocks.2.conv1.weight [conv_split [48, 48, 3, 3]]: new: cross_old_out_new_in=1.080e+01(nonzero), new_out_rows=0.000e+00(ZERO); old=9.111e+00
+  G2 refinement.blocks.2.conv2.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=1.963e+00
+  G2 refinement.blocks.2.conv2.weight [conv_split [48, 48, 3, 3]]: new: cross_old_out_new_in=1.169e+01(nonzero), new_out_rows=0.000e+00(ZERO); old=1.393e+01
+  G2 refinement.blocks.3.conv1.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=4.965e-01
+  G2 refinement.blocks.3.conv1.weight [conv_split [48, 48, 3, 3]]: new: cross_old_out_new_in=1.188e+01(nonzero), new_out_rows=0.000e+00(ZERO); old=8.828e+00
+  G2 refinement.blocks.3.conv2.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=1.817e+00
+  G2 refinement.blocks.3.conv2.weight [conv_split [48, 48, 3, 3]]: new: cross_old_out_new_in=7.586e+00(nonzero), new_out_rows=0.000e+00(ZERO); old=1.403e+01
+  G2 refinement.blocks.4.conv1.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=1.931e-01
+  G2 refinement.blocks.4.conv1.weight [conv_split [48, 48, 3, 3]]: new: cross_old_out_new_in=4.720e+00(nonzero), new_out_rows=0.000e+00(ZERO); old=3.913e+00
+  G2 refinement.blocks.4.conv2.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=1.780e+00
+  G2 refinement.blocks.4.conv2.weight [conv_split [48, 48, 3, 3]]: new: cross_old_out_new_in=6.251e+00(nonzero), new_out_rows=0.000e+00(ZERO); old=8.427e+00
+  G2 refinement.blocks.5.conv1.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=5.365e-01
+  G2 refinement.blocks.5.conv1.weight [conv_split [48, 48, 3, 3]]: new: cross_old_out_new_in=7.904e+00(nonzero), new_out_rows=0.000e+00(ZERO); old=4.401e+00
+  G2 refinement.blocks.5.conv2.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=2.513e-01
+  G2 refinement.blocks.5.conv2.weight [conv_split [48, 48, 3, 3]]: new: cross_old_out_new_in=1.221e+00(nonzero), new_out_rows=0.000e+00(ZERO); old=4.342e+00
+  G2 refinement.input_conv.bias [bias_split [48]]: new: bias_new_out=0.000e+00(ZERO); old=2.028e+00
+  G2 refinement.input_conv.weight [conv_split [48, 4, 3, 3]]: new: new_out_rows=0.000e+00(ZERO); old=2.339e+01
+  G2 refinement.output_conv.bias [unwidened_bias [1]]: new: ; all=2.326e-01
+  G2 refinement.output_conv.weight [conv_split [1, 48, 3, 3]]: new: cross_old_out_new_in=4.016e+00(nonzero); old=6.287e+00
+zero-grad new slices (66):
+  ZERO feature_extractor.downsample.0.weight :: new_out_rows norm=0.0
+  ZERO feature_extractor.downsample.0.bias :: bias_new_out norm=0.0
+  ZERO feature_extractor.downsample.1.weight :: new_out_rows norm=0.0
+  ZERO feature_extractor.downsample.1.bias :: bias_new_out norm=0.0
+  ZERO feature_extractor.downsample.2.weight :: new_out_rows norm=0.0
+  ZERO feature_extractor.downsample.2.bias :: bias_new_out norm=0.0
+  ZERO feature_extractor.residual.0.conv1.weight :: new_out_rows norm=0.0
+  ZERO feature_extractor.residual.0.conv1.bias :: bias_new_out norm=0.0
+  ZERO feature_extractor.residual.0.conv2.weight :: new_out_rows norm=0.0
+  ZERO feature_extractor.residual.0.conv2.bias :: bias_new_out norm=0.0
+  ZERO feature_extractor.residual.1.conv1.weight :: new_out_rows norm=0.0
+  ZERO feature_extractor.residual.1.conv1.bias :: bias_new_out norm=0.0
+  ZERO feature_extractor.residual.1.conv2.weight :: new_out_rows norm=0.0
+  ZERO feature_extractor.residual.1.conv2.bias :: bias_new_out norm=0.0
+  ZERO feature_extractor.residual.2.conv1.weight :: new_out_rows norm=0.0
+  ZERO feature_extractor.residual.2.conv1.bias :: bias_new_out norm=0.0
+  ZERO feature_extractor.residual.2.conv2.weight :: new_out_rows norm=0.0
+  ZERO feature_extractor.residual.2.conv2.bias :: bias_new_out norm=0.0
+  ZERO feature_extractor.residual.3.conv1.weight :: new_out_rows norm=0.0
+  ZERO feature_extractor.residual.3.conv1.bias :: bias_new_out norm=0.0
+  ZERO feature_extractor.residual.3.conv2.weight :: new_out_rows norm=0.0
+  ZERO feature_extractor.residual.3.conv2.bias :: bias_new_out norm=0.0
+  ZERO feature_extractor.residual.4.conv1.weight :: new_out_rows norm=0.0
+  ZERO feature_extractor.residual.4.conv1.bias :: bias_new_out norm=0.0
+  ZERO feature_extractor.residual.4.conv2.weight :: new_out_rows norm=0.0
+  ZERO feature_extractor.residual.4.conv2.bias :: bias_new_out norm=0.0
+  ZERO feature_extractor.residual.5.conv1.weight :: new_out_rows norm=0.0
+  ZERO feature_extractor.residual.5.conv1.bias :: bias_new_out norm=0.0
+  ZERO feature_extractor.residual.5.conv2.weight :: new_out_rows norm=0.0
+  ZERO feature_extractor.residual.5.conv2.bias :: bias_new_out norm=0.0
+  ZERO feature_extractor.output_conv.weight :: new_out_rows norm=0.0
+  ZERO feature_extractor.output_conv.bias :: bias_new_out norm=0.0
+  ZERO aggregation.filter.0.weight :: new_out_rows norm=0.0
+  ZERO aggregation.filter.0.bias :: bias_new_out norm=0.0
+  ZERO aggregation.filter.2.weight :: new_out_rows norm=0.0
+  ZERO aggregation.filter.2.bias :: bias_new_out norm=0.0
+  ZERO aggregation.filter.4.weight :: new_out_rows norm=0.0
+  ZERO aggregation.filter.4.bias :: bias_new_out norm=0.0
+  ZERO aggregation.filter.6.weight :: new_out_rows norm=0.0
+  ZERO aggregation.filter.6.bias :: bias_new_out norm=0.0
+  ZERO refinement.input_conv.weight :: new_out_rows norm=0.0
+  ZERO refinement.input_conv.bias :: bias_new_out norm=0.0
+  ZERO refinement.blocks.0.conv1.weight :: new_out_rows norm=0.0
+  ZERO refinement.blocks.0.conv1.bias :: bias_new_out norm=0.0
+  ZERO refinement.blocks.0.conv2.weight :: new_out_rows norm=0.0
+  ZERO refinement.blocks.0.conv2.bias :: bias_new_out norm=0.0
+  ZERO refinement.blocks.1.conv1.weight :: new_out_rows norm=0.0
+  ZERO refinement.blocks.1.conv1.bias :: bias_new_out norm=0.0
+  ZERO refinement.blocks.1.conv2.weight :: new_out_rows norm=0.0
+  ZERO refinement.blocks.1.conv2.bias :: bias_new_out norm=0.0
+  ZERO refinement.blocks.2.conv1.weight :: new_out_rows norm=0.0
+  ZERO refinement.blocks.2.conv1.bias :: bias_new_out norm=0.0
+  ZERO refinement.blocks.2.conv2.weight :: new_out_rows norm=0.0
+  ZERO refinement.blocks.2.conv2.bias :: bias_new_out norm=0.0
+  ZERO refinement.blocks.3.conv1.weight :: new_out_rows norm=0.0
+  ZERO refinement.blocks.3.conv1.bias :: bias_new_out norm=0.0
+  ZERO refinement.blocks.3.conv2.weight :: new_out_rows norm=0.0
+  ZERO refinement.blocks.3.conv2.bias :: bias_new_out norm=0.0
+  ZERO refinement.blocks.4.conv1.weight :: new_out_rows norm=0.0
+  ZERO refinement.blocks.4.conv1.bias :: bias_new_out norm=0.0
+  ZERO refinement.blocks.4.conv2.weight :: new_out_rows norm=0.0
+  ZERO refinement.blocks.4.conv2.bias :: bias_new_out norm=0.0
+  ZERO refinement.blocks.5.conv1.weight :: new_out_rows norm=0.0
+  ZERO refinement.blocks.5.conv1.bias :: bias_new_out norm=0.0
+  ZERO refinement.blocks.5.conv2.weight :: new_out_rows norm=0.0
+  ZERO refinement.blocks.5.conv2.bias :: bias_new_out norm=0.0
+G2 verdict (strict, per task): FAIL (cross-only reference: PASS)
+G1 untouched (stays FAILED as recorded); preflight verdict not declared here; no init file written
+wrote C:\Users\vishn\stereo_depth_vision\stage_f\followup\twin\g2.json verdict=G2_FAIL

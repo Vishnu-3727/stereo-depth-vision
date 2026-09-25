@@ -1,0 +1,609 @@
+{
+  "experiment": "capacity-twin width-48 init + preflight (local only)",
+  "spec": "docs/superpowers/specs/2026-09-24-stage-f-followup-design.md section 6",
+  "provenance": {
+    "utc": "2026-09-25T00:29:31Z",
+    "git_head": "d683b29bd69364f9b231cf84a8dc7cf584a43f84",
+    "device": "cuda",
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "torch_cuda": "12.8",
+    "source_path": "C:\\Users\\vishn\\stereo_depth_vision\\stage_f\\followup\\kaggle\\bundle_f1m\\checkpoints\\armp_stage1_best.pth",
+    "source_sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7",
+    "f1_cfg": {
+      "downsample_levels": 3,
+      "num_disparities": 24,
+      "cost_volume_shift": "right",
+      "regression_normalize": true
+    },
+    "old_channels": 32,
+    "twin_channels": 48,
+    "twin_seed": 0
+  },
+  "param_count": 891074,
+  "param_range": [
+    800000,
+    1000000
+  ],
+  "param_ok": true,
+  "embed": {
+    "n_tensors": 70,
+    "n_zeroed_cross": 33,
+    "actions": {
+      "feature_extractor.downsample.0.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 3,
+        "new_in": 3,
+        "zeroed_cross": false
+      },
+      "feature_extractor.downsample.0.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "feature_extractor.downsample.1.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "feature_extractor.downsample.1.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "feature_extractor.downsample.2.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "feature_extractor.downsample.2.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "feature_extractor.residual.0.conv1.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "feature_extractor.residual.0.conv1.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "feature_extractor.residual.0.conv2.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "feature_extractor.residual.0.conv2.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "feature_extractor.residual.1.conv1.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "feature_extractor.residual.1.conv1.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "feature_extractor.residual.1.conv2.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "feature_extractor.residual.1.conv2.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "feature_extractor.residual.2.conv1.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "feature_extractor.residual.2.conv1.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "feature_extractor.residual.2.conv2.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "feature_extractor.residual.2.conv2.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "feature_extractor.residual.3.conv1.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "feature_extractor.residual.3.conv1.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "feature_extractor.residual.3.conv2.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "feature_extractor.residual.3.conv2.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "feature_extractor.residual.4.conv1.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "feature_extractor.residual.4.conv1.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "feature_extractor.residual.4.conv2.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "feature_extractor.residual.4.conv2.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "feature_extractor.residual.5.conv1.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "feature_extractor.residual.5.conv1.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "feature_extractor.residual.5.conv2.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "feature_extractor.residual.5.conv2.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "feature_extractor.output_conv.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "feature_extractor.output_conv.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "aggregation.filter.0.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "aggregation.filter.0.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "aggregation.filter.2.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "aggregation.filter.2.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "aggregation.filter.4.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "aggregation.filter.4.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "aggregation.filter.6.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "aggregation.filter.6.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "aggregation.to_cost.weight": {
+        "kind": "conv_split",
+        "old_out": 1,
+        "new_out": 1,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "aggregation.to_cost.bias": {
+        "kind": "copy_full",
+        "shape": [
+          1
+        ]
+      },
+      "refinement.input_conv.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 4,
+        "new_in": 4,
+        "zeroed_cross": false
+      },
+      "refinement.input_conv.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "refinement.blocks.0.conv1.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "refinement.blocks.0.conv1.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "refinement.blocks.0.conv2.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "refinement.blocks.0.conv2.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "refinement.blocks.1.conv1.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "refinement.blocks.1.conv1.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "refinement.blocks.1.conv2.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "refinement.blocks.1.conv2.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "refinement.blocks.2.conv1.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "refinement.blocks.2.conv1.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "refinement.blocks.2.conv2.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "refinement.blocks.2.conv2.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "refinement.blocks.3.conv1.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "refinement.blocks.3.conv1.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "refinement.blocks.3.conv2.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "refinement.blocks.3.conv2.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "refinement.blocks.4.conv1.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "refinement.blocks.4.conv1.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "refinement.blocks.4.conv2.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "refinement.blocks.4.conv2.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "refinement.blocks.5.conv1.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "refinement.blocks.5.conv1.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "refinement.blocks.5.conv2.weight": {
+        "kind": "conv_split",
+        "old_out": 32,
+        "new_out": 48,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "refinement.blocks.5.conv2.bias": {
+        "kind": "bias_split",
+        "old_channels": 32,
+        "new_channels": 16
+      },
+      "refinement.output_conv.weight": {
+        "kind": "conv_split",
+        "old_out": 1,
+        "new_out": 1,
+        "old_in": 32,
+        "new_in": 48,
+        "zeroed_cross": true
+      },
+      "refinement.output_conv.bias": {
+        "kind": "copy_full",
+        "shape": [
+          1
+        ]
+      }
+    }
+  },
+  "g1": {
+    "tolerance": 1e-05,
+    "scenes": [
+      {
+        "scene": "000160_10.png",
+        "index": 0,
+        "final_max_abs": 1.5995330810546875,
+        "left_features_shape_old": [
+          1,
+          32,
+          46,
+          154
+        ],
+        "left_features_shape_new": [
+          1,
+          48,
+          46,
+          154
+        ],
+        "left_features_old_slice_max_abs": 2959441920.0,
+        "cost_volume_shape_old": [
+          1,
+          32,
+          24,
+          46,
+          154
+        ],
+        "cost_volume_shape_new": [
+          1,
+          48,
+          24,
+          46,
+          154
+        ],
+        "cost_volume_old_slice_max_abs": 4067950592.0,
+        "aggregated_cost_max_abs": 162336878886912.0,
+        "disparity_initial_max_abs": 0.2601966857910156,
+        "pass": false
+      },
+      {
+        "scene": "000161_10.png",
+        "index": 1,
+        "final_max_abs": 6.834384918212891,
+        "left_features_shape_old": [
+          1,
+          32,
+          46,
+          154
+        ],
+        "left_features_shape_new": [
+          1,
+          48,
+          46,
+          154
+        ],
+        "left_features_old_slice_max_abs": 3924754432.0,
+        "cost_volume_shape_old": [
+          1,
+          32,
+          24,
+          46,
+          154
+        ],
+        "cost_volume_shape_new": [
+          1,
+          48,
+          24,
+          46,
+          154
+        ],
+        "cost_volume_old_slice_max_abs": 4595056640.0,
+        "aggregated_cost_max_abs": 173928995618816.0,
+        "disparity_initial_max_abs": 0.3267993927001953,
+        "pass": false
+      },
+      {
+        "scene": "000162_10.png",
+        "index": 2,
+        "final_max_abs": 2.96893310546875,
+        "left_features_shape_old": [
+          1,
+          32,
+          46,
+          154
+        ],
+        "left_features_shape_new": [
+          1,
+          48,
+          46,
+          154
+        ],
+        "left_features_old_slice_max_abs": 3778117632.0,
+        "cost_volume_shape_old": [
+          1,
+          32,
+          24,
+          46,
+          154
+        ],
+        "cost_volume_shape_new": [
+          1,
+          48,
+          24,
+          46,
+          154
+        ],
+        "cost_volume_old_slice_max_abs": 5691408384.0,
+        "aggregated_cost_max_abs": 310920198750208.0,
+        "disparity_initial_max_abs": 0.28345155715942383,
+        "pass": false
+      }
+    ],
+    "pass": false
+  },
+  "g2": null,
+  "verdict": "STOP_G1_FAIL",
+  "twin_init": null
+}

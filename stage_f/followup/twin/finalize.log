@@ -1,0 +1,14 @@
+twin finalize under amendment A2 (LOCAL ONLY); torch=2.7.0+cu128 cuda=12.8 gpu=NVIDIA GeForce RTX 4060 Laptop GPU
+source init: C:\Users\vishn\stereo_depth_vision\stage_f\followup\kaggle\bundle_f1m\checkpoints\armp_stage1_best.pth sha MATCH 3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7
+param count=891074 expected=891074 OK
+A2-G1 scene 000160_10.png: left_features=0.000e+00 cost_volume=0.000e+00 aggregated_cost=0.000e+00 disparity_initial=0.000e+00 disparity_final=0.000e+00 -> PASS
+A2-G1 scene 000161_10.png: left_features=0.000e+00 cost_volume=0.000e+00 aggregated_cost=0.000e+00 disparity_initial=0.000e+00 disparity_final=0.000e+00 -> PASS
+A2-G1 scene 000162_10.png: left_features=0.000e+00 cost_volume=0.000e+00 aggregated_cost=0.000e+00 disparity_initial=0.000e+00 disparity_final=0.000e+00 -> PASS
+twin params=891074 (expected 891074)
+batch: B=2 crop=256x512 seed=0 scenes=['000000_10.png', '000001_10.png']
+A2-G2 step1: loss=5.145579 valid_px=89012 cross_nonzero=33/33 pass_cross=True
+A2-G2 optimizer step: Adam lr=0.001 betas=[0.9, 0.999] on the step-1 batch
+A2-G2 step2: loss=11.596017 valid_px=89012 new_nonzero=99/99 pass_all=True
+  step2 zero slices: none (all 99 new slices nonzero)
+saved C:\Users\vishn\stereo_depth_vision\stage_f\followup\twin\twin48_init.pth sha256=9ab4e32104a7df846159e4fd159625445a5e59cf147789e9dbef083896877c59
+wrote C:\Users\vishn\stereo_depth_vision\stage_f\followup\twin\preflight_a2.json verdict=A2_PASS

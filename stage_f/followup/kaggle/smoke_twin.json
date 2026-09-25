@@ -1,0 +1,31 @@
+{
+  "experiment": "twin bundle smoke (local only, synthetic batch, 1 step)",
+  "utc": "2026-09-25T02:11:42Z",
+  "bundle": "stage_f/followup/kaggle/bundle_twin",
+  "marker": "stage-f-twin48",
+  "config": {
+    "downsample_levels": 3,
+    "num_disparities": 24,
+    "cost_volume_shift": "right",
+    "regression_normalize": true,
+    "feature_channels": 48
+  },
+  "param_count": 891074,
+  "param_expected": 891074,
+  "init_sha256": "9ab4e32104a7df846159e4fd159625445a5e59cf147789e9dbef083896877c59",
+  "init_strict_load": true,
+  "probe": {
+    "loss": 50.30582809448242,
+    "loss_finite": true,
+    "valid_pixels": 210204,
+    "cross_slices_nonzero": "33/33",
+    "new_output_rows_zero_step1": 31,
+    "note": "new-output rows zero at step 1 by the structural block (A2-G2 proves all 99 nonzero at step 2)"
+  },
+  "integrity_guard": {
+    "all_ok": true,
+    "param_count": 891074,
+    "n_keys": 70
+  },
+  "verdict": "SMOKE PASS"
+}

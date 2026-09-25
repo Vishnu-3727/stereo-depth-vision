@@ -1,0 +1,10 @@
+capacity-twin build+preflight (LOCAL ONLY); device=cuda
+torch=2.7.0+cu128 cuda=12.8 cuda_available=True
+gpu=NVIDIA GeForce RTX 4060 Laptop GPU
+source init: C:\Users\vishn\stereo_depth_vision\stage_f\followup\kaggle\bundle_f1m\checkpoints\armp_stage1_best.pth sha MATCH 3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7 keys=70
+twin params=891074 range=[800000,1000000] OK
+embed: 70 tensors; conv layers with zeroed cross slice=33
+G1 scene 000160_10.png: final_max_abs=1.600e+00 agg=1.623e+14 init=2.602e-01 cv_old_slice=4.068e+09 feat_old_slice=2.959e+09 FAIL
+G1 scene 000161_10.png: final_max_abs=6.834e+00 agg=1.739e+14 init=3.268e-01 cv_old_slice=4.595e+09 feat_old_slice=3.925e+09 FAIL
+G1 scene 000162_10.png: final_max_abs=2.969e+00 agg=3.109e+14 init=2.835e-01 cv_old_slice=5.691e+09 feat_old_slice=3.778e+09 FAIL
+STOP: G1 FAIL on ['000160_10.png', '000161_10.png', '000162_10.png']; no workaround per spec; no init file written
