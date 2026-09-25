@@ -1,0 +1,15 @@
+{
+  "id": "vishnu3727/stage-f-f1m-seed0",
+  "title": "Stage F F1M seed0",
+  "code_file": "stage-f-f1m-seed0.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": false,
+  "dataset_sources": [
+    "vishnu3727/kitti2015-tier2-seed2-subset",
+    "vishnu3727/stage-f-m1-bundle"
+  ],
+  "kernel_sources": []
+}

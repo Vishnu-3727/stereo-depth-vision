@@ -1,0 +1,45 @@
+{
+  "status": "OK",
+  "experiment": "stage-f F1 M1 pilot frozen gates (per arm vs shared f1c)",
+  "gates": {
+    "PASS": "dfinal <= -0.030",
+    "FLOOR-MOVE": "dtrain <= -0.050 and dfinal <= 0",
+    "FAIL": "otherwise (not supported under this controlled pilot)",
+    "KILL": "NaN/Inf, zero valid px, strict-load fail, pooled entropy < 0.1 nats"
+  },
+  "per_arm": {
+    "f1m": {
+      "dfinal": 0.01420719586712571,
+      "dtrain": 0.008455899298249858,
+      "result": "FAIL",
+      "reasons": [
+        "dfinal=0.014207 (arm 1.216238 vs f1c 1.202031)",
+        "dtrain=0.008456 (arm 0.919970 vs f1c 0.911515)",
+        "not supported under this controlled pilot"
+      ]
+    },
+    "f1m10": {
+      "dfinal": 0.020510374538617704,
+      "dtrain": 0.010344295967165573,
+      "result": "FAIL",
+      "reasons": [
+        "dfinal=0.020510 (arm 1.222542 vs f1c 1.202031)",
+        "dtrain=0.010344 (arm 0.921859 vs f1c 0.911515)",
+        "not supported under this controlled pilot"
+      ]
+    }
+  },
+  "multiplicity_A1": "No single-seed pass: nothing is admitted to 3-seed validation.",
+  "env_difference": "Declared environment difference (per task brief / amendment A1 section 3): f1c ran on Kaggle account vishnu3727; both M1 arms (f1m, f1m10) ran on account vishnuvardhanksece. Same GPU type (T4), same E0 recipe/seed/epochs.",
+  "provenance": {
+    "git_head": "d72e8ef67a7ec31af09ea4fa84660800c3bc5f04",
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "torch_cuda": "12.8",
+    "cuda_available": true,
+    "numpy": "2.5.1",
+    "device": "cuda",
+    "env_difference": "Declared environment difference (per task brief / amendment A1 section 3): f1c ran on Kaggle account vishnu3727; both M1 arms (f1m, f1m10) ran on account vishnuvardhanksece. Same GPU type (T4), same E0 recipe/seed/epochs.",
+    "utc": "2026-09-25T00:16:20Z"
+  }
+}

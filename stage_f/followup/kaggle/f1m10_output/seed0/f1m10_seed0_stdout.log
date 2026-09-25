@@ -1,0 +1,206 @@
+integrity guard: {"param_count": 397954, "param_count_ok": true, "all_ok": true}
+init: {"source": "/kaggle/working/repo/checkpoints/armp_stage1_best.pth", "strict": true, "sha256": "3ae6fb3be6b2bda9287b325ccbe6d1397744c8f20ef5e56c046176d9f1a29be7", "n_keys": 70, "param_count": 397954}
+/kaggle/working/repo/stage_e_recipe/run/scripts/finetune_pilot.py:318: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  epoch_loss += float(loss)
+epoch   0 loss   4.6457 ce   2.1948 lr 1.00e-03 val EPE 2.863 D1 22.38%
+epoch   1 loss   3.4491 ce   1.5439 lr 1.00e-03
+epoch   2 loss   3.0617 ce   1.4082 lr 9.99e-04
+epoch   3 loss   3.2300 ce   1.3996 lr 9.99e-04
+epoch   4 loss   2.9215 ce   1.3781 lr 9.98e-04
+epoch   5 loss   2.7681 ce   1.3586 lr 9.98e-04 val EPE 2.461 D1 16.83%
+epoch   6 loss   2.9431 ce   1.3679 lr 9.97e-04
+epoch   7 loss   2.6784 ce   1.3605 lr 9.96e-04
+epoch   8 loss   2.8724 ce   1.3702 lr 9.95e-04
+epoch   9 loss   2.7517 ce   1.3636 lr 9.94e-04
+epoch  10 loss   2.6146 ce   1.3378 lr 9.93e-04 val EPE 2.960 D1 25.52%
+epoch  11 loss   2.5342 ce   1.3419 lr 9.91e-04
+epoch  12 loss   2.7772 ce   1.3576 lr 9.90e-04
+epoch  13 loss   2.5105 ce   1.3467 lr 9.88e-04
+epoch  14 loss   2.5974 ce   1.3507 lr 9.86e-04
+epoch  15 loss   2.6076 ce   1.3520 lr 9.84e-04 val EPE 2.042 D1 12.84%
+epoch  16 loss   2.6930 ce   1.3536 lr 9.82e-04
+epoch  17 loss   2.6991 ce   1.3490 lr 9.80e-04
+epoch  18 loss   2.6221 ce   1.3444 lr 9.78e-04
+epoch  19 loss   2.5948 ce   1.3421 lr 9.76e-04
+epoch  20 loss   2.8962 ce   1.3647 lr 9.73e-04 val EPE 2.657 D1 16.75%
+epoch  21 loss   2.6669 ce   1.3504 lr 9.70e-04
+epoch  22 loss   2.8800 ce   1.3635 lr 9.68e-04
+epoch  23 loss   2.6196 ce   1.3443 lr 9.65e-04
+epoch  24 loss   2.7109 ce   1.3517 lr 9.62e-04
+epoch  25 loss   2.5780 ce   1.3518 lr 9.59e-04 val EPE 2.078 D1 12.85%
+epoch  26 loss   2.7683 ce   1.3523 lr 9.56e-04
+epoch  27 loss   2.3713 ce   1.3279 lr 9.52e-04
+epoch  28 loss   2.6143 ce   1.3472 lr 9.49e-04
+epoch  29 loss   2.6123 ce   1.3368 lr 9.46e-04
+epoch  30 loss   2.3665 ce   1.3193 lr 9.42e-04 val EPE 2.078 D1 12.43%
+epoch  31 loss   2.5202 ce   1.3412 lr 9.38e-04
+epoch  32 loss   2.6672 ce   1.3445 lr 9.34e-04
+epoch  33 loss   2.5158 ce   1.3400 lr 9.30e-04
+epoch  34 loss   2.2605 ce   1.3131 lr 9.26e-04
+epoch  35 loss   2.4445 ce   1.3307 lr 9.22e-04 val EPE 2.490 D1 16.86%
+epoch  36 loss   2.2868 ce   1.3168 lr 9.18e-04
+epoch  37 loss   2.2221 ce   1.3168 lr 9.14e-04
+epoch  38 loss   2.2847 ce   1.3185 lr 9.09e-04
+epoch  39 loss   2.3713 ce   1.3263 lr 9.05e-04
+epoch  40 loss   2.5163 ce   1.3308 lr 9.00e-04 val EPE 1.966 D1 11.88%
+epoch  41 loss   2.5396 ce   1.3342 lr 8.95e-04
+epoch  42 loss   2.3463 ce   1.3269 lr 8.90e-04
+epoch  43 loss   2.3643 ce   1.3202 lr 8.85e-04
+epoch  44 loss   2.5433 ce   1.3432 lr 8.80e-04
+epoch  45 loss   2.5514 ce   1.3426 lr 8.75e-04 val EPE 2.060 D1 12.62%
+epoch  46 loss   2.7058 ce   1.3365 lr 8.70e-04
+epoch  47 loss   2.5080 ce   1.3329 lr 8.64e-04
+epoch  48 loss   2.3322 ce   1.3208 lr 8.59e-04
+epoch  49 loss   2.4255 ce   1.3266 lr 8.54e-04
+epoch  50 loss   2.3357 ce   1.3192 lr 8.48e-04 val EPE 2.190 D1 13.90%
+epoch  51 loss   2.3726 ce   1.3269 lr 8.42e-04
+epoch  52 loss   2.4556 ce   1.3301 lr 8.37e-04
+epoch  53 loss   2.2991 ce   1.3113 lr 8.31e-04
+epoch  54 loss   2.3319 ce   1.3208 lr 8.25e-04
+epoch  55 loss   2.4272 ce   1.3276 lr 8.19e-04 val EPE 2.087 D1 12.74%
+epoch  56 loss   2.3372 ce   1.3230 lr 8.13e-04
+epoch  57 loss   2.3696 ce   1.3282 lr 8.06e-04
+epoch  58 loss   2.2514 ce   1.3104 lr 8.00e-04
+epoch  59 loss   2.3973 ce   1.3273 lr 7.94e-04
+epoch  60 loss   2.6561 ce   1.3454 lr 7.88e-04 val EPE 2.686 D1 18.14%
+epoch  61 loss   2.4421 ce   1.3248 lr 7.81e-04
+epoch  62 loss   2.4660 ce   1.3340 lr 7.75e-04
+epoch  63 loss   2.5311 ce   1.3310 lr 7.68e-04
+epoch  64 loss   2.4022 ce   1.3366 lr 7.61e-04
+epoch  65 loss   2.3861 ce   1.3341 lr 7.55e-04 val EPE 1.999 D1 12.66%
+epoch  66 loss   2.4068 ce   1.3369 lr 7.48e-04
+epoch  67 loss   2.2755 ce   1.3221 lr 7.41e-04
+epoch  68 loss   2.2713 ce   1.3231 lr 7.34e-04
+epoch  69 loss   2.4903 ce   1.3337 lr 7.27e-04
+epoch  70 loss   2.4508 ce   1.3281 lr 7.20e-04 val EPE 1.752 D1 10.92%
+epoch  71 loss   2.2918 ce   1.3226 lr 7.13e-04
+epoch  72 loss   2.2514 ce   1.3172 lr 7.06e-04
+epoch  73 loss   2.3935 ce   1.3298 lr 6.99e-04
+epoch  74 loss   2.4289 ce   1.3263 lr 6.91e-04
+epoch  75 loss   2.3929 ce   1.3307 lr 6.84e-04 val EPE 2.000 D1 12.07%
+epoch  76 loss   2.2322 ce   1.3121 lr 6.77e-04
+epoch  77 loss   2.2966 ce   1.3259 lr 6.69e-04
+epoch  78 loss   2.3371 ce   1.3248 lr 6.62e-04
+epoch  79 loss   2.3184 ce   1.3252 lr 6.55e-04
+epoch  80 loss   2.3079 ce   1.3245 lr 6.47e-04 val EPE 1.749 D1 10.25%
+epoch  81 loss   2.3795 ce   1.3332 lr 6.39e-04
+epoch  82 loss   2.3869 ce   1.3343 lr 6.32e-04
+epoch  83 loss   2.2112 ce   1.3139 lr 6.24e-04
+epoch  84 loss   2.2333 ce   1.3234 lr 6.17e-04
+epoch  85 loss   2.2125 ce   1.3208 lr 6.09e-04 val EPE 1.825 D1 11.05%
+epoch  86 loss   2.2650 ce   1.3238 lr 6.01e-04
+epoch  87 loss   2.3284 ce   1.3298 lr 5.94e-04
+epoch  88 loss   2.3684 ce   1.3266 lr 5.86e-04
+epoch  89 loss   2.3351 ce   1.3241 lr 5.78e-04
+epoch  90 loss   2.8087 ce   1.3450 lr 5.70e-04 val EPE 2.581 D1 17.72%
+epoch  91 loss   2.4318 ce   1.3289 lr 5.63e-04
+epoch  92 loss   2.4172 ce   1.3290 lr 5.55e-04
+epoch  93 loss   2.0619 ce   1.3040 lr 5.47e-04
+epoch  94 loss   2.3762 ce   1.3269 lr 5.39e-04
+epoch  95 loss   2.2427 ce   1.3200 lr 5.31e-04 val EPE 1.952 D1 11.07%
+epoch  96 loss   2.1085 ce   1.3067 lr 5.24e-04
+epoch  97 loss   2.1511 ce   1.3071 lr 5.16e-04
+epoch  98 loss   2.2609 ce   1.3181 lr 5.08e-04
+epoch  99 loss   2.1539 ce   1.3158 lr 5.00e-04
+epoch 100 loss   2.1611 ce   1.3156 lr 4.92e-04 val EPE 1.723 D1 10.60%
+epoch 101 loss   2.3005 ce   1.3232 lr 4.84e-04
+epoch 102 loss   2.2199 ce   1.3187 lr 4.76e-04
+epoch 103 loss   2.5242 ce   1.3339 lr 4.69e-04
+epoch 104 loss   2.4471 ce   1.3368 lr 4.61e-04
+epoch 105 loss   2.2228 ce   1.3209 lr 4.53e-04 val EPE 1.950 D1 11.30%
+epoch 106 loss   2.1809 ce   1.3130 lr 4.45e-04
+epoch 107 loss   2.2290 ce   1.3202 lr 4.37e-04
+epoch 108 loss   2.0962 ce   1.3089 lr 4.30e-04
+epoch 109 loss   2.3001 ce   1.3263 lr 4.22e-04
+epoch 110 loss   2.1486 ce   1.3166 lr 4.14e-04 val EPE 1.967 D1 11.70%
+epoch 111 loss   2.1035 ce   1.3115 lr 4.06e-04
+epoch 112 loss   2.2537 ce   1.3231 lr 3.99e-04
+epoch 113 loss   2.3061 ce   1.3257 lr 3.91e-04
+epoch 114 loss   2.2476 ce   1.3235 lr 3.83e-04
+epoch 115 loss   2.0843 ce   1.3086 lr 3.76e-04 val EPE 1.738 D1 10.29%
+epoch 116 loss   2.2228 ce   1.3200 lr 3.68e-04
+epoch 117 loss   2.1985 ce   1.3138 lr 3.61e-04
+epoch 118 loss   2.2479 ce   1.3199 lr 3.53e-04
+epoch 119 loss   2.2686 ce   1.3194 lr 3.45e-04
+epoch 120 loss   2.1326 ce   1.3081 lr 3.38e-04 val EPE 1.723 D1 9.78%
+epoch 121 loss   2.0567 ce   1.3079 lr 3.31e-04
+epoch 122 loss   2.1130 ce   1.3141 lr 3.23e-04
+epoch 123 loss   2.1334 ce   1.3128 lr 3.16e-04
+epoch 124 loss   2.2819 ce   1.3285 lr 3.09e-04
+epoch 125 loss   2.0919 ce   1.3116 lr 3.01e-04 val EPE 1.639 D1 9.51%
+epoch 126 loss   2.2271 ce   1.3202 lr 2.94e-04
+epoch 127 loss   2.2097 ce   1.3257 lr 2.87e-04
+epoch 128 loss   2.0662 ce   1.3108 lr 2.80e-04
+epoch 129 loss   2.0856 ce   1.3078 lr 2.73e-04
+epoch 130 loss   2.0537 ce   1.3064 lr 2.66e-04 val EPE 1.751 D1 10.29%
+epoch 131 loss   1.9826 ce   1.3018 lr 2.59e-04
+epoch 132 loss   2.1279 ce   1.3190 lr 2.52e-04
+epoch 133 loss   2.1500 ce   1.3174 lr 2.45e-04
+epoch 134 loss   2.1331 ce   1.3143 lr 2.39e-04
+epoch 135 loss   2.1605 ce   1.3162 lr 2.32e-04 val EPE 1.774 D1 10.76%
+epoch 136 loss   2.1286 ce   1.3152 lr 2.25e-04
+epoch 137 loss   2.1012 ce   1.3156 lr 2.19e-04
+epoch 138 loss   2.1932 ce   1.3240 lr 2.12e-04
+epoch 139 loss   2.2495 ce   1.3231 lr 2.06e-04
+epoch 140 loss   2.1931 ce   1.3206 lr 2.00e-04 val EPE 1.701 D1 9.78%
+epoch 141 loss   2.0992 ce   1.3110 lr 1.94e-04
+epoch 142 loss   2.2149 ce   1.3218 lr 1.87e-04
+epoch 143 loss   2.1192 ce   1.3189 lr 1.81e-04
+epoch 144 loss   2.1059 ce   1.3121 lr 1.75e-04
+epoch 145 loss   2.0909 ce   1.3140 lr 1.69e-04 val EPE 1.742 D1 10.13%
+epoch 146 loss   1.9428 ce   1.2994 lr 1.63e-04
+epoch 147 loss   2.2489 ce   1.3264 lr 1.58e-04
+epoch 148 loss   2.1115 ce   1.3137 lr 1.52e-04
+epoch 149 loss   2.2040 ce   1.3252 lr 1.46e-04
+epoch 150 loss   2.0241 ce   1.3081 lr 1.41e-04 val EPE 1.680 D1 9.68%
+epoch 151 loss   2.0085 ce   1.3076 lr 1.36e-04
+epoch 152 loss   2.0413 ce   1.3079 lr 1.30e-04
+epoch 153 loss   2.0467 ce   1.3137 lr 1.25e-04
+epoch 154 loss   2.1669 ce   1.3163 lr 1.20e-04
+epoch 155 loss   2.1329 ce   1.3170 lr 1.15e-04 val EPE 1.651 D1 9.73%
+epoch 156 loss   2.0256 ce   1.3052 lr 1.10e-04
+epoch 157 loss   2.1140 ce   1.3182 lr 1.05e-04
+epoch 158 loss   2.0889 ce   1.3121 lr 1.00e-04
+epoch 159 loss   2.0631 ce   1.3138 lr 9.55e-05
+epoch 160 loss   2.0605 ce   1.3134 lr 9.09e-05 val EPE 1.730 D1 9.76%
+epoch 161 loss   2.0589 ce   1.3128 lr 8.65e-05
+epoch 162 loss   2.0906 ce   1.3152 lr 8.21e-05
+epoch 163 loss   2.1378 ce   1.3183 lr 7.78e-05
+epoch 164 loss   2.0260 ce   1.3074 lr 7.37e-05
+epoch 165 loss   2.1546 ce   1.3259 lr 6.96e-05 val EPE 1.708 D1 9.58%
+epoch 166 loss   2.0276 ce   1.3120 lr 6.57e-05
+epoch 167 loss   2.0088 ce   1.3067 lr 6.18e-05
+epoch 168 loss   2.0859 ce   1.3177 lr 5.81e-05
+epoch 169 loss   2.0720 ce   1.3170 lr 5.45e-05
+epoch 170 loss   2.0663 ce   1.3151 lr 5.10e-05 val EPE 1.702 D1 9.50%
+epoch 171 loss   1.9750 ce   1.3037 lr 4.76e-05
+epoch 172 loss   2.1366 ce   1.3244 lr 4.43e-05
+epoch 173 loss   1.9325 ce   1.3001 lr 4.11e-05
+epoch 174 loss   2.0920 ce   1.3168 lr 3.81e-05
+epoch 175 loss   2.0368 ce   1.3118 lr 3.51e-05 val EPE 1.748 D1 9.82%
+epoch 176 loss   2.1746 ce   1.3313 lr 3.23e-05
+epoch 177 loss   2.0130 ce   1.3083 lr 2.96e-05
+epoch 178 loss   1.9567 ce   1.3031 lr 2.70e-05
+epoch 179 loss   2.0434 ce   1.3172 lr 2.45e-05
+epoch 180 loss   2.1614 ce   1.3253 lr 2.21e-05 val EPE 1.667 D1 9.28%
+epoch 181 loss   2.0165 ce   1.3083 lr 1.99e-05
+epoch 182 loss   2.0340 ce   1.3140 lr 1.77e-05
+epoch 183 loss   2.0657 ce   1.3093 lr 1.57e-05
+epoch 184 loss   2.0420 ce   1.3151 lr 1.38e-05
+epoch 185 loss   2.0811 ce   1.3156 lr 1.20e-05 val EPE 1.674 D1 9.39%
+epoch 186 loss   1.9548 ce   1.3037 lr 1.04e-05
+epoch 187 loss   2.0721 ce   1.3155 lr 8.86e-06
+epoch 188 loss   2.0094 ce   1.3122 lr 7.45e-06
+epoch 189 loss   2.0400 ce   1.3113 lr 6.16e-06
+epoch 190 loss   1.9900 ce   1.3040 lr 4.99e-06 val EPE 1.685 D1 9.42%
+epoch 191 loss   2.0144 ce   1.3107 lr 3.94e-06
+epoch 192 loss   2.0536 ce   1.3107 lr 3.02e-06
+epoch 193 loss   2.0862 ce   1.3169 lr 2.22e-06
+epoch 194 loss   2.0525 ce   1.3127 lr 1.54e-06
+epoch 195 loss   1.9782 ce   1.3086 lr 9.87e-07 val EPE 1.667 D1 9.33%
+epoch 196 loss   2.1802 ce   1.3262 lr 5.55e-07
+epoch 197 loss   2.0175 ce   1.3123 lr 2.47e-07
+epoch 198 loss   2.0579 ce   1.3115 lr 6.17e-08
+epoch 199 loss   2.0972 ce   1.3171 lr 0.00e+00 val EPE 1.663 D1 9.32%
+P2A seed 0 done: wall 4807.5s best10 EPE 1.6385 @epoch 125

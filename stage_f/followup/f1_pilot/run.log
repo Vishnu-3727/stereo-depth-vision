@@ -1,0 +1,54 @@
+plan: stage-f F1 pilot scoring (3 arms + E3 sanity); device=cuda
+=== sanity: E3 seed0 FINAL C:\Users\vishn\stereo_depth_vision\stage_e_recipe\kaggle\e3_output\seed0\e3_seed0_final.pth ===
+=== arm e3_sanity: C:\Users\vishn\stereo_depth_vision\stage_e_recipe\kaggle\e3_output\seed0\e3_seed0_final.pth ===
+arm e3_sanity contract EPE=1.1628882758 D1=6.015099 GT<64=1.0240653661961097
+train [40/160]
+train [80/160]
+train [120/160]
+train [160/160]
+arm e3_sanity train EPE=0.9170082188 GT<64=0.8620391636
+seed 0/final hailo_val [10/40] epe_sofar=1.5817
+seed 0/final hailo_val [20/40] epe_sofar=1.4063
+seed 0/final hailo_val [30/40] epe_sofar=1.2139
+seed 0/final hailo_val [40/40] epe_sofar=1.1629
+arm e3_sanity entropy_mean=1.848468 rank_median=3.0 modes_mean=1.012779
+sanity contract EPE=1.1628882758 ref=1.1628882758 diff=0.000e+00
+sanity train GT<64=0.8620391636 ref=0.8620391636 diff=0.000e+00
+sanity status: PASS
+=== arm f1c: C:\Users\vishn\stereo_depth_vision\stage_f\followup\kaggle\f1c_output\seed0\f1c_seed0_final.pth ===
+arm f1c contract EPE=1.2020311918 D1=6.238277 GT<64=1.0606045083661197
+train [40/160]
+train [80/160]
+train [120/160]
+train [160/160]
+arm f1c train EPE=0.9755223014 GT<64=0.9115145429
+seed 0/final hailo_val [10/40] epe_sofar=1.6045
+seed 0/final hailo_val [20/40] epe_sofar=1.4350
+seed 0/final hailo_val [30/40] epe_sofar=1.2446
+seed 0/final hailo_val [40/40] epe_sofar=1.2020
+arm f1c entropy_mean=1.853169 rank_median=3.0 modes_mean=1.013780
+=== arm f1m: C:\Users\vishn\stereo_depth_vision\stage_f\followup\kaggle\f1m_output\seed0\f1m_seed0_final.pth ===
+arm f1m contract EPE=1.2162383877 D1=6.439786 GT<64=1.0703159607040178
+train [40/160]
+train [80/160]
+train [120/160]
+train [160/160]
+arm f1m train EPE=0.9856572625 GT<64=0.9199704422
+seed 0/final hailo_val [10/40] epe_sofar=1.6309
+seed 0/final hailo_val [20/40] epe_sofar=1.4574
+seed 0/final hailo_val [30/40] epe_sofar=1.2631
+seed 0/final hailo_val [40/40] epe_sofar=1.2162
+arm f1m entropy_mean=1.914222 rank_median=1.0 modes_mean=1.014620
+=== arm f1m10: C:\Users\vishn\stereo_depth_vision\stage_f\followup\kaggle\f1m10_output\seed0\f1m10_seed0_final.pth ===
+arm f1m10 contract EPE=1.2225415663 D1=6.487593 GT<64=1.067015609814564
+train [40/160]
+train [80/160]
+train [120/160]
+train [160/160]
+arm f1m10 train EPE=0.9886398407 GT<64=0.9218588388
+seed 0/final hailo_val [10/40] epe_sofar=1.6635
+seed 0/final hailo_val [20/40] epe_sofar=1.4672
+seed 0/final hailo_val [30/40] epe_sofar=1.2711
+seed 0/final hailo_val [40/40] epe_sofar=1.2225
+arm f1m10 entropy_mean=1.911528 rank_median=1.0 modes_mean=1.013178
+wrote C:\Users\vishn\stereo_depth_vision\stage_f\followup\f1_pilot\f1_scores.json + f1_verdict.json + F1_PILOT_REPORT.md status=OK
