@@ -1,0 +1,18 @@
+{
+  "arm": "armp",
+  "status": "COMPLETE",
+  "seed": 0,
+  "init": "/kaggle/working/repo/checkpoints/e3_seed0_final.pth",
+  "init_sha256": "82e58bc441a4382ec449479fe26bf479f6b45e9ace4d79b530abeeb40ea79c6d",
+  "epochs_completed": 40,
+  "training_duration_s": 943.7608880996704,
+  "train_monitor_best_epe_10scene": 1.5352926894736898,
+  "train_monitor_best_epoch": 10,
+  "final_lr": 0.0,
+  "param_count": 397954,
+  "best_sha256": "cc10972e74757027da7e3d96d3740cdccd3eaf7ee8bf6fbf37c7a3a1e8316acf",
+  "final_sha256": "a8119f0713879c452b7421907d84be54d53d7d4f44f9414c41054024533d4e77",
+  "train_pid": 22,
+  "runner_pid": 21,
+  "note": "train_monitor numbers are the 10-scene in-training monitor, NOT the frozen contract; frozen EPE/D1 land in pilot_results.json after eval. Fresh process => fresh optimizer/scheduler (train_pid recorded)."
+}

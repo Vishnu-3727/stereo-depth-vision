@@ -1,0 +1,34 @@
+{
+  "status": "OK",
+  "experiment": "stage-f L1 continuation pilot frozen gate (l1m contract final EPE vs l1c)",
+  "gates": {
+    "PASS": "dfinal <= -0.030",
+    "FAIL": "otherwise",
+    "KILL": "NaN/Inf, zero valid px, strict-load fail",
+    "note": "deltas vs the E3 seed0 FINAL start are information only and do not enter the gate"
+  },
+  "dfinal": -0.005167378937938061,
+  "result": "FAIL",
+  "reasons": [
+    "dfinal=contract_final_EPE(l1m)-contract_final_EPE(l1c)=-0.005167 (l1m 1.161015 vs l1c 1.166182)",
+    "dfinal > -0.030"
+  ],
+  "info_vs_start": {
+    "l1c_vs_start": 0.003293732607199562,
+    "l1m_vs_start": -0.0018736463307384987,
+    "start_contract_final_epe": 1.1628882757801255
+  },
+  "admission": "Single-seed FAIL: nothing is admitted to 3-seed validation.",
+  "env_difference": "Declared environment sameness (per L1 launch note section 4): l1c and l1m both run on Kaggle account vishnuvardhanksks \u2014 same account, no cross-account difference. Same GPU type (T4), same continuation recipe/seed/epochs (E3 seed0 FINAL init, 40 epochs, fresh Adam lr 1e-4, cosine to 0); the arms differ ONLY in the loss knob (Smooth-L1 vs masked L1).",
+  "provenance": {
+    "git_head": "c1b39afd1a9cc76ee632fd7371554c6fb8366a43",
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "torch_cuda": "12.8",
+    "cuda_available": true,
+    "numpy": "2.5.1",
+    "device": "cuda",
+    "env_difference": "Declared environment sameness (per L1 launch note section 4): l1c and l1m both run on Kaggle account vishnuvardhanksks \u2014 same account, no cross-account difference. Same GPU type (T4), same continuation recipe/seed/epochs (E3 seed0 FINAL init, 40 epochs, fresh Adam lr 1e-4, cosine to 0); the arms differ ONLY in the loss knob (Smooth-L1 vs masked L1).",
+    "utc": "2026-09-25T03:11:17Z"
+  }
+}

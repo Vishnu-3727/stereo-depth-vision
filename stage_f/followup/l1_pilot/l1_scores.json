@@ -1,0 +1,153 @@
+{
+  "experiment": "stage-f L1 continuation pilot scoring (l1c Smooth-L1 control vs l1m masked L1; seed0 FINAL checkpoints)",
+  "provenance": {
+    "git_head": "c1b39afd1a9cc76ee632fd7371554c6fb8366a43",
+    "python": "3.12.9",
+    "torch": "2.7.0+cu128",
+    "torch_cuda": "12.8",
+    "cuda_available": true,
+    "numpy": "2.5.1",
+    "device": "cuda",
+    "env_difference": "Declared environment sameness (per L1 launch note section 4): l1c and l1m both run on Kaggle account vishnuvardhanksks \u2014 same account, no cross-account difference. Same GPU type (T4), same continuation recipe/seed/epochs (E3 seed0 FINAL init, 40 epochs, fresh Adam lr 1e-4, cosine to 0); the arms differ ONLY in the loss knob (Smooth-L1 vs masked L1).",
+    "utc": "2026-09-25T03:11:17Z"
+  },
+  "sanity": {
+    "ckpt": "C:\\Users\\vishn\\stereo_depth_vision\\stage_e_recipe\\kaggle\\e3_output\\seed0\\e3_seed0_final.pth",
+    "sha256": "82e58bc441a4382ec449479fe26bf479f6b45e9ace4d79b530abeeb40ea79c6d",
+    "recomputed_contract_final_epe": 1.1628882757801255,
+    "reference_contract_final_epe": 1.1628882757801255,
+    "reference_source": "stage_f/followup/audit2/audit2.json seed0_final.epe (== e3_verdict.json per_seed_final[0]; via score_f1)",
+    "diff_contract": 0.0,
+    "recomputed_train_gtlt64_epe": 0.8620391636463651,
+    "reference_train_gtlt64_epe": 0.8620391636463651,
+    "reference_train_source": "stage_f/audit/audit_e3.json seed0_final.train_split.gtlt64_epe (via score_f1)",
+    "diff_train_gtlt64": 0.0,
+    "recomputed_train_epe": 0.9170082187690973,
+    "reference_train_epe": 0.9170082187690973,
+    "diff_train_epe": 0.0,
+    "tolerance": 0.0001,
+    "status": "PASS"
+  },
+  "arms": {
+    "l1c": {
+      "ckpt": "C:\\Users\\vishn\\stereo_depth_vision\\stage_f\\followup\\kaggle\\l1c_output\\seed0\\l1c_seed0_final.pth",
+      "sha256": "eee90ffcdd61d15418f6a6d53ebbb93cbf7fbab80609fa3bfb8121d02b9d6091",
+      "strict_load": true,
+      "strict_error": null,
+      "params": 397954,
+      "expected_params": 397954,
+      "contract": {
+        "split": "hailo_val",
+        "scenes": 40,
+        "valid_pixels": 3802797,
+        "final_epe": 1.166182008387325,
+        "d1": 6.002502894579964,
+        "gtlt64_epe": 1.0234663137027988,
+        "gtlt64_px": 3627325,
+        "guard": {
+          "scenes": 40,
+          "valid_pixels": 3802797,
+          "gt_scale": 256.0,
+          "split": "hailo_val",
+          "gt_source": "disp_occ_0",
+          "contract": {
+            "scenes": 40,
+            "valid_pixels": 3802797,
+            "gt_scale": 256.0,
+            "split": "hailo_val",
+            "gt_source": "disp_occ_0"
+          },
+          "contract_match": true
+        }
+      },
+      "train": {
+        "split": "hailo_calib",
+        "scenes": 160,
+        "contract": false,
+        "note": "NOT the frozen contract; same metric code",
+        "valid_pixels": 14216313,
+        "epe": 0.9166673518597845,
+        "gtlt64_px": 13656950,
+        "gtlt64_epe": 0.8594821252654724
+      },
+      "diagnostics": {
+        "n_sub": 3627325,
+        "entropy_mean": 1.8504817488392291,
+        "entropy_median": 1.8638256788253784,
+        "rank_mean": 3.1531395725500198,
+        "rank_median": 3.0,
+        "modes_mean": 1.012831218597727,
+        "modes_median": 1.0,
+        "sanity_softargmin_max_abs": 0.0,
+        "xcheck_contract_epe": 1.166182008387325,
+        "xcheck_valid_pixels": 3802797
+      },
+      "owner_account": "vishnuvardhanksks",
+      "label": "Smooth-L1 control (E0 loss, unchanged)"
+    },
+    "l1m": {
+      "ckpt": "C:\\Users\\vishn\\stereo_depth_vision\\stage_f\\followup\\kaggle\\l1m_output\\seed0\\l1m_seed0_final.pth",
+      "sha256": "a8119f0713879c452b7421907d84be54d53d7d4f44f9414c41054024533d4e77",
+      "strict_load": true,
+      "strict_error": null,
+      "params": 397954,
+      "expected_params": 397954,
+      "contract": {
+        "split": "hailo_val",
+        "scenes": 40,
+        "valid_pixels": 3802797,
+        "final_epe": 1.161014629449387,
+        "d1": 5.996638789817074,
+        "gtlt64_epe": 1.020095840218741,
+        "gtlt64_px": 3627325,
+        "guard": {
+          "scenes": 40,
+          "valid_pixels": 3802797,
+          "gt_scale": 256.0,
+          "split": "hailo_val",
+          "gt_source": "disp_occ_0",
+          "contract": {
+            "scenes": 40,
+            "valid_pixels": 3802797,
+            "gt_scale": 256.0,
+            "split": "hailo_val",
+            "gt_source": "disp_occ_0"
+          },
+          "contract_match": true
+        }
+      },
+      "train": {
+        "split": "hailo_calib",
+        "scenes": 160,
+        "contract": false,
+        "note": "NOT the frozen contract; same metric code",
+        "valid_pixels": 14216313,
+        "epe": 0.9146751808350062,
+        "gtlt64_px": 13656950,
+        "gtlt64_epe": 0.857414201531092
+      },
+      "diagnostics": {
+        "n_sub": 3627325,
+        "entropy_mean": 1.8507299040142464,
+        "entropy_median": 1.8637514114379883,
+        "rank_mean": 3.1431936757803616,
+        "rank_median": 3.0,
+        "modes_mean": 1.01283673230273,
+        "modes_median": 1.0,
+        "sanity_softargmin_max_abs": 0.0,
+        "xcheck_contract_epe": 1.161014629449387,
+        "xcheck_valid_pixels": 3802797
+      },
+      "owner_account": "vishnuvardhanksks",
+      "label": "masked L1"
+    }
+  },
+  "thresholds": {
+    "PASS_DFINAL": -0.03,
+    "SANITY_TOL": 0.0001
+  },
+  "start_point": {
+    "note": "E3 seed0 FINAL continuation init; information only, not part of the gate",
+    "contract_final_epe": 1.1628882757801255
+  }
+}

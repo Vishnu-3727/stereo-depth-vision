@@ -1,0 +1,42 @@
+plan: stage-f L1 continuation pilot scoring (l1c vs l1m); device=cuda
+=== sanity: E3 seed0 FINAL C:\Users\vishn\stereo_depth_vision\stage_e_recipe\kaggle\e3_output\seed0\e3_seed0_final.pth ===
+=== arm e3_sanity: C:\Users\vishn\stereo_depth_vision\stage_e_recipe\kaggle\e3_output\seed0\e3_seed0_final.pth ===
+arm e3_sanity contract EPE=1.1628882758 D1=6.015099 GT<64=1.0240653661961097
+train [40/160]
+train [80/160]
+train [120/160]
+train [160/160]
+arm e3_sanity train EPE=0.9170082188 GT<64=0.8620391636
+seed 0/final hailo_val [10/40] epe_sofar=1.5817
+seed 0/final hailo_val [20/40] epe_sofar=1.4063
+seed 0/final hailo_val [30/40] epe_sofar=1.2139
+seed 0/final hailo_val [40/40] epe_sofar=1.1629
+arm e3_sanity entropy_mean=1.848468 rank_median=3.0 modes_mean=1.012779
+sanity contract EPE=1.1628882758 ref=1.1628882758 diff=0.000e+00
+sanity train GT<64=0.8620391636 ref=0.8620391636 diff=0.000e+00
+sanity status: PASS
+=== arm l1c: C:\Users\vishn\stereo_depth_vision\stage_f\followup\kaggle\l1c_output\seed0\l1c_seed0_final.pth ===
+arm l1c contract EPE=1.1661820084 D1=6.002503 GT<64=1.0234663137027988
+train [40/160]
+train [80/160]
+train [120/160]
+train [160/160]
+arm l1c train EPE=0.9166673519 GT<64=0.8594821253
+seed 0/final hailo_val [10/40] epe_sofar=1.5902
+seed 0/final hailo_val [20/40] epe_sofar=1.4106
+seed 0/final hailo_val [30/40] epe_sofar=1.2181
+seed 0/final hailo_val [40/40] epe_sofar=1.1662
+arm l1c entropy_mean=1.850482 rank_median=3.0 modes_mean=1.012831
+=== arm l1m: C:\Users\vishn\stereo_depth_vision\stage_f\followup\kaggle\l1m_output\seed0\l1m_seed0_final.pth ===
+arm l1m contract EPE=1.1610146294 D1=5.996639 GT<64=1.020095840218741
+train [40/160]
+train [80/160]
+train [120/160]
+train [160/160]
+arm l1m train EPE=0.9146751808 GT<64=0.8574142015
+seed 0/final hailo_val [10/40] epe_sofar=1.5776
+seed 0/final hailo_val [20/40] epe_sofar=1.4040
+seed 0/final hailo_val [30/40] epe_sofar=1.2122
+seed 0/final hailo_val [40/40] epe_sofar=1.1610
+arm l1m entropy_mean=1.850730 rank_median=3.0 modes_mean=1.012837
+wrote C:\Users\vishn\stereo_depth_vision\stage_f\followup\l1_pilot\l1_scores.json + l1_verdict.json + L1_PILOT_REPORT.md status=OK result=FAIL

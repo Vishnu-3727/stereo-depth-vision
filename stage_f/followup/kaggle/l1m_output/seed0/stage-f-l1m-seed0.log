@@ -1,0 +1,64 @@
+[{"stream_name":"stdout","time":7.630847929,"data":"{\"python\": \"3.12.13\", \"torch\": \"2.10.0+cu128\", \"cuda\": \"12.8\", \"cudnn\": 91002, \"gpu\": \"Tesla T4\", \"device_count\": 2}\n"}
+,{"stream_name":"stdout","time":7.630918007,"data":"+ /usr/bin/python3 /kaggle/working/repo/stage_e_recipe/run/scripts/run_arm.py --arm armp --init /kaggle/working/repo/checkpoints/e3_seed0_final.pth --outdir /kaggle/working/repo/stage_e_recipe/run/armp --seed 0 --epochs 40 --timeout_s 18000.0\n"}
+,{"stream_name":"stdout","time":7.724277685,"data":"RUN arm=armp init=/kaggle/working/repo/checkpoints/e3_seed0_final.pth pid=21 cmd=['/usr/bin/python3', '/kaggle/working/repo/stage_e_recipe/run/scripts/finetune_pilot.py', '--init', '/kaggle/working/repo/checkpoints/e3_seed0_final.pth', '--arm', 'armp']\n"}
+,{"stream_name":"stdout","time":10.099274613,"data":"integrity guard: {\"param_count\": 397954, \"param_count_ok\": true, \"all_ok\": true}\n"}
+,{"stream_name":"stdout","time":10.112199426,"data":"init: {\"source\": \"/kaggle/working/repo/checkpoints/e3_seed0_final.pth\", \"strict\": true, \"sha256\": \"82e58bc441a4382ec449479fe26bf479f6b45e9ace4d79b530abeeb40ea79c6d\", \"n_keys\": 70, \"param_count\": 397954}\n"}
+,{"stream_name":"stdout","time":16.735036931,"data":"/kaggle/working/repo/stage_e_recipe/run/scripts/finetune_pilot.py:324: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.\n"}
+,{"stream_name":"stdout","time":16.735073961,"data":"Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)\n"}
+,{"stream_name":"stdout","time":16.735078342,"data":"  epoch_loss += float(loss)\n"}
+,{"stream_name":"stdout","time":41.938063138,"data":"epoch   0 loss   1.0167 lr 9.98e-05 val EPE 1.649 D1 8.75%\n"}
+,{"stream_name":"stdout","time":63.088250749,"data":"epoch   1 loss   0.9928 lr 9.94e-05\n"}
+,{"stream_name":"stdout","time":84.353279719,"data":"epoch   2 loss   0.9715 lr 9.86e-05\n"}
+,{"stream_name":"stdout","time":106.15386411,"data":"epoch   3 loss   1.0327 lr 9.76e-05\n"}
+,{"stream_name":"stdout","time":127.901193823,"data":"epoch   4 loss   0.9634 lr 9.62e-05\n"}
+,{"stream_name":"stdout","time":151.262206607,"data":"epoch   5 loss   0.9023 lr 9.46e-05 val EPE 1.548 D1 8.32%\n"}
+,{"stream_name":"stdout","time":174.003952744,"data":"epoch   6 loss   1.0554 lr 9.26e-05\n"}
+,{"stream_name":"stdout","time":197.705090582,"data":"epoch   7 loss   0.9872 lr 9.05e-05\n"}
+,{"stream_name":"stdout","time":220.442226767,"data":"epoch   8 loss   1.0286 lr 8.80e-05\n"}
+,{"stream_name":"stdout","time":243.465031107,"data":"epoch   9 loss   1.1045 lr 8.54e-05\n"}
+,{"stream_name":"stdout","time":268.19048889,"data":"epoch  10 loss   0.9469 lr 8.25e-05 val EPE 1.535 D1 8.36%\n"}
+,{"stream_name":"stdout","time":291.969895634,"data":"epoch  11 loss   0.9441 lr 7.94e-05\n"}
+,{"stream_name":"stdout","time":315.802814232,"data":"epoch  12 loss   1.0504 lr 7.61e-05\n"}
+,{"stream_name":"stdout","time":338.982537101,"data":"epoch  13 loss   1.0185 lr 7.27e-05\n"}
+,{"stream_name":"stdout","time":362.489439049,"data":"epoch  14 loss   1.0068 lr 6.91e-05\n"}
+,{"stream_name":"stdout","time":387.284925733,"data":"epoch  15 loss   0.9885 lr 6.55e-05 val EPE 1.620 D1 8.62%\n"}
+,{"stream_name":"stdout","time":410.977480563,"data":"epoch  16 loss   0.9820 lr 6.17e-05\n"}
+,{"stream_name":"stdout","time":434.370451681,"data":"epoch  17 loss   1.0105 lr 5.78e-05\n"}
+,{"stream_name":"stdout","time":458.082500675,"data":"epoch  18 loss   0.9795 lr 5.39e-05\n"}
+,{"stream_name":"stdout","time":480.855339767,"data":"epoch  19 loss   0.9684 lr 5.00e-05\n"}
+,{"stream_name":"stdout","time":505.332429495,"data":"epoch  20 loss   1.0964 lr 4.61e-05 val EPE 1.546 D1 8.17%\n"}
+,{"stream_name":"stdout","time":528.523731843,"data":"epoch  21 loss   0.9811 lr 4.22e-05\n"}
+,{"stream_name":"stdout","time":552.208255931,"data":"epoch  22 loss   1.0224 lr 3.83e-05\n"}
+,{"stream_name":"stdout","time":575.261015258,"data":"epoch  23 loss   0.9928 lr 3.45e-05\n"}
+,{"stream_name":"stdout","time":597.853285637,"data":"epoch  24 loss   1.0361 lr 3.09e-05\n"}
+,{"stream_name":"stdout","time":621.850112389,"data":"epoch  25 loss   0.9938 lr 2.73e-05 val EPE 1.650 D1 8.73%\n"}
+,{"stream_name":"stdout","time":644.56553805,"data":"epoch  26 loss   1.0142 lr 2.39e-05\n"}
+,{"stream_name":"stdout","time":666.988031575,"data":"epoch  27 loss   0.9170 lr 2.06e-05\n"}
+,{"stream_name":"stdout","time":689.976516011,"data":"epoch  28 loss   1.0861 lr 1.75e-05\n"}
+,{"stream_name":"stdout","time":713.233644889,"data":"epoch  29 loss   0.9795 lr 1.46e-05\n"}
+,{"stream_name":"stdout","time":737.281021886,"data":"epoch  30 loss   0.8993 lr 1.20e-05 val EPE 1.597 D1 8.48%\n"}
+,{"stream_name":"stdout","time":760.233723506,"data":"epoch  31 loss   0.9701 lr 9.55e-06\n"}
+,{"stream_name":"stdout","time":783.397764438,"data":"epoch  32 loss   1.0234 lr 7.37e-06\n"}
+,{"stream_name":"stdout","time":805.912783148,"data":"epoch  33 loss   1.0009 lr 5.45e-06\n"}
+,{"stream_name":"stdout","time":828.964719547,"data":"epoch  34 loss   0.8553 lr 3.81e-06\n"}
+,{"stream_name":"stdout","time":853.94951365,"data":"epoch  35 loss   0.9591 lr 2.45e-06 val EPE 1.582 D1 8.39%\n"}
+,{"stream_name":"stdout","time":877.616914534,"data":"epoch  36 loss   0.8897 lr 1.38e-06\n"}
+,{"stream_name":"stdout","time":900.469848824,"data":"epoch  37 loss   0.9067 lr 6.16e-07\n"}
+,{"stream_name":"stdout","time":924.336002561,"data":"epoch  38 loss   0.9339 lr 1.54e-07\n"}
+,{"stream_name":"stdout","time":949.440536854,"data":"epoch  39 loss   0.9682 lr 0.00e+00 val EPE 1.578 D1 8.36%\n"}
+,{"stream_name":"stdout","time":949.466662122,"data":"P2A seed 0 done: wall 934.4s best10 EPE 1.5353 @epoch 10\n"}
+,{"stream_name":"stdout","time":951.498491462,"data":"ARM armp COMPLETE wall=943.8s best10=1.5353@10 final_lr=0.00e+00\n"}
+,{"stream_name":"stdout","time":959.34287659,"data":"armp/best EPE 1.1510634 D1 6.0295% contract True\n"}
+,{"stream_name":"stdout","time":965.836609108,"data":"armp/final EPE 1.1610384 D1 5.9962% contract True\n"}
+,{"stream_name":"stdout","time":965.854967031,"data":"\n"}
+,{"stream_name":"stdout","time":965.854989192,"data":"L1M seed 0 COMPLETE in 965.1s\n"}
+,{"stream_name":"stdout","time":965.854993652,"data":"  best  EPE 1.1510634  D1 6.0295%\n"}
+,{"stream_name":"stdout","time":965.854997117,"data":"  final EPE 1.1610384  D1 5.9962%\n"}
+,{"stream_name":"stdout","time":965.855001001,"data":"wrote /kaggle/working/l1m_seed0.json\n"}
+,{"stream_name":"stderr","time":968.45649523,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":968.45656602,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":968.693679338,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":968.693709011,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":969.3132679,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":970.51724582,"data":"[NbConvertApp] Writing 309114 bytes to __results__.html\n"}
+]
